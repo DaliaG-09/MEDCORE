@@ -1,0 +1,55 @@
+/* ============================================================
+   MEDCORE — service worker
+   Cachea todos los archivos de la app la primera vez que se
+   visita con internet. Después, aunque no haya conexión, el
+   navegador sirve estos archivos desde la copia local.
+   Cuando yo actualice contenido, solo sube la versión de
+   CACHE_NAME (ej. 'medcore-v2') y el navegador refresca la copia.
+   ============================================================ */
+
+const CACHE_NAME = 'medcore-v2';
+const ASSETS = [
+  './',
+  './index.html',
+  './styles.css',
+  './app.js',
+  './data.js',
+  './icons.js',
+  './notes.js',
+  './firebase-config.js',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((names) =>
+      Promise.all(names.filter((n) => n !== CACHE_NAME).map((n) => caches.delete(n)))
+    )
+  );
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((cached) => {
+      if (cached) return cached;
+      return fetch(event.request)
+        .then((response) => {
+          // guarda en caché copias nuevas de páginas visitadas para la próxima vez sin internet
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match('./index.html'));
+    })
+  );
+});

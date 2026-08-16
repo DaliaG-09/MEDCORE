@@ -1,0 +1,14 @@
+{
+  "name": "MEDCORE — Centro de estudio",
+  "short_name": "MEDCORE",
+  "description": "Plataforma de estudio de Medicina Interna",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f6f2",
+  "theme_color": "#0c1b2e",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

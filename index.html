@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEDCORE — Centro de estudio</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#0c1b2e">
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="brand">MEDCORE <small>Med. Interna</small></div>
+
+    <div class="nav-group">
+      <div class="nav-label">Estudio</div>
+      <div class="nav-item active" data-view="view-inicio" onclick="showView('view-inicio')"><span class="dot"></span> Inicio</div>
+      <div class="nav-item" data-view="view-semana" onclick="openSemana('semana-03')"><span class="dot"></span> Semanas</div>
+      <div class="nav-item" data-view="view-enfermedad" onclick="openEnfermedad('epoc')"><span class="dot"></span> Enfermedades</div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Próximamente</div>
+      <div class="nav-item"><span class="dot"></span> Semiología</div>
+      <div class="nav-item"><span class="dot"></span> Farmacología</div>
+      <div class="nav-item"><span class="dot"></span> Hospital</div>
+      <div class="nav-item"><span class="dot"></span> Lecturas</div>
+      <div class="nav-item"><span class="dot"></span> Mis apuntes</div>
+      <div class="nav-item"><span class="dot"></span> Favoritos</div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+
+    <div id="auth-bar"></div>
+
+    <div class="topbar">
+      <div class="search-box">
+        🔍 <input id="global-search" type="text" placeholder="Buscar enfermedad, semana, lectura…">
+        <span class="key">Ctrl K</span>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+
+    <!-- VISTA: INICIO -->
+    <section id="view-inicio" class="view">
+      <span class="eyebrow">Hoy</span>
+      <h1 class="page-title">¿Qué tengo esta semana?</h1>
+      <p class="page-sub">Resumen de tu semana actual y las enfermedades relacionadas.</p>
+      <div id="inicio-semana-actual" style="margin-bottom:28px;"></div>
+      <div class="section-title"><h2>Enfermedades de esta semana</h2></div>
+      <div class="grid cols-2" id="inicio-enfermedades"></div>
+    </section>
+
+    <!-- VISTA: SEMANA -->
+    <section id="view-semana" class="view">
+      <div id="view-semana-content"></div>
+    </section>
+
+    <!-- VISTA: ENFERMEDAD -->
+    <section id="view-enfermedad" class="view">
+      <div id="view-enfermedad-content"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="icons.js"></script>
+<script src="firebase-config.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="notes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
