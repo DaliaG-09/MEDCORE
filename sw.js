@@ -7,7 +7,7 @@
    CACHE_NAME (ej. 'medcore-v2') y el navegador refresca la copia.
    ============================================================ */
 
-const CACHE_NAME = 'medcore-v2';
+const CACHE_NAME = 'medcore-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -19,7 +19,12 @@ const ASSETS = [
   './firebase-config.js',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './fonts/nunito-sans-latin-700-normal.woff2',
+  './fonts/nunito-sans-latin-800-normal.woff2',
+  './fonts/inter-latin-400-normal.woff2',
+  './fonts/inter-latin-500-normal.woff2',
+  './fonts/inter-latin-600-normal.woff2'
 ];
 
 self.addEventListener('install', (event) => {
