@@ -6,6 +6,7 @@
    ============================================================ */
 
 function getEnfermedad(id){ return ENFERMEDADES.find(e => e.id === id); }
+function getTema(id){ return TEMAS.find(t => t.id === id); }
 function getSemana(id){ return SEMANAS.find(s => s.id === id); }
 
 /* ---------- estado local: favoritos y "estudiado" (persistente por dispositivo) ---------- */
@@ -38,6 +39,7 @@ function showView(viewId){
 
 function openSemana(id){ renderSemana(id); showView('view-semana'); }
 function openEnfermedad(id){ renderEnfermedad(id); showView('view-enfermedad'); }
+function openTema(id){ renderTema(id); showView('view-tema'); }
 
 function saludoSegunHora(){
   const h = new Date().getHours();
@@ -111,6 +113,18 @@ function diseaseCardHTML(e){
   `;
 }
 
+function temaCardHTML(t){
+  return `
+    <div class="disease-card" onclick="openTema('${t.id}')" style="cursor:pointer;">
+      <div>
+        <div class="name">${t.nombre}</div>
+        <div class="area">${t.area} · Anatomía/Fisiología</div>
+      </div>
+      <div class="study-check ${t.estudiado ? 'done' : ''}">${t.estudiado ? '✓' : ''}</div>
+    </div>
+  `;
+}
+
 /* ---------- vista: semana ---------- */
 function renderSemana(id){
   const s = getSemana(id);
@@ -129,6 +143,12 @@ function renderSemana(id){
       <h3>Días</h3>
       <div class="grid cols-3">${s.dias.map(diaCardHTML).join('')}</div>
     </div>
+
+    ${(s.temas && s.temas.length) ? `
+    <div class="section-block">
+      <h3>Anatomía y fisiología</h3>
+      <div class="grid cols-2">${s.temas.map(id => temaCardHTML(getTema(id))).join('')}</div>
+    </div>` : ''}
 
     <div class="section-block">
       <h3>Enfermedades de la semana</h3>
@@ -159,6 +179,63 @@ function renderSemana(id){
   `;
 }
 
+/* ---------- vista: tema (anatomía/fisiología, no es enfermedad) ---------- */
+function renderTema(id){
+  const t = getTema(id);
+  const wrap = document.getElementById('view-tema-content');
+  const c = t.contenido;
+
+  wrap.innerHTML = `
+    <div class="disease-header">
+      <div>
+        <span class="eyebrow">${t.area} · Anatomía y fisiología</span>
+        <h1 class="page-title">${t.nombre}</h1>
+      </div>
+      <div class="toolbar">
+        <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
+        <div class="btn-icon ${t.estudiado ? 'done' : ''}" onclick="toggleEstudiadoTema('${t.id}')">${t.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
+      </div>
+    </div>
+
+    <div class="kcard">
+      <h3>Resumen</h3>
+      <p>${c.resumen}</p>
+    </div>
+
+    <div class="kcard">
+      <h3>Estructuras clave</h3>
+      <ul>${c.estructuras.map(e => `<li><strong>${e.nombre}:</strong> ${e.detalle}</li>`).join('')}</ul>
+    </div>
+
+    <div class="mcard">
+      <h3>🧬 Cómo funciona normalmente</h3>
+      <p>${c.fisiologiaNormal}</p>
+    </div>
+
+    <div class="pcard">
+      <h3>🔗 Por qué importa (correlación clínica)</h3>
+      <p>${c.correlacionClinica}</p>
+    </div>
+
+    <div class="pcard">
+      <h3>⭐ Puntos clave</h3>
+      <div class="chip-list">
+        ${c.puntosClave.map((x,i) => `<div class="chip"><span class="n">${String(i+1).padStart(2,'0')}</span><span>${x}</span></div>`).join('')}
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h3>Apunte</h3>
+      ${noteBlockHTML(t.id + '::general')}
+    </div>
+  `;
+}
+function toggleEstudiadoTema(id){
+  const t = getTema(id);
+  t.estudiado = !t.estudiado;
+  renderTema(id);
+}
+
 /* ---------- vista: enfermedad ---------- */
 function renderEnfermedad(id){
   const e = getEnfermedad(id);
@@ -177,6 +254,18 @@ function renderEnfermedad(id){
         <div class="star" style="font-size:24px" onclick="toggleFavorito('${e.id}', true)">${e.favorito ? '★' : '☆'}</div>
       </div>
     </div>
+
+    ${e.relacionadas && e.relacionadas.length ? `
+      <div class="mcard">
+        <h3>🔗 Enfermedades relacionadas</h3>
+        ${e.relacionadas.map(r => {
+          const rel = getEnfermedad(r.id);
+          if(!rel) return '';
+          return `<div class="alert" style="border-color:var(--lavender-line); background:#fff; cursor:pointer;" onclick="openEnfermedad('${rel.id}')">
+            <span class="label" style="color:#6a58d6">${rel.nombre} →</span>${r.relacion}
+          </div>`;
+        }).join('')}
+      </div>` : ''}
 
     ${e.estudiado ? nexuMessageHTML('<strong>¡Bien!</strong> Ya marcaste esta enfermedad como estudiada.') : ''}
 
@@ -443,6 +532,7 @@ function refreshCurrentListViews(){
 function buildSearchIndex(){
   const index = [];
   ENFERMEDADES.forEach(e => index.push({ tipo: 'Enfermedad', nombre: e.nombre, sub: e.area, action: () => openEnfermedad(e.id) }));
+  TEMAS.forEach(t => index.push({ tipo: 'Anatomía/Fisiología', nombre: t.nombre, sub: t.area, action: () => openTema(t.id) }));
   SEMANAS.forEach(s => index.push({ tipo: 'Semana', nombre: `Semana ${s.numero} — ${s.titulo}`, sub: s.rango, action: () => openSemana(s.id) }));
   LECTURAS.forEach(l => index.push({ tipo: 'Lectura', nombre: l.titulo, sub: l.tipo, action: () => openSemana(l.semana) }));
   return index;
