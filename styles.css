@@ -56,6 +56,10 @@
   --mint-soft: #e9f6ef;
   --mint-line: #bfe6d3;
 
+  --honey: #E8A93D;
+  --honey-soft: #fdf3e2;
+  --honey-line: #f2d9a8;
+
   /* --- semánticos --- */
   --alert: #D95C65;
   --alert-soft: #fbebec;
@@ -305,6 +309,31 @@ h1.page-title{
 
 .pcard{ background: var(--coral-soft); border-color: var(--coral-line); }
 .pcard h3{ font-family: var(--font-display); font-weight:700; font-size:16px; margin:0 0 10px; color: #c15b47; }
+
+.rcard{ background: var(--honey-soft); border-color: var(--honey-line); }
+.rcard h3{ font-family: var(--font-display); font-weight:700; font-size:16px; margin:0 0 10px; color: #9a6b1a; }
+
+/* ---------- Nexu, la mascota ---------- */
+.nexu-inline{ width:46px; height:46px; flex-shrink:0; }
+.nexu-msg{
+  display:flex; align-items:center; gap:12px;
+  background: var(--card); border:1px solid var(--line); border-radius: var(--radius-md);
+  padding: 12px 16px; margin: 16px 0; font-size: 13.5px; color: var(--ink-soft);
+}
+.nexu-msg strong{ color: var(--ink); }
+
+/* ---------- apuntes del doctor (persistente, fuera de los modos) ---------- */
+.doctor-notes{
+  border-radius: var(--radius-lg); border:1.5px dashed var(--honey-line);
+  background: var(--honey-soft); padding: 16px 20px; margin-bottom: 22px;
+}
+.doctor-notes .dn-head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.doctor-notes .dn-head h3{ font-family: var(--font-display); font-weight:700; font-size:14.5px; margin:0; color:#9a6b1a; }
+.doctor-notes .dn-sub{ font-size:12px; color:#a5813a; margin:0 0 8px; }
+.doctor-notes textarea{
+  width:100%; min-height:64px; resize:vertical; border:1px solid var(--honey-line); border-radius: var(--radius-sm);
+  padding:9px 12px; font-family: var(--font-body); font-size:13.5px; background:#fff; color: var(--ink);
+}
 
 /* ---------- cascade fisiopatológica (color por categoría) ---------- */
 .cascade{ display:flex; flex-direction:column; gap:0; }
