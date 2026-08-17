@@ -8,6 +8,7 @@
 function getEnfermedad(id){ return ENFERMEDADES.find(e => e.id === id); }
 function getTema(id){ return TEMAS.find(t => t.id === id); }
 function getSemana(id){ return SEMANAS.find(s => s.id === id); }
+function getLectura(id){ return LECTURAS.find(l => l.id === id); }
 
 /* ---------- estado local: favoritos y "estudiado" (persistente por dispositivo) ---------- */
 function loadFlags(){
@@ -27,7 +28,63 @@ function saveFlags(){
   localStorage.setItem('medcore-flags', JSON.stringify(out));
 }
 
-/* ---------- navegación entre vistas ---------- */
+/* ============================================================
+   NAVEGACIÓN CONTEXTUAL (ruta de estudio)
+   ------------------------------------------------------------
+   En vez de "showView" simple, mantenemos una pila de lugares
+   visitados (navStack). "Volver" saca el último lugar de la
+   pila en vez de mandar siempre a Inicio — así puedes bajar
+   Semana → Día → Enfermedad → Semiología y volver paso a paso
+   por el mismo camino. El breadcrumb de arriba muestra toda
+   la ruta y cada nivel es clickeable.
+   ============================================================ */
+
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema' };
+let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
+
+function navPush(view, id, label){
+  navStack.push({ view, id, label });
+  navRenderCurrent();
+}
+function navReset(view, id, label){
+  navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
+  if(view && view !== 'inicio') navStack.push({ view, id, label });
+  navRenderCurrent();
+}
+function navBack(){
+  if(navStack.length > 1){ navStack.pop(); navRenderCurrent(); }
+}
+function navGoTo(index){
+  navStack = navStack.slice(0, index + 1);
+  navRenderCurrent();
+}
+function navReplace(view, id, label){
+  navStack[navStack.length - 1] = { view, id, label };
+  navRenderCurrent();
+}
+function navRenderCurrent(){
+  const top = navStack[navStack.length - 1];
+  switch(top.view){
+    case 'inicio': renderInicio(); break;
+    case 'semana': renderSemana(top.id); break;
+    case 'dia': renderDia(top.id); break;
+    case 'enfermedad': renderEnfermedad(top.id); break;
+    case 'tema': renderTema(top.id); break;
+  }
+  showView(VIEW_MAP[top.view]);
+  renderBreadcrumb();
+}
+function renderBreadcrumb(){
+  const el = document.getElementById('breadcrumb');
+  if(!el) return;
+  if(navStack.length <= 1){ el.innerHTML = ''; return; }
+  el.innerHTML = navStack.map((n, i) => {
+    const isLast = i === navStack.length - 1;
+    return `<span class="crumb ${isLast ? 'current' : ''}" ${isLast ? '' : `onclick="navGoTo(${i})"`}>${n.label}</span>`;
+  }).join('<span class="crumb-sep">›</span>');
+}
+
+/* ---------- navegación entre vistas (compatibilidad + entradas del sidebar) ---------- */
 function showView(viewId){
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.getElementById(viewId).classList.add('active');
@@ -37,9 +94,20 @@ function showView(viewId){
   window.scrollTo(0,0);
 }
 
-function openSemana(id){ renderSemana(id); showView('view-semana'); }
-function openEnfermedad(id){ renderEnfermedad(id); showView('view-enfermedad'); }
-function openTema(id){ renderTema(id); showView('view-tema'); }
+// entradas "frescas" desde el sidebar: reinician la ruta en vez de apilarla
+function goInicio(){ navReset('inicio'); }
+function openSemanaFresh(id){ const s = getSemana(id); navReset('semana', id, `Semana ${s.numero}`); }
+function openEnfermedadFresh(id){ const e = getEnfermedad(id); navReset('enfermedad', id, e.nombre); }
+
+// navegación en profundidad: apila sobre el contexto actual
+function openSemana(id){ const s = getSemana(id); navPush('semana', id, `Semana ${s.numero}`); }
+function openDia(semanaId, diaIndex){
+  const s = getSemana(semanaId);
+  const d = s.dias[diaIndex];
+  navPush('dia', semanaId + '::' + diaIndex, d.dia);
+}
+function openEnfermedad(id){ const e = getEnfermedad(id); navPush('enfermedad', id, e.nombre); }
+function openTema(id){ const t = getTema(id); navPush('tema', id, t.nombre); }
 
 function saludoSegunHora(){
   const h = new Date().getHours();
@@ -73,12 +141,12 @@ function renderInicio(){
       <span class="eyebrow">Semana actual · ${semana.rango}</span>
       <div class="section-title">
         <h2>Semana ${semana.numero} — ${semana.titulo}</h2>
-        <a class="link-quiet" onclick="openSemana('${semana.id}')">Ver semana completa →</a>
+        <a class="link-quiet" onclick="navReset('semana','${semana.id}','Semana ${semana.numero}')">Ver semana completa →</a>
       </div>
       <div class="progress-track"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>
       <div class="progress-caption">${estudiadas}/${total} enfermedades revisadas ${estudiadas === total && total>0 ? '— ✦ ¡semana completada!' : ''}</div>
       <div class="grid cols-3" style="margin-top:18px">
-        ${semana.dias.map(d => diaCardHTML(d)).join('')}
+        ${semana.dias.map((d,i) => diaCardHTML(d, semana.id, i)).join('')}
       </div>
     </div>
   `;
@@ -87,10 +155,15 @@ function renderInicio(){
   enf.innerHTML = semana.enfermedades.map(id => diseaseCardHTML(getEnfermedad(id))).join('');
 }
 
-function diaCardHTML(d){
+function volverBtnHTML(){
+  return navStack.length > 1 ? `<div class="btn-icon back-btn" onclick="navBack()">← Volver</div>` : '';
+}
+
+function diaCardHTML(d, semanaId, index){
   const badges = d.tipo.split('+').map(t => `<span class="badge ${t}">${t}</span>`).join(' ');
+  const clickable = semanaId !== undefined && index !== undefined;
   return `
-    <div class="week-day-card">
+    <div class="week-day-card${clickable ? ' clickable' : ''}" ${clickable ? `onclick="openDia('${semanaId}', ${index})"` : ''}>
       <div class="day-name">${d.dia}</div>
       <div class="day-tema">${d.tema}</div>
       ${badges}
@@ -130,8 +203,18 @@ function renderSemana(id){
   const s = getSemana(id);
   const total = s.enfermedades.length;
   const estudiadas = s.enfermedades.filter(id => getEnfermedad(id).estudiado).length;
+  const idx = SEMANAS.findIndex(w => w.id === id);
+  const prev = SEMANAS[idx - 1];
+  const next = SEMANAS[idx + 1];
   const wrap = document.getElementById('view-semana-content');
   wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <div class="week-pager">
+      <div class="btn-icon ${prev ? '' : 'disabled'}" ${prev ? `onclick="navReplace('semana','${prev.id}','Semana ${prev.numero}')"` : ''}>← Semana anterior</div>
+      <span class="week-pager-current">Semana ${s.numero}</span>
+      <div class="btn-icon ${next ? '' : 'disabled'}" ${next ? `onclick="navReplace('semana','${next.id}','Semana ${next.numero}')"` : ''}>Semana siguiente →</div>
+    </div>
+
     <span class="eyebrow">${s.rango}</span>
     <h1 class="page-title">Semana ${s.numero} — ${s.titulo}</h1>
     <p class="page-sub">Teoría, hospital, lecturas y enfermedades correspondientes a esta semana.</p>
@@ -141,7 +224,7 @@ function renderSemana(id){
 
     <div class="section-block">
       <h3>Días</h3>
-      <div class="grid cols-3">${s.dias.map(diaCardHTML).join('')}</div>
+      <div class="grid cols-3">${s.dias.map((d,i) => diaCardHTML(d, s.id, i)).join('')}</div>
     </div>
 
     ${(s.temas && s.temas.length) ? `
@@ -179,6 +262,61 @@ function renderSemana(id){
   `;
 }
 
+/* ---------- vista: día (nivel entre semana y contenido específico) ---------- */
+function renderDia(compositeId){
+  const [semanaId, diaIndexStr] = compositeId.split('::');
+  const diaIndex = parseInt(diaIndexStr, 10);
+  const s = getSemana(semanaId);
+  const d = s.dias[diaIndex];
+  const wrap = document.getElementById('view-dia-content');
+
+  const vinculos = d.vinculos || [];
+  const items = vinculos.map(v => {
+    if(v.tipo === 'tema'){
+      const t = getTema(v.id);
+      if(!t) return '';
+      return `<div class="disease-card" onclick="openTema('${t.id}')" style="cursor:pointer;">
+        <div><div class="name">${t.nombre}</div><div class="area">Tema · ${t.area}</div></div>
+        <div class="study-check ${t.estudiado ? 'done' : ''}">${t.estudiado ? '✓' : ''}</div>
+      </div>`;
+    }
+    if(v.tipo === 'enfermedad'){
+      const e = getEnfermedad(v.id);
+      if(!e) return '';
+      return diseaseCardHTML(e);
+    }
+    if(v.tipo === 'lectura'){
+      const l = getLectura(v.id);
+      if(!l) return '';
+      return `<div class="disease-card" onclick="navPush('semana','${s.id}','Semana ${s.numero}')" style="cursor:pointer;">
+        <div><div class="name">📚 ${l.titulo}</div><div class="area">Lectura ${l.tipo}</div></div>
+      </div>`;
+    }
+    return '';
+  }).join('');
+
+  const badges = d.tipo.split('+').map(t => `<span class="badge ${t}">${t}</span>`).join(' ');
+
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">Semana ${s.numero}</span>
+    <h1 class="page-title">${d.dia}</h1>
+    <p class="page-sub">${badges}</p>
+    <div class="kcard">
+      <h3>Qué toca hoy</h3>
+      <p>${d.tema}</p>
+    </div>
+    ${items ? `
+    <div class="section-block">
+      <h3>Contenido de esta clase</h3>
+      <div class="grid cols-2">${items}</div>
+    </div>` : `
+    <div class="kcard">
+      <p class="muted">El contenido detallado de este día todavía no está construido — en cuanto se agregue el material, aparecerá aquí como tarjetas clickeables.</p>
+    </div>`}
+  `;
+}
+
 /* ---------- vista: tema (anatomía/fisiología, no es enfermedad) ---------- */
 function renderTema(id){
   const t = getTema(id);
@@ -186,6 +324,7 @@ function renderTema(id){
   const c = t.contenido;
 
   wrap.innerHTML = `
+    ${volverBtnHTML()}
     <div class="disease-header">
       <div>
         <span class="eyebrow">${t.area} · Anatomía y fisiología</span>
@@ -233,7 +372,7 @@ function renderTema(id){
 function toggleEstudiadoTema(id){
   const t = getTema(id);
   t.estudiado = !t.estudiado;
-  renderTema(id);
+  navRenderCurrent();
 }
 
 /* ---------- vista: enfermedad ---------- */
@@ -243,6 +382,7 @@ function renderEnfermedad(id){
   const esRespiratoria = e.area === 'Neumología';
 
   wrap.innerHTML = `
+    ${volverBtnHTML()}
     <div class="disease-header">
       <div>
         <span class="eyebrow">${e.area}</span>
@@ -293,9 +433,9 @@ function renderEnfermedad(id){
       <div class="mode-tab" data-mode="imprescindible" onclick="switchMode(this,'imprescindible')">Imprescindible</div>
     </div>
 
-    <div class="mode-panel active" id="panel-profundo">${renderProfundo(e.profundo, e.id)}</div>
-    <div class="mode-panel" id="panel-repaso">${renderRepaso(e.repaso, e.id)}</div>
-    <div class="mode-panel" id="panel-imprescindible">${renderImprescindible(e.imprescindible, e.id)}</div>
+    <div class="mode-panel active" id="panel-profundo">${renderProfundo(e.profundo, e.id)}${modePagerHTML('profundo')}</div>
+    <div class="mode-panel" id="panel-repaso">${renderRepaso(e.repaso, e.id)}${modePagerHTML('repaso')}</div>
+    <div class="mode-panel" id="panel-imprescindible">${renderImprescindible(e.imprescindible, e.id)}${modePagerHTML('imprescindible')}</div>
   `;
 
   // muestra el botón de dictado solo si el navegador lo soporta (Chrome sí, Safari iOS no)
@@ -360,6 +500,25 @@ function switchMode(tabEl, mode){
   tabEl.classList.add('active');
   document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('panel-' + mode).classList.add('active');
+  window.scrollTo(0,0);
+}
+function switchModeByName(mode){
+  const tabEl = document.querySelector(`.mode-tab[data-mode="${mode}"]`);
+  if(tabEl) switchMode(tabEl, mode);
+}
+
+const MODE_ORDER = ['profundo', 'repaso', 'imprescindible'];
+const MODE_LABELS = { profundo: 'Modo profundo', repaso: 'Modo repaso', imprescindible: 'Imprescindible' };
+function modePagerHTML(current){
+  const i = MODE_ORDER.indexOf(current);
+  const prev = MODE_ORDER[i - 1];
+  const next = MODE_ORDER[i + 1];
+  return `
+    <div class="mode-pager">
+      ${prev ? `<div class="btn-icon" onclick="switchModeByName('${prev}')">← ${MODE_LABELS[prev]}</div>` : '<span></span>'}
+      ${next ? `<div class="btn-icon" onclick="switchModeByName('${next}')">${MODE_LABELS[next]} →</div>` : '<span></span>'}
+    </div>
+  `;
 }
 
 /* ---------- MODO PROFUNDO: knowledge / mechanism / pearl cards ---------- */
@@ -522,30 +681,24 @@ function toggleFavorito(id, fromDetail){
   const e = getEnfermedad(id);
   e.favorito = !e.favorito;
   saveFlags();
-  if(fromDetail) renderEnfermedad(id); else refreshCurrentListViews();
+  navRenderCurrent();
 }
 function toggleEstudiado(id, fromDetail){
   const e = getEnfermedad(id);
   e.estudiado = !e.estudiado;
   saveFlags();
-  if(fromDetail) renderEnfermedad(id); else refreshCurrentListViews();
-}
-function refreshCurrentListViews(){
-  // repinta inicio y semana si están construidas, para reflejar el nuevo estado sin perder la vista activa
-  if(document.getElementById('view-inicio').classList.contains('active')) renderInicio();
-  if(document.getElementById('view-semana').classList.contains('active')){
-    const activeCard = document.querySelector('.nav-item[data-view="view-semana"]');
-    if(SEMANAS[0]) renderSemana(SEMANAS[0].id);
-  }
+  navRenderCurrent();
 }
 
-/* ---------- buscador global ---------- */
+/* ---------- buscador global (siempre inicia una ruta nueva desde Inicio) ---------- */
+function openTemaFresh(id){ const t = getTema(id); navReset('tema', id, t.nombre); }
+
 function buildSearchIndex(){
   const index = [];
-  ENFERMEDADES.forEach(e => index.push({ tipo: 'Enfermedad', nombre: e.nombre, sub: e.area, action: () => openEnfermedad(e.id) }));
-  TEMAS.forEach(t => index.push({ tipo: 'Anatomía/Fisiología', nombre: t.nombre, sub: t.area, action: () => openTema(t.id) }));
-  SEMANAS.forEach(s => index.push({ tipo: 'Semana', nombre: `Semana ${s.numero} — ${s.titulo}`, sub: s.rango, action: () => openSemana(s.id) }));
-  LECTURAS.forEach(l => index.push({ tipo: 'Lectura', nombre: l.titulo, sub: l.tipo, action: () => openSemana(l.semana) }));
+  ENFERMEDADES.forEach(e => index.push({ tipo: 'Enfermedad', nombre: e.nombre, sub: e.area, action: () => openEnfermedadFresh(e.id) }));
+  TEMAS.forEach(t => index.push({ tipo: 'Anatomía/Fisiología', nombre: t.nombre, sub: t.area, action: () => openTemaFresh(t.id) }));
+  SEMANAS.forEach(s => index.push({ tipo: 'Semana', nombre: `Semana ${s.numero} — ${s.titulo}`, sub: s.rango, action: () => openSemanaFresh(s.id) }));
+  LECTURAS.forEach(l => index.push({ tipo: 'Lectura', nombre: l.titulo, sub: l.tipo, action: () => openSemanaFresh(l.semana) }));
   return index;
 }
 
@@ -577,9 +730,8 @@ function initSearch(){
 /* ---------- init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   loadFlags();
-  renderInicio();
+  navRenderCurrent();
   initSearch();
-  showView('view-inicio');
 
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('./sw.js').catch(() => {
