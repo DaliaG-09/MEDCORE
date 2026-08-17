@@ -30,17 +30,30 @@ const SEMANAS = [
       {
         "dia": "Lunes",
         "tipo": "teoria",
-        "tema": "Anatomía y fisiología del aparato respiratorio / Exámenes de ayuda diagnóstica en Neumología: radiografía de tórax, tomografía, espirometría (capacidades pulmonares), toracocentesis, broncoscopía"
+        "tema": "Anatomía y fisiología del aparato respiratorio / Exámenes de ayuda diagnóstica en Neumología: radiografía de tórax, tomografía, espirometría (capacidades pulmonares), toracocentesis, broncoscopía",
+        "vinculos": [
+          { "tipo": "tema", "id": "anatofisio-respiratorio" },
+          { "tipo": "tema", "id": "examenes-diagnostico-neumo" }
+        ]
       },
       {
         "dia": "Miércoles",
         "tipo": "teoria",
-        "tema": "Bronquitis Aguda y Crónica. Bronquiectasias / Neumonía Adquirida en la Comunidad. / Asma Bronquial: etiología, fisiopatología, cuadro clínico, diagnóstico, tratamiento, complicaciones y prevención"
+        "tema": "Bronquitis Aguda y Crónica. Bronquiectasias / Neumonía Adquirida en la Comunidad. / Asma Bronquial: etiología, fisiopatología, cuadro clínico, diagnóstico, tratamiento, complicaciones y prevención",
+        "vinculos": [
+          { "tipo": "enfermedad", "id": "bronquitis-bronquiectasias" },
+          { "tipo": "enfermedad", "id": "neumonia-nac" },
+          { "tipo": "enfermedad", "id": "asma-bronquial" }
+        ]
       },
       {
         "dia": "Viernes",
         "tipo": "teoria",
-        "tema": "Control de lectura: Womack, J., & Kropa, J. (2022). Community-Acquired Pneumonia in Adults / Neumonía Intrahospitalaria y Atípicas / EXPOSICIÓN: VOLÚMENES Y CAPACIDADES PULMONARES"
+        "tema": "Control de lectura: Womack, J., & Kropa, J. (2022). Community-Acquired Pneumonia in Adults / Neumonía Intrahospitalaria y Atípicas / EXPOSICIÓN: VOLÚMENES Y CAPACIDADES PULMONARES",
+        "vinculos": [
+          { "tipo": "lectura", "id": "lectura-s1-3" },
+          { "tipo": "enfermedad", "id": "neumonia-intrahospitalaria" }
+        ]
       }
     ],
     "talleres": [],
