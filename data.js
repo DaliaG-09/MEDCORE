@@ -33,6 +33,7 @@ const ENFERMEDADES = [
     area: "Neumología",
     semanas: ["semana-03"],
     favorito: false,
+    estudiado: false,
 
     profundo: {
       definicion: "Enfermedad respiratoria caracterizada por limitación crónica y progresiva del flujo aéreo, poco reversible, asociada a una respuesta inflamatoria anormal de la vía aérea y el parénquima pulmonar frente a partículas o gases nocivos, principalmente el humo de tabaco.",
@@ -116,6 +117,7 @@ const ENFERMEDADES = [
     area: "Neumología",
     semanas: ["semana-03"],
     favorito: false,
+    estudiado: false,
     profundo: {
       definicion: "Enfermedad inflamatoria crónica de la vía aérea caracterizada por hiperreactividad bronquial y obstrucción reversible del flujo aéreo.",
       epidemiologia: "Frecuentemente inicia en la infancia; fuerte asociación con atopia.",
