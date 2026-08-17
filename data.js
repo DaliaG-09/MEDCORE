@@ -55,6 +55,9 @@ const SEMANAS = [
     ],
     "enfermedades": [
       "asma-bronquial"
+    ],
+    "temas": [
+      "anatofisio-respiratorio"
     ]
   },
   {
@@ -531,6 +534,9 @@ const ENFERMEDADES = [
     favorito: false,
     estudiado: false,
     ilustracion: "assets/epoc-airway.svg",
+    relacionadas: [
+      { id: "asma-bronquial", relacion: "Principal diagnóstico diferencial — ambas cursan con obstrucción de la vía aérea, pero se distinguen por reversibilidad y edad de inicio" }
+    ],
 
     profundo: {
       definicion: "Enfermedad respiratoria caracterizada por limitación crónica y progresiva del flujo aéreo, poco reversible, asociada a una respuesta inflamatoria anormal de la vía aérea y el parénquima pulmonar frente a partículas o gases nocivos, principalmente el humo de tabaco.",
@@ -615,6 +621,9 @@ const ENFERMEDADES = [
     semanas: ["semana-01"],
     favorito: false,
     estudiado: false,
+    relacionadas: [
+      { id: "epoc", relacion: "Principal diagnóstico diferencial — a diferencia del EPOC, el asma es reversible con broncodilatador y suele iniciar en la infancia" }
+    ],
     profundo: {
       definicion: "Enfermedad inflamatoria crónica de la vía aérea caracterizada por hiperreactividad bronquial y obstrucción reversible del flujo aéreo.",
       epidemiologia: "Frecuentemente inicia en la infancia; fuerte asociación con atopia.",
@@ -655,6 +664,44 @@ const ENFERMEDADES = [
       redFlags: ["Uso de SABA > 2 veces por semana → mal control, requiere escalar tratamiento", "Silencio auscultatorio en crisis → signo de gravedad extrema"],
       erroresFrecuentes: ["Tratar solo con SABA sin controlador de base"],
       asociacionesClinicas: ["Asma + rinitis alérgica + eccema → tríada atópica"]
+    }
+  }
+];
+
+/* ============================================================
+   TEMAS — contenido que NO es una enfermedad: anatomía,
+   fisiología, métodos diagnósticos. Se estudian antes de las
+   enfermedades del sistema porque son la base para entenderlas.
+   Estructura más simple que ENFERMEDADES (sin los 3 modos),
+   pensada para "cómo funciona normalmente" + "por qué importa
+   para lo que viene después".
+   ============================================================ */
+const TEMAS = [
+  {
+    id: "anatofisio-respiratorio",
+    nombre: "Anatomía y fisiología del aparato respiratorio",
+    area: "Neumología",
+    tipo: "anatomia-fisiologia",
+    semanas: ["semana-01"],
+    favorito: false,
+    estudiado: false,
+    contenido: {
+      resumen: "La función del aparato respiratorio es el intercambio gaseoso: llevar oxígeno de la atmósfera a la sangre y eliminar CO2. Para lograrlo, el sistema combina una vía de conducción (que no participa en el intercambio) con una zona respiratoria (donde sí ocurre el intercambio), todo impulsado por una bomba mecánica (caja torácica + músculos respiratorios) y regulado por el sistema nervioso.",
+      estructuras: [
+        { nombre: "Vía aérea de conducción", detalle: "Nariz → faringe → laringe → tráquea → bronquios → bronquiolos terminales. Ventila pero NO participa en el intercambio gaseoso (espacio muerto anatómico, ~150 mL)." },
+        { nombre: "Zona respiratoria", detalle: "Bronquiolos respiratorios → conductos alveolares → alvéolos (~300 millones, superficie total ~70 m²). Aquí ocurre el intercambio de O2/CO2 por difusión simple a través de la membrana alveolo-capilar." },
+        { nombre: "Caja torácica y músculos", detalle: "Diafragma (principal músculo inspiratorio) + intercostales. La espiración en reposo es pasiva (retracción elástica del pulmón); en esfuerzo se vuelve activa (músculos abdominales, intercostales internos)." },
+        { nombre: "Circulación pulmonar", detalle: "Sistema de baja presión y baja resistencia — recibe todo el gasto cardíaco derecho. Su función es exponer toda la sangre venosa a la superficie alveolar." }
+      ],
+      fisiologiaNormal: "El ciclo respiratorio depende de la diferencia de presión entre el alvéolo y la atmósfera. Al contraerse el diafragma, aumenta el volumen torácico, la presión intrapleural se vuelve más negativa, el pulmón se expande y entra aire (inspiración). La espiración en reposo es pasiva: el pulmón, por su elasticidad natural, tiende a colapsar y expulsa el aire solo. El intercambio gaseoso depende de tres factores que se estudian juntos porque cualquier enfermedad pulmonar altera uno o varios: ventilación (V, aire que llega al alvéolo), perfusión (Q, sangre que llega al capilar) y difusión (paso del gas a través de la membrana). La relación V/Q ideal es cercana a 1; casi todas las enfermedades pulmonares alteran esta relación de alguna forma.",
+      correlacionClinica: "Entender esta anatomía es la base para comprender por qué cada enfermedad respiratoria se manifiesta como lo hace: el EPOC y el asma alteran principalmente la vía de conducción (obstrucción al flujo de aire); la neumonía y las enfermedades intersticiales alteran la zona respiratoria (afectan el intercambio gaseoso, no tanto el flujo); el neumotórax y las enfermedades neuromusculares afectan la bomba mecánica. Cuando entiendas dónde actúa cada enfermedad — vía aérea, zona respiratoria o bomba — vas a poder predecir su clínica en vez de memorizarla.",
+      puntosClave: [
+        "La vía de conducción no intercambia gases — solo transporta aire (espacio muerto)",
+        "El intercambio gaseoso real ocurre solo en la zona respiratoria (alvéolos)",
+        "La espiración en reposo es pasiva; en esfuerzo o en obstrucción se vuelve activa",
+        "Casi toda enfermedad respiratoria puede entenderse como: ¿afecta la vía aérea, la zona respiratoria, o la bomba mecánica?",
+        "La relación ventilación/perfusión (V/Q) es el concepto que conecta anatomía con clínica — su alteración explica la mayoría de los síntomas respiratorios"
+      ]
     }
   }
 ];
