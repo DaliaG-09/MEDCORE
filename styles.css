@@ -471,6 +471,26 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   padding: 9px 11px; font-family: var(--font-body); font-size: 13.5px; background:#fff; color: var(--ink);
 }
 
+/* ---------- modo autoevaluación (flashcards) ---------- */
+.quiz-progress{ font-family: var(--font-mono); font-size:11.5px; color: var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; text-align:center; }
+.quiz-card{
+  position:relative; min-height:220px; border-radius: var(--radius-lg); cursor:pointer;
+  perspective: 1200px; margin-bottom: 20px;
+}
+.quiz-face{
+  position:absolute; inset:0; border-radius: var(--radius-lg); padding: 30px 26px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px;
+  backface-visibility: hidden; transition: transform 0.4s ease; box-shadow: var(--shadow-soft);
+}
+.quiz-front{ background: var(--cobalt-soft); border:1.5px solid var(--cobalt-line); transform: rotateY(0deg); }
+.quiz-front p{ font-family: var(--font-display); font-weight:700; font-size:17px; color: var(--ink); margin:0; }
+.quiz-hint{ font-family: var(--font-mono); font-size:10.5px; color: var(--cobalt); text-transform:uppercase; letter-spacing:0.06em; }
+.quiz-back{ background: var(--mint-soft); border:1.5px solid var(--mint-line); transform: rotateY(180deg); }
+.quiz-back p{ font-size:15px; color: var(--ink); margin:0; }
+.quiz-card.revealed .quiz-front{ transform: rotateY(-180deg); }
+.quiz-card.revealed .quiz-back{ transform: rotateY(0deg); }
+.quiz-controls{ display:flex; justify-content:space-between; gap:8px; }
+
 /* ---------- cuaderno de clase (hoja larga expandible) ---------- */
 .notebook-toolbar{
   display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:14px;
