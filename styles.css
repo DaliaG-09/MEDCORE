@@ -118,7 +118,7 @@ body{
   gap:10px;
   padding: 4px 10px 22px;
 }
-.brand-mark{ width:34px; height:34px; flex-shrink:0; }
+.brand-mark{ width:34px; height:34px; flex-shrink:0; object-fit:contain; }
 .brand-text{ font-family: var(--font-display); font-weight:800; font-size: 19px; color: var(--ink); line-height:1.1; }
 .brand-text small{
   display:block; font-family: var(--font-mono); font-size: 9.5px; color: var(--cobalt);
