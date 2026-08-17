@@ -683,6 +683,32 @@ const ENFERMEDADES = [
             "auscultacion": "El hallazgo clásico: sibilancias espiratorias difusas y bilaterales, que empeoran con espiración forzada. Dato clínico crítico que debes recordar: el 'silencio auscultatorio' (ausencia de sibilancias en un paciente que sigue con dificultad respiratoria) NO significa mejoría — significa que el flujo de aire es tan bajo que ya no genera sonido. Es un signo de gravedad extrema que requiere manejo inmediato."
       },
       diagnostico: "Espirometría con prueba de broncodilatador: reversibilidad ≥ 12% y 200mL en VEF1.",
+      algoritmo: [
+            {
+                  "tipo": "paso",
+                  "texto": "Sospecha clínica: sibilancias + tos + disnea episódica, con desencadenantes claros"
+            },
+            {
+                  "tipo": "paso",
+                  "texto": "Espirometría con prueba de broncodilatador"
+            },
+            {
+                  "tipo": "decision",
+                  "texto": "¿Reversibilidad ≥12% y 200mL en FEV1 tras broncodilatador?",
+                  "salidas": [
+                        {
+                              "etiqueta": "SÍ",
+                              "texto": "Confirma asma → clasificar gravedad según frecuencia de síntomas",
+                              "color": "mint"
+                        },
+                        {
+                              "etiqueta": "NO",
+                              "texto": "Reconsiderar: EPOC u otra causa de disnea — repetir en otro momento si la sospecha persiste",
+                              "color": "coral"
+                        }
+                  ]
+            }
+      ],
       diagnosticoDiferencial: ["EPOC", "Reflujo gastroesofágico", "Disfunción de cuerdas vocales"],
       tratamiento: {
         noFarmacologico: ["Evitar alérgenos identificados", "Plan de acción escrito para crisis"],
@@ -708,7 +734,26 @@ const ENFERMEDADES = [
       diagnostico: "Espirometría con reversibilidad ≥12% y 200mL.",
       tratamientoResumen: "Corticoide inhalado como base + SABA de rescate.",
       diferenciales: [{ entidad: "EPOC", clave: "Poco reversible, tabaquismo, inicio tardío" }],
-      tablaComparativa: null
+      tablaComparativa: {
+            "titulo": "Asma vs. EPOC (resumen)",
+            "filas": [
+                  [
+                        "Edad de inicio",
+                        "Infancia/adolescencia",
+                        "> 40 años"
+                  ],
+                  [
+                        "Reversibilidad",
+                        "Significativa (≥12%, 200mL)",
+                        "Parcial o ausente"
+                  ],
+                  [
+                        "Antecedente típico",
+                        "Atopia/alergias",
+                        "Tabaquismo"
+                  ]
+            ]
+      }
     },
     imprescindible: {
       loQueSiOSiDebesSaber: ["La reversibilidad post-BD es el dato que distingue asma de EPOC", "El corticoide inhalado es el pilar del tratamiento controlador, no el SABA"],
@@ -801,6 +846,33 @@ const ENFERMEDADES = [
       },
 
       "diagnostico": "Bronquitis aguda: clínico (ausencia de indicios de neumonía clínica/radiológica). Bronquitis crónica: clínico, por definición temporal (tos productiva ≥3 meses/año × 2 años). Bronquiectasias: TC de alta resolución — estándar de oro; signo característico: relación broncoarterial >1.5 (normal 0.7), 'anillo de sello', falta de estrechamiento bronquial hacia la periferia.",
+      algoritmo: [
+            {
+                  "tipo": "paso",
+                  "texto": "Paciente con tos productiva — determinar duración"
+            },
+            {
+                  "tipo": "decision",
+                  "texto": "¿Cuánto tiempo lleva la tos y qué muestra la TC?",
+                  "salidas": [
+                        {
+                              "etiqueta": "< 3 semanas",
+                              "texto": "Bronquitis aguda — manejo sintomático, sin antibióticos de rutina",
+                              "color": "mint"
+                        },
+                        {
+                              "etiqueta": "≥3 meses/año x2 años",
+                              "texto": "Bronquitis crónica — evaluar espirometría para descartar EPOC asociado",
+                              "color": "coral"
+                        },
+                        {
+                              "etiqueta": "TC: dilatación bronquial fija",
+                              "texto": "Bronquiectasias — TC de alta resolución confirma (signo del anillo de sello)",
+                              "color": "alert"
+                        }
+                  ]
+            }
+      ],
       "diagnosticoDiferencial": [
         "Neumonía (bronquitis aguda)",
         "EPOC",
@@ -1146,6 +1218,32 @@ const ENFERMEDADES = [
             "auscultacion": "Nosocomial: similar a NAC — crépitos localizados, posible soplo tubárico. Atípica: auscultación con frecuencia normal o con hallazgos mínimos (roncantes leves) a pesar de tos persistente — este contraste entre 'poco que auscultar' y 'mucha tos/síntomas sistémicos' es justamente lo que debe hacerte sospechar un patógeno atípico en vez de bacteriano típico."
       },
       "diagnostico": "Nosocomial: cultivo de muestra respiratoria (distal o proximal) ANTES de iniciar/cambiar antibiótico. Atípica: diagnóstico presuntivo por criterios clínicos (edad <60, sin comorbilidades, tos persistente, sin ruidos adventicios, leucocitos <10,000) — el cultivo estándar no sirve porque estos patógenos no crecen en medios convencionales.",
+      algoritmo: [
+            {
+                  "tipo": "paso",
+                  "texto": "Fiebre nueva + secreciones purulentas en paciente hospitalizado >48h"
+            },
+            {
+                  "tipo": "paso",
+                  "texto": "Tomar cultivo de vía respiratoria baja ANTES de iniciar/cambiar antibiótico (sin retrasar tratamiento si está grave)"
+            },
+            {
+                  "tipo": "decision",
+                  "texto": "¿Tiene factores de riesgo para patógenos multirresistentes (MDR) o shock séptico?",
+                  "salidas": [
+                        {
+                              "etiqueta": "Bajo riesgo",
+                              "texto": "Antibiótico de espectro reducido",
+                              "color": "mint"
+                        },
+                        {
+                              "etiqueta": "Alto riesgo / shock séptico",
+                              "texto": "Antibiótico empírico de amplio espectro (recomendación fuerte)",
+                              "color": "alert"
+                        }
+                  ]
+            }
+      ],
       "diagnosticoDiferencial": [
         "Neumonía adquirida en la comunidad",
         "Tromboembolismo pulmonar (en paciente hospitalizado con fiebre nueva)",
@@ -1190,7 +1288,26 @@ const ENFERMEDADES = [
           "clave": "Fiebre nueva en hospitalizado con disnea súbita — considerar siempre en el diferencial de 'neumonía nueva' intrahospitalaria"
         }
       ],
-      "tablaComparativa": null
+      "tablaComparativa": {
+            "titulo": "Neumonía nosocomial vs. atípica",
+            "filas": [
+                  [
+                        "Momento típico",
+                        ">48h post-ingreso hospitalario",
+                        "Puede ser comunitaria, curso insidioso"
+                  ],
+                  [
+                        "Cultivo estándar",
+                        "Sí sirve (bacterias típicas)",
+                        "NO sirve (no crece en medios estándar)"
+                  ],
+                  [
+                        "Tratamiento base",
+                        "β-lactámico ± cobertura MDR",
+                        "Macrólidos o tetraciclinas (sin pared celular)"
+                  ]
+            ]
+      }
     },
     "imprescindible": {
       "loQueSiOSiDebesSaber": [
