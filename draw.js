@@ -101,6 +101,14 @@ function initDrawPad(key){
 
   window.addEventListener('resize', resize);
   resize();
+  state.resize = resize;
+}
+
+/* recalcula el tamaño del lienzo cuando se expande una sección que estaba oculta
+   (si el canvas está display:none, su ancho real es 0 y el dibujo se ve mal) */
+function resizeDrawPad(key){
+  const state = drawPads[key];
+  if(state && state.resize) state.resize();
 }
 
 function paintStroke(ctx, stroke, w, h){
