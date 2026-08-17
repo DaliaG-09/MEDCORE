@@ -83,3 +83,61 @@ function airwayIllustration(modo){
     </g>
   </svg>`;
 }
+
+/* ============================================================
+   NEXU — la mascota de MEDCORE
+   Un gatito negro simple y adorable, con 3 poses. Presencia
+   sutil y ocasional (saludo, semana completada, mensajes de
+   ánimo) — nunca protagonista de la interfaz.
+   ============================================================ */
+
+function nexuSVG(pose){
+  // cuerpo base compartido
+  const body = `
+    <ellipse cx="32" cy="46" rx="15" ry="11" fill="#24243A"/>
+    <circle cx="32" cy="27" r="13" fill="#24243A"/>
+    <path d="M20 20 L16 8 L26 17Z" fill="#24243A"/>
+    <path d="M44 20 L48 8 L38 17Z" fill="#24243A"/>
+    <path d="M21 21 L18 12 L25 18Z" fill="#3a3a54"/>
+    <path d="M43 21 L46 12 L39 18Z" fill="#3a3a54"/>
+  `;
+  const faceIdle = `
+    <ellipse cx="27" cy="27" rx="1.6" ry="2.1" fill="#FAF8F4"/>
+    <ellipse cx="37" cy="27" rx="1.6" ry="2.1" fill="#FAF8F4"/>
+    <path d="M30 31c0.6 0.8 1.4 0.8 2 0" stroke="#FAF8F4" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  `;
+  const faceHappy = `
+    <path d="M25 26c0.8-1.4 2.4-1.4 3.2 0" stroke="#FAF8F4" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <path d="M35.8 26c0.8-1.4 2.4-1.4 3.2 0" stroke="#FAF8F4" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <path d="M29 30c1 1.4 3 1.4 4 0" stroke="#FAF8F4" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  `;
+  const faceThink = `
+    <ellipse cx="27" cy="27" rx="1.6" ry="2.1" fill="#FAF8F4"/>
+    <ellipse cx="37" cy="27" rx="1.4" ry="1.8" fill="#FAF8F4"/>
+    <path d="M30 32h3" stroke="#FAF8F4" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  `;
+  const pawWave = `<ellipse cx="46" cy="34" rx="4" ry="6" fill="#24243A" transform="rotate(-25 46 34)"/>`;
+  const tailIdle = `<path d="M18 50c-8 2-10 -8 -4 -10" stroke="#24243A" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+
+  let extra = '', face = faceIdle;
+  if(pose === 'celebrando'){ extra = pawWave; face = faceHappy; }
+  else if(pose === 'pensando'){ face = faceThink; }
+
+  return `
+  <svg viewBox="0 0 64 60" xmlns="http://www.w3.org/2000/svg">
+    ${tailIdle}
+    ${body}
+    ${face}
+    ${extra}
+  </svg>`;
+}
+
+/* mensaje corto con Nexu, para usar en momentos puntuales (no en cada pantalla) */
+function nexuMessageHTML(texto, pose){
+  return `
+    <div class="nexu-msg">
+      <div class="nexu-inline">${nexuSVG(pose || 'celebrando')}</div>
+      <div>${texto}</div>
+    </div>
+  `;
+}
