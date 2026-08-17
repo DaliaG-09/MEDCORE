@@ -7,7 +7,7 @@
    CACHE_NAME (ej. 'medcore-v2') y el navegador refresca la copia.
    ============================================================ */
 
-const CACHE_NAME = 'medcore-v4';
+const CACHE_NAME = 'medcore-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -29,7 +29,15 @@ const ASSETS = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => {
+      // { cache: 'reload' } fuerza a pedir el archivo fresco al servidor,
+      // en vez de reusar una copia vieja que el navegador tenga guardada
+      return Promise.all(
+        ASSETS.map((url) =>
+          fetch(url, { cache: 'reload' }).then((response) => cache.put(url, response))
+        )
+      );
+    })
   );
   self.skipWaiting();
 });
