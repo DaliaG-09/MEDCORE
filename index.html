@@ -33,8 +33,8 @@
       <div class="nav-item"><span class="emoji">💊</span> Farmacología</div>
       <div class="nav-item"><span class="emoji">🏥</span> Hospital</div>
       <div class="nav-item"><span class="emoji">📚</span> Lecturas</div>
-      <div class="nav-item"><span class="emoji">📝</span> Mis apuntes</div>
-      <div class="nav-item"><span class="emoji">⭐</span> Favoritos</div>
+      <div class="nav-item" data-view="view-apuntes" onclick="openApuntesFresh()"><span class="emoji">📝</span> Mis apuntes</div>
+      <div class="nav-item" data-view="view-favoritos" onclick="openFavoritosFresh()"><span class="emoji">⭐</span> Favoritos</div>
     </div>
   </aside>
 
@@ -89,6 +89,16 @@
     <!-- VISTA: AUTOEVALUACIÓN (flashcards) -->
     <section id="view-quiz" class="view">
       <div id="view-quiz-content"></div>
+    </section>
+
+    <!-- VISTA: FAVORITOS -->
+    <section id="view-favoritos" class="view">
+      <div id="view-favoritos-content"></div>
+    </section>
+
+    <!-- VISTA: MIS APUNTES -->
+    <section id="view-apuntes" class="view">
+      <div id="view-apuntes-content"></div>
     </section>
 
   </main>
