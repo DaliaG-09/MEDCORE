@@ -364,6 +364,7 @@ function switchMode(tabEl, mode){
 
 /* ---------- MODO PROFUNDO: knowledge / mechanism / pearl cards ---------- */
 function renderProfundo(p, diseaseId){
+  const enfermedad = getEnfermedad(diseaseId);
   return `
     <div class="kcard">
       <h3>Definición y epidemiología</h3>
@@ -395,8 +396,18 @@ function renderProfundo(p, diseaseId){
           </div>`;
         }).join('')}
       </div>
+      ${p.mecanismoEpitelial ? `<p style="margin-top:14px"><strong>Mecanismo celular clave:</strong> ${p.mecanismoEpitelial}</p>` : ''}
       ${noteBlockHTML(diseaseId + '::fisiopatologia', 'Tu explicación con tus propias palabras...')}
     </div>
+
+    ${enfermedad.clasificacionGravedad ? `
+    <div class="kcard">
+      <h3>${enfermedad.clasificacionGravedad.titulo}</h3>
+      <table class="compare">
+        <tr><th>Categoría</th><th>Criterio</th></tr>
+        ${enfermedad.clasificacionGravedad.categorias.map(c => `<tr><td>${c.nombre}</td><td>${c.criterio}</td></tr>`).join('')}
+      </table>
+    </div>` : ''}
 
     <div class="kcard">
       <h3>Clínica explicada</h3>
