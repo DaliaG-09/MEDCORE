@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
-<meta name="theme-color" content="#0c1b2e">
+<meta name="theme-color" content="#FAF8F4">
 </head>
 <body>
 
@@ -15,23 +15,26 @@
 
   <!-- ===== SIDEBAR ===== -->
   <aside class="sidebar">
-    <div class="brand">MEDCORE <small>Med. Interna</small></div>
+    <div class="brand">
+      <div class="brand-mark" id="brand-mark-slot"></div>
+      <div class="brand-text">MEDCORE<small>Med. Interna</small></div>
+    </div>
 
     <div class="nav-group">
       <div class="nav-label">Estudio</div>
-      <div class="nav-item active" data-view="view-inicio" onclick="showView('view-inicio')"><span class="dot"></span> Inicio</div>
-      <div class="nav-item" data-view="view-semana" onclick="openSemana('semana-03')"><span class="dot"></span> Semanas</div>
-      <div class="nav-item" data-view="view-enfermedad" onclick="openEnfermedad('epoc')"><span class="dot"></span> Enfermedades</div>
+      <div class="nav-item active" data-view="view-inicio" onclick="showView('view-inicio')"><span class="emoji">🏠</span> Inicio</div>
+      <div class="nav-item" data-view="view-semana" onclick="openSemana('semana-03')"><span class="emoji">📅</span> Semanas</div>
+      <div class="nav-item" data-view="view-enfermedad" onclick="openEnfermedad('epoc')"><span class="emoji">🔎</span> Enfermedades</div>
     </div>
 
     <div class="nav-group">
       <div class="nav-label">Próximamente</div>
-      <div class="nav-item"><span class="dot"></span> Semiología</div>
-      <div class="nav-item"><span class="dot"></span> Farmacología</div>
-      <div class="nav-item"><span class="dot"></span> Hospital</div>
-      <div class="nav-item"><span class="dot"></span> Lecturas</div>
-      <div class="nav-item"><span class="dot"></span> Mis apuntes</div>
-      <div class="nav-item"><span class="dot"></span> Favoritos</div>
+      <div class="nav-item"><span class="emoji">🩺</span> Semiología</div>
+      <div class="nav-item"><span class="emoji">💊</span> Farmacología</div>
+      <div class="nav-item"><span class="emoji">🏥</span> Hospital</div>
+      <div class="nav-item"><span class="emoji">📚</span> Lecturas</div>
+      <div class="nav-item"><span class="emoji">📝</span> Mis apuntes</div>
+      <div class="nav-item"><span class="emoji">⭐</span> Favoritos</div>
     </div>
   </aside>
 
@@ -50,9 +53,7 @@
 
     <!-- VISTA: INICIO -->
     <section id="view-inicio" class="view">
-      <span class="eyebrow">Hoy</span>
-      <h1 class="page-title">¿Qué tengo esta semana?</h1>
-      <p class="page-sub">Resumen de tu semana actual y las enfermedades relacionadas.</p>
+      <div id="inicio-hero"></div>
       <div id="inicio-semana-actual" style="margin-bottom:28px;"></div>
       <div class="section-title"><h2>Enfermedades de esta semana</h2></div>
       <div class="grid cols-2" id="inicio-enfermedades"></div>
