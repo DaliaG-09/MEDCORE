@@ -427,8 +427,8 @@ function renderEnfermedad(id){
       <div class="illustration-card">
         ${e.ilustracion
           ? `<img src="${e.ilustracion}" alt="Ilustración de ${e.nombre}" style="width:100%; height:auto; display:block;">`
-          : airwayIllustration('obstructivo')}
-        <div class="cap">${e.ilustracion ? 'Vía aérea normal vs. ' + e.nombre : 'Corte transversal de vía aérea — normal vs. patrón obstructivo'}</div>
+          : (e.tipoIlustracion === 'alveolar' ? alveoloIllustration() : airwayIllustration('obstructivo'))}
+        <div class="cap">${e.ilustracion ? 'Vía aérea normal vs. ' + e.nombre : (e.tipoIlustracion === 'alveolar' ? 'Alvéolo normal vs. consolidación por infección' : 'Corte transversal de vía aérea — normal vs. patrón obstructivo')}</div>
       </div>` : ''}
 
     <div class="doctor-notes" id="doctor-notes-${e.id}">
@@ -644,6 +644,12 @@ function renderProfundo(p, diseaseId){
       <p class="muted"><strong>Diferenciales:</strong> ${p.diagnosticoDiferencial.join(', ')}</p>
     </div>
 
+    ${p.algoritmo ? `
+    <div class="mcard">
+      <h3>🔀 Algoritmo de decisión</h3>
+      ${algoritmoDiagramaHTML(p.algoritmo)}
+    </div>` : ''}
+
     <div class="kcard">
       <h3>Tratamiento</h3>
       <p><strong>No farmacológico:</strong></p>
@@ -753,12 +759,49 @@ function toggleEstudiado(id, fromDetail){
 /* ---------- buscador global (siempre inicia una ruta nueva desde Inicio) ---------- */
 function openTemaFresh(id){ const t = getTema(id); navReset('tema', id, t.nombre); }
 
+/* aplana el contenido de una enfermedad en un solo texto buscable,
+   para que el buscador encuentre términos dentro del contenido
+   (ej. "hipoxemia") y no solo en el nombre de la enfermedad */
+function flattenEnfermedadTexto(e){
+  const p = e.profundo || {};
+  const partes = [
+    p.definicion, p.epidemiologia,
+    (p.etiologiaFactoresRiesgo || []).join(' '),
+    p.fisiopatologia && p.fisiopatologia.resumen,
+    ((p.fisiopatologia && p.fisiopatologia.cascada) || []).map(c => c.paso + ' ' + c.detalle).join(' '),
+    (p.clinica || []).map(c => c.signo + ' ' + c.mecanismo).join(' '),
+    (p.examenFisico || []).join(' '),
+    p.diagnostico, (p.diagnosticoDiferencial || []).join(' '),
+    p.tratamiento && [...(p.tratamiento.noFarmacologico||[]), ...(p.tratamiento.farmacologico||[])].join(' '),
+    (p.complicaciones || []).join(' '), p.prevencion, p.perlasProfundo,
+    p.semiologia && [p.semiologia.inspeccion, p.semiologia.palpacion, p.semiologia.percusion, p.semiologia.auscultacion].join(' '),
+    e.repaso && [(e.repaso.conceptosClave||[]).join(' '), e.repaso.clinica, e.repaso.tratamientoResumen].join(' '),
+    e.imprescindible && [(e.imprescindible.loQueSiOSiDebesSaber||[]).join(' '), (e.imprescindible.redFlags||[]).join(' '), (e.imprescindible.erroresFrecuentes||[]).join(' '), (e.imprescindible.asociacionesClinicas||[]).join(' ')].join(' ')
+  ];
+  return partes.filter(Boolean).join(' ').toLowerCase();
+}
+function flattenTemaTexto(t){
+  const c = t.contenido || {};
+  const partes = [
+    c.resumen, (c.estructuras||[]).map(e => e.nombre + ' ' + e.detalle).join(' '),
+    c.fisiologiaNormal, c.correlacionClinica, (c.puntosClave||[]).join(' ')
+  ];
+  return partes.filter(Boolean).join(' ').toLowerCase();
+}
+function snippetAround(texto, q, len){
+  len = len || 70;
+  const i = texto.indexOf(q);
+  if(i === -1) return texto.slice(0, len) + '…';
+  const start = Math.max(0, i - 25);
+  return (start > 0 ? '…' : '') + texto.slice(start, start + len) + '…';
+}
+
 function buildSearchIndex(){
   const index = [];
-  ENFERMEDADES.forEach(e => index.push({ tipo: 'Enfermedad', nombre: e.nombre, sub: e.area, action: () => openEnfermedadFresh(e.id) }));
-  TEMAS.forEach(t => index.push({ tipo: 'Anatomía/Fisiología', nombre: t.nombre, sub: t.area, action: () => openTemaFresh(t.id) }));
-  SEMANAS.forEach(s => index.push({ tipo: 'Semana', nombre: `Semana ${s.numero} — ${s.titulo}`, sub: s.rango, action: () => openSemanaFresh(s.id) }));
-  LECTURAS.forEach(l => index.push({ tipo: 'Lectura', nombre: l.titulo, sub: l.tipo, action: () => openSemanaFresh(l.semana) }));
+  ENFERMEDADES.forEach(e => index.push({ tipo: 'Enfermedad', nombre: e.nombre, sub: e.area, cuerpo: flattenEnfermedadTexto(e), action: () => openEnfermedadFresh(e.id) }));
+  TEMAS.forEach(t => index.push({ tipo: 'Anatomía/Fisiología', nombre: t.nombre, sub: t.area, cuerpo: flattenTemaTexto(t), action: () => openTemaFresh(t.id) }));
+  SEMANAS.forEach(s => index.push({ tipo: 'Semana', nombre: `Semana ${s.numero} — ${s.titulo}`, sub: s.rango, cuerpo: '', action: () => openSemanaFresh(s.id) }));
+  LECTURAS.forEach(l => index.push({ tipo: 'Lectura', nombre: l.titulo, sub: l.tipo, cuerpo: '', action: () => openSemanaFresh(l.semana) }));
   return index;
 }
 
@@ -770,13 +813,20 @@ function initSearch(){
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
     if(!q){ results.classList.remove('show'); results.innerHTML=''; return; }
-    const matches = index.filter(item => item.nombre.toLowerCase().includes(q)).slice(0, 8);
+
+    // prioriza coincidencias en el nombre; si no hay suficientes, agrega coincidencias en el contenido
+    const porNombre = index.filter(item => item.nombre.toLowerCase().includes(q));
+    const porContenido = index.filter(item => !item.nombre.toLowerCase().includes(q) && item.cuerpo.includes(q));
+    const matches = [...porNombre, ...porContenido].slice(0, 8);
+
     if(matches.length === 0){
       results.innerHTML = `<a><span class="tag">Sin resultados</span><br>Prueba con otro término</a>`;
     } else {
-      results.innerHTML = matches.map((m,i) => `
-        <a onclick="searchIndexActions[${i}]()"><span class="tag">${m.tipo}</span><br>${m.nombre} <span class="muted">— ${m.sub}</span></a>
-      `).join('');
+      results.innerHTML = matches.map((m,i) => {
+        const enNombre = m.nombre.toLowerCase().includes(q);
+        const subtext = enNombre ? m.sub : `coincide en contenido: "${snippetAround(m.cuerpo, q)}"`;
+        return `<a onclick="searchIndexActions[${i}]()"><span class="tag">${m.tipo}</span><br>${m.nombre} <span class="muted">— ${subtext}</span></a>`;
+      }).join('');
       window.searchIndexActions = matches.map(m => () => { m.action(); results.classList.remove('show'); input.value=''; });
     }
     results.classList.add('show');
