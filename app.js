@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -72,6 +72,8 @@ function navRenderCurrent(){
     case 'tema': renderTema(top.id); break;
     case 'cuaderno': renderCuaderno(top.id); break;
     case 'quiz': renderQuiz(top.id); break;
+    case 'favoritos': renderFavoritos(); break;
+    case 'apuntes': renderApuntes(); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -327,6 +329,79 @@ function renderDia(compositeId){
     <div class="kcard">
       <p class="muted">El contenido detallado de este día todavía no está construido — en cuanto se agregue el material, aparecerá aquí como tarjetas clickeables.</p>
     </div>`}
+  `;
+}
+
+/* ---------- vista: favoritos ---------- */
+function openFavoritosFresh(){ navReset('favoritos', null, 'Favoritos'); }
+function renderFavoritos(){
+  const favs = ENFERMEDADES.filter(e => e.favorito);
+  const wrap = document.getElementById('view-favoritos-content');
+  wrap.innerHTML = `
+    <span class="eyebrow">Repaso rápido</span>
+    <h1 class="page-title">⭐ Favoritos</h1>
+    <p class="page-sub">Las enfermedades que marcaste para repasar primero antes de un examen.</p>
+    ${favs.length ? `<div class="grid cols-2">${favs.map(diseaseCardHTML).join('')}</div>` : `
+      <div class="kcard"><p class="muted">Todavía no marcaste ninguna enfermedad como favorita. Toca la ☆ en cualquier enfermedad para agregarla aquí.</p></div>`}
+  `;
+}
+
+/* ---------- vista: mis apuntes (todas las notas juntas) ---------- */
+const NOTE_SECTION_LABELS = {
+  'fisiopatologia': 'Fisiopatología', 'profundo-general': 'Modo profundo', 'repaso': 'Modo repaso',
+  'imprescindible': 'Imprescindible', 'apuntes-doctor': '👨‍⚕️ Apuntes del doctor', 'general': 'Apunte general'
+};
+function getEntidadInfo(id){
+  const e = getEnfermedad(id);
+  if(e) return { nombre: e.nombre, action: `openEnfermedadFresh('${id}')` };
+  const t = getTema(id);
+  if(t) return { nombre: t.nombre, action: `openTemaFresh('${id}')` };
+  return { nombre: id, action: '' };
+}
+function openApuntesFresh(){ navReset('apuntes', null, 'Mis apuntes'); }
+function renderApuntes(){
+  const wrap = document.getElementById('view-apuntes-content');
+  const grupos = {}; // entidadId -> [{seccion, texto}]
+
+  for(let i = 0; i < localStorage.length; i++){
+    const key = localStorage.key(i);
+    if(!key || !key.startsWith('medcore-note::')) continue;
+    const compositeKey = key.replace('medcore-note::', '');
+    const texto = localStorage.getItem(key);
+    if(!texto || !texto.trim()) continue;
+    const sepIdx = compositeKey.indexOf('::');
+    if(sepIdx === -1) continue;
+    const entidadId = compositeKey.slice(0, sepIdx);
+    const seccion = compositeKey.slice(sepIdx + 2);
+    grupos[entidadId] = grupos[entidadId] || [];
+    grupos[entidadId].push({ seccion, texto });
+  }
+
+  const entidadIds = Object.keys(grupos);
+
+  wrap.innerHTML = `
+    <span class="eyebrow">Todo en un solo lugar</span>
+    <h1 class="page-title">📝 Mis apuntes</h1>
+    <p class="page-sub">Todas tus notas escritas, juntas, sin importar en qué enfermedad o tema las escribiste.</p>
+    ${entidadIds.length === 0 ? `
+      <div class="kcard"><p class="muted">Todavía no has escrito ningún apunte. Los que escribas en cualquier enfermedad o tema van a aparecer aquí automáticamente.</p></div>
+    ` : entidadIds.map(id => {
+      const info = getEntidadInfo(id);
+      return `
+        <div class="kcard">
+          <div class="section-title" style="margin-bottom:10px;">
+            <h2 style="font-size:16px;">${info.nombre}</h2>
+            <a class="link-quiet" onclick="${info.action}">Abrir →</a>
+          </div>
+          ${grupos[id].map(g => `
+            <div class="note-block" style="border-style:solid;">
+              <div class="note-head"><span class="note-label">${NOTE_SECTION_LABELS[g.seccion] || g.seccion}</span></div>
+              <p style="margin:0; font-size:13.5px; white-space:pre-wrap;">${g.texto}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }).join('')}
   `;
 }
 
