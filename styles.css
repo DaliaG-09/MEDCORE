@@ -334,6 +334,13 @@ h1.page-title{
   width:100%; min-height:64px; resize:vertical; border:1px solid var(--honey-line); border-radius: var(--radius-sm);
   padding:9px 12px; font-family: var(--font-body); font-size:13.5px; background:#fff; color: var(--ink);
 }
+.mic-btn.recording{
+  background: var(--alert-soft); border-color: var(--alert-line); color: var(--alert);
+  animation: pulse-rec 1.4s ease-in-out infinite;
+}
+@keyframes pulse-rec{
+  0%, 100%{ opacity:1; } 50%{ opacity:0.55; }
+}
 
 /* ---------- cascade fisiopatológica (color por categoría) ---------- */
 .cascade{ display:flex; flex-direction:column; gap:0; }
