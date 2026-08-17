@@ -471,6 +471,12 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   padding: 9px 11px; font-family: var(--font-body); font-size: 13.5px; background:#fff; color: var(--ink);
 }
 
+/* ---------- semiología práctica ---------- */
+.semio-block{ display:flex; flex-direction:column; gap:12px; }
+.semio-step{ background:#fff; border:1px solid var(--coral-line); border-radius: var(--radius-sm); padding:12px 15px; }
+.semio-label{ font-family: var(--font-mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#c15b47; display:block; margin-bottom:5px; }
+.semio-step p{ margin:0; font-size:13.5px; }
+
 /* ---------- toolbar (print, favorito) ---------- */
 .toolbar{ display:flex; gap:8px; align-items:center; }
 .btn-icon{
