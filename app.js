@@ -627,6 +627,17 @@ function renderProfundo(p, diseaseId){
       <ul>${p.examenFisico.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
 
+    ${p.semiologia ? `
+    <div class="pcard">
+      <h3>🩺 ¿Cómo lo examino?</h3>
+      <div class="semio-block">
+        <div class="semio-step"><span class="semio-label">👀 Inspección</span><p>${p.semiologia.inspeccion}</p></div>
+        <div class="semio-step"><span class="semio-label">✋ Palpación</span><p>${p.semiologia.palpacion}</p></div>
+        <div class="semio-step"><span class="semio-label">👊 Percusión</span><p>${p.semiologia.percusion}</p></div>
+        <div class="semio-step"><span class="semio-label">🩺 Auscultación</span><p>${p.semiologia.auscultacion}</p></div>
+      </div>
+    </div>` : ''}
+
     <div class="kcard">
       <h3>Diagnóstico y diferenciales</h3>
       <p>${p.diagnostico}</p>
