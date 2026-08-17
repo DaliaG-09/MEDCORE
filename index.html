@@ -22,9 +22,9 @@
 
     <div class="nav-group">
       <div class="nav-label">Estudio</div>
-      <div class="nav-item active" data-view="view-inicio" onclick="showView('view-inicio')"><span class="emoji">🏠</span> Inicio</div>
-      <div class="nav-item" data-view="view-semana" onclick="openSemana('semana-01')"><span class="emoji">📅</span> Semanas</div>
-      <div class="nav-item" data-view="view-enfermedad" onclick="openEnfermedad('epoc')"><span class="emoji">🔎</span> Enfermedades</div>
+      <div class="nav-item active" data-view="view-inicio" onclick="goInicio()"><span class="emoji">🏠</span> Inicio</div>
+      <div class="nav-item" data-view="view-semana" onclick="openSemanaFresh('semana-01')"><span class="emoji">📅</span> Semanas</div>
+      <div class="nav-item" data-view="view-enfermedad" onclick="openEnfermedadFresh('epoc')"><span class="emoji">🔎</span> Enfermedades</div>
     </div>
 
     <div class="nav-group">
@@ -51,6 +51,8 @@
       <div id="search-results" class="search-results"></div>
     </div>
 
+    <div id="breadcrumb" class="breadcrumb"></div>
+
     <!-- VISTA: INICIO -->
     <section id="view-inicio" class="view">
       <div id="inicio-hero"></div>
@@ -62,6 +64,11 @@
     <!-- VISTA: SEMANA -->
     <section id="view-semana" class="view">
       <div id="view-semana-content"></div>
+    </section>
+
+    <!-- VISTA: DÍA -->
+    <section id="view-dia" class="view">
+      <div id="view-dia-content"></div>
     </section>
 
     <!-- VISTA: ENFERMEDAD -->
