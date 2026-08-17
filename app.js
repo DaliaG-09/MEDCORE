@@ -192,6 +192,7 @@ function renderEnfermedad(id){
       <p class="dn-sub">Cosas que dijo el profesor en clase y que no están en las diapositivas.</p>
       <textarea id="doctor-note-${e.id}" placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
         oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${notesAdapter.get(e.id + '::apuntes-doctor')}</textarea>
+      ${drawBlockHTML(e.id + '::apuntes-doctor-dibujo')}
     </div>
 
     <div class="mode-tabs">
@@ -210,6 +211,9 @@ function renderEnfermedad(id){
   if(micBtn && (window.SpeechRecognition || window.webkitSpeechRecognition)){
     micBtn.style.display = 'inline-flex';
   }
+
+  // inicializa el lienzo de trazos (debe hacerse después de insertar el HTML)
+  initDrawPad(e.id + '::apuntes-doctor-dibujo');
 }
 
 /* ---------- dictado por voz para "Apuntes del doctor" (Chrome/Android; no soportado en Safari/iOS) ---------- */
