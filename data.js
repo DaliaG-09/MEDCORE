@@ -599,6 +599,14 @@ const ENFERMEDADES = [
 
 
       diagnostico: "Espirometría post-broncodilatador: relación VEF1/CVF < 0.70 confirma limitación al flujo aéreo no completamente reversible.",
+      algoritmo: [
+        { tipo: "paso", texto: "Sospecha clínica: disnea progresiva + tos crónica + antecedente de tabaquismo significativo" },
+        { tipo: "paso", texto: "Solicitar espirometría post-broncodilatador" },
+        { tipo: "decision", texto: "¿FEV1/FVC < 0.70 tras broncodilatador?", salidas: [
+          { etiqueta: "NO", texto: "EPOC descartado — buscar otra causa de disnea (asma, insuf. cardiaca, etc.)", color: "mint" },
+          { etiqueta: "SÍ", texto: "Confirma EPOC → clasificar gravedad (GOLD ABE) según síntomas y exacerbaciones", color: "coral" }
+        ]}
+      ],
       diagnosticoDiferencial: ["Asma bronquial", "Bronquiectasias", "Insuficiencia cardiaca", "Bronquiolitis obliterante"],
       tratamiento: {
         noFarmacologico: ["Cese absoluto de tabaquismo (medida con mayor impacto en sobrevida)", "Rehabilitación pulmonar", "Vacunación antigripal y antineumocócica"],
@@ -892,6 +900,7 @@ const ENFERMEDADES = [
     ],
     "favorito": false,
     "estudiado": false,
+    "tipoIlustracion": "alveolar",
     "relacionadas": [
       {
         "id": "bronquitis-bronquiectasias",
@@ -967,6 +976,15 @@ const ENFERMEDADES = [
             "auscultacion": "Sobre la zona afectada: crépitos (estertores) que NO cambian con la tos, soplo tubárico si la consolidación es extensa, y egofonía (la voz del paciente suena como 'e' cambiada a 'a' al auscultar mientras dice 'eee' — signo clásico de consolidación). Este set de hallazgos (frémito aumentado + matidez + crépitos fijos + egofonía) todos apuntando al MISMO lado es lo que confirma clínicamente una consolidación antes incluso de ver la radiografía."
       },
       "diagnostico": "Nuevo infiltrado en imagen (Rx/TC/ecografía) + síntomas compatibles + signos de enfermedad del espacio aéreo. Pruebas de laboratorio (hemograma, PCR, procalcitonina) apoyan pero no reemplazan la imagen. Se recomienda NO usar la procalcitonina para decidir si iniciar antibióticos (su sensibilidad varía 38-91%).",
+      "algoritmo": [
+        { "tipo": "paso", "texto": "Diagnóstico confirmado de NAC (infiltrado nuevo + clínica compatible)" },
+        { "tipo": "paso", "texto": "Calcular CURB-65 o PSI (Pneumonia Severity Index)" },
+        { "tipo": "decision", "texto": "¿Cuál es el resultado y la estabilidad hemodinámica/respiratoria?", "salidas": [
+          { "etiqueta": "CURB-65 0-1", "texto": "Manejo ambulatorio — amoxicilina, doxiciclina o macrólido", "color": "mint" },
+          { "etiqueta": "CURB-65 2-5", "texto": "Hospitalización — β-lactámico + macrólido o fluoroquinolona respiratoria", "color": "coral" },
+          { "etiqueta": "Shock / requiere VM", "texto": "UCI directo, sin esperar el score — recomendación fuerte", "color": "alert" }
+        ]}
+      ],
       "diagnosticoDiferencial": [
         "Bronquitis aguda",
         "Tromboembolismo pulmonar",
@@ -1067,6 +1085,7 @@ const ENFERMEDADES = [
     ],
     "favorito": false,
     "estudiado": false,
+    "tipoIlustracion": "alveolar",
     "relacionadas": [
       {
         "id": "neumonia-nac",
