@@ -36,6 +36,10 @@ function drawBlockHTML(key){
         <span class="swatch" style="background:#D95C65" onclick="setDrawColor('${key}','#D95C65', this)"></span>
         <span class="swatch" style="background:#5267E8" onclick="setDrawColor('${key}','#5267E8', this)"></span>
         <span class="swatch" style="background:#78C9A3" onclick="setDrawColor('${key}','#78C9A3', this)"></span>
+        <span class="size-sep"></span>
+        <span class="size-dot size-sm" onclick="setDrawSize('${key}', 1.5, this)" title="Trazo fino"><span></span></span>
+        <span class="size-dot size-md active" onclick="setDrawSize('${key}', 2.6, this)" title="Trazo medio"><span></span></span>
+        <span class="size-dot size-lg" onclick="setDrawSize('${key}', 4.2, this)" title="Trazo grueso"><span></span></span>
         <span class="btn-icon" onclick="undoDraw('${key}')">↩ Deshacer</span>
         <span class="btn-icon" onclick="clearDraw('${key}')">🗑 Borrar</span>
       </div>
@@ -49,7 +53,7 @@ function initDrawPad(key){
   const canvas = document.getElementById(safeId);
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
-  const state = { canvas, ctx, strokes: drawAdapter.get(key), current: null, color: '#24243A' };
+  const state = { canvas, ctx, strokes: drawAdapter.get(key), current: null, color: '#24243A', size: 2.6 };
   drawPads[key] = state;
 
   function redrawAll(){
@@ -75,7 +79,7 @@ function initDrawPad(key){
   canvas.addEventListener('pointerdown', (ev) => {
     ev.preventDefault();
     canvas.setPointerCapture(ev.pointerId);
-    state.current = { color: state.color, points: [pointFromEvent(ev)] };
+    state.current = { color: state.color, size: state.size, points: [pointFromEvent(ev)] };
   });
   canvas.addEventListener('pointermove', (ev) => {
     if(!state.current) return;
@@ -101,7 +105,7 @@ function initDrawPad(key){
 function paintStroke(ctx, stroke, w, h){
   if(stroke.points.length < 2) return;
   ctx.strokeStyle = stroke.color;
-  ctx.lineWidth = 2.6;
+  ctx.lineWidth = stroke.size || 2.6;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   ctx.beginPath();
@@ -116,6 +120,13 @@ function setDrawColor(key, color, el){
   if(drawPads[key]) drawPads[key].color = color;
   if(el){
     el.parentElement.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+  }
+}
+function setDrawSize(key, size, el){
+  if(drawPads[key]) drawPads[key].size = size;
+  if(el){
+    el.parentElement.querySelectorAll('.size-dot').forEach(s => s.classList.remove('active'));
     el.classList.add('active');
   }
 }
