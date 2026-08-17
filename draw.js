@@ -53,6 +53,7 @@ function initDrawPad(key){
   const canvas = document.getElementById(safeId);
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
+  if(!ctx) return; // navegador sin soporte de canvas 2D (caso muy raro)
   const state = { canvas, ctx, strokes: drawAdapter.get(key), current: null, color: '#24243A', size: 2.6 };
   drawPads[key] = state;
 
