@@ -8,6 +8,18 @@
    enfermedad a medida que se agreguen los PPT de cada clase.
    ============================================================ */
 
+const CURSO = {
+  "nombre": "Medicina Interna I",
+  "codigo": "MH-701",
+  "ciclo": "VII",
+  "silabo": "2026-2",
+  "universidad": "Universidad Científica del Sur",
+  "docenteResponsable": "Dra. Dauma Gastiaburú Rodríguez",
+  "creditos": 10,
+  "horasTotales": "208 horas (112 teóricas, 96 prácticas)",
+  "formulaEvaluacion": "ED (0%) + EC1 (10%) + EC2 (10%) + EP1 (18%) + EC3 (10%) + EC4 (10%) + EC5 (10%) + EP2 (12%) + EIF (20%)"
+};
+
 const SEMANAS = [
   {
     "id": "semana-01",
@@ -35,7 +47,9 @@ const SEMANAS = [
     "exposiciones": [
       "EXPOSICIÓN: VOLÚMENES Y CAPACIDADES PULMONARES"
     ],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "Evaluación Diagnóstica — 0% de la nota final"
+    ],
     "lecturas": [
       "lectura-s1-3"
     ],
@@ -107,7 +121,9 @@ const SEMANAS = [
       "TALLER APLICATIVO: CASOS CLÍNICOS"
     ],
     "exposiciones": [],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "Evaluación continua 1 — Actividades Módulo 1 (Neumología) — 10% de la nota final"
+    ],
     "lecturas": [
       "lectura-s3-7"
     ],
@@ -236,7 +252,9 @@ const SEMANAS = [
     ],
     "talleres": [],
     "exposiciones": [],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "Evaluación continua 2 — Actividades Módulo 2 (Cardiología) — 10% de la nota final"
+    ],
     "lecturas": [
       "lectura-s7-20"
     ],
@@ -251,7 +269,8 @@ const SEMANAS = [
     "talleres": [],
     "exposiciones": [],
     "evaluaciones": [
-      "EXAMEN PARCIAL: NEUMOLOGÍA Y CARDIOLOGÍA (SEMANA DEL 5 AL 11 DE OCTUBRE)"
+      "EXAMEN PARCIAL: NEUMOLOGÍA Y CARDIOLOGÍA (SEMANA DEL 5 AL 11 DE OCTUBRE)",
+      "Evaluación Parcial 1 — Examen teórico Módulos 1-2 — 18% de la nota final"
     ],
     "lecturas": [],
     "enfermedades": []
@@ -349,7 +368,9 @@ const SEMANAS = [
     "exposiciones": [
       "EXPOSICIÓN: CORRECCIÓN DE TRASTORNOS HIDROELECTROLÍTICOS"
     ],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "Evaluación continua 3 — Actividades Módulo 3 (Nefrología) — 10% de la nota final"
+    ],
     "lecturas": [
       "lectura-s11-29"
     ],
@@ -413,7 +434,9 @@ const SEMANAS = [
       "TALLER (CLASE INVERTIDA) Tuberculosis Enteroperitoneal"
     ],
     "exposiciones": [],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "Evaluación continua 4 — Actividades Módulo 4 (Gastroenterología) — 10% de la nota final"
+    ],
     "lecturas": [
       "lectura-s13-37"
     ],
@@ -443,7 +466,9 @@ const SEMANAS = [
     ],
     "talleres": [],
     "exposiciones": [],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "Evaluación continua 5 — Actividades Módulo 5 (Dermatología) — 10% de la nota final"
+    ],
     "lecturas": [
       "lectura-s14-40"
     ],
@@ -474,7 +499,8 @@ const SEMANAS = [
     "talleres": [],
     "exposiciones": [],
     "evaluaciones": [
-      "EVALUACIÓN CONTINUA 6: NEFROLOGÍA, GASTROENTEROLOGÍA Y DERMATOLOGÍA"
+      "EVALUACIÓN CONTINUA 6: NEFROLOGÍA, GASTROENTEROLOGÍA Y DERMATOLOGÍA",
+      "Evaluación Parcial 2 — Examen teórico Módulos 3-4-5 — 12% de la nota final"
     ],
     "lecturas": [],
     "enfermedades": []
@@ -488,7 +514,8 @@ const SEMANAS = [
     "talleres": [],
     "exposiciones": [],
     "evaluaciones": [
-      "EXAMEN INTEGRADO FINAL: TODOS LOS MÓDULOS (SEMANA DEL 30 NOVIEMBRE AL 6 DE DICIEMBRE)"
+      "EXAMEN INTEGRADO FINAL: TODOS LOS MÓDULOS (SEMANA DEL 30 NOVIEMBRE AL 6 DE DICIEMBRE)",
+      "Evaluación Final — Examen integrado (todos los módulos) — 20% de la nota final"
     ],
     "lecturas": [],
     "enfermedades": []
