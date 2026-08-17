@@ -186,7 +186,9 @@ function renderEnfermedad(id){
       </div>` : ''}
 
     <div class="doctor-notes">
-      <div class="dn-head"><span style="font-size:18px">👨‍⚕️</span><h3>Apuntes del doctor</h3></div>
+      <div class="dn-head"><span style="font-size:18px">👨‍⚕️</span><h3>Apuntes del doctor</h3>
+        <span class="btn-icon mic-btn" id="mic-btn-${e.id}" style="display:none; margin-left:auto" onclick="toggleDictado('${e.id}')">🎤 Dictar</span>
+      </div>
       <p class="dn-sub">Cosas que dijo el profesor en clase y que no están en las diapositivas.</p>
       <textarea id="doctor-note-${e.id}" placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
         oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${notesAdapter.get(e.id + '::apuntes-doctor')}</textarea>
@@ -202,6 +204,59 @@ function renderEnfermedad(id){
     <div class="mode-panel" id="panel-repaso">${renderRepaso(e.repaso, e.id)}</div>
     <div class="mode-panel" id="panel-imprescindible">${renderImprescindible(e.imprescindible, e.id)}</div>
   `;
+
+  // muestra el botón de dictado solo si el navegador lo soporta (Chrome sí, Safari iOS no)
+  const micBtn = document.getElementById('mic-btn-' + e.id);
+  if(micBtn && (window.SpeechRecognition || window.webkitSpeechRecognition)){
+    micBtn.style.display = 'inline-flex';
+  }
+}
+
+/* ---------- dictado por voz para "Apuntes del doctor" (Chrome/Android; no soportado en Safari/iOS) ---------- */
+let recognitionInstance = null;
+let recognitionActiveFor = null;
+
+function toggleDictado(diseaseId){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRecognition) return;
+  const btn = document.getElementById('mic-btn-' + diseaseId);
+  const textarea = document.getElementById('doctor-note-' + diseaseId);
+
+  if(recognitionActiveFor === diseaseId){
+    recognitionInstance.stop();
+    return;
+  }
+  if(recognitionInstance){ try{ recognitionInstance.stop(); }catch(e){} }
+
+  const rec = new SpeechRecognition();
+  rec.lang = 'es-PE';
+  rec.continuous = true;
+  rec.interimResults = true;
+
+  let baseText = textarea.value ? textarea.value.trim() + ' ' : '';
+
+  rec.onresult = (event) => {
+    let interim = '', final = '';
+    for(let i = event.resultIndex; i < event.results.length; i++){
+      const transcript = event.results[i][0].transcript;
+      if(event.results[i].isFinal) final += transcript + ' ';
+      else interim += transcript;
+    }
+    if(final) baseText += final;
+    textarea.value = baseText + interim;
+    handleNoteInput(diseaseId + '::apuntes-doctor', 'doctor-note-' + diseaseId);
+  };
+  const stopUI = () => {
+    recognitionActiveFor = null;
+    if(btn){ btn.textContent = '🎤 Dictar'; btn.classList.remove('recording'); }
+  };
+  rec.onend = stopUI;
+  rec.onerror = stopUI;
+
+  recognitionInstance = rec;
+  recognitionActiveFor = diseaseId;
+  if(btn){ btn.textContent = '⏹ Detener'; btn.classList.add('recording'); }
+  rec.start();
 }
 
 function switchMode(tabEl, mode){
@@ -338,12 +393,12 @@ function renderImprescindible(im, diseaseId){
       ${im.redFlags.map(x => `<div class="alert red"><span class="label">Alerta</span>${x}</div>`).join('')}
     </div>
 
-    <div class="ccard">
+    <div class="rcard">
       <h3>⚠️ Errores frecuentes</h3>
       ${im.erroresFrecuentes.map(x => `<div class="alert amber"><span class="label">Cuidado</span>${x}</div>`).join('')}
     </div>
 
-    <div class="pcard">
+    <div class="mcard">
       <h3>🔗 Asociaciones clínicas</h3>
       ${im.asociacionesClinicas.map(x => `<div class="alert green"><span class="label">Asociación</span>${x}</div>`).join('')}
     </div>
