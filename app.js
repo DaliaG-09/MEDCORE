@@ -51,6 +51,7 @@ function renderInicio(){
   const semana = SEMANAS[0];
   const total = semana.enfermedades.length;
   const estudiadas = semana.enfermedades.filter(id => getEnfermedad(id).estudiado).length;
+  const completada = total > 0 && estudiadas === total;
 
   document.getElementById('inicio-hero').innerHTML = `
     <div class="greeting-hero">
@@ -58,8 +59,9 @@ function renderInicio(){
         <h1>${saludoSegunHora()}, Dalia 👋</h1>
         <p>Esta semana tienes ${total} enfermedades para revisar. Vas ${estudiadas}/${total}.</p>
       </div>
-      <div class="greeting-mark">${brandMarkSVG()}</div>
+      <div class="greeting-mark">${nexuSVG(completada ? 'celebrando' : 'idle')}</div>
     </div>
+    ${completada ? nexuMessageHTML('<strong>✦ ¡Semana completada!</strong> Revisaste todas las enfermedades de esta semana. Buen trabajo.', 'celebrando') : ''}
   `;
 
   const wrap = document.getElementById('inicio-semana-actual');
@@ -175,11 +177,20 @@ function renderEnfermedad(id){
       </div>
     </div>
 
+    ${e.estudiado ? nexuMessageHTML('<strong>¡Bien!</strong> Ya marcaste esta enfermedad como estudiada.', 'celebrando') : ''}
+
     ${esRespiratoria ? `
       <div class="illustration-card">
         ${airwayIllustration('obstructivo')}
         <div class="cap">Corte transversal de vía aérea — normal vs. patrón obstructivo</div>
       </div>` : ''}
+
+    <div class="doctor-notes">
+      <div class="dn-head"><span style="font-size:18px">👨‍⚕️</span><h3>Apuntes del doctor</h3></div>
+      <p class="dn-sub">Cosas que dijo el profesor en clase y que no están en las diapositivas.</p>
+      <textarea id="doctor-note-${e.id}" placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
+        oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${notesAdapter.get(e.id + '::apuntes-doctor')}</textarea>
+    </div>
 
     <div class="mode-tabs">
       <div class="mode-tab active" data-mode="profundo" onclick="switchMode(this,'profundo')">Modo profundo</div>
