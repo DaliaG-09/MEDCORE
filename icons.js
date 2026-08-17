@@ -133,10 +133,10 @@ function nexuSVG(pose){
 }
 
 /* mensaje corto con Nexu, para usar en momentos puntuales (no en cada pantalla) */
-function nexuMessageHTML(texto, pose){
+function nexuMessageHTML(texto){
   return `
     <div class="nexu-msg">
-      <div class="nexu-inline">${nexuSVG(pose || 'celebrando')}</div>
+      <div class="nexu-inline"><img src="assets/nexu-logo.svg" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
       <div>${texto}</div>
     </div>
   `;
