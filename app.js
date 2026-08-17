@@ -181,8 +181,10 @@ function renderEnfermedad(id){
 
     ${esRespiratoria ? `
       <div class="illustration-card">
-        ${airwayIllustration('obstructivo')}
-        <div class="cap">Corte transversal de vía aérea — normal vs. patrón obstructivo</div>
+        ${e.ilustracion
+          ? `<img src="${e.ilustracion}" alt="Ilustración de ${e.nombre}" style="width:100%; height:auto; display:block;">`
+          : airwayIllustration('obstructivo')}
+        <div class="cap">${e.ilustracion ? 'Vía aérea normal vs. ' + e.nombre : 'Corte transversal de vía aérea — normal vs. patrón obstructivo'}</div>
       </div>` : ''}
 
     <div class="doctor-notes">
