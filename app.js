@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -70,6 +70,7 @@ function navRenderCurrent(){
     case 'dia': renderDia(top.id); break;
     case 'enfermedad': renderEnfermedad(top.id); break;
     case 'tema': renderTema(top.id); break;
+    case 'cuaderno': renderCuaderno(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -342,6 +343,7 @@ function renderTema(id){
         <h1 class="page-title">${t.nombre}</h1>
       </div>
       <div class="toolbar">
+        <div class="btn-icon" onclick="navCuaderno('tema','${t.id}')">📓 Cuaderno de clase</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${t.estudiado ? 'done' : ''}" onclick="toggleEstudiadoTema('${t.id}')">${t.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
       </div>
@@ -403,6 +405,7 @@ function renderEnfermedad(id){
         <h1 class="page-title">${e.nombre}</h1>
       </div>
       <div class="toolbar">
+        <div class="btn-icon" onclick="navCuaderno('enfermedad','${e.id}')">📓 Cuaderno de clase</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${e.estudiado ? 'done' : ''}" onclick="toggleEstudiado('${e.id}', true)">${e.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
         <div class="star" style="font-size:24px" onclick="toggleFavorito('${e.id}', true)">${e.favorito ? '★' : '☆'}</div>
