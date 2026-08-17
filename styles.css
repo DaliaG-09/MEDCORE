@@ -471,6 +471,31 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   padding: 9px 11px; font-family: var(--font-body); font-size: 13.5px; background:#fff; color: var(--ink);
 }
 
+/* ---------- diagrama de algoritmo / flujo de decisión ---------- */
+.algo-diagram{ display:flex; flex-direction:column; align-items:center; gap:2px; padding: 6px 0; }
+.algo-node{ width:100%; }
+.algo-paso{
+  background:#fff; border:1.5px solid var(--cobalt-line); border-radius: var(--radius-sm);
+  padding:10px 16px; text-align:center; font-size:13.5px; font-weight:600; color: var(--ink);
+  max-width: 420px; margin: 0 auto;
+}
+.algo-decision .algo-node-text{
+  background: var(--cobalt-soft); border:1.5px solid var(--cobalt-line); border-radius: var(--radius-sm);
+  padding:10px 16px; text-align:center; font-size:13.5px; font-weight:700; color: var(--cobalt);
+  max-width: 420px; margin: 0 auto 10px;
+}
+.algo-arrow{ font-size:16px; color: var(--cobalt-line); line-height:1; margin: 2px 0; }
+.algo-branches{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:8px; }
+.algo-branch{ display:flex; flex-direction:column; align-items:center; max-width:220px; }
+.algo-branch-label{
+  font-family: var(--font-mono); font-size:10px; font-weight:700; color:#fff; padding:3px 10px;
+  border-radius:999px; margin-bottom:6px;
+}
+.algo-branch-text{
+  background:#fff; border:1.5px solid var(--branch-color); border-radius: var(--radius-sm);
+  padding:9px 13px; font-size:12.5px; text-align:center; color: var(--ink);
+}
+
 /* ---------- semiología práctica ---------- */
 .semio-block{ display:flex; flex-direction:column; gap:12px; }
 .semio-step{ background:#fff; border:1px solid var(--coral-line); border-radius: var(--radius-sm); padding:12px 15px; }
