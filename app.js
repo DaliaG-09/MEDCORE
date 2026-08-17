@@ -58,6 +58,7 @@ function renderInicio(){
       <div>
         <h1>${saludoSegunHora()}, Dalia 👋</h1>
         <p>Esta semana tienes ${total} enfermedades para revisar. Vas ${estudiadas}/${total}.</p>
+        <p style="margin-top:6px; font-size:11.5px; color:var(--ink-soft); font-family:var(--font-mono)">${CURSO.nombre} · ${CURSO.codigo} · Ciclo ${CURSO.ciclo} · Sílabo ${CURSO.silabo}</p>
       </div>
       <div class="greeting-mark"><img src="assets/nexu-logo.svg" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
     </div>
