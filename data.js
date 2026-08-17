@@ -588,6 +588,16 @@ const ENFERMEDADES = [
         "↓ murmullo vesicular, roncantes/sibilantes",
         "Signo de Hoover (movimiento paradójico de la parrilla costal inferior)"
       ],
+      semiologia: {
+            "inspeccion": "Observa el patrón respiratorio antes de tocar al paciente: tórax en tonel (aumento del diámetro anteroposterior por hiperinsuflación), uso de músculos accesorios (esternocleidomastoideos, escalenos), respiración con labios fruncidos (mecanismo que el paciente adopta espontáneamente para evitar el colapso de la vía aérea al espirar), y el signo de Hoover — depresión paradójica de la parrilla costal inferior durante la inspiración (indica diafragma aplanado por hiperinsuflación crónica).",
+            "palpacion": "Coloca ambas manos simétricamente sobre la parrilla costal posterior y pide al paciente que respire profundo: en EPOC vas a sentir expansión torácica DISMINUIDA y simétrica (a diferencia de un derrame o neumotórax, que es asimétrica). El frémito vocal (vibraciones al decir '33') suele estar disminuido de forma difusa por la hiperinsuflación.",
+            "percusion": "Percute de forma comparativa y simétrica, de arriba hacia abajo, en ambos hemitórax. Vas a encontrar hipersonoridad difusa (sonido más 'hueco' de lo normal) por el atrapamiento de aire, y los límites pulmonares inferiores descendidos (el diafragma está aplanado y bajo).",
+            "auscultacion": "Ausculta sistemáticamente ápices → bases, comparando lado a lado. Vas a encontrar murmullo vesicular disminuido de forma difusa (menos aire se mueve, más silencio de lo normal — dato clave), espiración prolongada, y roncantes/sibilantes si hay broncoespasmo asociado. Un dato práctico: en EPOC muy avanzado el tórax puede sonar casi 'silencioso' — eso NO es buena señal, es que hay tan poco flujo de aire que ni siquiera genera ruido."
+      },
+
+
+
+
       diagnostico: "Espirometría post-broncodilatador: relación VEF1/CVF < 0.70 confirma limitación al flujo aéreo no completamente reversible.",
       diagnosticoDiferencial: ["Asma bronquial", "Bronquiectasias", "Insuficiencia cardiaca", "Bronquiolitis obliterante"],
       tratamiento: {
@@ -658,6 +668,12 @@ const ENFERMEDADES = [
       },
       clinica: [{ signo: "Sibilancias episódicas", mecanismo: "Broncoconstricción reversible mediada por mediadores Th2" }],
       examenFisico: ["Sibilancias espiratorias difusas en crisis", "Examen normal en periodos intercrisis"],
+      semiologia: {
+            "inspeccion": "En crisis: taquipnea, uso de músculos accesorios, posición en trípode (el paciente se inclina hacia adelante apoyando los brazos). Busca signos de gravedad: dificultad para hablar en frases completas, cianosis, alteración del sensorio. Entre crisis, la inspección suele ser completamente normal — por eso el asma se puede pasar por alto si solo examinas cuando el paciente está asintomático.",
+            "palpacion": "Expansión torácica generalmente simétrica (a menos que la crisis sea muy severa). El frémito vocal no suele estar alterado de forma característica, a diferencia del EPOC.",
+            "percusion": "Normalmente normal entre crisis. Durante una crisis puede haber hipersonoridad leve por atrapamiento aéreo agudo, pero es menos marcada que en EPOC crónico.",
+            "auscultacion": "El hallazgo clásico: sibilancias espiratorias difusas y bilaterales, que empeoran con espiración forzada. Dato clínico crítico que debes recordar: el 'silencio auscultatorio' (ausencia de sibilancias en un paciente que sigue con dificultad respiratoria) NO significa mejoría — significa que el flujo de aire es tan bajo que ya no genera sonido. Es un signo de gravedad extrema que requiere manejo inmediato."
+      },
       diagnostico: "Espirometría con prueba de broncodilatador: reversibilidad ≥ 12% y 200mL en VEF1.",
       diagnosticoDiferencial: ["EPOC", "Reflujo gastroesofágico", "Disfunción de cuerdas vocales"],
       tratamiento: {
@@ -769,6 +785,13 @@ const ENFERMEDADES = [
         "Bronquitis aguda: roncantes, sin signos focales de consolidación",
         "Bronquiectasias: crépitos basales bilaterales persistentes, acropaquia en casos evolucionados"
       ],
+      semiologia: {
+            "inspeccion": "Bronquitis aguda: paciente con tos, generalmente sin signos de dificultad respiratoria significativa. Bronquiectasias: buscar acropaquia (dedos en palillo de tambor) en casos evolucionados — signo que NO aparece en bronquitis simple ni en EPOC típico, así que si lo ves, orienta fuerte a bronquiectasias.",
+            "palpacion": "Generalmente sin hallazgos relevantes en bronquitis aguda. En bronquiectasias con secreciones abundantes, puede palparse frémito aumentado sobre zonas con acumulación de secreciones espesas.",
+            "percusion": "Normal en bronquitis aguda. En bronquiectasias localizadas puede haber matidez leve sobre la zona afectada si hay colapso parcial por tapón mucoso.",
+            "auscultacion": "Bronquitis aguda: roncantes difusos que pueden cambiar o desaparecer con la tos (dato clave para diferenciarlo de neumonía, donde los crépitos NO cambian con la tos). Bronquiectasias: crépitos gruesos persistentes y localizados en las mismas zonas en exámenes repetidos — la persistencia y localización fija es lo que las distingue de una infección aguda transitoria."
+      },
+
       "diagnostico": "Bronquitis aguda: clínico (ausencia de indicios de neumonía clínica/radiológica). Bronquitis crónica: clínico, por definición temporal (tos productiva ≥3 meses/año × 2 años). Bronquiectasias: TC de alta resolución — estándar de oro; signo característico: relación broncoarterial >1.5 (normal 0.7), 'anillo de sello', falta de estrechamiento bronquial hacia la periferia.",
       "diagnosticoDiferencial": [
         "Neumonía (bronquitis aguda)",
@@ -937,6 +960,12 @@ const ENFERMEDADES = [
         "Egofonía y frémito aumentado sobre la zona de consolidación",
         "Taquipnea (FR≥30), taquicardia (FC≥100), SatO2 <95% son predictores de gravedad"
       ],
+      semiologia: {
+            "inspeccion": "Taquipnea, uso de músculos accesorios si hay compromiso respiratorio significativo, posible cianosis en casos graves. Fíjate en el patrón respiratorio: respiración superficial y rápida por dolor pleurítico si existe compromiso de la pleura adyacente a la consolidación.",
+            "palpacion": "Frémito vocal AUMENTADO sobre la zona de consolidación (el tejido consolidado transmite mejor las vibraciones que el aire) — esto es un hallazgo clave que la distingue del derrame pleural, donde el frémito está DISMINUIDO o abolido.",
+            "percusion": "Matidez localizada sobre la zona de consolidación (el tejido lleno de exudado inflamatorio ya no contiene aire, por lo que percute 'sólido' en vez de resonante).",
+            "auscultacion": "Sobre la zona afectada: crépitos (estertores) que NO cambian con la tos, soplo tubárico si la consolidación es extensa, y egofonía (la voz del paciente suena como 'e' cambiada a 'a' al auscultar mientras dice 'eee' — signo clásico de consolidación). Este set de hallazgos (frémito aumentado + matidez + crépitos fijos + egofonía) todos apuntando al MISMO lado es lo que confirma clínicamente una consolidación antes incluso de ver la radiografía."
+      },
       "diagnostico": "Nuevo infiltrado en imagen (Rx/TC/ecografía) + síntomas compatibles + signos de enfermedad del espacio aéreo. Pruebas de laboratorio (hemograma, PCR, procalcitonina) apoyan pero no reemplazan la imagen. Se recomienda NO usar la procalcitonina para decidir si iniciar antibióticos (su sensibilidad varía 38-91%).",
       "diagnosticoDiferencial": [
         "Bronquitis aguda",
@@ -1091,6 +1120,12 @@ const ENFERMEDADES = [
         "Nosocomial: nuevo infiltrado + secreciones purulentas + hipoxemia en paciente ya hospitalizado",
         "Atípica: auscultación pulmonar frecuentemente pobre en hallazgos pese a síntomas — 'disociación clínico-radiológica'"
       ],
+      semiologia: {
+            "inspeccion": "En paciente ventilado: secreciones traqueales purulentas visibles al aspirar, desaturación progresiva en el monitor, fiebre nueva. En paciente no intubado con neumonía atípica: examen a veces sorprendentemente 'pobre' en hallazgos pese a síntomas — la llamada disociación clínico-radiológica (te ves con poco al examinar pero la Rx muestra bastante, o al revés).",
+            "palpacion": "En nosocomial: similar a NAC si hay consolidación franca (frémito aumentado). En atípica: con frecuencia poco llamativa, otro reflejo de la disociación clínico-radiológica típica de estos patógenos.",
+            "percusion": "Matidez localizada si hay consolidación establecida; puede ser sutil en fases tempranas de neumonía atípica.",
+            "auscultacion": "Nosocomial: similar a NAC — crépitos localizados, posible soplo tubárico. Atípica: auscultación con frecuencia normal o con hallazgos mínimos (roncantes leves) a pesar de tos persistente — este contraste entre 'poco que auscultar' y 'mucha tos/síntomas sistémicos' es justamente lo que debe hacerte sospechar un patógeno atípico en vez de bacteriano típico."
+      },
       "diagnostico": "Nosocomial: cultivo de muestra respiratoria (distal o proximal) ANTES de iniciar/cambiar antibiótico. Atípica: diagnóstico presuntivo por criterios clínicos (edad <60, sin comorbilidades, tos persistente, sin ruidos adventicios, leucocitos <10,000) — el cultivo estándar no sirve porque estos patógenos no crecen en medios convencionales.",
       "diagnosticoDiferencial": [
         "Neumonía adquirida en la comunidad",
