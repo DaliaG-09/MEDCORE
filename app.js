@@ -109,6 +109,17 @@ function openDia(semanaId, diaIndex){
 function openEnfermedad(id){ const e = getEnfermedad(id); navPush('enfermedad', id, e.nombre); }
 function openTema(id){ const t = getTema(id); navPush('tema', id, t.nombre); }
 
+function focusMobileSearch(){
+  const input = document.getElementById('global-search');
+  if(input){ input.scrollIntoView({behavior:'smooth', block:'start'}); input.focus(); }
+}
+function toggleDoctorNotes(el, drawKey){
+  el.classList.toggle('expanded');
+  if(el.classList.contains('expanded') && drawKey){
+    setTimeout(() => resizeDrawPad(drawKey), 50);
+  }
+}
+
 function saludoSegunHora(){
   const h = new Date().getHours();
   if(h < 12) return 'Buenos días';
@@ -336,6 +347,8 @@ function renderTema(id){
       </div>
     </div>
 
+    <div class="section-toc" id="tema-toc"></div>
+
     <div class="kcard">
       <h3>Resumen</h3>
       <p>${c.resumen}</p>
@@ -368,6 +381,7 @@ function renderTema(id){
       ${noteBlockHTML(t.id + '::general')}
     </div>
   `;
+  buildSectionToc('view-tema-content', 'tema-toc');
 }
 function toggleEstudiadoTema(id){
   const t = getTema(id);
@@ -417,14 +431,20 @@ function renderEnfermedad(id){
         <div class="cap">${e.ilustracion ? 'Vía aérea normal vs. ' + e.nombre : 'Corte transversal de vía aérea — normal vs. patrón obstructivo'}</div>
       </div>` : ''}
 
-    <div class="doctor-notes">
-      <div class="dn-head"><span style="font-size:18px">👨‍⚕️</span><h3>Apuntes del doctor</h3>
-        <span class="btn-icon mic-btn" id="mic-btn-${e.id}" style="display:none; margin-left:auto" onclick="toggleDictado('${e.id}')">🎤 Dictar</span>
+    <div class="doctor-notes" id="doctor-notes-${e.id}">
+      <div class="dn-head dn-toggle" onclick="toggleDoctorNotes(document.getElementById('doctor-notes-${e.id}'), '${e.id}::apuntes-doctor-dibujo')">
+        <span style="font-size:18px">👨‍⚕️</span><h3>Apuntes del doctor</h3>
+        <span class="dn-chevron">▾</span>
       </div>
-      <p class="dn-sub">Cosas que dijo el profesor en clase y que no están en las diapositivas.</p>
-      <textarea id="doctor-note-${e.id}" placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
-        oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${notesAdapter.get(e.id + '::apuntes-doctor')}</textarea>
-      ${drawBlockHTML(e.id + '::apuntes-doctor-dibujo')}
+      <div class="dn-body">
+        <div style="display:flex; justify-content:flex-end; margin-bottom:6px;">
+          <span class="btn-icon mic-btn" id="mic-btn-${e.id}" style="display:none" onclick="event.stopPropagation(); toggleDictado('${e.id}')">🎤 Dictar</span>
+        </div>
+        <p class="dn-sub">Cosas que dijo el profesor en clase y que no están en las diapositivas.</p>
+        <textarea id="doctor-note-${e.id}" placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
+          oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${notesAdapter.get(e.id + '::apuntes-doctor')}</textarea>
+        ${drawBlockHTML(e.id + '::apuntes-doctor-dibujo')}
+      </div>
     </div>
 
     <div class="mode-tabs">
@@ -432,6 +452,8 @@ function renderEnfermedad(id){
       <div class="mode-tab" data-mode="repaso" onclick="switchMode(this,'repaso')">Modo repaso</div>
       <div class="mode-tab" data-mode="imprescindible" onclick="switchMode(this,'imprescindible')">Imprescindible</div>
     </div>
+
+    <div class="section-toc" id="section-toc"></div>
 
     <div class="mode-panel active" id="panel-profundo">${renderProfundo(e.profundo, e.id)}${modePagerHTML('profundo')}</div>
     <div class="mode-panel" id="panel-repaso">${renderRepaso(e.repaso, e.id)}${modePagerHTML('repaso')}</div>
@@ -444,8 +466,17 @@ function renderEnfermedad(id){
     micBtn.style.display = 'inline-flex';
   }
 
+  // expande "Apuntes del doctor" automáticamente si ya tiene contenido guardado
+  const dnBox = document.getElementById('doctor-notes-' + e.id);
+  const hasNote = notesAdapter.get(e.id + '::apuntes-doctor').trim().length > 0;
+  const hasDrawing = drawAdapter.get(e.id + '::apuntes-doctor-dibujo').length > 0;
+  if(dnBox && (hasNote || hasDrawing)) dnBox.classList.add('expanded');
+
   // inicializa el lienzo de trazos (debe hacerse después de insertar el HTML)
   initDrawPad(e.id + '::apuntes-doctor-dibujo');
+
+  // construye el índice interno (mini-TOC) para el modo activo
+  buildSectionToc('panel-profundo', 'section-toc');
 }
 
 /* ---------- dictado por voz para "Apuntes del doctor" (Chrome/Android; no soportado en Safari/iOS) ---------- */
@@ -495,11 +526,29 @@ function toggleDictado(diseaseId){
   rec.start();
 }
 
+function buildSectionToc(containerId, tocId){
+  const container = document.getElementById(containerId);
+  const tocEl = document.getElementById(tocId);
+  if(!container || !tocEl) return;
+  const cards = container.querySelectorAll(':scope > .kcard, :scope > .mcard, :scope > .ccard, :scope > .pcard, :scope > .rcard, :scope > .illustration-card, :scope > .doctor-notes');
+  const pills = [];
+  cards.forEach((card, i) => {
+    const h3 = card.querySelector('h3');
+    if(!h3) return;
+    const secId = `${containerId}-sec-${i}`;
+    card.id = secId;
+    const label = h3.textContent.replace(/[🧬🔗⭐🚩⚠️✨👨‍⚕️]/g, '').trim();
+    pills.push(`<span class="section-toc-item" onclick="document.getElementById('${secId}').scrollIntoView({behavior:'smooth', block:'start'})">${label}</span>`);
+  });
+  tocEl.innerHTML = pills.join('');
+}
+
 function switchMode(tabEl, mode){
   document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
   tabEl.classList.add('active');
   document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('panel-' + mode).classList.add('active');
+  buildSectionToc('panel-' + mode, 'section-toc');
   window.scrollTo(0,0);
 }
 function switchModeByName(mode){
