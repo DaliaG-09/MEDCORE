@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -71,6 +71,7 @@ function navRenderCurrent(){
     case 'enfermedad': renderEnfermedad(top.id); break;
     case 'tema': renderTema(top.id); break;
     case 'cuaderno': renderCuaderno(top.id); break;
+    case 'quiz': renderQuiz(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -405,6 +406,7 @@ function renderEnfermedad(id){
         <h1 class="page-title">${e.nombre}</h1>
       </div>
       <div class="toolbar">
+        <div class="btn-icon" onclick="navQuiz('${e.id}')">🧠 Ponte a prueba</div>
         <div class="btn-icon" onclick="navCuaderno('enfermedad','${e.id}')">📓 Cuaderno de clase</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${e.estudiado ? 'done' : ''}" onclick="toggleEstudiado('${e.id}', true)">${e.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
