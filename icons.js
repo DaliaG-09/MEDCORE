@@ -48,6 +48,71 @@ function cascadeCategoryFor(pasoNombre){
   if(key.includes('fisiológ') || key.includes('fisiolog')) return 'physiological';
   return 'clinical';
 }
+/* ilustración: alvéolo normal vs. consolidado (infeccioso) —
+   para enfermedades que afectan la zona respiratoria/alveolar
+   en vez de la vía aérea de conducción (ej. neumonías) */
+function alveoloIllustration(){
+  return `
+  <svg viewBox="0 0 520 190" width="100%" height="auto" role="img" aria-label="Alvéolo normal comparado con alvéolo consolidado por infección">
+    <!-- normal -->
+    <g transform="translate(24,14)">
+      <circle cx="86" cy="80" r="74" fill="#f1eefd"/>
+      <circle cx="60" cy="60" r="30" fill="#e9f6ef" stroke="#78C9A3" stroke-width="4"/>
+      <circle cx="105" cy="55" r="24" fill="#e9f6ef" stroke="#78C9A3" stroke-width="4"/>
+      <circle cx="70" cy="100" r="26" fill="#e9f6ef" stroke="#78C9A3" stroke-width="4"/>
+      <circle cx="112" cy="100" r="22" fill="#e9f6ef" stroke="#78C9A3" stroke-width="4"/>
+      <text x="86" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#6b6b82" letter-spacing="0.02em">Alvéolos con aire (normal)</text>
+    </g>
+    <!-- flecha -->
+    <g transform="translate(226,86)">
+      <path d="M0 0 C 20 -14, 40 -14, 60 0" fill="none" stroke="#9B8AF2" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M54 -7 L62 0 L53 5 Z" fill="#9B8AF2"/>
+    </g>
+    <!-- consolidado -->
+    <g transform="translate(322,14)">
+      <circle cx="86" cy="80" r="74" fill="#fdece8"/>
+      <circle cx="60" cy="60" r="30" fill="#D95C65" opacity="0.75"/>
+      <circle cx="105" cy="55" r="24" fill="#D95C65" opacity="0.75"/>
+      <circle cx="70" cy="100" r="26" fill="#D95C65" opacity="0.75"/>
+      <circle cx="112" cy="100" r="22" fill="#D95C65" opacity="0.75"/>
+      <circle cx="60" cy="60" r="8" fill="#fff" opacity="0.5"/>
+      <circle cx="105" cy="55" r="6" fill="#fff" opacity="0.5"/>
+      <text x="86" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#a5333c" letter-spacing="0.02em">Alvéolos llenos de exudado</text>
+    </g>
+  </svg>`;
+}
+
+/* ============================================================
+   DIAGRAMA DE ALGORITMO / FLUJO DE DECISIÓN
+   Para decisiones clínicas ramificadas (ej. dónde tratar a un
+   paciente con NAC, o el camino diagnóstico de una enfermedad).
+   Cada nodo puede ser un paso normal o una decisión con 2+
+   salidas etiquetadas. Vector propio, funciona offline.
+   ============================================================ */
+function algoritmoDiagramaHTML(pasos){
+  // pasos: [{ tipo:'paso'|'decision', texto:'...', salidas:[{etiqueta,texto,color}] }]
+  const colorFor = (c) => ({ mint:'#78C9A3', coral:'#F28B7B', alert:'#D95C65', cobalt:'#5267E8', lavender:'#9B8AF2' }[c] || '#9B8AF2');
+  return `
+    <div class="algo-diagram">
+      ${pasos.map((p, i) => `
+        <div class="algo-node ${p.tipo === 'decision' ? 'algo-decision' : 'algo-paso'}">
+          <div class="algo-node-text">${p.texto}</div>
+          ${p.salidas ? `
+            <div class="algo-branches">
+              ${p.salidas.map(s => `
+                <div class="algo-branch" style="--branch-color:${colorFor(s.color)}">
+                  <span class="algo-branch-label" style="background:${colorFor(s.color)}">${s.etiqueta}</span>
+                  <div class="algo-branch-text">${s.texto}</div>
+                </div>
+              `).join('')}
+            </div>` : ''}
+        </div>
+        ${i < pasos.length - 1 && p.tipo !== 'decision' ? '<div class="algo-arrow">↓</div>' : ''}
+      `).join('')}
+    </div>
+  `;
+}
+
 function cascadeIconFor(pasoNombre){
   return CASCADE_ICONS[cascadeCategoryFor(pasoNombre)];
 }
