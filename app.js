@@ -59,9 +59,9 @@ function renderInicio(){
         <h1>${saludoSegunHora()}, Dalia 👋</h1>
         <p>Esta semana tienes ${total} enfermedades para revisar. Vas ${estudiadas}/${total}.</p>
       </div>
-      <div class="greeting-mark">${nexuSVG(completada ? 'celebrando' : 'idle')}</div>
+      <div class="greeting-mark"><img src="assets/nexu-logo.svg" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
     </div>
-    ${completada ? nexuMessageHTML('<strong>✦ ¡Semana completada!</strong> Revisaste todas las enfermedades de esta semana. Buen trabajo.', 'celebrando') : ''}
+    ${completada ? nexuMessageHTML('<strong>✦ ¡Semana completada!</strong> Revisaste todas las enfermedades de esta semana. Buen trabajo.') : ''}
   `;
 
   const wrap = document.getElementById('inicio-semana-actual');
@@ -177,7 +177,7 @@ function renderEnfermedad(id){
       </div>
     </div>
 
-    ${e.estudiado ? nexuMessageHTML('<strong>¡Bien!</strong> Ya marcaste esta enfermedad como estudiada.', 'celebrando') : ''}
+    ${e.estudiado ? nexuMessageHTML('<strong>¡Bien!</strong> Ya marcaste esta enfermedad como estudiada.') : ''}
 
     ${esRespiratoria ? `
       <div class="illustration-card">
@@ -475,7 +475,6 @@ function initSearch(){
 /* ---------- init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   loadFlags();
-  document.getElementById('brand-mark-slot').innerHTML = brandMarkSVG();
   renderInicio();
   initSearch();
   showView('view-inicio');
