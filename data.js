@@ -34,6 +34,7 @@ const ENFERMEDADES = [
     semanas: ["semana-03"],
     favorito: false,
     estudiado: false,
+    ilustracion: "assets/epoc-airway.svg",
 
     profundo: {
       definicion: "Enfermedad respiratoria caracterizada por limitación crónica y progresiva del flujo aéreo, poco reversible, asociada a una respuesta inflamatoria anormal de la vía aérea y el parénquima pulmonar frente a partículas o gases nocivos, principalmente el humo de tabaco.",
