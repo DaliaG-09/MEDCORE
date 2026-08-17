@@ -334,6 +334,20 @@ h1.page-title{
   width:100%; min-height:64px; resize:vertical; border:1px solid var(--honey-line); border-radius: var(--radius-sm);
   padding:9px 12px; font-family: var(--font-body); font-size:13.5px; background:#fff; color: var(--ink);
 }
+
+/* ---------- lienzo de trazos a mano ---------- */
+.draw-block{ margin-top:12px; }
+.draw-toolbar{ display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
+.draw-label{ font-family: var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:#9a6b1a; font-weight:700; margin-right:4px; }
+.swatch{
+  width:20px; height:20px; border-radius:50%; cursor:pointer; border:2px solid transparent;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.swatch.active{ border-color:#fff; box-shadow: 0 0 0 2px var(--ink); }
+.draw-canvas{
+  width:100%; height:220px; touch-action:none; cursor:crosshair;
+  background:#fff; border:1px solid var(--honey-line); border-radius: var(--radius-sm); display:block;
+}
 .mic-btn.recording{
   background: var(--alert-soft); border-color: var(--alert-line); color: var(--alert);
   animation: pulse-rec 1.4s ease-in-out infinite;
