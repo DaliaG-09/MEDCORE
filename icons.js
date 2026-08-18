@@ -201,7 +201,7 @@ function nexuSVG(pose){
 function nexuMessageHTML(texto){
   return `
     <div class="nexu-msg">
-      <div class="nexu-inline"><img src="assets/nexu-logo.svg" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
+      <div class="nexu-inline"><img src="icon-192.png" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
       <div>${texto}</div>
     </div>
   `;
