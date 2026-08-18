@@ -116,7 +116,7 @@ const notesAdapter = {
 };
 
 /* Escucha cambios remotos (ej. escribiste en el celular) y actualiza
-   el textarea en pantalla si está abierto, sin que pierdas lo que
+   el div editable en pantalla si está abierto, sin que pierdas lo que
    estés escribiendo en este dispositivo en ese instante. */
 function attachRemoteListeners(){
   fbDb.collection('users').doc(currentUser.uid).collection('notes')
@@ -127,25 +127,29 @@ function attachRemoteListeners(){
         localStorage.setItem('medcore-note::' + key, remoteText);
         const el = activeTextareas[key];
         if(el && document.activeElement !== el){
-          el.value = remoteText;
+          el.innerHTML = remoteText;
         }
       });
     }, () => { /* offline: Firestore sigue sirviendo la última copia en caché */ });
 }
 
-/* ---------- bloque de apunte (igual API que antes) ---------- */
+/* Devuelve el HTML de un bloque de apunte para una clave dada
+   (ej. "epoc::profundo" o "epoc::fisiopatologia"). Usa un div
+   editable (no textarea) para poder resaltar texto dentro. */
 function noteBlockHTML(key, placeholder){
   const value = notesAdapter.get(key);
   const safeId = 'note-' + key.replace(/[^a-z0-9]/gi, '-');
+  // compatibilidad: notas viejas guardadas como texto plano se muestran igual dentro del div
+  const htmlValue = /<[a-z][\s\S]*>/i.test(value) ? value : value.replace(/\n/g, '<br>');
   return `
     <div class="note-block">
       <div class="note-head">
         <span class="note-label">✎ Mi apunte</span>
         <span class="note-status" id="${safeId}-status"></span>
       </div>
-      <textarea class="note-textarea" id="${safeId}"
-        placeholder="${placeholder || 'Escribe aquí lo que quieras recordar de esta sección...'}"
-        oninput="handleNoteInput('${key}','${safeId}')">${value}</textarea>
+      <div class="note-editable hl-zone" id="${safeId}" contenteditable="true" data-hl-key="note::${key}"
+        data-placeholder="${placeholder || 'Escribe aquí lo que quieras recordar de esta sección...'}"
+        oninput="handleNoteInput('${key}','${safeId}')">${htmlValue}</div>
     </div>
   `;
 }
@@ -158,7 +162,7 @@ function handleNoteInput(key, elId){
   status.textContent = 'escribiendo…';
   clearTimeout(noteSaveTimers[key]);
   noteSaveTimers[key] = setTimeout(() => {
-    notesAdapter.set(key, el.value);
+    notesAdapter.set(key, el.innerHTML);
     status.textContent = currentUser ? 'sincronizado ✓' : 'guardado en este dispositivo';
     setTimeout(() => { if(status) status.textContent = ''; }, 2000);
   }, 500);
