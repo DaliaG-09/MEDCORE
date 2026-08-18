@@ -86,17 +86,30 @@ const SEMANAS = [
       {
         "dia": "Lunes",
         "tipo": "teoria",
-        "tema": "TALLER APLICATIVO: IMÁGENES / Análisis de Gases Arteriales: Bases Fisiopatológicas e interpretación clínica"
+        "tema": "TALLER APLICATIVO: IMÁGENES / Análisis de Gases Arteriales: Bases Fisiopatológicas e interpretación clínica",
+        "vinculos": [
+          { "tipo": "tema", "id": "analisis-gases-arteriales" },
+          { "tipo": "tema", "id": "examenes-diagnostico-neumo" }
+        ]
       },
       {
         "dia": "Miércoles",
         "tipo": "teoria",
-        "tema": "Control de lectura: Raymond, T., & Peterson, T. (2023). Chronic Asthma Treatment: Common Q / Enfermedad Pulmonar Obstructiva Crónica / Enfermedades Pleurales: Neumotórax, Hemotórax, Derrame Pleural y Empiema. Etiología, fisiopatología, cuadro clínico, tratamiento, complicaciones y prevención."
+        "tema": "Control de lectura: Raymond, T., & Peterson, T. (2023). Chronic Asthma Treatment: Common Q / Enfermedad Pulmonar Obstructiva Crónica / Enfermedades Pleurales: Neumotórax, Hemotórax, Derrame Pleural y Empiema. Etiología, fisiopatología, cuadro clínico, tratamiento, complicaciones y prevención.",
+        "vinculos": [
+          { "tipo": "lectura", "id": "lectura-s2-5" },
+          { "tipo": "enfermedad", "id": "epoc" },
+          { "tipo": "enfermedad", "id": "enfermedades-pleurales" }
+        ]
       },
       {
         "dia": "Viernes",
         "tipo": "teoria",
-        "tema": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES / Tuberculosis Pulmonar. Epidemiología, etiología, cuadro clínico, diagnóstico, tratamiento, complicaciones y prevención / EXPOSICIÓN: NEUMONÍA ADQUIRIDA EN LA COMUNIDAD"
+        "tema": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES / Tuberculosis Pulmonar. Epidemiología, etiología, cuadro clínico, diagnóstico, tratamiento, complicaciones y prevención / EXPOSICIÓN: NEUMONÍA ADQUIRIDA EN LA COMUNIDAD",
+        "vinculos": [
+          { "tipo": "tema", "id": "analisis-gases-arteriales" },
+          { "tipo": "enfermedad", "id": "tuberculosis-pulmonar" }
+        ]
       }
     ],
     "talleres": [
@@ -111,7 +124,12 @@ const SEMANAS = [
       "lectura-s2-5"
     ],
     "enfermedades": [
-      "epoc"
+      "epoc",
+      "enfermedades-pleurales",
+      "tuberculosis-pulmonar"
+    ],
+    "temas": [
+      "analisis-gases-arteriales"
     ]
   },
   {
@@ -1692,7 +1710,471 @@ const ENFERMEDADES = [
         }
     ]
   }
-];
+,
+  {
+    "id": "tuberculosis-pulmonar",
+    "nombre": "Tuberculosis Pulmonar",
+    "area": "Neumología",
+    "semanas": [
+      "semana-02"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "relacionadas": [
+      {
+        "id": "neumonia-nac",
+        "relacion": "Diagnóstico diferencial importante en tos crónica con pérdida de peso — la TB tiene curso más insidioso (semanas), la NAC es aguda (días)"
+      }
+    ],
+    "profundo": {
+      "definicion": "Enfermedad infecciosa causada por Mycobacterium tuberculosis (bacilo de Koch), que afecta principalmente el parénquima pulmonar aunque puede diseminarse a cualquier órgano. El ser humano es el único reservorio conocido; la micobacteria actúa como parásito intracelular que infecta sin destruir rápidamente a su huésped, lo que le permite persistir y transmitirse a otras personas durante meses o años si no se trata.",
+      "epidemiologia": "Aproximadamente una cuarta parte de la población mundial está infectada por M. tuberculosis (infección latente, no enfermedad activa). Cada año se infectan más de 10 millones de personas y ocurren 1.6 millones de muertes anuales — es la enfermedad infecciosa con mayor mortalidad causada por un único agente a nivel mundial. Afecta predominantemente a población económicamente activa, y su control es un reto de salud pública por la resistencia a fármacos y su asociación con VIH y diabetes mellitus.",
+      "etiologiaFactoresRiesgo": [
+        "Contacto cercano y prolongado con un caso bacilífero (transmisión por aerosoles de 0.65-7 μm expulsados al toser)",
+        "Inmunosupresión — VIH/SIDA es el factor de riesgo más potente para progresión de infección latente a enfermedad activa",
+        "Diabetes mellitus",
+        "Desnutrición y hacinamiento",
+        "Silicosis y otras neumoconiosis",
+        "Uso de corticoides sistémicos o terapia biológica inmunosupresora"
+      ],
+      "fisiopatologia": {
+        "resumen": "La micobacteria es fagocitada por macrófagos alveolares, células dendríticas y neutrófilos, pero tiene la capacidad de evadir la destrucción bloqueando la maduración del fagosoma e impidiendo su fusión con el lisosoma. El sistema inmune responde formando granulomas para contener la infección, lo que en la mayoría de los casos resulta en infección latente (contenida pero no eliminada) en vez de enfermedad activa inmediata.",
+        "explicacionExtendida": "Cuando una persona inhala el bacilo, este llega hasta los alvéolos y es fagocitado por los macrófagos alveolares — el primer paso normal de defensa contra cualquier patógeno inhalado. Sin embargo, M. tuberculosis tiene un mecanismo de evasión inmunitaria muy particular: en vez de ser destruido dentro del fagosoma, bloquea activamente su maduración e impide que se acidifique y se fusione con el lisosoma, evitando así ser degradado. Esto le permite sobrevivir e incluso replicarse dentro del propio macrófago que se suponía debía eliminarlo.\n\nAnte esta persistencia, el sistema inmune organiza una respuesta de contención: células T, macrófagos activados y otras células inmunitarias se agrupan formando el granuloma característico, cuya capa externa está compuesta por linfocitos y fibroblastos que 'encapsulan' el foco infeccioso, muchas veces con necrosis caseosa central. En la mayoría de las personas inmunocompetentes, este granuloma logra contener la infección de forma indefinida — es lo que se llama infección tuberculosa latente (ILTB): la persona está infectada pero no tiene enfermedad activa ni transmite la bacteria. El riesgo real aparece cuando ese equilibrio se rompe (por inmunosupresión, desnutrición, VIH, edad avanzada, diabetes): el granuloma pierde su capacidad de contención, los bacilos se reactivan y proliferan, y la enfermedad se vuelve activa — con capacidad de causar daño tisular real y de transmitirse a otras personas.",
+        "cascada": [
+          {
+            "paso": "Factor desencadenante",
+            "detalle": "Inhalación de bacilos de M. tuberculosis en aerosoles expulsados por un caso bacilífero"
+          },
+          {
+            "paso": "Células activadas",
+            "detalle": "Macrófagos alveolares, células dendríticas y neutrófilos fagocitan al bacilo"
+          },
+          {
+            "paso": "Evasión inmunitaria",
+            "detalle": "El bacilo bloquea la maduración del fagosoma e impide su fusión con el lisosoma — sobrevive dentro del macrófago"
+          },
+          {
+            "paso": "Cambio estructural",
+            "detalle": "Formación de granuloma con necrosis caseosa central para contener la infección"
+          },
+          {
+            "paso": "Cambio fisiológico",
+            "detalle": "Infección latente contenida (mayoría de los casos) o reactivación si el sistema inmune se debilita"
+          },
+          {
+            "paso": "Manifestación clínica",
+            "detalle": "Tos crónica, pérdida de peso, sudoración nocturna, febrícula — solo si progresa a enfermedad activa"
+          }
+        ]
+      },
+      "clinica": [
+        {
+          "signo": "Tos crónica (>2 semanas)",
+          "mecanismo": "Irritación e inflamación de la vía aérea por el proceso infeccioso-granulomatoso activo"
+        },
+        {
+          "signo": "Pérdida de peso y sudoración nocturna",
+          "mecanismo": "Respuesta inflamatoria sistémica sostenida (citocinas como TNF-alfa) que aumenta el catabolismo"
+        },
+        {
+          "signo": "Hemoptisis",
+          "mecanismo": "Erosión de vasos sanguíneos por cavitación del parénquima pulmonar en enfermedad avanzada"
+        }
+      ],
+      "examenFisico": [
+        "Adelgazamiento / caquexia en casos avanzados",
+        "Crépitos en vértices pulmonares (localización típica por la mayor tensión de oxígeno apical)",
+        "Matidez si hay derrame pleural asociado"
+      ],
+      "semiologia": {
+        "inspeccion": "Observa el estado nutricional general — la caquexia es frecuente en TB avanzada ('tisis', término histórico). Busca palidez, y en casos con compromiso pleural, asimetría en la expansión torácica.",
+        "palpacion": "Expansión torácica puede estar disminuida en el lado afectado si hay derrame pleural asociado o fibrosis apical extensa. Frémito vocal aumentado sobre zonas de consolidación, disminuido sobre derrame.",
+        "percusion": "Habitualmente normal en enfermedad localizada leve. Matidez si hay derrame pleural tuberculoso asociado (complicación frecuente).",
+        "auscultacion": "Crépitos localizados típicamente en los vértices pulmonares (a diferencia de la neumonía típica, que predomina en bases) — esto refleja la localización preferencial de la reactivación tuberculosa en los lóbulos superiores, zona de mayor tensión de oxígeno."
+      },
+      "diagnostico": "Baciloscopía de esputo (2 muestras) como prueba inicial de tamizaje; prueba molecular (Xpert MTB/RIF) para diagnóstico rápido y detección simultánea de resistencia a rifampicina; cultivo (método de referencia, más sensible pero demora semanas). Radiografía de tórax: infiltrados cavitados típicamente en lóbulos superiores.",
+      "algoritmo": [
+        {
+          "tipo": "paso",
+          "texto": "Sintomático respiratorio: tos ≥2 semanas — sospecha de TB"
+        },
+        {
+          "tipo": "paso",
+          "texto": "Solicitar baciloscopía de esputo (2 muestras) + prueba molecular rápida si está disponible"
+        },
+        {
+          "tipo": "decision",
+          "texto": "¿Resultado de las pruebas?",
+          "salidas": [
+            {
+              "etiqueta": "Baciloscopía/molecular positiva",
+              "texto": "Caso confirmado — iniciar tratamiento antituberculoso estandarizado (esquema NTS 200-MINSA 2023) y notificar",
+              "color": "alert"
+            },
+            {
+              "etiqueta": "Negativa pero alta sospecha clínico-radiológica",
+              "texto": "Solicitar cultivo (más sensible) — no descartar TB solo con baciloscopía negativa",
+              "color": "coral"
+            },
+            {
+              "etiqueta": "Negativa y baja sospecha",
+              "texto": "Buscar diagnóstico alternativo",
+              "color": "mint"
+            }
+          ]
+        }
+      ],
+      "diagnosticoDiferencial": [
+        "Neumonía adquirida en la comunidad (curso agudo vs. insidioso)",
+        "Cáncer de pulmón",
+        "Micosis pulmonares",
+        "Sarcoidosis"
+      ],
+      "tratamiento": {
+        "noFarmacologico": [
+          "Aislamiento respiratorio hasta negativización bacteriológica en casos bacilíferos",
+          "Consejería y apoyo nutricional",
+          "Estudio de contactos e investigación de casos secundarios"
+        ],
+        "farmacologico": [
+          "Esquema estandarizado según NTS N°200-MINSA/DGIESP-2023: primera fase (2 meses) con Rifampicina + Isoniazida + Pirazinamida + Etambutol diario, seguida de segunda fase (4 meses) con Rifampicina + Isoniazida",
+          "Dosis ajustadas por peso según la norma técnica vigente — no se deben improvisar dosis",
+          "Tratamiento Directamente Observado (DOTS/TAES) para asegurar adherencia completa",
+          "En sospecha o confirmación de resistencia (TB-MDR/XDR): esquemas especializados totalmente orales, manejo por especialista"
+        ]
+      },
+      "complicaciones": [
+        "Derrame pleural tuberculoso",
+        "Hemoptisis masiva por erosión vascular",
+        "Fibrosis pulmonar residual",
+        "Diseminación miliar (hematógena) en inmunosuprimidos",
+        "Resistencia a fármacos (TB-MDR/XDR) por tratamiento incompleto o irregular"
+      ],
+      "prevencion": "Vacuna BCG al nacer (protege principalmente contra formas graves en la infancia, protección variable contra TB pulmonar del adulto). Terapia preventiva con isoniazida en contactos e infección latente de alto riesgo. Medidas de control de infecciones (ventilación, mascarillas) en establecimientos de salud.",
+      "perlasProfundo": "La localización preferencial en vértices pulmonares (a diferencia de la neumonía bacteriana típica de bases) se explica por la mayor tensión de oxígeno en los ápices — M. tuberculosis es un aerobio estricto que prolifera mejor donde hay más oxígeno disponible."
+    },
+    "repaso": {
+      "conceptosClave": [
+        "1/4 de la población mundial tiene infección latente, no enfermedad activa",
+        "El bacilo evade al macrófago bloqueando la fusión fagosoma-lisosoma",
+        "Localización típica: vértices pulmonares (mayor tensión de O2)"
+      ],
+      "clinica": "Tos crónica >2 semanas + pérdida de peso + sudoración nocturna + febrícula — curso insidioso de semanas a meses.",
+      "diagnostico": "Baciloscopía + prueba molecular (Xpert MTB/RIF) ± cultivo. Rx: cavitaciones en lóbulos superiores.",
+      "tratamientoResumen": "Esquema NTS-MINSA 2023: 2 meses RHZE diario + 4 meses RH — siempre DOTS/TAES para asegurar adherencia.",
+      "diferenciales": [
+        {
+          "entidad": "Neumonía adquirida en la comunidad",
+          "clave": "TB es insidiosa (semanas), NAC es aguda (días); TB predomina en vértices, NAC en bases"
+        },
+        {
+          "entidad": "Cáncer de pulmón",
+          "clave": "Ambos pueden cavitar y perder peso — biopsia/cultivo son clave para diferenciar"
+        }
+      ],
+      "tablaComparativa": {
+        "titulo": "TB pulmonar vs. NAC",
+        "filas": [
+          [
+            "Curso",
+            "Insidioso (semanas)",
+            "Agudo (días)"
+          ],
+          [
+            "Localización típica",
+            "Vértices pulmonares",
+            "Bases pulmonares"
+          ],
+          [
+            "Síntomas sistémicos",
+            "Pérdida de peso, sudoración nocturna",
+            "Fiebre alta, escalofríos"
+          ]
+        ]
+      }
+    },
+    "imprescindible": {
+      "loQueSiOSiDebesSaber": [
+        "Todo sintomático respiratorio (tos ≥2 semanas) debe estudiarse para TB",
+        "Una baciloscopía negativa NO descarta TB si la sospecha clínico-radiológica es alta — pedir cultivo",
+        "El tratamiento SIEMPRE debe ser supervisado (DOTS/TAES) — el abandono es la principal causa de resistencia",
+        "La localización en vértices pulmonares es un dato semiológico clave a diferencia de la neumonía típica"
+      ],
+      "redFlags": [
+        "Hemoptisis en paciente con TB conocida o sospechada → posible erosión vascular, requiere evaluación urgente",
+        "Paciente VIH positivo con síntomas respiratorios → umbral de sospecha de TB debe ser muy bajo"
+      ],
+      "erroresFrecuentes": [
+        "Descartar TB solo por una baciloscopía negativa",
+        "No investigar contactos del caso índice",
+        "Modificar el esquema de tratamiento sin indicación de especialista"
+      ],
+      "asociacionesClinicas": [
+        "TB + derrame pleural unilateral exudativo con ADA elevado → altamente sugestivo de pleuritis tuberculosa",
+        "TB + VIH → mayor riesgo de formas atípicas y diseminadas (miliar)"
+      ]
+    },
+    "casosClinicos": [
+      {
+        "nivel": "intermedio",
+        "vineta": "Varón de 32 años, procedente de zona urbana marginal, consulta por tos productiva de 2 meses, pérdida de peso de 6 kg y sudoración nocturna. Al examen: adelgazado, crépitos en vértices pulmonares.",
+        "preguntaMC": {
+          "enunciado": "¿Cuál es el estudio inicial más apropiado para confirmar la sospecha diagnóstica?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Hemograma completo únicamente"
+            },
+            {
+              "id": "b",
+              "texto": "Baciloscopía de esputo (2 muestras) y/o prueba molecular rápida"
+            },
+            {
+              "id": "c",
+              "texto": "Broncoscopía de entrada, sin estudios previos"
+            },
+            {
+              "id": "d",
+              "texto": "Iniciar antibiótico empírico para neumonía y reevaluar en una semana"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "Ante todo sintomático respiratorio (tos ≥2 semanas) con datos sugestivos de TB (pérdida de peso, sudoración nocturna, localización apical), el estudio inicial estándar es la baciloscopía de esputo, idealmente complementada con prueba molecular rápida (Xpert MTB/RIF) que además detecta resistencia a rifampicina."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Qué hallazgo esperarías en la radiografía de tórax de este paciente, y por qué se localiza ahí?",
+          "respuestaModelo": "Esperaría infiltrados cavitados en los lóbulos superiores (vértices pulmonares). Esto se debe a que M. tuberculosis es un aerobio estricto que prolifera mejor en zonas con mayor tensión de oxígeno, y los vértices pulmonares tienen precisamente mayor ventilación relativa a perfusión (mayor PO2 local) que las bases — por eso la reactivación tuberculosa tiene esa localización característica, a diferencia de procesos infecciosos típicos como la neumonía bacteriana, que predominan en las bases."
+        }
+      }
+    ]
+  },
+  {
+    "id": "enfermedades-pleurales",
+    "nombre": "Enfermedades Pleurales: Neumotórax, Hemotórax, Derrame Pleural y Empiema",
+    "area": "Neumología",
+    "semanas": [
+      "semana-02"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "tipoIlustracion": "alveolar",
+    "relacionadas": [
+      {
+        "id": "neumonia-nac",
+        "relacion": "El derrame paraneumónico es una complicación frecuente de la NAC (hasta 40% de las neumonías bacterianas hospitalizadas) — puede evolucionar a empiema si no se trata"
+      }
+    ],
+    "profundo": {
+      "definicion": "Grupo de condiciones que comparten la afectación del espacio pleural, el espacio virtual entre la pleura visceral y parietal. El neumotórax es la acumulación de aire en ese espacio; el hemotórax, de sangre; el derrame pleural, de líquido (trasudado o exudado); y el empiema es un derrame pleural infectado con pus franco.",
+      "epidemiologia": "El neumotórax espontáneo primario tiene una incidencia de 4 por 100,000 hombres y 1.1 por 100,000 mujeres, típicamente en varones jóvenes altos y delgados. El derrame paraneumónico complica hasta 40% de las neumonías bacterianas que requieren hospitalización.",
+      "etiologiaFactoresRiesgo": [
+        "Neumotórax primario: ruptura espontánea de bullas subpleurales en varones jóvenes altos y delgados, tabaquismo/vapeo, maniobra de Valsalva",
+        "Neumotórax secundario: enfermedad pulmonar de base (EPOC, fibrosis quística, asma), síndromes genéticos (Marfan, Ehlers-Danlos, Birt-Hogg-Dubé)",
+        "Derrame pleural — trasudado: insuficiencia cardiaca, cirrosis, síndrome nefrótico (alteración de presiones hidrostática/oncótica, pleura no enferma)",
+        "Derrame pleural — exudado: neumonía (paraneumónico), tuberculosis, neoplasia (pleura inflamada o infiltrada)",
+        "Hemotórax: trauma torácico, iatrogenia (procedimientos), rotura de aneurisma",
+        "Empiema: derrame paraneumónico no tratado que se sobreinfecta"
+      ],
+      "fisiopatologia": {
+        "resumen": "El espacio pleural normal tiene presión negativa que mantiene el pulmón expandido pegado a la pared torácica. Cualquier proceso que introduzca aire, líquido o sangre en ese espacio rompe ese equilibrio de presión negativa, permitiendo que el pulmón colapse en mayor o menor grado.",
+        "explicacionExtendida": "En el neumotórax, la entrada de aire al espacio pleural elimina la presión negativa que normalmente 'pega' el pulmón a la pared torácica, permitiendo que el pulmón se retraiga por su propia elasticidad — el grado de colapso depende de cuánto aire haya entrado. La variante más peligrosa es el neumotórax a tensión: aquí existe un mecanismo de válvula unidireccional que permite que entre aire al espacio pleural con cada inspiración pero no permite que salga, generando una presión positiva progresivamente creciente que no solo colapsa el pulmón ipsilateral sino que empuja el mediastino hacia el lado contrario, comprimiendo el pulmón sano y acodando las venas cavas — esto compromete el retorno venoso al corazón y puede llevar a shock obstructivo en minutos si no se descomprime de urgencia.\n\nEn el derrame pleural, la clave fisiopatológica está en distinguir trasudado de exudado, porque apuntan a mecanismos completamente distintos. El trasudado ocurre cuando las presiones hidrostática y oncótica sistémicas están alteradas (por ejemplo, insuficiencia cardiaca que eleva la presión hidrostática capilar, o cirrosis/síndrome nefrótico que bajan la presión oncótica por hipoalbuminemia) — la pleura en sí está sana, simplemente 'rezuma' líquido por el desequilibrio de presiones a distancia. El exudado, en cambio, refleja una pleura enferma: inflamación (neumonía), infiltración tumoral, o aumento de la permeabilidad capilar local — por eso los criterios de Light comparan las proteínas y LDH del líquido pleural con las del suero, para diferenciar si el problema es sistémico (trasudado) o local en la pleura misma (exudado). El empiema es la evolución de un derrame paraneumónico no resuelto: las bacterias colonizan el líquido pleural, se organiza pus franco, y con el tiempo se pueden formar loculaciones fibrosas que dificultan el drenaje simple.",
+        "cascada": [
+          {
+            "paso": "Factor desencadenante",
+            "detalle": "Ruptura de bulla subpleural (neumotórax), inflamación pleural por neumonía adyacente (derrame paraneumónico), o trauma (hemotórax)"
+          },
+          {
+            "paso": "Cambio estructural",
+            "detalle": "Pérdida de la presión negativa pleural normal por entrada de aire, líquido o sangre al espacio pleural"
+          },
+          {
+            "paso": "Cambio fisiológico",
+            "detalle": "Colapso parcial o total del pulmón ipsilateral; en neumotórax a tensión, además desplazamiento mediastínico"
+          },
+          {
+            "paso": "Manifestación clínica",
+            "detalle": "Disnea, dolor torácico pleurítico, y hallazgos físicos específicos según el contenido del espacio pleural (timpanismo en neumotórax, matidez en derrame/hemotórax)"
+          }
+        ]
+      },
+      "clinica": [
+        {
+          "signo": "Disnea de inicio súbito + dolor torácico pleurítico (neumotórax)",
+          "mecanismo": "Colapso pulmonar agudo que reduce la superficie de intercambio gaseoso disponible"
+        },
+        {
+          "signo": "Desviación traqueal contralateral + hipotensión (neumotórax a tensión)",
+          "mecanismo": "Presión positiva intrapleural progresiva que desplaza el mediastino y compromete el retorno venoso"
+        },
+        {
+          "signo": "Disnea progresiva con derrame pleural extenso",
+          "mecanismo": "Compresión pulmonar por el líquido acumulado, reduciendo el volumen pulmonar funcional"
+        }
+      ],
+      "examenFisico": [
+        "Neumotórax: hiperresonancia/timpanismo a la percusión, murmullo vesicular abolido, expansión torácica disminuida",
+        "Derrame pleural: matidez a la percusión, murmullo vesicular abolido, frémito vocal disminuido",
+        "Neumotórax a tensión: además, desviación traqueal, ingurgitación yugular, hipotensión"
+      ],
+      "semiologia": {
+        "inspeccion": "Busca asimetría en la expansión torácica, uso de músculos accesorios, y en el neumotórax a tensión, desviación visible de la tráquea hacia el lado sano e ingurgitación yugular por el compromiso del retorno venoso.",
+        "palpacion": "Expansión torácica disminuida en el lado afectado en ambas condiciones. El frémito vocal está DISMINUIDO en ambas (aire o líquido conducen peor las vibraciones que el tejido pulmonar sano) — por eso el frémito NO ayuda a diferenciarlas; la clave está en la percusión.",
+        "percusion": "Este es el hallazgo que SÍ diferencia ambas condiciones: hiperresonancia/timpanismo en el neumotórax (aire = más resonante de lo normal) versus matidez en el derrame pleural o hemotórax (líquido = menos resonante, más 'sólido' al percutir).",
+        "auscultacion": "Murmullo vesicular abolido o muy disminuido sobre la zona afectada en ambas condiciones — el aire o el líquido interpuesto entre el pulmón y el estetoscopio bloquea la transmisión del sonido respiratorio normal."
+      },
+      "diagnostico": "Neumotórax: radiografía de tórax (línea pleural visible separando el pulmón colapsado de la pared torácica); TC no se recomienda de rutina por baja sensibilidad adicional. Derrame pleural: radiografía (borramiento del ángulo costofrénico, signo del menisco) + toracocentesis diagnóstica con análisis del líquido (criterios de Light: es exudado si cumple al menos 1 de: proteínas líquido/suero >0.5, LDH líquido/suero >0.6, o LDH líquido > 2/3 del límite superior normal en suero).",
+      "algoritmo": [
+        {
+          "tipo": "paso",
+          "texto": "Paciente con disnea + dolor torácico pleurítico — sospecha de patología pleural"
+        },
+        {
+          "tipo": "paso",
+          "texto": "Radiografía de tórax urgente"
+        },
+        {
+          "tipo": "decision",
+          "texto": "¿Qué muestra la imagen y cómo está el paciente hemodinámicamente?",
+          "salidas": [
+            {
+              "etiqueta": "Línea pleural + inestabilidad hemodinámica/desviación traqueal",
+              "texto": "Neumotórax a TENSIÓN — descompresión con aguja INMEDIATA, no esperar más estudios",
+              "color": "alert"
+            },
+            {
+              "etiqueta": "Línea pleural, estable",
+              "texto": "Neumotórax simple — observación vs. drenaje según tamaño y síntomas",
+              "color": "coral"
+            },
+            {
+              "etiqueta": "Opacidad con borramiento del ángulo costofrénico",
+              "texto": "Derrame pleural — toracocentesis diagnóstica, aplicar criterios de Light",
+              "color": "cobalt"
+            }
+          ]
+        }
+      ],
+      "diagnosticoDiferencial": [
+        "Tromboembolismo pulmonar (disnea súbita + dolor pleurítico, sin los hallazgos de percusión característicos)",
+        "Infarto agudo de miocardio (dolor torácico, ECG diferencia)",
+        "Neumonía sin derrame asociado"
+      ],
+      "tratamiento": {
+        "noFarmacologico": [
+          "Neumotórax a tensión: descompresión con aguja de urgencia (2do espacio intercostal, línea medioclavicular) seguida de tubo torácico",
+          "Neumotórax simple pequeño: observación con oxígeno suplementario",
+          "Neumotórax grande o sintomático: drenaje con tubo torácico",
+          "Derrame pleural sintomático grande: toracocentesis terapéutica evacuadora",
+          "Empiema: drenaje torácico obligatorio ± fibrinolíticos intrapleurales si hay loculaciones, considerar cirugía (decorticación) si no resuelve"
+        ],
+        "farmacologico": [
+          "Empiema/derrame paraneumónico complicado: antibióticos dirigidos según cultivo del líquido pleural, igual que en NAC/nosocomial según el contexto de adquisición",
+          "Analgesia para el dolor pleurítico"
+        ]
+      },
+      "complicaciones": [
+        "Neumotórax a tensión no tratado: shock obstructivo y paro cardiorrespiratorio",
+        "Empiema no drenado: sepsis, fibrotórax (pulmón atrapado por fibrosis pleural)",
+        "Recurrencia de neumotórax espontáneo (hasta 30-50% tras el primer episodio sin intervención definitiva)"
+      ],
+      "prevencion": "Cese de tabaquismo/vapeo reduce el riesgo de neumotórax espontáneo. El manejo oportuno del derrame paraneumónico (antes de que se infecte) previene la progresión a empiema.",
+      "perlasProfundo": "El frémito vocal NO diferencia neumotórax de derrame pleural (ambos lo disminuyen) — la percusión SÍ los diferencia: timpanismo (neumotórax, más aire) vs. matidez (derrame, más líquido). Este es un punto que se presta a confusión frecuente en el examen físico y en exámenes."
+    },
+    "repaso": {
+      "conceptosClave": [
+        "Neumotórax = aire en espacio pleural; derrame = líquido; hemotórax = sangre; empiema = derrame infectado con pus",
+        "Percusión diferencia neumotórax (timpanismo) de derrame (matidez) — el frémito NO los diferencia",
+        "Neumotórax a tensión = emergencia, descompresión con aguja inmediata"
+      ],
+      "clinica": "Disnea + dolor pleurítico súbito; neumotórax a tensión agrega desviación traqueal e hipotensión.",
+      "diagnostico": "Rx de tórax inicial; toracocentesis + criterios de Light para caracterizar el derrame.",
+      "tratamientoResumen": "Neumotórax a tensión: aguja urgente. Neumotórax simple: observación o tubo torácico según tamaño. Derrame/empiema: toracocentesis ± drenaje según criterios de Light y presencia de infección.",
+      "diferenciales": [
+        {
+          "entidad": "TEP",
+          "clave": "Disnea súbita + dolor pleurítico SIN los hallazgos de percusión característicos de neumotórax/derrame"
+        },
+        {
+          "entidad": "Neumonía sin derrame",
+          "clave": "Matidez presente pero con crépitos y broncofonía en vez de abolición completa del murmullo vesicular"
+        }
+      ],
+      "tablaComparativa": {
+        "titulo": "Neumotórax vs. Derrame pleural",
+        "filas": [
+          [
+            "Percusión",
+            "Timpanismo/hiperresonancia",
+            "Matidez"
+          ],
+          [
+            "Frémito vocal",
+            "Disminuido",
+            "Disminuido (igual, no diferencia)"
+          ],
+          [
+            "Contenido",
+            "Aire",
+            "Líquido (trasudado, exudado, sangre o pus)"
+          ]
+        ]
+      }
+    },
+    "imprescindible": {
+      "loQueSiOSiDebesSaber": [
+        "El neumotórax a tensión es una emergencia clínica — se trata con descompresión con aguja, NO se espera a la radiografía si hay inestabilidad hemodinámica franca",
+        "Percusión diferencia neumotórax (timpanismo) de derrame (matidez); el frémito vocal NO los diferencia (disminuido en ambos)",
+        "Los criterios de Light distinguen exudado de trasudado — esencial para orientar la causa del derrame",
+        "El derrame paraneumónico no tratado puede evolucionar a empiema, que requiere drenaje obligatorio"
+      ],
+      "redFlags": [
+        "Desviación traqueal + hipotensión + ingurgitación yugular en paciente con dolor torácico → neumotórax a tensión, actuar de inmediato",
+        "Derrame pleural con pH <7.2 o glucosa muy baja en el líquido → sugiere empiema, requiere drenaje urgente"
+      ],
+      "erroresFrecuentes": [
+        "Esperar la radiografía de tórax antes de descomprimir un neumotórax a tensión clínicamente evidente",
+        "Usar el frémito vocal para diferenciar neumotórax de derrame (no sirve para eso)",
+        "No aplicar los criterios de Light sistemáticamente ante todo derrame pleural nuevo"
+      ],
+      "asociacionesClinicas": [
+        "Varón joven, alto y delgado + dolor torácico súbito → pensar en neumotórax espontáneo primario",
+        "Neumonía que no mejora con antibiótico adecuado + fiebre persistente → sospechar derrame paraneumónico complicado o empiema"
+      ]
+    },
+    "casosClinicos": [
+      {
+        "nivel": "basico",
+        "vineta": "Varón de 22 años, previamente sano, presenta dolor torácico súbito y disnea de inicio brusco tras ejercicio intenso. Al examen: tráquea central, hiperresonancia y ausencia de murmullo vesicular en hemitórax derecho.",
+        "preguntaMC": {
+          "enunciado": "¿Cuál es el diagnóstico más probable y qué lo distingue de un neumotórax a tensión?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Neumotórax a tensión, porque tiene dolor torácico súbito"
+            },
+            {
+              "id": "b",
+              "texto": "Neumotórax espontáneo primario simple — la tráquea central (no desviada) y la ausencia de compromiso hemodinámico descartan tensión"
+            },
+            {
+              "id": "c",
+              "texto": "Derrame pleural, por la disnea"
+            },
+            {
+              "id": "d",
+              "texto": "Neumonía, por el dolor torácico"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "El perfil (varón joven, alto/delgado típico, dolor súbito tras esfuerzo) junto con hiperresonancia y murmullo vesicular abolido es compatible con neumotórax. La tráquea CENTRAL (no desviada) es la clave que descarta neumotórax a TENSIÓN — en ese caso, sí esperaríamos desviación traqueal contralateral e inestabilidad hemodinámica."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Si este mismo paciente, minutos después, desarrolla hipotensión y desviación traqueal hacia el lado izquierdo, ¿qué harías de inmediato y por qué no debes esperar la radiografía?",
+          "respuestaModelo": "Realizaría descompresión con aguja de urgencia en el segundo espacio intercostal, línea medioclavicular del lado afectado (derecho), sin esperar confirmación radiológica. Esto se debe a que los signos (hipotensión + desviación traqueal contralateral) indican que el neumotórax simple ha evolucionado a neumotórax a TENSIÓN, una emergencia donde la presión intrapleural creciente compromete el retorno venoso al corazón — cada minuto de retraso aumenta el riesgo de shock obstructivo y paro cardiorrespiratorio, por lo que el diagnóstico y tratamiento deben ser clínicos e inmediatos, no esperar estudios de imagen."
+        }
+      }
+    ]
+  }];
 
 /* ============================================================
    TEMAS — contenido que NO es una enfermedad: anatomía,
@@ -1775,7 +2257,113 @@ const TEMAS = [
       ]
     }
   }
-];
+,
+  {
+    "id": "analisis-gases-arteriales",
+    "nombre": "Análisis de Gases Arteriales: bases fisiopatológicas e interpretación clínica",
+    "area": "Neumología",
+    "tipo": "metodo-diagnostico",
+    "semanas": [
+      "semana-02"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "contenido": {
+      "resumen": "El análisis de gases arteriales (AGA) es la herramienta que permite cuantificar cómo está funcionando el intercambio gaseoso y el equilibrio ácido-base del paciente en tiempo real. Mide cuatro parámetros clave: PaO2 (oxigenación), PaCO2 (ventilación), pH (equilibrio ácido-base) y HCO3- (componente metabólico/renal). Interpretarlo correctamente, paso a paso, es una habilidad que vas a usar constantemente en la práctica clínica — desde una crisis asmática hasta un paciente séptico.",
+      "estructuras": [
+        {
+          "nombre": "PaO2 (presión arterial de oxígeno)",
+          "detalle": "Refleja la oxigenación. Normal: 80-100 mmHg respirando aire ambiental. Se relaciona con el gradiente alveolo-arterial (A-a) y la relación PaFi (PaO2/FiO2) para evaluar la gravedad del compromiso respiratorio."
+        },
+        {
+          "nombre": "PaCO2 (presión arterial de CO2)",
+          "detalle": "Refleja la ventilación alveolar — es el componente RESPIRATORIO del equilibrio ácido-base. Normal: 35-45 mmHg. Sube en hipoventilación (retención de CO2), baja en hiperventilación."
+        },
+        {
+          "nombre": "pH",
+          "detalle": "Refleja el equilibrio ácido-base neto. Normal: 7.35-7.45. <7.35 = acidemia, >7.45 = alcalemia."
+        },
+        {
+          "nombre": "HCO3- (bicarbonato)",
+          "detalle": "Es el componente METABÓLICO/RENAL del equilibrio ácido-base. Normal: 22-26 mEq/L. Los riñones lo ajustan de forma más lenta (días) que los pulmones ajustan el CO2 (minutos-horas) — por eso distingue trastornos agudos de crónicos."
+        }
+      ],
+      "fisiologiaNormal": "El pH sanguíneo se mantiene estable gracias al equilibrio entre dos sistemas que trabajan en direcciones opuestas cuando uno falla: el sistema respiratorio (que ajusta el CO2 en minutos, exhalando más o menos según la ventilación) y el sistema renal (que ajusta el bicarbonato en horas a días, reteniendo o excretando según necesite). Cuando uno de los dos sistemas falla primero (trastorno primario), el otro intenta compensar en la dirección que normaliza el pH — nunca lo sobrecorrige por completo. Por eso, calcular si la compensación es 'la esperada' matemáticamente es la clave para saber si hay un segundo trastorno agregado (mixto) o no.",
+      "correlacionClinica": "La guía práctica de interpretación sigue siempre los mismos 5-6 pasos: 1) ¿Cómo está el pH? (acidemia/alcalemia) 2) ¿Cómo está el PaCO2? (¿explica el pH? = trastorno respiratorio primario) 3) ¿Cómo está el HCO3? (¿explica el pH? = trastorno metabólico primario) 4) Calcular la compensación esperada con la fórmula correspondiente y comparar con el HCO3/CO2 real — si no coincide, hay un trastorno mixto agregado. 5) Calcular la PaFi (PaO2/FiO2) para cuantificar la gravedad de la hipoxemia. 6) Integrar todo con la clínica del paciente para llegar al diagnóstico fisiopatológico completo (ej. 'acidosis respiratoria aguda sobre crónica en paciente con EPOC reagudizado').",
+      "puntosClave": [
+        "PaCO2 = componente respiratorio; HCO3- = componente metabólico/renal",
+        "Acidosis respiratoria: HCO3 esperado = 24 + [(PaCO2-40)/10] — si es agudo, sube poco; si es crónico, sube más (compensación renal ya establecida)",
+        "Alcalosis respiratoria: HCO3 esperado = 24 − [(40−PaCO2)/10] × 2 (agudo) o ×4-5 (crónico)",
+        "Acidosis metabólica: PaCO2 esperado = (1.5 × HCO3) + 8 ± 2 (fórmula de Winter)",
+        "Alcalosis metabólica: PaCO2 esperado = 0.7 × (HCO3−24) + 40 ± 5",
+        "PaFi = PaO2 / FiO2 — valores <300 sugieren lesión pulmonar aguda, <200 sugiere SDRA"
+      ]
+    },
+    "casosClinicos": [
+      {
+        "nivel": "basico",
+        "vineta": "Varón de 68 años, tórax en tonel, EPOC diagnosticado hace 15 años, consulta por somnolencia y disnea a mínimos esfuerzos. FR 10 rpm, SatO2 83% ambiental. AGA: pH 7.30, PaCO2 60 mmHg, PaO2 55 mmHg, HCO3 32 mEq/L, FiO2 21%.",
+        "preguntaMC": {
+          "enunciado": "¿Qué alteración primaria presenta este paciente y es aguda o crónica?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis metabólica aguda"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria con compensación metabólica ya establecida (HCO3 muy elevado para ser solo agudo) — sugiere retención crónica de CO2 con descompensación aguda sobreagregada"
+            },
+            {
+              "id": "c",
+              "texto": "Alcalosis respiratoria aguda"
+            },
+            {
+              "id": "d",
+              "texto": "Gasometría normal"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "pH bajo + PaCO2 elevado = acidosis respiratoria. El HCO3 de 32 (bastante por encima de lo esperado para una compensación aguda, que sería solo ~+1 por cada 10 de CO2) indica que el riñón ya tuvo tiempo de compensar — es decir, el paciente ya era un retenedor crónico de CO2 (típico de EPOC avanzado), y ahora tiene una descompensación aguda sobreagregada que el riñón todavía no alcanza a compensar del todo (por eso el pH sigue bajo)."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Por qué la frecuencia respiratoria de 10 rpm en este paciente es un dato preocupante y no tranquilizador?",
+          "respuestaModelo": "En un paciente con acidosis respiratoria e hipoxemia severa, uno esperaría taquipnea compensatoria. Una frecuencia respiratoria baja (10 rpm) junto con somnolencia sugiere depresión del centro respiratorio por la hipercapnia severa (narcosis por CO2) o agotamiento respiratorio — es decir, el paciente está perdiendo la capacidad de compensar, no que esté mejorando. Es un signo de alarma que puede anticipar la necesidad de soporte ventilatorio urgente."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "Mujer de 35 años, sin comorbilidades, fiebre de 39°C, disnea progresiva, taquipnea 32 rpm, crepitantes bilaterales, SatO2 84%. AGA: pH 7.47, PaCO2 30 mmHg, PaO2 50 mmHg, HCO3 21 mEq/L, FiO2 21%.",
+        "preguntaMC": {
+          "enunciado": "¿Cuál es la interpretación correcta de esta gasometría?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis metabólica descompensada"
+            },
+            {
+              "id": "b",
+              "texto": "Alcalosis respiratoria aguda (por hiperventilación secundaria a hipoxemia/proceso infeccioso), con compensación metabólica renal aguda apropiada (HCO3 levemente disminuido)"
+            },
+            {
+              "id": "c",
+              "texto": "Acidosis respiratoria crónica"
+            },
+            {
+              "id": "d",
+              "texto": "Alcalosis metabólica pura"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "pH elevado + PaCO2 bajo = alcalosis respiratoria (hiperventilación, típica cuando el paciente 'sopla' CO2 de más al intentar compensar la hipoxemia). El HCO3 de 21 (levemente bajo) es la compensación renal esperada para un proceso agudo — usando la fórmula: HCO3 esperado = 24 − [(40−30)/10]×2 = 22, muy cercano al valor real (21), confirmando que es una alcalosis respiratoria aguda simple, sin trastorno mixto agregado."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Calcula la PaFi de esta paciente e interpreta qué tan grave es su compromiso de oxigenación.",
+          "respuestaModelo": "PaFi = PaO2 / FiO2 = 50 / 0.21 ≈ 238. Un valor de PaFi por debajo de 300 ya sugiere lesión pulmonar aguda; por debajo de 200 orienta a síndrome de dificultad respiratoria aguda (SDRA). Con 238, la paciente tiene un compromiso significativo de la oxigenación, consistente con un proceso infeccioso pulmonar grave (neumonía) que está alterando la relación ventilación/perfusión."
+        }
+      }
+    ]
+  }];
 
 const LECTURAS = [
   {
