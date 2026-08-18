@@ -7,7 +7,7 @@
    CACHE_NAME (ej. 'medcore-v2') y el navegador refresca la copia.
    ============================================================ */
 
-const CACHE_NAME = 'medcore-v28';
+const CACHE_NAME = 'medcore-v29';
 const ASSETS = [
   './',
   './index.html',
@@ -17,6 +17,7 @@ const ASSETS = [
   './icons.js',
   './notes.js',
   './notebook.js',
+  './highlight.js',
   './quiz.js',
   './casos.js',
   './firebase-config.js',
