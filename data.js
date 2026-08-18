@@ -761,7 +761,9 @@ const ENFERMEDADES = [
                 "respuestaModelo": "Un paciente que venía taquipneico y usando músculos accesorios para compensar la falla respiratoria, si de pronto reduce su frecuencia respiratoria sin que mejoren los demás parámetros (gasometría, estado de conciencia), generalmente indica agotamiento de la musculatura respiratoria — ya no tiene fuerza para mantener el esfuerzo compensatorio, no que su situación esté mejorando. Es un signo de insuficiencia respiratoria inminente que requiere soporte ventilatorio urgente."
             }
         }
-    ]
+    
+    
+  ]
   },
 
   {
@@ -1720,6 +1722,7 @@ const ENFERMEDADES = [
     ],
     "favorito": false,
     "estudiado": false,
+    "tipoIlustracion": "alveolar",
     "relacionadas": [
       {
         "id": "neumonia-nac",
@@ -1946,7 +1949,41 @@ const ENFERMEDADES = [
           "respuestaModelo": "Esperaría infiltrados cavitados en los lóbulos superiores (vértices pulmonares). Esto se debe a que M. tuberculosis es un aerobio estricto que prolifera mejor en zonas con mayor tensión de oxígeno, y los vértices pulmonares tienen precisamente mayor ventilación relativa a perfusión (mayor PO2 local) que las bases — por eso la reactivación tuberculosa tiene esa localización característica, a diferencia de procesos infecciosos típicos como la neumonía bacteriana, que predominan en las bases."
         }
       }
-    ]
+    ,
+    {
+        "nivel": "avanzado",
+        "vineta": "Varón de 40 años, VIH positivo con mal control (últimos CD4: 180 cel/mm3), consulta por tos de 3 semanas, fiebre y pérdida de peso marcada. Radiografía de tórax: infiltrado difuso bilateral, sin cavitación clara. Baciloscopía de esputo: negativa en 2 muestras.",
+        "preguntaMC": {
+            "enunciado": "¿Qué interpretación es la más correcta ante esta baciloscopía negativa?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Descarta definitivamente tuberculosis, buscar otro diagnóstico"
+                },
+                {
+                    "id": "b",
+                    "texto": "En pacientes VIH positivos con inmunosupresión avanzada, la presentación radiológica es frecuentemente atípica (sin cavitación) y la baciloscopía tiene menor sensibilidad — se debe insistir con prueba molecular rápida y/o cultivo antes de descartar TB"
+                },
+                {
+                    "id": "c",
+                    "texto": "Repetir la baciloscopía en 6 meses"
+                },
+                {
+                    "id": "d",
+                    "texto": "Iniciar tratamiento para neumonía bacteriana únicamente"
+                }
+            ],
+            "correcta": "b",
+            "explicacion": "En la inmunosupresión avanzada (CD4 bajo), la TB pulmonar frecuentemente se presenta de forma atípica —con infiltrados difusos en vez de cavitación apical clásica— y la baciloscopía (que depende de una buena carga bacilar visible) pierde sensibilidad. La prueba molecular (Xpert MTB/RIF) y el cultivo son más sensibles y deben priorizarse antes de descartar TB en este contexto de alta sospecha."
+        },
+        "preguntaEscrita": {
+            "enunciado": "¿Por qué la presentación radiológica de la tuberculosis cambia en pacientes con inmunosupresión avanzada por VIH?",
+            "respuestaModelo": "La localización apical clásica y la cavitación de la TB dependen en gran parte de una respuesta inmune celular relativamente intacta que forma granulomas bien organizados con necrosis caseosa. En la inmunosupresión avanzada por VIH, con conteos de CD4 muy bajos, el sistema inmune ya no logra montar esa respuesta granulomatosa organizada — por eso la enfermedad tiende a diseminarse de forma más difusa (patrón miliar o infiltrados difusos) en vez de formar las cavidades apicales clásicas, y la enfermedad extrapulmonar también es más frecuente en este contexto."
+        }
+    }
+  
+    
+  ]
   },
   {
     "id": "enfermedades-pleurales",
