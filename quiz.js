@@ -74,6 +74,16 @@ function shuffleArray(arr){
   return arr;
 }
 
+/* ---------- memoria de puntaje del quiz entre sesiones ---------- */
+function getQuizStatsGuardados(sourceKey){
+  try{ return JSON.parse(localStorage.getItem('medcore-quizstats::' + sourceKey) || '{"aciertos":0,"fallos":0}'); }
+  catch(err){ return { aciertos: 0, fallos: 0 }; }
+}
+function guardarQuizStats(sourceKey, aciertos, fallos){
+  const prev = getQuizStatsGuardados(sourceKey);
+  localStorage.setItem('medcore-quizstats::' + sourceKey, JSON.stringify({ aciertos: prev.aciertos + aciertos, fallos: prev.fallos + fallos }));
+}
+
 function navQuiz(enfermedadId){
   const e = getEnfermedad(enfermedadId);
   navPush('quiz', 'enfermedad::' + enfermedadId, 'Ponte a prueba — ' + e.nombre);
@@ -112,6 +122,9 @@ function paintQuizCard(){
   const card = cards[index];
   const progreso = `${index + 1} / ${cards.length}`;
   const precision = respondidas > 0 ? Math.round((aciertos / respondidas) * 100) : null;
+  const historico = getQuizStatsGuardados(quizState.sourceKey);
+  const totalHistorico = historico.aciertos + historico.fallos;
+  const precisionHistorica = totalHistorico > 0 ? Math.round((historico.aciertos / totalHistorico) * 100) : null;
 
   wrap.innerHTML = `
     ${volverBtnHTML()}
@@ -121,8 +134,9 @@ function paintQuizCard(){
 
     <div class="quiz-stats">
       <span class="quiz-progress">${progreso} · ${card.tipo}${card.origen ? ' · ' + card.origen : ''}</span>
-      ${precision !== null ? `<span class="quiz-score">✅ ${aciertos} · ❌ ${fallos} <span class="muted">(${precision}%)</span></span>` : ''}
+      ${precision !== null ? `<span class="quiz-score">Hoy: ✅ ${aciertos} · ❌ ${fallos} <span class="muted">(${precision}%)</span></span>` : ''}
     </div>
+    ${precisionHistorica !== null ? `<p class="quiz-historico">📊 Histórico en este repaso: ${totalHistorico} tarjetas respondidas · ${precisionHistorica}% de aciertos en total</p>` : ''}
 
     <div class="quiz-card ${revealed ? 'revealed' : ''}" onclick="toggleQuizReveal()">
       <div class="quiz-face quiz-front">
@@ -157,6 +171,7 @@ function toggleQuizReveal(){
 function rateQuizCard(sabia){
   if(sabia) quizState.aciertos++; else quizState.fallos++;
   quizState.respondidas++;
+  guardarQuizStats(quizState.sourceKey, sabia ? 1 : 0, sabia ? 0 : 1);
   registrarEstudioHoy();
   quizNext(1);
 }
