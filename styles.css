@@ -228,6 +228,15 @@ h1.page-title{
 .week-day-card.clickable{ cursor:pointer; }
 .week-day-card.clickable:hover{ border-color: var(--cobalt-line); }
 
+/* ---------- días deslizables en Inicio ---------- */
+.day-swipe{
+  display:flex; gap:14px; overflow-x:auto; scroll-snap-type: x mandatory;
+  padding-bottom: 6px; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+}
+.day-swipe .week-day-card{ flex:0 0 240px; scroll-snap-align: start; }
+.swipe-hint{ font-family: var(--font-mono); font-size:10.5px; color: var(--ink-soft); text-align:center; margin: 6px 0 0; }
+@media (min-width: 861px){ .swipe-hint{ display:none; } }
+
 /* ---------- greeting hero (Inicio) ---------- */
 .greeting-hero{
   background: linear-gradient(135deg, var(--cobalt-soft) 0%, var(--lavender-soft) 100%);
@@ -311,7 +320,7 @@ h1.page-title{
 .section-block li{ margin-bottom: 5px; font-size: 14px; }
 
 /* ---------- 4 tipos de tarjeta de contenido ---------- */
-.kcard, .mcard, .ccard, .pcard{
+.kcard, .mcard, .ccard, .pcard, .rcard, .gcard, .icard{
   border-radius: var(--radius-lg);
   padding: 20px 24px;
   margin-bottom: 16px;
@@ -336,6 +345,12 @@ h1.page-title{
 
 .rcard{ background: var(--honey-soft); border-color: var(--honey-line); }
 .rcard h3{ font-family: var(--font-display); font-weight:700; font-size:16px; margin:0 0 10px; color: #9a6b1a; }
+
+.gcard{ background: var(--mint-soft); border-color: var(--mint-line); }
+.gcard h3{ font-family: var(--font-display); font-weight:700; font-size:16px; margin:0 0 10px; color: #2f7d5c; }
+
+.icard{ background: var(--cobalt-soft); border-color: var(--cobalt-line); }
+.icard h3{ font-family: var(--font-display); font-weight:700; font-size:16px; margin:0 0 10px; color: var(--cobalt); }
 
 /* ---------- Nexu, la mascota ---------- */
 .nexu-inline{ width:46px; height:46px; flex-shrink:0; }
@@ -410,6 +425,12 @@ h1.page-title{
 .cascade-body{ padding-bottom: 20px; flex:1; padding-top:4px; }
 .cascade-title{ font-family: var(--font-mono); font-size: 10.5px; text-transform:uppercase; letter-spacing:0.06em; color: var(--ink-soft); font-weight:600; }
 .cascade-detail{ font-size: 14px; margin-top:3px; }
+
+/* ---------- fisiopatología en dos columnas: flujo + explicación expandida ---------- */
+.fisio-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items:start; }
+@media (max-width: 860px){ .fisio-grid{ grid-template-columns: 1fr; } }
+.fisio-explicacion{ font-size: 13.5px; line-height:1.7; }
+.fisio-explicacion p{ margin: 0 0 10px; }
 
 /* alert boxes (dentro de tarjetas) */
 .alert{ border-radius: var(--radius-sm); padding: 12px 15px; margin-bottom: 10px; font-size: 13.5px; border:1px solid; background:#fff; }
@@ -497,6 +518,8 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 :root.dark .notebook-toolbar{ background: var(--cream); }
 :root.dark .quiz-front p, :root.dark .quiz-back p{ color: var(--ink); }
 :root.dark .algo-paso, :root.dark .algo-branch-text, :root.dark .semio-step{ background: var(--card); color: var(--ink); }
+:root.dark .gcard{ background: var(--mint-soft); }
+:root.dark .icard{ background: var(--cobalt-soft); }
 :root.dark .caso-opcion, :root.dark .caso-escrita-textarea{ background: var(--card); color: var(--ink); border-color: var(--line); }
 :root.dark .caso-opcion:hover{ background: var(--cobalt-soft); }
 :root.dark .caso-opcion.correcta{ background: var(--mint-soft); }
@@ -513,6 +536,14 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .countdown-label{ color: var(--ink-soft); }
 .racha-chip{ border-color: var(--honey-line); background: var(--honey-soft); margin-left:10px; }
 .racha-chip .countdown-days{ color: #9a6b1a; }
+
+/* ---------- página de lectura ---------- */
+.lectura-estados{ display:flex; gap:8px; flex-wrap:wrap; }
+.lectura-estado-btn{
+  font-family: var(--font-mono); font-size:12px; font-weight:600; text-transform:capitalize;
+  padding:8px 16px; border-radius:999px; border:1.5px solid var(--line); cursor:pointer; color: var(--ink-soft);
+}
+.lectura-estado-btn.activo{ background: var(--estado-color); border-color: var(--estado-color); color:#fff; }
 
 /* ---------- casos clínicos (estilo examen) ---------- */
 .caso-vineta p{ font-size:14.5px; line-height:1.65; }
@@ -556,6 +587,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .quiz-card.revealed .quiz-back{ transform: rotateY(0deg); }
 .quiz-controls{ display:flex; justify-content:space-between; gap:8px; }
 .quiz-score{ font-family: var(--font-mono); font-size:12.5px; font-weight:700; }
+.quiz-historico{ font-family: var(--font-mono); font-size:11px; color: var(--ink-soft); margin: 0 0 14px; text-align:center; }
 .quiz-selfrate{ display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:16px; font-size:13.5px; color: var(--ink-soft); }
 .quiz-yes{ border-color: var(--mint-line); color:#2f7d5c; }
 .quiz-no{ border-color: var(--alert-line); color: var(--alert); }
@@ -620,7 +652,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   .doctor-notes, .notebook-toolbar, .notebook-more-wrap, .card-chevron{ display:none !important; }
   .main{ padding:0; max-width:none; padding-bottom:0 !important; }
   body{ background:#fff; }
-  .card, .illustration-card, .kcard, .mcard, .ccard, .pcard{ box-shadow:none; border-color:#ccc; }
+  .card, .illustration-card, .kcard, .mcard, .ccard, .pcard, .rcard, .gcard, .icard{ box-shadow:none; border-color:#ccc; }
   .cascade-line{ background:#ccc; }
   /* fuerza a que TODAS las tarjetas colapsadas se muestren completas al imprimir */
   .card-body{ display:block !important; }
