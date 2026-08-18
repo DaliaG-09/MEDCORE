@@ -583,7 +583,7 @@ function renderApuntes(){
     if(!key || !key.startsWith('medcore-note::')) continue;
     const compositeKey = key.replace('medcore-note::', '');
     const texto = localStorage.getItem(key);
-    if(!texto || !texto.trim()) continue;
+    if(!texto || !texto.replace(/<[^>]*>/g, '').trim()) continue;
     const sepIdx = compositeKey.indexOf('::');
     if(sepIdx === -1) continue;
     const entidadId = compositeKey.slice(0, sepIdx);
@@ -814,9 +814,9 @@ function renderEnfermedad(id){
     micBtn.style.display = 'inline-flex';
   }
 
-  // expande "Apuntes del doctor" automáticamente si ya tiene contenido guardado
+  // expande "Apuntes del doctor" automáticamente solo si tiene texto real (no solo un <br> vacío)
   const dnBox = document.getElementById('doctor-notes-' + e.id);
-  const hasNote = notesAdapter.get(e.id + '::apuntes-doctor').trim().length > 0;
+  const hasNote = notesAdapter.get(e.id + '::apuntes-doctor').replace(/<[^>]*>/g, '').trim().length > 0;
   if(dnBox && hasNote) dnBox.classList.add('expanded');
 
   // construye el índice interno (mini-TOC) para el modo activo
