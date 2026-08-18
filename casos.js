@@ -20,7 +20,7 @@ function navCasos(enfermedadId){
 
 function renderCasos(enfermedadId){
   const e = getEnfermedad(enfermedadId);
-  const casos = e.casosClinicos || [];
+  const casos = shuffleArray([...(e.casosClinicos || [])]);
   casoState = { casos, index: 0, enfermedadNombre: e.nombre, mcRespondida: false, mcSeleccion: null, escritaRevelada: false, escritaTexto: '' };
   paintCaso();
 }
@@ -41,7 +41,7 @@ function paintCaso(){
     ${volverBtnHTML()}
     <span class="eyebrow">Caso clínico · estilo examen</span>
     <h1 class="page-title">🩺 ${enfermedadNombre}</h1>
-    <p class="page-sub">Caso ${index + 1} de ${casos.length} — lee la viñeta como si fuera tu examen de Medicina Interna I.</p>
+    <p class="page-sub">Caso ${index + 1} de ${casos.length} <span class="caso-nivel-badge nivel-${caso.nivel || 'basico'}">${(caso.nivel || 'básico').toUpperCase()}</span> — lee la viñeta como si fuera tu examen de Medicina Interna I.</p>
 
     <div class="kcard caso-vineta">
       <h3>📋 Caso clínico</h3>
@@ -88,9 +88,20 @@ function paintCaso(){
 
     <div class="quiz-controls">
       <div class="btn-icon ${index === 0 ? 'disabled' : ''}" onclick="casoNavegar(-1)">← Caso anterior</div>
+      <div class="btn-icon" onclick="shuffleCasos()">🔀 Mezclar casos</div>
       <div class="btn-icon ${index === casos.length - 1 ? 'disabled' : ''}" onclick="casoNavegar(1)">Caso siguiente →</div>
     </div>
   `;
+}
+
+function shuffleCasos(){
+  shuffleArray(casoState.casos);
+  casoState.index = 0;
+  casoState.mcRespondida = false;
+  casoState.mcSeleccion = null;
+  casoState.escritaRevelada = false;
+  casoState.escritaTexto = '';
+  paintCaso();
 }
 
 function responderCasoMC(opcionId){
