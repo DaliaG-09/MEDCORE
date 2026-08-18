@@ -25,6 +25,8 @@
       <div class="nav-item active" data-view="view-inicio" onclick="goInicio()"><span class="emoji">🏠</span> Inicio</div>
       <div class="nav-item" data-view="view-semana" onclick="openSemanaFresh('semana-01')"><span class="emoji">📅</span> Semanas</div>
       <div class="nav-item" data-view="view-enfermedad" onclick="openEnfermedadFresh('epoc')"><span class="emoji">🔎</span> Enfermedades</div>
+      <div class="nav-item" data-view="view-cronograma" onclick="openCronogramaFresh()"><span class="emoji">📊</span> Cronograma</div>
+      <div class="nav-item" data-view="view-calendario" onclick="openCalendarioFresh()"><span class="emoji">🗓️</span> Evaluaciones</div>
     </div>
 
     <div class="nav-group">
@@ -105,6 +107,16 @@
       <div id="view-lectura-content"></div>
     </section>
 
+    <!-- VISTA: CRONOGRAMA -->
+    <section id="view-cronograma" class="view">
+      <div id="view-cronograma-content"></div>
+    </section>
+
+    <!-- VISTA: CALENDARIO DE EVALUACIONES -->
+    <section id="view-calendario" class="view">
+      <div id="view-calendario-content"></div>
+    </section>
+
     <!-- VISTA: FAVORITOS -->
     <section id="view-favoritos" class="view">
       <div id="view-favoritos-content"></div>
@@ -135,6 +147,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
 <script src="notes.js"></script>
 <script src="notebook.js"></script>
+<script src="highlight.js"></script>
 <script src="quiz.js"></script>
 <script src="casos.js"></script>
 <script src="app.js"></script>
