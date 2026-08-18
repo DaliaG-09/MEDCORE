@@ -138,11 +138,6 @@ function resizeCuaderno(){
 function redrawCuaderno(){
   const { ctx, strokes } = cuadernoState;
   ctx.clearRect(0, 0, PAGE_WIDTH, cuadernoState.pageHeight);
-  // líneas guía sutiles, como una hoja de cuaderno
-  ctx.strokeStyle = '#ece8e0'; ctx.lineWidth = 1;
-  for(let y = 40; y < cuadernoState.pageHeight; y += 32){
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(PAGE_WIDTH, y); ctx.stroke();
-  }
   strokes.forEach(paintStrokeCuaderno);
 }
 function paintStrokeCuaderno(stroke){
