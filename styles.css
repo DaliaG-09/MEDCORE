@@ -546,6 +546,12 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .lectura-estado-btn.activo{ background: var(--estado-color); border-color: var(--estado-color); color:#fff; }
 
 /* ---------- casos clínicos (estilo examen) ---------- */
+.caso-nivel-badge{
+  font-family: var(--font-mono); font-size:10px; font-weight:700; padding:2px 9px; border-radius:999px; margin-left:8px;
+}
+.nivel-basico{ background: var(--mint-soft); color:#2f7d5c; }
+.nivel-intermedio{ background: var(--honey-soft); color:#9a6b1a; }
+.nivel-avanzado{ background: var(--alert-soft); color: var(--alert); }
 .caso-vineta p{ font-size:14.5px; line-height:1.65; }
 .caso-opciones{ display:flex; flex-direction:column; gap:8px; }
 .caso-opcion{
