@@ -493,9 +493,14 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   --info-soft: #23283f;
 }
 :root.dark .doctor-notes{ background: var(--honey-soft); }
-:root.dark .draw-canvas, :root.dark .notebook-page-wrap{ background: #2a2a38; }
+:root.dark .notebook-page-wrap{ background: #2a2a38; }
+:root.dark .notebook-toolbar{ background: var(--cream); }
 :root.dark .quiz-front p, :root.dark .quiz-back p{ color: var(--ink); }
 :root.dark .algo-paso, :root.dark .algo-branch-text, :root.dark .semio-step{ background: var(--card); color: var(--ink); }
+:root.dark .caso-opcion, :root.dark .caso-escrita-textarea{ background: var(--card); color: var(--ink); border-color: var(--line); }
+:root.dark .caso-opcion:hover{ background: var(--cobalt-soft); }
+:root.dark .caso-opcion.correcta{ background: var(--mint-soft); }
+:root.dark .caso-opcion.incorrecta{ background: var(--alert-soft); }
 
 /* ---------- countdown de próxima evaluación ---------- */
 .countdown-chip{
@@ -610,11 +615,15 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 
 /* ---------- print ---------- */
 @media print{
-  .sidebar, .topbar, .mode-tabs, .toolbar, .note-block, .search-results, .auth-bar{ display:none !important; }
-  .main{ padding:0; max-width:none; }
+  .sidebar, .topbar, .mode-tabs, .toolbar, .note-block, .search-results, .auth-bar,
+  .breadcrumb, .section-toc, .mobile-nav, .quiz-controls, .back-btn, .week-pager,
+  .doctor-notes, .notebook-toolbar, .notebook-more-wrap, .card-chevron{ display:none !important; }
+  .main{ padding:0; max-width:none; padding-bottom:0 !important; }
   body{ background:#fff; }
   .card, .illustration-card, .kcard, .mcard, .ccard, .pcard{ box-shadow:none; border-color:#ccc; }
   .cascade-line{ background:#ccc; }
+  /* fuerza a que TODAS las tarjetas colapsadas se muestren completas al imprimir */
+  .card-body{ display:block !important; }
 }
 
 .muted{ color: var(--ink-soft); }
