@@ -256,7 +256,7 @@ mark.hl-coral{ background:#F5B38A; }
   padding: 8px 10px; font-family: var(--font-body); font-size: 13.5px; background:#fff; color: var(--ink);
   outline:none; white-space:pre-wrap;
 }
-.note-editable:empty:before{ content: attr(data-placeholder); color: var(--ink-soft); }
+.note-editable:empty:before, .note-editable:has(> br:only-child):before{ content: attr(data-placeholder); color: var(--ink-soft); }
 
 /* ---------- cronograma (tabla tipo Excel) ---------- */
 .cronograma-table{ font-size:13px; }
@@ -418,15 +418,6 @@ mark.hl-coral{ background:#F5B38A; }
 .doctor-notes .dn-head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
 .doctor-notes .dn-head h3{ font-family: var(--font-display); font-weight:700; font-size:14.5px; margin:0; color:#9a6b1a; }
 .doctor-notes .dn-sub{ font-size:12px; color:#a5813a; margin:0 0 8px; }
-.doctor-notes textarea{
-  width:100%; min-height:64px; resize:vertical; border:1px solid var(--honey-line); border-radius: var(--radius-sm);
-  padding:9px 12px; font-family: var(--font-body); font-size:13.5px; background:#fff; color: var(--ink);
-}
-
-/* ---------- lienzo de trazos a mano ---------- */
-.draw-block{ margin-top:12px; }
-.draw-toolbar{ display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
-.draw-label{ font-family: var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:#9a6b1a; font-weight:700; margin-right:4px; }
 .swatch{
   width:20px; height:20px; border-radius:50%; cursor:pointer; border:2px solid transparent;
   box-shadow: 0 0 0 1px var(--line);
@@ -443,10 +434,6 @@ mark.hl-coral{ background:#F5B38A; }
 .size-dot.size-lg span{ width:12px; height:12px; }
 .size-dot.active{ border-color: var(--honey); background: var(--honey-soft); }
 .size-dot.active span{ background: var(--ink); }
-.draw-canvas{
-  width:100%; height:220px; touch-action:none; cursor:crosshair;
-  background:#fff; border:1px solid var(--honey-line); border-radius: var(--radius-sm); display:block;
-}
 .mic-btn.recording{
   background: var(--alert-soft); border-color: var(--alert-line); color: var(--alert);
   animation: pulse-rec 1.4s ease-in-out infinite;
@@ -541,10 +528,6 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .note-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:7px; }
 .note-label{ font-family: var(--font-mono); font-size: 10.5px; text-transform:uppercase; letter-spacing:0.06em; color: var(--cobalt); font-weight:700; }
 .note-status{ font-family: var(--font-mono); font-size: 10px; color: var(--ink-soft); }
-.note-textarea{
-  width:100%; min-height: 54px; resize: vertical; border:1px solid var(--line); border-radius: var(--radius-sm);
-  padding: 9px 11px; font-family: var(--font-body); font-size: 13.5px; background:#fff; color: var(--ink);
-}
 
 /* ---------- modo oscuro ---------- */
 :root.dark{
@@ -569,6 +552,12 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 :root.dark .algo-paso, :root.dark .algo-branch-text, :root.dark .semio-step{ background: var(--card); color: var(--ink); }
 :root.dark .gcard{ background: var(--mint-soft); }
 :root.dark .icard{ background: var(--cobalt-soft); }
+:root.dark .note-editable{ background: var(--card); }
+:root.dark .calendario-item{ background: var(--card); }
+:root.dark .chip{ background: var(--card); }
+:root.dark .alert{ background: var(--card); }
+:root.dark .auth-input{ background: var(--card); border-color: var(--line); }
+:root.dark .week-day-card, :root.dark .disease-card{ background: var(--card); }
 :root.dark .caso-opcion, :root.dark .caso-escrita-textarea{ background: var(--card); color: var(--ink); border-color: var(--line); }
 :root.dark .caso-opcion:hover{ background: var(--cobalt-soft); }
 :root.dark .caso-opcion.correcta{ background: var(--mint-soft); }
@@ -704,7 +693,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 @media print{
   .sidebar, .topbar, .mode-tabs, .toolbar, .note-block, .search-results, .auth-bar,
   .breadcrumb, .section-toc, .mobile-nav, .quiz-controls, .back-btn, .week-pager,
-  .doctor-notes, .notebook-toolbar, .notebook-more-wrap, .card-chevron{ display:none !important; }
+  .doctor-notes, .notebook-toolbar, .notebook-more-wrap, .card-chevron, .hl-popup{ display:none !important; }
   .main{ padding:0; max-width:none; padding-bottom:0 !important; }
   body{ background:#fff; }
   .card, .illustration-card, .kcard, .mcard, .ccard, .pcard, .rcard, .gcard, .icard{ box-shadow:none; border-color:#ccc; }
