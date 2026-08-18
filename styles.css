@@ -317,6 +317,11 @@ h1.page-title{
   margin-bottom: 16px;
   border: 1px solid var(--line);
 }
+.card-toggle{ cursor:pointer; display:flex; align-items:center; justify-content:space-between; user-select:none; }
+.card-chevron{ font-size:12px; color: var(--ink-soft); transition: transform 0.15s ease; margin-left:10px; }
+.card-open .card-chevron{ transform: rotate(180deg); }
+.card-body{ display:none; margin-top:10px; }
+.card-open .card-body{ display:block; }
 .kcard{ background: var(--card); box-shadow: var(--shadow-soft); }
 .kcard h3{ font-family: var(--font-display); font-weight:700; font-size:16px; margin:0 0 10px; color: var(--ink); }
 
@@ -501,8 +506,32 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .countdown-days{ font-family: var(--font-display); font-weight:800; color: var(--coral); }
 .countdown-chip.urgente .countdown-days{ color: var(--alert); }
 .countdown-label{ color: var(--ink-soft); }
+.racha-chip{ border-color: var(--honey-line); background: var(--honey-soft); margin-left:10px; }
+.racha-chip .countdown-days{ color: #9a6b1a; }
+
+/* ---------- casos clínicos (estilo examen) ---------- */
+.caso-vineta p{ font-size:14.5px; line-height:1.65; }
+.caso-opciones{ display:flex; flex-direction:column; gap:8px; }
+.caso-opcion{
+  display:flex; align-items:flex-start; gap:12px; background:#fff; border:1.5px solid var(--line);
+  border-radius: var(--radius-sm); padding:11px 15px; cursor:pointer; font-size:13.5px; transition: all 0.15s ease;
+}
+.caso-opcion:hover{ border-color: var(--cobalt-line); background: var(--cobalt-soft); }
+.caso-opcion-letra{
+  font-family: var(--font-mono); font-weight:700; font-size:12px; color: var(--ink-soft);
+  width:20px; height:20px; border-radius:50%; border:1.5px solid var(--line); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.caso-opcion.correcta{ border-color: var(--mint-line); background: var(--mint-soft); }
+.caso-opcion.correcta .caso-opcion-letra{ background: var(--mint); border-color: var(--mint); color:#fff; }
+.caso-opcion.incorrecta{ border-color: var(--alert-line); background: var(--alert-soft); }
+.caso-opcion.incorrecta .caso-opcion-letra{ background: var(--alert); border-color: var(--alert); color:#fff; }
+.caso-escrita-textarea{
+  width:100%; min-height:100px; resize:vertical; border:1px solid var(--coral-line); border-radius: var(--radius-sm);
+  padding:10px 13px; font-family: var(--font-body); font-size:13.5px; background:#fff; color: var(--ink);
+}
 
 /* ---------- modo autoevaluación (flashcards) ---------- */
+.quiz-stats{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
 .quiz-progress{ font-family: var(--font-mono); font-size:11.5px; color: var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; text-align:center; }
 .quiz-card{
   position:relative; min-height:220px; border-radius: var(--radius-lg); cursor:pointer;
@@ -521,6 +550,10 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .quiz-card.revealed .quiz-front{ transform: rotateY(-180deg); }
 .quiz-card.revealed .quiz-back{ transform: rotateY(0deg); }
 .quiz-controls{ display:flex; justify-content:space-between; gap:8px; }
+.quiz-score{ font-family: var(--font-mono); font-size:12.5px; font-weight:700; }
+.quiz-selfrate{ display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:16px; font-size:13.5px; color: var(--ink-soft); }
+.quiz-yes{ border-color: var(--mint-line); color:#2f7d5c; }
+.quiz-no{ border-color: var(--alert-line); color: var(--alert); }
 
 /* ---------- cuaderno de clase (hoja larga expandible) ---------- */
 .notebook-toolbar{
