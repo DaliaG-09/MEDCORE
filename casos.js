@@ -13,13 +13,13 @@
 
 let casoState = null; // { casos, index, enfermedadNombre, mcRespondida, mcSeleccion, escritaRevelada, escritaTexto }
 
-function navCasos(enfermedadId){
-  const e = getEnfermedad(enfermedadId);
-  navPush('casos', enfermedadId, 'Casos clínicos — ' + e.nombre);
+function navCasos(entidadId){
+  const e = getEnfermedad(entidadId) || getTema(entidadId);
+  navPush('casos', entidadId, 'Casos clínicos — ' + e.nombre);
 }
 
-function renderCasos(enfermedadId){
-  const e = getEnfermedad(enfermedadId);
+function renderCasos(entidadId){
+  const e = getEnfermedad(entidadId) || getTema(entidadId);
   const casos = shuffleArray([...(e.casosClinicos || [])]);
   casoState = { casos, index: 0, enfermedadNombre: e.nombre, mcRespondida: false, mcSeleccion: null, escritaRevelada: false, escritaTexto: '' };
   paintCaso();
