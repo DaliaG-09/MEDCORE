@@ -5,10 +5,10 @@
    partir de lo que YA existe en cada enfermedad (imprescindible,
    perlas, diferenciales, clínica). Tapas la respuesta, intentas
    recordar, y recién ahí la revelas — así se estudia de verdad,
-   no solo releyendo.
+   no solo releyendo. Incluye marcador de aciertos y racha diaria.
    ============================================================ */
 
-let quizState = null; // { cards: [...], index: 0, revealed: false, sourceLabel }
+let quizState = null; // { cards, index, revealed, sourceLabel, aciertos, fallos, sourceKey }
 
 function buildQuizCards(e){
   const cards = [];
@@ -41,28 +41,77 @@ function buildQuizCards(e){
   return cards;
 }
 
-function navQuiz(enfermedadId){
-  const e = getEnfermedad(enfermedadId);
-  navPush('quiz', enfermedadId, 'Ponte a prueba — ' + e.nombre);
+function buildQuizCards(e){
+  const cards = [];
+  const p = e.profundo, r = e.repaso, im = e.imprescindible;
+  const nombre = e.nombre;
+
+  (im.loQueSiOSiDebesSaber || []).forEach(x => {
+    cards.push({ pregunta: '¿Qué es imprescindible saber sobre ' + nombre + '?', respuesta: x, tipo: 'imprescindible', origen: nombre });
+  });
+  (im.redFlags || []).forEach(x => {
+    cards.push({ pregunta: '🚩 Red flag en ' + nombre + ' — ¿cuál es?', respuesta: x, tipo: 'red flag', origen: nombre });
+  });
+  (im.asociacionesClinicas || []).forEach(x => {
+    cards.push({ pregunta: '🔗 Asociación clínica en ' + nombre, respuesta: x, tipo: 'asociación', origen: nombre });
+  });
+  (r.diferenciales || []).forEach(d => {
+    cards.push({ pregunta: `¿Qué distingue a ${nombre} de ${d.entidad}?`, respuesta: d.clave, tipo: 'diferencial', origen: nombre });
+  });
+  if(p.perlasProfundo){
+    cards.push({ pregunta: '✨ Perla clínica de ' + nombre, respuesta: p.perlasProfundo, tipo: 'perla', origen: nombre });
+  }
+  (p.clinica || []).forEach(c => {
+    cards.push({ pregunta: `¿Por qué aparece "${c.signo}" en ${nombre}?`, respuesta: c.mecanismo, tipo: 'mecanismo', origen: nombre });
+  });
+  return cards;
+}
+function shuffleArray(arr){
+  for(let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
-function renderQuiz(enfermedadId){
+function navQuiz(enfermedadId){
   const e = getEnfermedad(enfermedadId);
-  quizState = { cards: buildQuizCards(e), index: 0, revealed: false, sourceLabel: e.nombre };
+  navPush('quiz', 'enfermedad::' + enfermedadId, 'Ponte a prueba — ' + e.nombre);
+}
+function navQuizSemana(semanaId){
+  const s = getSemana(semanaId);
+  navPush('quiz', 'semana::' + semanaId, 'Repaso — Semana ' + s.numero);
+}
+
+function renderQuiz(compositeId){
+  const [tipo, id] = compositeId.split('::');
+  let cards = [], sourceLabel = '';
+  if(tipo === 'enfermedad'){
+    const e = getEnfermedad(id);
+    cards = buildQuizCards(e);
+    sourceLabel = e.nombre;
+  } else {
+    const s = getSemana(id);
+    s.enfermedades.forEach(eid => { cards = cards.concat(buildQuizCards(getEnfermedad(eid))); });
+    sourceLabel = 'Semana ' + s.numero + ' completa';
+  }
+  shuffleArray(cards);
+  quizState = { cards, index: 0, revealed: false, sourceLabel, sourceKey: compositeId, aciertos: 0, fallos: 0, respondidas: 0 };
   paintQuizCard();
 }
 
 function paintQuizCard(){
   const wrap = document.getElementById('view-quiz-content');
-  const { cards, index, revealed, sourceLabel } = quizState;
+  const { cards, index, revealed, sourceLabel, aciertos, fallos, respondidas } = quizState;
 
   if(cards.length === 0){
-    wrap.innerHTML = `${volverBtnHTML()}<div class="kcard"><p class="muted">Todavía no hay suficiente contenido en esta enfermedad para armar tarjetas de repaso.</p></div>`;
+    wrap.innerHTML = `${volverBtnHTML()}<div class="kcard"><p class="muted">Todavía no hay suficiente contenido para armar tarjetas de repaso aquí.</p></div>`;
     return;
   }
 
   const card = cards[index];
   const progreso = `${index + 1} / ${cards.length}`;
+  const precision = respondidas > 0 ? Math.round((aciertos / respondidas) * 100) : null;
 
   wrap.innerHTML = `
     ${volverBtnHTML()}
@@ -70,7 +119,10 @@ function paintQuizCard(){
     <h1 class="page-title">🧠 ${sourceLabel}</h1>
     <p class="page-sub">Piensa la respuesta antes de tocar la tarjeta. Eso es lo que realmente ayuda a recordar en el examen.</p>
 
-    <div class="quiz-progress">${progreso} · ${card.tipo}</div>
+    <div class="quiz-stats">
+      <span class="quiz-progress">${progreso} · ${card.tipo}${card.origen ? ' · ' + card.origen : ''}</span>
+      ${precision !== null ? `<span class="quiz-score">✅ ${aciertos} · ❌ ${fallos} <span class="muted">(${precision}%)</span></span>` : ''}
+    </div>
 
     <div class="quiz-card ${revealed ? 'revealed' : ''}" onclick="toggleQuizReveal()">
       <div class="quiz-face quiz-front">
@@ -82,6 +134,14 @@ function paintQuizCard(){
       </div>
     </div>
 
+    ${revealed ? `
+      <div class="quiz-selfrate">
+        <span>¿Lo sabías?</span>
+        <div class="btn-icon quiz-yes" onclick="event.stopPropagation(); rateQuizCard(true)">✅ Sí</div>
+        <div class="btn-icon quiz-no" onclick="event.stopPropagation(); rateQuizCard(false)">❌ No</div>
+      </div>
+    ` : ''}
+
     <div class="quiz-controls">
       <div class="btn-icon" onclick="event.stopPropagation(); quizNext(-1)">← Anterior</div>
       <div class="btn-icon" onclick="event.stopPropagation(); shuffleQuiz()">🔀 Mezclar de nuevo</div>
@@ -92,7 +152,13 @@ function paintQuizCard(){
 
 function toggleQuizReveal(){
   quizState.revealed = !quizState.revealed;
-  document.querySelector('.quiz-card').classList.toggle('revealed');
+  paintQuizCard();
+}
+function rateQuizCard(sabia){
+  if(sabia) quizState.aciertos++; else quizState.fallos++;
+  quizState.respondidas++;
+  registrarEstudioHoy();
+  quizNext(1);
 }
 function quizNext(delta){
   quizState.index = (quizState.index + delta + quizState.cards.length) % quizState.cards.length;
@@ -100,8 +166,7 @@ function quizNext(delta){
   paintQuizCard();
 }
 function shuffleQuiz(){
-  const e = getEnfermedad(navStack[navStack.length - 1].id);
-  quizState.cards = buildQuizCards(e);
+  shuffleArray(quizState.cards);
   quizState.index = 0;
   quizState.revealed = false;
   paintQuizCard();
