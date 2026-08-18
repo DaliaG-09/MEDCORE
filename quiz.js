@@ -64,6 +64,30 @@ function buildQuizCards(e){
   (p.clinica || []).forEach(c => {
     cards.push({ pregunta: `¿Por qué aparece "${c.signo}" en ${nombre}?`, respuesta: c.mecanismo, tipo: 'mecanismo', origen: nombre });
   });
+  (p.etiologiaFactoresRiesgo || []).forEach(x => {
+    cards.push({ pregunta: `¿Qué factor de riesgo se asocia a ${nombre}?`, respuesta: x, tipo: 'etiología', origen: nombre });
+  });
+  (p.examenFisico || []).forEach(x => {
+    cards.push({ pregunta: `¿Qué hallazgo esperas en el examen físico de ${nombre}?`, respuesta: x, tipo: 'examen físico', origen: nombre });
+  });
+  if(p.semiologia){
+    const s = p.semiologia;
+    if(s.inspeccion) cards.push({ pregunta: `👀 En ${nombre}, ¿qué buscas en la inspección?`, respuesta: s.inspeccion, tipo: 'semiología', origen: nombre });
+    if(s.palpacion) cards.push({ pregunta: `✋ En ${nombre}, ¿qué buscas en la palpación?`, respuesta: s.palpacion, tipo: 'semiología', origen: nombre });
+    if(s.percusion) cards.push({ pregunta: `👊 En ${nombre}, ¿qué buscas en la percusión?`, respuesta: s.percusion, tipo: 'semiología', origen: nombre });
+    if(s.auscultacion) cards.push({ pregunta: `🩺 En ${nombre}, ¿qué buscas en la auscultación?`, respuesta: s.auscultacion, tipo: 'semiología', origen: nombre });
+  }
+  (p.complicaciones || []).forEach(x => {
+    cards.push({ pregunta: `¿Qué complicación puede presentar ${nombre}?`, respuesta: x, tipo: 'complicación', origen: nombre });
+  });
+  if(p.diagnostico){
+    cards.push({ pregunta: `¿Cómo se diagnostica ${nombre}?`, respuesta: p.diagnostico, tipo: 'diagnóstico', origen: nombre });
+  }
+  if(p.tratamiento && p.tratamiento.farmacologico){
+    p.tratamiento.farmacologico.forEach(x => {
+      cards.push({ pregunta: `¿Qué tratamiento farmacológico se usa en ${nombre}?`, respuesta: x, tipo: 'tratamiento', origen: nombre });
+    });
+  }
   return cards;
 }
 function shuffleArray(arr){
@@ -106,6 +130,7 @@ function renderQuiz(compositeId){
     sourceLabel = 'Semana ' + s.numero + ' completa';
   }
   shuffleArray(cards);
+  cards = cards.slice(0, 20); // máximo 20 preguntas por sesión, elegidas al azar del banco disponible
   quizState = { cards, index: 0, revealed: false, sourceLabel, sourceKey: compositeId, aciertos: 0, fallos: 0, respondidas: 0 };
   paintQuizCard();
 }
