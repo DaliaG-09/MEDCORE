@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -76,6 +76,8 @@ function navRenderCurrent(){
     case 'apuntes': renderApuntes(); break;
     case 'casos': renderCasos(top.id); break;
     case 'lectura': renderLectura(top.id); break;
+    case 'cronograma': renderCronograma(); break;
+    case 'calendario': renderCalendarioEvaluaciones(); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -222,6 +224,107 @@ function countdownHTML(){
   `;
 }
 
+/* ============================================================
+   IDENTIDAD VISUAL POR SEMANA
+   Cada semana tiene un color y emoji propio, aplicado SOLO al
+   encabezado/portada de la semana — nada más cambia de color.
+   ============================================================ */
+const WEEK_THEMES = {
+  1:  { color: '#F6A6B8', emoji: '🌸' },
+  2:  { color: '#B8A4E8', emoji: '🧠' },
+  3:  { color: '#8EC5E8', emoji: '🫁' },
+  4:  { color: '#8FD3B6', emoji: '🫀' },
+  5:  { color: '#F5B38A', emoji: '🧪' },
+  6:  { color: '#F3D77A', emoji: '⚡' },
+  7:  { color: '#72C9C6', emoji: '🩺' },
+  8:  { color: '#7E8FD4', emoji: '🏆' },
+  9:  { color: '#E8A4C8', emoji: '🫘' },
+  10: { color: '#A4C8E8', emoji: '💧' },
+  11: { color: '#C8B8E8', emoji: '🔬' },
+  12: { color: '#F0C68A', emoji: '🍽️' },
+  13: { color: '#E8B8A4', emoji: '🩹' },
+  14: { color: '#D8A4C8', emoji: '🧴' },
+  15: { color: '#B8D8A4', emoji: '🔎' },
+  16: { color: '#D4AF7E', emoji: '🎓' }
+};
+function getWeekTheme(numero){
+  return WEEK_THEMES[numero] || { color: '#9B8AF2', emoji: '📅' };
+}
+function weekHeaderStyleHTML(numero){
+  const t = getWeekTheme(numero);
+  return `background: linear-gradient(135deg, ${t.color}33 0%, ${t.color}18 100%); border: 1px solid ${t.color}55;`;
+}
+
+/* ---------- vista: cronograma (tipo Excel del sílabo) ---------- */
+function openCronogramaFresh(){ navReset('cronograma', null, 'Cronograma'); }
+function renderCronograma(){
+  const wrap = document.getElementById('view-cronograma-content');
+  wrap.innerHTML = `
+    <span class="eyebrow">${CURSO.nombre} · ${CURSO.codigo} · Sílabo ${CURSO.silabo}</span>
+    <h1 class="page-title">📊 Cronograma completo</h1>
+    <p class="page-sub">Las 16 semanas de tu sílabo, tal como aparecen en el Excel de la coordinadora — nada inventado.</p>
+
+    <div class="kcard" style="overflow-x:auto;">
+      <table class="compare cronograma-table">
+        <tr><th>Semana</th><th>Fechas</th><th>Módulo / Tema</th><th>Evaluación</th><th></th></tr>
+        ${SEMANAS.map(s => {
+          const theme = getWeekTheme(s.numero);
+          const tieneContenido = s.enfermedades.length > 0 || (s.temas && s.temas.length > 0);
+          return `<tr class="cronograma-row" onclick="navReset('semana','${s.id}','Semana ${s.numero}')">
+            <td><span style="background:${theme.color}33; border-radius:999px; padding:3px 10px; font-family:var(--font-mono); font-size:11px; font-weight:700;">${theme.emoji} S${s.numero}</span></td>
+            <td class="muted" style="font-size:12.5px;">${s.rango}</td>
+            <td>${s.titulo}</td>
+            <td style="font-size:12px;">${s.evaluaciones.length ? s.evaluaciones.map(e => e.split('—')[0].trim()).join(', ') : '<span class="muted">—</span>'}</td>
+            <td>${tieneContenido ? '<span class="badge teoria">construido</span>' : ''}</td>
+          </tr>`;
+        }).join('')}
+      </table>
+    </div>
+  `;
+}
+
+/* ---------- vista: calendario de evaluaciones ---------- */
+function openCalendarioFresh(){ navReset('calendario', null, 'Calendario de evaluaciones'); }
+function renderCalendarioEvaluaciones(){
+  const wrap = document.getElementById('view-calendario-content');
+  const hoy = new Date();
+  const year = hoy.getFullYear();
+  const items = [];
+  SEMANAS.forEach(s => {
+    (s.evaluaciones || []).forEach(ev => {
+      const fecha = parseFechaTextoLibre(ev, year) || parseRangoFin(s.rango, year);
+      items.push({ fecha, label: ev, semana: s });
+    });
+  });
+  items.sort((a,b) => (a.fecha||0) - (b.fecha||0));
+
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">${CURSO.formulaEvaluacion}</span>
+    <h1 class="page-title">📅 Calendario de evaluaciones</h1>
+    <p class="page-sub">Todas las evaluaciones del ciclo, en orden — para que nunca te agarre de sorpresa.</p>
+
+    <div class="calendario-lista">
+      ${items.map(it => {
+        const theme = getWeekTheme(it.semana.numero);
+        const pasado = it.fecha && it.fecha < hoy;
+        const dias = it.fecha ? Math.ceil((it.fecha - hoy) / (1000*60*60*24)) : null;
+        return `
+        <div class="calendario-item ${pasado ? 'pasado' : ''}" onclick="navReset('semana','${it.semana.id}','Semana ${it.semana.numero}')">
+          <div class="calendario-fecha" style="background:${theme.color}33;">
+            <span class="calendario-emoji">${theme.emoji}</span>
+            <span class="calendario-semana-num">S${it.semana.numero}</span>
+          </div>
+          <div class="calendario-info">
+            <div class="calendario-label">${it.label}</div>
+            <div class="calendario-sub muted">${it.fecha ? it.fecha.toLocaleDateString('es-PE', {day:'numeric', month:'long'}) : it.semana.rango}${!pasado && dias !== null ? ` — faltan ${dias} días` : (pasado ? ' — ya pasó' : '')}</div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
 function saludoSegunHora(){
   const h = new Date().getHours();
   if(h < 12) return 'Buenos días';
@@ -253,9 +356,15 @@ function renderInicio(){
   const wrap = document.getElementById('inicio-semana-actual');
   wrap.innerHTML = `
     <div class="card">
-      <span class="eyebrow">Semana actual · ${semana.rango}</span>
-      <div class="section-title">
-        <h2>Semana ${semana.numero} — ${semana.titulo}</h2>
+      <div class="week-hero" style="${weekHeaderStyleHTML(semana.numero)}; margin-bottom:14px;">
+        <span class="week-hero-emoji">${getWeekTheme(semana.numero).emoji}</span>
+        <div>
+          <span class="eyebrow" style="margin-bottom:2px;">Semana actual · ${semana.rango}</span>
+          <h2 style="margin:0; font-family:var(--font-display); font-weight:800; font-size:19px;">Semana ${semana.numero} — ${semana.titulo}</h2>
+        </div>
+      </div>
+      <div class="section-title" style="margin-top:-6px;">
+        <span></span>
         <a class="link-quiet" onclick="navReset('semana','${semana.id}','Semana ${semana.numero}')">Ver semana completa →</a>
       </div>
       <div class="progress-track"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>
@@ -332,7 +441,10 @@ function renderSemana(id){
     </div>
 
     <span class="eyebrow">${s.rango}</span>
-    <h1 class="page-title">Semana ${s.numero} — ${s.titulo}</h1>
+    <div class="week-hero" style="${weekHeaderStyleHTML(s.numero)}">
+      <span class="week-hero-emoji">${getWeekTheme(s.numero).emoji}</span>
+      <h1 class="page-title" style="margin:0;">Semana ${s.numero} — ${s.titulo}</h1>
+    </div>
     <p class="page-sub">Teoría, hospital, lecturas y enfermedades correspondientes a esta semana.</p>
 
     <div class="progress-track"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>
@@ -352,7 +464,8 @@ function renderSemana(id){
 
     <div class="section-block">
       <h3>Enfermedades de la semana</h3>
-      <div class="grid cols-2">${s.enfermedades.map(id => diseaseCardHTML(getEnfermedad(id))).join('')}</div>
+      ${s.enfermedades.length ? `<div class="grid cols-2">${s.enfermedades.map(id => diseaseCardHTML(getEnfermedad(id))).join('')}</div>` : `
+      <div class="kcard"><p class="muted">El contenido detallado de esta semana todavía no está construido. Cuando subas el material a Drive, lo agrego aquí — mientras tanto, esta semana solo muestra el cronograma real de tu sílabo (días, temas, lecturas, evaluaciones), sin inventar ni cruzar contenido de otras semanas.</p></div>`}
     </div>
 
     <div class="grid cols-2">
@@ -612,6 +725,7 @@ function renderTema(id){
     </div>
   `;
   buildSectionToc('view-tema-content', 'tema-toc');
+  markHighlightZones('view-tema-content', t.id);
 }
 function toggleEstudiadoTema(id){
   const t = getTema(id);
@@ -674,8 +788,9 @@ function renderEnfermedad(id){
           <span class="btn-icon mic-btn" id="mic-btn-${e.id}" style="display:none" onclick="event.stopPropagation(); toggleDictado('${e.id}')">🎤 Dictar</span>
         </div>
         <p class="dn-sub">Cosas que dijo el profesor en clase y que no están en las diapositivas.</p>
-        <textarea id="doctor-note-${e.id}" placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
-          oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${notesAdapter.get(e.id + '::apuntes-doctor')}</textarea>
+        <div class="note-editable hl-zone" id="doctor-note-${e.id}" contenteditable="true" data-hl-key="note::${e.id}::apuntes-doctor"
+          data-placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
+          oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${(() => { const v = notesAdapter.get(e.id + '::apuntes-doctor'); return /<[a-z][\s\S]*>/i.test(v) ? v : v.replace(/\n/g, '<br>'); })()}</div>
         <div class="btn-icon" style="margin-top:10px" onclick="event.stopPropagation(); navCuaderno('enfermedad','${e.id}')">✏️ ¿Prefieres dibujar? Abre tu cuaderno de clase</div>
       </div>
     </div>
@@ -708,6 +823,10 @@ function renderEnfermedad(id){
   buildSectionToc('panel-profundo', 'section-toc');
   // hace colapsables las tarjetas de Modo Profundo (menos muro de texto)
   makeCardsCollapsible('panel-profundo');
+  // marca todas las tarjetas de los 3 modos como resaltables
+  markHighlightZones('panel-profundo', e.id);
+  markHighlightZones('panel-repaso', e.id);
+  markHighlightZones('panel-imprescindible', e.id);
 }
 
 /* ---------- dictado por voz para "Apuntes del doctor" (Chrome/Android; no soportado en Safari/iOS) ---------- */
@@ -718,7 +837,7 @@ function toggleDictado(diseaseId){
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SpeechRecognition) return;
   const btn = document.getElementById('mic-btn-' + diseaseId);
-  const textarea = document.getElementById('doctor-note-' + diseaseId);
+  const editable = document.getElementById('doctor-note-' + diseaseId);
 
   if(recognitionActiveFor === diseaseId){
     recognitionInstance.stop();
@@ -731,7 +850,7 @@ function toggleDictado(diseaseId){
   rec.continuous = true;
   rec.interimResults = true;
 
-  let baseText = textarea.value ? textarea.value.trim() + ' ' : '';
+  let baseText = editable.textContent ? editable.textContent.trim() + ' ' : '';
 
   rec.onresult = (event) => {
     let interim = '', final = '';
@@ -741,7 +860,7 @@ function toggleDictado(diseaseId){
       else interim += transcript;
     }
     if(final) baseText += final;
-    textarea.value = baseText + interim;
+    editable.textContent = baseText + interim;
     handleNoteInput(diseaseId + '::apuntes-doctor', 'doctor-note-' + diseaseId);
   };
   const stopUI = () => {
@@ -796,6 +915,19 @@ function makeCardsCollapsible(containerId){
     card.dataset.collapsible = 'done';
     if(i === 0) card.classList.add('card-open');
   });
+}
+
+/* marca las tarjetas de un panel como zonas resaltables (independiente del TOC/colapsables) */
+function markHighlightZones(containerId, entidadId){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const cards = container.querySelectorAll(':scope > .kcard, :scope > .mcard, :scope > .ccard, :scope > .pcard, :scope > .rcard, :scope > .gcard, :scope > .icard');
+  cards.forEach((card, i) => {
+    const body = card.querySelector('.card-body') || card;
+    body.classList.add('hl-zone');
+    body.dataset.hlKey = entidadId + '::' + containerId + '::' + i;
+  });
+  restoreZoneHighlights('#' + containerId);
 }
 
 function switchMode(tabEl, mode){
@@ -1102,6 +1234,7 @@ function initSearch(){
 document.addEventListener('DOMContentLoaded', () => {
   loadFlags();
   loadDarkMode();
+  initHighlighting();
   navRenderCurrent();
   initSearch();
 
