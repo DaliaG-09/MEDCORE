@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -74,6 +74,7 @@ function navRenderCurrent(){
     case 'quiz': renderQuiz(top.id); break;
     case 'favoritos': renderFavoritos(); break;
     case 'apuntes': renderApuntes(); break;
+    case 'casos': renderCasos(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -140,6 +141,31 @@ function updateDarkToggleIcon(){
   if(!btn) return;
   const isDark = document.documentElement.classList.contains('dark');
   btn.innerHTML = `<span class="emoji">${isDark ? '☀️' : '🌙'}</span> ${isDark ? 'Modo claro' : 'Modo oscuro'}`;
+}
+
+/* ---------- racha de días estudiando ---------- */
+function registrarEstudioHoy(){
+  const hoyStr = new Date().toDateString();
+  const last = localStorage.getItem('medcore-last-study-date');
+  if(last === hoyStr) return; // ya contado hoy
+  let racha = parseInt(localStorage.getItem('medcore-streak') || '0', 10);
+  const ayer = new Date(); ayer.setDate(ayer.getDate() - 1);
+  racha = (last === ayer.toDateString()) ? racha + 1 : 1;
+  localStorage.setItem('medcore-last-study-date', hoyStr);
+  localStorage.setItem('medcore-streak', String(racha));
+}
+function getRachaActual(){
+  const hoyStr = new Date().toDateString();
+  const last = localStorage.getItem('medcore-last-study-date');
+  if(!last) return 0;
+  const racha = parseInt(localStorage.getItem('medcore-streak') || '0', 10);
+  const ayer = new Date(); ayer.setDate(ayer.getDate() - 1);
+  return (last === hoyStr || last === ayer.toDateString()) ? racha : 0;
+}
+function rachaHTML(){
+  const racha = getRachaActual();
+  if(racha < 1) return '';
+  return `<div class="countdown-chip racha-chip"><span class="countdown-days">🔥 ${racha}</span><span class="countdown-label">${racha === 1 ? 'día seguido estudiando' : 'días seguidos estudiando'}</span></div>`;
 }
 
 /* ---------- countdown de próxima evaluación ---------- */
@@ -216,9 +242,10 @@ function renderInicio(){
         <p>Esta semana tienes ${total} enfermedades para revisar. Vas ${estudiadas}/${total}.</p>
         <p style="margin-top:6px; font-size:11.5px; color:var(--ink-soft); font-family:var(--font-mono)">${CURSO.nombre} · ${CURSO.codigo} · Ciclo ${CURSO.ciclo} · Sílabo ${CURSO.silabo}</p>
       </div>
-      <div class="greeting-mark"><img src="assets/nexu-logo.svg" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
+      <div class="greeting-mark"><img src="icon-192.png" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
     </div>
     ${countdownHTML()}
+    ${rachaHTML()}
     ${completada ? nexuMessageHTML('<strong>✦ ¡Semana completada!</strong> Revisaste todas las enfermedades de esta semana. Buen trabajo.') : ''}
   `;
 
@@ -307,7 +334,8 @@ function renderSemana(id){
     <p class="page-sub">Teoría, hospital, lecturas y enfermedades correspondientes a esta semana.</p>
 
     <div class="progress-track"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>
-    <div class="progress-caption" style="margin-bottom:22px">${estudiadas}/${total} enfermedades revisadas</div>
+    <div class="progress-caption" style="margin-bottom:14px">${estudiadas}/${total} enfermedades revisadas</div>
+    ${total > 0 ? `<div class="btn-icon" style="margin-bottom:22px; display:inline-flex;" onclick="navQuizSemana('${s.id}')">🧠 Repaso de toda la semana</div>` : ''}
 
     <div class="section-block">
       <h3>Días</h3>
@@ -553,6 +581,7 @@ function renderEnfermedad(id){
         <h1 class="page-title">${e.nombre}</h1>
       </div>
       <div class="toolbar">
+        <div class="btn-icon" onclick="navCasos('${e.id}')">🩺 Casos clínicos</div>
         <div class="btn-icon" onclick="navQuiz('${e.id}')">🧠 Ponte a prueba</div>
         <div class="btn-icon" onclick="navCuaderno('enfermedad','${e.id}')">📓 Cuaderno de clase</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
@@ -595,7 +624,7 @@ function renderEnfermedad(id){
         <p class="dn-sub">Cosas que dijo el profesor en clase y que no están en las diapositivas.</p>
         <textarea id="doctor-note-${e.id}" placeholder="Ej: el Dr. mencionó que en la práctica prefiere empezar con..."
           oninput="handleNoteInput('${e.id}::apuntes-doctor','doctor-note-${e.id}')">${notesAdapter.get(e.id + '::apuntes-doctor')}</textarea>
-        ${drawBlockHTML(e.id + '::apuntes-doctor-dibujo')}
+        <div class="btn-icon" style="margin-top:10px" onclick="event.stopPropagation(); navCuaderno('enfermedad','${e.id}')">✏️ ¿Prefieres dibujar? Abre tu cuaderno de clase</div>
       </div>
     </div>
 
@@ -621,14 +650,12 @@ function renderEnfermedad(id){
   // expande "Apuntes del doctor" automáticamente si ya tiene contenido guardado
   const dnBox = document.getElementById('doctor-notes-' + e.id);
   const hasNote = notesAdapter.get(e.id + '::apuntes-doctor').trim().length > 0;
-  const hasDrawing = drawAdapter.get(e.id + '::apuntes-doctor-dibujo').length > 0;
-  if(dnBox && (hasNote || hasDrawing)) dnBox.classList.add('expanded');
-
-  // inicializa el lienzo de trazos (debe hacerse después de insertar el HTML)
-  initDrawPad(e.id + '::apuntes-doctor-dibujo');
+  if(dnBox && hasNote) dnBox.classList.add('expanded');
 
   // construye el índice interno (mini-TOC) para el modo activo
   buildSectionToc('panel-profundo', 'section-toc');
+  // hace colapsables las tarjetas de Modo Profundo (menos muro de texto)
+  makeCardsCollapsible('panel-profundo');
 }
 
 /* ---------- dictado por voz para "Apuntes del doctor" (Chrome/Android; no soportado en Safari/iOS) ---------- */
@@ -693,6 +720,30 @@ function buildSectionToc(containerId, tocId){
     pills.push(`<span class="section-toc-item" onclick="document.getElementById('${secId}').scrollIntoView({behavior:'smooth', block:'start'})">${label}</span>`);
   });
   tocEl.innerHTML = pills.join('');
+}
+
+/* hace colapsables las tarjetas de Modo Profundo (la primera queda abierta,
+   el resto se puede expandir tocando el título) — así la página se ve como
+   un índice escaneable en vez de un muro de texto desde que entras */
+function makeCardsCollapsible(containerId){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const cards = container.querySelectorAll(':scope > .kcard, :scope > .mcard, :scope > .ccard, :scope > .pcard, :scope > .rcard');
+  cards.forEach((card, i) => {
+    if(card.dataset.collapsible === 'done') return;
+    const h3 = card.querySelector('h3');
+    if(!h3) return;
+    const bodyChildren = Array.from(card.children).filter(ch => ch !== h3);
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    bodyChildren.forEach(ch => body.appendChild(ch));
+    card.appendChild(body);
+    h3.classList.add('card-toggle');
+    h3.innerHTML += ' <span class="card-chevron">▾</span>';
+    h3.addEventListener('click', () => card.classList.toggle('card-open'));
+    card.dataset.collapsible = 'done';
+    if(i === 0) card.classList.add('card-open');
+  });
 }
 
 function switchMode(tabEl, mode){
@@ -905,6 +956,7 @@ function toggleEstudiado(id, fromDetail){
   const e = getEnfermedad(id);
   e.estudiado = !e.estudiado;
   saveFlags();
+  if(e.estudiado) registrarEstudioHoy();
   navRenderCurrent();
 }
 
