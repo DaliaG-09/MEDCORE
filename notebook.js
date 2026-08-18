@@ -59,6 +59,7 @@ function renderCuaderno(compositeId){
       <span class="swatch" style="background:#5267E8" onclick="setCuadernoColor('#5267E8', this)"></span>
       <span class="swatch" style="background:#78C9A3" onclick="setCuadernoColor('#78C9A3', this)"></span>
       <span class="swatch" style="background:#E8A93D" onclick="setCuadernoColor('#E8A93D', this)"></span>
+      <span class="swatch" style="background:#f0eef5; box-shadow: inset 0 0 0 1px #ccc;" onclick="setCuadernoColor('#f0eef5', this)" title="Claro (para modo oscuro)"></span>
       <span class="size-sep"></span>
       <span class="size-dot size-sm" onclick="setCuadernoSize(2, this)" title="Trazo fino"><span></span></span>
       <span class="size-dot size-md active" onclick="setCuadernoSize(3.4, this)" title="Trazo medio"><span></span></span>
@@ -87,7 +88,8 @@ function initCuaderno(key){
   if(!ctx) return;
 
   const saved = notebookAdapter.get(key);
-  cuadernoState = { canvas, ctx, strokes: saved.strokes || [], current: null, color: '#24243A', size: 3.4, pageHeight: saved.pageHeight || 1100, key };
+  const esOscuro = document.documentElement.classList.contains('dark');
+  cuadernoState = { canvas, ctx, strokes: saved.strokes || [], current: null, color: esOscuro ? '#f0eef5' : '#24243A', size: 3.4, pageHeight: saved.pageHeight || 1100, key };
 
   resizeCuaderno();
   window.addEventListener('resize', resizeCuaderno);
