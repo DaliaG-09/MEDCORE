@@ -647,6 +647,69 @@ const ENFERMEDADES = [
       erroresFrecuentes: ["Diagnosticar EPOC solo por clínica sin espirometría", "Confundir con asma sin evaluar reversibilidad"],
       asociacionesClinicas: ["EPOC + cor pulmonale → edema de miembros inferiores, ingurgitación yugular"]
     }
+  ,
+    casosClinicos: [
+          {
+                "vineta": "Varón de 64 años, obrero de construcción jubilado, con antecedente de tabaquismo de 40 paquetes-año (dejó de fumar hace 2 años). Acude por disnea progresiva de 8 meses de evolución, actualmente con esfuerzos mínimos (subir un piso de escaleras), y tos con expectoración blanquecina matutina. Al examen: tórax en tonel, espiración prolongada con labios fruncidos, murmullo vesicular disminuido difusamente. Espirometría post-broncodilatador: FEV1/FVC 0.58, FEV1 48% del predicho.",
+                "preguntaMC": {
+                      "enunciado": "Según la clasificación GOLD, ¿cuál es el paso MÁS apropiado a seguir en el manejo de este paciente?",
+                      "opciones": [
+                            {
+                                  "id": "a",
+                                  "texto": "Iniciar corticoide oral en pauta larga para reducir la inflamación de base"
+                            },
+                            {
+                                  "id": "b",
+                                  "texto": "Clasificar la gravedad combinando síntomas (ej. mMRC/CAT) y riesgo de exacerbaciones, luego iniciar broncodilatador de acción prolongada"
+                            },
+                            {
+                                  "id": "c",
+                                  "texto": "Indicar oxigenoterapia domiciliaria continua de inmediato"
+                            },
+                            {
+                                  "id": "d",
+                                  "texto": "Repetir la espirometría en 6 meses antes de iniciar cualquier tratamiento"
+                            }
+                      ],
+                      "correcta": "b",
+                      "explicacion": "El FEV1/FVC <0.70 ya confirma EPOC. El siguiente paso correcto es clasificar la gravedad combinando síntomas y riesgo de exacerbaciones (grupo GOLD A/B/E) para elegir el tratamiento inicial — que empieza con broncodilatador de acción prolongada, no corticoide oral (sin indicación aquí) ni oxígeno (no hay dato de hipoxemia documentada)."
+                },
+                "preguntaEscrita": {
+                      "enunciado": "Explica el mecanismo fisiopatológico por el cual este paciente presenta el signo de labios fruncidos al respirar, y por qué ese mismo mecanismo explica el 'tórax en tonel' al examen físico.",
+                      "respuestaModelo": "La destrucción del parénquima alveolar y la pérdida de retracción elástica hacen que la vía aérea pequeña tienda a colapsar durante la espiración forzada. Al respirar con labios fruncidos, el paciente genera una resistencia adicional en la salida del aire que aumenta la presión dentro de la vía aérea, evitando ese colapso precoz y permitiendo vaciar mejor los pulmones. El mismo problema de fondo — aire atrapado que no se logra expulsar por completo en cada ciclo — lleva a hiperinsuflación pulmonar crónica, que con el tiempo remodela la caja torácica hacia el 'tórax en tonel' (aumento del diámetro anteroposterior)."
+                }
+          },
+          {
+                "vineta": "Mujer de 58 años con EPOC conocido (GOLD C) en tratamiento con LAMA, acude a emergencia por aumento de la disnea habitual, mayor volumen de esputo y cambio a esputo purulento en los últimos 2 días. No tiene fiebre. Saturación 91% con FiO2 ambiental, FR 24/min, sin uso marcado de músculos accesorios.",
+                "preguntaMC": {
+                      "enunciado": "¿Cuál de los siguientes NO es un criterio típico para diagnosticar una exacerbación de EPOC en esta paciente?",
+                      "opciones": [
+                            {
+                                  "id": "a",
+                                  "texto": "Aumento de la disnea basal"
+                            },
+                            {
+                                  "id": "b",
+                                  "texto": "Aumento del volumen del esputo"
+                            },
+                            {
+                                  "id": "c",
+                                  "texto": "Cambio del esputo a purulento"
+                            },
+                            {
+                                  "id": "d",
+                                  "texto": "Presencia de fiebre alta como criterio obligatorio"
+                            }
+                      ],
+                      "correcta": "d",
+                      "explicacion": "Los criterios clásicos (criterios de Anthonisen) son: aumento de la disnea, aumento del volumen del esputo, y cambio a esputo purulento — con 2 de 3 ya se sospecha exacerbación. La fiebre NO es un criterio obligatorio ni forma parte de esta tríada; muchas exacerbaciones de EPOC cursan sin fiebre, a diferencia de una neumonía."
+                },
+                "preguntaEscrita": {
+                      "enunciado": "¿Con cuántos y cuáles criterios de Anthonisen cursa esta paciente, y qué implicancia tiene eso sobre la indicación de antibióticos?",
+                      "respuestaModelo": "Cursa con los 3 criterios de Anthonisen: aumento de disnea, aumento del volumen de esputo, y esputo purulento. Con los 3 criterios presentes (especialmente la purulencia, que sugiere causa bacteriana) sí está indicado iniciar antibióticos empíricos, además del ajuste de broncodilatadores y considerar corticoide sistémico según la gravedad de la exacerbación."
+                }
+          }
+    ]
   },
 
   {
@@ -761,6 +824,39 @@ const ENFERMEDADES = [
       erroresFrecuentes: ["Tratar solo con SABA sin controlador de base"],
       asociacionesClinicas: ["Asma + rinitis alérgica + eccema → tríada atópica"]
     }
+  ,
+    casosClinicos: [
+          {
+                "vineta": "Adolescente de 15 años con antecedente de rinitis alérgica y dermatitis atópica en la infancia. Consulta por episodios recurrentes de tos nocturna y sibilancias que se desencadenan con el ejercicio y la exposición al polvo, con resolución espontánea o tras uso de salbutamol. Examen físico entre episodios: normal. Espirometría: FEV1 88% del predicho, FEV1/FVC 0.81; tras salbutamol, FEV1 sube a 104% del predicho.",
+                "preguntaMC": {
+                      "enunciado": "¿Qué porcentaje mínimo de mejoría en el FEV1 post-broncodilatador se considera clínicamente significativo para apoyar el diagnóstico de asma?",
+                      "opciones": [
+                            {
+                                  "id": "a",
+                                  "texto": "≥5%"
+                            },
+                            {
+                                  "id": "b",
+                                  "texto": "≥12% y 200 mL"
+                            },
+                            {
+                                  "id": "c",
+                                  "texto": "≥25%"
+                            },
+                            {
+                                  "id": "d",
+                                  "texto": "No existe un umbral estandarizado"
+                            }
+                      ],
+                      "correcta": "b",
+                      "explicacion": "El criterio estándar de reversibilidad significativa es un aumento ≥12% Y ≥200 mL en el FEV1 (o FVC) tras broncodilatador. En este caso, el FEV1 subió de 88% a 104% (16 puntos porcentuales), superando ampliamente el umbral — consistente con asma."
+                },
+                "preguntaEscrita": {
+                      "enunciado": "Este paciente tiene antecedente de rinitis alérgica y dermatitis atópica. Explica cómo se relacionan estas tres condiciones desde el punto de vista fisiopatológico.",
+                      "respuestaModelo": "Las tres forman parte de la llamada 'marcha atópica' o tríada atópica: comparten una base inmunológica común de hipersensibilidad tipo I mediada por IgE, con predominio de respuesta Th2. En cada órgano (piel, mucosa nasal, vía aérea) la exposición a alérgenos activa mastocitos y eosinófilos a través de IgE específica, liberando histamina y otros mediadores que producen inflamación local — dermatitis en la piel, rinitis en la mucosa nasal, y broncoespasmo/inflamación bronquial en el asma. Por eso es común que un mismo paciente atópico desarrolle las tres a lo largo de la vida."
+                }
+          }
+    ]
   },
   {
     "id": "bronquitis-bronquiectasias",
@@ -962,6 +1058,39 @@ const ENFERMEDADES = [
         "Bronquitis crónica + tabaquismo + obstrucción fija en espirometría → esto ya es EPOC fenotipo bronquitis crónica"
       ]
     }
+  ,
+    casosClinicos: [
+          {
+                "vineta": "Mujer de 45 años, sin comorbilidades ni tabaquismo, acude por tos seca que inició hace 5 días tras un cuadro catarral (rinorrea, malestar general). No tiene fiebre, no tiene disnea, auscultación con roncantes aislados que se modifican con la tos. Radiografía de tórax: sin infiltrados.",
+                "preguntaMC": {
+                      "enunciado": "¿Cuál es la conducta MÁS apropiada respecto al uso de antibióticos en esta paciente?",
+                      "opciones": [
+                            {
+                                  "id": "a",
+                                  "texto": "Iniciar amoxicilina empírica por 7 días, ya que toda tos con roncantes sugiere sobreinfección bacteriana"
+                            },
+                            {
+                                  "id": "b",
+                                  "texto": "No indicar antibióticos — el cuadro es compatible con bronquitis aguda, de etiología predominantemente viral"
+                            },
+                            {
+                                  "id": "c",
+                                  "texto": "Solicitar cultivo de esputo antes de decidir"
+                            },
+                            {
+                                  "id": "d",
+                                  "texto": "Indicar azitromicina como primera línea en todos los casos"
+                            }
+                      ],
+                      "correcta": "b",
+                      "explicacion": "La bronquitis aguda es predominantemente viral (solo se aísla un patógeno bacteriano en una minoría de casos) y autolimitada. La ausencia de infiltrado radiológico y de criterios de gravedad hace innecesario el uso de antibióticos de rutina — el manejo es sintomático."
+                },
+                "preguntaEscrita": {
+                      "enunciado": "¿Qué dato clínico de esta viñeta ayuda a diferenciar bronquitis aguda de neumonía, y por qué es relevante buscarlo activamente en el examen?",
+                      "respuestaModelo": "La ausencia de infiltrado en la radiografía de tórax es el dato clave que descarta neumonía — la definición de neumonía exige un infiltrado nuevo en imagen, mientras que la bronquitis aguda es un cuadro exclusivamente de la vía aérea de conducción sin compromiso del parénquima. Clínicamente, también apoya la diferencia la ausencia de fiebre y de signos focales de consolidación (matidez, egofonía, crépitos fijos), presentes en la neumonía pero no aquí."
+                }
+          }
+    ]
   },
   {
     "id": "neumonia-nac",
@@ -1147,6 +1276,39 @@ const ENFERMEDADES = [
         "NAC en paciente joven + pocas comorbilidades + síntomas extrapulmonares → sospechar patógeno atípico (Mycoplasma)"
       ]
     }
+  ,
+    casosClinicos: [
+          {
+                "vineta": "Varón de 72 años, con antecedente de diabetes mellitus tipo 2, acude a emergencia por fiebre de 39°C, tos productiva con esputo herrumbroso, y dolor pleurítico derecho de 3 días de evolución. Signos vitales: FR 32/min, FC 108/min, PA 95/60 mmHg, SatO2 89% ambiental. Examen: confuso en tiempo, matidez y crépitos en base derecha, egofonía positiva.",
+                "preguntaMC": {
+                      "enunciado": "Usando el CURB-65, ¿cuántos puntos tiene este paciente y qué conducta corresponde?",
+                      "opciones": [
+                            {
+                                  "id": "a",
+                                  "texto": "1 punto — manejo ambulatorio"
+                            },
+                            {
+                                  "id": "b",
+                                  "texto": "2 puntos — hospitalización en sala general"
+                            },
+                            {
+                                  "id": "c",
+                                  "texto": "4 puntos (confusión + FR≥30 + PAS<90 + edad≥65) — considerar UCI, no solo hospitalización en sala"
+                            },
+                            {
+                                  "id": "d",
+                                  "texto": "0 puntos — no cumple criterios de gravedad"
+                            }
+                      ],
+                      "correcta": "c",
+                      "explicacion": "CURB-65: Confusión (1) + FR≥30 (1) + PAS<90 (1) + edad≥65 (1) = 4 puntos. Urea no está dada pero con 4 criterios claros ya alcanza el rango de alto riesgo (CURB-65 ≥3), lo que obliga a considerar manejo en UCI, no solo hospitalización en sala general — más aún con hipotensión que podría anticipar shock séptico."
+                },
+                "preguntaEscrita": {
+                      "enunciado": "Explica por qué este paciente presenta egofonía y matidez en la base derecha, relacionando el hallazgo con lo que ocurre a nivel del parénquima pulmonar.",
+                      "respuestaModelo": "En la neumonía, el exudado inflamatorio llena los alvéolos, reemplazando el aire que normalmente contienen (consolidación). Esto hace que el tejido pulmonar se comporte de forma más 'sólida' — al percutir, transmite un sonido mate en vez de resonante (matidez), y al auscultar, transmite mejor las vibraciones de la voz, generando el cambio característico de 'e' a 'a' (egofonía) sobre la zona consolidada. Ambos hallazgos reflejan el mismo proceso: pérdida del contenido aéreo normal del parénquima por el exudado inflamatorio."
+                }
+          }
+    ]
   },
   {
     "id": "neumonia-intrahospitalaria",
@@ -1330,6 +1492,39 @@ const ENFERMEDADES = [
         "Neumonía atípica + paciente joven + síntomas extrapulmonares → Mycoplasma como primera sospecha"
       ]
     }
+  ,
+    casosClinicos: [
+          {
+                "vineta": "Paciente de 68 años, en UCI con ventilación mecánica por 6 días tras una cirugía abdominal complicada. El día 6 presenta fiebre de 38.6°C, aumento de secreciones traqueales purulentas, y nuevo infiltrado en radiografía de tórax. Hemodinámicamente estable, sin requerimiento de vasopresores.",
+                "preguntaMC": {
+                      "enunciado": "¿Cuál es el paso MÁS apropiado antes de iniciar o ajustar el tratamiento antibiótico?",
+                      "opciones": [
+                            {
+                                  "id": "a",
+                                  "texto": "Iniciar de inmediato cobertura de amplísimo espectro para Pseudomonas y SARM sin cultivo previo"
+                            },
+                            {
+                                  "id": "b",
+                                  "texto": "Obtener cultivo de una muestra respiratoria antes de iniciar el antibiótico, ya que el paciente está hemodinámicamente estable y esto no debe retrasar significativamente el inicio"
+                            },
+                            {
+                                  "id": "c",
+                                  "texto": "Esperar 48 horas de observación antes de tomar cualquier decisión"
+                            },
+                            {
+                                  "id": "d",
+                                  "texto": "No es necesario cultivo porque el diagnóstico es únicamente clínico-radiológico"
+                            }
+                      ],
+                      "correcta": "b",
+                      "explicacion": "Al estar hemodinámicamente estable (sin shock séptico ni requerimiento de vasopresores), hay margen para obtener el cultivo respiratorio antes de iniciar el antibiótico empírico, lo que permite un tratamiento dirigido más preciso y evita sobretratamiento de amplio espectro innecesario. Si el paciente estuviera en shock séptico, el antibiótico no debería esperar al cultivo."
+                },
+                "preguntaEscrita": {
+                      "enunciado": "¿Qué elementos de esta viñeta clasificarías como factores de riesgo para patógenos multirresistentes (MDR), y cómo influirían en tu elección antibiótica inicial?",
+                      "respuestaModelo": "El principal factor de riesgo aquí es el tiempo de ventilación mecánica (6 días) — se considera neumonía nosocomial de inicio tardío (>4-5 días), lo cual se asocia a mayor probabilidad de patógenos multirresistentes como Pseudomonas aeruginosa o Acinetobacter, en comparación con la neumonía de inicio temprano. Esto orientaría a iniciar cobertura empírica de espectro más amplio mientras se esperan los resultados del cultivo, ajustando luego según el antibiograma."
+                }
+          }
+    ]
   }
 ];
 
