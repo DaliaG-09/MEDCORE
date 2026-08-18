@@ -124,6 +124,77 @@ function toggleDoctorNotes(el, drawKey){
   }
 }
 
+/* ---------- modo oscuro ---------- */
+function loadDarkMode(){
+  const saved = localStorage.getItem('medcore-dark') === 'true';
+  if(saved) document.documentElement.classList.add('dark');
+  updateDarkToggleIcon();
+}
+function toggleDarkMode(){
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem('medcore-dark', document.documentElement.classList.contains('dark'));
+  updateDarkToggleIcon();
+}
+function updateDarkToggleIcon(){
+  const btn = document.getElementById('dark-toggle');
+  if(!btn) return;
+  const isDark = document.documentElement.classList.contains('dark');
+  btn.innerHTML = `<span class="emoji">${isDark ? '☀️' : '🌙'}</span> ${isDark ? 'Modo claro' : 'Modo oscuro'}`;
+}
+
+/* ---------- countdown de próxima evaluación ---------- */
+const MESES_MAP = { ene:0, feb:1, mar:2, abr:3, may:4, jun:5, jul:6, ago:7, set:8, sep:8, oct:9, nov:10, dic:11 };
+function parseFechaTextoLibre(texto, year){
+  // busca patrones tipo "5 AL 11 DE OCTUBRE" o "30 NOVIEMBRE AL 6 DE DICIEMBRE" y toma la fecha final
+  const meses = 'enero|febrero|marzo|abril|mayo|junio|julio|agosto|setiembre|septiembre|octubre|noviembre|diciembre';
+  const re = new RegExp(`(\\d{1,2})\\s*(?:DE)?\\s*(${meses})`, 'gi');
+  let m, last = null;
+  while((m = re.exec(texto)) !== null){ last = m; }
+  if(!last) return null;
+  const dia = parseInt(last[1], 10);
+  const mesTxt = last[2].toLowerCase().slice(0,3);
+  const mesIdx = MESES_MAP[mesTxt];
+  if(mesIdx === undefined) return null;
+  return new Date(year, mesIdx, dia, 23, 59);
+}
+function parseRangoFin(rango, year){
+  // "31 ago – 4 set" -> toma "4 set"; "17 – 21 ago" -> toma "21 ago"
+  const m = rango.match(/(\d{1,2})\s*([a-záéíóú]{3})\s*$/i);
+  if(!m) return null;
+  const dia = parseInt(m[1], 10);
+  const mesIdx = MESES_MAP[m[2].toLowerCase()];
+  if(mesIdx === undefined) return null;
+  return new Date(year, mesIdx, dia, 23, 59);
+}
+function getProximaEvaluacion(){
+  const hoy = new Date();
+  const year = hoy.getFullYear();
+  const candidatas = [];
+  SEMANAS.forEach(s => {
+    if(!s.evaluaciones || !s.evaluaciones.length) return;
+    s.evaluaciones.forEach(ev => {
+      let fecha = parseFechaTextoLibre(ev, year) || parseRangoFin(s.rango, year);
+      if(fecha && fecha >= hoy){
+        candidatas.push({ fecha, label: ev, semana: s.numero });
+      }
+    });
+  });
+  candidatas.sort((a,b) => a.fecha - b.fecha);
+  return candidatas[0] || null;
+}
+function countdownHTML(){
+  const prox = getProximaEvaluacion();
+  if(!prox) return '';
+  const dias = Math.ceil((prox.fecha - new Date()) / (1000*60*60*24));
+  const urgente = dias <= 3;
+  return `
+    <div class="countdown-chip ${urgente ? 'urgente' : ''}">
+      <span class="countdown-days">${dias <= 0 ? 'Hoy' : (dias === 1 ? '1 día' : dias + ' días')}</span>
+      <span class="countdown-label">para ${prox.label.split('—')[0].trim()} (Semana ${prox.semana})</span>
+    </div>
+  `;
+}
+
 function saludoSegunHora(){
   const h = new Date().getHours();
   if(h < 12) return 'Buenos días';
@@ -147,6 +218,7 @@ function renderInicio(){
       </div>
       <div class="greeting-mark"><img src="assets/nexu-logo.svg" alt="Nexu" style="width:100%; height:100%; object-fit:contain;"></div>
     </div>
+    ${countdownHTML()}
     ${completada ? nexuMessageHTML('<strong>✦ ¡Semana completada!</strong> Revisaste todas las enfermedades de esta semana. Buen trabajo.') : ''}
   `;
 
@@ -920,6 +992,7 @@ function initSearch(){
 /* ---------- init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   loadFlags();
+  loadDarkMode();
   navRenderCurrent();
   initSearch();
 
