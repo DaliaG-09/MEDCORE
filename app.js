@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -75,6 +75,7 @@ function navRenderCurrent(){
     case 'favoritos': renderFavoritos(); break;
     case 'apuntes': renderApuntes(); break;
     case 'casos': renderCasos(top.id); break;
+    case 'lectura': renderLectura(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -259,9 +260,10 @@ function renderInicio(){
       </div>
       <div class="progress-track"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>
       <div class="progress-caption">${estudiadas}/${total} enfermedades revisadas ${estudiadas === total && total>0 ? '— ✦ ¡semana completada!' : ''}</div>
-      <div class="grid cols-3" style="margin-top:18px">
+      <div class="day-swipe" style="margin-top:18px">
         ${semana.dias.map((d,i) => diaCardHTML(d, semana.id, i)).join('')}
       </div>
+      <p class="swipe-hint">← desliza para ver los demás días →</p>
     </div>
   `;
 
@@ -358,7 +360,7 @@ function renderSemana(id){
         <h3>Lecturas</h3>
         <ul>${s.lecturas.map(lid => {
           const l = LECTURAS.find(x => x.id === lid);
-          return `<li>${l ? l.titulo : lid} <span class="muted">(${l ? l.tipo : ''})</span></li>`;
+          return `<li><a class="link-quiet" style="font-size:14px;" onclick="openLectura('${lid}')">📚 ${l ? l.titulo : lid}</a> <span class="muted">(${l ? l.tipo : ''})</span></li>`;
         }).join('')}</ul>
       </div>
       <div class="section-block">
@@ -403,7 +405,7 @@ function renderDia(compositeId){
     if(v.tipo === 'lectura'){
       const l = getLectura(v.id);
       if(!l) return '';
-      return `<div class="disease-card" onclick="navPush('semana','${s.id}','Semana ${s.numero}')" style="cursor:pointer;">
+      return `<div class="disease-card" onclick="openLectura('${l.id}')" style="cursor:pointer;">
         <div><div class="name">📚 ${l.titulo}</div><div class="area">Lectura ${l.tipo}</div></div>
       </div>`;
     }
@@ -503,6 +505,55 @@ function renderApuntes(){
       `;
     }).join('')}
   `;
+}
+
+/* ---------- vista: lectura ---------- */
+function openLectura(id){
+  const l = getLectura(id);
+  navPush('lectura', id, l.titulo.length > 40 ? l.titulo.slice(0,40) + '…' : l.titulo);
+}
+function openLecturaFresh(id){
+  const l = getLectura(id);
+  navReset('lectura', id, l.titulo.length > 40 ? l.titulo.slice(0,40) + '…' : l.titulo);
+}
+const LECTURA_ESTADOS = ['pendiente', 'en progreso', 'leída'];
+const LECTURA_ESTADO_COLOR = { 'pendiente': 'coral', 'en progreso': 'cobalt', 'leída': 'mint' };
+function renderLectura(id){
+  const l = getLectura(id);
+  const s = getSemana(l.semana);
+  const wrap = document.getElementById('view-lectura-content');
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">Lectura ${l.tipo}</span>
+    <h1 class="page-title">📚 ${l.titulo}</h1>
+
+    <div class="kcard">
+      <h3>Detalles</h3>
+      <p><strong>Tipo:</strong> ${l.tipo === 'obligatoria' ? 'Lectura obligatoria' : l.tipo}</p>
+      <p><strong>Semana:</strong> <a class="link-quiet" onclick="navPush('semana','${s.id}','Semana ${s.numero}')">Semana ${s.numero} — ${s.titulo}</a></p>
+      ${l.url ? `<p><strong>Fuente:</strong> <a href="${l.url}" target="_blank" rel="noopener">Abrir enlace original ↗</a></p>` : `<p class="muted">Esta lectura todavía no tiene un enlace directo cargado — la referencia completa es la que ves en el título.</p>`}
+    </div>
+
+    <div class="kcard">
+      <h3>Tu estado de avance</h3>
+      <div class="lectura-estados">
+        ${LECTURA_ESTADOS.map(est => `
+          <div class="lectura-estado-btn ${l.estado === est ? 'activo' : ''}" style="--estado-color: var(--${LECTURA_ESTADO_COLOR[est]})" onclick="setLecturaEstado('${l.id}','${est}')">${est}</div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h3>Apunte sobre esta lectura</h3>
+      ${noteBlockHTML(l.id + '::general')}
+    </div>
+  `;
+}
+function setLecturaEstado(id, estado){
+  const l = getLectura(id);
+  l.estado = estado;
+  if(estado !== 'pendiente') registrarEstudioHoy();
+  navRenderCurrent();
 }
 
 /* ---------- vista: tema (anatomía/fisiología, no es enfermedad) ---------- */
@@ -709,7 +760,7 @@ function buildSectionToc(containerId, tocId){
   const container = document.getElementById(containerId);
   const tocEl = document.getElementById(tocId);
   if(!container || !tocEl) return;
-  const cards = container.querySelectorAll(':scope > .kcard, :scope > .mcard, :scope > .ccard, :scope > .pcard, :scope > .rcard, :scope > .illustration-card, :scope > .doctor-notes');
+  const cards = container.querySelectorAll(':scope > .kcard, :scope > .mcard, :scope > .ccard, :scope > .pcard, :scope > .rcard, :scope > .gcard, :scope > .icard, :scope > .illustration-card, :scope > .doctor-notes');
   const pills = [];
   cards.forEach((card, i) => {
     const h3 = card.querySelector('h3');
@@ -728,7 +779,7 @@ function buildSectionToc(containerId, tocId){
 function makeCardsCollapsible(containerId){
   const container = document.getElementById(containerId);
   if(!container) return;
-  const cards = container.querySelectorAll(':scope > .kcard, :scope > .mcard, :scope > .ccard, :scope > .pcard, :scope > .rcard');
+  const cards = container.querySelectorAll(':scope > .kcard, :scope > .mcard, :scope > .ccard, :scope > .pcard, :scope > .rcard, :scope > .gcard, :scope > .icard');
   cards.forEach((card, i) => {
     if(card.dataset.collapsible === 'done') return;
     const h3 = card.querySelector('h3');
@@ -783,7 +834,7 @@ function renderProfundo(p, diseaseId){
       <p class="muted">${p.epidemiologia}</p>
     </div>
 
-    <div class="kcard">
+    <div class="icard">
       <h3>Etiología y factores de riesgo</h3>
       <ul>${p.etiologiaFactoresRiesgo.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
@@ -791,21 +842,26 @@ function renderProfundo(p, diseaseId){
     <div class="mcard">
       <h3>🧬 Fisiopatología</h3>
       <p class="muted">${p.fisiopatologia.resumen}</p>
-      <div class="cascade">
-        ${p.fisiopatologia.cascada.map(c => {
-          const cat = cascadeCategoryFor(c.paso);
-          return `
-          <div class="cascade-step">
-            <div class="cascade-marker">
-              <div class="cascade-icon ${cat}">${cascadeIconFor(c.paso)}</div>
-              <div class="cascade-line"></div>
-            </div>
-            <div class="cascade-body">
-              <div class="cascade-title">${c.paso}</div>
-              <div class="cascade-detail">${c.detalle}</div>
-            </div>
-          </div>`;
-        }).join('')}
+      <div class="fisio-grid">
+        <div class="cascade">
+          ${p.fisiopatologia.cascada.map(c => {
+            const cat = cascadeCategoryFor(c.paso);
+            return `
+            <div class="cascade-step">
+              <div class="cascade-marker">
+                <div class="cascade-icon ${cat}">${cascadeIconFor(c.paso)}</div>
+                <div class="cascade-line"></div>
+              </div>
+              <div class="cascade-body">
+                <div class="cascade-title">${c.paso}</div>
+                <div class="cascade-detail">${c.detalle}</div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div class="fisio-explicacion">
+          ${p.fisiopatologia.explicacionExtendida ? p.fisiopatologia.explicacionExtendida.split('\n\n').map(par => `<p>${par}</p>`).join('') : '<p class="muted">Sin explicación extendida todavía para esta enfermedad.</p>'}
+        </div>
       </div>
       ${p.mecanismoEpitelial ? `<p style="margin-top:14px"><strong>Mecanismo celular clave:</strong> ${p.mecanismoEpitelial}</p>` : ''}
       ${noteBlockHTML(diseaseId + '::fisiopatologia', 'Tu explicación con tus propias palabras...')}
@@ -841,7 +897,7 @@ function renderProfundo(p, diseaseId){
       </div>
     </div>` : ''}
 
-    <div class="kcard">
+    <div class="icard">
       <h3>Diagnóstico y diferenciales</h3>
       <p>${p.diagnostico}</p>
       <p class="muted"><strong>Diferenciales:</strong> ${p.diagnosticoDiferencial.join(', ')}</p>
@@ -853,7 +909,7 @@ function renderProfundo(p, diseaseId){
       ${algoritmoDiagramaHTML(p.algoritmo)}
     </div>` : ''}
 
-    <div class="kcard">
+    <div class="gcard">
       <h3>Tratamiento</h3>
       <p><strong>No farmacológico:</strong></p>
       <ul>${p.tratamiento.noFarmacologico.map(x => `<li>${x}</li>`).join('')}</ul>
@@ -861,7 +917,7 @@ function renderProfundo(p, diseaseId){
       <ul>${p.tratamiento.farmacologico.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
 
-    <div class="kcard">
+    <div class="ccard">
       <h3>Complicaciones</h3>
       <ul>${p.complicaciones.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
@@ -1005,7 +1061,7 @@ function buildSearchIndex(){
   ENFERMEDADES.forEach(e => index.push({ tipo: 'Enfermedad', nombre: e.nombre, sub: e.area, cuerpo: flattenEnfermedadTexto(e), action: () => openEnfermedadFresh(e.id) }));
   TEMAS.forEach(t => index.push({ tipo: 'Anatomía/Fisiología', nombre: t.nombre, sub: t.area, cuerpo: flattenTemaTexto(t), action: () => openTemaFresh(t.id) }));
   SEMANAS.forEach(s => index.push({ tipo: 'Semana', nombre: `Semana ${s.numero} — ${s.titulo}`, sub: s.rango, cuerpo: '', action: () => openSemanaFresh(s.id) }));
-  LECTURAS.forEach(l => index.push({ tipo: 'Lectura', nombre: l.titulo, sub: l.tipo, cuerpo: '', action: () => openSemanaFresh(l.semana) }));
+  LECTURAS.forEach(l => index.push({ tipo: 'Lectura', nombre: l.titulo, sub: l.tipo, cuerpo: '', action: () => openLecturaFresh(l.id) }));
   return index;
 }
 
