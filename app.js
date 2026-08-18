@@ -571,6 +571,7 @@ function renderTema(id){
       </div>
       <div class="toolbar">
         <div class="btn-icon" onclick="navCuaderno('tema','${t.id}')">📓 Cuaderno de clase</div>
+        ${t.casosClinicos ? `<div class="btn-icon" onclick="navCasos('${t.id}')">🩺 Casos clínicos</div>` : ''}
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${t.estudiado ? 'done' : ''}" onclick="toggleEstudiadoTema('${t.id}')">${t.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
       </div>
