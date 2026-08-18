@@ -471,6 +471,37 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   padding: 9px 11px; font-family: var(--font-body); font-size: 13.5px; background:#fff; color: var(--ink);
 }
 
+/* ---------- modo oscuro ---------- */
+:root.dark{
+  --cream: #191922;
+  --card: #242430;
+  --ink: #f0eef5;
+  --ink-soft: #a8a5b8;
+  --line: #3a3a48;
+  --cobalt-soft: #23283f;
+  --lavender-soft: #2a2540;
+  --coral-soft: #3a2530;
+  --mint-soft: #1f3530;
+  --honey-soft: #3a3020;
+  --alert-soft: #3a2228;
+  --correct-soft: #1f3530;
+  --info-soft: #23283f;
+}
+:root.dark .doctor-notes{ background: var(--honey-soft); }
+:root.dark .draw-canvas, :root.dark .notebook-page-wrap{ background: #2a2a38; }
+:root.dark .quiz-front p, :root.dark .quiz-back p{ color: var(--ink); }
+:root.dark .algo-paso, :root.dark .algo-branch-text, :root.dark .semio-step{ background: var(--card); color: var(--ink); }
+
+/* ---------- countdown de próxima evaluación ---------- */
+.countdown-chip{
+  display:inline-flex; align-items:center; gap:8px; background: var(--card);
+  border:1.5px solid var(--coral-line); border-radius:999px; padding:8px 16px; margin:12px 0; font-size:13px;
+}
+.countdown-chip.urgente{ border-color: var(--alert-line); background: var(--alert-soft); }
+.countdown-days{ font-family: var(--font-display); font-weight:800; color: var(--coral); }
+.countdown-chip.urgente .countdown-days{ color: var(--alert); }
+.countdown-label{ color: var(--ink-soft); }
+
 /* ---------- modo autoevaluación (flashcards) ---------- */
 .quiz-progress{ font-family: var(--font-mono); font-size:11.5px; color: var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; text-align:center; }
 .quiz-card{
