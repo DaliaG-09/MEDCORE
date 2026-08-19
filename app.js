@@ -321,6 +321,7 @@ function renderPreparar(compositeId){
    Fuente: presentación de la coordinadora del curso (no inventado).
    ============================================================ */
 const HOSPITAL_INFO = {
+  sede: "Hospital Nacional Dos de Mayo",
   resumen: {
     aulas: ["Clases teóricas", "Controles de lectura calificados", "Talleres aplicativos calificados", "Exposiciones calificadas"],
     hospital: ["Examen práctico calificado", "Exposiciones calificadas"]
@@ -393,7 +394,12 @@ function renderHospital(){
   wrap.innerHTML = `
     <span class="eyebrow">Fuente: presentación de la coordinadora del curso</span>
     <h1 class="page-title">🏥 Hospital</h1>
-    <p class="page-sub">Cómo te evalúan en la sede hospitalaria — para que sepas exactamente qué esperar.</p>
+    <p class="page-sub">Tu sede: <strong>${h.sede}</strong> · Cómo te evalúan en la sede hospitalaria — para que sepas exactamente qué esperar.</p>
+
+    <div class="pcard">
+      <h3>📅 ¿Cuándo me toca examen práctico?</h3>
+      <p>Se aplica <strong>2 veces por módulo: a la mitad y al final</strong>. Ya calculé en qué semana cae cada uno según la duración real de cada módulo — los vas a ver marcados en <a class="link-quiet" onclick="openCalendarioFresh()">Evaluaciones</a> junto a las teóricas. El día exacto (jueves, viernes o sábado) todavía no se sabe — solo la semana.</p>
+    </div>
 
     <div class="grid cols-2">
       <div class="kcard">
