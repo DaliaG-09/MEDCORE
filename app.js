@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -80,6 +80,7 @@ function navRenderCurrent(){
     case 'calendario': renderCalendarioEvaluaciones(); break;
     case 'excel': renderExcelViewer(); break;
     case 'todas-semanas': renderTodasSemanas(); break;
+    case 'preparar': renderPreparar(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -257,6 +258,63 @@ function weekHeaderStyleHTML(numero){
   return `background: linear-gradient(135deg, ${t.color}33 0%, ${t.color}18 100%); border: 1px solid ${t.color}55;`;
 }
 
+/* ---------- vista: prepárate para este examen ---------- */
+function getEnfermedadesHastaSemana(numeroSemana){
+  return ENFERMEDADES.filter(e => e.semanas.some(sid => { const s = getSemana(sid); return s && s.numero <= numeroSemana; }));
+}
+function navPreparar(semanaId, evalIndex){
+  navPush('preparar', semanaId + '::' + evalIndex, 'Prepárate para el examen');
+}
+function renderPreparar(compositeId){
+  const [semanaId, idxStr] = compositeId.split('::');
+  const idx = parseInt(idxStr, 10);
+  const s = getSemana(semanaId);
+  const evalLabel = s.evaluaciones[idx];
+  const scope = getEnfermedadesHastaSemana(s.numero);
+  const estudiadas = scope.filter(e => e.estudiado).length;
+  const wrap = document.getElementById('view-preparar-content');
+
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">Semana ${s.numero} · ${s.rango}</span>
+    <h1 class="page-title">🎯 ${evalLabel.split('—')[0].trim()}</h1>
+    <p class="page-sub">Todo lo que necesitas reunido en un solo lugar antes de esta evaluación.</p>
+
+    <div class="kcard">
+      <h3>Alcance de esta evaluación</h3>
+      <p class="muted">Enfermedades y temas cubiertos hasta la Semana ${s.numero} (lo que llevas construido en MEDCORE hasta ahora).</p>
+      <div class="progress-track" style="margin-top:10px;"><div class="progress-fill" style="width:${scope.length ? (estudiadas/scope.length*100) : 0}%"></div></div>
+      <div class="progress-caption">${estudiadas}/${scope.length} enfermedades ya estudiadas</div>
+    </div>
+
+    ${scope.length ? `
+    <div class="kcard">
+      <h3>Checklist de repaso</h3>
+      <div class="chip-list">
+        ${scope.map(e => `
+          <div class="chip" style="cursor:pointer;" onclick="toggleEstudiado('${e.id}'); navPreparar('${semanaId}', ${idx});">
+            <span class="n">${e.estudiado ? '✅' : '⬜'}</span>
+            <span>${e.nombre}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>` : `
+    <div class="kcard"><p class="muted">Todavía no hay enfermedades construidas en este alcance — pásame el material y las armamos.</p></div>`}
+
+    <div class="grid cols-2">
+      <div class="pcard" style="cursor:pointer;" onclick="navQuizPreparar('${semanaId}', ${idx})">
+        <h3>🧠 Quiz combinado</h3>
+        <p>Tarjetas de recall activo de TODAS las enfermedades del alcance, mezcladas.</p>
+      </div>
+      <div class="gcard" style="cursor:pointer;" onclick="navCasosExamen('neumologia')">
+        <h3>🩺 Banco de examen (estilo real)</h3>
+        <p>Casos y preguntas nuevas, modeladas de tus exámenes pasados reales — no repite lo de cada enfermedad.</p>
+      </div>
+    </div>
+    <p class="muted" style="font-size:12px;">Por ahora el banco de examen estilo real solo cubre Neumología — se irán agregando los demás módulos según construyamos más contenido.</p>
+  `;
+}
+
 /* ---------- vista: Excel original (embebido desde Drive) ---------- */
 function openExcelFresh(){ navReset('excel', null, 'Excel del sílabo'); }
 function renderExcelViewer(){
@@ -341,9 +399,9 @@ function renderCalendarioEvaluaciones(){
   const year = hoy.getFullYear();
   const items = [];
   SEMANAS.forEach(s => {
-    (s.evaluaciones || []).forEach(ev => {
+    (s.evaluaciones || []).forEach((ev, idx) => {
       const fecha = parseFechaTextoLibre(ev, year) || parseRangoFin(s.rango, year);
-      items.push({ fecha, label: ev, semana: s });
+      items.push({ fecha, label: ev, semana: s, idx });
     });
   });
   items.sort((a,b) => (a.fecha||0) - (b.fecha||0));
@@ -352,7 +410,7 @@ function renderCalendarioEvaluaciones(){
     ${volverBtnHTML()}
     <span class="eyebrow">${CURSO.formulaEvaluacion}</span>
     <h1 class="page-title">📅 Calendario de evaluaciones</h1>
-    <p class="page-sub">Todas las evaluaciones del ciclo, en orden — para que nunca te agarre de sorpresa.</p>
+    <p class="page-sub">Todas las evaluaciones del ciclo, en orden. Toca cualquiera para prepararte: alcance, checklist, quiz y casos.</p>
 
     <div class="calendario-lista">
       ${items.map(it => {
@@ -360,7 +418,7 @@ function renderCalendarioEvaluaciones(){
         const pasado = it.fecha && it.fecha < hoy;
         const dias = it.fecha ? Math.ceil((it.fecha - hoy) / (1000*60*60*24)) : null;
         return `
-        <div class="calendario-item ${pasado ? 'pasado' : ''}" onclick="navReset('semana','${it.semana.id}','Semana ${it.semana.numero}')">
+        <div class="calendario-item ${pasado ? 'pasado' : ''}" onclick="navPreparar('${it.semana.id}', ${it.idx})">
           <div class="calendario-fecha" style="background:${theme.color}33;">
             <span class="calendario-emoji">${theme.emoji}</span>
             <span class="calendario-semana-num">S${it.semana.numero}</span>
