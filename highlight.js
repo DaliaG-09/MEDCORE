@@ -10,6 +10,7 @@
 
 let hlPopupEl = null;
 let hlActiveZone = null;
+let hlSelectionTimer = null;
 
 function initHighlighting(){
   if(hlPopupEl) return; // ya inicializado
@@ -23,24 +24,33 @@ function initHighlighting(){
   `;
   document.body.appendChild(hlPopupEl);
 
-  document.addEventListener('mouseup', handleSelectionEvent);
-  document.addEventListener('touchend', handleSelectionEvent);
+  // "selectionchange" es el evento más confiable para detectar selección de
+  // texto en cualquier dispositivo — funciona igual con mouse (arrastrar y
+  // soltar) que con el dedo/lápiz en tablet (que no siempre dispara mouseup
+  // de forma predecible). Se usa con un pequeño debounce para esperar a que
+  // la selección "se asiente" antes de mostrar el menú.
+  document.addEventListener('selectionchange', () => {
+    clearTimeout(hlSelectionTimer);
+    hlSelectionTimer = setTimeout(evaluateSelection, 250);
+  });
+  // respaldo adicional para mouse/touch, por si selectionchange llega tarde
+  document.addEventListener('mouseup', (ev) => { if(!hlPopupEl.contains(ev.target)) evaluateSelection(); });
+  document.addEventListener('touchend', (ev) => { if(!hlPopupEl.contains(ev.target)) setTimeout(evaluateSelection, 150); });
+
   document.addEventListener('mousedown', (ev) => {
-    if(!hlPopupEl.contains(ev.target)) hidePopup();
+    if(!hlPopupEl.contains(ev.target) && !findHlZone(ev.target)) hidePopup();
   });
 }
 
-function handleSelectionEvent(ev){
-  if(hlPopupEl.contains(ev.target)) return; // clic en el propio popup, no cerrar/recalcular
-  setTimeout(() => {
-    const sel = window.getSelection();
-    if(!sel || sel.isCollapsed || sel.rangeCount === 0){ hidePopup(); return; }
-    const range = sel.getRangeAt(0);
-    const zone = findHlZone(range.commonAncestorContainer);
-    if(!zone){ hidePopup(); return; }
-    hlActiveZone = zone;
-    showPopupNear(range);
-  }, 10);
+function evaluateSelection(){
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed || sel.rangeCount === 0){ hidePopup(); return; }
+  const range = sel.getRangeAt(0);
+  if(!range || range.toString().trim().length === 0){ hidePopup(); return; }
+  const zone = findHlZone(range.commonAncestorContainer);
+  if(!zone){ hidePopup(); return; }
+  hlActiveZone = zone;
+  showPopupNear(range);
 }
 
 function findHlZone(node){
