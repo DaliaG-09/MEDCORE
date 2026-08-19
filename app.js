@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -81,6 +81,7 @@ function navRenderCurrent(){
     case 'excel': renderExcelViewer(); break;
     case 'todas-semanas': renderTodasSemanas(); break;
     case 'preparar': renderPreparar(top.id); break;
+    case 'hospital': renderHospital(); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -315,6 +316,117 @@ function renderPreparar(compositeId){
   `;
 }
 
+/* ============================================================
+   HOSPITAL — estructura real de evaluación en sedes hospitalarias
+   Fuente: presentación de la coordinadora del curso (no inventado).
+   ============================================================ */
+const HOSPITAL_INFO = {
+  resumen: {
+    aulas: ["Clases teóricas", "Controles de lectura calificados", "Talleres aplicativos calificados", "Exposiciones calificadas"],
+    hospital: ["Examen práctico calificado", "Exposiciones calificadas"]
+  },
+  examenPractico: {
+    frecuencia: "2 veces por módulo: a la mitad y al final de cada módulo",
+    evaluador: "Aplicado por OTRO docente de práctica — es una evaluación cruzada, no el mismo docente que te enseña",
+    rubrica: [
+      {
+        criterio: "Presentación del problema y planteamiento diagnóstico",
+        destacado: "Resumen integral y muy detallado del caso, considerando todos los factores relevantes, con análisis profundo y comunicación clara. Incluye 1 o más diagnósticos diferenciales altamente compatibles con el cuadro clínico, con análisis crítico de la información.",
+        logrado: "Resumen adecuado de las características principales del caso, con buen entendimiento y comunicación clara. Presenta al menos un diagnóstico diferencial compatible con el cuadro clínico.",
+        noLogrado: "Resumen deficiente del caso, con información incompleta o poco clara. No presenta diagnósticos diferenciales o los presentados no son compatibles con el cuadro clínico.",
+        puntajes: ["8.5 – 10", "6.5 – 8", "0 – 6"]
+      },
+      {
+        criterio: "Plan de trabajo diagnóstico y terapéutico",
+        destacado: "Justifica un plan de trabajo coherente con el diagnóstico principal, incluyendo exámenes auxiliares pertinentes y aplica tratamientos correctamente en relación con el diagnóstico principal y diferencial.",
+        logrado: "Justifica un plan de trabajo mayormente coherente con el diagnóstico, con exámenes auxiliares adecuados y tratamientos correctos relacionados al diagnóstico principal.",
+        noLogrado: "Plan de trabajo no coherente con el diagnóstico principal, con exámenes auxiliares incompletos o poco pertinentes; tratamientos incorrectos o incompletos.",
+        puntajes: ["7.5 – 10", "6.5 – 7", "0 – 6"]
+      }
+    ],
+    totalPuntaje: ["16 a 20 (destacado)", "13 a 15 (logrado)", "menos de 13 (no logrado)"]
+  },
+  exposicionHospital: {
+    frecuencia: "1 exposición por módulo",
+    modalidad: "Grupal — todos los integrantes deben conocer todos los puntos a exponer",
+    detalles: [
+      "El orden de los ponentes lo decide el docente en el momento de la presentación (no se elige de antemano)",
+      "Se realizan durante las horas de práctica del módulo (en el hospital, no en aula)"
+    ],
+    rubrica: [
+      {
+        criterio: "Dominio del tema y organización",
+        destacado: "Desarrolla el tema con estructura clara que facilita su comprensión, usando todos los aspectos relevantes de forma organizada dentro del tiempo establecido. Manejo sobresaliente del recurso tecnológico y de las citas bibliográficas, sin fallas.",
+        logrado: "Desarrolla el tema con estructura organizada y clara, dentro del tiempo de exposición, con manejo adecuado del recurso tecnológico y de las citas bibliográficas (con algún error menor de citación).",
+        noLogrado: "No utiliza una estructura organizada, no jerarquiza los aspectos relevantes, no controla el tiempo, no maneja bien el recurso tecnológico ni cita bibliográficamente.",
+        puntajes: ["8.5 – 10", "6.5 – 8", "0 – 6"]
+      },
+      {
+        criterio: "Expresión verbal y no verbal",
+        destacado: "Expone sus ideas de manera coherente, con pronunciación correcta y tono de voz adecuado. Usa el lenguaje corporal para hacer más entendible el tema, mostrándose seguro.",
+        logrado: "Expone de manera coherente, con pronunciación y tono adecuados; usa el lenguaje corporal pero con poca frecuencia, mostrándose seguro.",
+        noLogrado: "Expresión inadecuada, no usa lenguaje corporal, no logra hacer entendible el tema ni transmitir seguridad.",
+        puntajes: ["7.5 – 10", "6.5 – 7", "0 – 6"]
+      }
+    ],
+    totalPuntaje: ["16 a 20 (destacado)", "13 a 15 (logrado)", "0 a 12 (no logrado)"]
+  }
+};
+
+function openHospitalFresh(){ navReset('hospital', null, 'Hospital'); }
+function renderHospital(){
+  const wrap = document.getElementById('view-hospital-content');
+  const h = HOSPITAL_INFO;
+  const rubricaHTML = (items, total) => `
+    <table class="compare" style="font-size:12.5px;">
+      <tr><th>Criterio</th><th>Logro destacado</th><th>Logrado</th><th>No logrado</th></tr>
+      ${items.map(r => `<tr>
+        <td><strong>${r.criterio}</strong><br><span class="muted" style="font-size:10.5px;">${r.puntajes.join(' / ')}</span></td>
+        <td>${r.destacado}</td>
+        <td>${r.logrado}</td>
+        <td>${r.noLogrado}</td>
+      </tr>`).join('')}
+    </table>
+    <p class="muted" style="margin-top:8px; font-size:12px;"><strong>Puntaje total:</strong> ${total.join(' · ')}</p>
+  `;
+
+  wrap.innerHTML = `
+    <span class="eyebrow">Fuente: presentación de la coordinadora del curso</span>
+    <h1 class="page-title">🏥 Hospital</h1>
+    <p class="page-sub">Cómo te evalúan en la sede hospitalaria — para que sepas exactamente qué esperar.</p>
+
+    <div class="grid cols-2">
+      <div class="kcard">
+        <h3>📚 Actividades en aulas</h3>
+        <ul>${h.resumen.aulas.map(x => `<li>${x}</li>`).join('')}</ul>
+      </div>
+      <div class="icard">
+        <h3>🏥 Prácticas en hospitales</h3>
+        <ul>${h.resumen.hospital.map(x => `<li>${x}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <h3>📋 Examen práctico calificado</h3>
+      <p><strong>Frecuencia:</strong> ${h.examenPractico.frecuencia}</p>
+      <p><strong>Evaluador:</strong> ${h.examenPractico.evaluador}</p>
+      ${rubricaHTML(h.examenPractico.rubrica, h.examenPractico.totalPuntaje)}
+    </div>
+
+    <div class="gcard">
+      <h3>🎤 Exposición en hospital</h3>
+      <p><strong>Frecuencia:</strong> ${h.exposicionHospital.frecuencia}</p>
+      <p><strong>Modalidad:</strong> ${h.exposicionHospital.modalidad}</p>
+      <ul>${h.exposicionHospital.detalles.map(x => `<li>${x}</li>`).join('')}</ul>
+      ${rubricaHTML(h.exposicionHospital.rubrica, h.exposicionHospital.totalPuntaje)}
+    </div>
+
+    <div class="kcard">
+      <p class="muted">Esto es la ESTRUCTURA general de evaluación (cómo te califican). Las fechas y actividades específicas de cada día de hospital siguen pendientes hasta que tengamos ese documento — si lo consigues, lo integro igual que todo lo demás.</p>
+    </div>
+  `;
+}
+
 /* ---------- vista: Excel original (embebido desde Drive) ---------- */
 function openExcelFresh(){ navReset('excel', null, 'Excel del sílabo'); }
 function renderExcelViewer(){
@@ -441,8 +553,23 @@ function saludoSegunHora(){
 }
 
 /* ---------- vista: inicio ---------- */
+/* calcula qué semana corresponde a hoy según las fechas reales del sílabo —
+   así Inicio siempre muestra la semana correcta sin quedar fija en la 1 */
+function getSemanaActual(){
+  const hoy = new Date();
+  const year = hoy.getFullYear();
+  for(const s of SEMANAS){
+    let fin = parseRangoFin(s.rango, year);
+    if(!fin && s.evaluaciones && s.evaluaciones.length){
+      fin = parseFechaTextoLibre(s.evaluaciones[0], year);
+    }
+    if(fin && fin >= hoy) return s;
+  }
+  return SEMANAS[SEMANAS.length - 1];
+}
+
 function renderInicio(){
-  const semana = SEMANAS[0];
+  const semana = getSemanaActual();
   const total = semana.enfermedades.length;
   const estudiadas = semana.enfermedades.filter(id => getEnfermedad(id).estudiado).length;
   const completada = total > 0 && estudiadas === total;
