@@ -46,15 +46,17 @@ const SEMANAS = [
           { "tipo": "enfermedad", "id": "asma-bronquial" }
         ]
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Control de lectura: Womack, J., & Kropa, J. (2022). Community-Acquired Pneumonia in Adults / Neumonía Intrahospitalaria y Atípicas / EXPOSICIÓN: VOLÚMENES Y CAPACIDADES PULMONARES",
         "vinculos": [
           { "tipo": "lectura", "id": "lectura-s1-3" },
           { "tipo": "enfermedad", "id": "neumonia-intrahospitalaria" }
         ]
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [],
     "exposiciones": [
@@ -102,15 +104,17 @@ const SEMANAS = [
           { "tipo": "enfermedad", "id": "enfermedades-pleurales" }
         ]
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES / Tuberculosis Pulmonar. Epidemiología, etiología, cuadro clínico, diagnóstico, tratamiento, complicaciones y prevención / EXPOSICIÓN: NEUMONÍA ADQUIRIDA EN LA COMUNIDAD",
         "vinculos": [
           { "tipo": "tema", "id": "analisis-gases-arteriales" },
           { "tipo": "enfermedad", "id": "tuberculosis-pulmonar" }
         ]
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER APLICATIVO: IMÁGENES",
@@ -148,11 +152,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "TALLER APLICATIVO:  ANÁLISIS DE GASES ARTERIALES 2 / Enfermedad Pulmonar Intersticial Difusa / Síndrome de apnea-hipopnea obstructiva del sueño (SAHOS)."
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Enfermedades respiratorias ocupacionales / TALLER APLICATIVO: CASOS CLÍNICOS / REPASO"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER APLICATIVO:  ANÁLISIS DE GASES ARTERIALES 2",
@@ -183,11 +189,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "EKG normal I / EKG normal II / Cardiopatía Coronaria Isquémica: Infarto Agudo de Miocardio (IMA). Fisiopatología de la angina e IMA. Diagnóstico, tipos y manejo inicial."
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Control de lectura: Achar, S. A., Kundu, S., & Norcross, W. A. (2005). Diagnosis of acute  / Hipertensión Arterial. Diagnóstico, clasificación y tratamiento / EXPOSICIÓN: ELECTROCARDIOGRAMA NORMAL: ORIGEN DE LAS ONDAS, MEDIDAS, EJE, RITMO, FRECUENCIA"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [],
     "exposiciones": [
@@ -215,11 +223,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Taquiarritmias y Bradiarritmias / EKG: Trastornos de la conducción / Control de lectura: Diagnóstico y guía terapéutica del paciente con taponamiento cardiaco "
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "ENDOCARDITIS INFECCIOSA / Tromboembolismo pulmonar / EXPOSICIÓN: ELECTROCARDIOGRAMA: ARRITMIAS"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER APLICATIVO: EKG"
@@ -249,11 +259,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Valvulopatía aórtica y mitral:  manifestaciones clínicas y enfoque diagnóstico / Valvulopatía tricuspídea y pulmonar:  manifestaciones clínicas y enfoque diagnóstico / TALLER APLICATIVO: EKG ARRITMIAS"
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Shock cardiogénico. Soporte hemodinámico y tratamiento específico / Enfermedad Vascular Periférica. / TALLER APLICATIVO: EKG PATOLÓGICO"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER APLICATIVO: EKG ARRITMIAS",
@@ -282,11 +294,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Control de lectura: Ford, B., Lara, S., & Park, J. (2022). Heart murmurs in children: Eval / Miocardiopatía Dilatada, No dilatada, Restrictiva. EKG Hipertróficas"
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Miocardiopatías- Miocardiopatía Hipertrófica / REPASO"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [],
     "exposiciones": [],
@@ -303,7 +317,9 @@ const SEMANAS = [
     "numero": 8,
     "titulo": "Examen Parcial",
     "rango": "Semana de evaluación",
-    "dias": [],
+    "dias": [
+      
+    ],
     "talleres": [],
     "exposiciones": [],
     "evaluaciones": [
@@ -329,11 +345,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Insuficiencia Renal Aguda. Etiología, fisiopatología, cuadro clínico, diagnóstico, tratamiento y prevención / Gasometría metabólica: Bases fisiopatológicas e interpretación clínica / Control de lectura: Glomerulonephritis: an Approach to the KDIGO 2021 Guidelines."
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Alteraciones del equilibrio hidroelectrolítico: sodio: etiología, diagnóstico y tratamiento. / Alteraciones del equilibrio hidroelectrolítico: potasio: etiología, diagnóstico y tratamiento. / Alteraciones del equilibrio hidroelectrolítico: calcio y magnesio: etiología, diagnóstico y tratamiento."
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [],
     "exposiciones": [],
@@ -359,11 +377,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Control de lectura: Braun, M., Barstow, C. & Pyzocha, N. (2015). Diagnosis and management  / Síndrome nefrítico: etiología, fisiopatología, cuadro clínico, diagnóstico, tratamiento, pronóstico y prevención / Infección del Tracto Urinario. Etiología, fisiopatología, cuadro clínico, diagnóstico, tratamiento y prevención."
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "EXPOSICIÓN: ANÁLISIS DE GASES ARTERIALES / Nefropatía Diabética / Litiasis Renal y Uropatía obstructiva"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER APLICATIVO: GASES ARTERIALES"
@@ -393,11 +413,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Tuberculosis renal y vías urinarias / EXPOSICIÓN: CORRECCIÓN DE TRASTORNOS HIDROELECTROLÍTICOS / TALLER APLICATIVO CASOS CLÍNICOS"
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Enfermedades sistémicas y su compromiso renal / TALLER APLICATIVO:  TRASTORNOS DE ELECTROLITOS / REPASO"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER APLICATIVO CASOS CLÍNICOS",
@@ -430,11 +452,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Gastritis Aguda y Crónica: definición, fisiopatología, cuadro clínico, clasificación, procedimientos diagnósticos, tratamiento y complicaciones / Enfermedad Úlcero Péptica: Duodenal y Gástrica. Fisiopatología, cuadro clínico, procedimientos diagnósticos, tratamiento y complicaciones / Enfermedad Inflamatoria Intestinal. Fisiopatología, cuadro clínico, procedimientos diagnósticos, tratamiento y complicaciones"
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "TALLER CASOS CLÍNICOS: Trastornos funcionales del aparato digestivo: dispepsia funcional, síndrome de intestino irritable / Hepatitis viral aguda y crónica. Patogenia, factores de riesgo, procedimientos diagnósticos, evolución, tratamiento y complicaciones / Control de lectura: PANCREATITIS AGUDA"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER CASOS CLÍNICOS: Trastornos funcionales del aparato digestivo: dispepsia funcional, síndrome de intestino irritable"
@@ -462,11 +486,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Cirrosis hepática. Fisiopatología, cuadro clínico, procedimientos diagnósticos, tratamiento y complicaciones. Hipertensión portal / TALLER (CLASE INVERTIDA) Tuberculosis Enteroperitoneal / Hemorragia digestiva alta y baja."
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Absceso hepático / Diarrea Aguda y Crónica / Control de lectura: HEMORRAGIA DIGESTIVA ALTA"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [
       "TALLER (CLASE INVERTIDA) Tuberculosis Enteroperitoneal"
@@ -496,11 +522,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Enfermedades bacterianas de la piel: impétigo, ectima, foliculitis, erisipela y celulitis / Acné. Rosácea. Erupciones acneiformes / Discromías de la piel: hipocromías e hipercromías"
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "Urticaria: Aguda – Crónica / Dermatitis: Seborreica, de contacto, atópica y dishidrótica / Control de lectura: INFECCIONES DE LA PIEL"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [],
     "exposiciones": [],
@@ -528,11 +556,13 @@ const SEMANAS = [
         "tipo": "teoria",
         "tema": "Enfermedades ampollares: pénfigo vulgar, pénfigo foliáceo, penfigoide ampular, dermatitis herpetiforme / Enfermedades parasitarias de la piel: acarosis y pediculosis"
       },
+      { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
-        "tipo": "teoria",
+        "tipo": "teoria+hospital",
         "tema": "EVALUACIÓN CONTINUA 6: NEFROLOGÍA, GASTROENTEROLOGÍA Y DERMATOLOGÍA"
-      }
+      },
+      { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
     "talleres": [],
     "exposiciones": [],
@@ -548,7 +578,9 @@ const SEMANAS = [
     "numero": 16,
     "titulo": "Dermatología",
     "rango": "Semana de evaluación",
-    "dias": [],
+    "dias": [
+      
+    ],
     "talleres": [],
     "exposiciones": [],
     "evaluaciones": [
