@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -78,6 +78,8 @@ function navRenderCurrent(){
     case 'lectura': renderLectura(top.id); break;
     case 'cronograma': renderCronograma(); break;
     case 'calendario': renderCalendarioEvaluaciones(); break;
+    case 'excel': renderExcelViewer(); break;
+    case 'todas-semanas': renderTodasSemanas(); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -253,6 +255,54 @@ function getWeekTheme(numero){
 function weekHeaderStyleHTML(numero){
   const t = getWeekTheme(numero);
   return `background: linear-gradient(135deg, ${t.color}33 0%, ${t.color}18 100%); border: 1px solid ${t.color}55;`;
+}
+
+/* ---------- vista: Excel original (embebido desde Drive) ---------- */
+function openExcelFresh(){ navReset('excel', null, 'Excel del sílabo'); }
+function renderExcelViewer(){
+  const wrap = document.getElementById('view-excel-content');
+  const fileId = '1A4C4LxTSu-IE4_VIARnMX3g6YVtLjHxY';
+  wrap.innerHTML = `
+    <span class="eyebrow">Fuente original</span>
+    <h1 class="page-title">📗 Excel del sílabo</h1>
+    <p class="page-sub">El Excel real de la coordinadora, tal cual — para que verifiques cualquier cosa directo en la fuente, no en mi interpretación.</p>
+    <div class="kcard" style="padding:8px;">
+      <iframe src="https://drive.google.com/file/d/${fileId}/preview" class="excel-frame" allow="autoplay"></iframe>
+    </div>
+    <p class="muted" style="font-size:12px; margin-top:10px;">Si no carga, necesitas internet para verlo (viene directo de tu Drive) — <a href="https://drive.google.com/file/d/${fileId}/view" target="_blank" rel="noopener">ábrelo directo en Drive ↗</a></p>
+  `;
+}
+
+/* ---------- vista: todas las semanas (deslizable) ---------- */
+function openTodasSemanasFresh(){ navReset('todas-semanas', null, 'Todas las semanas'); }
+function renderTodasSemanas(){
+  const wrap = document.getElementById('view-todas-semanas-content');
+  wrap.innerHTML = `
+    <span class="eyebrow">${CURSO.nombre}</span>
+    <h1 class="page-title">📅 Todas las semanas</h1>
+    <p class="page-sub">Desliza para ver todas las semanas del ciclo y entra directo a la que quieras.</p>
+    <div class="week-swipe">
+      ${SEMANAS.map(s => {
+        const theme = getWeekTheme(s.numero);
+        const total = s.enfermedades.length;
+        const estudiadas = s.enfermedades.filter(id => getEnfermedad(id).estudiado).length;
+        const tieneContenido = total > 0 || (s.temas && s.temas.length > 0);
+        return `
+        <div class="week-swipe-card" style="border-color:${theme.color}77;" onclick="navReset('semana','${s.id}','Semana ${s.numero}')">
+          <div class="week-swipe-header" style="background: linear-gradient(135deg, ${theme.color}44 0%, ${theme.color}22 100%);">
+            <span class="week-swipe-emoji">${theme.emoji}</span>
+            <span class="week-swipe-num">Semana ${s.numero}</span>
+          </div>
+          <div class="week-swipe-body">
+            <div class="week-swipe-titulo">${s.titulo}</div>
+            <div class="week-swipe-rango muted">${s.rango}</div>
+            ${tieneContenido ? `<div class="progress-track" style="margin-top:8px;"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>` : `<span class="badge" style="background:var(--line); color:var(--ink-soft); margin-top:8px;">sin construir</span>`}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    <p class="swipe-hint">← desliza para ver todas las semanas →</p>
+  `;
 }
 
 /* ---------- vista: cronograma (tipo Excel del sílabo) ---------- */
