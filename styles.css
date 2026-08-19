@@ -713,7 +713,8 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 @media print{
   .sidebar, .topbar, .mode-tabs, .toolbar, .note-block, .search-results, .auth-bar,
   .breadcrumb, .section-toc, .mobile-nav, .quiz-controls, .back-btn, .week-pager,
-  .doctor-notes, .notebook-toolbar, .notebook-more-wrap, .card-chevron, .hl-popup{ display:none !important; }
+  .doctor-notes, .notebook-toolbar, .notebook-more-wrap, .card-chevron, .hl-popup,
+  .excel-frame, .swipe-hint{ display:none !important; }
   .main{ padding:0; max-width:none; padding-bottom:0 !important; }
   body{ background:#fff; }
   .card, .illustration-card, .kcard, .mcard, .ccard, .pcard, .rcard, .gcard, .icard{ box-shadow:none; border-color:#ccc; }
