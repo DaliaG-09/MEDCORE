@@ -23,10 +23,11 @@
     <div class="nav-group">
       <div class="nav-label">Estudio</div>
       <div class="nav-item active" data-view="view-inicio" onclick="goInicio()"><span class="emoji">🏠</span> Inicio</div>
-      <div class="nav-item" data-view="view-semana" onclick="openSemanaFresh('semana-01')"><span class="emoji">📅</span> Semanas</div>
+      <div class="nav-item" data-view="view-todas-semanas" onclick="openTodasSemanasFresh()"><span class="emoji">📅</span> Semanas</div>
       <div class="nav-item" data-view="view-enfermedad" onclick="openEnfermedadFresh('epoc')"><span class="emoji">🔎</span> Enfermedades</div>
       <div class="nav-item" data-view="view-cronograma" onclick="openCronogramaFresh()"><span class="emoji">📊</span> Cronograma</div>
       <div class="nav-item" data-view="view-calendario" onclick="openCalendarioFresh()"><span class="emoji">🗓️</span> Evaluaciones</div>
+      <div class="nav-item" data-view="view-excel" onclick="openExcelFresh()"><span class="emoji">📗</span> Ver Excel</div>
     </div>
 
     <div class="nav-group">
@@ -117,6 +118,16 @@
       <div id="view-calendario-content"></div>
     </section>
 
+    <!-- VISTA: EXCEL ORIGINAL -->
+    <section id="view-excel" class="view">
+      <div id="view-excel-content"></div>
+    </section>
+
+    <!-- VISTA: TODAS LAS SEMANAS (deslizable) -->
+    <section id="view-todas-semanas" class="view">
+      <div id="view-todas-semanas-content"></div>
+    </section>
+
     <!-- VISTA: FAVORITOS -->
     <section id="view-favoritos" class="view">
       <div id="view-favoritos-content"></div>
@@ -133,7 +144,7 @@
 <!-- ===== NAV MÓVIL (solo pantallas chicas) ===== -->
 <nav class="mobile-nav">
   <div class="mobile-nav-item" onclick="goInicio()"><span class="emoji">🏠</span><span>Inicio</span></div>
-  <div class="mobile-nav-item" onclick="openSemanaFresh('semana-01')"><span class="emoji">📅</span><span>Semanas</span></div>
+  <div class="mobile-nav-item" onclick="openTodasSemanasFresh()"><span class="emoji">📅</span><span>Semanas</span></div>
   <div class="mobile-nav-item" onclick="openFavoritosFresh()"><span class="emoji">⭐</span><span>Favoritos</span></div>
   <div class="mobile-nav-item" onclick="focusMobileSearch()"><span class="emoji">🔍</span><span>Buscar</span></div>
   <div class="mobile-nav-item" onclick="navBack()"><span class="emoji">←</span><span>Volver</span></div>
