@@ -116,18 +116,26 @@ function navQuizSemana(semanaId){
   const s = getSemana(semanaId);
   navPush('quiz', 'semana::' + semanaId, 'Repaso — Semana ' + s.numero);
 }
+function navQuizPreparar(semanaId, evalIndex){
+  navPush('quiz', 'preparar::' + semanaId + '::' + evalIndex, 'Quiz combinado del examen');
+}
 
 function renderQuiz(compositeId){
-  const [tipo, id] = compositeId.split('::');
+  const partes = compositeId.split('::');
+  const tipo = partes[0];
   let cards = [], sourceLabel = '';
   if(tipo === 'enfermedad'){
-    const e = getEnfermedad(id);
+    const e = getEnfermedad(partes[1]);
     cards = buildQuizCards(e);
     sourceLabel = e.nombre;
-  } else {
-    const s = getSemana(id);
+  } else if(tipo === 'semana'){
+    const s = getSemana(partes[1]);
     s.enfermedades.forEach(eid => { cards = cards.concat(buildQuizCards(getEnfermedad(eid))); });
     sourceLabel = 'Semana ' + s.numero + ' completa';
+  } else if(tipo === 'preparar'){
+    const s = getSemana(partes[1]);
+    getEnfermedadesHastaSemana(s.numero).forEach(e => { cards = cards.concat(buildQuizCards(e)); });
+    sourceLabel = 'Repaso combinado — hasta Semana ' + s.numero;
   }
   shuffleArray(cards);
   cards = cards.slice(0, 20); // máximo 20 preguntas por sesión, elegidas al azar del banco disponible
