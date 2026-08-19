@@ -123,7 +123,8 @@ const SEMANAS = [
     "exposiciones": [
       "EXPOSICIÓN: NEUMONÍA ADQUIRIDA EN LA COMUNIDAD"
     ],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "🔬 Examen práctico calificado — Neumología (mitad de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s2-5"
     ],
@@ -167,7 +168,8 @@ const SEMANAS = [
     "exposiciones": [],
     "evaluaciones": [
       "Evaluación continua 1 — Actividades Módulo 1 (Neumología) — 10% de la nota final"
-    ],
+    ,
+      "🔬 Examen práctico calificado — Neumología (final de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s3-7"
     ],
@@ -237,7 +239,8 @@ const SEMANAS = [
     "exposiciones": [
       "EXPOSICIÓN: ELECTROCARDIOGRAMA: ARRITMIAS"
     ],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "🔬 Examen práctico calificado — Cardiología (mitad de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s5-14"
     ],
@@ -306,7 +309,8 @@ const SEMANAS = [
     "exposiciones": [],
     "evaluaciones": [
       "Evaluación continua 2 — Actividades Módulo 2 (Cardiología) — 10% de la nota final"
-    ],
+    ,
+      "🔬 Examen práctico calificado — Cardiología (final de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s7-20"
     ],
@@ -391,7 +395,8 @@ const SEMANAS = [
     "exposiciones": [
       "EXPOSICIÓN: ANÁLISIS DE GASES ARTERIALES"
     ],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "🔬 Examen práctico calificado — Nefrología (mitad de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s10-27"
     ],
@@ -430,7 +435,8 @@ const SEMANAS = [
     ],
     "evaluaciones": [
       "Evaluación continua 3 — Actividades Módulo 3 (Nefrología) — 10% de la nota final"
-    ],
+    ,
+      "🔬 Examen práctico calificado — Nefrología (final de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s11-29"
     ],
@@ -464,7 +470,8 @@ const SEMANAS = [
       "TALLER CASOS CLÍNICOS: Trastornos funcionales del aparato digestivo: dispepsia funcional, síndrome de intestino irritable"
     ],
     "exposiciones": [],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "🔬 Examen práctico calificado — Gastroenterología (mitad de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s12-34"
     ],
@@ -500,7 +507,8 @@ const SEMANAS = [
     "exposiciones": [],
     "evaluaciones": [
       "Evaluación continua 4 — Actividades Módulo 4 (Gastroenterología) — 10% de la nota final"
-    ],
+    ,
+      "🔬 Examen práctico calificado — Gastroenterología (final de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s13-37"
     ],
@@ -534,7 +542,8 @@ const SEMANAS = [
     "exposiciones": [],
     "evaluaciones": [
       "Evaluación continua 5 — Actividades Módulo 5 (Dermatología) — 10% de la nota final"
-    ],
+    ,
+      "🔬 Examen práctico calificado — Dermatología (mitad de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [
       "lectura-s14-40"
     ],
@@ -569,7 +578,8 @@ const SEMANAS = [
     "evaluaciones": [
       "EVALUACIÓN CONTINUA 6: NEFROLOGÍA, GASTROENTEROLOGÍA Y DERMATOLOGÍA",
       "Evaluación Parcial 2 — Examen teórico Módulos 3-4-5 — 12% de la nota final"
-    ],
+    ,
+      "🔬 Examen práctico calificado — Dermatología (final de módulo, evaluación cruzada, en sede hospitalaria)"],
     "lecturas": [],
     "enfermedades": []
   },
