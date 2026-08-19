@@ -292,7 +292,7 @@ function renderPreparar(compositeId){
       <h3>Checklist de repaso</h3>
       <div class="chip-list">
         ${scope.map(e => `
-          <div class="chip" style="cursor:pointer;" onclick="toggleEstudiado('${e.id}'); navPreparar('${semanaId}', ${idx});">
+          <div class="chip" style="cursor:pointer;" onclick="toggleEstudiado('${e.id}')">
             <span class="n">${e.estudiado ? '✅' : '⬜'}</span>
             <span>${e.nombre}</span>
           </div>
@@ -648,10 +648,10 @@ function renderDia(compositeId){
     <div class="section-block">
       <h3>Contenido de esta clase</h3>
       <div class="grid cols-2">${items}</div>
-    </div>` : `
+    </div>` : (d.tema.toLowerCase().includes('pendiente') ? '' : `
     <div class="kcard">
       <p class="muted">El contenido detallado de este día todavía no está construido — en cuanto se agregue el material, aparecerá aquí como tarjetas clickeables.</p>
-    </div>`}
+    </div>`)}
   `;
 }
 
