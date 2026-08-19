@@ -2405,6 +2405,7 @@ const TEMAS = [
 const LECTURAS = [
   {
     "id": "lectura-s1-3",
+    "url": "https://www.aafp.org/pubs/afp/issues/2022/0600/p625.html",
     "titulo": "Womack, J., & Kropa, J. (2022). Community-Acquired Pneumonia in Adults: Rapid Evidence Review. American family physician, 105(6), 625–630",
     "tipo": "obligatoria",
     "semana": "semana-01",
@@ -2412,6 +2413,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s2-5",
+    "url": "https://www.aafp.org/pubs/afp/issues/2023/0400/chronic-asthma-treatment.pdf",
     "titulo": "Raymond, T., & Peterson, T. (2023). Chronic Asthma Treatment: Common Questions and Answers. American Family Physician, 107(4), 358–368",
     "tipo": "obligatoria",
     "semana": "semana-02",
@@ -2419,6 +2421,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s3-7",
+    "url": "https://www.aafp.org/pubs/afp/issues/2022/0900/tuberculosis.html",
     "titulo": "Hartman-Adams, H., Gerbo, R. M., & George, S. (2022). Tuberculosis: Common Questions and Answers. American family physician, 106(3), 308–315. https://www.aafp.org/pubs/afp/issues/2022/0900/tuberculosis.html",
     "tipo": "obligatoria",
     "semana": "semana-03",
@@ -2426,6 +2429,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s4-12",
+    "url": "https://www.aafp.org/pubs/afp/issues/2005/0701/p119.html",
     "titulo": "Achar, S. A., Kundu, S., & Norcross, W. A. (2005). Diagnosis of acute coronary syndrome. American Family Physician, 72(01), 119-126.",
     "tipo": "obligatoria",
     "semana": "semana-04",
@@ -2433,6 +2437,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s5-14",
+    "url": "https://www.revespcardiol.org/es-diagnostico-y-guia-terapeutica-del-pacie-articulo-13043227-pdf-file",
     "titulo": "Diagnóstico y guía terapéutica del paciente con taponamiento cardiaco o constricción pericárdica.Sagristá, Jaume.Revista Española de Cardiología 2003; 56(2):195-205",
     "tipo": "obligatoria",
     "semana": "semana-05",
@@ -2440,6 +2445,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s6-16",
+    "url": "https://www.aafp.org/pubs/afp/issues/2002/0615/p2479.pdf",
     "titulo": "Hebbar K., &  Hueston, W. (2002). Management of Common Arrythmias: Supraventricular  Arrythmias. American Family Physician, 65(12): 2479-2486 https://www.aafp.org/pubs/afp/issues/2002/0615/p2479.pdf",
     "tipo": "obligatoria",
     "semana": "semana-06",
@@ -2447,6 +2453,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s7-20",
+    "url": "https://www.aafp.org/pubs/afp/issues/2022/0300/p250.html",
     "titulo": "Ford, B., Lara, S., & Park, J. (2022). Heart murmurs in children: Evaluation and management. American family Physician, 105(3): 250-261.",
     "tipo": "obligatoria",
     "semana": "semana-07",
@@ -2454,6 +2461,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s9-24",
+    "url": "https://doi.org/10.36648/1698-9465.22.18.1552",
     "titulo": "Glomerulonephritis: an Approach to the KDIGO 2021 Guidelines.",
     "tipo": "obligatoria",
     "semana": "semana-09",
@@ -2461,6 +2469,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s10-27",
+    "url": "https://www.aafp.org/pubs/afp/issues/2015/0301/p299.html",
     "titulo": "Braun, M., Barstow, C. & Pyzocha, N. (2015). Diagnosis and management of Sodium Disorders: Hyponatremia and Hypernatremia. American Family Physician 91(5): 299-310",
     "tipo": "obligatoria",
     "semana": "semana-10",
@@ -2468,6 +2477,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s11-29",
+    "url": "https://doi.org/10.2337/diacare.28.1.164",
     "titulo": "Gross, J. L., De Azevedo, M. J., Silveiro, S. P., Canani, L. H., Caramori, M. L., & Zelmanovitz, T. (2005). Diabetic nephropathy: diagnosis, prevention, and treatment. Diabetes care, 28(1), 164-176.",
     "tipo": "obligatoria",
     "semana": "semana-11",
@@ -2475,6 +2485,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s12-34",
+    "url": "https://www.aafp.org/pubs/afp/issues/2014/1101/p632.html",
     "titulo": "PANCREATITIS AGUDA",
     "tipo": "obligatoria",
     "semana": "semana-12",
@@ -2482,6 +2493,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s13-37",
+    "url": "http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1022-51292018000100015",
     "titulo": "HEMORRAGIA DIGESTIVA ALTA",
     "tipo": "obligatoria",
     "semana": "semana-13",
@@ -2489,6 +2501,7 @@ const LECTURAS = [
   },
   {
     "id": "lectura-s14-40",
+    "url": "https://www.aafp.org/pubs/afp/issues/2015/0915/p474.html",
     "titulo": "INFECCIONES DE LA PIEL",
     "tipo": "obligatoria",
     "semana": "semana-14",
