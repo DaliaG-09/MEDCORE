@@ -17,11 +17,24 @@ function navCasos(entidadId){
   const e = getEnfermedad(entidadId) || getTema(entidadId);
   navPush('casos', entidadId, 'Casos clínicos — ' + e.nombre);
 }
+function navCasosExamen(bancoKey){
+  const banco = EXAM_BANCOS[bancoKey];
+  navPush('casos', 'examen::' + bancoKey, 'Banco de examen — ' + banco.nombre);
+}
 
 function renderCasos(entidadId){
-  const e = getEnfermedad(entidadId) || getTema(entidadId);
-  const casos = shuffleArray([...(e.casosClinicos || [])]);
-  casoState = { casos, index: 0, enfermedadNombre: e.nombre, mcRespondida: false, mcSeleccion: null, escritaRevelada: false, escritaTexto: '' };
+  let nombre, casosOriginales;
+  if(entidadId.startsWith('examen::')){
+    const banco = EXAM_BANCOS[entidadId.slice('examen::'.length)];
+    nombre = banco.nombre;
+    casosOriginales = banco.casos;
+  } else {
+    const e = getEnfermedad(entidadId) || getTema(entidadId);
+    nombre = e.nombre;
+    casosOriginales = e.casosClinicos || [];
+  }
+  const casos = shuffleArray([...casosOriginales]);
+  casoState = { casos, index: 0, enfermedadNombre: nombre, mcRespondida: false, mcSeleccion: null, escritaRevelada: false, escritaTexto: '' };
   paintCaso();
 }
 
