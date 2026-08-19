@@ -2434,6 +2434,266 @@ const TEMAS = [
     ]
   }];
 
+/* ============================================================
+   BANCOS DE EXAMEN — preguntas y casos estilo examen real de la
+   universidad (basados en ejemplos de parciales/modulares/
+   integrados pasados), distintos de los casos por enfermedad,
+   pensados para repasar antes de una evaluación específica.
+   ============================================================ */
+const EXAM_BANCOS = {
+  "neumologia": {
+    "id": "banco-examen-neumologia",
+    "nombre": "Banco de examen — Neumología",
+    "casos": [
+      {
+        "nivel": "basico",
+        "vineta": "(Estilo examen real) Pregunta directa, sin viñeta clínica extensa — así aparecen varias preguntas de opción múltiple en tus parciales.",
+        "preguntaMC": {
+          "enunciado": "¿Cuál de los siguientes NO es considerado un predictor significativo para el diagnóstico de Neumonía Adquirida en la Comunidad?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Saturación de oxígeno menor a 95%"
+            },
+            {
+              "id": "b",
+              "texto": "Frecuencia cardiaca mayor a 100 latidos por minuto"
+            },
+            {
+              "id": "c",
+              "texto": "Dolor torácico"
+            },
+            {
+              "id": "d",
+              "texto": "Crepitantes en la auscultación"
+            },
+            {
+              "id": "e",
+              "texto": "Temperatura mayor a 37.8°C"
+            }
+          ],
+          "correcta": "c",
+          "explicacion": "El dolor torácico es inespecífico (aparece en muchas patologías pleuropulmonares y cardiacas). Los predictores clásicos de NAC son: SatO2 baja, taquicardia, fiebre, y hallazgos auscultatorios como crepitantes — el dolor torácico por sí solo no es un predictor discriminativo específico de NAC."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Defina Infección Tuberculosa Latente (ITL), indique los grupos de alto riesgo en los que está indicado el tratamiento preventivo, e indique 1 opción de tratamiento preventivo.",
+          "respuestaModelo": "Definición: presencia persistente de bacilos en el organismo sin signos clínicos ni anomalías radiológicas, detectada únicamente mediante pruebas inmunológicas (PPD/tuberculina o IGRA). Grupos de alto riesgo con indicación de tratamiento preventivo: contactos de pacientes con TB activa, personas con VIH, pacientes que inician terapia anti-TNF, pacientes en diálisis o pre-trasplante. Opciones de tratamiento preventivo: isoniazida 6-9 meses, o rifapentina+isoniazida 3 meses, o rifampicina sola 4 meses."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "Paciente varón de 68 años con EPOC diagnosticado hace 15 años, exfumador de 35 paquetes-año, acude a Emergencia por aumento progresivo de disnea en los últimos 3 días, uso de músculos accesorios, tos productiva con esputo amarillento y sensación febril. Al examen físico: FR 28/min, SatO2 91% ambiental, estertores subcrepitantes bilaterales y sibilancias, paciente estuporoso, responde lentamente a estímulos verbales. Radiografía de tórax: acentuación bronquial. Gasometría arterial sin oxígeno suplementario: pH 7.26, pCO2 63 mmHg, pO2 48 mmHg, HCO3 22 mEq/L.",
+        "preguntaMC": {
+          "enunciado": "¿Qué tipo de alteración ácido-base presenta este paciente?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis metabólica compensada"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria aguda no compensada"
+            },
+            {
+              "id": "c",
+              "texto": "Alcalosis respiratoria"
+            },
+            {
+              "id": "d",
+              "texto": "Alcalosis metabólica"
+            },
+            {
+              "id": "e",
+              "texto": "Gasometría normal"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "pH bajo (7.26) + pCO2 elevado (63) confirma acidosis respiratoria. El HCO3 está en rango normal (22), lo que indica que el riñón AÚN no ha compensado — es decir, es AGUDA y NO compensada (a diferencia de un retenedor crónico, donde el HCO3 ya estaría elevado por compensación renal previa)."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Corresponde a un trastorno primario de origen respiratorio, metabólico o mixto? De acuerdo con los hallazgos clínicos, radiológicos y gasométricos, indique y sustente su diagnóstico respiratorio principal.",
+          "respuestaModelo": "Trastorno primario de origen respiratorio (acidosis respiratoria aguda). Diagnóstico respiratorio principal: EPOC exacerbado (reagudización de EPOC) — sustentado por el antecedente de EPOC conocido, el empeoramiento agudo de disnea con cambio en las características del esputo (criterios de Anthonisen), los hallazgos auscultatorios, y la insuficiencia respiratoria con hipercapnia aguda que refleja fatiga de la musculatura respiratoria en el contexto de la exacerbación."
+        }
+      },
+      {
+        "nivel": "avanzado",
+        "vineta": "Paciente de 69 años, con antecedente de enfermedad pulmonar intersticial severa en oxígeno domiciliario permanente, acude por diagnóstico presuntivo de neumonía. Se coloca máscara simple a FiO2 60%, con elevación de saturación a 99%. Luego de 4 horas presenta trastorno del sensorio. Gasometría: pH 7.33, PaO2 71 mmHg, PaCO2 60 mmHg, HCO3 24 mEq/L, FiO2 60%.",
+        "preguntaMC": {
+          "enunciado": "Calculando la relación PaO2/FiO2, ¿qué tipo de insuficiencia respiratoria presenta este paciente?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Tipo I únicamente (PaFi <300, hipoxémica pura)"
+            },
+            {
+              "id": "b",
+              "texto": "Tipo II únicamente (hipercápnica pura)"
+            },
+            {
+              "id": "c",
+              "texto": "Mixta: Tipo I (PaFi = 71/0.6 = 118, menor de 300) + Tipo II (PaCO2 >45)"
+            },
+            {
+              "id": "d",
+              "texto": "No tiene insuficiencia respiratoria"
+            },
+            {
+              "id": "e",
+              "texto": "No se puede calcular sin saber la FiO2"
+            }
+          ],
+          "correcta": "c",
+          "explicacion": "PaFi = PaO2/FiO2 = 71/0.6 ≈ 118, muy por debajo de 300, confirmando compromiso de oxigenación (tipo I). Además PaCO2 de 60 (>45) confirma retención de CO2 (tipo II). Al estar presentes ambos componentes simultáneamente, es insuficiencia respiratoria MIXTA — un patrón que se repite en varios de tus exámenes reales y que se presta a confusión si solo se mira un valor aislado."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Cuál es el trastorno ácido-base primario y es agudo o crónico? Explique cómo llegó a esa conclusión.",
+          "respuestaModelo": "Trastorno primario: Acidosis respiratoria (pH 7.33 disminuido = acidemia; pCO2 60 elevado). Para diferenciar agudo de crónico se calcula el HCO3 esperado en cada escenario: Agudo, HCO3 esperado ≈ 26; Crónico, HCO3 esperado ≈ 32. El HCO3 real del paciente es 24, que está más cerca del valor esperado para AGUDO — por lo tanto es una acidosis respiratoria aguda, no una descompensación de un retenedor crónico."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "Paciente varón de 45 años, fumador de 1 cajetilla/día desde hace 20 años, acude a Emergencia con dolor torácico tipo punzada en hemitórax izquierdo que aumenta con la inspiración, y dificultad respiratoria de 2 días de evolución. PA 90/75 mmHg, FC 130 lpm, FR 29/min, SatO2 90% ambiental. Al examen: murmullo vesicular abolido en 2/3 inferiores del hemitórax izquierdo, con aumento de la sonoridad a la percusión en dicha zona.",
+        "preguntaMC": {
+          "enunciado": "Considerando la sospecha diagnóstica, ¿qué examen solicitaría en primer lugar para confirmar el diagnóstico?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Gasometría arterial"
+            },
+            {
+              "id": "b",
+              "texto": "Electrocardiograma"
+            },
+            {
+              "id": "c",
+              "texto": "Radiografía de tórax"
+            },
+            {
+              "id": "d",
+              "texto": "Toracocentesis"
+            },
+            {
+              "id": "e",
+              "texto": "Tomografía de tórax"
+            }
+          ],
+          "correcta": "c",
+          "explicacion": "El aumento de sonoridad (hiperresonancia) con abolición del murmullo vesicular sugiere neumotórax, no derrame (que daría matidez). La radiografía de tórax es el estudio inicial estándar y de más rápido acceso para confirmarlo — no la gasometría ni el ECG, que no son diagnósticos de esta condición, y no la toracocentesis ni la TC, que no son de primera línea en este escenario."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Si la hipotensión y taquicardia de este paciente empeoraran junto con desviación traqueal, ¿qué diagnóstico sospecharía y cuál sería su conducta inmediata?",
+          "respuestaModelo": "Sospecharía neumotórax a TENSIÓN — la presión intrapleural creciente compromete el retorno venoso al corazón, explicando el deterioro hemodinámico progresivo. La conducta inmediata es la descompresión con aguja de urgencia (2do espacio intercostal, línea medioclavicular) sin esperar confirmación radiológica adicional, seguida de colocación de tubo torácico — no se debe retrasar el tratamiento esperando más estudios cuando hay inestabilidad hemodinámica franca."
+        }
+      },
+      {
+        "nivel": "avanzado",
+        "vineta": "Paciente mujer de 65 años acude con tiempo de enfermedad de 2 semanas: fiebre, tos productiva, dolor torácico tipo punzada en hemitórax derecho que aumenta con los movimientos respiratorios, disnea de moderados esfuerzos. PA 150/60, FC 120, T° 39°C, FR 26, SatO2 90%. Radiografía de tórax: radioopacidad homogénea que compromete todo el hemitórax derecho, con desplazamiento del mediastino hacia la izquierda.",
+        "preguntaMC": {
+          "enunciado": "Teniendo en cuenta el cuadro clínico y radiológico, ¿cuál es el diagnóstico más probable?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Atelectasia"
+            },
+            {
+              "id": "b",
+              "texto": "Infarto pulmonar"
+            },
+            {
+              "id": "c",
+              "texto": "Derrame pleural masivo"
+            },
+            {
+              "id": "d",
+              "texto": "Neumonía adquirida en la comunidad"
+            },
+            {
+              "id": "e",
+              "texto": "Absceso pulmonar"
+            }
+          ],
+          "correcta": "c",
+          "explicacion": "El dato clave es la DIRECCIÓN del desplazamiento mediastínico: en el derrame pleural masivo, el mediastino se desplaza HACIA EL LADO CONTRARIO (por el efecto de masa del líquido acumulado) — a diferencia de la atelectasia, donde el mediastino se desplaza HACIA EL MISMO LADO de la lesión (por pérdida de volumen). La radioopacidad homogénea que compromete todo el hemitórax con desplazamiento contralateral es el patrón clásico de derrame masivo."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Qué hallazgos esperaría encontrar en el examen físico de esta paciente, y cuál sería su plan de trabajo diagnóstico inicial?",
+          "respuestaModelo": "Al examen físico esperaría: disminución o abolición del murmullo vesicular, disminución o abolición de las vibraciones vocales (frémito), y matidez franca a la percusión sobre la zona afectada. Plan de trabajo: confirmar con la radiografía de tórax ya realizada, y proceder a toracocentesis diagnóstica para caracterizar el líquido pleural (aplicando criterios de Light) y orientar la etiología — dado el cuadro febril subagudo, hay que considerar un origen paraneumónico/infeccioso."
+        }
+      },
+      {
+        "nivel": "basico",
+        "vineta": "(Estilo examen real) Pregunta conceptual directa sobre criterios de Light — así aparecen en tus exámenes modulares.",
+        "preguntaMC": {
+          "enunciado": "Según los criterios de Light, ¿cuál de los siguientes NO es un criterio para clasificar un derrame pleural como EXUDADO?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Proteínas líquido pleural/proteínas séricas > 0.5"
+            },
+            {
+              "id": "b",
+              "texto": "LDH líquido pleural/LDH sérica > 0.6"
+            },
+            {
+              "id": "c",
+              "texto": "LDH en líquido pleural > 2/3 del límite superior normal en suero"
+            },
+            {
+              "id": "d",
+              "texto": "Glucosa en líquido pleural ≥ 60 mg/dl"
+            },
+            {
+              "id": "e",
+              "texto": "Cumplir al menos 1 de los 3 criterios anteriores (a, b o c)"
+            }
+          ],
+          "correcta": "d",
+          "explicacion": "Una glucosa ≥60 mg/dl NO es criterio de exudado — de hecho, una glucosa BAJA (<60) es lo que orienta a exudado complicado (ej. empiema) o TB, no una glucosa normal/alta. Los 3 criterios de Light reales son: proteínas líquido/suero >0.5, LDH líquido/suero >0.6, o LDH en líquido >2/3 del límite superior normal sérico — con que se cumpla UNO solo, ya se clasifica como exudado."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Si en una toracocentesis obtiene un líquido con proteínas líquido/suero 0.3, LDH líquido/suero 0.4, y glucosa 65 mg/dl, ¿es trasudado o exudado, y qué causas debe considerar?",
+          "respuestaModelo": "Es un TRASUDADO — no cumple ninguno de los 3 criterios de Light (ambos cocientes están por debajo del umbral). En un trasudado, la pleura está sana; el líquido se acumula por alteración de presiones sistémicas. Causas a considerar: insuficiencia cardiaca congestiva (la más frecuente), cirrosis hepática con hipoalbuminemia, y síndrome nefrótico."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "Paciente de 20 años, asmático conocido, acude a Emergencia con agudización de su enfermedad. Ingresa hablando oraciones completas, SatO2 94% sin apoyo de oxígeno, afebril. FR 24/min, sibilancias inspiratorias y espiratorias. Espirometría: VEF1/CVF 63%, VEF1 2.1L (60% del predicho), CVF 3.67L (87% del predicho).",
+        "preguntaMC": {
+          "enunciado": "De acuerdo con estos datos, ¿cuál es el grado de severidad de esta crisis asmática?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Leve"
+            },
+            {
+              "id": "b",
+              "texto": "Moderada"
+            },
+            {
+              "id": "c",
+              "texto": "Severa"
+            },
+            {
+              "id": "d",
+              "texto": "Con riesgo vital (paro respiratorio inminente)"
+            },
+            {
+              "id": "e",
+              "texto": "No se puede clasificar sin gasometría"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "El paciente habla en oraciones completas (no palabras sueltas, lo que descartaría severa), sibilancias en ambos tiempos, SatO2 entre 90-95%, y un patrón obstructivo moderado en la espirometría (VEF1 60% del predicho) — todo esto en conjunto clasifica la crisis como MODERADA, no leve (que tendría espirometría casi normal) ni severa (que cursaría con habla en palabras sueltas, uso marcado de músculos accesorios, SatO2 <90%)."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Cuál sería el manejo indicado para esta crisis asmática moderada?",
+          "respuestaModelo": "Salbutamol (SABA) más bromuro de ipratropio nebulizado o en inhalador, asociado a glucocorticoide sistémico (oral o endovenoso) para tratar la inflamación de base de la crisis. Según guías actualizadas (GINA/GEMA) puede considerarse además corticoide inhalado en dosis altas repetidas. El oxígeno suplementario solo estaría indicado si la saturación cae por debajo de 92% — en este caso, con SatO2 94%, no es prioritario de entrada."
+        }
+      }
+    ]
+  }
+};
+
 const LECTURAS = [
   {
     "id": "lectura-s1-3",
