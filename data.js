@@ -146,18 +146,30 @@ const SEMANAS = [
       {
         "dia": "Lunes",
         "tipo": "teoria",
-        "tema": "Control de lectura: Hartman-Adams, H., Gerbo, R. M., & George, S. (2022). Tuberculosis: Co / Insuficiencia Respiratoria Aguda. Síndrome de Distrés Respiratorio del Adulto"
+        "tema": "Control de lectura: Hartman-Adams, H., Gerbo, R. M., & George, S. (2022). Tuberculosis: Co / Insuficiencia Respiratoria Aguda. Síndrome de Distrés Respiratorio del Adulto",
+        "vinculos": [
+          { "tipo": "lectura", "id": "lectura-s3-7" },
+          { "tipo": "enfermedad", "id": "insuficiencia-respiratoria-aguda" }
+        ]
       },
       {
         "dia": "Miércoles",
         "tipo": "teoria",
-        "tema": "TALLER APLICATIVO:  ANÁLISIS DE GASES ARTERIALES 2 / Enfermedad Pulmonar Intersticial Difusa / Síndrome de apnea-hipopnea obstructiva del sueño (SAHOS)."
+        "tema": "TALLER APLICATIVO:  ANÁLISIS DE GASES ARTERIALES 2 / Enfermedad Pulmonar Intersticial Difusa / Síndrome de apnea-hipopnea obstructiva del sueño (SAHOS).",
+        "vinculos": [
+          { "tipo": "tema", "id": "analisis-gases-arteriales" },
+          { "tipo": "enfermedad", "id": "epid" },
+          { "tipo": "enfermedad", "id": "saos" }
+        ]
       },
       { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
         "dia": "Viernes",
         "tipo": "teoria+hospital",
-        "tema": "Enfermedades respiratorias ocupacionales / TALLER APLICATIVO: CASOS CLÍNICOS / REPASO"
+        "tema": "Enfermedades respiratorias ocupacionales / TALLER APLICATIVO: CASOS CLÍNICOS / REPASO",
+        "vinculos": [
+          { "tipo": "enfermedad", "id": "enfermedades-respiratorias-ocupacionales" }
+        ]
       },
       { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
@@ -173,7 +185,12 @@ const SEMANAS = [
     "lecturas": [
       "lectura-s3-7"
     ],
-    "enfermedades": []
+    "enfermedades": [
+      "epid",
+      "saos",
+      "insuficiencia-respiratoria-aguda",
+      "enfermedades-respiratorias-ocupacionales"
+    ]
   },
   {
     "id": "semana-04",
@@ -985,7 +1002,43 @@ const ENFERMEDADES = [
                 "respuestaModelo": "Preguntaría si los síntomas mejoran claramente los fines de semana y durante vacaciones prolongadas (patrón de mejoría con el alejamiento del agente), si otros compañeros de trabajo presentan síntomas similares, cuánto tiempo lleva expuesta antes del inicio de síntomas, y si existe algún cambio reciente en el proceso de trabajo (nuevo tipo de harina, aditivos). También registraría si usa medidas de protección respiratoria en el puesto de trabajo."
             }
         }
-    ]
+    ,
+    {
+        "nivel": "avanzado",
+        "vineta": "Mujer de 34 años, asma desde la infancia, múltiples hospitalizaciones el último año, rinitis alérgica. Acude a emergencia por disnea intensa, opresión torácica y tos seca de inicio súbito. Usa salbutamol inhalado más de 10 veces al día sin mejoría. PA 140/90, FC 120, FR 32, SatO2 88% aire ambiental. Sibilancias generalizadas, uso de músculos accesorios, dificultad para hablar frases completas. Leucocitos 12,000/mm3 (eosinófilos 6%). AGA: pH 7.28, PaCO2 55 mmHg, PaO2 58 mmHg. Pico de flujo espiratorio <50% del valor personal mejor.",
+        "preguntaMC": {
+            "enunciado": "¿Cómo interpretas la gasometría de esta paciente en el contexto de su crisis asmática?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Alcalosis respiratoria compensatoria esperada — buen signo"
+                },
+                {
+                    "id": "b",
+                    "texto": "Acidosis respiratoria con PaCO2 elevado — signo de ALARMA, indica fatiga de músculos respiratorios y crisis casi fatal"
+                },
+                {
+                    "id": "c",
+                    "texto": "Gasometría normal para una crisis asmática"
+                },
+                {
+                    "id": "d",
+                    "texto": "Acidosis metabólica pura"
+                },
+                {
+                    "id": "e",
+                    "texto": "Alcalosis metabólica"
+                }
+            ],
+            "correcta": "b",
+            "explicacion": "En una crisis asmática típica esperaríamos taquipnea con HIPOCAPNIA (alcalosis respiratoria) por hiperventilación compensatoria. Que esta paciente tenga PaCO2 ELEVADO (55 mmHg, con acidosis) es un signo de extrema gravedad — indica que la musculatura respiratoria ya está fatigada y no logra mantener la hiperventilación compensatoria. Esto define una crisis asmática casi fatal, con riesgo de paro respiratorio inminente."
+        },
+        "preguntaEscrita": {
+            "enunciado": "¿Cuál sería el manejo inmediato en emergencia para esta paciente, y qué factores podrían explicar el mal control crónico de su asma?",
+            "respuestaModelo": "Manejo inmediato: oxígeno suplementario, salbutamol + ipratropio nebulizados continuos, corticoide sistémico endovenoso, sulfato de magnesio endovenoso (indicado en crisis severas), y evaluación URGENTE para ventilación mecánica dado el patrón de fatiga respiratoria (PaCO2 elevado) — esta paciente está en riesgo de paro respiratorio y debe manejarse en una unidad con capacidad de intubación inmediata. Factores que explican el mal control: uso excesivo de SABA de rescate (>10 veces/día, muy por encima de lo recomendado) sin terapia controladora adecuada de base, múltiples hospitalizaciones previas (marcador de asma de difícil control), y posible mal apego a corticoide inhalado de mantenimiento."
+        }
+    }
+  ]
   },
   {
     "id": "bronquitis-bronquiectasias",
@@ -1503,7 +1556,43 @@ const ENFERMEDADES = [
                 "respuestaModelo": "Le indicaría regresar de inmediato si presenta: dificultad para respirar o aumento marcado de la frecuencia respiratoria, fiebre persistente o en aumento después de 48-72 horas de antibiótico, confusión o somnolencia inusual, dolor torácico intenso, o si no logra mantenerse hidratada por vómitos. También debe completar el antibiótico según indicación aunque se sienta mejor antes de terminar el tratamiento."
             }
         }
-    ]
+    ,
+    {
+        "nivel": "intermedio",
+        "vineta": "Varón de 58 años, taxista, hipertenso, exfumador (20 paq/año), no vacunado. Inicia con malestar general, escalofríos y fiebre no cuantificada hace 4 días. A las 48h aparece tos productiva con esputo amarillento, dolor torácico tipo punzada que aumenta con la inspiración, y disnea de pequeños esfuerzos. T° 39°C, FC 108, FR 26, PA 135/85, SatO2 90% aire ambiente. Disminución de la expansibilidad torácica derecha, matidez en base derecha, crepitantes y soplo tubario en lóbulo inferior derecho. Leucocitos 17,500/mm³ con neutrofilia, PCR y procalcitonina elevadas, gasometría con hipoxemia leve.",
+        "preguntaMC": {
+            "enunciado": "¿Qué hallazgo del examen físico confirma consolidación del lóbulo inferior derecho, más allá de la matidez?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Frémito vocal disminuido"
+                },
+                {
+                    "id": "b",
+                    "texto": "Soplo tubárico y crepitantes localizados en la misma zona"
+                },
+                {
+                    "id": "c",
+                    "texto": "Hiperresonancia a la percusión"
+                },
+                {
+                    "id": "d",
+                    "texto": "Murmullo vesicular aumentado"
+                },
+                {
+                    "id": "e",
+                    "texto": "Ausencia total de ruidos respiratorios"
+                }
+            ],
+            "correcta": "b",
+            "explicacion": "El soplo tubárico (transmisión de los ruidos bronquiales a través de tejido consolidado) junto con los crepitantes localizados en la misma zona que la matidez confirma consolidación del parénquima — el frémito en consolidación está AUMENTADO (no disminuido, eso sería derrame), y la hiperresonancia sería propia de neumotórax, no de neumonía."
+        },
+        "preguntaEscrita": {
+            "enunciado": "¿Qué criterios usarías para decidir si este paciente requiere hospitalización, y cuál sería el tratamiento antibiótico empírico inicial más apropiado?",
+            "respuestaModelo": "Usaría el CURB-65 o el PSI. Con SatO2 90%, taquicardia, taquipnea y edad no mayor a 65, calculando CURB-65 este paciente probablemente puntúa bajo-moderado, pero la hipoxemia (SatO2 90%) y las comorbilidades (HTA, tabaquismo) inclinan a favor de hospitalización para observación y manejo con antibiótico parenteral. El tratamiento empírico inicial en un paciente hospitalizado no grave sería β-lactámico (ceftriaxona) más macrólido (azitromicina), o alternativamente una fluoroquinolona respiratoria en monoterapia."
+        }
+    }
+  ]
   },
   {
     "id": "neumonia-intrahospitalaria",
@@ -2252,7 +2341,788 @@ const ENFERMEDADES = [
           "respuestaModelo": "Realizaría descompresión con aguja de urgencia en el segundo espacio intercostal, línea medioclavicular del lado afectado (derecho), sin esperar confirmación radiológica. Esto se debe a que los signos (hipotensión + desviación traqueal contralateral) indican que el neumotórax simple ha evolucionado a neumotórax a TENSIÓN, una emergencia donde la presión intrapleural creciente compromete el retorno venoso al corazón — cada minuto de retraso aumenta el riesgo de shock obstructivo y paro cardiorrespiratorio, por lo que el diagnóstico y tratamiento deben ser clínicos e inmediatos, no esperar estudios de imagen."
         }
       }
+    ,
+    {
+        "nivel": "intermedio",
+        "vineta": "Varón de 45 años, previamente sano. Fiebre, tos productiva purulenta, dolor torácico pleurítico y disnea progresiva de 5 días de evolución. T° 38.8°C, taquipnea, matidez a la percusión y disminución del murmullo vesicular en base pulmonar derecha. Leucocitosis con neutrofilia, PCR elevada.",
+        "preguntaMC": {
+            "enunciado": "Si la toracocentesis muestra un líquido con pH 7.1, glucosa 35 mg/dl y aspecto turbio, ¿qué tipo de derrame paraneumónico presenta?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Derrame paraneumónico simple — solo requiere antibiótico"
+                },
+                {
+                    "id": "b",
+                    "texto": "Derrame paraneumónico complicado / empiema — requiere drenaje obligatorio"
+                },
+                {
+                    "id": "c",
+                    "texto": "Trasudado — descartar causa cardiaca"
+                },
+                {
+                    "id": "d",
+                    "texto": "Derrame tuberculoso"
+                },
+                {
+                    "id": "e",
+                    "texto": "No se puede clasificar sin cultivo"
+                }
+            ],
+            "correcta": "b",
+            "explicacion": "pH <7.2 y glucosa muy baja (<40-60 mg/dl) en el líquido pleural, junto con aspecto turbio, son datos que indican un derrame paraneumónico COMPLICADO o empiema franco — esto cambia la conducta terapéutica de forma decisiva: ya no basta con antibiótico solo, se requiere drenaje torácico obligatorio."
+        },
+        "preguntaEscrita": {
+            "enunciado": "¿El derrame de este paciente es exudado o trasudado según los criterios de Light, y qué factores del líquido pleural sugieren mala evolución?",
+            "respuestaModelo": "Es un EXUDADO — un derrame paraneumónico por definición es un exudado (pleura inflamada por la infección adyacente), lo que se confirmaría cumpliendo al menos uno de los criterios de Light (proteínas líquido/suero >0.5, LDH líquido/suero >0.6, o LDH >2/3 del límite superior normal sérico). Los factores que sugieren mala evolución (progresión a empiema o necesidad de drenaje) son: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, aspecto purulento/turbio, y cultivo o Gram positivo del líquido pleural."
+        }
+    }
+  ]
+  },
+  {
+    "id": "enfermedades-respiratorias-ocupacionales",
+    "nombre": "Enfermedades Respiratorias Ocupacionales",
+    "area": "Neumología",
+    "semanas": [
+      "semana-03"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "tipoIlustracion": "alveolar",
+    "relacionadas": [
+      {
+        "id": "epid",
+        "relacion": "La neumoconiosis (silicosis, asbestosis, antracosis) es en realidad un subtipo de EPID de causa conocida (ocupacional) — comparten el mismo mecanismo final de fibrosis intersticial"
+      },
+      {
+        "id": "asma-bronquial",
+        "relacion": "El asma ocupacional comparte fisiopatología con el asma común, pero se distingue porque mejora claramente fuera del trabajo (patrón temporal característico)"
+      }
+    ],
+    "profundo": {
+      "definicion": "Grupo de patologías del aparato respiratorio causadas, desencadenadas o agravadas por exposiciones en el lugar de trabajo. Incluyen neumoconiosis (silicosis, asbestosis, antracosis), asma ocupacional, EPOC ocupacional, alveolitis alérgica extrínseca, bronquitis crónica por irritantes, cáncer pulmonar ocupacional, y lesiones agudas como edema pulmonar tóxico o bronquiolitis obliterante.",
+      "epidemiologia": "A nivel mundial, más de 2 millones de personas mueren anualmente por enfermedades relacionadas al trabajo, siendo las respiratorias un grupo significativo. En Perú (MINSA), las neumoconiosis representan una de las principales causas de incapacidad en mineros y trabajadores de la construcción. La Ley N°29783 de Seguridad y Salud en el Trabajo obliga al empleador a proteger la salud de los trabajadores, incluyendo evaluaciones médicas periódicas y uso de equipos de protección.",
+      "etiologiaFactoresRiesgo": [
+        "Exposición a polvo mineral (sílice → silicosis, carbón → antracosis, asbesto → asbestosis)",
+        "Sustancias químicas irritantes (amoníaco, cloro, vapores ácidos) → bronquitis crónica ocupacional",
+        "Humos metálicos (plomo, cromo, estaño)",
+        "Agentes biológicos orgánicos (hongos, polvo de aves, caña de azúcar) → alveolitis alérgica extrínseca",
+        "Alérgenos laborales (harinas, látex, isocianatos) → asma ocupacional",
+        "Exposición prolongada a asbesto, arsénico, cromo, níquel, humo de diésel → cáncer pulmonar ocupacional (aparece tras décadas)"
+      ],
+      "fisiopatologia": {
+        "resumen": "El mecanismo varía según el agente: las partículas inorgánicas inhaladas (sílice, asbesto, carbón) son fagocitadas por macrófagos alveolares que no logran degradarlas, generando inflamación crónica y fibrosis progresiva (neumoconiosis). Los agentes orgánicos e irritantes desencadenan mecanismos inmunológicos (alveolitis alérgica) o inflamatorios directos (bronquitis por irritantes).",
+        "explicacionExtendida": "En las neumoconiosis, las partículas inorgánicas inhaladas (sílice cristalina, fibras de asbesto, polvo de carbón) son demasiado pequeñas para ser eliminadas por el aclaramiento mucociliar normal, así que llegan hasta los alvéolos donde son fagocitadas por macrófagos. El problema es que estas partículas son citotóxicas para el macrófago: lo dañan o lo matan, liberando su contenido enzimático y desencadenando una respuesta inflamatoria crónica que con el tiempo se traduce en depósito de colágeno y fibrosis nodular progresiva (silicosis) o difusa (asbestosis). La sílice, además, tiene un efecto especialmente citotóxico que también incrementa el riesgo de tuberculosis en quienes la inhalan de forma crónica.\n\nEn el asma ocupacional y la alveolitis alérgica extrínseca, el mecanismo es inmunológico: el sistema inmune se sensibiliza a una proteína o partícula orgánica específica del ambiente laboral (harina, látex, hongos, polvo de aves), y cada nueva exposición desencadena una respuesta de hipersensibilidad — inmediata tipo I en el asma ocupacional (broncoespasmo), o una combinación de mecanismos tipo III/IV en la alveolitis alérgica extrínseca (infiltrado intersticial difuso). Por eso el dato clínico más característico de estas dos entidades es la MEJORÍA marcada al alejarse del ambiente laboral (fines de semana, vacaciones) y el EMPEORAMIENTO al regresar — un patrón que la neumoconiosis, al ser un daño estructural ya establecido, no sigue de la misma manera."
+      ,cascada: [
+              {
+                      "paso": "Factor desencadenante",
+                      "detalle": "Inhalación repetida de partículas inorgánicas (sílice, asbesto, carbón) o antígenos orgánicos/alérgenos en el ambiente laboral"
+              },
+              {
+                      "paso": "Células activadas",
+                      "detalle": "Macrófagos alveolares fagocitan las partículas; en asma/alveolitis ocupacional se activa además la respuesta inmunológica (IgE o hipersensibilidad tipo III/IV)"
+              },
+              {
+                      "paso": "Mediadores liberados",
+                      "detalle": "Citotoxicidad directa de la partícula sobre el macrófago (neumoconiosis) o liberación de mediadores inflamatorios/histamina (asma, alveolitis)"
+              },
+              {
+                      "paso": "Cambio estructural",
+                      "detalle": "Depósito de colágeno y fibrosis nodular/difusa (neumoconiosis) o broncoespasmo e inflamación de la vía aérea (asma ocupacional)"
+              },
+              {
+                      "paso": "Manifestación clínica",
+                      "detalle": "Disnea progresiva de años (neumoconiosis) o síntomas agudos que mejoran fuera del trabajo (asma/alveolitis ocupacional)"
+              }
+      ]
+      },
+      "clinica": [
+        {
+          "signo": "Tos, disnea y fiebre que reaparecen cada vez que regresa a la exposición laboral (ej. descargar heno)",
+          "mecanismo": "Reacción de hipersensibilidad tipo III/IV a antígenos orgánicos — alveolitis alérgica extrínseca"
+        },
+        {
+          "signo": "Disnea progresiva de años de evolución en trabajador de minas/construcción",
+          "mecanismo": "Fibrosis pulmonar progresiva por neumoconiosis — proceso lento, silente durante años"
+        },
+        {
+          "signo": "Sibilancias y opresión torácica que mejoran los fines de semana",
+          "mecanismo": "Asma ocupacional — sensibilización a alérgeno laboral específico"
+        }
+      ],
+      "examenFisico": [
+        "Neumoconiosis: crépitos tipo velcro en fases avanzadas, acropaquia si hay fibrosis extensa",
+        "Alveolitis alérgica extrínseca aguda: taquipnea, estertores finos, SIN sibilancias (dato clave para diferenciar de asma)",
+        "Asma ocupacional: sibilancias difusas durante o poco después de la jornada laboral"
+      ],
+      "diagnostico": "Historia laboral detallada (cronológica, con fechas y duración de cada exposición) es el paso más importante y frecuentemente el más olvidado. Radiografía/TC de tórax según sospecha (nódulos en silicosis, engrosamiento pleural en asbestosis). Espirometría (patrón restrictivo en neumoconiosis, obstructivo en asma ocupacional). Pruebas específicas: precipitinas séricas en alveolitis alérgica extrínseca.",
+      "diagnosticoDiferencial": [
+        "Neumonía adquirida en la comunidad (el caso de alveolitis alérgica se confunde fácilmente)",
+        "Bronquitis crónica no ocupacional",
+        "Asma bronquial común",
+        "Enfermedad pulmonar intersticial difusa de otra causa"
+      ],
+      "tratamiento": {
+        "noFarmacologico": [
+          "Cese INMEDIATO de la exposición al agente causal — es la medida más importante en todas estas entidades",
+          "Uso de equipo de protección personal si debe continuar en el ambiente laboral",
+          "Notificación y evaluación ocupacional según Ley N°29783",
+          "Rehabilitación pulmonar en casos con fibrosis establecida"
+        ],
+        "farmacologico": [
+          "Alveolitis alérgica extrínseca aguda: corticoides sistémicos en el episodio agudo",
+          "Asma ocupacional: mismo esquema que asma común (corticoide inhalado + broncodilatador)",
+          "Silicosis/asbestosis: sin tratamiento específico que revierta la fibrosis — manejo de soporte y de complicaciones (ej. quimioprofilaxis de TB en silicosis)"
+        ]
+      },
+      "complicaciones": [
+        "Tuberculosis (riesgo marcadamente elevado en silicosis)",
+        "Mesotelioma pleural maligno (asbestosis — asociación directa y específica)",
+        "Fibrosis masiva progresiva (antracosis complicada)",
+        "Cáncer pulmonar (asbesto, arsénico, cromo, níquel)"
+      ],
+      "prevencion": "Uso correcto y constante de equipo de protección respiratoria, ventilación adecuada en el ambiente laboral, evaluaciones médicas ocupacionales periódicas (obligatorias por ley), y rotación/limitación del tiempo de exposición a agentes de alto riesgo.",
+      "perlasProfundo": "El dato semiológico que más se presta a confusión (y que aparece explícitamente en tu PPT): en la alveolitis alérgica extrínseca aguda, el paciente tiene estertores finos pero NO sibilancias — si ves sibilancias, piensa más en asma ocupacional que en alveolitis. Además, ningún otro compañero de trabajo suele estar afectado de la misma manera (sensibilización individual), lo que a veces genera dudas sobre si el paciente está fingiendo — no lo está, es sensibilización específica de esa persona."
+    },
+    "repaso": {
+      "conceptosClave": [
+        "El cese de la exposición es SIEMPRE la medida más importante, en todas las entidades",
+        "Neumoconiosis = daño estructural fibrótico progresivo, sin cura",
+        "Asma/alveolitis ocupacional = mejoran claramente fuera del trabajo — patrón temporal es la clave diagnóstica"
+      ],
+      "clinica": "Historia laboral detallada es el dato más importante — sin ella, es fácil confundir estas entidades con sus equivalentes no ocupacionales.",
+      "diagnostico": "Historia laboral cronológica + imagen + espirometría + pruebas específicas según sospecha (precipitinas en alveolitis).",
+      "tratamientoResumen": "Cese de exposición (siempre) + tratamiento sintomático específico según la entidad (corticoides en alveolitis aguda, esquema de asma en asma ocupacional).",
+      "diferenciales": [
+        {
+          "entidad": "Neumonía",
+          "clave": "La alveolitis alérgica se resuelve y reaparece con cada exposición — la neumonía no sigue ese patrón cíclico"
+        },
+        {
+          "entidad": "Asma común",
+          "clave": "El asma ocupacional mejora marcadamente fuera del trabajo (fines de semana, vacaciones) — el asma común no depende del lugar"
+        }
+      ],
+      "tablaComparativa": {
+        "titulo": "Silicosis vs. Asbestosis vs. Antracosis",
+        "filas": [
+          [
+            "Agente",
+            "Sílice cristalina",
+            "Fibras de asbesto"
+          ],
+          [
+            "Complicación específica",
+            "Tuberculosis",
+            "Mesotelioma pleural"
+          ],
+          [
+            "Patrón",
+            "Fibrosis nodular",
+            "Fibrosis difusa + engrosamiento pleural"
+          ]
+        ]
+      }
+    },
+    "imprescindible": {
+      "loQueSiOSiDebesSaber": [
+        "SIEMPRE pregunta historia laboral detallada ante cualquier enfermedad respiratoria de causa poco clara",
+        "El cese de la exposición es la intervención más importante en todas estas entidades",
+        "Silicosis aumenta marcadamente el riesgo de tuberculosis; asbestosis se asocia específicamente a mesotelioma",
+        "Alveolitis alérgica extrínseca: estertores SIN sibilancias — dato que la distingue de asma ocupacional"
+      ],
+      "redFlags": [
+        "Trabajador con disnea progresiva + antecedente de exposición a asbesto por años/décadas → descartar mesotelioma, no solo asbestosis simple",
+        "Fiebre + tos + disnea que reaparece cada vez que regresa al trabajo → alveolitis alérgica extrínseca, no 'está fingiendo'"
+      ],
+      "erroresFrecuentes": [
+        "No preguntar historia laboral por considerarla poco relevante",
+        "Confundir asma ocupacional con asma común y no investigar el patrón temporal con el trabajo",
+        "Asumir que un paciente con síntomas que sus compañeros no tienen está exagerando o fingiendo"
+      ],
+      "asociacionesClinicas": [
+        "Minero o trabajador de construcción + disnea progresiva + patrón restrictivo → sospechar neumoconiosis",
+        "Trabajador agrícola + fiebre/tos/disnea recurrente tras exposición a heno → alveolitis alérgica extrínseca ('pulmón del granjero')"
+      ]
+    },
+    "casosClinicos": [
+      {
+        "nivel": "intermedio",
+        "vineta": "Mujer de 43 años, trabaja en una granja. Refiere que cada vez que descarga heno presenta fiebre, tos, disnea y producción de esputo, que suele resolverse en 2 a 5 días pero reaparece al volver a exponerse. No usa mascarilla. Ninguno de sus compañeros de trabajo está afectado. Examen: taquipnea, estertores finos, sin sibilancias.",
+        "preguntaMC": {
+          "enunciado": "¿Cuál es el diagnóstico presuntivo más probable?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Neumonía adquirida en la comunidad"
+            },
+            {
+              "id": "b",
+              "texto": "Neumonitis por hipersensibilidad (alveolitis alérgica extrínseca)"
+            },
+            {
+              "id": "c",
+              "texto": "Bronquitis crónica"
+            },
+            {
+              "id": "d",
+              "texto": "Bronquitis aguda"
+            },
+            {
+              "id": "e",
+              "texto": "Bronquiectasias"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "El patrón cíclico (síntomas que aparecen con la exposición al heno y se resuelven al alejarse) más la ausencia de sibilancias en el examen (estertores finos SIN sibilancias) es el cuadro clásico de neumonitis por hipersensibilidad / alveolitis alérgica extrínseca — una reacción inmunológica a antígenos orgánicos (hongos del heno), no una infección."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Por qué es importante NO asumir que esta paciente está 'fingiendo' solo porque sus compañeros de trabajo no presentan los mismos síntomas?",
+          "respuestaModelo": "La alveolitis alérgica extrínseca es una reacción de HIPERSENSIBILIDAD individual — depende de la sensibilización inmunológica específica de cada persona a un antígeno particular, no de la exposición en sí. Así como no todos los que comen maní son alérgicos al maní, no todos los expuestos al mismo antígeno orgánico del heno desarrollan la enfermedad. Que sus compañeros no estén afectados no invalida el cuadro de la paciente — es exactamente el comportamiento esperado de una enfermedad de mecanismo inmunológico individual, no infeccioso."
+        }
+      }
     ]
+  },
+  {
+    "id": "epid",
+    "nombre": "Enfermedad Pulmonar Intersticial Difusa (EPID)",
+    "area": "Neumología",
+    "semanas": [
+      "semana-03"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "tipoIlustracion": "alveolar",
+    "relacionadas": [
+      {
+        "id": "enfermedades-respiratorias-ocupacionales",
+        "relacion": "La neumoconiosis es un subtipo de EPID de causa conocida (ocupacional) — mismo mecanismo final de fibrosis intersticial"
+      },
+      {
+        "id": "epoc",
+        "relacion": "Diagnóstico diferencial clave en disnea crónica progresiva — la EPID tiene patrón RESTRICTIVO en espirometría, el EPOC tiene patrón OBSTRUCTIVO"
+      }
+    ],
+    "profundo": {
+      "definicion": "Grupo heterogéneo de enfermedades que afectan predominantemente el intersticio pulmonar (el espacio virtual entre la membrana basal del epitelio alveolar y el epitelio capilar), aunque también pueden comprometer el parénquima, los vasos y las vías respiratorias periféricas. Se caracterizan por inflamación y/o fibrosis progresiva que compromete la función respiratoria — con características clínicas, funcionales y radiológicas muy semejantes entre sí a pesar de tener causas distintas.",
+      "epidemiologia": "Las EPID más frecuentes son la fibrosis pulmonar idiopática (FPI) y la sarcoidosis, que juntas representan cerca del 50% de los casos. Existen diferencias importantes entre países: menor frecuencia de sarcoidosis en España, y mayor frecuencia de EPID asociada a enfermedades del tejido conectivo en Alemania y en registros griegos.",
+      "etiologiaFactoresRiesgo": [
+        "Enfermedades del tejido conectivo (artritis reumatoide, esclerosis sistémica, dermatomiositis)",
+        "Exposición ocupacional/ambiental (neumoconiosis, alveolitis por hipersensibilidad)",
+        "Fármacos: quimioterápicos (busulfán, bleomicina, metotrexato), antibióticos (nitrofurantoína), amiodarona",
+        "Radioterapia torácica previa",
+        "Tabaquismo (asociado a neumonía intersticial descamativa, bronquiolitis respiratoria, histiocitosis X — pero relación INVERSA con sarcoidosis y alveolitis alérgica extrínseca)",
+        "Antecedente familiar/hereditario en FPI, esclerosis tuberosa, neurofibromatosis"
+      ],
+      "fisiopatologia": {
+        "resumen": "El intersticio pulmonar normal es solo un espacio virtual delgado entre el epitelio alveolar y el capilar. En la EPID, este espacio se llena progresivamente de células inflamatorias, colágeno depositado en exceso, y en algunos casos granulomas — el resultado es un intersticio engrosado que dificulta físicamente el intercambio gaseoso por difusión.",
+        "explicacionExtendida": "Independientemente de la causa desencadenante (autoinmune, ocupacional, farmacológica o idiopática), el proceso final converge en un patrón común: acumulación excesiva de células de distintas fuentes (mesenquimales, epiteliales, inflamatorias) junto con productos de la 'curación de heridas' — colágeno y matriz extracelular — depositándose en el intersticio pulmonar. Este engrosamiento del intersticio aumenta físicamente la distancia que debe recorrer el oxígeno para difundir desde el alvéolo hasta el capilar, lo que explica por qué la alteración funcional característica es la disminución de la difusión de monóxido de carbono (DLCO) y por qué la hipoxemia empeora notablemente con el ejercicio (el tiempo de tránsito del glóbulo rojo por el capilar se acorta, y ya no alcanza a completar el intercambio a través de un intersticio engrosado).\n\nA diferencia de las enfermedades obstructivas (como el EPOC o el asma, donde el problema es que el aire no puede SALIR bien), en la EPID el problema es que el pulmón se vuelve más rígido y pequeño — de ahí el patrón funcional RESTRICTIVO (disminución de la capacidad vital forzada y de la capacidad pulmonar total, con relación VEF1/FVC conservada o incluso aumentada, a diferencia del EPOC donde esa relación está reducida)."
+      ,cascada: [
+              {
+                      "paso": "Factor desencadenante",
+                      "detalle": "Causa conocida (tejido conectivo, ocupacional, fármacos) o desconocida (idiopática) que lesiona el epitelio alveolar"
+              },
+              {
+                      "paso": "Respuesta celular",
+                      "detalle": "Acumulación de células mesenquimales, epiteliales hiperplásicas e inflamatorias en el intersticio"
+              },
+              {
+                      "paso": "Cambio estructural",
+                      "detalle": "Depósito excesivo de colágeno y matriz extracelular — el intersticio, normalmente un espacio virtual delgado, se engrosa progresivamente"
+              },
+              {
+                      "paso": "Cambio fisiológico",
+                      "detalle": "El intersticio engrosado dificulta la difusión de oxígeno; patrón funcional restrictivo (↓CVF, ↓DLCO)"
+              },
+              {
+                      "paso": "Manifestación clínica",
+                      "detalle": "Disnea progresiva, tos seca, crépitos tipo velcro en bases, hipoxemia que empeora con el ejercicio"
+              }
+      ]
+      },
+      "clinica": [
+        {
+          "signo": "Disnea progresiva de meses a años de evolución + tos seca",
+          "mecanismo": "Fibrosis/inflamación intersticial progresiva que reduce la distensibilidad pulmonar y dificulta la difusión de oxígeno"
+        },
+        {
+          "signo": "Crépitos tipo 'velcro' en ambas bases pulmonares",
+          "mecanismo": "Apertura súbita de alvéolos y vías aéreas pequeñas colapsadas por la fibrosis, al final de la inspiración"
+        },
+        {
+          "signo": "Acropaquia (dedos en palillo de tambor)",
+          "mecanismo": "Hipoxemia crónica sostenida — marcador de enfermedad fibrótica avanzada, presente en >90% de la fibrosis pulmonar idiopática"
+        }
+      ],
+      "examenFisico": [
+        "Crépitos inspiratorios tipo velcro en bases (>90% de FPI, 60% de EPID asociada a tejido conectivo)",
+        "Acropaquia en enfermedad fibrótica avanzada",
+        "Sibilancias infrecuentes — cuando aparecen, sugieren bronquiolitis asociada o síndrome de Churg-Strauss"
+      ],
+      "semiologia": {
+        "inspeccion": "Observa el patrón respiratorio (taquipnea con esfuerzos progresivamente menores), coloración (cianosis en fases avanzadas), y examina las manos buscando acropaquia — un hallazgo que orienta fuertemente a fibrosis avanzada, especialmente FPI.",
+        "palpacion": "Expansión torácica puede estar simétricamente disminuida por la rigidez pulmonar bilateral. No hay hallazgos de asimetría como en el neumotórax o derrame, ya que el compromiso es difuso y bilateral.",
+        "percusion": "Habitualmente normal — la EPID no produce cambios de matidez o hiperresonancia como las enfermedades pleurales, porque el aire y la relación tisular general del pulmón no cambian de forma tan marcada.",
+        "auscultacion": "El hallazgo semiológico más característico y más preguntado: crépitos inspiratorios finos tipo 'velcro' en ambas bases — un sonido muy específico que se diferencia de los crépitos gruesos de la neumonía o insuficiencia cardiaca. Escúchalos al final de la inspiración profunda."
+      },
+      "diagnostico": "El diagnóstico combina características clínicas, funcionales (espirometría con patrón restrictivo: ↓CVF, ↓DLCO), e imagenológicas (TC de alta resolución — TCAR, la piedra angular del diagnóstico). Patrones en TCAR: FPI muestra patrón de neumonía intersticial usual (NIU); la neumonía intersticial no específica (NINE) muestra vidrio esmerilado difuso. En casos no concluyentes, puede requerirse biopsia pulmonar (transbronquial, criobiopsia o quirúrgica) y evaluación multidisciplinaria (neumólogo, radiólogo, patólogo).",
+      "diagnosticoDiferencial": [
+        "EPOC (patrón obstructivo, no restrictivo)",
+        "Insuficiencia cardiaca (crépitos también presentes, pero con otros signos de sobrecarga de volumen)",
+        "Neumonía atípica (curso más agudo)",
+        "Enfermedades respiratorias ocupacionales (pueden ser la CAUSA de la EPID, no un diferencial excluyente)"
+      ],
+      "tratamiento": {
+        "noFarmacologico": [
+          "Rehabilitación pulmonar",
+          "Oxigenoterapia si hay hipoxemia",
+          "Vacunación (neumococo, influenza)",
+          "Considerar trasplante pulmonar en casos avanzados y progresivos",
+          "Cuidados paliativos en fases avanzadas"
+        ],
+        "farmacologico": [
+          "Fibrosis pulmonar idiopática: antifibróticos — pirfenidona o nintedanib",
+          "EPID asociada a enfermedades del tejido conectivo: inmunosupresores (micofenolato, ciclofosfamida, azatioprina) + glucocorticoides según gravedad",
+          "EPID progresiva no FPI: nintedanib aprobado específicamente para el fenotipo progresivo"
+        ]
+      },
+      "complicaciones": [
+        "Insuficiencia respiratoria crónica progresiva",
+        "Hipertensión pulmonar secundaria",
+        "Cor pulmonale",
+        "Mayor riesgo de infecciones respiratorias por función pulmonar comprometida"
+      ],
+      "prevencion": "Evitar exposiciones ocupacionales conocidas (asbesto, sílice), revisar cuidadosamente medicamentos con potencial fibrosante antes de indicarlos en tratamientos prolongados, y control temprano de enfermedades del tejido conectivo para reducir el riesgo de EPID asociada.",
+      "perlasProfundo": "Los criterios de PROGRESIÓN según ATS/ERS 2022 (aplicables a cualquier EPID, no solo FPI) son: disminución de la CVF ≥10%, aumento de la disnea, o empeoramiento radiológico en la TCAR — reconocer este 'fenotipo progresivo' ha cambiado el enfoque terapéutico porque ahora el nintedanib (antes exclusivo de FPI) se usa también en EPID progresiva de otras causas."
+    },
+    "repaso": {
+      "conceptosClave": [
+        "El intersticio se llena de células/colágeno → engrosamiento → dificulta la difusión de O2",
+        "Patrón funcional RESTRICTIVO (↓CVF, ↓DLCO, VEF1/FVC normal o aumentado) — a diferencia del EPOC (obstructivo)",
+        "TCAR es la piedra angular del diagnóstico"
+      ],
+      "clinica": "Disnea progresiva + tos seca + crépitos tipo velcro en bases + acropaquia en fases avanzadas.",
+      "diagnostico": "Clínica + espirometría restrictiva + TCAR (patrón NIU en FPI, vidrio esmerilado en NINE) ± biopsia.",
+      "tratamientoResumen": "FPI: antifibróticos (pirfenidona/nintedanib). Asociada a tejido conectivo: inmunosupresores + corticoides. Progresiva no-FPI: nintedanib.",
+      "diferenciales": [
+        {
+          "entidad": "EPOC",
+          "clave": "EPID = restrictivo (VEF1/FVC normal); EPOC = obstructivo (VEF1/FVC <0.70)"
+        },
+        {
+          "entidad": "Insuficiencia cardiaca",
+          "clave": "También da crépitos, pero con signos de sobrecarga (ingurgitación yugular, edemas) y respuesta a diuréticos"
+        }
+      ],
+      "tablaComparativa": {
+        "titulo": "EPID vs. EPOC (patrón funcional)",
+        "filas": [
+          [
+            "Patrón espirométrico",
+            "Restrictivo",
+            "Obstructivo"
+          ],
+          [
+            "VEF1/FVC",
+            "Normal o aumentado",
+            "Disminuido (<0.70)"
+          ],
+          [
+            "Auscultación",
+            "Crépitos tipo velcro en bases",
+            "Murmullo vesicular disminuido, espiración prolongada"
+          ]
+        ]
+      }
+    },
+    "imprescindible": {
+      "loQueSiOSiDebesSaber": [
+        "Patrón RESTRICTIVO (↓CVF, ↓DLCO, VEF1/FVC normal) — no lo confundas con el patrón obstructivo del EPOC",
+        "TCAR es el estudio clave; el patrón NIU es característico de FPI",
+        "Crépitos tipo 'velcro' en bases es el hallazgo auscultatorio más característico",
+        "Los antifibróticos (pirfenidona, nintedanib) son el pilar del tratamiento en FPI y EPID progresiva"
+      ],
+      "redFlags": [
+        "Disnea progresiva + acropaquia + crépitos velcro en paciente >50 años → alta sospecha de FPI, derivar a neumología",
+        "Disminución de CVF ≥10% en controles seriados → fenotipo progresivo, cambio de estrategia terapéutica"
+      ],
+      "erroresFrecuentes": [
+        "Confundir el patrón restrictivo de la EPID con el obstructivo del EPOC solo por la disnea crónica compartida",
+        "No indagar antecedente ocupacional, farmacológico o de enfermedad del tejido conectivo en todo paciente con sospecha de EPID",
+        "Asumir que todas las EPID se tratan igual — FPI, asociada a tejido conectivo, y progresiva no-FPI tienen esquemas distintos"
+      ],
+      "asociacionesClinicas": [
+        "EPID + artritis/rigidez articular + Raynaud → sospechar EPID asociada a enfermedad del tejido conectivo",
+        "EPID + antecedente ocupacional (minero, construcción, asbesto) → considerar neumoconiosis como causa de base"
+      ]
+    }
+  },
+  {
+    "id": "insuficiencia-respiratoria-aguda",
+    "nombre": "Insuficiencia Respiratoria Aguda y Síndrome de Distrés Respiratorio Agudo (SDRA)",
+    "area": "Neumología",
+    "semanas": [
+      "semana-03"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "tipoIlustracion": "alveolar",
+    "relacionadas": [
+      {
+        "id": "neumonia-nac",
+        "relacion": "La neumonía grave es una de las causas más frecuentes de insuficiencia respiratoria aguda y puede evolucionar a SDRA"
+      },
+      {
+        "id": "epoc",
+        "relacion": "La exacerbación de EPOC es la causa más común de insuficiencia respiratoria hipercápnica (tipo II)"
+      }
+    ],
+    "profundo": {
+      "definicion": "La Insuficiencia Respiratoria Aguda (IRA) es la incapacidad del aparato respiratorio para mantener una adecuada oxigenación (PaO2 <60 mmHg) y/o eliminación de CO2 (PaCO2 >50 mmHg) en reposo, en un paciente previamente normocápnico. El Síndrome de Distrés Respiratorio Agudo (SDRA) es una de sus formas de presentación más grave, con alta mortalidad.",
+      "epidemiologia": "En las unidades de cuidados intensivos, la IRA es responsable del 20-30% de los ingresos y se asocia a una mortalidad del 30-45% en su forma grave. El SDRA severo tiene mortalidad de 35-45%, aunque ha disminuido gracias a estrategias de protección pulmonar y posición prona. La pandemia por SARS-CoV-2 incrementó notablemente la incidencia de SDRA secundario a neumonía viral.",
+      "etiologiaFactoresRiesgo": [
+        "Neumonía grave (causa más frecuente)",
+        "Exacerbaciones de EPOC",
+        "Embolia pulmonar masiva",
+        "Edema agudo de pulmón cardiogénico",
+        "Trauma torácico",
+        "Sepsis (causa extrapulmonar más frecuente de SDRA)"
+      ],
+      "fisiopatologia": {
+        "resumen": "La hipoxemia en la IRA puede deberse a 5 mecanismos: alteración de la relación ventilación/perfusión (V/Q), cortocircuito (shunt), hipoventilación alveolar, disminución del contenido de oxígeno inspirado, o alteración de la difusión. En el SDRA específicamente predomina el shunt intrapulmonar por colapso alveolar y formación de membranas hialinas.",
+        "cascada": [
+          {
+            "paso": "Factor desencadenante",
+            "detalle": "Neumonía grave, sepsis, trauma, aspiración — daño directo o indirecto a la membrana alveolo-capilar"
+          },
+          {
+            "paso": "Respuesta inflamatoria",
+            "detalle": "Liberación de citocinas, daño epitelial y aumento de la permeabilidad alveolar (especialmente en SDRA de origen séptico)"
+          },
+          {
+            "paso": "Cambio estructural",
+            "detalle": "Edema no cardiogénico + colapso alveolar + formación de membranas hialinas, con pérdida de la capacidad de respuesta a oxígeno suplementario"
+          },
+          {
+            "paso": "Cambio fisiológico",
+            "detalle": "Shunt intrapulmonar predominante — la sangre pasa por alvéolos colapsados sin oxigenarse, sin importar cuánto oxígeno se administre"
+          },
+          {
+            "paso": "Manifestación clínica",
+            "detalle": "Disnea, taquipnea, uso de músculos accesorios, cianosis, hipoxemia refractaria a oxígeno suplementario"
+          }
+        ]
+      },
+      "clinica": [
+        {
+          "signo": "Disnea + taquipnea + uso de músculos accesorios",
+          "mecanismo": "Intento compensatorio de aumentar la ventilación ante el fallo del intercambio gaseoso"
+        },
+        {
+          "signo": "Cianosis",
+          "mecanismo": "Hipoxemia significativa con aumento de hemoglobina desoxigenada circulante"
+        },
+        {
+          "signo": "Confusión o alteración del sensorio",
+          "mecanismo": "Hipoxemia cerebral y/o hipercapnia con efecto narcótico sobre el sistema nervioso central"
+        }
+      ],
+      "examenFisico": [
+        "Taquipnea marcada, uso evidente de músculos accesorios",
+        "Crépitos difusos bilaterales en SDRA",
+        "Cianosis labial/periférica en casos severos"
+      ],
+      "diagnostico": "Gasometría arterial es el estándar diagnóstico: PaO2 <60 mmHg (hipoxemia), PaCO2 >50 mmHg (hipercapnia), pH <7.35 sugiere acidosis respiratoria. Radiografía/TC de tórax para identificar consolidaciones, infiltrados difusos o edema. Criterios de Berlín para SDRA: inicio en los 7 días posteriores a un evento clínico conocido + opacidades bilaterales en imagen + no explicado completamente por edema cardiogénico + hipoxemia según cociente PaO2/FiO2.",
+      "algoritmo": [
+        {
+          "tipo": "paso",
+          "texto": "Sospecha de IRA: disnea + taquipnea + hipoxemia clínica"
+        },
+        {
+          "tipo": "paso",
+          "texto": "Gasometría arterial: clasificar tipo (hipoxémica/hipercápnica/mixta) + calcular PaO2/FiO2"
+        },
+        {
+          "tipo": "decision",
+          "texto": "¿Cumple criterios de Berlín para SDRA?",
+          "salidas": [
+            {
+              "etiqueta": "PaFi 200-300",
+              "texto": "SDRA leve — HFNC o VMNI, tratar causa desencadenante",
+              "color": "mint"
+            },
+            {
+              "etiqueta": "PaFi 100-200",
+              "texto": "SDRA moderado — considerar ventilación mecánica protectora",
+              "color": "coral"
+            },
+            {
+              "etiqueta": "PaFi <100 refractario",
+              "texto": "SDRA severo — ventilación protectora + prono + considerar ECMO",
+              "color": "alert"
+            }
+          ]
+        }
+      ],
+      "diagnosticoDiferencial": [
+        "Edema pulmonar cardiogénico (ecocardiograma ayuda a diferenciar)",
+        "Neumonía sin criterios de SDRA",
+        "Tromboembolismo pulmonar masivo"
+      ],
+      "tratamiento": {
+        "noFarmacologico": [
+          "Oxigenoterapia individualizada: cánula nasal de alto flujo (HFNC) mejora oxigenación sin intubación, útil en SDRA leve",
+          "Mascarilla reservorio en hipoxemia severa transitoria",
+          "En EPOC: oxigenoterapia titulada, objetivo SatO2 88-92% para evitar hipercapnia inducida",
+          "Ventilación mecánica protectora (volúmenes tidales bajos) en casos moderados-severos",
+          "Posición prona en SDRA moderado-severo",
+          "ECMO en SDRA refractario con PaO2/FiO2 <80 pese a tratamiento óptimo"
+        ],
+        "farmacologico": [
+          "Corrección del factor desencadenante (antibióticos si infeccioso, etc.)",
+          "Corticosteroides: uso controversial en SDRA, indicación en fases tardías seleccionadas"
+        ]
+      },
+      "complicaciones": [
+        "Falla multiorgánica si no se corrige rápidamente",
+        "Fibrosis pulmonar residual post-SDRA",
+        "Disfunción muscular post-UCI"
+      ],
+      "prevencion": "Tratamiento oportuno y agresivo de neumonías graves y sepsis, vacunación (influenza, neumococo) para reducir el riesgo de neumonía grave que precipite IRA.",
+      "perlasProfundo": "El índice PaO2/FiO2 (PaFi) sigue siendo LA herramienta esencial para clasificar la gravedad del SDRA y guiar decisiones — calcularlo siempre que haya sospecha de compromiso respiratorio grave, no solo confiar en la saturación de oxígeno aislada."
+    },
+    "repaso": {
+      "conceptosClave": [
+        "3 tipos: hipoxémica (I), hipercápnica (II), mixta",
+        "SDRA = forma grave de IRA, criterios de Berlín",
+        "PaFi = PaO2/FiO2 — clasifica gravedad"
+      ],
+      "clinica": "Disnea + taquipnea + uso de músculos accesorios + cianosis ± confusión.",
+      "diagnostico": "Gasometría arterial (estándar) + imagen + criterios de Berlín para SDRA.",
+      "tratamientoResumen": "Oxigenoterapia escalonada (bajo flujo → HFNC → VMNI → VM invasiva) + tratar causa + prono/ECMO en SDRA severo.",
+      "diferenciales": [
+        {
+          "entidad": "Edema pulmonar cardiogénico",
+          "clave": "Ecocardiograma y contexto clínico (insuficiencia cardiaca) lo diferencian del SDRA"
+        }
+      ],
+      "tablaComparativa": {
+        "titulo": "IRA tipo I vs. tipo II",
+        "filas": [
+          [
+            "Mecanismo",
+            "Hipoxemia sin hipercapnia",
+            "Hipoventilación con retención de CO2"
+          ],
+          [
+            "Causas típicas",
+            "Neumonía, SDRA, edema pulmonar",
+            "EPOC agudizado, enfermedad neuromuscular"
+          ],
+          [
+            "PaCO2",
+            "Normal o bajo",
+            "Elevado (>50)"
+          ]
+        ]
+      }
+    },
+    "imprescindible": {
+      "loQueSiOSiDebesSaber": [
+        "PaO2 <60 o PaCO2 >50 en reposo = insuficiencia respiratoria, por definición",
+        "Calcula SIEMPRE el PaO2/FiO2 ante sospecha de SDRA — es la base de la clasificación de Berlín",
+        "En EPOC, titula oxígeno a SatO2 88-92% — el exceso de oxígeno puede empeorar la hipercapnia",
+        "SDRA refractario (PaFi <80 pese a tratamiento óptimo) es indicación de considerar ECMO"
+      ],
+      "redFlags": [
+        "Hipoxemia que no mejora pese a oxígeno suplementario en aumento → sospechar shunt (SDRA), no solo problema V/Q",
+        "Confusión + taquipnea + cianosis en paciente con neumonía → insuficiencia respiratoria establecida, actuar rápido"
+      ],
+      "erroresFrecuentes": [
+        "Dar oxígeno sin límite en pacientes EPOC (riesgo de narcosis por CO2)",
+        "No calcular el PaO2/FiO2 y subestimar la gravedad real del cuadro",
+        "Retrasar el escalamiento del soporte ventilatorio esperando mejoría espontánea en un paciente que se deteriora"
+      ],
+      "asociacionesClinicas": [
+        "Sepsis + infiltrados bilaterales + hipoxemia refractaria → SDRA de origen extrapulmonar",
+        "EPOC conocido + somnolencia + FR baja → sospechar narcosis por CO2, no mejoría"
+      ]
+    },
+    "casosClinicos": [
+      {
+        "nivel": "avanzado",
+        "vineta": "Varón de 64 años, tiempo de enfermedad 5 días, acude por disnea progresiva, fiebre y tos con expectoración purulenta. Hoy presenta taquipnea y uso de músculos accesorios. Exfumador (20 paq/año), HTA controlada, vacunado COVID-19 pero no influenza ni neumococo. FC 112, FR 34, T° 38.3°C, SatO2 84% aire ambiente. Estertores crepitantes bilaterales, cianosis labial leve. Rx: opacidades alveolares bilaterales sin cardiomegalia. Gasometría (aire ambiente): pH 7.31, PaCO2 48 mmHg, PaO2 54 mmHg, HCO3 22 mEq/L, FiO2 0.21.",
+        "preguntaMC": {
+          "enunciado": "Calculando el índice PaO2/FiO2, ¿en qué categoría de gravedad de SDRA (criterios de Berlín) se clasificaría este paciente?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "PaFi = 54/0.21 ≈ 257 — SDRA leve"
+            },
+            {
+              "id": "b",
+              "texto": "PaFi = 54/0.21 ≈ 257 — SDRA moderado"
+            },
+            {
+              "id": "c",
+              "texto": "PaFi = 54/0.21 ≈ 257 — SDRA severo"
+            },
+            {
+              "id": "d",
+              "texto": "No cumple criterios de SDRA"
+            },
+            {
+              "id": "e",
+              "texto": "No se puede calcular sin saber la FiO2 exacta en litros"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "PaFi = PaO2/FiO2 = 54/0.21 ≈ 257, que cae en el rango 200-300 mmHg — SDRA LEVE según Berlín. Además cumple los otros criterios: inicio dentro de los 7 días de un evento conocido (neumonía), opacidades bilaterales en Rx, y no explicado por edema cardiogénico (sin cardiomegalia, sin antecedente de insuficiencia cardiaca)."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Este paciente presenta insuficiencia respiratoria aguda? ¿De qué tipo, y qué manejo de oxigenoterapia sería apropiado iniciar?",
+          "respuestaModelo": "Sí, presenta insuficiencia respiratoria aguda: PaO2 54 mmHg (<60) confirma el componente hipoxémico. El PaCO2 de 48 está discretamente elevado pero no supera el umbral de 50 para definir hipercapnia franca, por lo que se clasifica predominantemente como IRA hipoxémica (tipo I), en el contexto de una neumonía grave con criterios de SDRA leve. El manejo inicial de oxigenoterapia apropiado sería cánula nasal de alto flujo (HFNC), que mejora la oxigenación sin necesidad de intubación inmediata y es especialmente útil en SDRA leve — reservando la ventilación mecánica invasiva para deterioro progresivo pese a estas medidas."
+        }
+      }
+    ]
+  },
+  {
+    "id": "saos",
+    "nombre": "Síndrome de Apnea-Hipopnea Obstructiva del Sueño (SAOS)",
+    "area": "Neumología",
+    "semanas": [
+      "semana-03"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "tipoIlustracion": "obstructivo",
+    "relacionadas": [
+      {
+        "id": "epoc",
+        "relacion": "Ambas pueden coexistir en el llamado 'overlap syndrome', con mayor riesgo de hipoxemia nocturna combinada"
+      }
+    ],
+    "profundo": {
+      "definicion": "El SAOS se define como episodios recurrentes de obstrucción parcial o completa de la vía aérea superior durante el sueño, lo que provoca hipoxia intermitente, fragmentación del sueño y despertares repetidos.",
+      "epidemiologia": "La prevalencia global de SAHOS leve a severo se estima en 936 millones de adultos (30-69 años), con alrededor de 425 millones con SAOS moderado a severo. Varía entre 9% y 38%, más alta en hombres (13-33%) que en mujeres (6-19%). En mayores de 65 años puede alcanzar 84% (90% en hombres, 78% en mujeres). Está marcadamente subdiagnosticado.",
+      "etiologiaFactoresRiesgo": [
+        "Anatómicos: cuello grueso, acúmulo adiposo perifaríngeo, micrognatia, retrognatia, hipertrofia amigdalar",
+        "Edad avanzada (>50 años) y sexo masculino (relación 4.9:1, que se aproxima a la paridad tras la menopausia)",
+        "Obesidad — el factor modificable más importante: un aumento del 10% del peso multiplica x6 el riesgo de SAHOS moderado-grave",
+        "Tabaquismo, consumo de alcohol, sedantes/hipnóticos, posición supina al dormir, congestión nasal crónica",
+        "Comorbilidades: hipertensión resistente, diabetes tipo 2, síndrome metabólico, hipotiroidismo, síndrome de Down"
+      ],
+      "fisiopatologia": {
+        "resumen": "Durante el sueño, la relajación normal de la musculatura faríngea se combina con factores anatómicos predisponentes (cuello grueso, retrognatia, hipertrofia amigdalar) para producir colapso parcial o completo de la vía aérea superior, generando episodios repetidos de apnea (cese completo del flujo) o hipopnea (reducción parcial), cada uno seguido de un microdespertar que restaura el tono muscular momentáneamente.",
+        "explicacionExtendida": "Este ciclo de colapso-microdespertar se repite decenas a cientos de veces por noche, generando dos consecuencias fisiopatológicas centrales. La primera es la hipoxia intermitente: cada episodio de apnea/hipopnea interrumpe la oxigenación, y estos ciclos repetidos de desaturación-reoxigenación generan estrés oxidativo, inflamación sistémica de bajo grado y disfunción endotelial — mecanismos que explican por qué el SAOS se asocia de forma tan consistente a hipertensión arterial, arritmias, y mayor riesgo cardiovascular general, incluso en pacientes que no perciben somnolencia diurna significativa.\n\nLa segunda consecuencia es la fragmentación del sueño: cada microdespertar, aunque dure solo segundos y el paciente no lo recuerde, interrumpe la arquitectura normal del sueño, impidiendo alcanzar o mantener las fases de sueño profundo y REM que son necesarias para la restauración cognitiva y física. Esto explica la somnolencia diurna excesiva, el deterioro cognitivo (atención, memoria, funciones ejecutivas) y el mayor riesgo de accidentes que caracterizan al SAOS no tratado."
+      ,cascada: [
+              {
+                      "paso": "Factor predisponente",
+                      "detalle": "Factores anatómicos (cuello grueso, retrognatia, hipertrofia amigdalar) combinados con relajación muscular normal del sueño"
+              },
+              {
+                      "paso": "Colapso de la vía aérea",
+                      "detalle": "La musculatura faríngea relajada, junto con la predisposición anatómica, permite el colapso parcial o completo de la vía aérea superior"
+              },
+              {
+                      "paso": "Apnea/hipopnea",
+                      "detalle": "Cese o reducción marcada del flujo aéreo pese al esfuerzo respiratorio continuo"
+              },
+              {
+                      "paso": "Hipoxia intermitente + microdespertar",
+                      "detalle": "Desaturación de oxígeno que activa un microdespertar (arousal) que restaura brevemente el tono muscular y reabre la vía aérea"
+              },
+              {
+                      "paso": "Manifestación clínica",
+                      "detalle": "El ciclo se repite cientos de veces por noche: ronquidos, fragmentación del sueño, somnolencia diurna, y a largo plazo, riesgo cardiovascular por hipoxia intermitente repetida"
+              }
+      ]
+      },
+      "clinica": [
+        {
+          "signo": "Ronquidos fuertes y persistentes + episodios de apnea/asfixia reportados por la pareja",
+          "mecanismo": "Colapso parcial (ronquido) o completo (apnea) de la vía aérea superior durante el sueño"
+        },
+        {
+          "signo": "Somnolencia excesiva diurna + deterioro cognitivo",
+          "mecanismo": "Fragmentación crónica del sueño por microdespertares repetidos que impiden alcanzar sueño reparador"
+        },
+        {
+          "signo": "Hipertensión arterial resistente al tratamiento",
+          "mecanismo": "Hipoxia intermitente que genera estrés oxidativo, inflamación sistémica y disfunción endotelial de forma sostenida"
+        }
+      ],
+      "examenFisico": [
+        "Cuello grueso, circunferencia cervical aumentada",
+        "Retrognatia/micrognatia, hipertrofia amigdalar visible",
+        "Sobrepeso/obesidad con distribución central de grasa"
+      ],
+      "diagnostico": "Cuestionarios de cribado: escala de Epworth, cuestionario de Berlín, y especialmente STOP-Bang (0-2 puntos = bajo riesgo, 3-4 = riesgo intermedio, 5-8 = alto riesgo de SAHOS moderado/severo) — estos NO son diagnósticos definitivos. Estándar de oro: polisomnografía (PSG tipo I), que mide el Índice de Apnea-Hipopnea (IAH). Criterio diagnóstico: IAH ≥5 eventos/hora con síntomas diurnos, o IAH/RDI ≥15 sin síntomas. Alternativa: pruebas domiciliarias (HSAT)/poligrafía, sensibilidad >80% en casos sin comorbilidades complejas.",
+      "diagnosticoDiferencial": [
+        "Insomnio primario",
+        "Narcolepsia",
+        "Síndrome de piernas inquietas",
+        "Hipoventilación por obesidad"
+      ],
+      "tratamiento": {
+        "noFarmacologico": [
+          "CPAP/APAP: tratamiento de elección en SAHOS moderado-severo — adherencia óptima ≥6h/noche",
+          "Dispositivos de avance mandibular (MAD): para SAOS leve-moderado o intolerancia a CPAP, reduce IAH >50% en ~1/3 de los casos",
+          "Modificación del estilo de vida: pérdida de peso ≥10% puede reducir el IAH en 26-56%; evitar alcohol/sedantes, terapia posicional",
+          "Cirugía de vías aéreas superiores (UPPP: éxito 35-50%) o avance maxilomandibular (reduce IAH ~85%) en casos seleccionados",
+          "Estimulación del nervio hipogloso en SAOS moderado-severo que no tolera CPAP (éxito clínico 74% a 3 años según STAR trial)"
+        ],
+        "farmacologico": [
+          "Tirzepatida: aprobada por la FDA (2024-25) para SAHOS moderado-severo con obesidad, redujo el IAH hasta 63% en ensayos fase III"
+        ]
+      },
+      "complicaciones": [
+        "Hipertensión arterial, arritmias (especialmente fibrilación auricular)",
+        "Infarto de miocardio, accidente cerebrovascular",
+        "Resistencia a la insulina, diabetes tipo 2",
+        "Accidentes de tránsito/laborales por somnolencia"
+      ],
+      "prevencion": "Control del peso corporal (factor modificable más importante), evitar alcohol y sedantes antes de dormir, tratamiento de congestión nasal crónica, y evitar la posición supina al dormir en pacientes con SAOS posicional.",
+      "perlasProfundo": "Niveles moderados a severos (IAH ≥15) se asocian a mayor riesgo cardiovascular y de ACV incluso en AUSENCIA de somnolencia clínica percibida — no descartes SAOS significativo solo porque el paciente diga que duerme bien y no se siente cansado."
+    },
+    "repaso": {
+      "conceptosClave": [
+        "IAH = eventos de apnea+hipopnea por hora de sueño; diagnóstico con IAH≥5 + síntomas, o IAH≥15 sin síntomas",
+        "Obesidad es el factor de riesgo modificable más importante",
+        "CPAP es el tratamiento de elección en SAHOS moderado-severo"
+      ],
+      "clinica": "Ronquidos + apneas presenciadas + somnolencia diurna excesiva ± hipertensión resistente.",
+      "diagnostico": "STOP-Bang para cribado (no diagnóstico); polisomnografía es el estándar de oro (IAH).",
+      "tratamientoResumen": "CPAP (primera línea moderado-severo), MAD (leve-moderado), pérdida de peso, cirugía en casos seleccionados.",
+      "diferenciales": [
+        {
+          "entidad": "Insomnio primario",
+          "clave": "No hay eventos obstructivos objetivables en polisomnografía"
+        }
+      ],
+      "tablaComparativa": null
+    },
+    "imprescindible": {
+      "loQueSiOSiDebesSaber": [
+        "Polisomnografía (PSG) es el estándar de oro — STOP-Bang y Epworth son solo cribado, no diagnóstico",
+        "IAH ≥5 con síntomas, o IAH/RDI ≥15 sin síntomas = criterio diagnóstico",
+        "CPAP es primera línea en SAHOS moderado-severo; adherencia ≥6h/noche da mejores resultados",
+        "El riesgo cardiovascular aumenta con IAH≥15 aunque el paciente no tenga somnolencia percibida"
+      ],
+      "redFlags": [
+        "Hipertensión resistente a múltiples fármacos + ronquidos + pareja reporta pausas respiratorias → estudiar SAOS activamente",
+        "Somnolencia diurna severa en conductor profesional → riesgo de accidente, prioridad de estudio y tratamiento"
+      ],
+      "erroresFrecuentes": [
+        "Diagnosticar SAOS solo con STOP-Bang sin confirmación por polisomnografía",
+        "Asumir que sin somnolencia percibida no hay riesgo cardiovascular relevante",
+        "No reforzar la importancia de la adherencia real al CPAP (no basta con prescribirlo)"
+      ],
+      "asociacionesClinicas": [
+        "Obesidad + hipertensión resistente + fibrilación auricular → investigar SAOS activamente como factor contribuyente",
+        "Síndrome de Down o Prader-Willi → mayor prevalencia de SAOS, tamizar activamente"
+      ]
+    }
   }];
 
 /* ============================================================
@@ -2441,7 +3311,43 @@ const TEMAS = [
           "respuestaModelo": "PaFi = PaO2 / FiO2 = 50 / 0.21 ≈ 238. Un valor de PaFi por debajo de 300 ya sugiere lesión pulmonar aguda; por debajo de 200 orienta a síndrome de dificultad respiratoria aguda (SDRA). Con 238, la paciente tiene un compromiso significativo de la oxigenación, consistente con un proceso infeccioso pulmonar grave (neumonía) que está alterando la relación ventilación/perfusión."
         }
       }
-    ]
+    ,
+    {
+        "nivel": "avanzado",
+        "vineta": "Varón de 25 años con diabetes mellitus tipo 1 mal controlada, ingresa por vómitos persistentes, dolor abdominal y compromiso del sensorio. Respiración profunda y rápida tipo Kussmaul, deshidratación severa, aliento cetónico. AGA: pH 7.10, PaCO2 19 mmHg, PaO2 98 mmHg, HCO3 6 mEq/L, FiO2 0.21, EB -18.",
+        "preguntaMC": {
+            "enunciado": "¿Cuál es el trastorno ácido-base primario, y la compensación respiratoria es adecuada?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Acidosis respiratoria con compensación metabólica"
+                },
+                {
+                    "id": "b",
+                    "texto": "Acidosis metabólica (HCO3 muy bajo) con compensación respiratoria adecuada (PaCO2 esperado ≈17±2, muy cercano al real de 19)"
+                },
+                {
+                    "id": "c",
+                    "texto": "Alcalosis metabólica"
+                },
+                {
+                    "id": "d",
+                    "texto": "Trastorno mixto no compensado"
+                },
+                {
+                    "id": "e",
+                    "texto": "Gasometría normal"
+                }
+            ],
+            "correcta": "b",
+            "explicacion": "pH muy bajo (7.10) + HCO3 muy bajo (6) = acidosis metabólica severa (típica de cetoacidosis diabética). Usando la fórmula de Winter: PaCO2 esperado = (1.5×HCO3) + 8 ± 2 = (1.5×6)+8 = 17±2 (rango 15-19). El PaCO2 real del paciente (19) cae justo dentro de ese rango esperado — confirmando que la respiración de Kussmaul (rápida y profunda) está logrando una compensación respiratoria ADECUADA, sin trastorno mixto agregado."
+        },
+        "preguntaEscrita": {
+            "enunciado": "Explica por qué este paciente presenta respiración de Kussmaul, relacionándolo con el mecanismo de compensación que estás calculando.",
+            "respuestaModelo": "La respiración de Kussmaul (profunda y rápida) es precisamente el mecanismo compensatorio respiratorio ante la acidosis metabólica severa. Al aumentar la ventilación alveolar, el paciente elimina más CO2 del que normalmente eliminaría, bajando el PaCO2 (hipocapnia compensatoria) para intentar normalizar el pH pese al HCO3 muy bajo. Es el pulmón 'ayudando' al riñón a compensar un problema metabólico — el mismo principio general por el que, ante cualquier acidosis metabólica, el cuerpo hiperventila de forma refleja."
+        }
+    }
+  ]
   }];
 
 /* ============================================================
