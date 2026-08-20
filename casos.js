@@ -28,6 +28,10 @@ function renderCasos(entidadId){
     const banco = EXAM_BANCOS[entidadId.slice('examen::'.length)];
     nombre = banco.nombre;
     casosOriginales = banco.casos;
+  } else if(entidadId.startsWith('modulo::')){
+    const m = MODULOS[entidadId.slice('modulo::'.length)];
+    nombre = 'Comparativo — ' + m.nombre;
+    casosOriginales = m.casosComparativos;
   } else {
     const e = getEnfermedad(entidadId) || getTema(entidadId);
     nombre = e.nombre;
