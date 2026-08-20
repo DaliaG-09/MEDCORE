@@ -2455,7 +2455,44 @@ const ENFERMEDADES = [
         "Alveolitis alérgica extrínseca aguda: taquipnea, estertores finos, SIN sibilancias (dato clave para diferenciar de asma)",
         "Asma ocupacional: sibilancias difusas durante o poco después de la jornada laboral"
       ],
+      semiologia: {
+            "inspeccion": "Observa el estado general y busca acropaquia en casos de fibrosis avanzada (neumoconiosis). En crisis de asma ocupacional, busca uso de músculos accesorios y dificultad para hablar.",
+            "palpacion": "Expansión torácica simétricamente disminuida en neumoconiosis avanzada por la rigidez pulmonar bilateral. Sin hallazgos asimétricos característicos.",
+            "percusion": "Habitualmente normal — estas entidades no suelen alterar la percusión de forma marcada, a diferencia de las enfermedades pleurales.",
+            "auscultacion": "Neumoconiosis: crépitos tipo velcro en bases en fases avanzadas. Alveolitis alérgica extrínseca aguda: estertores finos SIN sibilancias (dato clave). Asma ocupacional: sibilancias difusas durante o poco después de la jornada laboral."
+      },
       "diagnostico": "Historia laboral detallada (cronológica, con fechas y duración de cada exposición) es el paso más importante y frecuentemente el más olvidado. Radiografía/TC de tórax según sospecha (nódulos en silicosis, engrosamiento pleural en asbestosis). Espirometría (patrón restrictivo en neumoconiosis, obstructivo en asma ocupacional). Pruebas específicas: precipitinas séricas en alveolitis alérgica extrínseca.",
+      algoritmo: [
+            {
+                  "tipo": "paso",
+                  "texto": "Paciente con enfermedad respiratoria de causa poco clara — SIEMPRE preguntar historia laboral cronológica detallada"
+            },
+            {
+                  "tipo": "paso",
+                  "texto": "¿El cuadro se relaciona temporalmente con la exposición laboral (mejora fuera del trabajo)?"
+            },
+            {
+                  "tipo": "decision",
+                  "texto": "¿Qué patrón funcional/radiológico predomina?",
+                  "salidas": [
+                        {
+                              "etiqueta": "Patrón restrictivo + fibrosis en imagen",
+                              "texto": "Neumoconiosis (silicosis/asbestosis/antracosis) — cesar exposición, vigilar complicaciones (TB, mesotelioma)",
+                              "color": "coral"
+                        },
+                        {
+                              "etiqueta": "Sibilancias que mejoran fuera del trabajo",
+                              "texto": "Asma ocupacional — esquema de asma + cese de exposición",
+                              "color": "mint"
+                        },
+                        {
+                              "etiqueta": "Fiebre/tos recurrente tras exposición orgánica",
+                              "texto": "Alveolitis alérgica extrínseca — corticoide en agudo + cese de exposición",
+                              "color": "alert"
+                        }
+                  ]
+            }
+      ],
       "diagnosticoDiferencial": [
         "Neumonía adquirida en la comunidad (el caso de alveolitis alérgica se confunde fácilmente)",
         "Bronquitis crónica no ocupacional",
@@ -2666,6 +2703,41 @@ const ENFERMEDADES = [
         "auscultacion": "El hallazgo semiológico más característico y más preguntado: crépitos inspiratorios finos tipo 'velcro' en ambas bases — un sonido muy específico que se diferencia de los crépitos gruesos de la neumonía o insuficiencia cardiaca. Escúchalos al final de la inspiración profunda."
       },
       "diagnostico": "El diagnóstico combina características clínicas, funcionales (espirometría con patrón restrictivo: ↓CVF, ↓DLCO), e imagenológicas (TC de alta resolución — TCAR, la piedra angular del diagnóstico). Patrones en TCAR: FPI muestra patrón de neumonía intersticial usual (NIU); la neumonía intersticial no específica (NINE) muestra vidrio esmerilado difuso. En casos no concluyentes, puede requerirse biopsia pulmonar (transbronquial, criobiopsia o quirúrgica) y evaluación multidisciplinaria (neumólogo, radiólogo, patólogo).",
+      algoritmo: [
+            {
+                  "tipo": "paso",
+                  "texto": "Disnea progresiva + tos seca + crépitos tipo velcro en bases — sospecha de EPID"
+            },
+            {
+                  "tipo": "paso",
+                  "texto": "Espirometría: confirmar patrón restrictivo (↓CVF, ↓DLCO, VEF1/FVC normal o aumentado)"
+            },
+            {
+                  "tipo": "paso",
+                  "texto": "TC de alta resolución (TCAR) — estudio clave para caracterizar el patrón"
+            },
+            {
+                  "tipo": "decision",
+                  "texto": "¿Qué muestra la TCAR y la historia clínica?",
+                  "salidas": [
+                        {
+                              "etiqueta": "Patrón NIU + sin causa identificable",
+                              "texto": "Fibrosis pulmonar idiopática (FPI) — iniciar antifibrótico (pirfenidona/nintedanib)",
+                              "color": "alert"
+                        },
+                        {
+                              "etiqueta": "Asociada a enfermedad del tejido conectivo",
+                              "texto": "Inmunosupresores + corticoides según gravedad",
+                              "color": "coral"
+                        },
+                        {
+                              "etiqueta": "Causa ocupacional/ambiental identificada",
+                              "texto": "Es una neumoconiosis — cese de exposición, manejo de soporte",
+                              "color": "mint"
+                        }
+                  ]
+            }
+      ],
       "diagnosticoDiferencial": [
         "EPOC (patrón obstructivo, no restrictivo)",
         "Insuficiencia cardiaca (crépitos también presentes, pero con otros signos de sobrecarga de volumen)",
@@ -2756,6 +2828,44 @@ const ENFERMEDADES = [
         "EPID + antecedente ocupacional (minero, construcción, asbesto) → considerar neumoconiosis como causa de base"
       ]
     }
+  ,
+    "casosClinicos": [
+        {
+            "nivel": "avanzado",
+            "vineta": "Varón de 63 años, HTA, exfumador (80 paq/año), trabajó 18 años en fábrica con amianto, carbón activado y polvo de celulosa. Consulta por disnea de 1 año que progresa a grado 3-4 mMRC en los últimos 10 días, con tos y expectoración mucopurulenta. Examen: SatO2 85% ambiental, 90% con FiO2 24%. Rales tipo velcro en ambas bases. Clubbing (acropaquia). AGA: pH 7.43, PaCO2 30.2, PaO2 55.7, HCO3 19.9. Espirometría: VEF1/FVC 0.84, VEF1 80%, FVC 76%, sin respuesta a broncodilatadores.",
+            "preguntaMC": {
+                "enunciado": "¿Qué patrón funcional confirma la espirometría de este paciente?",
+                "opciones": [
+                    {
+                        "id": "a",
+                        "texto": "Patrón obstructivo — típico de EPOC dado el tabaquismo"
+                    },
+                    {
+                        "id": "b",
+                        "texto": "Patrón restrictivo — VEF1/FVC normal-alto (0.84) con ambos volúmenes reducidos, sin respuesta a broncodilatador"
+                    },
+                    {
+                        "id": "c",
+                        "texto": "Patrón mixto obstructivo-restrictivo"
+                    },
+                    {
+                        "id": "d",
+                        "texto": "Espirometría normal"
+                    },
+                    {
+                        "id": "e",
+                        "texto": "No se puede interpretar sin DLCO"
+                    }
+                ],
+                "correcta": "b",
+                "explicacion": "El VEF1/FVC de 0.84 (NORMAL o incluso alto) junto con VEF1 y FVC ambos reducidos (80% y 76%) es exactamente el patrón restrictivo característico de EPID — a diferencia del EPOC, donde el VEF1/FVC estaría DISMINUIDO (<0.70). La ausencia de respuesta a broncodilatadores refuerza que no es un componente obstructivo reversible."
+            },
+            "preguntaEscrita": {
+                "enunciado": "Considerando el antecedente laboral de 18 años con amianto, ¿qué diagnóstico específico de EPID sospecharías, y qué hallazgo del examen físico apoya un curso avanzado?",
+                "respuestaModelo": "Con el antecedente de exposición prolongada a amianto (asbesto), sospecharía EPID de causa ocupacional — específicamente asbestosis, que produce fibrosis pulmonar difusa con el mismo patrón restrictivo. El clubbing (acropaquia) presente en el examen es un marcador de enfermedad fibrótica avanzada, presente en más del 90% de los casos de fibrosis pulmonar establecida, y junto con los rales tipo velcro en ambas bases confirma un compromiso intersticial ya significativo, no incipiente."
+            }
+        }
+    ]
   },
   {
     "id": "insuficiencia-respiratoria-aguda",
@@ -2790,6 +2900,7 @@ const ENFERMEDADES = [
       ],
       "fisiopatologia": {
         "resumen": "La hipoxemia en la IRA puede deberse a 5 mecanismos: alteración de la relación ventilación/perfusión (V/Q), cortocircuito (shunt), hipoventilación alveolar, disminución del contenido de oxígeno inspirado, o alteración de la difusión. En el SDRA específicamente predomina el shunt intrapulmonar por colapso alveolar y formación de membranas hialinas.",
+      explicacionExtendida: "La hipoxemia en la insuficiencia respiratoria puede originarse por 5 mecanismos distintos, y diferenciarlos importa porque cada uno responde distinto al oxígeno suplementario. La alteración de la relación ventilación/perfusión (V/Q) — la causa más común — ocurre cuando hay zonas del pulmón mal ventiladas pero bien perfundidas (o viceversa); este tipo SÍ mejora administrando oxígeno suplementario. El cortocircuito o shunt, en cambio, ocurre cuando hay sangre que atraviesa el pulmón sin pasar por ningún alvéolo ventilado (como en el colapso alveolar masivo del SDRA) — este tipo NO mejora con oxígeno suplementario por más que se aumente la FiO2, porque el problema no es la concentración de oxígeno disponible sino que la sangre simplemente no está en contacto con alvéolos funcionantes.\n\nLa hipoventilación alveolar (típica de la sobredosis de sedantes o enfermedad neuromuscular) y la alteración de la difusión (engrosamiento de la membrana alveolo-capilar, como en la EPID) son los otros dos mecanismos relevantes. En el SDRA específicamente, el mecanismo predominante es el shunt intrapulmonar por colapso alveolar masivo y la formación de membranas hialinas — esto explica clínicamente por qué estos pacientes con frecuencia no logran normalizar su saturación pese a recibir oxígeno a altas concentraciones, y por qué el manejo definitivo casi siempre requiere estrategias que reabran el alvéolo colapsado (PEEP, posición prona) en vez de simplemente aumentar el oxígeno inspirado.",
         "cascada": [
           {
             "paso": "Factor desencadenante",
@@ -2832,6 +2943,12 @@ const ENFERMEDADES = [
         "Crépitos difusos bilaterales en SDRA",
         "Cianosis labial/periférica en casos severos"
       ],
+      semiologia: {
+            "inspeccion": "Observa el patrón respiratorio: taquipnea, uso de músculos accesorios (tiraje intercostal/supraclavicular), cianosis central o periférica, y el nivel de consciencia (la confusión es un signo de gravedad).",
+            "palpacion": "Expansión torácica puede estar disminuida si hay consolidación o colapso asociado; sin hallazgo específico único para IRA en sí, depende de la causa de base.",
+            "percusion": "Depende de la causa subyacente: matidez si hay consolidación (neumonía) o derrame asociado, normal si el mecanismo es puramente de shunt/difusión sin ocupación del espacio aéreo.",
+            "auscultacion": "En SDRA: crépitos difusos bilaterales. La ausencia de mejoría de la oxigenación pese a aumentar la FiO2 administrada es un dato clínico clave que sugiere shunt intrapulmonar (típico del SDRA) más que un simple problema de difusión."
+      },
       "diagnostico": "Gasometría arterial es el estándar diagnóstico: PaO2 <60 mmHg (hipoxemia), PaCO2 >50 mmHg (hipercapnia), pH <7.35 sugiere acidosis respiratoria. Radiografía/TC de tórax para identificar consolidaciones, infiltrados difusos o edema. Criterios de Berlín para SDRA: inicio en los 7 días posteriores a un evento clínico conocido + opacidades bilaterales en imagen + no explicado completamente por edema cardiogénico + hipoxemia según cociente PaO2/FiO2.",
       "algoritmo": [
         {
@@ -3057,7 +3174,40 @@ const ENFERMEDADES = [
         "Retrognatia/micrognatia, hipertrofia amigdalar visible",
         "Sobrepeso/obesidad con distribución central de grasa"
       ],
+      semiologia: {
+            "inspeccion": "Evalúa la circunferencia del cuello (>40cm en hombres es un dato de riesgo), presencia de retrognatia/micrognatia, y el hábito corporal general (obesidad central).",
+            "palpacion": "No hay hallazgo palpatorio específico de SAOS — la evaluación es fundamentalmente anatómica visual y por cuestionarios/estudios de sueño.",
+            "percusion": "No aporta información relevante para el diagnóstico de SAOS.",
+            "auscultacion": "No hay hallazgo auscultatorio pulmonar específico en vigilia — el hallazgo característico (ronquido, pausas) solo se documenta durante el sueño, típicamente reportado por la pareja o mediante estudio de sueño formal."
+      },
       "diagnostico": "Cuestionarios de cribado: escala de Epworth, cuestionario de Berlín, y especialmente STOP-Bang (0-2 puntos = bajo riesgo, 3-4 = riesgo intermedio, 5-8 = alto riesgo de SAHOS moderado/severo) — estos NO son diagnósticos definitivos. Estándar de oro: polisomnografía (PSG tipo I), que mide el Índice de Apnea-Hipopnea (IAH). Criterio diagnóstico: IAH ≥5 eventos/hora con síntomas diurnos, o IAH/RDI ≥15 sin síntomas. Alternativa: pruebas domiciliarias (HSAT)/poligrafía, sensibilidad >80% en casos sin comorbilidades complejas.",
+      algoritmo: [
+            {
+                  "tipo": "paso",
+                  "texto": "Ronquidos + pausas respiratorias presenciadas + somnolencia diurna — aplicar cuestionario STOP-Bang (cribado, no diagnóstico)"
+            },
+            {
+                  "tipo": "decision",
+                  "texto": "¿Cuál es el puntaje STOP-Bang y qué corresponde hacer?",
+                  "salidas": [
+                        {
+                              "etiqueta": "0-2 (bajo riesgo)",
+                              "texto": "Riesgo bajo — reevaluar si aparecen nuevos síntomas o factores de riesgo",
+                              "color": "mint"
+                        },
+                        {
+                              "etiqueta": "3-4 (riesgo intermedio)",
+                              "texto": "Considerar estudio del sueño según sospecha clínica adicional",
+                              "color": "coral"
+                        },
+                        {
+                              "etiqueta": "5-8 (alto riesgo)",
+                              "texto": "Derivar a polisomnografía (estándar de oro) para confirmar diagnóstico y medir IAH",
+                              "color": "alert"
+                        }
+                  ]
+            }
+      ],
       "diagnosticoDiferencial": [
         "Insomnio primario",
         "Narcolepsia",
@@ -3100,7 +3250,26 @@ const ENFERMEDADES = [
           "clave": "No hay eventos obstructivos objetivables en polisomnografía"
         }
       ],
-      "tablaComparativa": null
+      "tablaComparativa": {
+            "titulo": "Cribado STOP-Bang: interpretación",
+            "filas": [
+                  [
+                        "0-2 puntos",
+                        "Bajo riesgo de SAHOS",
+                        "Reevaluar si cambian factores de riesgo"
+                  ],
+                  [
+                        "3-4 puntos",
+                        "Riesgo intermedio",
+                        "Considerar estudio según contexto clínico"
+                  ],
+                  [
+                        "5-8 puntos",
+                        "Alto riesgo de SAHOS moderado-severo",
+                        "Derivar a polisomnografía"
+                  ]
+            ]
+      }
     },
     "imprescindible": {
       "loQueSiOSiDebesSaber": [
@@ -3123,6 +3292,44 @@ const ENFERMEDADES = [
         "Síndrome de Down o Prader-Willi → mayor prevalencia de SAOS, tamizar activamente"
       ]
     }
+  ,
+    "casosClinicos": [
+        {
+            "nivel": "basico",
+            "vineta": "Varón de 52 años, obesidad grado II (IMC 34), circunferencia de cuello 44cm, hipertensión arterial resistente a 3 fármacos. Su esposa refiere ronquidos fuertes todas las noches y episodios donde 'deja de respirar' seguidos de un resoplido. El paciente refiere somnolencia diurna marcada y se ha quedado dormido manejando en 2 ocasiones.",
+            "preguntaMC": {
+                "enunciado": "¿Cuál es la conducta más apropiada como siguiente paso diagnóstico?",
+                "opciones": [
+                    {
+                        "id": "a",
+                        "texto": "Iniciar CPAP empíricamente sin más estudios"
+                    },
+                    {
+                        "id": "b",
+                        "texto": "Aplicar cuestionario STOP-Bang y, dado el alto riesgo clínico evidente, derivar a polisomnografía para confirmar diagnóstico y medir el IAH"
+                    },
+                    {
+                        "id": "c",
+                        "texto": "Solicitar únicamente radiografía de tórax"
+                    },
+                    {
+                        "id": "d",
+                        "texto": "No requiere estudio, son solo ronquidos"
+                    },
+                    {
+                        "id": "e",
+                        "texto": "Indicar pérdida de peso y reevaluar en 1 año sin más estudios"
+                    }
+                ],
+                "correcta": "b",
+                "explicacion": "Este paciente tiene múltiples factores de alto riesgo para SAOS (obesidad, cuello grueso >40cm, hipertensión resistente, apneas presenciadas, somnolencia con riesgo de accidente). El STOP-Bang confirmaría el alto riesgo clínico, pero el diagnóstico DEFINITIVO requiere polisomnografía (estándar de oro) — no se debe iniciar CPAP sin confirmar el diagnóstico y medir la severidad (IAH) primero."
+            },
+            "preguntaEscrita": {
+                "enunciado": "¿Cómo explicarías la relación entre la hipertensión resistente de este paciente y su probable SAOS?",
+                "respuestaModelo": "Los episodios repetidos de apnea generan hipoxia intermitente durante toda la noche, cientos de veces. Cada ciclo de desaturación-reoxigenación genera estrés oxidativo, inflamación sistémica de bajo grado y disfunción endotelial, mecanismos que activan el sistema nervioso simpático de forma sostenida. Esta activación simpática crónica es una de las razones por las que el SAOS no tratado se asocia tan fuertemente con hipertensión de difícil control — muchas veces, tratar el SAOS con CPAP mejora significativamente el control de la presión arterial en estos pacientes, incluso cuando los fármacos antihipertensivos solos no habían sido suficientes."
+            }
+        }
+    ]
   }];
 
 /* ============================================================
