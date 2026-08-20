@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', modulo: 'view-modulo' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -82,6 +82,7 @@ function navRenderCurrent(){
     case 'todas-semanas': renderTodasSemanas(); break;
     case 'preparar': renderPreparar(top.id); break;
     case 'hospital': renderHospital(); break;
+    case 'modulo': renderModulo(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -432,6 +433,54 @@ function renderHospital(){
     </div>
   `;
 }
+
+/* ---------- vista: resumen del módulo completo ---------- */
+function openModuloFresh(moduloKey){ navReset('modulo', moduloKey, 'Módulo — ' + MODULOS[moduloKey].nombre); }
+function renderModulo(moduloKey){
+  const m = MODULOS[moduloKey];
+  const wrap = document.getElementById('view-modulo-content');
+  const todasIds = m.enfermedadesPorCategoria.flatMap(c => c.ids);
+  const total = todasIds.length;
+  const estudiadas = todasIds.filter(id => getEnfermedad(id).estudiado).length;
+
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">Resumen de módulo completo</span>
+    <h1 class="page-title">${m.emoji} Módulo — ${m.nombre}</h1>
+    <p class="page-sub">Todo el módulo en un solo lugar — ideal para repasar antes del parcial, sin entrar semana por semana.</p>
+
+    <div class="kcard">
+      <div class="progress-track"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>
+      <div class="progress-caption">${estudiadas}/${total} enfermedades del módulo ya estudiadas</div>
+    </div>
+
+    <div class="grid cols-2" style="margin-bottom:18px;">
+      <div class="pcard" style="cursor:pointer;" onclick="navQuizModulo('${moduloKey}')">
+        <h3>🧠 Quiz comparativo</h3>
+        <p>${m.quizComparativo.length} preguntas NUEVAS que comparan enfermedades del módulo entre sí — no repite las de cada enfermedad.</p>
+      </div>
+      <div class="gcard" style="cursor:pointer;" onclick="navCasosModulo('${moduloKey}')">
+        <h3>🩺 Casos comparativos</h3>
+        <p>Casos con datos que se prestan a confusión entre 2 enfermedades — te obligan a diferenciar, no solo a reconocer.</p>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <h3>🚨 Lo que sí o sí debes saber del módulo</h3>
+      <ul>${m.loQueSiOSiDebesSaberModulo.map(x => `<li>${x}</li>`).join('')}</ul>
+    </div>
+
+    ${m.enfermedadesPorCategoria.map(cat => `
+      <div class="section-block">
+        <h3>${cat.categoria}</h3>
+        <div class="grid cols-2">${cat.ids.map(id => diseaseCardHTML(getEnfermedad(id))).join('')}</div>
+      </div>
+    `).join('')}
+  `;
+}
+
+function navQuizModulo(moduloKey){ navPush('quiz', 'modulo::' + moduloKey, 'Quiz comparativo — ' + MODULOS[moduloKey].nombre); }
+function navCasosModulo(moduloKey){ navPush('casos', 'modulo::' + moduloKey, 'Casos comparativos — ' + MODULOS[moduloKey].nombre); }
 
 /* ---------- vista: Excel original (embebido desde Drive) ---------- */
 function openExcelFresh(){ navReset('excel', null, 'Excel del sílabo'); }
