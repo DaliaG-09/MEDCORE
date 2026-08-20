@@ -136,6 +136,10 @@ function renderQuiz(compositeId){
     const s = getSemana(partes[1]);
     getEnfermedadesHastaSemana(s.numero).forEach(e => { cards = cards.concat(buildQuizCards(e)); });
     sourceLabel = 'Repaso combinado — hasta Semana ' + s.numero;
+  } else if(tipo === 'modulo'){
+    const m = MODULOS[partes[1]];
+    cards = m.quizComparativo.map(q => ({ pregunta: q.pregunta, respuesta: q.respuesta, tipo: q.tipo }));
+    sourceLabel = 'Comparativo — ' + m.nombre;
   }
   shuffleArray(cards);
   cards = cards.slice(0, 20); // máximo 20 preguntas por sesión, elegidas al azar del banco disponible
