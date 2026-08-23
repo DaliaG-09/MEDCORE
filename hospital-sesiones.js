@@ -381,6 +381,7 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '🩺 Examen físico (día 5 de hospitalización)',
+        tono: 'examen',
         cuerpo: `
           <p class="mis-notas" style="margin-top:-4px; font-style:italic;">Importante: este examen es de 5 días después de la hospitalización, no de cuando llegó por emergencia — el Dr. remarcó que siempre hay que especificar en qué momento del curso clínico se está examinando, porque la presentación cambia.</p>
           <p><strong>General:</strong> piel hidratada, sin cianosis ni edema.</p>
@@ -464,6 +465,7 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '🎯 Diagnóstico final: bronquiectasias por secuela de TB, exacerbadas',
+        tono: 'diagnostico',
         cuerpo: `
           <p><strong>Etiología:</strong> bronquiectasias por secuela de tuberculosis — el Dr. remarcó que las bronquiectasias nunca aparecen "de la nada", siempre hay una causa de fondo (acá, la TB de hace 40 años). El diagnóstico confirmatorio de bronquiectasia es <strong>por tomografía</strong>, no por radiografía (la radiografía solo da signos sugerentes).</p>
           <p><strong>Exacerbada — criterios (según un artículo del New England del año pasado sobre exacerbación de bronquiectasias):</strong> son 7 criterios, se necesitan mínimo 3 para catalogarla como exacerbada:</p>
