@@ -299,17 +299,28 @@ async function handleTareaImageUpload(ev, key, safeId){
 
   statusEl.textContent = 'Subiendo…';
   const current = tareaImagesGet(key);
+  const withTimeout = (promise, ms) => Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms))
+  ]);
   for(const file of files){
     try{
       const cleanKey = key.replace(/[^a-zA-Z0-9:_-]/g, '_');
       const path = 'hospital-uploads/' + currentUser.uid + '/' + cleanKey + '/' + Date.now() + '-' + file.name;
       const ref = fbStorage.ref().child(path);
-      await ref.put(file);
-      const url = await ref.getDownloadURL();
+      await withTimeout(ref.put(file), 20000);
+      const url = await withTimeout(ref.getDownloadURL(), 10000);
       current.push(url);
     } catch(err){
-      statusEl.textContent = 'No se pudo subir una imagen — revisa tu conexión e inténtalo de nuevo.';
+      if(err && err.message === 'timeout'){
+        statusEl.textContent = 'Se demoró demasiado — probablemente Storage no está activado en tu Firebase todavía (revisa la consola de Firebase → Storage).';
+      } else if(err && err.code === 'storage/unauthorized'){
+        statusEl.textContent = 'Firebase bloqueó la subida por permisos — hay que ajustar las reglas de Storage en la consola de Firebase.';
+      } else {
+        statusEl.textContent = 'No se pudo subir una imagen — revisa tu conexión e inténtalo de nuevo.';
+      }
       console.warn('Error subiendo imagen de tarea:', err);
+      break;
     }
   }
   tareaImagesSet(key, current);
