@@ -201,7 +201,7 @@ const HOSPITAL_SESIONES = [
 
           <div class="schematic-box">
             <div class="sc-label">🖼️ Imagen referencial de panalización en TC <em>(no es la tomografía de este paciente — solo para que veas cómo se ve el patrón)</em></div>
-            <img src="assets/referencia-panalizacion-tc.png" alt="Imagen referencial de panalización en TC" style="max-width:280px; width:100%; border-radius:8px; display:block; margin:8px auto 4px; border:1px solid var(--line);">
+            <img src="assets/referencia-panalizacion-tc.png" alt="Imagen referencial de panalización en TC" onclick="openImageLightbox('assets/referencia-panalizacion-tc.png')" style="max-width:280px; width:100%; border-radius:8px; display:block; margin:8px auto 4px; border:1px solid var(--line); cursor:zoom-in;">
             <p class="muted" style="font-size:11.5px; margin-top:2px;">Imagen de referencia general — no corresponde al paciente de este caso. Si consigues la TC real que vieron en clase, mándamela y la reemplazo.</p>
           </div>
         `,
