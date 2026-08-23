@@ -952,3 +952,17 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .mis-notas strong{ color: #9C3D69; }
 :root.dark .mis-notas{ color: #E28FB8; }
 :root.dark .mis-notas strong{ color: #EDA9CB; }
+
+/* ---------- explicación de término (turquesa) ---------- */
+.explicacion-box{
+  background: #e5f5f5; border: 1px solid #a9dcdc;
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0;
+}
+.explicacion-box .ex-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #1f7a7a;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+}
+.explicacion-box p{ margin:0; font-size: 13.5px; line-height: 1.6; color: #164f4f; }
+:root.dark .explicacion-box{ background: rgba(45,158,158,0.14); }
+:root.dark .explicacion-box p{ color: #9fdada; }
