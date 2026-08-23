@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transcriptor de Práctica Clínica</title>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #F5F3EF; }
+  #root { min-height: 100vh; }
+  * { box-sizing: border-box; }
+  .tc-mono { font-family: 'Courier New', monospace; }
+  .tc-sans { font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .tc-btn { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; transition: all 0.15s ease; border: none; }
+  .tc-btn:focus-visible { outline: 2px solid #C4622D; outline-offset: 2px; }
+  .tc-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .tc-input:focus-visible { outline: 2px solid #C4622D; outline-offset: 1px; }
+  .tc-dropzone:focus-visible { outline: 2px solid #C4622D; outline-offset: 2px; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @media (max-width: 640px) { .tc-header-title { font-size: 28px !important; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+
+const { useState, useRef, useCallback } = React;
+const ACCENT = "#C4622D";
+const NAVY = "#1B2A41";
+const NAVY_SOFT = "#2E3F58";
+
+// --- minimal inline icon components (no external icon lib needed) ---
+const Icon = ({ path, size = 16, color = "currentColor" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d={path} />
+  </svg>
+);
+const IconUpload = (p) => <Icon {...p} path="M12 3v12m0-12l4 4m-4-4L8 7M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />;
+const IconMic = (p) => <Icon {...p} path="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3zM19 10v2a7 7 0 01-14 0v-2M12 19v4m-4 0h8" />;
+const IconDownload = (p) => <Icon {...p} path="M12 3v12m0 0l4-4m-4 4l-4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />;
+const IconAlert = (p) => <Icon {...p} path="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />;
+const IconCheck = (p) => <Icon {...p} path="M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3" />;
+const IconEdit = (p) => <Icon {...p} path="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />;
+const IconFileAudio = (p) => <Icon {...p} path="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6M9.5 13a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM11 14.5V10l3-1v4.5" />;
+
+function TranscriptorClinico() {
+  const [apiKey, setApiKey] = useState("");
+  const [file, setFile] = useState(null);
+  const [status, setStatus] = useState("idle");
+  const [progressMsg, setProgressMsg] = useState("");
+  const [utterances, setUtterances] = useState(null);
+  const [speakerNames, setSpeakerNames] = useState({});
+  const [errorMsg, setErrorMsg] = useState("");
+  const [editingSpeaker, setEditingSpeaker] = useState(null);
+  const fileInputRef = useRef(null);
+  const pollRef = useRef(null);
+
+  const resetAll = () => {
+    setStatus("idle"); setProgressMsg(""); setUtterances(null);
+    setSpeakerNames({}); setErrorMsg("");
+    if (pollRef.current) clearInterval(pollRef.current);
+  };
+
+  const handleFileChange = (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (f) { setFile(f); resetAll(); }
+  };
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) { setFile(f); resetAll(); }
+  };
+
+  const startTranscription = useCallback(async () => {
+    if (!apiKey.trim()) { setErrorMsg("Falta tu API key de AssemblyAI."); setStatus("error"); return; }
+    if (!file) { setErrorMsg("Falta subir un archivo de audio."); setStatus("error"); return; }
+    try {
+      setErrorMsg(""); setStatus("uploading");
+      setProgressMsg("Subiendo audio a AssemblyAI…");
+
+      const uploadRes = await fetch("https://api.assemblyai.com/v2/upload", {
+        method: "POST",
+        headers: { authorization: apiKey.trim() },
+        body: file,
+      });
+      if (!uploadRes.ok) throw new Error(`No se pudo subir el audio (código ${uploadRes.status}). Revisa tu API key.`);
+      const uploadData = await uploadRes.json();
+      const audioUrl = uploadData.upload_url;
+
+      setStatus("queued");
+      setProgressMsg("Audio subido. Solicitando transcripción con separación de hablantes…");
+
+      const transcriptRes = await fetch("https://api.assemblyai.com/v2/transcript", {
+        method: "POST",
+        headers: { authorization: apiKey.trim(), "content-type": "application/json" },
+        body: JSON.stringify({ audio_url: audioUrl, speaker_labels: true, language_code: "es" }),
+      });
+      if (!transcriptRes.ok) throw new Error(`No se pudo iniciar la transcripción (código ${transcriptRes.status}).`);
+      const transcriptData = await transcriptRes.json();
+      const transcriptId = transcriptData.id;
+
+      setStatus("processing");
+      setProgressMsg("Transcribiendo y separando voces… esto puede tardar unos minutos.");
+
+      pollRef.current = setInterval(async () => {
+        try {
+          const pollRes = await fetch(`https://api.assemblyai.com/v2/transcript/${transcriptId}`, {
+            headers: { authorization: apiKey.trim() },
+          });
+          const pollData = await pollRes.json();
+          if (pollData.status === "completed") {
+            clearInterval(pollRef.current);
+            const utts = pollData.utterances || [];
+            setUtterances(utts);
+            const uniqueSpeakers = [...new Set(utts.map((u) => u.speaker))];
+            const initialNames = {};
+            uniqueSpeakers.forEach((s, i) => { initialNames[s] = i === 0 ? "Dr./Dra." : `Estudiante ${i}`; });
+            setSpeakerNames(initialNames);
+            setStatus("done"); setProgressMsg("");
+          } else if (pollData.status === "error") {
+            clearInterval(pollRef.current);
+            throw new Error(pollData.error || "Error desconocido al transcribir.");
+          } else {
+            setProgressMsg(pollData.status === "queued" ? "En cola de procesamiento…" : "Transcribiendo y separando voces…");
+          }
+        } catch (pollErr) {
+          clearInterval(pollRef.current);
+          setErrorMsg(pollErr.message || "Error revisando el progreso.");
+          setStatus("error");
+        }
+      }, 3000);
+    } catch (err) {
+      setErrorMsg(err.message || "Ocurrió un error inesperado.");
+      setStatus("error");
+    }
+  }, [apiKey, file]);
+
+  const formatTime = (ms) => {
+    const totalSec = Math.floor(ms / 1000);
+    const m = Math.floor(totalSec / 60);
+    const s = totalSec % 60;
+    return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  };
+
+  const buildTextOutput = () => {
+    if (!utterances) return "";
+    return utterances.map((u) => `[${formatTime(u.start)}] ${speakerNames[u.speaker] || u.speaker}: ${u.text}`).join("\n\n");
+  };
+
+  const handleDownload = () => {
+    const text = buildTextOutput();
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `transcripcion_${file && file.name ? file.name.replace(/\.[^/.]+$/, "") : "audio"}.txt`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const uniqueSpeakerIds = utterances ? [...new Set(utterances.map((u) => u.speaker))] : [];
+  const isBusy = ["uploading", "queued", "processing"].includes(status);
+
+  return (
+    <div style={{ minHeight: "100%", background: "#F5F3EF", fontFamily: "'Georgia','Times New Roman',serif", color: NAVY }}>
+      <div style={{ background: NAVY, padding: "28px 24px 24px", borderBottom: `4px solid ${ACCENT}` }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <div className="tc-sans" style={{ color: ACCENT, fontSize: 12, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6 }}>
+            Rx · Transcripción con diarización
+          </div>
+          <h1 className="tc-header-title" style={{ margin: 0, color: "#F5F3EF", fontSize: 34, fontWeight: 400, fontStyle: "italic" }}>
+            Transcriptor de Práctica Clínica
+          </h1>
+          <p className="tc-sans" style={{ color: "#B8C2CE", fontSize: 13, marginTop: 8, marginBottom: 0, maxWidth: 520 }}>
+            Sube tu grabación de sala o consultorio. Cada voz queda separada e identificada, lista para revisar y estructurar.
+          </p>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 720, margin: "0 auto", padding: "28px 24px 60px" }}>
+        <div style={{ marginBottom: 20 }}>
+          <label className="tc-sans" style={{ display: "block", fontSize: 12, fontWeight: 700, color: NAVY_SOFT, letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 6 }}>
+            Tu API key de AssemblyAI
+          </label>
+          <input type="password" className="tc-input" value={apiKey} onChange={(e) => setApiKey(e.target.value)}
+            placeholder="Pega aquí tu key (no se guarda en ningún lado)"
+            style={{ width: "100%", padding: "12px 14px", fontSize: 14, border: `1.5px solid ${NAVY_SOFT}`, borderRadius: 4, background: "#fff", color: NAVY }} />
+          <p className="tc-sans" style={{ fontSize: 11.5, color: "#6B7686", marginTop: 5 }}>
+            Se usa solo en tu navegador para esta transcripción. No la subas a un repositorio público — pégala cada vez que uses la herramienta.
+          </p>
+        </div>
+
+        <div className="tc-dropzone" tabIndex={0}
+          onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          onKeyDown={(e) => e.key === "Enter" && fileInputRef.current && fileInputRef.current.click()}
+          onDragOver={(e) => e.preventDefault()} onDrop={handleDrop}
+          style={{ border: `2px dashed ${file ? ACCENT : "#C9C2B4"}`, borderRadius: 6, padding: "28px 20px", textAlign: "center", cursor: "pointer", background: file ? "#FBF0E8" : "#FFFFFF", marginBottom: 20 }}>
+          <input ref={fileInputRef} type="file" accept="audio/*" onChange={handleFileChange} style={{ display: "none" }} />
+          {file ? (
+            <>
+              <IconFileAudio size={28} color={ACCENT} />
+              <div className="tc-sans" style={{ fontSize: 14, fontWeight: 600, marginTop: 8 }}>{file.name}</div>
+              <div className="tc-sans" style={{ fontSize: 12, color: "#6B7686" }}>{(file.size / (1024 * 1024)).toFixed(1)} MB — toca para cambiar</div>
+            </>
+          ) : (
+            <>
+              <IconUpload size={28} color={NAVY_SOFT} />
+              <div className="tc-sans" style={{ fontSize: 14, fontWeight: 600, marginTop: 8 }}>Arrastra tu audio aquí o toca para elegir</div>
+              <div className="tc-sans" style={{ fontSize: 12, color: "#6B7686" }}>MP3, M4A, WAV — cualquier duración</div>
+            </>
+          )}
+        </div>
+
+        <button className="tc-btn" onClick={startTranscription} disabled={isBusy}
+          style={{ width: "100%", padding: "14px", fontSize: 14, borderRadius: 4, background: isBusy ? NAVY_SOFT : NAVY, color: "#F5F3EF", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 16 }}>
+          {isBusy ? (
+            <>
+              <span style={{ display: "inline-block", animation: "spin 1s linear infinite" }}><Icon path="M21 12a9 9 0 11-6.219-8.56" size={16} color="#F5F3EF" /></span>
+              Procesando…
+            </>
+          ) : (
+            <><IconMic size={16} /> Transcribir y separar voces</>
+          )}
+        </button>
+
+        {isBusy && (
+          <div className="tc-sans" style={{ fontSize: 13, color: NAVY_SOFT, background: "#EDEAE3", padding: "12px 14px", borderRadius: 4, marginBottom: 16 }}>
+            {progressMsg}
+          </div>
+        )}
+
+        {status === "error" && (
+          <div className="tc-sans" style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 13, color: "#8A2E1E", background: "#FBE7E2", padding: "12px 14px", borderRadius: 4, marginBottom: 16 }}>
+            <IconAlert size={16} color="#8A2E1E" />
+            <span>{errorMsg}</span>
+          </div>
+        )}
+
+        {status === "done" && utterances && (
+          <div>
+            <div className="tc-sans" style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#1F6B3F", marginBottom: 16 }}>
+              <IconCheck size={16} color="#1F6B3F" />
+              Transcripción lista — {utterances.length} intervenciones detectadas
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 20, padding: "14px", background: "#EDEAE3", borderRadius: 6 }}>
+              {uniqueSpeakerIds.map((sid) => (
+                <div key={sid} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span className="tc-sans" style={{ fontSize: 11, color: "#6B7686" }}>{sid}:</span>
+                  {editingSpeaker === sid ? (
+                    <input className="tc-input" autoFocus value={speakerNames[sid] || ""}
+                      onChange={(e) => setSpeakerNames((prev) => ({ ...prev, [sid]: e.target.value }))}
+                      onBlur={() => setEditingSpeaker(null)}
+                      onKeyDown={(e) => e.key === "Enter" && setEditingSpeaker(null)}
+                      style={{ fontSize: 13, padding: "4px 8px", border: `1px solid ${ACCENT}`, borderRadius: 3, width: 140 }} />
+                  ) : (
+                    <button className="tc-btn tc-sans" onClick={() => setEditingSpeaker(sid)}
+                      style={{ fontSize: 13, padding: "4px 10px", background: "#fff", border: `1px solid ${NAVY_SOFT}`, borderRadius: 3, display: "flex", alignItems: "center", gap: 5, color: NAVY }}>
+                      {speakerNames[sid]}
+                      <IconEdit size={11} />
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: "#fff", border: "1px solid #E3DED2", borderRadius: 6, padding: "20px", marginBottom: 16, maxHeight: 480, overflowY: "auto" }}>
+              {utterances.map((u, idx) => (
+                <div key={idx} style={{ marginBottom: 16 }}>
+                  <div className="tc-sans" style={{ fontSize: 11, fontWeight: 700, color: ACCENT, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: 3 }}>
+                    {speakerNames[u.speaker]}{" "}
+                    <span className="tc-mono" style={{ color: "#9A9284", fontWeight: 400, textTransform: "none" }}>{formatTime(u.start)}</span>
+                  </div>
+                  <div style={{ fontSize: 15, lineHeight: 1.5 }}>{u.text}</div>
+                </div>
+              ))}
+            </div>
+
+            <button className="tc-btn tc-sans" onClick={handleDownload}
+              style={{ width: "100%", padding: "12px", fontSize: 14, borderRadius: 4, background: ACCENT, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+              <IconDownload size={16} color="#fff" />
+              Descargar transcripción (.txt)
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<TranscriptorClinico />);
+</script>
+</body>
+</html>
