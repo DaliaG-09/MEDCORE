@@ -909,3 +909,23 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 :root.dark .scale-box, :root.dark .schematic-box{ background: var(--card); }
 :root.dark .aga-cell{ background: var(--card); }
 :root.dark .aga-cell.aga-current{ background: rgba(217,92,101,0.16); }
+
+/* ---------- plan de tratamiento (color distinto) y adjuntos en tareas ---------- */
+.kcard.plan-tratamiento-card{ background: var(--cobalt-soft); border-color: var(--cobalt-line); }
+.kcard.plan-tratamiento-card h3{ color: var(--cobalt); }
+:root.dark .kcard.plan-tratamiento-card{ background: rgba(82,103,232,0.14); }
+
+.tarea-response{ margin-top: 10px; }
+.tarea-images{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.tarea-thumb-wrap{ position:relative; display:inline-block; }
+.tarea-thumb{ width:64px; height:64px; object-fit:cover; border-radius:8px; border:1px solid var(--line); cursor:pointer; display:block; }
+.tarea-thumb-remove{
+  position:absolute; top:-6px; right:-6px; background: var(--ink); color:#fff;
+  width:18px; height:18px; border-radius:50%; font-size:11px; line-height:18px; text-align:center; cursor:pointer;
+}
+.tarea-upload-btn{
+  display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600;
+  color: var(--cobalt); cursor:pointer; margin-top:8px;
+}
+.tarea-upload-btn:hover{ text-decoration: underline; }
+.tarea-upload-status{ font-size:11.5px; color: var(--ink-soft); margin-top:4px; min-height:14px; }
