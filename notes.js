@@ -108,9 +108,17 @@ const notesAdapter = {
   set(key, value){
     localStorage.setItem('medcore-note::' + key, value);
     if(currentUser && firestoreReady){
+      // Firestore rechaza documentos de más de ~1MB — si algo se pasa (ej. demasiadas
+      // fotos comprimidas juntas), mejor avisar en consola que fallar en silencio.
+      if(value.length > 950000){
+        console.warn('MEDCORE: "' + key + '" pesa ' + value.length + ' caracteres — puede que Firestore lo rechace y no sincronice entre dispositivos.');
+      }
       fbDb.collection('users').doc(currentUser.uid).collection('notes').doc(key)
         .set({ text: value, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true })
-        .catch(() => { /* sin internet: Firestore lo reintenta solo cuando vuelva la conexión */ });
+        .catch((err) => {
+          // "unavailable" = sin internet, Firestore reintenta solo — no es un error real, no avisar.
+          if(err.code !== 'unavailable') console.warn('MEDCORE: no se pudo sincronizar "' + key + '" con Firestore.', err.message);
+        });
     }
   }
 };
