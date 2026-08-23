@@ -911,9 +911,9 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 :root.dark .aga-cell.aga-current{ background: rgba(217,92,101,0.16); }
 
 /* ---------- plan de tratamiento (color distinto) y adjuntos en tareas ---------- */
-.kcard.plan-tratamiento-card{ background: var(--cobalt-soft); border-color: var(--cobalt-line); }
-.kcard.plan-tratamiento-card h3{ color: var(--cobalt); }
-:root.dark .kcard.plan-tratamiento-card{ background: rgba(82,103,232,0.14); }
+.kcard.tono-plan{ background: var(--cobalt-soft); border-color: var(--cobalt-line); }
+.kcard.tono-plan h3{ color: var(--cobalt); }
+:root.dark .kcard.tono-plan{ background: rgba(82,103,232,0.14); }
 
 .tarea-response{ margin-top: 10px; }
 .tarea-images{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
@@ -966,3 +966,54 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .explicacion-box p{ margin:0; font-size: 13.5px; line-height: 1.6; color: #164f4f; }
 :root.dark .explicacion-box{ background: rgba(45,158,158,0.14); }
 :root.dark .explicacion-box p{ color: #9fdada; }
+
+/* ---------- color suave por tipo de sección (tono) ---------- */
+.kcard.tono-caso{ background: #fbf9f4; border-color: #ece5d5; }
+.kcard.tono-preguntas{ background: #f0f1f6; border-color: #d9dced; }
+.kcard.tono-preguntas h3{ color: #3d4463; }
+.kcard.tono-zonas{ background: #eaf3fb; border-color: #c9dff2; }
+.kcard.tono-zonas h3{ color: #2f6690; }
+.kcard.tono-antecedentes{ background: var(--honey-soft); border-color: var(--honey-line); }
+.kcard.tono-antecedentes h3{ color: #9a6b1a; }
+.kcard.tono-enfermedad{ background: var(--mint-soft); border-color: var(--mint-line); }
+.kcard.tono-enfermedad h3{ color: #2f7a57; }
+.kcard.tono-examen{ background: var(--lavender-soft); border-color: var(--lavender-line); }
+.kcard.tono-examen h3{ color: #5c4fb8; }
+.kcard.tono-aga{ background: #eef0fc; border-color: var(--cobalt-line); }
+.kcard.tono-aga h3{ color: var(--cobalt); }
+.kcard.tono-imagenes{ background: #e5f5f5; border-color: #a9dcdc; }
+.kcard.tono-imagenes h3{ color: #1f7a7a; }
+.kcard.tono-diagnostico{ background: #fbf9f4; border-color: #ece5d5; }
+
+:root.dark .kcard.tono-caso, :root.dark .kcard.tono-diagnostico{ background: rgba(255,255,255,0.03); }
+:root.dark .kcard.tono-preguntas{ background: rgba(90,100,150,0.14); }
+:root.dark .kcard.tono-zonas{ background: rgba(82,103,232,0.10); }
+:root.dark .kcard.tono-antecedentes{ background: rgba(232,169,61,0.12); }
+:root.dark .kcard.tono-enfermedad{ background: rgba(120,201,163,0.12); }
+:root.dark .kcard.tono-examen{ background: rgba(155,138,242,0.12); }
+:root.dark .kcard.tono-aga{ background: rgba(82,103,232,0.12); }
+:root.dark .kcard.tono-imagenes{ background: rgba(45,158,158,0.12); }
+
+/* ---------- lista de zonas endémicas (reemplaza la tabla apretada) ---------- */
+.endemic-list{ list-style: none; margin: 0; padding: 0; }
+.endemic-list li{
+  padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex; flex-direction: column; gap: 3px;
+}
+.endemic-list li:last-child{ border-bottom: none; }
+.endemic-list li strong{ font-size: 13.5px; color: #2f6690; line-height: 1.4; }
+.endemic-list li span{ font-size: 13px; color: var(--ink); line-height: 1.45; }
+
+/* ---------- sugerencia (terracota) — algo que agrego sin que se pida ---------- */
+.sugerencia-box{
+  background: #fbeee6; border: 1px solid #eec7ab;
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0;
+}
+.sugerencia-box .sg-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #a1552b;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+}
+.sugerencia-box p{ margin:0; font-size: 13.5px; line-height: 1.6; color: #6b3a1e; }
+:root.dark .sugerencia-box{ background: rgba(193,99,62,0.14); }
+:root.dark .sugerencia-box p{ color: #f0c4a8; }
