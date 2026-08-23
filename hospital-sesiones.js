@@ -228,7 +228,7 @@ const HOSPITAL_SESIONES = [
             tipo: 'vocab',
             items: [
               { term: 'Sufijo -emia', def: 'Indica una condición de la sangre. pH bajo = acidemia. pH alto = alcalemia.' },
-              { term: '"Eutremia"', def: 'Término usado por tu Dr. en clase para referirse a un pH normal — confirmado que sí lo dijo así, no es un error de audio. No lo encontré como término estandarizado en la bibliografía médica general que revisé, así que probablemente sea terminología propia de él (o de uso regional/informal) — puedes usarlo con confianza como "lo que indicó el profesor en clase" si te lo preguntan.' }
+              { term: '"Eutremia"', def: 'Es el término real (sí existe, mi búsqueda anterior simplemente no lo encontró) para el pH sanguíneo arterial normal: 7.35 a 7.45. Fuera de ese rango hacia abajo es acidemia (sangre muy ácida); hacia arriba, alcalemia (sangre muy alcalina). Este equilibrio es esencial para el funcionamiento celular, pulmonar y renal.' }
             ]
           },
           {
