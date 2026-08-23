@@ -39,7 +39,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', modulo: 'view-modulo' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -82,6 +82,7 @@ function navRenderCurrent(){
     case 'todas-semanas': renderTodasSemanas(); break;
     case 'preparar': renderPreparar(top.id); break;
     case 'hospital': renderHospital(); break;
+    case 'hospital-sesion': renderHospitalSesion(top.id); break;
     case 'modulo': renderModulo(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
@@ -431,6 +432,16 @@ function renderHospital(){
     <div class="kcard">
       <p class="muted">Esto es la ESTRUCTURA general de evaluación (cómo te califican). Las fechas y actividades específicas de cada día de hospital siguen pendientes hasta que tengamos ese documento — si lo consigues, lo integro igual que todo lo demás.</p>
     </div>
+
+    <div class="section-title" style="margin-top:28px;"><h2>📓 Cuadernos de práctica hospitalaria</h2></div>
+    <p class="muted" style="margin-top:-10px; margin-bottom:14px;">Notas reales de cada día de hospital, armadas a partir de tus audios transcritos — con lo importante resaltado, vocabulario nuevo y tareas del Dr. ya organizadas por tema.</p>
+    ${(typeof HOSPITAL_SESIONES !== 'undefined' ? HOSPITAL_SESIONES : []).map(s => `
+      <div class="hospital-session-card" onclick="openHospitalSesion('${s.id}')">
+        <div class="hsc-meta">Semana ${s.semana} · ${s.dia}</div>
+        <div class="hsc-title">${s.titulo}</div>
+        <div class="hsc-sub">${s.resumen}</div>
+      </div>
+    `).join('')}
   `;
 }
 
