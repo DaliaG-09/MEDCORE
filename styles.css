@@ -946,3 +946,9 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   cursor: pointer; opacity: 0.85;
 }
 .img-lightbox-close:hover{ opacity: 1; }
+
+/* ---------- notas propias de Dalia (tomadas a mano mientras se grababa) ---------- */
+.mis-notas{ color: #B44E7C; }
+.mis-notas strong{ color: #9C3D69; }
+:root.dark .mis-notas{ color: #E28FB8; }
+:root.dark .mis-notas strong{ color: #EDA9CB; }
