@@ -15,7 +15,7 @@
       por dispositivo para que sepa que las notas son tuyas.
    ============================================================ */
 
-let fbApp, fbAuth, fbDb;
+let fbApp, fbAuth, fbDb, fbStorage;
 let currentUser = null;
 let firestoreReady = false;
 
@@ -24,6 +24,7 @@ function initFirebase(){
     fbApp = firebase.initializeApp(firebaseConfig);
     fbAuth = firebase.auth();
     fbDb = firebase.firestore();
+    fbStorage = firebase.storage();
     fbDb.enablePersistence({ synchronizeTabs: true }).catch(() => {
       /* si falla (ej. modo incógnito o múltiples pestañas viejas),
          la app sigue funcionando, solo sin caché avanzada de Firestore */
