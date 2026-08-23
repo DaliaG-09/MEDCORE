@@ -7,7 +7,7 @@
    CACHE_NAME (ej. 'medcore-v2') y el navegador refresca la copia.
    ============================================================ */
 
-const CACHE_NAME = 'medcore-v48';
+const CACHE_NAME = 'medcore-v49';
 const ASSETS = [
   './',
   './index.html',
@@ -60,14 +60,25 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  const req = event.request;
+  const url = new URL(req.url);
+
+  // El SW solo cachea archivos propios (GET, mismo origen).
+  // Todo lo demás (ej. subir audio a AssemblyAI, llamadas a Firebase) pasa directo,
+  // sin pasar por caché, para no romper esas peticiones.
+  if (req.method !== 'GET' || url.origin !== self.location.origin) {
+    event.respondWith(fetch(req));
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cached) => {
+    caches.match(req).then((cached) => {
       if (cached) return cached;
-      return fetch(event.request)
+      return fetch(req)
         .then((response) => {
           // guarda en caché copias nuevas de páginas visitadas para la próxima vez sin internet
           const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
           return response;
         })
         .catch(() => caches.match('./index.html'));
