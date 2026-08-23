@@ -58,13 +58,29 @@ const HOSPITAL_SESIONES = [
           },
           {
             tipo: 'nota',
-            texto: 'Sobre las siglas que anotaste: EPID = Enfermedad Pulmonar Intersticial Difusa (el grupo de enfermedades al que pertenece este caso — incluye la Fibrosis Pulmonar Idiopática con patrón UIP). PIT es la que usó tu Dr. para referirse a la Neumonitis por Hipersensibilidad (la reacción alérgica en el pulmón por exposición repetida a hongos/humedad o antígenos de aves) — no es una sigla estándar en la bibliografía que revisé, así que probablemente sea la forma abreviada que usa él en clase; vale la pena confirmarla directamente con él para tu examen.'
+            texto: 'Sobre las siglas: pensándolo mejor junto contigo, tiene más sentido que haya sido EPID (Enfermedad Pulmonar Intersticial Difusa) y no "PIT" — es probable que se te haya cruzado al escuchar y escribir en el momento. Con EPID sí cuadra clínicamente: la Neumonitis por Hipersensibilidad (la reacción alérgica del pulmón por exposición repetida a humedad/hongos o antígenos de aves) es justo uno de los tipos de EPID que existen — y este mismo caso, con el patrón UIP y la fibrosis, también cae dentro del paraguas de EPID. O sea que probablemente el Dr. dijo algo como "esto también sería un tipo de EPID", agrupando ambas cosas bajo la misma categoría. De todas formas, confírmaselo directamente si puedes, para que quede 100% seguro para tu examen.'
           },
           {
             tipo: 'nota',
-            texto: 'Sobre Chanchamayo (lo que pediste investigar): es zona endémica confirmada de Paracoccidioidomicosis (también llamada blastomicosis sudamericana), causada por el hongo Paracoccidioides brasiliensis. En Perú se concentra en Junín (La Merced-Chanchamayo), Huánuco (Tingo María), Ucayali (Pucallpa) y Loreto — zonas de selva/ceja de selva, típicamente en trabajadores agrícolas o de zonas rurales. Se adquiere por inhalación del hongo desde el suelo.'
+            texto: 'Sobre Chanchamayo (lo que pediste investigar): es zona endémica confirmada de Paracoccidioidomicosis (también llamada blastomicosis sudamericana), causada por el hongo Paracoccidioides brasiliensis. En Perú se concentra en Junín (La Merced-Chanchamayo), Huánuco (Tingo María), Ucayali (Pucallpa) y Loreto — zonas de selva/ceja de selva, típicamente en trabajadores agrícolas o de zonas rurales. Se adquiere por inhalación del hongo desde el suelo. Abajo te dejo el mapa completo de zonas endémicas relevantes para neumología en Perú, con fuente MINSA/estudios revisados.'
           }
         ]
+      },
+      {
+        titulo: '🗺️ Mapa de zonas endémicas en Perú (orientado a neumología)',
+        cuerpo: `
+          <p class="muted" style="margin-top:-4px;">Esto lo armé aparte, basado en datos del MINSA y estudios epidemiológicos revisados — para que cuando preguntes por viajes o procedencia del paciente, sepas rápido qué enfermedad respiratoria pensar según la zona.</p>
+          <div class="scale-box">
+            <table class="scale-table">
+              <tr><td>Huánuco (Tingo María — "Cueva de las Lechuzas")</td><td>Histoplasmosis pulmonar — asociada a cuevas con guano de murciélagos/aves ("fiebre de Tingo María").</td></tr>
+              <tr><td>Pucallpa (Ucayali), Iquitos (Loreto)</td><td>Histoplasmosis — también zonas de mayor casuística en el Perú.</td></tr>
+              <tr><td>Chanchamayo / La Merced (Junín), Tingo María, Pucallpa, Iquitos, Lamas (San Martín)</td><td>Paracoccidioidomicosis (blastomicosis sudamericana) — típica en agricultores de ceja de selva/selva baja.</td></tr>
+              <tr><td>Amazonas, Loreto, San Martín, Ucayali, Junín (Chanchamayo, Satipo), Huánuco, Madre de Dios, Cusco (selva), Ayacucho, Pasco, Puno, Huancavelica, Cajamarca (selva)</td><td>Fiebre amarilla — zonas de selva alta/baja; se pregunta estado de vacunación.</td></tr>
+              <tr><td>Cajamarca, Lambayeque, La Libertad, Piura (valles interandinos del norte)</td><td>Peste (bubónica y, más raro, neumónica) — endémica desde inicios del s. XX, con brotes recientes en La Libertad.</td></tr>
+              <tr><td>Lima, Callao, Loreto, Ucayali, Madre de Dios, Tacna, Ica</td><td>Tuberculosis — Lima/Callao concentran ~55-60% de los casos del país; Loreto/Ucayali/Madre de Dios tienen las tasas más altas por habitante.</td></tr>
+            </table>
+          </div>
+        `
       },
       {
         titulo: '📋 Antecedentes del caso (ya aplicando el checklist de arriba)',
