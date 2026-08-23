@@ -7,15 +7,28 @@
    (highlight.js) y de apuntes (notes.js) que el resto de MEDCORE.
 
    Tipos de caja dentro de una sección (campo "extras"):
-   - pregunta : preguntas que el Dr. dijo que sí o sí se deben
-                hacer en la anamnesis (color coral).
-   - tarea    : encargos puntuales del Dr. para investigar/traer
-                resueltos (color miel) — llevan un campo de
-                respuesta editable debajo.
-   - vocab    : vocabulario o sufijos nuevos (color menta).
-   - nota     : un complemento mío aparte de lo dicho en clase,
-                siempre diferenciado y nunca mezclado con el
-                contenido del Dr. (color lavanda).
+   - pregunta    : preguntas que el Dr. dijo que sí o sí se deben
+                   hacer en la anamnesis (color coral).
+   - tarea       : encargos puntuales del Dr. para investigar/traer
+                   resueltos (color miel) — llevan un campo de
+                   respuesta editable debajo.
+   - vocab       : vocabulario o sufijos nuevos (color menta).
+   - nota        : una respuesta MÍA directa a algo que preguntaste
+                   explícitamente (color morado) — corta, sin narrar
+                   la conversación.
+   - explicacion : cuando pides que te explique/refresque un
+                   concepto médico (color turquesa) — glosario.
+   - sugerencia  : algo que agrego por mi propia iniciativa, SIN que
+                   lo hayas pedido directamente (color terracota).
+                   Siempre colapsada por defecto — ver nota abajo.
+
+   Nota de diseño: cuando una "sugerencia" contesta directamente lo
+   que pide una "tarea" cercana (ej. la tarea te manda a investigar
+   una fórmula y la sugerencia ya la trae resuelta), la sugerencia
+   se muestra COLAPSADA con un botón "Ver sugerencia" — así no le
+   gana la mano a tu propio esfuerzo de investigarlo primero. Sigue
+   ahí como referencia para cuando ya lo intentaste o quieras
+   verificar tu respuesta, pero no aparece de encuentro.
    ============================================================ */
 
 const HOSPITAL_SESIONES = [
@@ -455,16 +468,28 @@ function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
       </div>`;
   }
   if(ex.tipo === 'sugerencia'){
+    const boxId = 'sug-' + sesionId + '-' + secIdx + '-' + exIdx;
     return `
-      <div class="sugerencia-box">
-        <div class="sg-label">🍂 Sugerencia (no pedida, iniciativa mía)</div>
-        <p>${ex.texto}</p>
+      <div class="sugerencia-box" id="${boxId}">
+        <div class="sg-label sg-toggle" onclick="toggleSugerencia('${boxId}')">
+          <span>🍂 Sugerencia (no pedida, iniciativa mía)</span>
+          <span class="sg-chevron">Ver sugerencia ▾</span>
+        </div>
+        <p class="sg-body">${ex.texto}</p>
       </div>`;
   }
   return '';
 }
 
 function getHospitalSesion(id){ return HOSPITAL_SESIONES.find(s => s.id === id); }
+
+/* colapsa/expande una caja de sugerencia — así no se ve la respuesta
+   de encuentro cuando hay una tarea pendiente cerca esperando que
+   la investigues tú primero */
+function toggleSugerencia(boxId){
+  const box = document.getElementById(boxId);
+  if(box) box.classList.toggle('sg-open');
+}
 
 function openHospitalSesion(id){
   const s = getHospitalSesion(id);
