@@ -342,13 +342,6 @@ function compressImageToDataURL(file, maxWidth = 900, startQuality = 0.65){
     img.src = objectUrl;
   });
 }
-  tareaImagesSet(key, current);
-  const imgWrap = document.getElementById(safeId + '-images');
-  if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
-  statusEl.textContent = current.length ? 'Listo ✓' : '';
-  setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 2500);
-  ev.target.value = '';
-}
 function removeTareaImage(key, safeId, idx){
   const current = tareaImagesGet(key);
   current.splice(idx, 1);
