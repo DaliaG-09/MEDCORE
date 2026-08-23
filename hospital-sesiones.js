@@ -72,7 +72,7 @@ const HOSPITAL_SESIONES = [
           },
           {
             tipo: 'nota',
-            texto: 'Sobre las siglas: confirmado, era EPID (Enfermedad Pulmonar Intersticial Difusa), no "PIT" — fue un error de transcripción del audio. La Neumonitis por Hipersensibilidad es uno de los tipos de EPID que existen, y este mismo caso (patrón UIP + fibrosis) también cae dentro de esa categoría — por eso el Dr. lo mencionó así, agrupando ambas cosas.'
+            texto: 'Sobre las siglas: tiene más sentido que haya sido EPID (Enfermedad Pulmonar Intersticial Difusa) y no "PIT". La Neumonitis por Hipersensibilidad es justo uno de los tipos de EPID que existen, y este mismo caso (patrón UIP + fibrosis) también cae dentro de esa categoría — por eso probablemente el Dr. lo mencionó así, agrupando ambas cosas. Confírmaselo directamente para tu examen.'
           },
           {
             tipo: 'nota',
@@ -301,6 +301,202 @@ const HOSPITAL_SESIONES = [
           </ul>
           <p class="muted" style="font-size:12px;">Verifica esto contra Harrison, Farreras o la guía ATS/ERS/JRS/ALAT antes de usarlo como respuesta de examen, y reemplázalo apenas tengas el audio donde el Dr. sí da el plan real.</p>
         `
+      }
+    ]
+  },
+  {
+    id: 'sem1-viernes',
+    semana: 1,
+    dia: 'Viernes',
+    titulo: 'Bronquiectasias por secuela de TB — AGA, hemograma y tomografía',
+    resumen: 'Paciente de 56 años con bronquiectasias exacerbadas por secuela de tuberculosis. Interpretación completa de gases arteriales, hemograma con desviación izquierda/derecha, y hallazgos tomográficos (vidrio esmerilado, consolidado, broncograma aéreo, bronquiolito).',
+    secciones: [
+      {
+        titulo: '🧍 El caso, en corto',
+        tono: 'caso',
+        cuerpo: `
+          <p>Varón de 56 años, secundaria completa, dejó de trabajar a los 51 por limitación de sus enfermedades de fondo. Antecedente de <strong>TB tratada hace 40 años</strong> y <strong>COVID hace ~2 años</strong> (hospitalizado 14 días). Tiene <strong>tiempo de enfermedad de ~2 años</strong> (disnea y tos crónicas basales) con un <strong>episodio actual de 4 días</strong>: fiebre, tos con flema purulenta, dolor torácico izquierdo tipo hincón, y palpitaciones al esfuerzo.</p>
+          <p>La tomografía confirma <strong>bronquiectasias</strong> (tubulares, varicosas y quísticas) con zonas de <strong>consolidado nuevo</strong> — el diagnóstico final: <strong>bronquiectasias por secuela de tuberculosis, exacerbadas</strong> por probable cuadro infeccioso.</p>
+        `
+      },
+      {
+        titulo: '🗣️ Cómo indagar bien: técnicas que remarcó el Dr.',
+        cuerpo: `
+          <p>Antes de antecedentes, el Dr. insistió en <strong>no dejar huecos en la línea de tiempo laboral/funcional</strong>: si el paciente dejó de trabajar años antes de la enfermedad actual, hay que preguntar específicamente qué hizo en esos años y por qué dejó de trabajar — muchas veces revela una limitación de fondo que el paciente no menciona como "sintomática".</p>
+          <p>Sobre cómo se inician los síntomas — esto lo marcó como <strong>clave para diferenciar etiologías</strong>: si el cuadro arranca con congestión nasal y dolor de garganta y luego baja a tos con flema, orienta a un proceso viral que exacerba; si arranca directo con flema verde/purulenta sin pródromo faríngeo, orienta más a un cuadro bacteriano de entrada. El paciente tiende a contarte primero el síntoma que más le molesta, no necesariamente el que apareció primero — hay que indagar activamente el orden real.</p>
+          <p>Sobre el insomnio que refirió el paciente: el Dr. remarcó investigarlo como cualquier síntoma — ¿desde cuándo?, ¿ha ido a psiquiatría?, ¿se ha hecho estudios?, y sobre todo, si toma clonazepam: <strong>¿se lo indicó un médico o se automedica?</strong></p>
+        `,
+        extras: [
+          {
+            tipo: 'vocab',
+            items: [
+              { term: 'Síntomas basales', def: 'Los síntomas crónicos "de siempre" del paciente (su línea base), distintos de lo nuevo del episodio actual — hay que preguntarlos aparte para poder comparar.' }
+            ]
+          }
+        ]
+      },
+      {
+        titulo: '📋 Antecedentes del caso',
+        cuerpo: `
+          <ul>
+            <li><strong>Alergias:</strong> penicilina y AINES.</li>
+            <li><strong>TB:</strong> hace 40 años (tratada).</li>
+            <li><strong>Familiares:</strong> sus 9 hermanos tuvieron COVID.</li>
+            <li><strong>Conducta sexual:</strong> 4 parejas, usa condón, ninguna ITS.</li>
+            <li><strong>COVID:</strong> hospitalizado 14 días.</li>
+            <li><strong>Hábitos:</strong> alcohol social (~1 vez/semana), sin cirugías previas.</li>
+            <li><strong>Mascotas:</strong> 2 perros, siempre ha tenido en casa.</li>
+            <li><strong>Humedad:</strong> sí, en la sala y en el cuarto.</li>
+            <li><strong>Aves:</strong> palomas casi todos los días, sobre su casa.</li>
+            <li><strong>Vivienda:</strong> a una cuadra de una zona comercial (mercado).</li>
+            <li><strong>Vacunas:</strong> esquema incompleto — sin influenza, sí neumococo y las 3 dosis de COVID.</li>
+            <li><strong>Otro antecedente:</strong> litiasis vesicular diagnosticada hace 7 años (dolor EVA 10/10 en su momento, resuelto con analgesia IV, sin complicaciones desde entonces).</li>
+            <li><strong>Tratamiento actual:</strong> bromuro de ipratropio y ceftazidima.</li>
+            <li><strong>Peso:</strong> bajó ~5 kg en el último año.</li>
+          </ul>
+        `,
+        extras: [
+          {
+            tipo: 'sugerencia',
+            texto: 'El antecedente de TB tratada hace 40 años es el dato que más pesa en este caso: como vas a ver en la sección de diagnóstico, es literalmente la causa de las bronquiectasias que tiene ahora. Vale la pena que cada vez que veas "TB antigua" en un antecedente, ya pienses de una vez en secuelas (bronquiectasias, fibrotórax, atelectasias) como diagnóstico diferencial.'
+          }
+        ]
+      },
+      {
+        titulo: '🕐 Enfermedad actual: 2 años de fondo + 4 días de episodio actual',
+        cuerpo: `
+          <p><strong>Tiempo de enfermedad:</strong> ~2 años. Durante ese tiempo, sus síntomas basales/crónicos son: disnea (mMRC grado 2 — le dificulta pero no le impide del todo sus actividades diarias) y tos productiva con flema blanquecina, además de fiebre intermitente/esporádica y un episodio único de sangrado (hemoptisis, una sola vez en los 2 años).</p>
+          <p><strong>Episodio actual:</strong> hace 4 días — empeoró todo lo anterior: la flema pasó de blanquecina a <strong>purulenta y amarillenta</strong>, apareció fiebre más marcada, dolor torácico izquierdo tipo hincón (EVA 6/10, ~20 min, el día del ingreso), y palpitaciones con el esfuerzo (frecuencia cardíaca reportada en 118 al caminar al baño).</p>
+          <p><strong>Revisión funcional:</strong> apetito conservado, sed conservada (el Dr. lo marcó como llamativo dado cuánta flema bota — esperaría más sed), diuresis conservada, sueño alterado (insomnio, sin necesitar almohadas extra — o sea, sin ortopnea clara).</p>
+        `,
+        extras: [
+          {
+            tipo: 'vocab',
+            items: [
+              { term: 'mMRC grado 2', def: 'Le dificulta realizar sus actividades diarias, pero SÍ puede hacerlas (distinto del grado 3, donde ya no puede hacerlas, y del grado 4, donde el reposo mismo genera disnea).' },
+              { term: 'Esputo blanquecino vs. purulento', def: 'Blanquecino = espuma/mucosidad más densa, sin infección activa clara. Purulento = infección activa — son categorías totalmente distintas, no un espectro del mismo síntoma.' }
+            ]
+          }
+        ]
+      },
+      {
+        titulo: '🩺 Examen físico (día 5 de hospitalización)',
+        cuerpo: `
+          <p class="mis-notas" style="margin-top:-4px; font-style:italic;">Importante: este examen es de 5 días después de la hospitalización, no de cuando llegó por emergencia — el Dr. remarcó que siempre hay que especificar en qué momento del curso clínico se está examinando, porque la presentación cambia.</p>
+          <p><strong>General:</strong> piel hidratada, sin cianosis ni edema.</p>
+          <p><strong>Respiratorio:</strong> sin tirajes intercostales ni uso de músculos accesorios. Vibraciones vocales simétricas en ambos campos. Sin hipersonoridad ni matidez a la percusión. Auscultación clara en bases, tercios superior y medio normales, buen paso de aire.</p>
+          <p><strong>Cardiovascular:</strong> ruidos rítmicos, sin soplos. Frecuencia cardíaca ~90 (no taquicárdico — taquicardia se define como mayor a 100).</p>
+          <p><strong>Gastrointestinal y genitourinario:</strong> no evaluados (se acabó el tiempo de la práctica).</p>
+          <p><strong>Neurológico:</strong> orientado en tiempo, espacio y persona. Glasgow 15/15.</p>
+        `
+      },
+      {
+        titulo: '🗂️ Diagnósticos sindrómicos y plan de trabajo inicial',
+        cuerpo: `
+          <p><strong>Síndromes planteados:</strong> síndrome febril, síndrome de dificultad respiratoria, síndrome obstructivo (por los roncantes a la auscultación) y síndrome constitutivo (por la pérdida de peso).</p>
+          <p><strong>Plan de trabajo pedido:</strong> hemograma, PCR, tomografía de tórax, cultivo de esputo. Se consideró pedir procalcitonina.</p>
+        `,
+        extras: [
+          {
+            tipo: 'explicacion',
+            texto: 'Por qué el Dr. corrigió "COVID causa fibrosis": no es así. En pacientes que sobreviven a una neumonía por COVID, lo que se ve son bandas subpleurales (tractos fibróticos) — eso es secuelar, no fibrosis pulmonar como tal. En cambio la TB sí causa lesiones más profundas: fibrotórax, atelectasias, y sobre todo bronquiectasias — que es justo lo que tiene este paciente.'
+          },
+          {
+            tipo: 'tarea',
+            texto: '¿Cuándo se debe pedir procalcitonina? El Dr. lo dejó como algo "teórico que deberían saber" sin dar la respuesta completa en el audio — investígalo (rentabilidad de pedirla, en qué cuadros sí se justifica) para la próxima.',
+            respuestaKey: 'tarea-procalcitonina'
+          }
+        ]
+      },
+      {
+        titulo: '🧪 Resultados: gases arteriales y hemograma',
+        cuerpo: `
+          <p><strong>AGA:</strong> pH 7.42 (normal), PCO2 39.6 (normal), bicarbonato 25 (normal), saturación 95.3%, PO2 81.3.</p>
+          <div class="scale-box">
+            <table class="scale-table">
+              <tr><td>&lt; 60 mmHg</td><td>Insuficiencia respiratoria.</td></tr>
+              <tr class="scale-highlight"><td>60–80 mmHg</td><td>Hipoxemia.</td></tr>
+              <tr><td>80–100 mmHg</td><td>Normal.</td></tr>
+            </table>
+            <p class="muted" style="font-size:11.5px; margin:6px 0 0;">Con PO2 81.3, el paciente está normal — apenas por encima del corte de hipoxemia. Conclusión del Dr.: hipoxemia leve que no requiere oxígeno. El oxígeno que estaba recibiendo probablemente era por desaturaciones puntuales al toser mucho, no por una hipoxemia real y sostenida.</p>
+          </div>
+          <p><strong>Hemograma:</strong> Leucocitos 9900 (sin leucocitosis), Hemoglobina 10.8 (anemia leve), Segmentados 73% / 7200 (ligeramente aumentado), Abastonados 0% (sin desviación izquierda), Linfocitos 1500 (ligeramente disminuidos). <strong>PCR: 213</strong> (normal &lt;5) — proceso inflamatorio agudo marcado.</p>
+          <p>Dato que llamó la atención en clase: PCR muy alto pero sin leucocitosis franca — el Dr. planteó dos posibilidades: (1) inmunosupresión de fondo, o (2) que el cuadro sea viral y no bacteriano (hay virus que sí llegan a vía aérea inferior: influenza, metapneumovirus, rinovirus).</p>
+        `,
+        extras: [
+          {
+            tipo: 'vocab',
+            items: [
+              { term: 'Broncorrea', def: 'Sufijo -rrea = flujo abundante (igual que en diarrea). Broncorrea = gran cantidad de flema desde los bronquios.' },
+              { term: 'Abastonados vs. segmentados', def: 'Los neutrófilos "recién nacidos" tienen el núcleo sin segmentar (en forma de bastón) — son los abastonados. Al madurar, el núcleo se segmenta (forma de herradura) — son los segmentados.' },
+              { term: 'Desviación izquierda', def: 'Más neutrófilos abastonados (jóvenes) de lo normal — el cuerpo está liberando defensas nuevas rápido, señal de que recién está montando la respuesta.' },
+              { term: 'Desviación derecha', def: 'Predominan los segmentados (maduros) — el cuerpo ya está respondiendo bien y de forma establecida.' },
+              { term: 'PCR vs. procalcitonina', def: 'El PCR es un marcador inflamatorio inespecífico (sube en infecciones virales, bacterianas, o incluso con COVID). La procalcitonina sí orienta más específicamente a causa bacteriana.' }
+            ]
+          }
+        ]
+      },
+      {
+        titulo: '🩻 Tomografía: hallazgos y vocabulario nuevo',
+        cuerpo: `
+          <p>Se revisaron los 3 cortes: <strong>axial, coronal y sagital</strong>. Se confirmó el <strong>casquete pleural</strong> (engrosamiento subpleural apical) — el mismo hallazgo que ya habías visto el jueves.</p>
+          <p>El Dr. enseñó a diferenciar dos patrones que se confunden fácil: <strong>vidrio esmerilado</strong> (aumento de densidad pulmonar pero donde todavía distingues el vaso sanguíneo de fondo — inflamación incompleta/a medias) vs. <strong>consolidado</strong> (densidad tan alta que ya no distingues el vaso sanguíneo — el alvéolo está completamente lleno de flema).</p>
+          <p>Se confirmaron <strong>bronquiectasias</strong> de los 3 tipos en el mismo paciente: <strong>tubulares</strong> (las más frecuentes), <strong>varicosas</strong> (las que más sangran) y <strong>quísticas</strong> (las más disfuncionales — "roban" más parénquima sano alrededor). También se vio un <strong>broncograma aéreo</strong> (el bronquio se hace visible porque la flema/consolidado que lo rodea contrasta con él) y un <strong>bronquiolito</strong> (una calcificación/"piedra" dentro de una bronquiectasia).</p>
+          <p>Comparado con el jueves, esta vez el <strong>tronco de la arteria pulmonar no estaba aumentado</strong> — o sea, sin sospecha de hipertensión pulmonar en este paciente.</p>
+          <p>Se encontraron <strong>zonas de consolidado nuevas</strong> (predominio derecho y posterior, también en el lóbulo inferior izquierdo) — esto es lo agudo/nuevo, distinto de las bronquiectasias que son la secuela ya establecida.</p>
+        `,
+        extras: [
+          {
+            tipo: 'vocab',
+            items: [
+              { term: 'Bronquiectasias tubulares', def: 'Las más frecuentes.' },
+              { term: 'Bronquiectasias varicosas', def: 'Las que más sangran.' },
+              { term: 'Bronquiectasias quísticas', def: 'Las más disfuncionales — redondas/circulares, "quitan" más parénquima funcional al pulmón.' },
+              { term: 'Broncograma aéreo', def: 'El contorno del bronquio se hace visible porque el consolidado/flema alrededor genera el contraste — normalmente no se distingue así.' },
+              { term: '"-lito" vs. "-litis"', def: '-litis = inflamación. -lito = piedra/cálculo. Bronquiolito = una calcificación dentro de una bronquiectasia (no confundir con "bronquiolitis", que es inflamación de los bronquiolos).' }
+            ]
+          },
+          {
+            tipo: 'sugerencia',
+            texto: 'Sobre la pregunta que quedó abierta en clase (cómo diferenciar un cáncer de pulmón de estos hallazgos): la clave que dio el Dr. es la ubicación de la calcificación dentro del nódulo — céntrica orienta más a benigno, excéntrica orienta más a sospecha de malignidad. Esto es un dato que conviene profundizar con imagenología antes de un examen, porque en el audio quedó como introducción, no como explicación completa.'
+          }
+        ]
+      },
+      {
+        titulo: '🎯 Diagnóstico final: bronquiectasias por secuela de TB, exacerbadas',
+        cuerpo: `
+          <p><strong>Etiología:</strong> bronquiectasias por secuela de tuberculosis — el Dr. remarcó que las bronquiectasias nunca aparecen "de la nada", siempre hay una causa de fondo (acá, la TB de hace 40 años). El diagnóstico confirmatorio de bronquiectasia es <strong>por tomografía</strong>, no por radiografía (la radiografía solo da signos sugerentes).</p>
+          <p><strong>Exacerbada — criterios (según un artículo del New England del año pasado sobre exacerbación de bronquiectasias):</strong> son 7 criterios, se necesitan mínimo 3 para catalogarla como exacerbada:</p>
+          <ol>
+            <li>Aumento de la intensidad de la tos</li>
+            <li>Aumento de la frecuencia de la tos</li>
+            <li>Cambio en el esputo (de blanco/basal a purulento, o aumento de volumen)</li>
+            <li>Hemoptisis</li>
+            <li>Aumento de la disnea</li>
+            <li>Aumento de la agitación/fatiga</li>
+            <li>Fiebre</li>
+          </ol>
+          <p><strong>Requisito de temporalidad (no es un criterio, pero es obligatorio):</strong> los síntomas deben mantenerse como mínimo 48 horas — una variación de un solo día no cuenta como exacerbación, puede ser solo fluctuación basal normal.</p>
+          <p><strong>Causas de exacerbación:</strong> principalmente infecciosa (viral o bacteriana) — otras causas que el Dr. hizo buscar en clase incluyen descompensación de comorbilidades de fondo, como insuficiencia cardíaca.</p>
+        `
+      },
+      {
+        titulo: '💊 Tratamiento indicado por el Dr.',
+        cuerpo: `
+          <p class="muted" style="margin-top:-4px;">Esta vez sí llegamos a la parte del tratamiento en el audio — esto es lo que dijo el Dr. en clase, no una sugerencia mía.</p>
+          <p><strong>Para síntomas basales/crónicos</strong> (fuera de exacerbación): tos seca → antitusivo. Tos con flema → mucolítico. Si hay componente obstructivo → inhaladores/broncodilatadores.</p>
+          <p><strong>Durante la exacerbación</strong> (más flema de lo normal): hay que ayudar a expectorar con <strong>fluidificantes</strong> — carbocisteína, ambroxol o bromhexina. Advertencia del Dr.: la <strong>acetilcisteína está contraindicada en pacientes asmáticos y diabéticos.</strong></p>
+          <p><strong>Antibiótico empírico</strong> (por sospecha de causa infecciosa): <strong>ceftriaxona</strong> es la recomendación estándar — a menos que el paciente tenga antecedente de infección por <em>Pseudomonas aeruginosa</em>, en cuyo caso se cambia a <strong>ceftazidima</strong> o quinolonas (ciprofloxacino, levofloxacino).</p>
+          <p><strong>Si hay hemoptisis activa:</strong> ácido tranexámico (hasta que deje de sangrar) + antitusígeno (para que la tos no perpetúe el sangrado).</p>
+          <p><strong>Resto:</strong> manejo sintomático — oxígeno si hace falta, analgesia si hay dolor.</p>
+        `,
+        extras: [
+          {
+            tipo: 'tarea',
+            texto: 'Para la próxima clase: leer todas las secuelas de tuberculosis, organizadas por región — a nivel de vía aérea, a nivel pulmonar, a nivel mediastinal, y a nivel pleural.',
+            respuestaKey: 'tarea-secuelas-tb'
+          }
+        ]
       }
     ]
   }
