@@ -828,6 +828,11 @@ function renderDia(compositeId){
 
   const badges = d.tipo.split('+').map(t => `<span class="badge ${t}">${t}</span>`).join(' ');
 
+  // si este día es de hospital y ya existe un cuaderno armado para esta semana+día, lo enlazamos directo
+  const hospitalSesion = (d.tipo.includes('hospital') && typeof HOSPITAL_SESIONES !== 'undefined')
+    ? HOSPITAL_SESIONES.find(hs => hs.semana === s.numero && hs.dia === d.dia)
+    : null;
+
   wrap.innerHTML = `
     ${volverBtnHTML()}
     <span class="eyebrow">Semana ${s.numero}</span>
@@ -837,6 +842,12 @@ function renderDia(compositeId){
       <h3>Qué toca hoy</h3>
       <p>${d.tema}</p>
     </div>
+    ${hospitalSesion ? `
+    <div class="hospital-session-card" onclick="openHospitalSesion('${hospitalSesion.id}')">
+      <div class="hsc-meta">📓 Cuaderno de práctica</div>
+      <div class="hsc-title">${hospitalSesion.titulo}</div>
+      <div class="hsc-sub">${hospitalSesion.resumen}</div>
+    </div>` : ''}
     ${items ? `
     <div class="section-block">
       <h3>Contenido de esta clase</h3>
