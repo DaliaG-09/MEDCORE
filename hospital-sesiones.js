@@ -322,9 +322,11 @@ const HOSPITAL_SESIONES = [
       {
         titulo: '🗣️ Cómo indagar bien: técnicas que remarcó el Dr.',
         cuerpo: `
-          <p>Antes de antecedentes, el Dr. insistió en <strong>no dejar huecos en la línea de tiempo laboral/funcional</strong>: si el paciente dejó de trabajar años antes de la enfermedad actual, hay que preguntar específicamente qué hizo en esos años y por qué dejó de trabajar — muchas veces revela una limitación de fondo que el paciente no menciona como "sintomática".</p>
-          <p>Sobre cómo se inician los síntomas — esto lo marcó como <strong>clave para diferenciar etiologías</strong>: si el cuadro arranca con congestión nasal y dolor de garganta y luego baja a tos con flema, orienta a un proceso viral que exacerba; si arranca directo con flema verde/purulenta sin pródromo faríngeo, orienta más a un cuadro bacteriano de entrada. El paciente tiende a contarte primero el síntoma que más le molesta, no necesariamente el que apareció primero — hay que indagar activamente el orden real.</p>
+          <p>Antes de antecedentes, el Dr. insistió en <strong>no dejar huecos en la línea de tiempo laboral/funcional</strong>: si el paciente dejó de trabajar años antes de la enfermedad actual, hay que preguntar específicamente qué hizo en esos años y por qué dejó de trabajar — muchas veces revela una limitación de fondo que el paciente no menciona como "sintomática". <span class="mis-notas">Tú misma lo marcaste: faltó preguntar qué hizo específicamente en esos 5 años después de terminar de trabajar — queda como pendiente para la próxima vez que retomen el caso.</span></p>
+          <p>Sobre cómo se inician los síntomas — esto lo marcó como <strong>clave para diferenciar etiologías</strong>: si el cuadro arranca con congestión nasal y dolor de garganta y luego baja a tos con flema, orienta a un proceso viral que exacerba; si arranca directo con flema verde/purulenta sin pródromo faríngeo, orienta más a un cuadro bacteriano de entrada. El paciente tiende a contarte primero el síntoma que más le molesta, no necesariamente el que apareció primero — hay que indagar activamente el orden real. <span class="mis-notas">Como lo anotaste: preguntar si le dolió primero la garganta o la nariz, y qué síntoma apareció primero — esas son las preguntas concretas para sacar ese dato.</span></p>
+          <p class="mis-notas">Sobre la tos específicamente, dos cosas más que remarcaste que hay que preguntar siempre: si es intermitente o constante, y el color de la flema — son datos que ayudan a caracterizar el síntoma base para poder comparar después si cambió.</p>
           <p>Sobre el insomnio que refirió el paciente: el Dr. remarcó investigarlo como cualquier síntoma — ¿desde cuándo?, ¿ha ido a psiquiatría?, ¿se ha hecho estudios?, y sobre todo, si toma clonazepam: <strong>¿se lo indicó un médico o se automedica?</strong></p>
+          <p class="mis-notas">Otra nota tuya de logística de la práctica: el "estado general conservado" del paciente es un dato que está en el audio, pero si no le preguntas directamente a tus compañeras qué encontraron, te lo puedes perder — vale la pena siempre confirmar entre el grupo qué halló cada quien antes de armar la historia completa.</p>
         `,
         extras: [
           {
@@ -350,7 +352,7 @@ const HOSPITAL_SESIONES = [
             <li><strong>Aves:</strong> palomas casi todos los días, sobre su casa.</li>
             <li><strong>Vivienda:</strong> a una cuadra de una zona comercial (mercado).</li>
             <li><strong>Vacunas:</strong> esquema incompleto — sin influenza, sí neumococo y las 3 dosis de COVID.</li>
-            <li><strong>Otro antecedente:</strong> litiasis vesicular diagnosticada hace 7 años (dolor EVA 10/10 en su momento, resuelto con analgesia IV, sin complicaciones desde entonces).</li>
+            <li><strong>Otro antecedente:</strong> litiasis vesicular diagnosticada hace 7 años (dolor EVA 10/10 en su momento, resuelto con analgesia IV, sin complicaciones desde entonces). <span class="mis-notas">No lo operaron.</span></li>
             <li><strong>Tratamiento actual:</strong> bromuro de ipratropio y ceftazidima.</li>
             <li><strong>Peso:</strong> bajó ~5 kg en el último año.</li>
           </ul>
@@ -365,8 +367,9 @@ const HOSPITAL_SESIONES = [
       {
         titulo: '🕐 Enfermedad actual: 2 años de fondo + 4 días de episodio actual',
         cuerpo: `
-          <p><strong>Tiempo de enfermedad:</strong> ~2 años. Durante ese tiempo, sus síntomas basales/crónicos son: disnea (mMRC grado 2 — le dificulta pero no le impide del todo sus actividades diarias) y tos productiva con flema blanquecina, además de fiebre intermitente/esporádica y un episodio único de sangrado (hemoptisis, una sola vez en los 2 años).</p>
+          <p><strong>Tiempo de enfermedad:</strong> ~2 años. Durante ese tiempo, sus síntomas basales/crónicos son: disnea (mMRC grado 2 — le dificulta pero no le impide del todo sus actividades diarias) y tos productiva con flema blanquecina, además de fiebre intermitente/esporádica (<span class="mis-notas">38.5°C, interdiario, se automedicaba con paracetamol</span>) y un episodio único de sangrado (hemoptisis, una sola vez en los 2 años).</p>
           <p><strong>Episodio actual:</strong> hace 4 días — empeoró todo lo anterior: la flema pasó de blanquecina a <strong>purulenta y amarillenta</strong>, apareció fiebre más marcada, dolor torácico izquierdo tipo hincón (EVA 6/10, ~20 min, el día del ingreso), y palpitaciones con el esfuerzo (frecuencia cardíaca reportada en 118 al caminar al baño).</p>
+          <p class="mis-notas">Tu resumen de los síntomas que se repiten en este paciente (su "combo" habitual): tos, fiebre, disnea, dolor de pecho, palpitaciones al esfuerzo, e insomnio.</p>
           <p><strong>Revisión funcional:</strong> apetito conservado, sed conservada (el Dr. lo marcó como llamativo dado cuánta flema bota — esperaría más sed), diuresis conservada, sueño alterado (insomnio, sin necesitar almohadas extra — o sea, sin ortopnea clara).</p>
         `,
         extras: [
@@ -395,7 +398,7 @@ const HOSPITAL_SESIONES = [
         titulo: '🗂️ Diagnósticos sindrómicos y plan de trabajo inicial',
         cuerpo: `
           <p><strong>Síndromes planteados:</strong> síndrome febril, síndrome de dificultad respiratoria, síndrome obstructivo (por los roncantes a la auscultación) y síndrome constitutivo (por la pérdida de peso).</p>
-          <p><strong>Plan de trabajo pedido:</strong> hemograma, PCR, tomografía de tórax, cultivo de esputo. Se consideró pedir procalcitonina.</p>
+          <p><strong>Plan de trabajo pedido:</strong> hemograma, PCR, tomografía de tórax, cultivo de esputo, y AGA. Se consideró pedir procalcitonina. <span class="mis-notas">Sobre el cultivo de esputo: la muestra sí fue una buena muestra (mucopurulenta), pero el cultivo salió negativo.</span></p>
         `,
         extras: [
           {
@@ -413,6 +416,7 @@ const HOSPITAL_SESIONES = [
         titulo: '🧪 Resultados: gases arteriales y hemograma',
         cuerpo: `
           <p><strong>AGA:</strong> pH 7.42 (normal), PCO2 39.6 (normal), bicarbonato 25 (normal), saturación 95.3%, PO2 81.3.</p>
+          <p class="mis-notas">Ojo con este dato: el jueves anotaste "eutremia" y este viernes anotaste "eudremia" para lo mismo (pH normal) — como salió distinto en las dos clases, confirma con el Dr. la ortografía real del término antes de usarlo en un examen.</p>
           <div class="scale-box">
             <table class="scale-table">
               <tr><td>&lt; 60 mmHg</td><td>Insuficiencia respiratoria.</td></tr>
