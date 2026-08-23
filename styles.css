@@ -721,6 +721,8 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   .cascade-line{ background:#ccc; }
   /* fuerza a que TODAS las tarjetas colapsadas se muestren completas al imprimir */
   .card-body{ display:block !important; }
+  .sugerencia-box .sg-body{ display:block !important; }
+  .sugerencia-box .sg-chevron{ display:none !important; }
 }
 
 .muted{ color: var(--ink-soft); }
@@ -1012,8 +1014,19 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .sugerencia-box .sg-label{
   font-family: var(--font-display); font-weight: 800; font-size: 12px;
   letter-spacing: 0.04em; text-transform: uppercase; color: #a1552b;
-  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  margin-bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 6px;
 }
-.sugerencia-box p{ margin:0; font-size: 13.5px; line-height: 1.6; color: #6b3a1e; }
+.sugerencia-box .sg-toggle{ cursor: pointer; user-select: none; }
+.sugerencia-box .sg-chevron{
+  font-family: var(--font-mono); font-size: 10px; text-transform: none; letter-spacing: normal;
+  font-weight: 700; color: #a1552b; opacity: 0.75; transition: transform 0.15s ease;
+}
+.sugerencia-box.sg-open .sg-chevron{ transform: rotate(180deg); }
+.sugerencia-box .sg-body{
+  margin: 0; font-size: 13.5px; line-height: 1.6; color: #6b3a1e;
+  display: none; padding-top: 8px;
+}
+.sugerencia-box.sg-open .sg-body{ display: block; }
 :root.dark .sugerencia-box{ background: rgba(193,99,62,0.14); }
-:root.dark .sugerencia-box p{ color: #f0c4a8; }
+:root.dark .sugerencia-box .sg-body{ color: #f0c4a8; }
+:root.dark .sugerencia-box .sg-chevron{ color: #e8a682; }
