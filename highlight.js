@@ -17,10 +17,10 @@ function initHighlighting(){
   hlPopupEl = document.createElement('div');
   hlPopupEl.className = 'hl-popup';
   hlPopupEl.innerHTML = `
-    <span class="hl-swatch hl-yellow" data-color="hl-yellow" onclick="applyHighlight('hl-yellow')"></span>
-    <span class="hl-swatch hl-mint" data-color="hl-mint" onclick="applyHighlight('hl-mint')"></span>
-    <span class="hl-swatch hl-coral" data-color="hl-coral" onclick="applyHighlight('hl-coral')"></span>
-    <span class="hl-remove" onclick="removeHighlight()">✕</span>
+    <span class="hl-swatch hl-yellow" data-color="hl-yellow" onmousedown="event.preventDefault()" onclick="applyHighlight('hl-yellow')"></span>
+    <span class="hl-swatch hl-mint" data-color="hl-mint" onmousedown="event.preventDefault()" onclick="applyHighlight('hl-mint')"></span>
+    <span class="hl-swatch hl-coral" data-color="hl-coral" onmousedown="event.preventDefault()" onclick="applyHighlight('hl-coral')"></span>
+    <span class="hl-remove" onmousedown="event.preventDefault()" onclick="removeHighlight()">✕</span>
   `;
   document.body.appendChild(hlPopupEl);
 
