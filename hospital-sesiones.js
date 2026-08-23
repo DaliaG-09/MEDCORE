@@ -368,10 +368,16 @@ async function handleTareaImageUpload(ev, key, safeId){
   statusEl.textContent = 'Procesando…';
 
   const current = tareaImagesGet(key);
+  const LIMITE_TOTAL = 850000; // deja margen bajo el límite real de Firestore (~1MB) para el resto del documento
 
   for(const file of files){
     try{
       const dataUrl = await compressImageToDataURL(file);
+      const tamanoActual = JSON.stringify(current).length;
+      if(tamanoActual + dataUrl.length > LIMITE_TOTAL){
+        statusEl.textContent = 'Ya no cabe otra foto en esta tarea (se llenaría el espacio de sincronización) — borra alguna o crea otra respuesta.';
+        break;
+      }
       current.push(dataUrl);
     } catch(err){
       statusEl.textContent = 'Esa imagen es muy pesada o no se pudo procesar — intenta con otra foto.';
@@ -381,14 +387,21 @@ async function handleTareaImageUpload(ev, key, safeId){
   tareaImagesSet(key, current);
   const imgWrap = document.getElementById(safeId + '-images');
   if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
-  statusEl.textContent = current.length ? 'Guardado ✓' : '';
-  setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 2500);
+  if(statusEl.textContent === 'Procesando…'){
+    statusEl.textContent = current.length ? 'Guardado ✓' : '';
+    setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 2500);
+  } else {
+    setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 4000);
+  }
   ev.target.value = '';
 }
 
-/* redimensiona y comprime la imagen en el navegador antes de guardarla como texto (base64),
-   para que quepa cómodamente dentro del límite de 1MB por nota de Firestore */
-function compressImageToDataURL(file, maxWidth = 900, startQuality = 0.65){
+/* redimensiona y comprime la imagen en el navegador antes de guardarla como texto (base64).
+   Los límites son chicos a propósito: como varias fotos de una misma tarea se guardan
+   JUNTAS en un solo documento de Firestore (límite real: ~1MB por documento), cada foto
+   individual debe quedar bien por debajo de eso para que quepan varias sin romper la
+   sincronización entre dispositivos. */
+function compressImageToDataURL(file, maxWidth = 700, startQuality = 0.55){
   return new Promise((resolve, reject) => {
     const img = new Image();
     const objectUrl = URL.createObjectURL(file);
@@ -403,14 +416,15 @@ function compressImageToDataURL(file, maxWidth = 900, startQuality = 0.65){
 
       let quality = startQuality;
       let dataUrl = canvas.toDataURL('image/jpeg', quality);
-      // si sigue muy pesada, bajamos calidad hasta que quepa (máx. ~700KB para dejar margen)
+      // objetivo: que quepan cómodamente varias fotos en el mismo documento de Firestore
+      const OBJETIVO = 220000; // ~220KB por foto
       let attempts = 0;
-      while(dataUrl.length > 700000 && attempts < 4){
-        quality -= 0.15;
-        dataUrl = canvas.toDataURL('image/jpeg', Math.max(quality, 0.2));
+      while(dataUrl.length > OBJETIVO && attempts < 5){
+        quality -= 0.1;
+        dataUrl = canvas.toDataURL('image/jpeg', Math.max(quality, 0.15));
         attempts++;
       }
-      if(dataUrl.length > 900000){ reject(new Error('too-large')); return; }
+      if(dataUrl.length > 280000){ reject(new Error('too-large')); return; }
       resolve(dataUrl);
     };
     img.onerror = () => { URL.revokeObjectURL(objectUrl); reject(new Error('load-error')); };
