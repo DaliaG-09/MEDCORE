@@ -36,7 +36,6 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '❗ Preguntas que sí o sí debes hacer, según el Dr.',
-        tono: 'preguntas',
         cuerpo: `
           <p class="muted" style="margin-top:-4px;">Esto es distinto de la lista de antecedentes de abajo: acá está literalmente lo que el Dr. remarcó como pregunta obligatoria, con su propia justificación, para que la tengas de checklist antes de entrar a ver un paciente.</p>
           <p class="mis-notas">Completé el "por qué" de cada una con lo que tenías anotado en tu cuaderno — donde decía "buscar", ya lo investigué.</p>
@@ -84,7 +83,6 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '📋 Antecedentes del caso (ya aplicando el checklist de arriba)',
-        tono: 'antecedentes',
         cuerpo: `
           <ul>
             <li><strong>Ocupacional:</strong> toner, thinner, pinturas — sin mascarilla.</li>
@@ -134,7 +132,6 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '🩺 Examen físico',
-        tono: 'examen',
         cuerpo: `
           <p><strong>Signos vitales:</strong> SpO2 94% (con cánula binasal a 1 L/min — en emergencia había llegado a estar sobre 87% sin ese soporte), FC 74, FR 21, PA 120/60, T° 37.5°C.</p>
           <p><strong>Auscultación pulmonar:</strong> crépitos tipo velcro, gruesos, predominio en bases y en la parte posterior — signo clásico de fibrosis pulmonar.</p>
@@ -172,7 +169,6 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '🧪 Análisis de Gases Arteriales (AGA) — el método paso a paso',
-        tono: 'aga',
         cuerpo: `
           <p>Así lo enseñó el Dr., en orden:</p>
           <ol>
@@ -235,7 +231,6 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '🩻 Imágenes: radiografía y tomografía de tórax',
-        tono: 'imagenes',
         cuerpo: `
           <p><strong>Radiografía normal (repaso de regiones):</strong> supraclavicular, infraclavicular, hiliar/parahiliar, cardíaca/paracardíaca (o "basales"). Una placa bien tomada tiene ángulos costofrénicos libres, el hemidiafragma derecho ~1-1.5 cm más alto que el izquierdo, y la relación cardiotorácica debe ser menor a la mitad del tórax.</p>
           <p><strong>Hallazgo en este paciente:</strong> opacidades reticulares lineales bilaterales de predominio en bases (patrón intersticial), y el tronco de la arteria pulmonar medía 2.5 (normal hasta 1.5) — sugiere hipertensión pulmonar.</p>
