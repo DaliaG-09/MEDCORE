@@ -828,3 +828,84 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 :root.dark .tarea-box{ background: rgba(232,169,61,0.12); }
 :root.dark .vocab-box{ background: rgba(120,201,163,0.12); }
 :root.dark .nota-claude-box{ background: rgba(155,138,242,0.14); }
+
+/* ---------- preguntas obligatorias, fórmulas, escalas, diagrama AGA ---------- */
+.pregunta-box{
+  background: var(--coral-soft); border: 1px solid var(--coral-line);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 10px 0 0;
+}
+.pregunta-box .pb-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #a5333c;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+}
+.pregunta-box .pb-list{ margin:0; padding-left: 18px; }
+.pregunta-box .pb-list li{ margin-bottom: 9px; font-size: 14px; line-height: 1.5; }
+.pregunta-box .pb-q{ display:block; color: var(--ink); font-weight: 600; }
+.pregunta-box .pb-why{ display:block; font-size: 12px; color: #a5333c; margin-top: 2px; }
+
+.formula-box{
+  background: var(--card); border: 1.5px dashed var(--cobalt-line);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0;
+}
+.formula-box .fb-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--cobalt);
+  margin-bottom: 8px;
+}
+.formula-box .fb-formula{
+  font-family: var(--font-mono); font-size: 14.5px; text-align:center;
+  background: var(--cobalt-soft); border-radius: var(--radius-sm); padding: 10px 12px; margin: 0 0 8px;
+}
+.formula-box .fb-example{ font-size: 13px; color: var(--ink-soft); margin: 0; text-align:center; }
+
+.scale-box{
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0;
+}
+.scale-box .sb-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12.5px;
+  color: var(--ink); margin-bottom: 8px;
+}
+.scale-table{ width:100%; border-collapse: collapse; font-size: 13px; }
+.scale-table td{ padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.scale-table td:first-child{ font-weight: 700; width: 90px; color: var(--cobalt); white-space: nowrap; }
+.scale-table tr.scale-highlight td{ background: var(--coral-soft); }
+.scale-table tr.scale-highlight td:first-child{ color: #a5333c; }
+
+.aga-diagram{ margin-top: 16px; }
+.aga-diagram .aga-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12.5px;
+  color: var(--ink); margin-bottom: 10px;
+}
+.aga-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 640px){ .aga-grid{ grid-template-columns: 1fr; } }
+.aga-cell{
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+.aga-cell.aga-current{ border-color: var(--coral); background: var(--coral-soft); }
+.aga-title{ font-weight: 700; font-size: 13px; margin-bottom: 6px; display:flex; align-items:center; gap:6px; }
+.aga-tag{ font-size: 10.5px; font-weight: 700; color: #a5333c; background: #fff; border-radius: 999px; padding: 1px 7px; }
+.aga-row{ font-size: 13px; margin-bottom: 2px; }
+.aga-row em{ color: var(--ink-soft); font-style: italic; font-size: 11.5px; }
+.arrow{ font-weight: 800; font-size: 15px; }
+.arrow.up{ color: #a5333c; }
+.arrow.down{ color: var(--cobalt); }
+.arrow.primary{ font-size: 18px; }
+
+.schematic-box{
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0; text-align:center;
+}
+.schematic-box .sc-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  color: var(--ink); margin-bottom: 4px; text-align:left;
+}
+
+:root.dark .pregunta-box{ background: rgba(217,92,101,0.14); }
+:root.dark .formula-box{ background: transparent; }
+:root.dark .formula-box .fb-formula{ background: rgba(82,103,232,0.16); }
+:root.dark .scale-box, :root.dark .schematic-box{ background: var(--card); }
+:root.dark .aga-cell{ background: var(--card); }
+:root.dark .aga-cell.aga-current{ background: rgba(217,92,101,0.16); }
