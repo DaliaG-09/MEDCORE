@@ -774,3 +774,57 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .doctor-notes.expanded .dn-body{ display:block; }
 .doctor-notes .dn-chevron{ margin-left:auto; font-size:12px; color:#9a6b1a; transition: transform 0.15s ease; }
 .doctor-notes.expanded .dn-chevron{ transform: rotate(180deg); }
+
+/* ============================================================
+   HOSPITAL — cuadernos de práctica (cajas de color + tarjetas)
+   ============================================================ */
+.tarea-box{
+  background: var(--honey-soft); border: 1px solid var(--honey-line);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0;
+}
+.tarea-box .tb-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #9a6b1a;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+}
+.tarea-box p{ margin:0; font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+.vocab-box{
+  background: var(--mint-soft); border: 1px solid var(--mint-line);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0;
+}
+.vocab-box .vb-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #2f7a57;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+}
+.vocab-box ul{ margin:0; padding-left: 18px; font-size: 13.5px; line-height: 1.65; }
+.vocab-box strong{ color: #215e42; }
+
+.nota-claude-box{
+  background: var(--lavender-soft); border: 1px solid var(--lavender-line);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 14px 0 0;
+}
+.nota-claude-box .nc-label{
+  font-family: var(--font-display); font-weight: 800; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: #5c4fb8;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+}
+.nota-claude-box p{ margin:0; font-size: 13.5px; line-height: 1.6; color: #3d3564; }
+
+.hospital-session-card{
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-md);
+  padding: 14px 16px; cursor: pointer; margin-bottom: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.hospital-session-card:hover{ transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: var(--cobalt-line); }
+.hospital-session-card .hsc-meta{
+  font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--ink-soft);
+}
+.hospital-session-card .hsc-title{ font-family: var(--font-display); font-weight: 700; font-size: 15px; margin-top: 4px; }
+.hospital-session-card .hsc-sub{ font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
+
+:root.dark .tarea-box{ background: rgba(232,169,61,0.12); }
+:root.dark .vocab-box{ background: rgba(120,201,163,0.12); }
+:root.dark .nota-claude-box{ background: rgba(155,138,242,0.14); }
