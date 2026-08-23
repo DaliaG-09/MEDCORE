@@ -72,7 +72,7 @@ const HOSPITAL_SESIONES = [
           },
           {
             tipo: 'nota',
-            texto: 'Sobre las siglas: tiene más sentido que haya sido EPID (Enfermedad Pulmonar Intersticial Difusa) y no "PIT". La Neumonitis por Hipersensibilidad es justo uno de los tipos de EPID que existen, y este mismo caso (patrón UIP + fibrosis) también cae dentro de esa categoría — por eso probablemente el Dr. lo mencionó así, agrupando ambas cosas. Confírmaselo directamente para tu examen.'
+            texto: 'Sobre las siglas: confirmado, era EPID (Enfermedad Pulmonar Intersticial Difusa), no "PIT" — fue un error de transcripción del audio. La Neumonitis por Hipersensibilidad es uno de los tipos de EPID que existen, y este mismo caso (patrón UIP + fibrosis) también cae dentro de esa categoría — por eso el Dr. lo mencionó así, agrupando ambas cosas.'
           },
           {
             tipo: 'nota',
