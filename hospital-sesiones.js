@@ -259,9 +259,28 @@ function tareaImagesSet(key, arr){
 }
 function tareaImageThumbHTML(key, safeId, url, idx){
   return `<span class="tarea-thumb-wrap">
-    <img src="${url}" class="tarea-thumb" onclick="window.open('${url}','_blank')">
+    <img src="${url}" class="tarea-thumb" onclick="openImageLightbox('${url}')">
     <span class="tarea-thumb-remove" onclick="removeTareaImage('${key}','${safeId}',${idx})">✕</span>
   </span>`;
+}
+
+/* visor de imagen en grande, dentro de la misma página (funciona con las fotos guardadas como base64) */
+function openImageLightbox(url){
+  let overlay = document.getElementById('img-lightbox-overlay');
+  if(!overlay){
+    overlay = document.createElement('div');
+    overlay.id = 'img-lightbox-overlay';
+    overlay.className = 'img-lightbox-overlay';
+    overlay.onclick = closeImageLightbox;
+    overlay.innerHTML = '<img id="img-lightbox-img" src="" onclick="event.stopPropagation()"><span class="img-lightbox-close">✕</span>';
+    document.body.appendChild(overlay);
+  }
+  document.getElementById('img-lightbox-img').src = url;
+  overlay.classList.add('active');
+}
+function closeImageLightbox(){
+  const overlay = document.getElementById('img-lightbox-overlay');
+  if(overlay) overlay.classList.remove('active');
 }
 function tareaResponseHTML(key, placeholder){
   const value = notesAdapter.get(key);
