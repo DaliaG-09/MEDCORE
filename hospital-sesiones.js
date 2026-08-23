@@ -228,7 +228,7 @@ const HOSPITAL_SESIONES = [
             tipo: 'vocab',
             items: [
               { term: 'Sufijo -emia', def: 'Indica una condición de la sangre. pH bajo = acidemia. pH alto = alcalemia.' },
-              { term: '"Eutremia" (tal como se escuchó en clase)', def: 'Usado por el Dr. para referirse a un pH normal. El audio no permite confirmar la ortografía exacta del término — vale la pena preguntarlo directamente o verificarlo en tu bibliografía antes de anotarlo como definitivo.' }
+              { term: '"Eutremia"', def: 'Término usado por tu Dr. en clase para referirse a un pH normal — confirmado que sí lo dijo así, no es un error de audio. No lo encontré como término estandarizado en la bibliografía médica general que revisé, así que probablemente sea terminología propia de él (o de uso regional/informal) — puedes usarlo con confianza como "lo que indicó el profesor en clase" si te lo preguntan.' }
             ]
           },
           {
