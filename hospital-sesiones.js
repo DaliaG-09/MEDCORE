@@ -64,7 +64,7 @@ const HOSPITAL_SESIONES = [
               { q: '¿Hay aves en casa o en casa de los vecinos? (gallinas, palomas)', por: 'Antígenos aviares → Neumonitis por sensibilidad (PIT), aunque no las críe él mismo, sino un vecino.' },
               { q: '¿En qué zona vive? (industrial, comercial — por ejemplo pollerías)', por: 'Contaminación y humo ambiental como factor de riesgo adicional.' },
               { q: '¿Consume drogas?', por: 'Antecedente tóxico estándar de la anamnesis.' },
-              { q: 'Conducta sexual: ¿cuántas parejas/relaciones sexuales ha tenido? ¿Es estéril?', por: 'Como no tiene hijos, la esterilidad puede orientar a déficit de alfa-1-antitripsina.' },
+              { q: 'Conducta sexual: ¿cuántas parejas/relaciones sexuales ha tenido? ¿Es estéril?', por: 'Como no tiene hijos, la esterilidad orienta a Discinesia Ciliar Primaria (los mismos cilios que fallan en depurar la vía aérea son los que mueven el espermatozoide) — especialmente relevante si hay antecedente respiratorio desde la niñez, como en este caso.' },
               { q: '¿Ha viajado? ¿A dónde?', por: 'Huánuco → histoplasmosis. Selva → fiebre amarilla. Chanchamayo → hongos (paracoccidioidomicosis). Cada zona endémica tiene su propia enfermedad asociada.' },
               { q: 'Sobre COVID: no solo si lo tuvo — ¿fue asintomático o con síntomas?, ¿fue hospitalizado?, ¿estuvo en UCI?', por: 'Porque puede haber tenido neumonía por COVID, y eso sí deja secuela pulmonar — lo que importa es la severidad, no el diagnóstico en sí.' },
               { q: 'Antecedentes familiares: ¿asma, diabetes, hipertensión, TB en la familia?', por: 'Parte estándar de la historia, y en este caso sí salió positivo para diabetes.' }
