@@ -28,6 +28,7 @@ const HOSPITAL_SESIONES = [
     secciones: [
       {
         titulo: '🧍 El caso, en corto',
+        tono: 'caso',
         cuerpo: `
           <p>Varón con antecedente de <strong>asma desde la niñez</strong> y <strong>tuberculosis pulmonar tratada de forma completa a los 40 años</strong>. Fumador importante durante ~50 años y con exposición ocupacional a disolventes (toner, thinner, pinturas) sin mascarilla. Tiene perro y gato en casa.</p>
           <p>Ingresa por <strong>disnea progresiva</strong> (llegó a mMRC 4), <strong>tos productiva verdosa</strong> y saturación de 87% en emergencia. Al examen: <strong>crépitos tipo velcro bibasales</strong>. La tomografía muestra <strong>panalización</strong> <em>("panal de abeja", grupos de espacios quísticos en las bases del pulmón — típico de fibrosis avanzada)</em> bibasal con enfisema en lóbulos superiores — patrón compatible con <strong>UIP</strong> <em>(patrón radiológico "Usual Interstitial Pneumonia", el más asociado a Fibrosis Pulmonar Idiopática)</em>, posiblemente combinada con enfisema (síndrome CPFE).</p>
@@ -35,6 +36,7 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '❗ Preguntas que sí o sí debes hacer, según el Dr.',
+        tono: 'preguntas',
         cuerpo: `
           <p class="muted" style="margin-top:-4px;">Esto es distinto de la lista de antecedentes de abajo: acá está literalmente lo que el Dr. remarcó como pregunta obligatoria, con su propia justificación, para que la tengas de checklist antes de entrar a ver un paciente.</p>
           <p class="mis-notas">Completé el "por qué" de cada una con lo que tenías anotado en tu cuaderno — donde decía "buscar", ya lo investigué.</p>
@@ -58,32 +60,31 @@ const HOSPITAL_SESIONES = [
           },
           {
             tipo: 'nota',
-            texto: 'Sobre las siglas: pensándolo mejor junto contigo, tiene más sentido que haya sido EPID (Enfermedad Pulmonar Intersticial Difusa) y no "PIT" — es probable que se te haya cruzado al escuchar y escribir en el momento. Con EPID sí cuadra clínicamente: la Neumonitis por Hipersensibilidad (la reacción alérgica del pulmón por exposición repetida a humedad/hongos o antígenos de aves) es justo uno de los tipos de EPID que existen — y este mismo caso, con el patrón UIP y la fibrosis, también cae dentro del paraguas de EPID. O sea que probablemente el Dr. dijo algo como "esto también sería un tipo de EPID", agrupando ambas cosas bajo la misma categoría. De todas formas, confírmaselo directamente si puedes, para que quede 100% seguro para tu examen.'
+            texto: 'Sobre las siglas: tiene más sentido que haya sido EPID (Enfermedad Pulmonar Intersticial Difusa) y no "PIT". La Neumonitis por Hipersensibilidad es justo uno de los tipos de EPID que existen, y este mismo caso (patrón UIP + fibrosis) también cae dentro de esa categoría — por eso probablemente el Dr. lo mencionó así, agrupando ambas cosas. Confírmaselo directamente para tu examen.'
           },
           {
             tipo: 'nota',
-            texto: 'Sobre Chanchamayo (lo que pediste investigar): es zona endémica confirmada de Paracoccidioidomicosis (también llamada blastomicosis sudamericana), causada por el hongo Paracoccidioides brasiliensis. En Perú se concentra en Junín (La Merced-Chanchamayo), Huánuco (Tingo María), Ucayali (Pucallpa) y Loreto — zonas de selva/ceja de selva, típicamente en trabajadores agrícolas o de zonas rurales. Se adquiere por inhalación del hongo desde el suelo. Abajo te dejo el mapa completo de zonas endémicas relevantes para neumología en Perú, con fuente MINSA/estudios revisados.'
+            texto: 'Chanchamayo es zona endémica confirmada de Paracoccidioidomicosis (blastomicosis sudamericana), causada por el hongo Paracoccidioides brasiliensis — típica en agricultores de zonas de selva/ceja de selva. Se adquiere por inhalación del hongo desde el suelo.'
           }
         ]
       },
       {
         titulo: '🗺️ Mapa de zonas endémicas en Perú (orientado a neumología)',
+        tono: 'zonas',
         cuerpo: `
-          <p class="muted" style="margin-top:-4px;">Esto lo armé aparte, basado en datos del MINSA y estudios epidemiológicos revisados — para que cuando preguntes por viajes o procedencia del paciente, sepas rápido qué enfermedad respiratoria pensar según la zona.</p>
-          <div class="scale-box">
-            <table class="scale-table">
-              <tr><td>Huánuco (Tingo María — "Cueva de las Lechuzas")</td><td>Histoplasmosis pulmonar — asociada a cuevas con guano de murciélagos/aves ("fiebre de Tingo María").</td></tr>
-              <tr><td>Pucallpa (Ucayali), Iquitos (Loreto)</td><td>Histoplasmosis — también zonas de mayor casuística en el Perú.</td></tr>
-              <tr><td>Chanchamayo / La Merced (Junín), Tingo María, Pucallpa, Iquitos, Lamas (San Martín)</td><td>Paracoccidioidomicosis (blastomicosis sudamericana) — típica en agricultores de ceja de selva/selva baja.</td></tr>
-              <tr><td>Amazonas, Loreto, San Martín, Ucayali, Junín (Chanchamayo, Satipo), Huánuco, Madre de Dios, Cusco (selva), Ayacucho, Pasco, Puno, Huancavelica, Cajamarca (selva)</td><td>Fiebre amarilla — zonas de selva alta/baja; se pregunta estado de vacunación.</td></tr>
-              <tr><td>Cajamarca, Lambayeque, La Libertad, Piura (valles interandinos del norte)</td><td>Peste (bubónica y, más raro, neumónica) — endémica desde inicios del s. XX, con brotes recientes en La Libertad.</td></tr>
-              <tr><td>Lima, Callao, Loreto, Ucayali, Madre de Dios, Tacna, Ica</td><td>Tuberculosis — Lima/Callao concentran ~55-60% de los casos del país; Loreto/Ucayali/Madre de Dios tienen las tasas más altas por habitante.</td></tr>
-            </table>
-          </div>
+          <p class="muted" style="margin-top:-4px;">Basado en datos del MINSA y estudios epidemiológicos revisados — para cuando preguntes por viajes o procedencia del paciente.</p>
+          <ul class="endemic-list">
+            <li><strong>Huánuco (Tingo María — "Cueva de las Lechuzas"), Pucallpa, Iquitos</strong><span>Histoplasmosis pulmonar — asociada a cuevas con guano de murciélagos/aves ("fiebre de Tingo María").</span></li>
+            <li><strong>Chanchamayo / La Merced (Junín), Tingo María, Pucallpa, Iquitos, Lamas (San Martín)</strong><span>Paracoccidioidomicosis (blastomicosis sudamericana) — típica en agricultores de ceja de selva/selva baja.</span></li>
+            <li><strong>Amazonas, Loreto, San Martín, Ucayali, Junín (Chanchamayo, Satipo), Huánuco, Madre de Dios, Cusco (selva), Ayacucho, Pasco, Puno, Huancavelica, Cajamarca (selva)</strong><span>Fiebre amarilla — zonas de selva alta/baja; se pregunta estado de vacunación.</span></li>
+            <li><strong>Cajamarca, Lambayeque, La Libertad, Piura (valles interandinos del norte)</strong><span>Peste (bubónica y, más raro, neumónica) — endémica desde inicios del s. XX, con brotes recientes en La Libertad.</span></li>
+            <li><strong>Lima, Callao, Loreto, Ucayali, Madre de Dios, Tacna, Ica</strong><span>Tuberculosis — Lima/Callao concentran ~55-60% de los casos del país; Loreto/Ucayali/Madre de Dios tienen las tasas más altas por habitante.</span></li>
+          </ul>
         `
       },
       {
         titulo: '📋 Antecedentes del caso (ya aplicando el checklist de arriba)',
+        tono: 'antecedentes',
         cuerpo: `
           <ul>
             <li><strong>Ocupacional:</strong> toner, thinner, pinturas — sin mascarilla.</li>
@@ -110,6 +111,7 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '🕐 Enfermedad actual: tiempo de enfermedad vs. episodio actual',
+        tono: 'enfermedad',
         cuerpo: `
           <p>El Dr. insistió en <strong>separar dos cosas que suelen confundirse</strong>: el <em>tiempo de enfermedad</em> (desde cuándo existe la condición de base — en este caso, el asma desde la niñez) y el <em>episodio actual</em> (la exacerbación puntual que lo trajo al hospital, en este caso hace aproximadamente una semana). <span class="mis-notas">Como lo anotaste: los síntomas principales, desde cuándo se originaron, y ver si desde ahí arranca el episodio actual — eso es justo lo que se llama "enfermedad actual".</span></p>
           <p>Como el paciente tiene síntomas basales (disnea y tos con los que ya convive), hay que preguntar específicamente <strong>qué cambió</strong> en los últimos días: ¿empezó a toser más?, ¿la tos se volvió productiva?, ¿hizo fiebre?, ¿la disnea empeoró de escala? Eso es lo que define el episodio actual, no la enfermedad de fondo. <span class="mis-notas">Tú misma marcaste en tu cuaderno que "ha faltado detallar el episodio actual" — o sea que esto quedó pendiente de completar en la historia real, no es que se te haya escapado a ti solamente.</span></p>
@@ -132,6 +134,7 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '🩺 Examen físico',
+        tono: 'examen',
         cuerpo: `
           <p><strong>Signos vitales:</strong> SpO2 94% (con cánula binasal a 1 L/min — en emergencia había llegado a estar sobre 87% sin ese soporte), FC 74, FR 21, PA 120/60, T° 37.5°C.</p>
           <p><strong>Auscultación pulmonar:</strong> crépitos tipo velcro, gruesos, predominio en bases y en la parte posterior — signo clásico de fibrosis pulmonar.</p>
@@ -162,13 +165,14 @@ const HOSPITAL_SESIONES = [
         `,
         extras: [
           {
-            tipo: 'nota',
+            tipo: 'sugerencia',
             texto: 'Confirmado sobre el orden de orientación: la enseñanza clásica de semiología es que primero se pierde la orientación en tiempo, luego en espacio, y lo último en perderse es el reconocimiento de las personas (incluyéndose a uno mismo).'
           }
         ]
       },
       {
         titulo: '🧪 Análisis de Gases Arteriales (AGA) — el método paso a paso',
+        tono: 'aga',
         cuerpo: `
           <p>Así lo enseñó el Dr., en orden:</p>
           <ol>
@@ -224,13 +228,14 @@ const HOSPITAL_SESIONES = [
             respuestaKey: 'tarea-aniongap'
           },
           {
-            tipo: 'nota',
-            texto: 'Para completar lo que quedó pendiente: el anión gap se calcula como Na⁺ − (Cl⁻ + HCO3⁻), con un valor normal aproximado de 8 a 12 mEq/L. Se usa para subclasificar la acidosis metabólica en "con anión gap elevado" o "con anión gap normal", según la causa. Esto no se dijo así en el audio — confírmalo con Harrison/tus guías antes de darlo por definitivo para un examen.'
+            tipo: 'sugerencia',
+            texto: 'Para completar lo que quedó pendiente: el anión gap se calcula como Na⁺ − (Cl⁻ + HCO3⁻), con un valor normal aproximado de 8 a 12 mEq/L. Se usa para subclasificar la acidosis metabólica en "con anión gap elevado" o "con anión gap normal", según la causa. Confírmalo con Harrison/tus guías antes de darlo por definitivo para un examen.'
           }
         ]
       },
       {
         titulo: '🩻 Imágenes: radiografía y tomografía de tórax',
+        tono: 'imagenes',
         cuerpo: `
           <p><strong>Radiografía normal (repaso de regiones):</strong> supraclavicular, infraclavicular, hiliar/parahiliar, cardíaca/paracardíaca (o "basales"). Una placa bien tomada tiene ángulos costofrénicos libres, el hemidiafragma derecho ~1-1.5 cm más alto que el izquierdo, y la relación cardiotorácica debe ser menor a la mitad del tórax.</p>
           <p><strong>Hallazgo en este paciente:</strong> opacidades reticulares lineales bilaterales de predominio en bases (patrón intersticial), y el tronco de la arteria pulmonar medía 2.5 (normal hasta 1.5) — sugiere hipertensión pulmonar.</p>
@@ -256,13 +261,14 @@ const HOSPITAL_SESIONES = [
             texto: 'Qué es exactamente el patrón UIP: es el patrón radiológico/histológico más característico de la Fibrosis Pulmonar Idiopática (aunque también puede verse en otras EPID, como una neumonitis por hipersensibilidad crónica). En TC se define por: panalización (el hallazgo más específico), distribución basal y subpleural, bronquiectasias/bronquioloectasias de tracción, y ausencia de datos que sugieran otra causa (sin vidrio esmerilado extenso ni micronódulos). Si el patrón sale "típico" en la TC, a veces permite el diagnóstico sin necesidad de biopsia.'
           },
           {
-            tipo: 'nota',
-            texto: 'Dato para tu repaso: el síndrome CPFE tiene una particularidad fisiológica — el enfisema puede "compensar" en la espirometría los volúmenes pulmonares que la fibrosis reduce, por lo que a veces la función pulmonar luce menos afectada de lo que en realidad está el pulmón. Vale la pena profundizarlo en Harrison o Farreras para tu exposición.'
+            tipo: 'sugerencia',
+            texto: 'El síndrome CPFE tiene una particularidad fisiológica: el enfisema puede "compensar" en la espirometría los volúmenes pulmonares que la fibrosis reduce, por lo que a veces la función pulmonar luce menos afectada de lo que en realidad está el pulmón. Vale la pena profundizarlo en Harrison o Farreras para tu exposición.'
           }
         ]
       },
       {
         titulo: '🗂️ Diagnósticos y plan de trabajo (lo que sí se dijo en clase)',
+        tono: 'diagnostico',
         cuerpo: `
           <p><strong>Síndromes planteados:</strong> síndrome de dificultad respiratoria (a confirmar/descartar insuficiencia respiratoria real con AGA), síndrome parenquimal/intersticial, asma (por historia clínica, como diagnóstico adicional), y posible secuela post-tuberculosis como diagnóstico diferencial a no olvidar.</p>
           <p><strong>Se descartó:</strong> síndrome constitucional puro (no había pérdida de peso reciente reportada como síntoma principal, aunque sí se encontró al preguntar directamente).</p>
@@ -453,6 +459,13 @@ function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
         <p>${ex.texto}</p>
       </div>`;
   }
+  if(ex.tipo === 'sugerencia'){
+    return `
+      <div class="sugerencia-box">
+        <div class="sg-label">🍂 Sugerencia (no pedida, iniciativa mía)</div>
+        <p>${ex.texto}</p>
+      </div>`;
+  }
   return '';
 }
 
@@ -470,7 +483,7 @@ function renderHospitalSesion(id){
   if(!s){ wrap.innerHTML = '<p class="muted">Esta sesión todavía no existe.</p>'; return; }
 
   const seccionesHTML = s.secciones.map((sec, i) => `
-    <div class="kcard ${sec.tono === 'plan' ? 'plan-tratamiento-card' : ''} hl-zone" data-hl-key="${s.id}::sec${i}">
+    <div class="kcard ${sec.tono ? 'tono-' + sec.tono : ''} hl-zone" data-hl-key="${s.id}::sec${i}">
       <h3>${sec.titulo}</h3>
       ${sec.cuerpo}
       ${(sec.extras || []).map((ex, j) => renderHospitalExtra(ex, s.id, i, j)).join('')}
