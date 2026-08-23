@@ -252,7 +252,7 @@ const HOSPITAL_SESIONES = [
             ]
           },
           {
-            tipo: 'nota',
+            tipo: 'explicacion',
             texto: 'Qué es exactamente el patrón UIP: es el patrón radiológico/histológico más característico de la Fibrosis Pulmonar Idiopática (aunque también puede verse en otras EPID, como una neumonitis por hipersensibilidad crónica). En TC se define por: panalización (el hallazgo más específico), distribución basal y subpleural, bronquiectasias/bronquioloectasias de tracción, y ausencia de datos que sugieran otra causa (sin vidrio esmerilado extenso ni micronódulos). Si el patrón sale "típico" en la TC, a veces permite el diagnóstico sin necesidad de biopsia.'
           },
           {
@@ -443,6 +443,13 @@ function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
     return `
       <div class="nota-claude-box">
         <div class="nc-label">💡 Nota aparte</div>
+        <p>${ex.texto}</p>
+      </div>`;
+  }
+  if(ex.tipo === 'explicacion'){
+    return `
+      <div class="explicacion-box">
+        <div class="ex-label">🌊 Qué significa esto</div>
         <p>${ex.texto}</p>
       </div>`;
   }
