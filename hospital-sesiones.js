@@ -3,20 +3,19 @@
    ------------------------------------------------------------
    Cada sesión viene de audios reales de práctica transcritos y
    reorganizados por tema (no en orden cronológico de la
-   conversación). Se reutiliza el mismo motor de resaltado
-   (highlight.js) y de apuntes (notes.js) que el resto de MEDCORE,
-   así que esto funciona exactamente como un cuaderno: puedes
-   subrayar, resaltar en 3 colores y escribir encima igual que en
-   cualquier enfermedad.
+   conversación). Reutiliza el mismo motor de resaltado
+   (highlight.js) y de apuntes (notes.js) que el resto de MEDCORE.
 
-   Cómo agregar un día nuevo: copia un objeto de HOSPITAL_SESIONES,
-   cambia id/semana/dia/titulo/resumen, y arma "secciones" con el
-   contenido ya organizado por tema. "extras" dentro de una sección
-   son las cajas de color: tarea (naranja, algo que el Dr. dejó
-   pendiente/para investigar), vocab (verde, palabras o sufijos
-   nuevos) y nota (morado, un complemento mío aclarando o
-   contextualizando algo — siempre diferenciado del contenido del
-   Dr., nunca inventando datos clínicos que no se dijeron en clase).
+   Tipos de caja dentro de una sección (campo "extras"):
+   - pregunta : preguntas que el Dr. dijo que sí o sí se deben
+                hacer en la anamnesis (color coral).
+   - tarea    : encargos puntuales del Dr. para investigar/traer
+                resueltos (color miel) — llevan un campo de
+                respuesta editable debajo.
+   - vocab    : vocabulario o sufijos nuevos (color menta).
+   - nota     : un complemento mío aparte de lo dicho en clase,
+                siempre diferenciado y nunca mezclado con el
+                contenido del Dr. (color lavanda).
    ============================================================ */
 
 const HOSPITAL_SESIONES = [
@@ -31,39 +30,55 @@ const HOSPITAL_SESIONES = [
         titulo: '🧍 El caso, en corto',
         cuerpo: `
           <p>Varón con antecedente de <strong>asma desde la niñez</strong> y <strong>tuberculosis pulmonar tratada de forma completa a los 40 años</strong>. Fumador importante durante ~50 años y con exposición ocupacional a disolventes (toner, thinner, pinturas) sin mascarilla. Tiene perro y gato en casa.</p>
-          <p>Ingresa por <strong>disnea progresiva</strong> (llegó a mMRC 4), <strong>tos productiva verdosa</strong> y saturación de 87% en emergencia. Al examen: <strong>crépitos tipo velcro bibasales</strong>. La tomografía muestra <strong>panalización bibasal</strong> con enfisema en lóbulos superiores — patrón compatible con <strong>UIP / Fibrosis Pulmonar Idiopática</strong>, posiblemente combinada con enfisema (síndrome CPFE).</p>
+          <p>Ingresa por <strong>disnea progresiva</strong> (llegó a mMRC 4), <strong>tos productiva verdosa</strong> y saturación de 87% en emergencia. Al examen: <strong>crépitos tipo velcro bibasales</strong>. La tomografía muestra <strong>panalización</strong> <em>("panal de abeja", grupos de espacios quísticos en las bases del pulmón — típico de fibrosis avanzada)</em> bibasal con enfisema en lóbulos superiores — patrón compatible con <strong>UIP</strong> <em>(patrón radiológico "Usual Interstitial Pneumonia", el más asociado a Fibrosis Pulmonar Idiopática)</em>, posiblemente combinada con enfisema (síndrome CPFE).</p>
         `
       },
       {
-        titulo: '📋 Antecedentes que el Dr. resaltó como clave',
+        titulo: '❗ Preguntas que sí o sí debes hacer, según el Dr.',
+        cuerpo: `
+          <p class="muted" style="margin-top:-4px;">Esto es distinto de la lista de antecedentes de abajo: acá está literalmente lo que el Dr. remarcó como pregunta obligatoria, con su propia justificación, para que la tengas de checklist antes de entrar a ver un paciente.</p>
+        `,
+        extras: [
+          {
+            tipo: 'pregunta',
+            items: [
+              { q: '¿Qué tipo de compuesto o elemento usaba en su trabajo (pinturas, tóner, thinner, solventes)? ¿Usaba mascarilla?', por: 'Exposición ocupacional a químicos como factor de riesgo respiratorio.' },
+              { q: '¿Tiene algún hábito nocivo? Si fuma: ¿desde qué edad, cuántos cigarrillos al día, hasta qué edad? Si toma: ¿con qué frecuencia?', por: 'Para calcular el pack-year y estimar riesgo cardíaco, EPOC y cáncer pulmonar.' },
+              { q: '¿Tiene animales en casa? (perro, gato)', por: 'El pelaje puede exacerbar el fenotipo alérgico del asma.' },
+              { q: '¿Hay zonas húmedas en la casa? (manchas oscuras o blancas/salitre en las paredes)', por: 'Puede indicar neumonitis por hipersensibilidad — el paciente no siempre lo va a mencionar solo.' },
+              { q: '¿Hay aves en casa o en casa de los vecinos? (gallinas, palomas)', por: 'Antígenos aviares como causa de hipersensibilidad, aunque no las crie él mismo.' },
+              { q: '¿En qué zona vive? (industrial, comercial, cerca de pollerías, etc.)', por: 'Contaminación y humo ambiental como factor de riesgo adicional.' },
+              { q: '¿Consume drogas?', por: 'Antecedente tóxico estándar de la anamnesis.' },
+              { q: 'Conducta sexual: ¿cuántas parejas/relaciones sexuales ha tenido?', por: 'El Dr. remarcó que en pacientes mayores sin hijos, esto puede orientar a esterilidad asociada a enfermedades congénitas (ej. déficit de alfa-1-antitripsina en bronquiectasias sin causa clara).' },
+              { q: '¿Ha viajado? ¿A dónde?', por: 'Selva, sierra o cuevas se asocian a enfermedades endémicas (fiebre amarilla, histoplasmosis, parásitos por alimentos).' },
+              { q: 'Sobre COVID: no solo si lo tuvo — ¿fue asintomático o con síntomas?, ¿fue hospitalizado?, ¿estuvo en UCI?', por: 'Lo que importa es la severidad, porque eso sugiere secuela pulmonar, no el diagnóstico en sí.' },
+              { q: 'Antecedentes familiares: ¿asma, diabetes, hipertensión, TB en la familia?', por: 'Parte estándar de la historia, y en este caso sí salió positivo para diabetes.' }
+            ]
+          }
+        ]
+      },
+      {
+        titulo: '📋 Antecedentes del caso (ya aplicando el checklist de arriba)',
         cuerpo: `
           <ul>
             <li><strong>Ocupacional:</strong> toner, thinner, pinturas — sin mascarilla.</li>
-            <li><strong>Tabaquismo:</strong> ~50 años fumando, 5-6 cigarrillos/día → pack-year ≈ 12.5.</li>
-            <li><strong>Mascotas:</strong> perro y gato → alergenos por pelaje, relevante si el asma tiene fenotipo alérgico.</li>
-            <li><strong>Humedad en casa:</strong> manchas oscuras/salitre en paredes → posible neumonitis por hipersensibilidad.</li>
-            <li><strong>Aves (propias o del vecino):</strong> palomas, gallinas → antígenos aviares, otra causa de hipersensibilidad.</li>
-            <li><strong>Vida en pareja / hijos:</strong> relevante para descartar enfermedades congénitas asociadas a infertilidad (ej. déficit de alfa-1-antitripsina en bronquiectasias sin causa clara).</li>
-            <li><strong>Viajes:</strong> importan por endemias — selva (fiebre amarilla), cuevas (histoplasmosis), sierra (alimentos con parásitos).</li>
-            <li><strong>COVID:</strong> no importa tanto si lo tuvo, sino si estuvo <strong>hospitalizado o en UCI</strong> — eso sí sugiere secuela.</li>
+            <li><strong>Tabaquismo:</strong> ~50 años fumando, 5-6 cigarrillos/día → pack-year ≈ 12.5 (ver fórmula abajo).</li>
+            <li><strong>Mascotas:</strong> perro y gato.</li>
+            <li><strong>Humedad en casa:</strong> sí referida.</li>
             <li><strong>Familiares:</strong> madre/padre con diabetes; no hay asma ni TB familiar confirmada.</li>
           </ul>
+
+          <div class="formula-box">
+            <div class="fb-label">🧮 Fórmula del pack-year (paquete-año)</div>
+            <p class="fb-formula">Pack-year&nbsp; = &nbsp;(cigarrillos por día ÷ 20) &nbsp;×&nbsp; años fumando</p>
+            <p class="fb-example">En este caso: (5 ÷ 20) × 50 años = 0.25 × 50 = <strong>12.5 pack-year</strong></p>
+          </div>
         `,
         extras: [
           {
             tipo: 'tarea',
-            texto: 'Para la próxima clase: calcular cuántos pack-year se consideran factor de riesgo para (1) problemas cardíacos, (2) EPOC, y (3) cáncer pulmonar. El Dr. lo pidió como un "screening" rápido que debemos saber de memoria.'
-          },
-          {
-            tipo: 'tarea',
-            texto: 'Agregar de forma permanente a la anamnesis: preguntar siempre si hay zonas húmedas en la casa (manchas oscuras o blancas/salitre en las paredes), no solo cuando el paciente lo menciona espontáneamente.'
-          },
-          {
-            tipo: 'vocab',
-            items: [
-              { term: 'Pack-year (paquete-año)', def: 'Cigarrillos por día ÷ 20, multiplicado por los años fumando. Cuantifica el consumo acumulado de tabaco y se usa para estimar riesgo de EPOC, cáncer pulmonar y enfermedad cardiovascular.' },
-              { term: 'Fenotipo alérgico del asma', def: 'Uno de los subtipos de asma; en este fenotipo sí tiene sentido buscar alergenos (mascotas, ácaros, pólenes) como desencadenantes.' }
-            ]
+            texto: 'Para la próxima clase: calcular cuántos pack-year se consideran factor de riesgo para (1) problemas cardíacos, (2) EPOC, y (3) cáncer pulmonar. El Dr. lo pidió como un "screening" rápido que debemos saber de memoria.',
+            respuestaKey: 'tarea-packyear'
           }
         ]
       },
@@ -73,15 +88,19 @@ const HOSPITAL_SESIONES = [
           <p>El Dr. insistió en <strong>separar dos cosas que suelen confundirse</strong>: el <em>tiempo de enfermedad</em> (desde cuándo existe la condición de base — en este caso, el asma desde la niñez) y el <em>episodio actual</em> (la exacerbación puntual que lo trajo al hospital, en este caso hace aproximadamente una semana).</p>
           <p>Como el paciente tiene síntomas basales (disnea y tos con los que ya convive), hay que preguntar específicamente <strong>qué cambió</strong> en los últimos días: ¿empezó a toser más?, ¿la tos se volvió productiva?, ¿hizo fiebre?, ¿la disnea empeoró de escala? Eso es lo que define el episodio actual, no la enfermedad de fondo.</p>
           <p>Un dato que el residente no había registrado como síntoma principal, pero que sí apareció al preguntar directamente: <strong>pérdida de peso</strong> — relevante para pensar en cronicidad/progresión de la enfermedad de base.</p>
-        `,
-        extras: [
-          {
-            tipo: 'vocab',
-            items: [
-              { term: 'mMRC', def: 'Escala de disnea del 0 al 4 (Modified Medical Research Council). El paciente progresó de mMRC 3 a mMRC 4.' }
-            ]
-          }
-        ]
+
+          <div class="scale-box">
+            <div class="sb-label">📏 Escala mMRC de disnea <em>(Modified Medical Research Council, del 0 al 4)</em></div>
+            <table class="scale-table">
+              <tr><td>0</td><td>Disnea solo con ejercicio intenso.</td></tr>
+              <tr><td>1</td><td>Disnea al caminar rápido o subir una pendiente leve.</td></tr>
+              <tr><td>2</td><td>Camina más lento que otras personas de su edad, o debe detenerse a descansar caminando en plano.</td></tr>
+              <tr><td>3</td><td>Se detiene a descansar después de caminar unos 100 metros o pocos minutos en plano.</td></tr>
+              <tr class="scale-highlight"><td>4</td><td>Demasiada disnea para salir de casa, o disnea al vestirse/desvestirse.</td></tr>
+            </table>
+            <p class="muted" style="font-size:11.5px; margin:6px 0 0;">El paciente progresó de mMRC 3 a mMRC 4 — por eso se calificó como agravamiento real, no solo una molestia leve.</p>
+          </div>
+        `
       },
       {
         titulo: '🩺 Examen físico',
@@ -89,17 +108,24 @@ const HOSPITAL_SESIONES = [
           <p><strong>Signos vitales:</strong> SpO2 94% (con cánula binasal a 1 L/min — en emergencia había llegado a estar sobre 87% sin ese soporte), FC 74, FR 21, PA 120/60, T° 37.5°C.</p>
           <p><strong>Auscultación pulmonar:</strong> crépitos tipo velcro, gruesos, predominio en bases y en la parte posterior — signo clásico de fibrosis pulmonar.</p>
           <p><strong>Orden de examen que pidió el Dr. (para no saltarse nada):</strong> estado general → piel → tórax (buscando tirajes y adenopatías) → cardiovascular → abdomen → genitourinario (puño percusión) → sistema nervioso central (Glasgow y orientación en tiempo/espacio/persona).</p>
+
+          <div class="formula-box">
+            <div class="fb-label">🫁 FiO2 según litros de cánula binasal</div>
+            <table class="scale-table">
+              <tr><td>Aire ambiental</td><td>21%</td></tr>
+              <tr><td>1 L/min</td><td>24%</td></tr>
+              <tr><td>2 L/min</td><td>28%</td></tr>
+              <tr><td>3 L/min</td><td>32%</td></tr>
+              <tr><td>4 L/min</td><td>36%</td></tr>
+              <tr><td>5 L/min</td><td>40%</td></tr>
+            </table>
+            <p class="muted" style="font-size:11.5px; margin:6px 0 0;">Sube ~4% por cada litro. El tope útil de la cánula binasal es 5-6 L/min (~40-44%); dar más litros no aumenta el aporte real.</p>
+          </div>
         `,
         extras: [
           {
-            tipo: 'vocab',
-            items: [
-              { term: 'FiO2', def: 'Fracción inspirada de oxígeno. Al aire ambiental es 21%. Con cánula binasal sube aproximadamente 4% por cada litro: 1L=24%, 2L=28%, 3L=32%, 4L=36%, 5L=40%. El tope útil de la cánula binasal es 5-6 L/min (~40-44%); más que eso no aumenta el aporte real.' }
-            ]
-          },
-          {
             tipo: 'nota',
-            texto: 'Sobre el orden de orientación (pregunta que quedó abierta en clase): la enseñanza clásica de semiología es que primero se pierde la orientación en tiempo, luego en espacio, y lo último en perderse es el reconocimiento de las personas. Vale la pena confirmarlo con tu docente o con Harrison antes de usarlo como dato de examen, porque en el audio no llegó a confirmarse la respuesta.'
+            texto: 'Confirmado sobre el orden de orientación: la enseñanza clásica de semiología es que primero se pierde la orientación en tiempo, luego en espacio, y lo último en perderse es el reconocimiento de las personas (incluyéndose a uno mismo).'
           }
         ]
       },
@@ -115,6 +141,36 @@ const HOSPITAL_SESIONES = [
             <li><strong>Compensación esperada:</strong> si el bicarbonato baja, el cuerpo intenta compensar bajando también el CO2 (para no acidificar más la sangre). El descenso del CO2 debería ser aproximadamente proporcional al descenso del bicarbonato.</li>
           </ol>
           <p><strong>Lectura final del caso:</strong> acidosis metabólica ya compensada (por eso el pH terminó normal a pesar del bicarbonato y CO2 bajos).</p>
+
+          <div class="aga-diagram">
+            <div class="aga-label">🧭 Diagrama de compensación (los 4 trastornos primarios)</div>
+            <div class="aga-grid">
+              <div class="aga-cell">
+                <div class="aga-title">Acidosis respiratoria</div>
+                <div class="aga-row">pH <span class="arrow down">↓</span></div>
+                <div class="aga-row">PaCO2 <span class="arrow up primary">↑</span> <em>(primario)</em></div>
+                <div class="aga-row">HCO3 <span class="arrow up">↑</span> <em>(compensa)</em></div>
+              </div>
+              <div class="aga-cell">
+                <div class="aga-title">Alcalosis respiratoria</div>
+                <div class="aga-row">pH <span class="arrow up">↑</span></div>
+                <div class="aga-row">PaCO2 <span class="arrow down primary">↓</span> <em>(primario)</em></div>
+                <div class="aga-row">HCO3 <span class="arrow down">↓</span> <em>(compensa)</em></div>
+              </div>
+              <div class="aga-cell aga-current">
+                <div class="aga-title">Acidosis metabólica <span class="aga-tag">← este caso</span></div>
+                <div class="aga-row">pH <span class="arrow down">↓</span></div>
+                <div class="aga-row">HCO3 <span class="arrow down primary">↓</span> <em>(primario)</em></div>
+                <div class="aga-row">PaCO2 <span class="arrow down">↓</span> <em>(compensa)</em></div>
+              </div>
+              <div class="aga-cell">
+                <div class="aga-title">Alcalosis metabólica</div>
+                <div class="aga-row">pH <span class="arrow up">↑</span></div>
+                <div class="aga-row">HCO3 <span class="arrow up primary">↑</span> <em>(primario)</em></div>
+                <div class="aga-row">PaCO2 <span class="arrow up">↑</span> <em>(compensa)</em></div>
+              </div>
+            </div>
+          </div>
         `,
         extras: [
           {
@@ -126,11 +182,12 @@ const HOSPITAL_SESIONES = [
           },
           {
             tipo: 'tarea',
-            texto: 'Revisar la fórmula del anión gap — el Dr. lo dejó pendiente ("vamos a quedar hasta ahí, pero quiero que revisen todo") para cuando el trastorno primario es metabólico.'
+            texto: 'Revisar la fórmula del anión gap — el Dr. lo dejó pendiente ("vamos a quedar hasta ahí, pero quiero que revisen todo") para cuando el trastorno primario es metabólico.',
+            respuestaKey: 'tarea-aniongap'
           },
           {
             tipo: 'nota',
-            texto: 'Para completar lo que quedó pendiente: el anión gap se calcula como Na⁺ − (Cl⁻ + HCO3⁻), con un valor normal aproximado de 8 a 12 mEq/L. Se usa para subclasificar la acidosis metabólica en "con anión gap elevado" o "con anión gap normal", según la causa. Esto no se dijo así en el audio — es un complemento mío para que tengas de dónde partir, pero confírmalo con Harrison/tus guías antes de darlo por definitivo para un examen.'
+            texto: 'Para completar lo que quedó pendiente: el anión gap se calcula como Na⁺ − (Cl⁻ + HCO3⁻), con un valor normal aproximado de 8 a 12 mEq/L. Se usa para subclasificar la acidosis metabólica en "con anión gap elevado" o "con anión gap normal", según la causa. Esto no se dijo así en el audio — confírmalo con Harrison/tus guías antes de darlo por definitivo para un examen.'
           }
         ]
       },
@@ -139,18 +196,32 @@ const HOSPITAL_SESIONES = [
         cuerpo: `
           <p><strong>Radiografía normal (repaso de regiones):</strong> supraclavicular, infraclavicular, hiliar/parahiliar, cardíaca/paracardíaca (o "basales"). Una placa bien tomada tiene ángulos costofrénicos libres, el hemidiafragma derecho ~1-1.5 cm más alto que el izquierdo, y la relación cardiotorácica debe ser menor a la mitad del tórax.</p>
           <p><strong>Hallazgo en este paciente:</strong> opacidades reticulares lineales bilaterales de predominio en bases (patrón intersticial), y el tronco de la arteria pulmonar medía 2.5 (normal hasta 1.5) — sugiere hipertensión pulmonar.</p>
-          <p><strong>Tomografía:</strong> se ve "casquete apical" (engrosamiento subpleural bilateral), enfisema centrolobulillar en lóbulos superiores, engrosamiento septal interlobulillar, quistes subpleurales, y <strong>panalización ("panal de abeja") bibasal</strong> — el hallazgo más característico del patrón UIP / Fibrosis Pulmonar Idiopática. Como este paciente combina fibrosis en bases con enfisema arriba, el Dr. lo relacionó con el síndrome <strong>CPFE</strong> (combinación de enfisema y fibrosis pulmonar).</p>
+          <p><strong>Tomografía:</strong> se ve "casquete apical" <em>(engrosamiento subpleural bilateral en los vértices del pulmón)</em>, enfisema centrolobulillar en lóbulos superiores, engrosamiento septal interlobulillar, quistes subpleurales, y <strong>panalización bibasal</strong> — el hallazgo más característico del patrón UIP / Fibrosis Pulmonar Idiopática. Como este paciente combina fibrosis en bases con enfisema arriba, el Dr. lo relacionó con el síndrome <strong>CPFE</strong> <em>(Combined Pulmonary Fibrosis and Emphysema — combinación de enfisema arriba y fibrosis en bases)</em>.</p>
           <p><strong>Dato anatómico que remarcó:</strong> el lóbulo medio del pulmón derecho <strong>solo se examina bien por cara anterior</strong> — si solo auscultas espalda, te lo pierdes.</p>
+
+          <div class="schematic-box">
+            <div class="sc-label">🖼️ Ilustración esquemática de panalización (no es una imagen médica real)</div>
+            <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:420px; height:auto; display:block; margin:8px auto 4px;">
+              <rect x="4" y="4" width="312" height="132" rx="10" fill="#efece4" stroke="#c9c2b4" stroke-width="1.5"/>
+              <text x="12" y="20" font-family="Inter, sans-serif" font-size="10" fill="#6b6b82">Corte de TC — bases pulmonares (esquema)</text>
+              <g fill="#a5333c" opacity="0.75">
+                <circle cx="40" cy="90" r="9"/><circle cx="58" cy="100" r="7"/><circle cx="76" cy="88" r="10"/>
+                <circle cx="94" cy="102" r="6"/><circle cx="112" cy="92" r="9"/><circle cx="130" cy="104" r="7"/>
+                <circle cx="150" cy="90" r="10"/><circle cx="170" cy="100" r="7"/><circle cx="188" cy="88" r="9"/>
+                <circle cx="206" cy="102" r="6"/><circle cx="224" cy="92" r="9"/><circle cx="242" cy="104" r="7"/>
+                <circle cx="262" cy="90" r="9"/><circle cx="280" cy="100" r="7"/>
+              </g>
+              <text x="12" y="128" font-family="Inter, sans-serif" font-size="9.5" fill="#a5333c">● espacios quísticos agrupados = panalización ("panal de abeja")</text>
+            </svg>
+            <p class="muted" style="font-size:11.5px; margin-top:2px;">Esquema hecho para orientarte visualmente, no reemplaza ver la tomografía real del caso. Si quieres, puedes mandarme una captura de la TC que vieron en clase y la agrego como referencia real.</p>
+          </div>
         `,
         extras: [
           {
             tipo: 'vocab',
             items: [
               { term: 'Radiopaco / radiolúcido', def: 'Vocabulario de radiografía: radiopaco = zonas claras/blancas; radiolúcido = zonas oscuras.' },
-              { term: 'Hipodenso / hiperdenso', def: 'El equivalente de radiopaco/radiolúcido pero en tomografía — ahí ya no se habla de "regiones" sino de lóbulos y segmentos.' },
-              { term: 'Casquete apical', def: 'Engrosamiento subpleural bilateral en los vértices pulmonares, visible en TC.' },
-              { term: 'Panalización / panal de abeja (honeycombing)', def: 'Imágenes quísticas confluentes en las bases pulmonares — el signo tomográfico más típico del patrón UIP.' },
-              { term: 'CPFE', def: 'Combined Pulmonary Fibrosis and Emphysema — síndrome que combina enfisema (usualmente en lóbulos superiores) con fibrosis pulmonar (usualmente en bases).' }
+              { term: 'Hipodenso / hiperdenso', def: 'El equivalente de radiopaco/radiolúcido pero en tomografía — ahí ya no se habla de "regiones" sino de lóbulos y segmentos.' }
             ]
           },
           {
@@ -160,11 +231,29 @@ const HOSPITAL_SESIONES = [
         ]
       },
       {
-        titulo: '🗂️ Diagnósticos y plan de trabajo',
+        titulo: '🗂️ Diagnósticos y plan de trabajo (lo que sí se dijo en clase)',
         cuerpo: `
           <p><strong>Síndromes planteados:</strong> síndrome de dificultad respiratoria (a confirmar/descartar insuficiencia respiratoria real con AGA), síndrome parenquimal/intersticial, asma (por historia clínica, como diagnóstico adicional), y posible secuela post-tuberculosis como diagnóstico diferencial a no olvidar.</p>
           <p><strong>Se descartó:</strong> síndrome constitucional puro (no había pérdida de peso reciente reportada como síntoma principal, aunque sí se encontró al preguntar directamente).</p>
           <p><strong>Plan de trabajo pedido:</strong> placa de tórax + tomografía de tórax sin contraste, análisis de gases arteriales, hemograma, PCR (proteína C reactiva), cultivo de esputo para gérmenes comunes, BK/PCR en esputo para descartar TB, y panel viral. Los cultivos y el panel viral salieron negativos, alejando la posibilidad de infección activa como causa de la exacerbación.</p>
+        `
+      },
+      {
+        titulo: '💊 Plan de tratamiento sugerido',
+        cuerpo: `
+          <p class="muted" style="margin-top:-4px;">El Dr. no llegó a dar el plan de tratamiento en estos dos audios (dijiste que en los audios anteriores sí lo mencionó). Mientras me pasas esos, arme esto como punto de partida basado en guías generales para fibrosis pulmonar / CPFE — no reemplaza lo que diga tu docente ni el manejo real del equipo tratante.</p>
+          <ul>
+            <li><strong>Terapia antifibrótica</strong> (pirfenidona o nintedanib) — enlentece la progresión de la fibrosis, según la guía ATS/ERS/JRS/ALAT 2022 para Fibrosis Pulmonar Idiopática.</li>
+            <li><strong>Oxígeno suplementario</strong> si hay hipoxemia en reposo o al esfuerzo (ya lo está recibiendo con cánula binasal).</li>
+            <li><strong>Rehabilitación pulmonar</strong> para mejorar tolerancia al ejercicio y calidad de vida.</li>
+            <li><strong>Vacunación:</strong> influenza anual, antineumocócica y COVID-19 — reduce el riesgo de exacerbaciones infecciosas.</li>
+            <li><strong>Evaluar y tratar comorbilidades:</strong> confirmar/manejar la posible hipertensión pulmonar, descartar reflujo (ERGE) como contribuyente de la tos, y continuar el control del asma de base.</li>
+            <li><strong>Evitar exposición a irritantes:</strong> dejar la exposición ocupacional a solventes/pinturas, evitar humo de tabaco y contaminación ambiental.</li>
+            <li><strong>Vigilancia de secuelas de TB</strong> dado el antecedente.</li>
+            <li><strong>Evaluación para trasplante pulmonar</strong> si hay progresión pese al tratamiento — el CPFE suele tener peor pronóstico que la fibrosis sola, así que conviene no esperar demasiado para la referencia.</li>
+            <li><strong>Seguimiento</strong> con pruebas de función pulmonar y tomografía seriadas.</li>
+          </ul>
+          <p class="muted" style="font-size:12px;">Verifica esto contra Harrison, Farreras o la guía ATS/ERS/JRS/ALAT antes de usarlo como respuesta de examen, y reemplázalo apenas tengas el audio donde el Dr. sí da el plan real.</p>
         `
       }
     ]
@@ -172,12 +261,24 @@ const HOSPITAL_SESIONES = [
 ];
 
 /* ---------- render de las cajas de color dentro de una sección ---------- */
-function renderHospitalExtra(ex){
+function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
+  if(ex.tipo === 'pregunta'){
+    return `
+      <div class="pregunta-box">
+        <div class="pb-label">❗ Preguntas obligatorias del Dr.</div>
+        <ul class="pb-list">
+          ${ex.items.map(it => `<li><span class="pb-q">${it.q}</span><span class="pb-why">→ ${it.por}</span></li>`).join('')}
+        </ul>
+        ${noteBlockHTML('hospital::' + sesionId + '::preguntas::notas', 'Anota aquí lo que ya investigaste o preguntaste de esta lista…')}
+      </div>`;
+  }
   if(ex.tipo === 'tarea'){
+    const key = 'hospital::' + sesionId + '::' + (ex.respuestaKey || ('tarea-sec' + secIdx + '-' + exIdx));
     return `
       <div class="tarea-box">
         <div class="tb-label">📌 Tarea del Dr.</div>
         <p>${ex.texto}</p>
+        ${noteBlockHTML(key, 'Escribe aquí tu respuesta cuando la resuelvas (para marcarla como hecha)…')}
       </div>`;
   }
   if(ex.tipo === 'vocab'){
@@ -190,7 +291,7 @@ function renderHospitalExtra(ex){
   if(ex.tipo === 'nota'){
     return `
       <div class="nota-claude-box">
-        <div class="nc-label">💡 Complemento (Claude)</div>
+        <div class="nc-label">💡 Nota aparte</div>
         <p>${ex.texto}</p>
       </div>`;
   }
@@ -214,7 +315,7 @@ function renderHospitalSesion(id){
     <div class="kcard hl-zone" data-hl-key="${s.id}::sec${i}">
       <h3>${sec.titulo}</h3>
       ${sec.cuerpo}
-      ${(sec.extras || []).map(renderHospitalExtra).join('')}
+      ${(sec.extras || []).map((ex, j) => renderHospitalExtra(ex, s.id, i, j)).join('')}
     </div>
   `).join('');
 
@@ -222,16 +323,6 @@ function renderHospitalSesion(id){
     <span class="eyebrow">Hospital · Semana ${s.semana} · ${s.dia}</span>
     <h1 class="page-title">📓 ${s.titulo}</h1>
     <p class="page-sub">${s.resumen}</p>
-
-    <div class="kcard" style="background: var(--cream); border-style:dashed;">
-      <p class="muted" style="margin:0; font-size:12.5px;">
-        Reorganizado por tema a partir de tus audios transcritos (no en el orden exacto de la conversación).
-        <span style="color:#9a6b1a; font-weight:700;">Naranja</span> = algo que el Dr. dejó como tarea o pendiente ·
-        <span style="color:#2f7a57; font-weight:700;">Verde</span> = vocabulario o sufijos nuevos ·
-        <span style="color:#5c4fb8; font-weight:700;">Morado</span> = un complemento mío, siempre marcado aparte de lo que dijo el Dr.
-        Puedes seleccionar cualquier texto para resaltarlo (3 colores) igual que en el resto de MEDCORE.
-      </p>
-    </div>
 
     ${seccionesHTML}
 
