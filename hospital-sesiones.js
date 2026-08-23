@@ -253,6 +253,10 @@ const HOSPITAL_SESIONES = [
           },
           {
             tipo: 'nota',
+            texto: 'Qué es exactamente el patrón UIP: es el patrón radiológico/histológico más característico de la Fibrosis Pulmonar Idiopática (aunque también puede verse en otras EPID, como una neumonitis por hipersensibilidad crónica). En TC se define por: panalización (el hallazgo más específico), distribución basal y subpleural, bronquiectasias/bronquioloectasias de tracción, y ausencia de datos que sugieran otra causa (sin vidrio esmerilado extenso ni micronódulos). Si el patrón sale "típico" en la TC, a veces permite el diagnóstico sin necesidad de biopsia.'
+          },
+          {
+            tipo: 'nota',
             texto: 'Dato para tu repaso: el síndrome CPFE tiene una particularidad fisiológica — el enfisema puede "compensar" en la espirometría los volúmenes pulmonares que la fibrosis reduce, por lo que a veces la función pulmonar luce menos afectada de lo que en realidad está el pulmón. Vale la pena profundizarlo en Harrison o Farreras para tu exposición.'
           }
         ]
