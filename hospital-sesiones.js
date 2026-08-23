@@ -200,20 +200,9 @@ const HOSPITAL_SESIONES = [
           <p><strong>Dato anatómico que remarcó:</strong> el lóbulo medio del pulmón derecho <strong>solo se examina bien por cara anterior</strong> — si solo auscultas espalda, te lo pierdes.</p>
 
           <div class="schematic-box">
-            <div class="sc-label">🖼️ Ilustración esquemática de panalización (no es una imagen médica real)</div>
-            <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:420px; height:auto; display:block; margin:8px auto 4px;">
-              <rect x="4" y="4" width="312" height="132" rx="10" fill="#efece4" stroke="#c9c2b4" stroke-width="1.5"/>
-              <text x="12" y="20" font-family="Inter, sans-serif" font-size="10" fill="#6b6b82">Corte de TC — bases pulmonares (esquema)</text>
-              <g fill="#a5333c" opacity="0.75">
-                <circle cx="40" cy="90" r="9"/><circle cx="58" cy="100" r="7"/><circle cx="76" cy="88" r="10"/>
-                <circle cx="94" cy="102" r="6"/><circle cx="112" cy="92" r="9"/><circle cx="130" cy="104" r="7"/>
-                <circle cx="150" cy="90" r="10"/><circle cx="170" cy="100" r="7"/><circle cx="188" cy="88" r="9"/>
-                <circle cx="206" cy="102" r="6"/><circle cx="224" cy="92" r="9"/><circle cx="242" cy="104" r="7"/>
-                <circle cx="262" cy="90" r="9"/><circle cx="280" cy="100" r="7"/>
-              </g>
-              <text x="12" y="128" font-family="Inter, sans-serif" font-size="9.5" fill="#a5333c">● espacios quísticos agrupados = panalización ("panal de abeja")</text>
-            </svg>
-            <p class="muted" style="font-size:11.5px; margin-top:2px;">Esquema hecho para orientarte visualmente, no reemplaza ver la tomografía real del caso. Si quieres, puedes mandarme una captura de la TC que vieron en clase y la agrego como referencia real.</p>
+            <div class="sc-label">🖼️ Imagen referencial de panalización en TC <em>(no es la tomografía de este paciente — solo para que veas cómo se ve el patrón)</em></div>
+            <img src="assets/referencia-panalizacion-tc.png" alt="Imagen referencial de panalización en TC" style="max-width:280px; width:100%; border-radius:8px; display:block; margin:8px auto 4px; border:1px solid var(--line);">
+            <p class="muted" style="font-size:11.5px; margin-top:2px;">Imagen de referencia general — no corresponde al paciente de este caso. Si consigues la TC real que vieron en clase, mándamela y la reemplazo.</p>
           </div>
         `,
         extras: [
@@ -240,6 +229,7 @@ const HOSPITAL_SESIONES = [
       },
       {
         titulo: '💊 Plan de tratamiento sugerido',
+        tono: 'plan',
         cuerpo: `
           <p class="muted" style="margin-top:-4px;">El Dr. no llegó a dar el plan de tratamiento en estos dos audios (dijiste que en los audios anteriores sí lo mencionó). Mientras me pasas esos, arme esto como punto de partida basado en guías generales para fibrosis pulmonar / CPFE — no reemplaza lo que diga tu docente ni el manejo real del equipo tratante.</p>
           <ul>
@@ -260,6 +250,83 @@ const HOSPITAL_SESIONES = [
   }
 ];
 
+/* ---------- respuesta de una tarea: texto + imágenes, sincronizado entre dispositivos ---------- */
+function tareaImagesGet(key){
+  try{ return JSON.parse(notesAdapter.get(key + '::img') || '[]'); } catch(e){ return []; }
+}
+function tareaImagesSet(key, arr){
+  notesAdapter.set(key + '::img', JSON.stringify(arr));
+}
+function tareaImageThumbHTML(key, safeId, url, idx){
+  return `<span class="tarea-thumb-wrap">
+    <img src="${url}" class="tarea-thumb" onclick="window.open('${url}','_blank')">
+    <span class="tarea-thumb-remove" onclick="removeTareaImage('${key}','${safeId}',${idx})">✕</span>
+  </span>`;
+}
+function tareaResponseHTML(key, placeholder){
+  const value = notesAdapter.get(key);
+  const safeId = 'tresp-' + key.replace(/[^a-z0-9]/gi, '-');
+  const htmlValue = /<[a-z][\s\S]*>/i.test(value) ? value : value.replace(/\n/g, '<br>');
+  const images = tareaImagesGet(key);
+  return `
+    <div class="tarea-response">
+      <div class="note-head">
+        <span class="note-label">✎ Tu respuesta</span>
+        <span class="note-status" id="${safeId}-status"></span>
+      </div>
+      <div class="note-editable hl-zone" id="${safeId}" contenteditable="true" data-hl-key="note::${key}"
+        data-placeholder="${placeholder || 'Escribe tu respuesta...'}"
+        oninput="handleNoteInput('${key}','${safeId}')">${htmlValue}</div>
+      <div class="tarea-images" id="${safeId}-images">${images.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('')}</div>
+      <label class="tarea-upload-btn">
+        📎 Adjuntar imagen
+        <input type="file" accept="image/*" multiple style="display:none" onchange="handleTareaImageUpload(event, '${key}', '${safeId}')">
+      </label>
+      <div class="tarea-upload-status" id="${safeId}-upload-status"></div>
+    </div>
+  `;
+}
+async function handleTareaImageUpload(ev, key, safeId){
+  const files = Array.from(ev.target.files || []);
+  if(!files.length) return;
+  const statusEl = document.getElementById(safeId + '-upload-status');
+
+  if(!currentUser || typeof fbStorage === 'undefined' || !fbStorage){
+    statusEl.textContent = 'Inicia sesión arriba (correo + contraseña) para subir imágenes y verlas en tus otros dispositivos.';
+    ev.target.value = '';
+    return;
+  }
+
+  statusEl.textContent = 'Subiendo…';
+  const current = tareaImagesGet(key);
+  for(const file of files){
+    try{
+      const cleanKey = key.replace(/[^a-zA-Z0-9:_-]/g, '_');
+      const path = 'hospital-uploads/' + currentUser.uid + '/' + cleanKey + '/' + Date.now() + '-' + file.name;
+      const ref = fbStorage.ref().child(path);
+      await ref.put(file);
+      const url = await ref.getDownloadURL();
+      current.push(url);
+    } catch(err){
+      statusEl.textContent = 'No se pudo subir una imagen — revisa tu conexión e inténtalo de nuevo.';
+      console.warn('Error subiendo imagen de tarea:', err);
+    }
+  }
+  tareaImagesSet(key, current);
+  const imgWrap = document.getElementById(safeId + '-images');
+  if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
+  statusEl.textContent = current.length ? 'Listo ✓' : '';
+  setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 2500);
+  ev.target.value = '';
+}
+function removeTareaImage(key, safeId, idx){
+  const current = tareaImagesGet(key);
+  current.splice(idx, 1);
+  tareaImagesSet(key, current);
+  const imgWrap = document.getElementById(safeId + '-images');
+  if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
+}
+
 /* ---------- render de las cajas de color dentro de una sección ---------- */
 function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
   if(ex.tipo === 'pregunta'){
@@ -278,7 +345,7 @@ function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
       <div class="tarea-box">
         <div class="tb-label">📌 Tarea del Dr.</div>
         <p>${ex.texto}</p>
-        ${noteBlockHTML(key, 'Escribe aquí tu respuesta cuando la resuelvas (para marcarla como hecha)…')}
+        ${tareaResponseHTML(key, 'Escribe tu respuesta cuando la resuelvas, o adjunta una foto…')}
       </div>`;
   }
   if(ex.tipo === 'vocab'){
@@ -312,7 +379,7 @@ function renderHospitalSesion(id){
   if(!s){ wrap.innerHTML = '<p class="muted">Esta sesión todavía no existe.</p>'; return; }
 
   const seccionesHTML = s.secciones.map((sec, i) => `
-    <div class="kcard hl-zone" data-hl-key="${s.id}::sec${i}">
+    <div class="kcard ${sec.tono === 'plan' ? 'plan-tratamiento-card' : ''} hl-zone" data-hl-key="${s.id}::sec${i}">
       <h3>${sec.titulo}</h3>
       ${sec.cuerpo}
       ${(sec.extras || []).map((ex, j) => renderHospitalExtra(ex, s.id, i, j)).join('')}
