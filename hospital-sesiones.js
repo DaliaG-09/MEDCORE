@@ -37,6 +37,7 @@ const HOSPITAL_SESIONES = [
         titulo: '❗ Preguntas que sí o sí debes hacer, según el Dr.',
         cuerpo: `
           <p class="muted" style="margin-top:-4px;">Esto es distinto de la lista de antecedentes de abajo: acá está literalmente lo que el Dr. remarcó como pregunta obligatoria, con su propia justificación, para que la tengas de checklist antes de entrar a ver un paciente.</p>
+          <p class="mis-notas">Completé el "por qué" de cada una con lo que tenías anotado en tu cuaderno — donde decía "buscar", ya lo investigué.</p>
         `,
         extras: [
           {
@@ -45,15 +46,23 @@ const HOSPITAL_SESIONES = [
               { q: '¿Qué tipo de compuesto o elemento usaba en su trabajo (pinturas, tóner, thinner, solventes)? ¿Usaba mascarilla?', por: 'Exposición ocupacional a químicos como factor de riesgo respiratorio.' },
               { q: '¿Tiene algún hábito nocivo? Si fuma: ¿desde qué edad, cuántos cigarrillos al día, hasta qué edad? Si toma: ¿con qué frecuencia?', por: 'Para calcular el pack-year y estimar riesgo cardíaco, EPOC y cáncer pulmonar.' },
               { q: '¿Tiene animales en casa? (perro, gato)', por: 'El pelaje puede exacerbar el fenotipo alérgico del asma.' },
-              { q: '¿Hay zonas húmedas en la casa? (manchas oscuras o blancas/salitre en las paredes)', por: 'Puede indicar neumonitis por hipersensibilidad — el paciente no siempre lo va a mencionar solo.' },
-              { q: '¿Hay aves en casa o en casa de los vecinos? (gallinas, palomas)', por: 'Antígenos aviares como causa de hipersensibilidad, aunque no las crie él mismo.' },
-              { q: '¿En qué zona vive? (industrial, comercial, cerca de pollerías, etc.)', por: 'Contaminación y humo ambiental como factor de riesgo adicional.' },
+              { q: '¿Hay zonas húmedas en la casa? (manchas oscuras o blancas/salitre en las paredes)', por: 'Relacionado con hipersensibilidad tipo PIT — puede no mencionarlo si no se le pregunta directamente.' },
+              { q: '¿Hay aves en casa o en casa de los vecinos? (gallinas, palomas)', por: 'Antígenos aviares → Neumonitis por sensibilidad (PIT), aunque no las críe él mismo, sino un vecino.' },
+              { q: '¿En qué zona vive? (industrial, comercial — por ejemplo pollerías)', por: 'Contaminación y humo ambiental como factor de riesgo adicional.' },
               { q: '¿Consume drogas?', por: 'Antecedente tóxico estándar de la anamnesis.' },
-              { q: 'Conducta sexual: ¿cuántas parejas/relaciones sexuales ha tenido?', por: 'El Dr. remarcó que en pacientes mayores sin hijos, esto puede orientar a esterilidad asociada a enfermedades congénitas (ej. déficit de alfa-1-antitripsina en bronquiectasias sin causa clara).' },
-              { q: '¿Ha viajado? ¿A dónde?', por: 'Selva, sierra o cuevas se asocian a enfermedades endémicas (fiebre amarilla, histoplasmosis, parásitos por alimentos).' },
-              { q: 'Sobre COVID: no solo si lo tuvo — ¿fue asintomático o con síntomas?, ¿fue hospitalizado?, ¿estuvo en UCI?', por: 'Lo que importa es la severidad, porque eso sugiere secuela pulmonar, no el diagnóstico en sí.' },
+              { q: 'Conducta sexual: ¿cuántas parejas/relaciones sexuales ha tenido? ¿Es estéril?', por: 'Como no tiene hijos, la esterilidad puede orientar a déficit de alfa-1-antitripsina.' },
+              { q: '¿Ha viajado? ¿A dónde?', por: 'Huánuco → histoplasmosis. Selva → fiebre amarilla. Chanchamayo → hongos (paracoccidioidomicosis). Cada zona endémica tiene su propia enfermedad asociada.' },
+              { q: 'Sobre COVID: no solo si lo tuvo — ¿fue asintomático o con síntomas?, ¿fue hospitalizado?, ¿estuvo en UCI?', por: 'Porque puede haber tenido neumonía por COVID, y eso sí deja secuela pulmonar — lo que importa es la severidad, no el diagnóstico en sí.' },
               { q: 'Antecedentes familiares: ¿asma, diabetes, hipertensión, TB en la familia?', por: 'Parte estándar de la historia, y en este caso sí salió positivo para diabetes.' }
             ]
+          },
+          {
+            tipo: 'nota',
+            texto: 'Sobre las siglas que anotaste: EPID = Enfermedad Pulmonar Intersticial Difusa (el grupo de enfermedades al que pertenece este caso — incluye la Fibrosis Pulmonar Idiopática con patrón UIP). PIT es la que usó tu Dr. para referirse a la Neumonitis por Hipersensibilidad (la reacción alérgica en el pulmón por exposición repetida a hongos/humedad o antígenos de aves) — no es una sigla estándar en la bibliografía que revisé, así que probablemente sea la forma abreviada que usa él en clase; vale la pena confirmarla directamente con él para tu examen.'
+          },
+          {
+            tipo: 'nota',
+            texto: 'Sobre Chanchamayo (lo que pediste investigar): es zona endémica confirmada de Paracoccidioidomicosis (también llamada blastomicosis sudamericana), causada por el hongo Paracoccidioides brasiliensis. En Perú se concentra en Junín (La Merced-Chanchamayo), Huánuco (Tingo María), Ucayali (Pucallpa) y Loreto — zonas de selva/ceja de selva, típicamente en trabajadores agrícolas o de zonas rurales. Se adquiere por inhalación del hongo desde el suelo.'
           }
         ]
       },
@@ -66,6 +75,7 @@ const HOSPITAL_SESIONES = [
             <li><strong>Mascotas:</strong> perro y gato.</li>
             <li><strong>Humedad en casa:</strong> sí referida.</li>
             <li><strong>Familiares:</strong> madre/padre con diabetes; no hay asma ni TB familiar confirmada.</li>
+            <li class="mis-notas">Zona donde vive: preguntar si es industrial o comercial (tú pusiste como ejemplo específico las pollerías).</li>
           </ul>
 
           <div class="formula-box">
@@ -85,9 +95,11 @@ const HOSPITAL_SESIONES = [
       {
         titulo: '🕐 Enfermedad actual: tiempo de enfermedad vs. episodio actual',
         cuerpo: `
-          <p>El Dr. insistió en <strong>separar dos cosas que suelen confundirse</strong>: el <em>tiempo de enfermedad</em> (desde cuándo existe la condición de base — en este caso, el asma desde la niñez) y el <em>episodio actual</em> (la exacerbación puntual que lo trajo al hospital, en este caso hace aproximadamente una semana).</p>
-          <p>Como el paciente tiene síntomas basales (disnea y tos con los que ya convive), hay que preguntar específicamente <strong>qué cambió</strong> en los últimos días: ¿empezó a toser más?, ¿la tos se volvió productiva?, ¿hizo fiebre?, ¿la disnea empeoró de escala? Eso es lo que define el episodio actual, no la enfermedad de fondo.</p>
+          <p>El Dr. insistió en <strong>separar dos cosas que suelen confundirse</strong>: el <em>tiempo de enfermedad</em> (desde cuándo existe la condición de base — en este caso, el asma desde la niñez) y el <em>episodio actual</em> (la exacerbación puntual que lo trajo al hospital, en este caso hace aproximadamente una semana). <span class="mis-notas">Como lo anotaste: los síntomas principales, desde cuándo se originaron, y ver si desde ahí arranca el episodio actual — eso es justo lo que se llama "enfermedad actual".</span></p>
+          <p>Como el paciente tiene síntomas basales (disnea y tos con los que ya convive), hay que preguntar específicamente <strong>qué cambió</strong> en los últimos días: ¿empezó a toser más?, ¿la tos se volvió productiva?, ¿hizo fiebre?, ¿la disnea empeoró de escala? Eso es lo que define el episodio actual, no la enfermedad de fondo. <span class="mis-notas">Tú misma marcaste en tu cuaderno que "ha faltado detallar el episodio actual" — o sea que esto quedó pendiente de completar en la historia real, no es que se te haya escapado a ti solamente.</span></p>
+          <p><span class="mis-notas">Las tres preguntas base que anotaste para arrancar el motivo de consulta: ¿cuál fue el motivo por el que vino (emergencia o consultorio)?, ¿desde cuándo tiene los síntomas?, ¿qué otros síntomas se fueron asociando/apareciendo?</span></p>
           <p>Un dato que el residente no había registrado como síntoma principal, pero que sí apareció al preguntar directamente: <strong>pérdida de peso</strong> — relevante para pensar en cronicidad/progresión de la enfermedad de base.</p>
+          <p><span class="mis-notas">El motivo de ingreso que anotaste, como síndrome: disnea + taquipnea + taquicardia.</span></p>
 
           <div class="scale-box">
             <div class="sb-label">📏 Escala mMRC de disnea <em>(Modified Medical Research Council, del 0 al 4)</em></div>
@@ -107,7 +119,17 @@ const HOSPITAL_SESIONES = [
         cuerpo: `
           <p><strong>Signos vitales:</strong> SpO2 94% (con cánula binasal a 1 L/min — en emergencia había llegado a estar sobre 87% sin ese soporte), FC 74, FR 21, PA 120/60, T° 37.5°C.</p>
           <p><strong>Auscultación pulmonar:</strong> crépitos tipo velcro, gruesos, predominio en bases y en la parte posterior — signo clásico de fibrosis pulmonar.</p>
-          <p><strong>Orden de examen que pidió el Dr. (para no saltarse nada):</strong> estado general → piel → tórax (buscando tirajes y adenopatías) → cardiovascular → abdomen → genitourinario (puño percusión) → sistema nervioso central (Glasgow y orientación en tiempo/espacio/persona).</p>
+          <p class="mis-notas">Tu repaso de semiología de ruidos agregados, tal como lo anotaste en clase:</p>
+          <ul class="mis-notas">
+            <li>Si se <strong>palpan</strong> crépitos (no solo se auscultan) → orienta a enfisema (subcutáneo).</li>
+            <li><strong>Asma:</strong> sibilancias predominan en la <strong>espiración</strong>.</li>
+            <li><strong>Roncus:</strong> también en espiración.</li>
+            <li><strong>"Piantes"</strong> (sibilancias más agudas): aparecen cuando los bronquios están bien cerrados/obstruidos.</li>
+            <li><strong>Crépitos:</strong> se escuchan en la <strong>inspiración</strong>.</li>
+            <li><strong>Subcrepitantes:</strong> indican compromiso de la vía aérea — se le pide al paciente que tosa para diferenciarlos (si cambian o desaparecen con la tos, confirman esto).</li>
+            <li><strong>Tipo velcro:</strong> compromiso intersticial — es el crepitante más grueso, el que tiene este paciente.</li>
+          </ul>
+          <p><strong>Orden de examen que pidió el Dr. (para no saltarse nada):</strong> estado general → piel → tórax (buscando tirajes y adenopatías) → cardiovascular → abdomen → genitourinario (puño percusión) → sistema nervioso central (Glasgow y orientación en tiempo/espacio/persona). <span class="mis-notas">Como lo resumiste: primero armar el síndrome o la enfermedad con los hallazgos, y de ahí recién agregar los diagnósticos diferenciales — no al revés.</span></p>
 
           <div class="formula-box">
             <div class="fb-label">🫁 FiO2 según litros de cánula binasal</div>
@@ -432,6 +454,7 @@ function renderHospitalSesion(id){
     <span class="eyebrow">Hospital · Semana ${s.semana} · ${s.dia}</span>
     <h1 class="page-title">📓 ${s.titulo}</h1>
     <p class="page-sub">${s.resumen}</p>
+    <p class="muted" style="font-size:11.5px; margin-top:-8px;">🗒️ En <span class="mis-notas" style="font-weight:700;">rosa</span>: lo que tú misma anotaste en tu cuaderno mientras se grababa el audio.</p>
 
     ${seccionesHTML}
 
