@@ -290,39 +290,58 @@ async function handleTareaImageUpload(ev, key, safeId){
   const files = Array.from(ev.target.files || []);
   if(!files.length) return;
   const statusEl = document.getElementById(safeId + '-upload-status');
+  statusEl.textContent = 'Procesando…';
 
-  if(!currentUser || typeof fbStorage === 'undefined' || !fbStorage){
-    statusEl.textContent = 'Inicia sesión arriba (correo + contraseña) para subir imágenes y verlas en tus otros dispositivos.';
-    ev.target.value = '';
-    return;
-  }
-
-  statusEl.textContent = 'Subiendo…';
   const current = tareaImagesGet(key);
-  const withTimeout = (promise, ms) => Promise.race([
-    promise,
-    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms))
-  ]);
+
   for(const file of files){
     try{
-      const cleanKey = key.replace(/[^a-zA-Z0-9:_-]/g, '_');
-      const path = 'hospital-uploads/' + currentUser.uid + '/' + cleanKey + '/' + Date.now() + '-' + file.name;
-      const ref = fbStorage.ref().child(path);
-      await withTimeout(ref.put(file), 20000);
-      const url = await withTimeout(ref.getDownloadURL(), 10000);
-      current.push(url);
+      const dataUrl = await compressImageToDataURL(file);
+      current.push(dataUrl);
     } catch(err){
-      if(err && err.message === 'timeout'){
-        statusEl.textContent = 'Se demoró demasiado — probablemente Storage no está activado en tu Firebase todavía (revisa la consola de Firebase → Storage).';
-      } else if(err && err.code === 'storage/unauthorized'){
-        statusEl.textContent = 'Firebase bloqueó la subida por permisos — hay que ajustar las reglas de Storage en la consola de Firebase.';
-      } else {
-        statusEl.textContent = 'No se pudo subir una imagen — revisa tu conexión e inténtalo de nuevo.';
-      }
-      console.warn('Error subiendo imagen de tarea:', err);
-      break;
+      statusEl.textContent = 'Esa imagen es muy pesada o no se pudo procesar — intenta con otra foto.';
+      console.warn('Error procesando imagen de tarea:', err);
     }
   }
+  tareaImagesSet(key, current);
+  const imgWrap = document.getElementById(safeId + '-images');
+  if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
+  statusEl.textContent = current.length ? 'Guardado ✓' : '';
+  setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 2500);
+  ev.target.value = '';
+}
+
+/* redimensiona y comprime la imagen en el navegador antes de guardarla como texto (base64),
+   para que quepa cómodamente dentro del límite de 1MB por nota de Firestore */
+function compressImageToDataURL(file, maxWidth = 900, startQuality = 0.65){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      const scale = Math.min(1, maxWidth / img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      let quality = startQuality;
+      let dataUrl = canvas.toDataURL('image/jpeg', quality);
+      // si sigue muy pesada, bajamos calidad hasta que quepa (máx. ~700KB para dejar margen)
+      let attempts = 0;
+      while(dataUrl.length > 700000 && attempts < 4){
+        quality -= 0.15;
+        dataUrl = canvas.toDataURL('image/jpeg', Math.max(quality, 0.2));
+        attempts++;
+      }
+      if(dataUrl.length > 900000){ reject(new Error('too-large')); return; }
+      resolve(dataUrl);
+    };
+    img.onerror = () => { URL.revokeObjectURL(objectUrl); reject(new Error('load-error')); };
+    img.src = objectUrl;
+  });
+}
   tareaImagesSet(key, current);
   const imgWrap = document.getElementById(safeId + '-images');
   if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
