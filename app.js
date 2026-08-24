@@ -995,12 +995,14 @@ function renderTema(id){
         <h1 class="page-title">${t.nombre}</h1>
       </div>
       <div class="toolbar">
-        <div class="btn-icon" onclick="navCuaderno('tema','${t.id}')">📓 Cuaderno de clase</div>
+        <div class="btn-icon" onclick="navCuaderno('tema','${t.id}')">⛶ Cuaderno a pantalla completa</div>
         ${t.casosClinicos ? `<div class="btn-icon" onclick="navCasos('${t.id}')">🩺 Casos clínicos</div>` : ''}
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${t.estudiado ? 'done' : ''}" onclick="toggleEstudiadoTema('${t.id}')">${t.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
       </div>
     </div>
+
+    ${inlineCuadernoHTML(t.id + '::cuaderno-clase', 'ic-tema-' + t.id, 'Escribe aquí mientras lees')}
 
     <div class="section-toc" id="tema-toc"></div>
 
@@ -1038,6 +1040,7 @@ function renderTema(id){
   `;
   buildSectionToc('view-tema-content', 'tema-toc');
   markHighlightZones('view-tema-content', t.id);
+  initInlineCuaderno(t.id + '::cuaderno-clase', 'ic-tema-' + t.id);
 }
 function toggleEstudiadoTema(id){
   const t = getTema(id);
@@ -1061,12 +1064,14 @@ function renderEnfermedad(id){
       <div class="toolbar">
         <div class="btn-icon" onclick="navCasos('${e.id}')">🩺 Casos clínicos</div>
         <div class="btn-icon" onclick="navQuiz('${e.id}')">🧠 Ponte a prueba</div>
-        <div class="btn-icon" onclick="navCuaderno('enfermedad','${e.id}')">📓 Cuaderno de clase</div>
+        <div class="btn-icon" onclick="navCuaderno('enfermedad','${e.id}')">⛶ Cuaderno a pantalla completa</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${e.estudiado ? 'done' : ''}" onclick="toggleEstudiado('${e.id}', true)">${e.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
         <div class="star" style="font-size:24px" onclick="toggleFavorito('${e.id}', true)">${e.favorito ? '★' : '☆'}</div>
       </div>
     </div>
+
+    ${inlineCuadernoHTML(e.id + '::cuaderno-clase', 'ic-enf-' + e.id, 'Escribe aquí mientras lees')}
 
     ${e.relacionadas && e.relacionadas.length ? `
       <div class="mcard">
@@ -1139,6 +1144,8 @@ function renderEnfermedad(id){
   markHighlightZones('panel-profundo', e.id);
   markHighlightZones('panel-repaso', e.id);
   markHighlightZones('panel-imprescindible', e.id);
+
+  initInlineCuaderno(e.id + '::cuaderno-clase', 'ic-enf-' + e.id);
 }
 
 /* ---------- dictado por voz para "Apuntes del doctor" (Chrome/Android; no soportado en Safari/iOS) ---------- */
