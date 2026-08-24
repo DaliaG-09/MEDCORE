@@ -30,13 +30,13 @@ const notebookAdapter = {
 };
 
 function navCuaderno(sourceType, id){
-  const nombre = sourceType === 'tema' ? getTema(id).nombre : getEnfermedad(id).nombre;
+  const nombre = sourceType === 'tema' ? getTema(id).nombre : sourceType === 'hospital' ? getHospitalSesion(id).titulo : getEnfermedad(id).nombre;
   navPush('cuaderno', sourceType + '::' + id, 'Cuaderno — ' + nombre);
 }
 
 function renderCuaderno(compositeId){
   const [sourceType, id] = compositeId.split('::');
-  const nombre = sourceType === 'tema' ? getTema(id).nombre : getEnfermedad(id).nombre;
+  const nombre = sourceType === 'tema' ? getTema(id).nombre : sourceType === 'hospital' ? getHospitalSesion(id).titulo : getEnfermedad(id).nombre;
   const key = id + '::cuaderno-clase';
   const wrap = document.getElementById('view-cuaderno-content');
 
