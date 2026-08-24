@@ -723,7 +723,7 @@ function renderHospitalSesion(id){
   `).join('');
 
   const cuadernoKey = s.id + '::cuaderno-clase';
-  const cuadernoWidgetId = 'ic-' + s.id;
+  const cuadernoWidgetId = 'apuntes-' + s.id;
 
   wrap.innerHTML = `
     ${volverBtnHTML()}
@@ -733,20 +733,21 @@ function renderHospitalSesion(id){
         <h1 class="page-title">📓 ${s.titulo}</h1>
       </div>
       <div class="toolbar">
-        <div class="btn-icon" onclick="navCuaderno('hospital','${s.id}')">⛶ Cuaderno a pantalla completa</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
       </div>
     </div>
     <p class="page-sub">${s.resumen}</p>
     <p class="muted" style="font-size:11.5px; margin-top:-8px;">🗒️ En <span class="mis-notas" style="font-weight:700;">rosa</span>: lo que tú misma anotaste en tu cuaderno mientras se grababa el audio.</p>
 
-    ${inlineCuadernoHTML(cuadernoKey, cuadernoWidgetId, 'Escribe aquí mientras lees — ideal para talleres')}
-
     ${seccionesHTML}
 
-    ${noteBlockHTML('hospital::' + s.id + '::apuntes', 'Escribe aquí tus propias notas, dudas o lo que quieras recordar de este día de hospital…')}
+    <div class="section-block">
+      <h3>✎ Mis apuntes</h3>
+      <p class="muted" style="font-size:12px; margin-top:-6px;">Escribe con lápiz/dedo, pega (Ctrl+V) o sube una foto — todo en el mismo lugar.</p>
+      ${cuadernoWidgetHTML(cuadernoKey, cuadernoWidgetId, '55vh')}
+    </div>
   `;
 
-  initInlineCuaderno(cuadernoKey, cuadernoWidgetId);
+  initCuaderno(cuadernoKey, cuadernoWidgetId);
   restoreZoneHighlights('#view-hospital-sesion-content');
 }
