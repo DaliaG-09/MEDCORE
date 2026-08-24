@@ -669,6 +669,18 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .notebook-canvas{ display:block; touch-action:none; cursor:crosshair; width:100%; }
 .notebook-more-wrap{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px; }
 
+/* ---------- caja para tipear texto con teclado dentro del cuaderno ---------- */
+.notebook-textbox{
+  margin-top:10px; padding:10px; border:1.5px solid var(--cobalt-line); border-radius: var(--radius-md);
+  background: var(--cobalt-soft);
+}
+.notebook-textbox textarea{
+  width:100%; resize:vertical; border:1px solid var(--line); border-radius: var(--radius-sm);
+  padding:8px 10px; font-family: var(--font-body); font-size:13.5px; background:#fff; color: var(--ink);
+}
+.notebook-textbox-actions{ display:flex; justify-content:flex-end; gap:8px; margin-top:8px; }
+:root.dark .notebook-textbox textarea{ background: var(--card); color: var(--ink); }
+
 /* ---------- cuaderno incrustado (dentro de la misma página de contenido) ---------- */
 .inline-cuaderno{
   position: sticky; top: 8px; z-index: 8; margin-bottom: 20px;
