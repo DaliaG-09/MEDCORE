@@ -667,7 +667,23 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   background:#fff; box-shadow: var(--shadow-soft); padding: 4px;
 }
 .notebook-canvas{ display:block; touch-action:none; cursor:crosshair; width:100%; }
-.notebook-more-wrap{ display:flex; justify-content:center; margin-top:14px; }
+.notebook-more-wrap{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px; }
+
+/* ---------- cuaderno incrustado (dentro de la misma página de contenido) ---------- */
+.inline-cuaderno{
+  position: sticky; top: 8px; z-index: 8; margin-bottom: 20px;
+  background: var(--card); border: 1.5px solid var(--cobalt-line); border-radius: var(--radius-lg);
+  padding: 12px 14px 14px; box-shadow: var(--shadow-soft);
+}
+.inline-cuaderno-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.inline-cuaderno-title{ font-family: var(--font-display); font-weight:800; font-size:13.5px; color: var(--cobalt); }
+.inline-cuaderno-body{ transition: max-height 0.15s ease; }
+.inline-cuaderno-body.ic-collapsed{ display:none; }
+.inline-cuaderno .notebook-toolbar{ position:static; padding:0 0 8px; margin-bottom:8px; border-bottom:1px solid var(--line); }
+.inline-cuaderno .notebook-page-wrap{ box-shadow:none; }
+@media (max-width: 860px){
+  .inline-cuaderno{ position: static; } /* en celular no queda pegado, la pantalla es muy chica para split-view cómodo */
+}
 
 /* ---------- diagrama de algoritmo / flujo de decisión ---------- */
 .algo-diagram{ display:flex; flex-direction:column; align-items:center; gap:2px; padding: 6px 0; }
@@ -714,7 +730,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   .sidebar, .topbar, .mode-tabs, .toolbar, .note-block, .search-results, .auth-bar,
   .breadcrumb, .section-toc, .mobile-nav, .quiz-controls, .back-btn, .week-pager,
   .doctor-notes, .notebook-toolbar, .notebook-more-wrap, .card-chevron, .hl-popup,
-  .excel-frame, .swipe-hint{ display:none !important; }
+  .excel-frame, .swipe-hint, .inline-cuaderno{ display:none !important; }
   .main{ padding:0; max-width:none; padding-bottom:0 !important; }
   body{ background:#fff; }
   .card, .illustration-card, .kcard, .mcard, .ccard, .pcard, .rcard, .gcard, .icard{ box-shadow:none; border-color:#ccc; }
