@@ -722,7 +722,8 @@ function renderHospitalSesion(id){
     </div>
   `).join('');
 
-  const apuntesFotosKey = 'hospital::' + s.id + '::apuntes-fotos';
+  const cuadernoKey = s.id + '::cuaderno-clase';
+  const cuadernoWidgetId = 'ic-' + s.id;
 
   wrap.innerHTML = `
     ${volverBtnHTML()}
@@ -732,40 +733,20 @@ function renderHospitalSesion(id){
         <h1 class="page-title">📓 ${s.titulo}</h1>
       </div>
       <div class="toolbar">
-        <div class="btn-icon" onclick="navCuaderno('hospital','${s.id}')">📓 Cuaderno de clase</div>
+        <div class="btn-icon" onclick="navCuaderno('hospital','${s.id}')">⛶ Cuaderno a pantalla completa</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
       </div>
     </div>
     <p class="page-sub">${s.resumen}</p>
     <p class="muted" style="font-size:11.5px; margin-top:-8px;">🗒️ En <span class="mis-notas" style="font-weight:700;">rosa</span>: lo que tú misma anotaste en tu cuaderno mientras se grababa el audio.</p>
 
+    ${inlineCuadernoHTML(cuadernoKey, cuadernoWidgetId, 'Escribe aquí mientras lees — ideal para talleres')}
+
     ${seccionesHTML}
 
     ${noteBlockHTML('hospital::' + s.id + '::apuntes', 'Escribe aquí tus propias notas, dudas o lo que quieras recordar de este día de hospital…')}
-
-    ${fotosSesionHTML(apuntesFotosKey, 'hospital-fotos-' + s.id)}
   `;
 
+  initInlineCuaderno(cuadernoKey, cuadernoWidgetId);
   restoreZoneHighlights('#view-hospital-sesion-content');
-}
-
-/* zona de fotos general para el día — independiente de si hay o no una
-   caja de "tarea" puntual (algunos días no van a tener ninguna tarea del
-   Dr., pero igual puedes querer adjuntar una foto de tu cuaderno físico
-   o de algo de la práctica). Usa el mismo sistema seguro de compresión
-   y límite acumulado que ya usan las tareas. */
-function fotosSesionHTML(key, safeId){
-  const imgs = tareaImagesGet(key);
-  return `
-    <div class="section-block" style="margin-top:18px;">
-      <h3>📎 Fotos de este día</h3>
-      <p class="muted" style="font-size:12px; margin-top:-6px;">Para cualquier foto suelta que quieras guardar de este día — de tu cuaderno físico, una imagen de un caso, lo que sea — sin necesidad de que haya una tarea puntual.</p>
-      <div class="tarea-images" id="${safeId}-images">${imgs.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('')}</div>
-      <label class="tarea-upload-btn">
-        📷 Agregar foto
-        <input type="file" accept="image/*" multiple style="display:none" onchange="handleTareaImageUpload(event, '${key}', '${safeId}')">
-      </label>
-      <div class="tarea-upload-status" id="${safeId}-upload-status"></div>
-    </div>
-  `;
 }
