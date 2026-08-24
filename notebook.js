@@ -2,22 +2,28 @@
    MEDCORE — cuaderno de clase (hoja "ilimitada")
    ------------------------------------------------------------
    Hoja larga que crece hacia abajo cuando hace falta más espacio.
-   Guarda trazos vectoriales + imágenes pegadas/subidas, en un
-   sistema de coordenadas "de página" (794 unidades de ancho) para
-   que se vea igual de nítido en el celular, la tablet o la compu.
+   Guarda trazos vectoriales + imágenes pegadas/subidas + texto
+   tipeado, en un sistema de coordenadas "de página" (794 unidades
+   de ancho) para que se vea igual de nítido en el celular, la
+   tablet o la compu.
 
-   Puede mostrarse de 2 formas:
+   Puede haber VARIOS cuadernos en la misma página a la vez (ej.
+   "Mis apuntes" + la respuesta de cada tarea) — por eso el estado
+   de cada uno vive en cuadernoStates[widgetId], no en una sola
+   variable global.
+
+   Puede mostrarse de 3 formas, todas comparten el mismo motor:
    - Página completa (navCuaderno) — para escribir con más espacio.
-   - Incrustado (inlineCuadernoHTML) — pegado dentro de la misma
-     página de contenido (ej. una sesión de hospital), con scroll
-     propio y position:sticky, para poder leer y escribir a la vez
-     sin salir de la página. Ideal para talleres.
+   - Incrustada y sticky (inlineCuadernoHTML) — pegada arriba de
+     una página de contenido, para leer y escribir a la vez.
+   - Chica, dentro de una tarjeta (cuadernoWidgetHTML directo) —
+     ej. la respuesta de una tarea puntual.
    ============================================================ */
 
 const PAGE_WIDTH = 794;   // ancho virtual de la "hoja" (tipo A4 a 96dpi)
 const PAGE_HEIGHT_STEP = 700; // cuánto crece la hoja cada vez que pides más espacio
 const IMG_BUDGET_TOTAL = 850000; // presupuesto total seguro para todas las imágenes de UN cuaderno (deja margen bajo el límite de Firestore, ~1MB)
-let cuadernoState = null; // { canvas, ctx, wrapId, strokes, images, current, color, size, pageHeight, key }
+let cuadernoStates = {}; // widgetId -> { canvas, ctx, strokes, images, texts, current, color, size, pageHeight, key }
 
 const notebookAdapter = {
   get(key){
@@ -60,7 +66,7 @@ function renderCuaderno(compositeId){
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
       </div>
     </div>
-    <p class="page-sub">Escribe, dibuja, pega (Ctrl+V) o sube una foto directo en la hoja. Se guarda solo.</p>
+    <p class="page-sub">Escribe, dibuja, pega (Ctrl+V), tipea o sube una foto directo en la hoja. Se guarda solo.</p>
     ${cuadernoWidgetHTML(key, 'notebook', '70vh')}
   `;
 
@@ -92,29 +98,31 @@ function toggleInlineCuaderno(widgetId){
   if(btn) btn.textContent = collapsed ? 'Expandir ▸' : 'Colapsar ▾';
 }
 
-/* HTML compartido del widget (toolbar + lienzo) — usado tanto en la
-   página completa como en la versión incrustada, solo cambia el alto */
+/* HTML compartido del widget (toolbar + lienzo) — usado en las 3 formas
+   de mostrar el cuaderno, solo cambia el alto. Cada botón le pasa su
+   propio widgetId, para que sepamos cuál cuaderno están operando
+   cuando hay varios en la misma página (ej. "Mis apuntes" + tareas). */
 function cuadernoWidgetHTML(key, widgetId, maxHeight){
   return `
     <div class="notebook-toolbar">
-      <span class="swatch active" style="background:#24243A" onclick="setCuadernoColor('#24243A', this)"></span>
-      <span class="swatch" style="background:#D95C65" onclick="setCuadernoColor('#D95C65', this)"></span>
-      <span class="swatch" style="background:#5267E8" onclick="setCuadernoColor('#5267E8', this)"></span>
-      <span class="swatch" style="background:#78C9A3" onclick="setCuadernoColor('#78C9A3', this)"></span>
-      <span class="swatch" style="background:#E8A93D" onclick="setCuadernoColor('#E8A93D', this)"></span>
-      <span class="swatch" style="background:#f0eef5; box-shadow: inset 0 0 0 1px #ccc;" onclick="setCuadernoColor('#f0eef5', this)" title="Claro (para modo oscuro)"></span>
+      <span class="swatch active" style="background:#24243A" onclick="setCuadernoColor('${widgetId}','#24243A', this)"></span>
+      <span class="swatch" style="background:#D95C65" onclick="setCuadernoColor('${widgetId}','#D95C65', this)"></span>
+      <span class="swatch" style="background:#5267E8" onclick="setCuadernoColor('${widgetId}','#5267E8', this)"></span>
+      <span class="swatch" style="background:#78C9A3" onclick="setCuadernoColor('${widgetId}','#78C9A3', this)"></span>
+      <span class="swatch" style="background:#E8A93D" onclick="setCuadernoColor('${widgetId}','#E8A93D', this)"></span>
+      <span class="swatch" style="background:#f0eef5; box-shadow: inset 0 0 0 1px #ccc;" onclick="setCuadernoColor('${widgetId}','#f0eef5', this)" title="Claro (para modo oscuro)"></span>
       <span class="size-sep"></span>
-      <span class="size-dot size-sm" onclick="setCuadernoSize(2, this)" title="Trazo fino"><span></span></span>
-      <span class="size-dot size-md active" onclick="setCuadernoSize(3.4, this)" title="Trazo medio"><span></span></span>
-      <span class="size-dot size-lg" onclick="setCuadernoSize(5.5, this)" title="Trazo grueso"><span></span></span>
+      <span class="size-dot size-sm" onclick="setCuadernoSize('${widgetId}',2, this)" title="Trazo fino"><span></span></span>
+      <span class="size-dot size-md active" onclick="setCuadernoSize('${widgetId}',3.4, this)" title="Trazo medio"><span></span></span>
+      <span class="size-dot size-lg" onclick="setCuadernoSize('${widgetId}',5.5, this)" title="Trazo grueso"><span></span></span>
       <span class="size-sep"></span>
       <label class="btn-icon" style="cursor:pointer;">
         📷 Imagen
-        <input type="file" accept="image/*" multiple style="display:none" onchange="handleCuadernoImageUpload(event)">
+        <input type="file" accept="image/*" multiple style="display:none" onchange="handleCuadernoImageUpload(event, '${widgetId}')">
       </label>
       <span class="btn-icon" onclick="abrirCajaTextoCuaderno('${widgetId}')">⌨️ Texto</span>
-      <span class="btn-icon" onclick="undoCuaderno()">↩ Deshacer</span>
-      <span class="btn-icon" onclick="clearCuaderno()">🗑 Borrar todo</span>
+      <span class="btn-icon" onclick="undoCuaderno('${widgetId}')">↩ Deshacer</span>
+      <span class="btn-icon" onclick="clearCuaderno('${widgetId}')">🗑 Borrar todo</span>
       <span class="notebook-save-status" id="${widgetId}-save-status"></span>
     </div>
 
@@ -131,7 +139,7 @@ function cuadernoWidgetHTML(key, widgetId, maxHeight){
     </div>
 
     <div class="notebook-more-wrap">
-      <div class="btn-icon" onclick="addCuadernoSpace()">+ Agregar más espacio a la hoja</div>
+      <div class="btn-icon" onclick="addCuadernoSpace('${widgetId}')">+ Agregar más espacio a la hoja</div>
       <span class="muted" style="font-size:11px;">También puedes pegar una imagen directo con Ctrl+V (o mantener presionado y pegar en el celular) mientras el lienzo está enfocado.</span>
     </div>
   `;
@@ -145,7 +153,7 @@ function initCuaderno(key, widgetId){
 
   const saved = notebookAdapter.get(key);
   const esOscuro = document.documentElement.classList.contains('dark');
-  cuadernoState = {
+  const state = {
     canvas, ctx, widgetId,
     strokes: saved.strokes || [],
     images: saved.images || [],
@@ -157,27 +165,28 @@ function initCuaderno(key, widgetId){
     pageHeight: saved.pageHeight || 1100,
     key
   };
+  cuadernoStates[widgetId] = state;
 
-  precargarImagenesCuaderno(() => { resizeCuaderno(); });
-  resizeCuaderno();
-  window.addEventListener('resize', resizeCuaderno);
+  precargarImagenesCuaderno(widgetId, () => { resizeCuaderno(widgetId); });
+  resizeCuaderno(widgetId);
+  window.addEventListener('resize', () => resizeCuaderno(widgetId));
 
   canvas.addEventListener('pointerdown', (ev) => {
     ev.preventDefault();
     canvas.setPointerCapture(ev.pointerId);
-    cuadernoState.current = { color: cuadernoState.color, size: cuadernoState.size, points: [pointFromEventCuaderno(ev)], _ts: Date.now() };
+    state.current = { color: state.color, size: state.size, points: [pointFromEventCuaderno(state, ev)], _ts: Date.now() };
   });
   canvas.addEventListener('pointermove', (ev) => {
-    if(!cuadernoState.current) return;
-    cuadernoState.current.points.push(pointFromEventCuaderno(ev));
-    redrawCuaderno();
-    paintStrokeCuaderno(cuadernoState.current);
+    if(!state.current) return;
+    state.current.points.push(pointFromEventCuaderno(state, ev));
+    redrawCuaderno(widgetId);
+    paintStrokeCuaderno(state, state.current);
   });
   const endStroke = () => {
-    if(!cuadernoState.current) return;
-    if(cuadernoState.current.points.length > 1) cuadernoState.strokes.push(cuadernoState.current);
-    cuadernoState.current = null;
-    saveCuaderno();
+    if(!state.current) return;
+    if(state.current.points.length > 1) state.strokes.push(state.current);
+    state.current = null;
+    saveCuaderno(widgetId);
   };
   canvas.addEventListener('pointerup', endStroke);
   canvas.addEventListener('pointercancel', endStroke);
@@ -185,55 +194,56 @@ function initCuaderno(key, widgetId){
 
   // pegar imagen con Ctrl+V (o el menú de pegar en móvil) mientras el lienzo tiene el foco
   canvas.tabIndex = 0; // para que pueda recibir foco y el evento "paste"
-  canvas.addEventListener('paste', handleCuadernoPaste);
+  canvas.addEventListener('paste', (ev) => handleCuadernoPaste(ev, widgetId));
 }
 
-function precargarImagenesCuaderno(onDone){
-  const { images } = cuadernoState;
+function precargarImagenesCuaderno(widgetId, onDone){
+  const state = cuadernoStates[widgetId];
+  const { images } = state;
   if(!images.length){ onDone(); return; }
   let pendientes = images.length;
   images.forEach((imgData, i) => {
     const im = new Image();
-    im.onload = () => { cuadernoState.imagesLoaded[i] = im; pendientes--; if(pendientes === 0) onDone(); };
+    im.onload = () => { state.imagesLoaded[i] = im; pendientes--; if(pendientes === 0) onDone(); };
     im.onerror = () => { pendientes--; if(pendientes === 0) onDone(); };
     im.src = imgData.dataUrl;
   });
 }
 
-function scaleCuaderno(){
-  const rect = cuadernoState.canvas.getBoundingClientRect();
-  return rect.width / PAGE_WIDTH;
-}
-function pointFromEventCuaderno(ev){
-  const rect = cuadernoState.canvas.getBoundingClientRect();
+function pointFromEventCuaderno(state, ev){
+  const rect = state.canvas.getBoundingClientRect();
   const s = rect.width / PAGE_WIDTH;
   return { x: (ev.clientX - rect.left) / s, y: (ev.clientY - rect.top) / s };
 }
-function resizeCuaderno(){
-  const canvas = cuadernoState.canvas;
+function resizeCuaderno(widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  const canvas = state.canvas;
   const wrapEl = canvas.parentElement;
   const displayWidth = wrapEl.clientWidth;
   const s = displayWidth / PAGE_WIDTH;
   canvas.style.width = displayWidth + 'px';
-  canvas.style.height = (cuadernoState.pageHeight * s) + 'px';
+  canvas.style.height = (state.pageHeight * s) + 'px';
   canvas.width = displayWidth * 2;
-  canvas.height = cuadernoState.pageHeight * s * 2;
-  cuadernoState.ctx.setTransform(2 * s, 0, 0, 2 * s, 0, 0);
-  redrawCuaderno();
+  canvas.height = state.pageHeight * s * 2;
+  state.ctx.setTransform(2 * s, 0, 0, 2 * s, 0, 0);
+  redrawCuaderno(widgetId);
 }
-function redrawCuaderno(){
-  const { ctx, strokes, images, imagesLoaded, texts } = cuadernoState;
-  ctx.clearRect(0, 0, PAGE_WIDTH, cuadernoState.pageHeight);
+function redrawCuaderno(widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  const { ctx, strokes, images, imagesLoaded, texts } = state;
+  ctx.clearRect(0, 0, PAGE_WIDTH, state.pageHeight);
   // las imágenes van de "fondo" — así puedes escribir/dibujar encima para anotarlas
   images.forEach((imgData, i) => {
     const im = imagesLoaded[i];
     if(im) ctx.drawImage(im, imgData.x, imgData.y, imgData.w, imgData.h);
   });
-  (texts || []).forEach(paintTextCuaderno);
-  strokes.forEach(paintStrokeCuaderno);
+  (texts || []).forEach(t => paintTextCuaderno(state, t));
+  strokes.forEach(s => paintStrokeCuaderno(state, s));
 }
-function paintTextCuaderno(t){
-  const { ctx } = cuadernoState;
+function paintTextCuaderno(state, t){
+  const { ctx } = state;
   ctx.fillStyle = t.color;
   ctx.font = (t.size || 17) + 'px "Inter", sans-serif';
   ctx.textBaseline = 'top';
@@ -242,9 +252,9 @@ function paintTextCuaderno(t){
     ctx.fillText(linea, t.x, t.y + i * lineHeight);
   });
 }
-function paintStrokeCuaderno(stroke){
+function paintStrokeCuaderno(state, stroke){
   if(stroke.points.length < 2) return;
-  const { ctx } = cuadernoState;
+  const { ctx } = state;
   ctx.strokeStyle = stroke.color;
   ctx.lineWidth = stroke.size;
   ctx.lineCap = 'round';
@@ -253,71 +263,85 @@ function paintStrokeCuaderno(stroke){
   stroke.points.forEach((p, i) => { if(i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y); });
   ctx.stroke();
 }
-function saveCuaderno(){
-  notebookAdapter.set(cuadernoState.key, { strokes: cuadernoState.strokes, images: cuadernoState.images, texts: cuadernoState.texts, pageHeight: cuadernoState.pageHeight });
-  const status = document.getElementById(cuadernoState.widgetId + '-save-status');
+function saveCuaderno(widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  notebookAdapter.set(state.key, { strokes: state.strokes, images: state.images, texts: state.texts, pageHeight: state.pageHeight });
+  const status = document.getElementById(widgetId + '-save-status');
   if(status){ status.textContent = 'guardado ✓'; setTimeout(() => { if(status) status.textContent = ''; }, 1500); }
 }
-function setCuadernoColor(color, el){
-  cuadernoState.color = color;
+function setCuadernoColor(widgetId, color, el){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  state.color = color;
   el.parentElement.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
   el.classList.add('active');
 }
-function setCuadernoSize(size, el){
-  cuadernoState.size = size;
+function setCuadernoSize(widgetId, size, el){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  state.size = size;
   el.parentElement.querySelectorAll('.size-dot').forEach(s => s.classList.remove('active'));
   el.classList.add('active');
 }
-function undoCuaderno(){
+function undoCuaderno(widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
   // deshace lo último que se haya agregado, sea trazo, texto o imagen
   const acciones = [
-    { tipo: 'texto', cuando: cuadernoState.texts.length ? cuadernoState.texts[cuadernoState.texts.length-1]._ts : -1 },
-    { tipo: 'imagen', cuando: cuadernoState.images.length ? cuadernoState.images[cuadernoState.images.length-1]._ts : -1 },
-    { tipo: 'trazo', cuando: cuadernoState.strokes.length ? cuadernoState.strokes[cuadernoState.strokes.length-1]._ts : -1 }
+    { tipo: 'texto', cuando: state.texts.length ? state.texts[state.texts.length-1]._ts : -1 },
+    { tipo: 'imagen', cuando: state.images.length ? state.images[state.images.length-1]._ts : -1 },
+    { tipo: 'trazo', cuando: state.strokes.length ? state.strokes[state.strokes.length-1]._ts : -1 }
   ].sort((a,b) => b.cuando - a.cuando);
   const ultimo = acciones[0];
   if(ultimo.cuando === -1) return; // nada que deshacer
-  if(ultimo.tipo === 'texto') cuadernoState.texts.pop();
-  else if(ultimo.tipo === 'imagen'){ cuadernoState.images.pop(); cuadernoState.imagesLoaded.pop(); }
-  else cuadernoState.strokes.pop();
-  redrawCuaderno();
-  saveCuaderno();
+  if(ultimo.tipo === 'texto') state.texts.pop();
+  else if(ultimo.tipo === 'imagen'){ state.images.pop(); state.imagesLoaded.pop(); }
+  else state.strokes.pop();
+  redrawCuaderno(widgetId);
+  saveCuaderno(widgetId);
 }
-function clearCuaderno(){
-  cuadernoState.strokes = [];
-  cuadernoState.images = [];
-  cuadernoState.imagesLoaded = [];
-  cuadernoState.texts = [];
-  redrawCuaderno();
-  saveCuaderno();
+function clearCuaderno(widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  state.strokes = [];
+  state.images = [];
+  state.imagesLoaded = [];
+  state.texts = [];
+  redrawCuaderno(widgetId);
+  saveCuaderno(widgetId);
 }
-function addCuadernoSpace(){
-  cuadernoState.pageHeight += PAGE_HEIGHT_STEP;
-  resizeCuaderno();
-  saveCuaderno();
-  const wrapEl = cuadernoState.canvas.parentElement;
+function addCuadernoSpace(widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  state.pageHeight += PAGE_HEIGHT_STEP;
+  resizeCuaderno(widgetId);
+  saveCuaderno(widgetId);
+  const wrapEl = state.canvas.parentElement;
   wrapEl.scrollTo({ top: wrapEl.scrollHeight, behavior: 'smooth' });
 }
 
 /* ---------- insertar imágenes directo en el lienzo (subida o Ctrl+V) ---------- */
-function handleCuadernoImageUpload(ev){
+function handleCuadernoImageUpload(ev, widgetId){
   const files = Array.from(ev.target.files || []);
-  files.forEach(procesarImagenParaCuaderno);
+  files.forEach(file => procesarImagenParaCuaderno(file, widgetId));
   ev.target.value = '';
 }
-function handleCuadernoPaste(ev){
+function handleCuadernoPaste(ev, widgetId){
   const items = Array.from((ev.clipboardData && ev.clipboardData.items) || []);
   const imgItem = items.find(it => it.type.startsWith('image/'));
   if(!imgItem) return; // deja que el pegado normal de texto (si lo hubiera) siga su curso
   ev.preventDefault();
   const file = imgItem.getAsFile();
-  if(file) procesarImagenParaCuaderno(file);
+  if(file) procesarImagenParaCuaderno(file, widgetId);
 }
-async function procesarImagenParaCuaderno(file){
-  const status = document.getElementById(cuadernoState.widgetId + '-save-status');
+async function procesarImagenParaCuaderno(file, widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  const status = document.getElementById(widgetId + '-save-status');
   try{
     const dataUrl = await compressImageToDataURL(file, 650, 0.55);
-    const tamanoActual = JSON.stringify(cuadernoState.images).length;
+    const tamanoActual = JSON.stringify(state.images).length;
     if(tamanoActual + dataUrl.length > IMG_BUDGET_TOTAL){
       if(status) status.textContent = 'Ya no cabe otra imagen en este cuaderno (límite de sincronización) — borra alguna.';
       return;
@@ -330,20 +354,20 @@ async function procesarImagenParaCuaderno(file){
       const h = im.height * (w / im.width);
       // se coloca debajo de todo lo que ya hay (trazos + imágenes + textos previos)
       let y = 20;
-      cuadernoState.images.forEach(other => { y = Math.max(y, other.y + other.h + 20); });
-      cuadernoState.texts.forEach(t => { y = Math.max(y, t.y + (t.h || 30) + 20); });
-      cuadernoState.strokes.forEach(s => s.points.forEach(p => { y = Math.max(y, p.y + 20); }));
+      state.images.forEach(other => { y = Math.max(y, other.y + other.h + 20); });
+      state.texts.forEach(t => { y = Math.max(y, t.y + (t.h || 30) + 20); });
+      state.strokes.forEach(s => s.points.forEach(p => { y = Math.max(y, p.y + 20); }));
       // si no cabe en la hoja actual, la agranda automáticamente
-      if(y + h + 40 > cuadernoState.pageHeight){
-        cuadernoState.pageHeight = y + h + 100;
-        resizeCuaderno();
+      if(y + h + 40 > state.pageHeight){
+        state.pageHeight = y + h + 100;
+        resizeCuaderno(widgetId);
       }
       const imgData = { dataUrl, x: 40, y, w, h, _ts: Date.now() };
-      cuadernoState.images.push(imgData);
-      cuadernoState.imagesLoaded.push(im);
-      redrawCuaderno();
-      saveCuaderno();
-      const wrapEl = cuadernoState.canvas.parentElement;
+      state.images.push(imgData);
+      state.imagesLoaded.push(im);
+      redrawCuaderno(widgetId);
+      saveCuaderno(widgetId);
+      const wrapEl = state.canvas.parentElement;
       wrapEl.scrollTo({ top: (y / PAGE_WIDTH) * wrapEl.clientWidth, behavior: 'smooth' });
     };
     im.src = dataUrl;
@@ -367,6 +391,8 @@ function cerrarCajaTextoCuaderno(widgetId){
   if(box) box.style.display = 'none';
 }
 function agregarTextoCuaderno(widgetId){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
   const textarea = document.getElementById(widgetId + '-textarea');
   const texto = textarea.value.trim();
   if(!texto){ cerrarCajaTextoCuaderno(widgetId); return; }
@@ -374,26 +400,26 @@ function agregarTextoCuaderno(widgetId){
   const size = 17;
   const lineHeight = size * 1.35;
   const lineas = texto.split('\n');
-  cuadernoState.ctx.font = size + 'px "Inter", sans-serif';
-  const anchoMax = Math.max(...lineas.map(l => cuadernoState.ctx.measureText(l).width));
+  state.ctx.font = size + 'px "Inter", sans-serif';
+  const anchoMax = Math.max(...lineas.map(l => state.ctx.measureText(l).width));
   const alto = lineas.length * lineHeight + 10;
 
   // se coloca debajo de todo lo que ya hay (trazos + imágenes + textos previos)
   let y = 20;
-  cuadernoState.images.forEach(im => { y = Math.max(y, im.y + im.h + 20); });
-  cuadernoState.texts.forEach(t => { y = Math.max(y, t.y + (t.h || 30) + 20); });
-  cuadernoState.strokes.forEach(s => s.points.forEach(p => { y = Math.max(y, p.y + 20); }));
+  state.images.forEach(im => { y = Math.max(y, im.y + im.h + 20); });
+  state.texts.forEach(t => { y = Math.max(y, t.y + (t.h || 30) + 20); });
+  state.strokes.forEach(s => s.points.forEach(p => { y = Math.max(y, p.y + 20); }));
 
-  if(y + alto + 40 > cuadernoState.pageHeight){
-    cuadernoState.pageHeight = y + alto + 100;
-    resizeCuaderno();
+  if(y + alto + 40 > state.pageHeight){
+    state.pageHeight = y + alto + 100;
+    resizeCuaderno(widgetId);
   }
 
-  cuadernoState.texts.push({ text: texto, x: 40, y, w: Math.min(anchoMax, PAGE_WIDTH - 80), h: alto, size, color: cuadernoState.color, _ts: Date.now() });
-  redrawCuaderno();
-  saveCuaderno();
+  state.texts.push({ text: texto, x: 40, y, w: Math.min(anchoMax, PAGE_WIDTH - 80), h: alto, size, color: state.color, _ts: Date.now() });
+  redrawCuaderno(widgetId);
+  saveCuaderno(widgetId);
   cerrarCajaTextoCuaderno(widgetId);
 
-  const wrapEl = cuadernoState.canvas.parentElement;
+  const wrapEl = state.canvas.parentElement;
   wrapEl.scrollTo({ top: (y / PAGE_WIDTH) * wrapEl.clientWidth, behavior: 'smooth' });
 }
