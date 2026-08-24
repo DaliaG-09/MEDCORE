@@ -1,30 +1,39 @@
 /* ============================================================
    MEDCORE — cuaderno de clase (hoja "ilimitada")
    ------------------------------------------------------------
-   A diferencia del lienzo chico de "Apuntes del doctor" (para
-   un garabato rápido), este es un cuaderno de página larga:
-   empieza del tamaño de una hoja y crece hacia abajo cada vez
-   que necesitas más espacio — como agregar hojas a una libreta.
-   Guarda trazos vectoriales (no imagen), en un sistema de
-   coordenadas "de página" (794 unidades de ancho) para que se
-   vea igual de nítido en el celular, la tablet o la compu.
+   Hoja larga que crece hacia abajo cuando hace falta más espacio.
+   Guarda trazos vectoriales + imágenes pegadas/subidas, en un
+   sistema de coordenadas "de página" (794 unidades de ancho) para
+   que se vea igual de nítido en el celular, la tablet o la compu.
+
+   Puede mostrarse de 2 formas:
+   - Página completa (navCuaderno) — para escribir con más espacio.
+   - Incrustado (inlineCuadernoHTML) — pegado dentro de la misma
+     página de contenido (ej. una sesión de hospital), con scroll
+     propio y position:sticky, para poder leer y escribir a la vez
+     sin salir de la página. Ideal para talleres.
    ============================================================ */
 
 const PAGE_WIDTH = 794;   // ancho virtual de la "hoja" (tipo A4 a 96dpi)
 const PAGE_HEIGHT_STEP = 700; // cuánto crece la hoja cada vez que pides más espacio
-let cuadernoState = null; // { canvas, ctx, strokes, current, color, size, pageHeight, key }
+const IMG_BUDGET_TOTAL = 850000; // presupuesto total seguro para todas las imágenes de UN cuaderno (deja margen bajo el límite de Firestore, ~1MB)
+let cuadernoState = null; // { canvas, ctx, wrapId, strokes, images, current, color, size, pageHeight, key }
 
 const notebookAdapter = {
   get(key){
-    try{ return JSON.parse(localStorage.getItem('medcore-notebook::' + key) || 'null') || { strokes: [], pageHeight: 1100 }; }
-    catch(err){ return { strokes: [], pageHeight: 1100 }; }
+    try{ return JSON.parse(localStorage.getItem('medcore-notebook::' + key) || 'null') || { strokes: [], images: [], pageHeight: 1100 }; }
+    catch(err){ return { strokes: [], images: [], pageHeight: 1100 }; }
   },
   set(key, data){
     localStorage.setItem('medcore-notebook::' + key, JSON.stringify(data));
     if(typeof currentUser !== 'undefined' && currentUser && typeof fbDb !== 'undefined' && firestoreReady){
+      const payload = JSON.stringify(data);
+      if(payload.length > 950000){
+        console.warn('MEDCORE: el cuaderno "' + key + '" pesa ' + payload.length + ' caracteres — puede que Firestore lo rechace.');
+      }
       fbDb.collection('users').doc(currentUser.uid).collection('notebooks').doc(key)
-        .set({ data: JSON.stringify(data), updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true })
-        .catch(() => { /* sin internet: se reintenta solo */ });
+        .set({ data: payload, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true })
+        .catch((err) => { if(err.code !== 'unavailable') console.warn('MEDCORE: no se pudo sincronizar el cuaderno "' + key + '".', err.message); });
     }
   }
 };
@@ -51,8 +60,42 @@ function renderCuaderno(compositeId){
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
       </div>
     </div>
-    <p class="page-sub">Escribe o dibuja con el dedo, mouse o lápiz. Se guarda solo. Cuando llegues al final de la hoja, agrega más espacio con el botón de abajo.</p>
+    <p class="page-sub">Escribe, dibuja, pega (Ctrl+V) o sube una foto directo en la hoja. Se guarda solo.</p>
+    ${cuadernoWidgetHTML(key, 'notebook', '70vh')}
+  `;
 
+  initCuaderno(key, 'notebook');
+}
+
+/* ---------- versión incrustada: para usar DENTRO de una página de contenido ---------- */
+function inlineCuadernoHTML(key, widgetId, titulo){
+  return `
+    <div class="inline-cuaderno">
+      <div class="inline-cuaderno-head">
+        <span class="inline-cuaderno-title">📓 ${titulo || 'Tu cuaderno mientras lees'}</span>
+        <span class="btn-icon inline-cuaderno-collapse" onclick="toggleInlineCuaderno('${widgetId}')">Colapsar ▾</span>
+      </div>
+      <div class="inline-cuaderno-body" id="${widgetId}-body">
+        ${cuadernoWidgetHTML(key, widgetId, '38vh')}
+      </div>
+    </div>
+  `;
+}
+function initInlineCuaderno(key, widgetId){
+  initCuaderno(key, widgetId);
+}
+function toggleInlineCuaderno(widgetId){
+  const body = document.getElementById(widgetId + '-body');
+  const btn = document.querySelector(`.inline-cuaderno-collapse[onclick*="${widgetId}"]`);
+  if(!body) return;
+  const collapsed = body.classList.toggle('ic-collapsed');
+  if(btn) btn.textContent = collapsed ? 'Expandir ▸' : 'Colapsar ▾';
+}
+
+/* HTML compartido del widget (toolbar + lienzo) — usado tanto en la
+   página completa como en la versión incrustada, solo cambia el alto */
+function cuadernoWidgetHTML(key, widgetId, maxHeight){
+  return `
     <div class="notebook-toolbar">
       <span class="swatch active" style="background:#24243A" onclick="setCuadernoColor('#24243A', this)"></span>
       <span class="swatch" style="background:#D95C65" onclick="setCuadernoColor('#D95C65', this)"></span>
@@ -65,32 +108,47 @@ function renderCuaderno(compositeId){
       <span class="size-dot size-md active" onclick="setCuadernoSize(3.4, this)" title="Trazo medio"><span></span></span>
       <span class="size-dot size-lg" onclick="setCuadernoSize(5.5, this)" title="Trazo grueso"><span></span></span>
       <span class="size-sep"></span>
+      <label class="btn-icon" style="cursor:pointer;">
+        📷 Imagen
+        <input type="file" accept="image/*" multiple style="display:none" onchange="handleCuadernoImageUpload(event)">
+      </label>
       <span class="btn-icon" onclick="undoCuaderno()">↩ Deshacer</span>
       <span class="btn-icon" onclick="clearCuaderno()">🗑 Borrar todo</span>
-      <span class="notebook-save-status" id="notebook-save-status"></span>
+      <span class="notebook-save-status" id="${widgetId}-save-status"></span>
     </div>
 
-    <div class="notebook-page-wrap">
-      <canvas id="notebook-canvas" class="notebook-canvas"></canvas>
+    <div class="notebook-page-wrap" id="${widgetId}-wrap" style="max-height:${maxHeight};">
+      <canvas id="${widgetId}-canvas" class="notebook-canvas"></canvas>
     </div>
 
     <div class="notebook-more-wrap">
       <div class="btn-icon" onclick="addCuadernoSpace()">+ Agregar más espacio a la hoja</div>
+      <span class="muted" style="font-size:11px;">También puedes pegar una imagen directo con Ctrl+V (o mantener presionado y pegar en el celular) mientras el lienzo está enfocado.</span>
     </div>
   `;
-
-  initCuaderno(key);
 }
 
-function initCuaderno(key){
-  const canvas = document.getElementById('notebook-canvas');
+function initCuaderno(key, widgetId){
+  const canvas = document.getElementById(widgetId + '-canvas');
+  if(!canvas) return;
   const ctx = canvas.getContext('2d');
   if(!ctx) return;
 
   const saved = notebookAdapter.get(key);
   const esOscuro = document.documentElement.classList.contains('dark');
-  cuadernoState = { canvas, ctx, strokes: saved.strokes || [], current: null, color: esOscuro ? '#f0eef5' : '#24243A', size: 3.4, pageHeight: saved.pageHeight || 1100, key };
+  cuadernoState = {
+    canvas, ctx, widgetId,
+    strokes: saved.strokes || [],
+    images: saved.images || [],
+    imagesLoaded: [], // <img> ya decodificados, mismo índice que "images"
+    current: null,
+    color: esOscuro ? '#f0eef5' : '#24243A',
+    size: 3.4,
+    pageHeight: saved.pageHeight || 1100,
+    key
+  };
 
+  precargarImagenesCuaderno(() => { resizeCuaderno(); });
   resizeCuaderno();
   window.addEventListener('resize', resizeCuaderno);
 
@@ -114,6 +172,22 @@ function initCuaderno(key){
   canvas.addEventListener('pointerup', endStroke);
   canvas.addEventListener('pointercancel', endStroke);
   canvas.addEventListener('pointerleave', endStroke);
+
+  // pegar imagen con Ctrl+V (o el menú de pegar en móvil) mientras el lienzo tiene el foco
+  canvas.tabIndex = 0; // para que pueda recibir foco y el evento "paste"
+  canvas.addEventListener('paste', handleCuadernoPaste);
+}
+
+function precargarImagenesCuaderno(onDone){
+  const { images } = cuadernoState;
+  if(!images.length){ onDone(); return; }
+  let pendientes = images.length;
+  images.forEach((imgData, i) => {
+    const im = new Image();
+    im.onload = () => { cuadernoState.imagesLoaded[i] = im; pendientes--; if(pendientes === 0) onDone(); };
+    im.onerror = () => { pendientes--; if(pendientes === 0) onDone(); };
+    im.src = imgData.dataUrl;
+  });
 }
 
 function scaleCuaderno(){
@@ -138,8 +212,13 @@ function resizeCuaderno(){
   redrawCuaderno();
 }
 function redrawCuaderno(){
-  const { ctx, strokes } = cuadernoState;
+  const { ctx, strokes, images, imagesLoaded } = cuadernoState;
   ctx.clearRect(0, 0, PAGE_WIDTH, cuadernoState.pageHeight);
+  // las imágenes van de "fondo" — así puedes escribir/dibujar encima para anotarlas
+  images.forEach((imgData, i) => {
+    const im = imagesLoaded[i];
+    if(im) ctx.drawImage(im, imgData.x, imgData.y, imgData.w, imgData.h);
+  });
   strokes.forEach(paintStrokeCuaderno);
 }
 function paintStrokeCuaderno(stroke){
@@ -154,8 +233,8 @@ function paintStrokeCuaderno(stroke){
   ctx.stroke();
 }
 function saveCuaderno(){
-  notebookAdapter.set(cuadernoState.key, { strokes: cuadernoState.strokes, pageHeight: cuadernoState.pageHeight });
-  const status = document.getElementById('notebook-save-status');
+  notebookAdapter.set(cuadernoState.key, { strokes: cuadernoState.strokes, images: cuadernoState.images, pageHeight: cuadernoState.pageHeight });
+  const status = document.getElementById(cuadernoState.widgetId + '-save-status');
   if(status){ status.textContent = 'guardado ✓'; setTimeout(() => { if(status) status.textContent = ''; }, 1500); }
 }
 function setCuadernoColor(color, el){
@@ -169,12 +248,20 @@ function setCuadernoSize(size, el){
   el.classList.add('active');
 }
 function undoCuaderno(){
-  cuadernoState.strokes.pop();
+  // si lo último fue una imagen (no hay trazos después de ella), deshace la imagen; si no, el último trazo
+  if(cuadernoState.strokes.length === 0 && cuadernoState.images.length > 0){
+    cuadernoState.images.pop();
+    cuadernoState.imagesLoaded.pop();
+  } else {
+    cuadernoState.strokes.pop();
+  }
   redrawCuaderno();
   saveCuaderno();
 }
 function clearCuaderno(){
   cuadernoState.strokes = [];
+  cuadernoState.images = [];
+  cuadernoState.imagesLoaded = [];
   redrawCuaderno();
   saveCuaderno();
 }
@@ -184,4 +271,57 @@ function addCuadernoSpace(){
   saveCuaderno();
   const wrapEl = cuadernoState.canvas.parentElement;
   wrapEl.scrollTo({ top: wrapEl.scrollHeight, behavior: 'smooth' });
+}
+
+/* ---------- insertar imágenes directo en el lienzo (subida o Ctrl+V) ---------- */
+function handleCuadernoImageUpload(ev){
+  const files = Array.from(ev.target.files || []);
+  files.forEach(procesarImagenParaCuaderno);
+  ev.target.value = '';
+}
+function handleCuadernoPaste(ev){
+  const items = Array.from((ev.clipboardData && ev.clipboardData.items) || []);
+  const imgItem = items.find(it => it.type.startsWith('image/'));
+  if(!imgItem) return; // deja que el pegado normal de texto (si lo hubiera) siga su curso
+  ev.preventDefault();
+  const file = imgItem.getAsFile();
+  if(file) procesarImagenParaCuaderno(file);
+}
+async function procesarImagenParaCuaderno(file){
+  const status = document.getElementById(cuadernoState.widgetId + '-save-status');
+  try{
+    const dataUrl = await compressImageToDataURL(file, 650, 0.55);
+    const tamanoActual = JSON.stringify(cuadernoState.images).length;
+    if(tamanoActual + dataUrl.length > IMG_BUDGET_TOTAL){
+      if(status) status.textContent = 'Ya no cabe otra imagen en este cuaderno (límite de sincronización) — borra alguna.';
+      return;
+    }
+    // calcula el tamaño en la página manteniendo la proporción, con un ancho fijo cómodo
+    const im = new Image();
+    im.onload = () => {
+      const maxW = PAGE_WIDTH - 80;
+      const w = Math.min(maxW, im.width);
+      const h = im.height * (w / im.width);
+      // se coloca debajo de todo lo que ya hay (trazos + imágenes previas)
+      let y = 20;
+      cuadernoState.images.forEach(other => { y = Math.max(y, other.y + other.h + 20); });
+      cuadernoState.strokes.forEach(s => s.points.forEach(p => { y = Math.max(y, p.y + 20); }));
+      // si no cabe en la hoja actual, la agranda automáticamente
+      if(y + h + 40 > cuadernoState.pageHeight){
+        cuadernoState.pageHeight = y + h + 100;
+        resizeCuaderno();
+      }
+      const imgData = { dataUrl, x: 40, y, w, h };
+      cuadernoState.images.push(imgData);
+      cuadernoState.imagesLoaded.push(im);
+      redrawCuaderno();
+      saveCuaderno();
+      const wrapEl = cuadernoState.canvas.parentElement;
+      wrapEl.scrollTo({ top: (y / PAGE_WIDTH) * wrapEl.clientWidth, behavior: 'smooth' });
+    };
+    im.src = dataUrl;
+  } catch(err){
+    if(status) status.textContent = 'Esa imagen no se pudo procesar — intenta con otra.';
+    console.warn('MEDCORE: error procesando imagen de cuaderno.', err);
+  }
 }
