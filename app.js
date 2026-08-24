@@ -1551,10 +1551,39 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearch();
 
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./sw.js').catch(() => {
+    // { updateViaCache: 'none' } obliga al navegador a pedir sw.js SIEMPRE
+    // directo al servidor, nunca desde su caché HTTP normal — sin esto, el
+    // navegador puede comparar contra una copia vieja de sw.js guardada en
+    // caché y nunca darse cuenta de que hay una versión nueva.
+    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((reg) => {
+      // revisa si hay una versión nueva cada vez que se abre la app
+      reg.update();
+      reg.addEventListener('updatefound', () => {
+        const nuevo = reg.installing;
+        if(!nuevo) return;
+        nuevo.addEventListener('statechange', () => {
+          if(nuevo.state === 'installed' && navigator.serviceWorker.controller){
+            // ya se instaló la versión nueva — recarga sola, sin que tengas que hacer nada
+            window.location.reload();
+          }
+        });
+      });
+    }).catch(() => {
       /* si falla (ej. abierto como archivo local sin http), la app
          sigue funcionando normal, solo sin caché offline avanzado */
     });
+
+    // respaldo: si el service worker que controla la página cambia
+    // (por skipWaiting + clients.claim), recarga una sola vez para
+    // asegurar que se vea la versión nueva sin intervención manual
+    if(typeof navigator.serviceWorker.addEventListener === 'function'){
+      let refrescandoPorSW = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if(refrescandoPorSW) return;
+        refrescandoPorSW = true;
+        window.location.reload();
+      });
+    }
   }
 
   if(typeof firebase !== 'undefined'){
