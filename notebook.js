@@ -21,8 +21,8 @@ let cuadernoState = null; // { canvas, ctx, wrapId, strokes, images, current, co
 
 const notebookAdapter = {
   get(key){
-    try{ return JSON.parse(localStorage.getItem('medcore-notebook::' + key) || 'null') || { strokes: [], images: [], pageHeight: 1100 }; }
-    catch(err){ return { strokes: [], images: [], pageHeight: 1100 }; }
+    try{ return JSON.parse(localStorage.getItem('medcore-notebook::' + key) || 'null') || { strokes: [], images: [], texts: [], pageHeight: 1100 }; }
+    catch(err){ return { strokes: [], images: [], texts: [], pageHeight: 1100 }; }
   },
   set(key, data){
     localStorage.setItem('medcore-notebook::' + key, JSON.stringify(data));
@@ -112,6 +112,7 @@ function cuadernoWidgetHTML(key, widgetId, maxHeight){
         📷 Imagen
         <input type="file" accept="image/*" multiple style="display:none" onchange="handleCuadernoImageUpload(event)">
       </label>
+      <span class="btn-icon" onclick="abrirCajaTextoCuaderno('${widgetId}')">⌨️ Texto</span>
       <span class="btn-icon" onclick="undoCuaderno()">↩ Deshacer</span>
       <span class="btn-icon" onclick="clearCuaderno()">🗑 Borrar todo</span>
       <span class="notebook-save-status" id="${widgetId}-save-status"></span>
@@ -119,6 +120,14 @@ function cuadernoWidgetHTML(key, widgetId, maxHeight){
 
     <div class="notebook-page-wrap" id="${widgetId}-wrap" style="max-height:${maxHeight};">
       <canvas id="${widgetId}-canvas" class="notebook-canvas"></canvas>
+    </div>
+
+    <div class="notebook-textbox" id="${widgetId}-textbox" style="display:none;">
+      <textarea id="${widgetId}-textarea" placeholder="Escribe aquí con el teclado…" rows="3"></textarea>
+      <div class="notebook-textbox-actions">
+        <span class="btn-icon" onclick="cerrarCajaTextoCuaderno('${widgetId}')">Cancelar</span>
+        <span class="btn-icon" onclick="agregarTextoCuaderno('${widgetId}')" style="background:var(--cobalt); color:#fff; border-color:var(--cobalt);">Agregar al cuaderno</span>
+      </div>
     </div>
 
     <div class="notebook-more-wrap">
@@ -140,6 +149,7 @@ function initCuaderno(key, widgetId){
     canvas, ctx, widgetId,
     strokes: saved.strokes || [],
     images: saved.images || [],
+    texts: saved.texts || [],
     imagesLoaded: [], // <img> ya decodificados, mismo índice que "images"
     current: null,
     color: esOscuro ? '#f0eef5' : '#24243A',
@@ -155,7 +165,7 @@ function initCuaderno(key, widgetId){
   canvas.addEventListener('pointerdown', (ev) => {
     ev.preventDefault();
     canvas.setPointerCapture(ev.pointerId);
-    cuadernoState.current = { color: cuadernoState.color, size: cuadernoState.size, points: [pointFromEventCuaderno(ev)] };
+    cuadernoState.current = { color: cuadernoState.color, size: cuadernoState.size, points: [pointFromEventCuaderno(ev)], _ts: Date.now() };
   });
   canvas.addEventListener('pointermove', (ev) => {
     if(!cuadernoState.current) return;
@@ -212,14 +222,25 @@ function resizeCuaderno(){
   redrawCuaderno();
 }
 function redrawCuaderno(){
-  const { ctx, strokes, images, imagesLoaded } = cuadernoState;
+  const { ctx, strokes, images, imagesLoaded, texts } = cuadernoState;
   ctx.clearRect(0, 0, PAGE_WIDTH, cuadernoState.pageHeight);
   // las imágenes van de "fondo" — así puedes escribir/dibujar encima para anotarlas
   images.forEach((imgData, i) => {
     const im = imagesLoaded[i];
     if(im) ctx.drawImage(im, imgData.x, imgData.y, imgData.w, imgData.h);
   });
+  (texts || []).forEach(paintTextCuaderno);
   strokes.forEach(paintStrokeCuaderno);
+}
+function paintTextCuaderno(t){
+  const { ctx } = cuadernoState;
+  ctx.fillStyle = t.color;
+  ctx.font = (t.size || 17) + 'px "Inter", sans-serif';
+  ctx.textBaseline = 'top';
+  const lineHeight = (t.size || 17) * 1.35;
+  (t.text || '').split('\n').forEach((linea, i) => {
+    ctx.fillText(linea, t.x, t.y + i * lineHeight);
+  });
 }
 function paintStrokeCuaderno(stroke){
   if(stroke.points.length < 2) return;
@@ -233,7 +254,7 @@ function paintStrokeCuaderno(stroke){
   ctx.stroke();
 }
 function saveCuaderno(){
-  notebookAdapter.set(cuadernoState.key, { strokes: cuadernoState.strokes, images: cuadernoState.images, pageHeight: cuadernoState.pageHeight });
+  notebookAdapter.set(cuadernoState.key, { strokes: cuadernoState.strokes, images: cuadernoState.images, texts: cuadernoState.texts, pageHeight: cuadernoState.pageHeight });
   const status = document.getElementById(cuadernoState.widgetId + '-save-status');
   if(status){ status.textContent = 'guardado ✓'; setTimeout(() => { if(status) status.textContent = ''; }, 1500); }
 }
@@ -248,13 +269,17 @@ function setCuadernoSize(size, el){
   el.classList.add('active');
 }
 function undoCuaderno(){
-  // si lo último fue una imagen (no hay trazos después de ella), deshace la imagen; si no, el último trazo
-  if(cuadernoState.strokes.length === 0 && cuadernoState.images.length > 0){
-    cuadernoState.images.pop();
-    cuadernoState.imagesLoaded.pop();
-  } else {
-    cuadernoState.strokes.pop();
-  }
+  // deshace lo último que se haya agregado, sea trazo, texto o imagen
+  const acciones = [
+    { tipo: 'texto', cuando: cuadernoState.texts.length ? cuadernoState.texts[cuadernoState.texts.length-1]._ts : -1 },
+    { tipo: 'imagen', cuando: cuadernoState.images.length ? cuadernoState.images[cuadernoState.images.length-1]._ts : -1 },
+    { tipo: 'trazo', cuando: cuadernoState.strokes.length ? cuadernoState.strokes[cuadernoState.strokes.length-1]._ts : -1 }
+  ].sort((a,b) => b.cuando - a.cuando);
+  const ultimo = acciones[0];
+  if(ultimo.cuando === -1) return; // nada que deshacer
+  if(ultimo.tipo === 'texto') cuadernoState.texts.pop();
+  else if(ultimo.tipo === 'imagen'){ cuadernoState.images.pop(); cuadernoState.imagesLoaded.pop(); }
+  else cuadernoState.strokes.pop();
   redrawCuaderno();
   saveCuaderno();
 }
@@ -262,6 +287,7 @@ function clearCuaderno(){
   cuadernoState.strokes = [];
   cuadernoState.images = [];
   cuadernoState.imagesLoaded = [];
+  cuadernoState.texts = [];
   redrawCuaderno();
   saveCuaderno();
 }
@@ -302,16 +328,17 @@ async function procesarImagenParaCuaderno(file){
       const maxW = PAGE_WIDTH - 80;
       const w = Math.min(maxW, im.width);
       const h = im.height * (w / im.width);
-      // se coloca debajo de todo lo que ya hay (trazos + imágenes previas)
+      // se coloca debajo de todo lo que ya hay (trazos + imágenes + textos previos)
       let y = 20;
       cuadernoState.images.forEach(other => { y = Math.max(y, other.y + other.h + 20); });
+      cuadernoState.texts.forEach(t => { y = Math.max(y, t.y + (t.h || 30) + 20); });
       cuadernoState.strokes.forEach(s => s.points.forEach(p => { y = Math.max(y, p.y + 20); }));
       // si no cabe en la hoja actual, la agranda automáticamente
       if(y + h + 40 > cuadernoState.pageHeight){
         cuadernoState.pageHeight = y + h + 100;
         resizeCuaderno();
       }
-      const imgData = { dataUrl, x: 40, y, w, h };
+      const imgData = { dataUrl, x: 40, y, w, h, _ts: Date.now() };
       cuadernoState.images.push(imgData);
       cuadernoState.imagesLoaded.push(im);
       redrawCuaderno();
@@ -324,4 +351,49 @@ async function procesarImagenParaCuaderno(file){
     if(status) status.textContent = 'Esa imagen no se pudo procesar — intenta con otra.';
     console.warn('MEDCORE: error procesando imagen de cuaderno.', err);
   }
+}
+
+/* ---------- escribir texto con el teclado (compu, sin lápiz) ---------- */
+function abrirCajaTextoCuaderno(widgetId){
+  const box = document.getElementById(widgetId + '-textbox');
+  const textarea = document.getElementById(widgetId + '-textarea');
+  if(!box) return;
+  box.style.display = 'block';
+  textarea.value = '';
+  textarea.focus();
+}
+function cerrarCajaTextoCuaderno(widgetId){
+  const box = document.getElementById(widgetId + '-textbox');
+  if(box) box.style.display = 'none';
+}
+function agregarTextoCuaderno(widgetId){
+  const textarea = document.getElementById(widgetId + '-textarea');
+  const texto = textarea.value.trim();
+  if(!texto){ cerrarCajaTextoCuaderno(widgetId); return; }
+
+  const size = 17;
+  const lineHeight = size * 1.35;
+  const lineas = texto.split('\n');
+  cuadernoState.ctx.font = size + 'px "Inter", sans-serif';
+  const anchoMax = Math.max(...lineas.map(l => cuadernoState.ctx.measureText(l).width));
+  const alto = lineas.length * lineHeight + 10;
+
+  // se coloca debajo de todo lo que ya hay (trazos + imágenes + textos previos)
+  let y = 20;
+  cuadernoState.images.forEach(im => { y = Math.max(y, im.y + im.h + 20); });
+  cuadernoState.texts.forEach(t => { y = Math.max(y, t.y + (t.h || 30) + 20); });
+  cuadernoState.strokes.forEach(s => s.points.forEach(p => { y = Math.max(y, p.y + 20); }));
+
+  if(y + alto + 40 > cuadernoState.pageHeight){
+    cuadernoState.pageHeight = y + alto + 100;
+    resizeCuaderno();
+  }
+
+  cuadernoState.texts.push({ text: texto, x: 40, y, w: Math.min(anchoMax, PAGE_WIDTH - 80), h: alto, size, color: cuadernoState.color, _ts: Date.now() });
+  redrawCuaderno();
+  saveCuaderno();
+  cerrarCajaTextoCuaderno(widgetId);
+
+  const wrapEl = cuadernoState.canvas.parentElement;
+  wrapEl.scrollTo({ top: (y / PAGE_WIDTH) * wrapEl.clientWidth, behavior: 'smooth' });
 }
