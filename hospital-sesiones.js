@@ -504,20 +504,6 @@ const HOSPITAL_SESIONES = [
   }
 ];
 
-/* ---------- respuesta de una tarea: texto + imágenes, sincronizado entre dispositivos ---------- */
-function tareaImagesGet(key){
-  try{ return JSON.parse(notesAdapter.get(key + '::img') || '[]'); } catch(e){ return []; }
-}
-function tareaImagesSet(key, arr){
-  notesAdapter.set(key + '::img', JSON.stringify(arr));
-}
-function tareaImageThumbHTML(key, safeId, url, idx){
-  return `<span class="tarea-thumb-wrap">
-    <img src="${url}" class="tarea-thumb" onclick="openImageLightbox('${url}')">
-    <span class="tarea-thumb-remove" onclick="removeTareaImage('${key}','${safeId}',${idx})">✕</span>
-  </span>`;
-}
-
 /* visor de imagen en grande, dentro de la misma página (funciona con las fotos guardadas como base64) */
 function openImageLightbox(url){
   let overlay = document.getElementById('img-lightbox-overlay');
@@ -536,66 +522,23 @@ function closeImageLightbox(){
   const overlay = document.getElementById('img-lightbox-overlay');
   if(overlay) overlay.classList.remove('active');
 }
-function tareaResponseHTML(key, placeholder){
-  const value = notesAdapter.get(key);
-  const safeId = 'tresp-' + key.replace(/[^a-z0-9]/gi, '-');
-  const htmlValue = /<[a-z][\s\S]*>/i.test(value) ? value : value.replace(/\n/g, '<br>');
-  const images = tareaImagesGet(key);
+
+/* la respuesta de cada tarea es su propio cuadernito chico (dibujar + tipear +
+   pegar + subir) — igual que "Mis apuntes", solo que más compacto */
+let tareaCuadernosPendientes = []; // se llena al armar el HTML de cada tarea, y se inicializan después de insertarlo en el DOM
+function tareaResponseHTML(key, widgetId){
   return `
     <div class="tarea-response">
       <div class="note-head">
         <span class="note-label">✎ Tu respuesta</span>
-        <span class="note-status" id="${safeId}-status"></span>
       </div>
-      <div class="note-editable hl-zone" id="${safeId}" contenteditable="true" data-hl-key="note::${key}"
-        data-placeholder="${placeholder || 'Escribe tu respuesta...'}"
-        oninput="handleNoteInput('${key}','${safeId}')">${htmlValue}</div>
-      <div class="tarea-images" id="${safeId}-images">${images.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('')}</div>
-      <label class="tarea-upload-btn">
-        📎 Adjuntar imagen
-        <input type="file" accept="image/*" multiple style="display:none" onchange="handleTareaImageUpload(event, '${key}', '${safeId}')">
-      </label>
-      <div class="tarea-upload-status" id="${safeId}-upload-status"></div>
+      ${cuadernoWidgetHTML(key, widgetId, '220px')}
     </div>
   `;
 }
-async function handleTareaImageUpload(ev, key, safeId){
-  const files = Array.from(ev.target.files || []);
-  if(!files.length) return;
-  const statusEl = document.getElementById(safeId + '-upload-status');
-  statusEl.textContent = 'Procesando…';
-
-  const current = tareaImagesGet(key);
-  const LIMITE_TOTAL = 850000; // deja margen bajo el límite real de Firestore (~1MB) para el resto del documento
-
-  for(const file of files){
-    try{
-      const dataUrl = await compressImageToDataURL(file);
-      const tamanoActual = JSON.stringify(current).length;
-      if(tamanoActual + dataUrl.length > LIMITE_TOTAL){
-        statusEl.textContent = 'Ya no cabe otra foto en esta tarea (se llenaría el espacio de sincronización) — borra alguna o crea otra respuesta.';
-        break;
-      }
-      current.push(dataUrl);
-    } catch(err){
-      statusEl.textContent = 'Esa imagen es muy pesada o no se pudo procesar — intenta con otra foto.';
-      console.warn('Error procesando imagen de tarea:', err);
-    }
-  }
-  tareaImagesSet(key, current);
-  const imgWrap = document.getElementById(safeId + '-images');
-  if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
-  if(statusEl.textContent === 'Procesando…'){
-    statusEl.textContent = current.length ? 'Guardado ✓' : '';
-    setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 2500);
-  } else {
-    setTimeout(() => { if(statusEl) statusEl.textContent = ''; }, 4000);
-  }
-  ev.target.value = '';
-}
 
 /* redimensiona y comprime la imagen en el navegador antes de guardarla como texto (base64).
-   Los límites son chicos a propósito: como varias fotos de una misma tarea se guardan
+   Los límites son chicos a propósito: como varias imágenes de un mismo cuaderno se guardan
    JUNTAS en un solo documento de Firestore (límite real: ~1MB por documento), cada foto
    individual debe quedar bien por debajo de eso para que quepan varias sin romper la
    sincronización entre dispositivos. */
@@ -629,13 +572,6 @@ function compressImageToDataURL(file, maxWidth = 700, startQuality = 0.55){
     img.src = objectUrl;
   });
 }
-function removeTareaImage(key, safeId, idx){
-  const current = tareaImagesGet(key);
-  current.splice(idx, 1);
-  tareaImagesSet(key, current);
-  const imgWrap = document.getElementById(safeId + '-images');
-  if(imgWrap) imgWrap.innerHTML = current.map((url, i) => tareaImageThumbHTML(key, safeId, url, i)).join('');
-}
 
 /* ---------- render de las cajas de color dentro de una sección ---------- */
 function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
@@ -650,12 +586,14 @@ function renderHospitalExtra(ex, sesionId, secIdx, exIdx){
       </div>`;
   }
   if(ex.tipo === 'tarea'){
-    const key = 'hospital::' + sesionId + '::' + (ex.respuestaKey || ('tarea-sec' + secIdx + '-' + exIdx));
+    const key = 'hospital::' + sesionId + '::' + (ex.respuestaKey || ('tarea-sec' + secIdx + '-' + exIdx)) + '::cuaderno';
+    const widgetId = 'tarea-' + sesionId + '-' + secIdx + '-' + exIdx;
+    tareaCuadernosPendientes.push({ key, widgetId });
     return `
       <div class="tarea-box">
         <div class="tb-label">📌 Tarea del Dr.</div>
         <p>${ex.texto}</p>
-        ${tareaResponseHTML(key, 'Escribe tu respuesta cuando la resuelvas, o adjunta una foto…')}
+        ${tareaResponseHTML(key, widgetId)}
       </div>`;
   }
   if(ex.tipo === 'vocab'){
@@ -714,6 +652,8 @@ function renderHospitalSesion(id){
   const s = getHospitalSesion(id);
   if(!s){ wrap.innerHTML = '<p class="muted">Esta sesión todavía no existe.</p>'; return; }
 
+  tareaCuadernosPendientes = []; // se llena mientras se arma seccionesHTML, y se inicializa después de insertar el HTML
+
   const seccionesHTML = s.secciones.map((sec, i) => `
     <div class="kcard ${sec.tono ? 'tono-' + sec.tono : ''} hl-zone" data-hl-key="${s.id}::sec${i}">
       <h3>${sec.titulo}</h3>
@@ -749,5 +689,7 @@ function renderHospitalSesion(id){
   `;
 
   initCuaderno(cuadernoKey, cuadernoWidgetId);
+  // cada tarea tiene su propio cuadernito de respuesta — se inicializan todos ahora que ya existen en el DOM
+  tareaCuadernosPendientes.forEach(({ key, widgetId }) => initCuaderno(key, widgetId));
   restoreZoneHighlights('#view-hospital-sesion-content');
 }
