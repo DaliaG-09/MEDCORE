@@ -961,6 +961,18 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .tarea-upload-status{ font-size:11.5px; color: var(--ink-soft); margin-top:4px; min-height:14px; }
 
 /* ---------- visor de imagen en grande (lightbox) ---------- */
+/* ---------- galería de imágenes reales dentro de un tema ---------- */
+.tema-estructura{ margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.tema-estructura:last-child{ border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.tema-imagenes{ display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
+.tema-figura{
+  margin:0; width: 220px; cursor: zoom-in; border-radius: var(--radius-sm); overflow:hidden;
+  border: 1px solid var(--line); background:#fff;
+}
+.tema-figura img{ width:100%; height:150px; object-fit:cover; display:block; }
+.tema-figura figcaption{ font-size:11px; color: var(--ink-soft); padding:6px 8px; line-height:1.3; }
+:root.dark .tema-figura{ background: var(--card); }
+
 .img-lightbox-overlay{
   position: fixed; inset: 0; background: rgba(10,12,20,0.88);
   display: none; align-items: center; justify-content: center;
