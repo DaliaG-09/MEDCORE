@@ -63,6 +63,11 @@ function paintCaso(){
     <div class="kcard caso-vineta">
       <h3>📋 Caso clínico</h3>
       <p>${caso.vineta}</p>
+      ${caso.imagen ? `
+      <figure class="tema-figura caso-figura" onclick="openImageLightbox('${caso.imagen.src}')">
+        <img src="${caso.imagen.src}" alt="${caso.imagen.caption}" loading="lazy">
+        <figcaption>${caso.imagen.caption}</figcaption>
+      </figure>` : ''}
     </div>
 
     <div class="mcard">
