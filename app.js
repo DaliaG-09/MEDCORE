@@ -1013,7 +1013,20 @@ function renderTema(id){
 
     <div class="kcard">
       <h3>Estructuras clave</h3>
-      <ul>${c.estructuras.map(e => `<li><strong>${e.nombre}:</strong> ${e.detalle}</li>`).join('')}</ul>
+      ${c.estructuras.map(e => `
+        <div class="tema-estructura">
+          <p><strong>${e.nombre}:</strong> ${e.detalle}</p>
+          ${(e.imagenes && e.imagenes.length) ? `
+          <div class="tema-imagenes">
+            ${e.imagenes.map(im => `
+              <figure class="tema-figura" onclick="openImageLightbox('${im.src}')">
+                <img src="${im.src}" alt="${im.caption}" loading="lazy">
+                <figcaption>${im.caption}</figcaption>
+              </figure>
+            `).join('')}
+          </div>` : ''}
+        </div>
+      `).join('')}
     </div>
 
     <div class="mcard">
