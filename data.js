@@ -2533,7 +2533,47 @@ const ENFERMEDADES = [
             "enunciado": "Dado el antecedente de neumonía la semana previa, ¿qué procedimiento realizarías para caracterizar este derrame, y qué buscarías específicamente en el resultado?",
             "respuestaModelo": "Realizaría una toracocentesis diagnóstica para obtener líquido pleural y aplicar los criterios de Light (proteínas líquido/suero, LDH líquido/suero, LDH en líquido vs. límite superior normal sérico) para clasificarlo como exudado o trasudado. Dado el antecedente de neumonía, buscaría específicamente signos de derrame paraneumónico complicado: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, y aspecto turbio/purulento — hallazgos que cambiarían la conducta de solo antibiótico a drenaje torácico obligatorio."
         }
-    }]
+    },
+    {
+        "nivel": "intermedio",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2. Nota: la atelectasia no es en sí una enfermedad pleural, pero se incluye aquí junto a los otros casos de este mismo taller porque comparte el diagnóstico diferencial por percusión/auscultación) Varón de 68 años, postoperado de cirugía abdominal, con disnea progresiva, tos inefectiva, hipoxemia leve. Al examen: expansión torácica disminuida en lado derecho, percusión con matidez en base pulmonar derecha, auscultación con disminución del murmullo vesicular.",
+        "imagen": {
+            "src": "assets/taller-imagenes-s2/taller-s2-atelectasia-hemitorax-derecho.jpg",
+            "caption": "Radiografía del caso — opacidad homogénea y pérdida de volumen del hemitórax derecho"
+        },
+        "preguntaMC": {
+            "enunciado": "¿Cómo describirías esta radiografía?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Opacidad homogénea y pérdida de volumen del hemitórax derecho, con elevación del diafragma y desplazamiento de cisuras hacia el área afectada — atelectasia"
+                },
+                {
+                    "id": "b",
+                    "texto": "Infiltrado alveolar con broncograma aéreo — neumonía"
+                },
+                {
+                    "id": "c",
+                    "texto": "Signo del menisco pleural — derrame pleural"
+                },
+                {
+                    "id": "d",
+                    "texto": "Línea pleural visible — neumotórax"
+                },
+                {
+                    "id": "e",
+                    "texto": "Radiografía sin hallazgos"
+                }
+            ],
+            "correcta": "a",
+            "explicacion": "El dato clave que distingue la atelectasia de otras causas de opacidad es que las estructuras se DESPLAZAN HACIA el área afectada (pérdida de volumen — el mediastino y las cisuras 'jalan' hacia el pulmón colapsado), a diferencia del derrame masivo, donde el mediastino se desplaza EN SENTIDO CONTRARIO (por el efecto de masa del líquido). El antecedente de cirugía abdominal reciente es un factor de riesgo clásico de atelectasia postoperatoria por hipoventilación y retención de secreciones."
+        },
+        "preguntaEscrita": {
+            "enunciado": "¿Por qué la percusión da matidez en la atelectasia, igual que en el derrame pleural, si son dos entidades completamente distintas? ¿Cómo las diferenciarías clínicamente además de la imagen?",
+            "respuestaModelo": "Ambas dan matidez porque en ambos casos hay menos aire de lo normal en esa zona del tórax (en la atelectasia, el pulmón está colapsado; en el derrame, el espacio pleural está ocupado por líquido) — la percusión no distingue la causa, solo detecta 'menos aire'. Clínicamente, la clave diferenciadora es la dirección del desplazamiento mediastínico: hacia el lado afectado en la atelectasia (por pérdida de volumen), hacia el lado contrario en el derrame masivo (por efecto de masa) — y radiológicamente, la atelectasia muestra pérdida de volumen con elevación diafragmática ipsilateral, mientras que el derrame muestra el signo del menisco característico."
+        }
+    }
+  ]
   },
   {
     "id": "enfermedades-respiratorias-ocupacionales",
