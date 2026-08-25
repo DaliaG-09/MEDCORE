@@ -1592,7 +1592,46 @@ const ENFERMEDADES = [
             "respuestaModelo": "Usaría el CURB-65 o el PSI. Con SatO2 90%, taquicardia, taquipnea y edad no mayor a 65, calculando CURB-65 este paciente probablemente puntúa bajo-moderado, pero la hipoxemia (SatO2 90%) y las comorbilidades (HTA, tabaquismo) inclinan a favor de hospitalización para observación y manejo con antibiótico parenteral. El tratamiento empírico inicial en un paciente hospitalizado no grave sería β-lactámico (ceftriaxona) más macrólido (azitromicina), o alternativamente una fluoroquinolona respiratoria en monoterapia."
         }
     }
-  ]
+  ,
+    {
+        "nivel": "basico",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 45 años, sin comorbilidades, acude a emergencia por fiebre de 38.8°C, tos productiva con esputo amarillo verdoso, disnea leve y dolor torácico tipo pleurítico de 3 días de evolución. No ha estado hospitalizado recientemente. Al examen: FR 24 rpm, FC 102 lpm, SatO₂ 92% al aire ambiental. A la auscultación: crépitos en hemitórax izquierdo.",
+        "imagen": {
+            "src": "assets/taller-imagenes-s2/taller-s2-nac-flechas.jpg",
+            "caption": "Radiografía del caso — infiltrado alveolar en lóbulo inferior izquierdo"
+        },
+        "preguntaMC": {
+            "enunciado": "¿Cómo describirías esta radiografía?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Infiltrado alveolar en el lóbulo inferior izquierdo, con consolidación y posible broncograma aéreo"
+                },
+                {
+                    "id": "b",
+                    "texto": "Patrón cavitario en vértices pulmonares"
+                },
+                {
+                    "id": "c",
+                    "texto": "Opacidad homogénea con desplazamiento mediastínico contralateral"
+                },
+                {
+                    "id": "d",
+                    "texto": "Línea pleural visible con ausencia de trama vascular periférica"
+                },
+                {
+                    "id": "e",
+                    "texto": "Radiografía sin hallazgos patológicos"
+                }
+            ],
+            "correcta": "a",
+            "explicacion": "El infiltrado alveolar con consolidación y posible broncograma aéreo en el lóbulo inferior izquierdo, sumado al cuadro clínico agudo (fiebre, esputo purulento, crépitos localizados en esa zona), es el patrón clásico de neumonía adquirida en la comunidad — el broncograma aéreo aparece cuando el aire persiste en los bronquios rodeados de alvéolos llenos de exudado."
+        },
+        "preguntaEscrita": {
+            "enunciado": "Hasta ahí, ¿qué diagnóstico presuntivo puedes proponer, y qué herramienta usarías para decidir su manejo (ambulatorio vs. hospitalizado)?",
+            "respuestaModelo": "Diagnóstico presuntivo: Neumonía Adquirida en la Comunidad (NAC). Para decidir el manejo usaría el CURB-65 o CRB-65: este paciente tiene SatO2 92% (hipoxemia leve) y taquicardia, pero no cumple criterios de confusión, FR≥30, ni hipotensión — probablemente amerite al menos observación cercana u hospitalización breve dada la hipoxemia, más que manejo ambulatorio puro, aunque el puntaje exacto depende de completar la evaluación clínica completa."
+        }
+    }]
   },
   {
     "id": "neumonia-intrahospitalaria",
@@ -2114,7 +2153,46 @@ const ENFERMEDADES = [
     }
   
     
-  ]
+  ,
+    {
+        "nivel": "basico",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 32 años, procedente de zona urbana marginal, consulta por tos productiva de 2 meses, pérdida de peso (6 kg), sudoración nocturna y febrícula. Niega enfermedades previas. Al examen: adelgazado, crépitos en vértices pulmonares.",
+        "imagen": {
+            "src": "assets/taller-imagenes-s2/taller-s2-tb-cavitacion.jpg",
+            "caption": "Radiografía del caso — infiltrado cavitado en lóbulo superior (síndrome cavitario)"
+        },
+        "preguntaMC": {
+            "enunciado": "¿Cómo describirías esta radiografía?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Infiltrados cavitados en lóbulos superiores — síndrome cavitario"
+                },
+                {
+                    "id": "b",
+                    "texto": "Consolidación basal con broncograma aéreo"
+                },
+                {
+                    "id": "c",
+                    "texto": "Derrame pleural con signo del menisco"
+                },
+                {
+                    "id": "d",
+                    "texto": "Neumotórax con línea pleural visible"
+                },
+                {
+                    "id": "e",
+                    "texto": "Atelectasia con pérdida de volumen"
+                }
+            ],
+            "correcta": "a",
+            "explicacion": "La imagen cavitaria en lóbulo superior (síndrome cavitario) junto con el cuadro clínico crónico (2 meses de evolución, pérdida de peso, sudoración nocturna, febrícula) es el cuadro clásico de tuberculosis pulmonar — la localización apical se explica por la mayor tensión de oxígeno en los vértices pulmonares, donde el bacilo aerobio estricto prolifera mejor."
+        },
+        "preguntaEscrita": {
+            "enunciado": "¿Qué estudio confirmatorio solicitarías de inmediato, y por qué la localización de las lesiones es característicamente apical en esta enfermedad?",
+            "respuestaModelo": "Solicitaría baciloscopía de esputo (2-3 muestras) y cultivo para M. tuberculosis, idealmente con prueba molecular rápida (GeneXpert) si está disponible. La localización apical es característica porque M. tuberculosis es un aerobio estricto, y los vértices pulmonares tienen mayor tensión de oxígeno (mayor ventilación relativa a la perfusión) que las bases — un ambiente que favorece su crecimiento sobre otras zonas del pulmón."
+        }
+    }]
   },
   {
     "id": "enfermedades-pleurales",
@@ -2377,7 +2455,85 @@ const ENFERMEDADES = [
             "respuestaModelo": "Es un EXUDADO — un derrame paraneumónico por definición es un exudado (pleura inflamada por la infección adyacente), lo que se confirmaría cumpliendo al menos uno de los criterios de Light (proteínas líquido/suero >0.5, LDH líquido/suero >0.6, o LDH >2/3 del límite superior normal sérico). Los factores que sugieren mala evolución (progresión a empiema o necesidad de drenaje) son: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, aspecto purulento/turbio, y cultivo o Gram positivo del líquido pleural."
         }
     }
-  ]
+  ,
+    {
+        "nivel": "intermedio",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 22 años, previamente sano, consulta por dolor torácico súbito y disnea de inicio brusco tras ejercicio intenso. Al examen: disminución de la expansión torácica derecha, vibraciones vocales disminuidas en base derecha, percusión con matidez en base derecha, auscultación con abolición del murmullo vesicular basal derecha. Tráquea central.",
+        "imagen": {
+            "src": "assets/taller-imagenes-s2/taller-s2-neumotorax-linea-pleural.jpg",
+            "caption": "Radiografía del caso — línea pleural visible (flechas) separando el pulmón colapsado de la pared torácica"
+        },
+        "preguntaMC": {
+            "enunciado": "¿Cómo describirías esta radiografía y cuál es el diagnóstico?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Línea pleural visible que separa el pulmón colapsado de la pared torácica — neumotórax"
+                },
+                {
+                    "id": "b",
+                    "texto": "Signo del menisco pleural — derrame pleural"
+                },
+                {
+                    "id": "c",
+                    "texto": "Infiltrado alveolar con broncograma aéreo — neumonía"
+                },
+                {
+                    "id": "d",
+                    "texto": "Opacidad cavitada apical — tuberculosis"
+                },
+                {
+                    "id": "e",
+                    "texto": "Pérdida de volumen con elevación diafragmática — atelectasia"
+                }
+            ],
+            "correcta": "a",
+            "explicacion": "Las flechas marcan la línea pleural visceral, desplazada de la pared torácica por el aire acumulado en el espacio pleural — el hallazgo radiológico definitorio del neumotórax. El cuadro clínico (dolor súbito + disnea brusca tras esfuerzo en un varón joven sano) es el escenario típico de un neumotórax espontáneo primario."
+        },
+        "preguntaEscrita": {
+            "enunciado": "Este paciente tiene tráquea central. ¿Qué cambiaría en tu manejo si la tráquea estuviera desviada hacia el lado contralateral, junto con hipotensión?",
+            "respuestaModelo": "Tráquea central + estabilidad hemodinámica es compatible con un neumotórax simple, que puede manejarse de forma más electiva (observación en neumotórax pequeño, o drenaje con tubo torácico en los más grandes). Si en cambio hubiera desviación traqueal contralateral E hipotensión, eso indicaría neumotórax A TENSIÓN — una emergencia real que requiere descompresión con aguja INMEDIATA (2do espacio intercostal, línea medioclavicular) sin esperar ningún estudio de imagen adicional, dado el riesgo de colapso cardiovascular por compresión del retorno venoso."
+        }
+    },
+    {
+        "nivel": "intermedio",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Paciente de 60 años con antecedente de neumonía hace una semana, consulta por disnea progresiva, tos seca y dolor torácico pleurítico izquierdo de 5 días de evolución.",
+        "imagen": {
+            "src": "assets/taller-imagenes-s2/taller-s2-derrame-menisco.jpg",
+            "caption": "Radiografía del caso — signo del menisco pleural (curva de Damoiseau), marcado en naranja"
+        },
+        "preguntaMC": {
+            "enunciado": "¿Cómo describirías esta radiografía?",
+            "opciones": [
+                {
+                    "id": "a",
+                    "texto": "Opacidad homogénea con borramiento del ángulo costofrénico y signo del menisco pleural — derrame pleural"
+                },
+                {
+                    "id": "b",
+                    "texto": "Infiltrado alveolar con broncograma aéreo"
+                },
+                {
+                    "id": "c",
+                    "texto": "Línea pleural visible sin trama vascular periférica"
+                },
+                {
+                    "id": "d",
+                    "texto": "Cavitación apical bilateral"
+                },
+                {
+                    "id": "e",
+                    "texto": "Radiografía normal"
+                }
+            ],
+            "correcta": "a",
+            "explicacion": "El signo del menisco (o curva de Damoiseau) — una línea cóncava hacia arriba y medial marcada en naranja en la imagen — junto con el borramiento del ángulo costofrénico, es el hallazgo clásico de derrame pleural. El antecedente de neumonía reciente orienta a que este sea un derrame paraneumónico."
+        },
+        "preguntaEscrita": {
+            "enunciado": "Dado el antecedente de neumonía la semana previa, ¿qué procedimiento realizarías para caracterizar este derrame, y qué buscarías específicamente en el resultado?",
+            "respuestaModelo": "Realizaría una toracocentesis diagnóstica para obtener líquido pleural y aplicar los criterios de Light (proteínas líquido/suero, LDH líquido/suero, LDH en líquido vs. límite superior normal sérico) para clasificarlo como exudado o trasudado. Dado el antecedente de neumonía, buscaría específicamente signos de derrame paraneumónico complicado: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, y aspecto turbio/purulento — hallazgos que cambiarían la conducta de solo antibiótico a drenaje torácico obligatorio."
+        }
+    }]
   },
   {
     "id": "enfermedades-respiratorias-ocupacionales",
