@@ -3383,23 +3383,42 @@ const TEMAS = [
       "estructuras": [
         {
           "nombre": "Radiografía de tórax",
-          "detalle": "Proyecciones básicas: PA (posteroanterior, de pie, inspiración máxima), lateral, y AP (cuando el paciente no puede pararse). Lectura sistemática en 7 pasos: partes blandas → huesos → parénquima → pleura → mediastino → hilios/vasos → corazón/aorta. Las 4 densidades radiológicas son aire, agua, grasa y calcio."
+          "detalle": "Proyecciones básicas: PA (posteroanterior, de pie, inspiración máxima), lateral, y AP (cuando el paciente no puede pararse). Lectura sistemática en 7 pasos: partes blandas → huesos → parénquima → pleura → mediastino → hilios/vasos → corazón/aorta. Las 4 densidades radiológicas son aire, agua, grasa y calcio.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/rx-torax-pa-normal.jpg", "caption": "Rx de tórax PA normal — referencia para comparar" },
+            { "src": "assets/examenes-dx/rx-torax-lateral.jpg", "caption": "Proyección lateral — complementa la vista PA" },
+            { "src": "assets/examenes-dx/rx-torax-hallazgos-anotados.jpg", "caption": "Ejemplo con hallazgos anotados (flechas) — así se marcan los hallazgos en la práctica" }
+          ]
         },
         {
           "nombre": "Tomografía de tórax (TC)",
-          "detalle": "Mayor resolución que la radiografía. Los patrones básicos que debes reconocer son: lineal, micronodular, en vidrio esmerilado (opacidad) y quístico — cada uno orienta a familias distintas de enfermedades intersticiales/infecciosas."
+          "detalle": "Mayor resolución que la radiografía. Los patrones básicos que debes reconocer son: lineal, micronodular, en vidrio esmerilado (opacidad) y quístico — cada uno orienta a familias distintas de enfermedades intersticiales/infecciosas.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/tc-torax-cortes-axiales.jpg", "caption": "TC de tórax — 4 cortes axiales a distintos niveles" }
+          ]
         },
         {
           "nombre": "Espirometría",
-          "detalle": "Mide FVC (capacidad vital forzada), FEV1 (volumen espirado en el primer segundo) y su cociente FEV1/FVC. Es la prueba clave para diferenciar patrón obstructivo (FEV1/FVC bajo — EPOC, asma) de restrictivo (FVC bajo con cociente normal — enfermedades intersticiales)."
+          "detalle": "Mide FVC (capacidad vital forzada), FEV1 (volumen espirado en el primer segundo) y su cociente FEV1/FVC. Es la prueba clave para diferenciar patrón obstructivo (FEV1/FVC bajo — EPOC, asma) de restrictivo (FVC bajo con cociente normal — enfermedades intersticiales).",
+          "imagenes": [
+            { "src": "assets/examenes-dx/espirometria-procedimiento.jpg", "caption": "Cómo se realiza — el paciente sopla con fuerza en la boquilla" },
+            { "src": "assets/examenes-dx/asa-flujo-volumen.jpg", "caption": "Asa de flujo-volumen — distintos patrones (A-E) según el tipo de alteración" }
+          ]
         },
         {
           "nombre": "Toracocentesis",
-          "detalle": "Punción del espacio pleural (6º-8º espacio intercostal, guiada por ecografía) para extraer líquido o aire con fines diagnósticos o terapéuticos. Indicada en derrame pleural inexplicado, sospecha de infección/malignidad, o alivio de disnea."
+          "detalle": "Punción del espacio pleural (6º-8º espacio intercostal, guiada por ecografía) para extraer líquido o aire con fines diagnósticos o terapéuticos. Indicada en derrame pleural inexplicado, sospecha de infección/malignidad, o alivio de disnea.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/toracocentesis-tecnica.jpg", "caption": "Técnica: paciente sentado, inclinado hacia adelante — el líquido se drena por gravedad" },
+            { "src": "assets/examenes-dx/toracocentesis-guiada-ecografia.jpg", "caption": "Guiada por ecografía — reduce el riesgo de neumotórax iatrogénico" }
+          ]
         },
         {
           "nombre": "Fibrobroncoscopía",
-          "detalle": "Visualización endoscópica directa del árbol bronquial hasta nivel subsegmentario, bajo anestesia local y sedación. Permite biopsia de lesiones sospechosas, estudio de un pulmón/lóbulo colapsado, y muestreo microbiológico en infecciones no resueltas."
+          "detalle": "Visualización endoscópica directa del árbol bronquial hasta nivel subsegmentario, bajo anestesia local y sedación. Permite biopsia de lesiones sospechosas, estudio de un pulmón/lóbulo colapsado, y muestreo microbiológico en infecciones no resueltas.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/arbol-bronquial-3d.jpg", "caption": "Árbol traqueobronquial — la ruta que sigue el broncoscopio" }
+          ]
         }
       ],
       "fisiologiaNormal": "Estos estudios no evalúan 'lo normal' en sí, sino que sirven para detectar desviaciones de la anatomía y función normales. Por eso su interpretación siempre depende de conocer primero cómo se ve/funciona un pulmón sano: en la Rx, un parénquima con densidad aire uniforme sin opacidades ni pérdida de volumen; en la espirometría, un FEV1/FVC normal (>70% aproximadamente) con volúmenes dentro de lo predicho para edad/talla/sexo.",
