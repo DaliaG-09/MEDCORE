@@ -808,7 +808,15 @@ function renderSemana(id){
       <div class="section-block">
         <h3>Talleres y exposiciones</h3>
         <ul>
-          ${s.talleres.map(t => `<li>${t}</li>`).join('')}
+          ${s.talleres.map(t => {
+            const normalizado = t.toUpperCase().replace(/\s+/g, ' ').trim();
+            const taller = TALLERES.find(x => x.semana === s.id &&
+              (x.nombre.toUpperCase().replace(/\s+/g, ' ').trim().includes(normalizado) ||
+               normalizado.includes(x.nombre.toUpperCase().replace(/\s+/g, ' ').trim())));
+            return taller
+              ? `<li><a class="link-quiet" style="font-size:14px;" onclick="openTallerFresh('${taller.id}')">🎯 ${taller.nombre}</a> <span class="muted">(${taller.casos.length} casos)</span></li>`
+              : `<li>${t}</li>`;
+          }).join('')}
           ${s.exposiciones.map(t => `<li>${t}</li>`).join('')}
         </ul>
       </div>
