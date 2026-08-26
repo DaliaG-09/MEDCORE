@@ -22,6 +22,11 @@ function navCasosExamen(bancoKey){
   navPush('casos', 'examen::' + bancoKey, 'Banco de examen — ' + banco.nombre);
 }
 
+function navCasosTaller(tallerId){
+  const t = getTaller(tallerId);
+  navPush('casos', 'taller::' + tallerId, t.nombre);
+}
+
 function renderCasos(entidadId){
   let nombre, casosOriginales;
   if(entidadId.startsWith('examen::')){
@@ -32,6 +37,10 @@ function renderCasos(entidadId){
     const m = MODULOS[entidadId.slice('modulo::'.length)];
     nombre = 'Comparativo — ' + m.nombre;
     casosOriginales = m.casosComparativos;
+  } else if(entidadId.startsWith('taller::')){
+    const t = getTaller(entidadId.slice('taller::'.length));
+    nombre = t.nombre;
+    casosOriginales = t.casos;
   } else {
     const e = getEnfermedad(entidadId) || getTema(entidadId);
     nombre = e.nombre;
