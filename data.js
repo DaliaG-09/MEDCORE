@@ -89,7 +89,7 @@ const SEMANAS = [
         "dia": "Lunes",
         "tipo": "teoria",
         "tema": "TALLER APLICATIVO: IMÁGENES / Análisis de Gases Arteriales: Bases Fisiopatológicas e interpretación clínica",
-        "vinculos": [
+        "vinculos": [ { "tipo": "taller", "id": "taller-imagenes-s2" }, 
           { "tipo": "tema", "id": "analisis-gases-arteriales" },
           { "tipo": "tema", "id": "examenes-diagnostico-neumo" }
         ]
@@ -109,7 +109,7 @@ const SEMANAS = [
         "dia": "Viernes",
         "tipo": "teoria+hospital",
         "tema": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES / Tuberculosis Pulmonar. Epidemiología, etiología, cuadro clínico, diagnóstico, tratamiento, complicaciones y prevención / EXPOSICIÓN: NEUMONÍA ADQUIRIDA EN LA COMUNIDAD",
-        "vinculos": [
+        "vinculos": [ { "tipo": "taller", "id": "taller-aga1-s2" }, 
           { "tipo": "tema", "id": "analisis-gases-arteriales" },
           { "tipo": "enfermedad", "id": "tuberculosis-pulmonar" }
         ]
@@ -156,7 +156,7 @@ const SEMANAS = [
         "dia": "Miércoles",
         "tipo": "teoria",
         "tema": "TALLER APLICATIVO:  ANÁLISIS DE GASES ARTERIALES 2 / Enfermedad Pulmonar Intersticial Difusa / Síndrome de apnea-hipopnea obstructiva del sueño (SAHOS).",
-        "vinculos": [
+        "vinculos": [ { "tipo": "taller", "id": "taller-aga2-s3" }, 
           { "tipo": "tema", "id": "analisis-gases-arteriales" },
           { "tipo": "enfermedad", "id": "epid" },
           { "tipo": "enfermedad", "id": "saos" }
@@ -167,7 +167,7 @@ const SEMANAS = [
         "dia": "Viernes",
         "tipo": "teoria+hospital",
         "tema": "Enfermedades respiratorias ocupacionales / TALLER APLICATIVO: CASOS CLÍNICOS / REPASO",
-        "vinculos": [
+        "vinculos": [ { "tipo": "taller", "id": "taller-casos-clinicos-s3" }, 
           { "tipo": "enfermedad", "id": "enfermedades-respiratorias-ocupacionales" }
         ]
       },
@@ -1002,42 +1002,7 @@ const ENFERMEDADES = [
                 "respuestaModelo": "Preguntaría si los síntomas mejoran claramente los fines de semana y durante vacaciones prolongadas (patrón de mejoría con el alejamiento del agente), si otros compañeros de trabajo presentan síntomas similares, cuánto tiempo lleva expuesta antes del inicio de síntomas, y si existe algún cambio reciente en el proceso de trabajo (nuevo tipo de harina, aditivos). También registraría si usa medidas de protección respiratoria en el puesto de trabajo."
             }
         }
-    ,
-    {
-        "nivel": "avanzado",
-        "vineta": "Mujer de 34 años, asma desde la infancia, múltiples hospitalizaciones el último año, rinitis alérgica. Acude a emergencia por disnea intensa, opresión torácica y tos seca de inicio súbito. Usa salbutamol inhalado más de 10 veces al día sin mejoría. PA 140/90, FC 120, FR 32, SatO2 88% aire ambiental. Sibilancias generalizadas, uso de músculos accesorios, dificultad para hablar frases completas. Leucocitos 12,000/mm3 (eosinófilos 6%). AGA: pH 7.28, PaCO2 55 mmHg, PaO2 58 mmHg. Pico de flujo espiratorio <50% del valor personal mejor.",
-        "preguntaMC": {
-            "enunciado": "¿Cómo interpretas la gasometría de esta paciente en el contexto de su crisis asmática?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Alcalosis respiratoria compensatoria esperada — buen signo"
-                },
-                {
-                    "id": "b",
-                    "texto": "Acidosis respiratoria con PaCO2 elevado — signo de ALARMA, indica fatiga de músculos respiratorios y crisis casi fatal"
-                },
-                {
-                    "id": "c",
-                    "texto": "Gasometría normal para una crisis asmática"
-                },
-                {
-                    "id": "d",
-                    "texto": "Acidosis metabólica pura"
-                },
-                {
-                    "id": "e",
-                    "texto": "Alcalosis metabólica"
-                }
-            ],
-            "correcta": "b",
-            "explicacion": "En una crisis asmática típica esperaríamos taquipnea con HIPOCAPNIA (alcalosis respiratoria) por hiperventilación compensatoria. Que esta paciente tenga PaCO2 ELEVADO (55 mmHg, con acidosis) es un signo de extrema gravedad — indica que la musculatura respiratoria ya está fatigada y no logra mantener la hiperventilación compensatoria. Esto define una crisis asmática casi fatal, con riesgo de paro respiratorio inminente."
-        },
-        "preguntaEscrita": {
-            "enunciado": "¿Cuál sería el manejo inmediato en emergencia para esta paciente, y qué factores podrían explicar el mal control crónico de su asma?",
-            "respuestaModelo": "Manejo inmediato: oxígeno suplementario, salbutamol + ipratropio nebulizados continuos, corticoide sistémico endovenoso, sulfato de magnesio endovenoso (indicado en crisis severas), y evaluación URGENTE para ventilación mecánica dado el patrón de fatiga respiratoria (PaCO2 elevado) — esta paciente está en riesgo de paro respiratorio y debe manejarse en una unidad con capacidad de intubación inmediata. Factores que explican el mal control: uso excesivo de SABA de rescate (>10 veces/día, muy por encima de lo recomendado) sin terapia controladora adecuada de base, múltiples hospitalizaciones previas (marcador de asma de difícil control), y posible mal apego a corticoide inhalado de mantenimiento."
-        }
-    }
+    
   ]
   },
   {
@@ -1592,46 +1557,7 @@ const ENFERMEDADES = [
             "respuestaModelo": "Usaría el CURB-65 o el PSI. Con SatO2 90%, taquicardia, taquipnea y edad no mayor a 65, calculando CURB-65 este paciente probablemente puntúa bajo-moderado, pero la hipoxemia (SatO2 90%) y las comorbilidades (HTA, tabaquismo) inclinan a favor de hospitalización para observación y manejo con antibiótico parenteral. El tratamiento empírico inicial en un paciente hospitalizado no grave sería β-lactámico (ceftriaxona) más macrólido (azitromicina), o alternativamente una fluoroquinolona respiratoria en monoterapia."
         }
     }
-  ,
-    {
-        "nivel": "basico",
-        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 45 años, sin comorbilidades, acude a emergencia por fiebre de 38.8°C, tos productiva con esputo amarillo verdoso, disnea leve y dolor torácico tipo pleurítico de 3 días de evolución. No ha estado hospitalizado recientemente. Al examen: FR 24 rpm, FC 102 lpm, SatO₂ 92% al aire ambiental. A la auscultación: crépitos en hemitórax izquierdo.",
-        "imagen": {
-            "src": "assets/taller-imagenes-s2/taller-s2-nac-flechas.jpg",
-            "caption": "Radiografía del caso — infiltrado alveolar en lóbulo inferior izquierdo"
-        },
-        "preguntaMC": {
-            "enunciado": "¿Cómo describirías esta radiografía?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Infiltrado alveolar en el lóbulo inferior izquierdo, con consolidación y posible broncograma aéreo"
-                },
-                {
-                    "id": "b",
-                    "texto": "Patrón cavitario en vértices pulmonares"
-                },
-                {
-                    "id": "c",
-                    "texto": "Opacidad homogénea con desplazamiento mediastínico contralateral"
-                },
-                {
-                    "id": "d",
-                    "texto": "Línea pleural visible con ausencia de trama vascular periférica"
-                },
-                {
-                    "id": "e",
-                    "texto": "Radiografía sin hallazgos patológicos"
-                }
-            ],
-            "correcta": "a",
-            "explicacion": "El infiltrado alveolar con consolidación y posible broncograma aéreo en el lóbulo inferior izquierdo, sumado al cuadro clínico agudo (fiebre, esputo purulento, crépitos localizados en esa zona), es el patrón clásico de neumonía adquirida en la comunidad — el broncograma aéreo aparece cuando el aire persiste en los bronquios rodeados de alvéolos llenos de exudado."
-        },
-        "preguntaEscrita": {
-            "enunciado": "Hasta ahí, ¿qué diagnóstico presuntivo puedes proponer, y qué herramienta usarías para decidir su manejo (ambulatorio vs. hospitalizado)?",
-            "respuestaModelo": "Diagnóstico presuntivo: Neumonía Adquirida en la Comunidad (NAC). Para decidir el manejo usaría el CURB-65 o CRB-65: este paciente tiene SatO2 92% (hipoxemia leve) y taquicardia, pero no cumple criterios de confusión, FR≥30, ni hipotensión — probablemente amerite al menos observación cercana u hospitalización breve dada la hipoxemia, más que manejo ambulatorio puro, aunque el puntaje exacto depende de completar la evaluación clínica completa."
-        }
-    }]
+  ]
   },
   {
     "id": "neumonia-intrahospitalaria",
@@ -2153,46 +2079,7 @@ const ENFERMEDADES = [
     }
   
     
-  ,
-    {
-        "nivel": "basico",
-        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 32 años, procedente de zona urbana marginal, consulta por tos productiva de 2 meses, pérdida de peso (6 kg), sudoración nocturna y febrícula. Niega enfermedades previas. Al examen: adelgazado, crépitos en vértices pulmonares.",
-        "imagen": {
-            "src": "assets/taller-imagenes-s2/taller-s2-tb-cavitacion.jpg",
-            "caption": "Radiografía del caso — infiltrado cavitado en lóbulo superior (síndrome cavitario)"
-        },
-        "preguntaMC": {
-            "enunciado": "¿Cómo describirías esta radiografía?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Infiltrados cavitados en lóbulos superiores — síndrome cavitario"
-                },
-                {
-                    "id": "b",
-                    "texto": "Consolidación basal con broncograma aéreo"
-                },
-                {
-                    "id": "c",
-                    "texto": "Derrame pleural con signo del menisco"
-                },
-                {
-                    "id": "d",
-                    "texto": "Neumotórax con línea pleural visible"
-                },
-                {
-                    "id": "e",
-                    "texto": "Atelectasia con pérdida de volumen"
-                }
-            ],
-            "correcta": "a",
-            "explicacion": "La imagen cavitaria en lóbulo superior (síndrome cavitario) junto con el cuadro clínico crónico (2 meses de evolución, pérdida de peso, sudoración nocturna, febrícula) es el cuadro clásico de tuberculosis pulmonar — la localización apical se explica por la mayor tensión de oxígeno en los vértices pulmonares, donde el bacilo aerobio estricto prolifera mejor."
-        },
-        "preguntaEscrita": {
-            "enunciado": "¿Qué estudio confirmatorio solicitarías de inmediato, y por qué la localización de las lesiones es característicamente apical en esta enfermedad?",
-            "respuestaModelo": "Solicitaría baciloscopía de esputo (2-3 muestras) y cultivo para M. tuberculosis, idealmente con prueba molecular rápida (GeneXpert) si está disponible. La localización apical es característica porque M. tuberculosis es un aerobio estricto, y los vértices pulmonares tienen mayor tensión de oxígeno (mayor ventilación relativa a la perfusión) que las bases — un ambiente que favorece su crecimiento sobre otras zonas del pulmón."
-        }
-    }]
+  ]
   },
   {
     "id": "enfermedades-pleurales",
@@ -2419,160 +2306,8 @@ const ENFERMEDADES = [
           "respuestaModelo": "Realizaría descompresión con aguja de urgencia en el segundo espacio intercostal, línea medioclavicular del lado afectado (derecho), sin esperar confirmación radiológica. Esto se debe a que los signos (hipotensión + desviación traqueal contralateral) indican que el neumotórax simple ha evolucionado a neumotórax a TENSIÓN, una emergencia donde la presión intrapleural creciente compromete el retorno venoso al corazón — cada minuto de retraso aumenta el riesgo de shock obstructivo y paro cardiorrespiratorio, por lo que el diagnóstico y tratamiento deben ser clínicos e inmediatos, no esperar estudios de imagen."
         }
       }
-    ,
-    {
-        "nivel": "intermedio",
-        "vineta": "Varón de 45 años, previamente sano. Fiebre, tos productiva purulenta, dolor torácico pleurítico y disnea progresiva de 5 días de evolución. T° 38.8°C, taquipnea, matidez a la percusión y disminución del murmullo vesicular en base pulmonar derecha. Leucocitosis con neutrofilia, PCR elevada.",
-        "preguntaMC": {
-            "enunciado": "Si la toracocentesis muestra un líquido con pH 7.1, glucosa 35 mg/dl y aspecto turbio, ¿qué tipo de derrame paraneumónico presenta?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Derrame paraneumónico simple — solo requiere antibiótico"
-                },
-                {
-                    "id": "b",
-                    "texto": "Derrame paraneumónico complicado / empiema — requiere drenaje obligatorio"
-                },
-                {
-                    "id": "c",
-                    "texto": "Trasudado — descartar causa cardiaca"
-                },
-                {
-                    "id": "d",
-                    "texto": "Derrame tuberculoso"
-                },
-                {
-                    "id": "e",
-                    "texto": "No se puede clasificar sin cultivo"
-                }
-            ],
-            "correcta": "b",
-            "explicacion": "pH <7.2 y glucosa muy baja (<40-60 mg/dl) en el líquido pleural, junto con aspecto turbio, son datos que indican un derrame paraneumónico COMPLICADO o empiema franco — esto cambia la conducta terapéutica de forma decisiva: ya no basta con antibiótico solo, se requiere drenaje torácico obligatorio."
-        },
-        "preguntaEscrita": {
-            "enunciado": "¿El derrame de este paciente es exudado o trasudado según los criterios de Light, y qué factores del líquido pleural sugieren mala evolución?",
-            "respuestaModelo": "Es un EXUDADO — un derrame paraneumónico por definición es un exudado (pleura inflamada por la infección adyacente), lo que se confirmaría cumpliendo al menos uno de los criterios de Light (proteínas líquido/suero >0.5, LDH líquido/suero >0.6, o LDH >2/3 del límite superior normal sérico). Los factores que sugieren mala evolución (progresión a empiema o necesidad de drenaje) son: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, aspecto purulento/turbio, y cultivo o Gram positivo del líquido pleural."
-        }
-    }
-  ,
-    {
-        "nivel": "intermedio",
-        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 22 años, previamente sano, consulta por dolor torácico súbito y disnea de inicio brusco tras ejercicio intenso. Al examen: disminución de la expansión torácica derecha, vibraciones vocales disminuidas en base derecha, percusión con matidez en base derecha, auscultación con abolición del murmullo vesicular basal derecha. Tráquea central.",
-        "imagen": {
-            "src": "assets/taller-imagenes-s2/taller-s2-neumotorax-linea-pleural.jpg",
-            "caption": "Radiografía del caso — línea pleural visible (flechas) separando el pulmón colapsado de la pared torácica"
-        },
-        "preguntaMC": {
-            "enunciado": "¿Cómo describirías esta radiografía y cuál es el diagnóstico?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Línea pleural visible que separa el pulmón colapsado de la pared torácica — neumotórax"
-                },
-                {
-                    "id": "b",
-                    "texto": "Signo del menisco pleural — derrame pleural"
-                },
-                {
-                    "id": "c",
-                    "texto": "Infiltrado alveolar con broncograma aéreo — neumonía"
-                },
-                {
-                    "id": "d",
-                    "texto": "Opacidad cavitada apical — tuberculosis"
-                },
-                {
-                    "id": "e",
-                    "texto": "Pérdida de volumen con elevación diafragmática — atelectasia"
-                }
-            ],
-            "correcta": "a",
-            "explicacion": "Las flechas marcan la línea pleural visceral, desplazada de la pared torácica por el aire acumulado en el espacio pleural — el hallazgo radiológico definitorio del neumotórax. El cuadro clínico (dolor súbito + disnea brusca tras esfuerzo en un varón joven sano) es el escenario típico de un neumotórax espontáneo primario."
-        },
-        "preguntaEscrita": {
-            "enunciado": "Este paciente tiene tráquea central. ¿Qué cambiaría en tu manejo si la tráquea estuviera desviada hacia el lado contralateral, junto con hipotensión?",
-            "respuestaModelo": "Tráquea central + estabilidad hemodinámica es compatible con un neumotórax simple, que puede manejarse de forma más electiva (observación en neumotórax pequeño, o drenaje con tubo torácico en los más grandes). Si en cambio hubiera desviación traqueal contralateral E hipotensión, eso indicaría neumotórax A TENSIÓN — una emergencia real que requiere descompresión con aguja INMEDIATA (2do espacio intercostal, línea medioclavicular) sin esperar ningún estudio de imagen adicional, dado el riesgo de colapso cardiovascular por compresión del retorno venoso."
-        }
-    },
-    {
-        "nivel": "intermedio",
-        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Paciente de 60 años con antecedente de neumonía hace una semana, consulta por disnea progresiva, tos seca y dolor torácico pleurítico izquierdo de 5 días de evolución.",
-        "imagen": {
-            "src": "assets/taller-imagenes-s2/taller-s2-derrame-menisco.jpg",
-            "caption": "Radiografía del caso — signo del menisco pleural (curva de Damoiseau), marcado en naranja"
-        },
-        "preguntaMC": {
-            "enunciado": "¿Cómo describirías esta radiografía?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Opacidad homogénea con borramiento del ángulo costofrénico y signo del menisco pleural — derrame pleural"
-                },
-                {
-                    "id": "b",
-                    "texto": "Infiltrado alveolar con broncograma aéreo"
-                },
-                {
-                    "id": "c",
-                    "texto": "Línea pleural visible sin trama vascular periférica"
-                },
-                {
-                    "id": "d",
-                    "texto": "Cavitación apical bilateral"
-                },
-                {
-                    "id": "e",
-                    "texto": "Radiografía normal"
-                }
-            ],
-            "correcta": "a",
-            "explicacion": "El signo del menisco (o curva de Damoiseau) — una línea cóncava hacia arriba y medial marcada en naranja en la imagen — junto con el borramiento del ángulo costofrénico, es el hallazgo clásico de derrame pleural. El antecedente de neumonía reciente orienta a que este sea un derrame paraneumónico."
-        },
-        "preguntaEscrita": {
-            "enunciado": "Dado el antecedente de neumonía la semana previa, ¿qué procedimiento realizarías para caracterizar este derrame, y qué buscarías específicamente en el resultado?",
-            "respuestaModelo": "Realizaría una toracocentesis diagnóstica para obtener líquido pleural y aplicar los criterios de Light (proteínas líquido/suero, LDH líquido/suero, LDH en líquido vs. límite superior normal sérico) para clasificarlo como exudado o trasudado. Dado el antecedente de neumonía, buscaría específicamente signos de derrame paraneumónico complicado: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, y aspecto turbio/purulento — hallazgos que cambiarían la conducta de solo antibiótico a drenaje torácico obligatorio."
-        }
-    },
-    {
-        "nivel": "intermedio",
-        "vineta": "(Taller Aplicativo: Imágenes — Semana 2. Nota: la atelectasia no es en sí una enfermedad pleural, pero se incluye aquí junto a los otros casos de este mismo taller porque comparte el diagnóstico diferencial por percusión/auscultación) Varón de 68 años, postoperado de cirugía abdominal, con disnea progresiva, tos inefectiva, hipoxemia leve. Al examen: expansión torácica disminuida en lado derecho, percusión con matidez en base pulmonar derecha, auscultación con disminución del murmullo vesicular.",
-        "imagen": {
-            "src": "assets/taller-imagenes-s2/taller-s2-atelectasia-hemitorax-derecho.jpg",
-            "caption": "Radiografía del caso — opacidad homogénea y pérdida de volumen del hemitórax derecho"
-        },
-        "preguntaMC": {
-            "enunciado": "¿Cómo describirías esta radiografía?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Opacidad homogénea y pérdida de volumen del hemitórax derecho, con elevación del diafragma y desplazamiento de cisuras hacia el área afectada — atelectasia"
-                },
-                {
-                    "id": "b",
-                    "texto": "Infiltrado alveolar con broncograma aéreo — neumonía"
-                },
-                {
-                    "id": "c",
-                    "texto": "Signo del menisco pleural — derrame pleural"
-                },
-                {
-                    "id": "d",
-                    "texto": "Línea pleural visible — neumotórax"
-                },
-                {
-                    "id": "e",
-                    "texto": "Radiografía sin hallazgos"
-                }
-            ],
-            "correcta": "a",
-            "explicacion": "El dato clave que distingue la atelectasia de otras causas de opacidad es que las estructuras se DESPLAZAN HACIA el área afectada (pérdida de volumen — el mediastino y las cisuras 'jalan' hacia el pulmón colapsado), a diferencia del derrame masivo, donde el mediastino se desplaza EN SENTIDO CONTRARIO (por el efecto de masa del líquido). El antecedente de cirugía abdominal reciente es un factor de riesgo clásico de atelectasia postoperatoria por hipoventilación y retención de secreciones."
-        },
-        "preguntaEscrita": {
-            "enunciado": "¿Por qué la percusión da matidez en la atelectasia, igual que en el derrame pleural, si son dos entidades completamente distintas? ¿Cómo las diferenciarías clínicamente además de la imagen?",
-            "respuestaModelo": "Ambas dan matidez porque en ambos casos hay menos aire de lo normal en esa zona del tórax (en la atelectasia, el pulmón está colapsado; en el derrame, el espacio pleural está ocupado por líquido) — la percusión no distingue la causa, solo detecta 'menos aire'. Clínicamente, la clave diferenciadora es la dirección del desplazamiento mediastínico: hacia el lado afectado en la atelectasia (por pérdida de volumen), hacia el lado contrario en el derrame masivo (por efecto de masa) — y radiológicamente, la atelectasia muestra pérdida de volumen con elevación diafragmática ipsilateral, mientras que el derrame muestra el signo del menisco característico."
-        }
-    }
+    
+  
   ]
   },
   {
@@ -3670,106 +3405,7 @@ const TEMAS = [
         "PaFi = PaO2 / FiO2 — valores <300 sugieren lesión pulmonar aguda, <200 sugiere SDRA"
       ]
     },
-    "casosClinicos": [
-      {
-        "nivel": "basico",
-        "vineta": "Varón de 68 años, tórax en tonel, EPOC diagnosticado hace 15 años, consulta por somnolencia y disnea a mínimos esfuerzos. FR 10 rpm, SatO2 83% ambiental. AGA: pH 7.30, PaCO2 60 mmHg, PaO2 55 mmHg, HCO3 32 mEq/L, FiO2 21%.",
-        "preguntaMC": {
-          "enunciado": "¿Qué alteración primaria presenta este paciente y es aguda o crónica?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "Acidosis metabólica aguda"
-            },
-            {
-              "id": "b",
-              "texto": "Acidosis respiratoria con compensación metabólica ya establecida (HCO3 muy elevado para ser solo agudo) — sugiere retención crónica de CO2 con descompensación aguda sobreagregada"
-            },
-            {
-              "id": "c",
-              "texto": "Alcalosis respiratoria aguda"
-            },
-            {
-              "id": "d",
-              "texto": "Gasometría normal"
-            }
-          ],
-          "correcta": "b",
-          "explicacion": "pH bajo + PaCO2 elevado = acidosis respiratoria. El HCO3 de 32 (bastante por encima de lo esperado para una compensación aguda, que sería solo ~+1 por cada 10 de CO2) indica que el riñón ya tuvo tiempo de compensar — es decir, el paciente ya era un retenedor crónico de CO2 (típico de EPOC avanzado), y ahora tiene una descompensación aguda sobreagregada que el riñón todavía no alcanza a compensar del todo (por eso el pH sigue bajo)."
-        },
-        "preguntaEscrita": {
-          "enunciado": "¿Por qué la frecuencia respiratoria de 10 rpm en este paciente es un dato preocupante y no tranquilizador?",
-          "respuestaModelo": "En un paciente con acidosis respiratoria e hipoxemia severa, uno esperaría taquipnea compensatoria. Una frecuencia respiratoria baja (10 rpm) junto con somnolencia sugiere depresión del centro respiratorio por la hipercapnia severa (narcosis por CO2) o agotamiento respiratorio — es decir, el paciente está perdiendo la capacidad de compensar, no que esté mejorando. Es un signo de alarma que puede anticipar la necesidad de soporte ventilatorio urgente."
-        }
-      },
-      {
-        "nivel": "intermedio",
-        "vineta": "Mujer de 35 años, sin comorbilidades, fiebre de 39°C, disnea progresiva, taquipnea 32 rpm, crepitantes bilaterales, SatO2 84%. AGA: pH 7.47, PaCO2 30 mmHg, PaO2 50 mmHg, HCO3 21 mEq/L, FiO2 21%.",
-        "preguntaMC": {
-          "enunciado": "¿Cuál es la interpretación correcta de esta gasometría?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "Acidosis metabólica descompensada"
-            },
-            {
-              "id": "b",
-              "texto": "Alcalosis respiratoria aguda (por hiperventilación secundaria a hipoxemia/proceso infeccioso), con compensación metabólica renal aguda apropiada (HCO3 levemente disminuido)"
-            },
-            {
-              "id": "c",
-              "texto": "Acidosis respiratoria crónica"
-            },
-            {
-              "id": "d",
-              "texto": "Alcalosis metabólica pura"
-            }
-          ],
-          "correcta": "b",
-          "explicacion": "pH elevado + PaCO2 bajo = alcalosis respiratoria (hiperventilación, típica cuando el paciente 'sopla' CO2 de más al intentar compensar la hipoxemia). El HCO3 de 21 (levemente bajo) es la compensación renal esperada para un proceso agudo — usando la fórmula: HCO3 esperado = 24 − [(40−30)/10]×2 = 22, muy cercano al valor real (21), confirmando que es una alcalosis respiratoria aguda simple, sin trastorno mixto agregado."
-        },
-        "preguntaEscrita": {
-          "enunciado": "Calcula la PaFi de esta paciente e interpreta qué tan grave es su compromiso de oxigenación.",
-          "respuestaModelo": "PaFi = PaO2 / FiO2 = 50 / 0.21 ≈ 238. Un valor de PaFi por debajo de 300 ya sugiere lesión pulmonar aguda; por debajo de 200 orienta a síndrome de dificultad respiratoria aguda (SDRA). Con 238, la paciente tiene un compromiso significativo de la oxigenación, consistente con un proceso infeccioso pulmonar grave (neumonía) que está alterando la relación ventilación/perfusión."
-        }
-      }
-    ,
-    {
-        "nivel": "avanzado",
-        "vineta": "Varón de 25 años con diabetes mellitus tipo 1 mal controlada, ingresa por vómitos persistentes, dolor abdominal y compromiso del sensorio. Respiración profunda y rápida tipo Kussmaul, deshidratación severa, aliento cetónico. AGA: pH 7.10, PaCO2 19 mmHg, PaO2 98 mmHg, HCO3 6 mEq/L, FiO2 0.21, EB -18.",
-        "preguntaMC": {
-            "enunciado": "¿Cuál es el trastorno ácido-base primario, y la compensación respiratoria es adecuada?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Acidosis respiratoria con compensación metabólica"
-                },
-                {
-                    "id": "b",
-                    "texto": "Acidosis metabólica (HCO3 muy bajo) con compensación respiratoria adecuada (PaCO2 esperado ≈17±2, muy cercano al real de 19)"
-                },
-                {
-                    "id": "c",
-                    "texto": "Alcalosis metabólica"
-                },
-                {
-                    "id": "d",
-                    "texto": "Trastorno mixto no compensado"
-                },
-                {
-                    "id": "e",
-                    "texto": "Gasometría normal"
-                }
-            ],
-            "correcta": "b",
-            "explicacion": "pH muy bajo (7.10) + HCO3 muy bajo (6) = acidosis metabólica severa (típica de cetoacidosis diabética). Usando la fórmula de Winter: PaCO2 esperado = (1.5×HCO3) + 8 ± 2 = (1.5×6)+8 = 17±2 (rango 15-19). El PaCO2 real del paciente (19) cae justo dentro de ese rango esperado — confirmando que la respiración de Kussmaul (rápida y profunda) está logrando una compensación respiratoria ADECUADA, sin trastorno mixto agregado."
-        },
-        "preguntaEscrita": {
-            "enunciado": "Explica por qué este paciente presenta respiración de Kussmaul, relacionándolo con el mecanismo de compensación que estás calculando.",
-            "respuestaModelo": "La respiración de Kussmaul (profunda y rápida) es precisamente el mecanismo compensatorio respiratorio ante la acidosis metabólica severa. Al aumentar la ventilación alveolar, el paciente elimina más CO2 del que normalmente eliminaría, bajando el PaCO2 (hipocapnia compensatoria) para intentar normalizar el pH pese al HCO3 muy bajo. Es el pulmón 'ayudando' al riñón a compensar un problema metabólico — el mismo principio general por el que, ante cualquier acidosis metabólica, el cuerpo hiperventila de forma refleja."
-        }
-    }
-  ]
+    "casosClinicos": []
   }];
 
 /* ============================================================
@@ -4240,6 +3876,600 @@ const MODULOS = {
     ]
   }
 };
+
+/* ============================================================
+   TALLERES — cada Taller Aplicativo es su propia sección
+   independiente y repasable, con sus propios casos e imágenes.
+   NO se disuelven como casos extra dentro de otras enfermedades:
+   son la sección exacta que se revisa antes/después del examen
+   práctico de ese taller específico.
+   ============================================================ */
+const TALLERES = [
+  {
+    "id": "taller-imagenes-s2",
+    "nombre": "TALLER APLICATIVO: IMÁGENES",
+    "semana": "semana-02",
+    "dia": "Lunes",
+    "resumen": "Interpretación de radiografías de tórax según el contexto clínico — 5 casos reales, cada uno con su imagen. Aplicado justo antes de un examen práctico.",
+    "casos": [
+      {
+        "nivel": "basico",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 45 años, sin comorbilidades, acude a emergencia por fiebre de 38.8°C, tos productiva con esputo amarillo verdoso, disnea leve y dolor torácico tipo pleurítico de 3 días de evolución. No ha estado hospitalizado recientemente. Al examen: FR 24 rpm, FC 102 lpm, SatO₂ 92% al aire ambiental. A la auscultación: crépitos en hemitórax izquierdo.",
+        "imagen": {
+          "src": "assets/taller-imagenes-s2/taller-s2-nac-flechas.jpg",
+          "caption": "Radiografía del caso — infiltrado alveolar en lóbulo inferior izquierdo"
+        },
+        "preguntaMC": {
+          "enunciado": "¿Cómo describirías esta radiografía?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Infiltrado alveolar en el lóbulo inferior izquierdo, con consolidación y posible broncograma aéreo"
+            },
+            {
+              "id": "b",
+              "texto": "Patrón cavitario en vértices pulmonares"
+            },
+            {
+              "id": "c",
+              "texto": "Opacidad homogénea con desplazamiento mediastínico contralateral"
+            },
+            {
+              "id": "d",
+              "texto": "Línea pleural visible con ausencia de trama vascular periférica"
+            },
+            {
+              "id": "e",
+              "texto": "Radiografía sin hallazgos patológicos"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "El infiltrado alveolar con consolidación y posible broncograma aéreo en el lóbulo inferior izquierdo, sumado al cuadro clínico agudo (fiebre, esputo purulento, crépitos localizados en esa zona), es el patrón clásico de neumonía adquirida en la comunidad — el broncograma aéreo aparece cuando el aire persiste en los bronquios rodeados de alvéolos llenos de exudado."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Hasta ahí, ¿qué diagnóstico presuntivo puedes proponer, y qué herramienta usarías para decidir su manejo (ambulatorio vs. hospitalizado)?",
+          "respuestaModelo": "Diagnóstico presuntivo: Neumonía Adquirida en la Comunidad (NAC). Para decidir el manejo usaría el CURB-65 o CRB-65: este paciente tiene SatO2 92% (hipoxemia leve) y taquicardia, pero no cumple criterios de confusión, FR≥30, ni hipotensión — probablemente amerite al menos observación cercana u hospitalización breve dada la hipoxemia, más que manejo ambulatorio puro, aunque el puntaje exacto depende de completar la evaluación clínica completa."
+        }
+      },
+      {
+        "nivel": "basico",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 32 años, procedente de zona urbana marginal, consulta por tos productiva de 2 meses, pérdida de peso (6 kg), sudoración nocturna y febrícula. Niega enfermedades previas. Al examen: adelgazado, crépitos en vértices pulmonares.",
+        "imagen": {
+          "src": "assets/taller-imagenes-s2/taller-s2-tb-cavitacion.jpg",
+          "caption": "Radiografía del caso — infiltrado cavitado en lóbulo superior (síndrome cavitario)"
+        },
+        "preguntaMC": {
+          "enunciado": "¿Cómo describirías esta radiografía?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Infiltrados cavitados en lóbulos superiores — síndrome cavitario"
+            },
+            {
+              "id": "b",
+              "texto": "Consolidación basal con broncograma aéreo"
+            },
+            {
+              "id": "c",
+              "texto": "Derrame pleural con signo del menisco"
+            },
+            {
+              "id": "d",
+              "texto": "Neumotórax con línea pleural visible"
+            },
+            {
+              "id": "e",
+              "texto": "Atelectasia con pérdida de volumen"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "La imagen cavitaria en lóbulo superior (síndrome cavitario) junto con el cuadro clínico crónico (2 meses de evolución, pérdida de peso, sudoración nocturna, febrícula) es el cuadro clásico de tuberculosis pulmonar — la localización apical se explica por la mayor tensión de oxígeno en los vértices pulmonares, donde el bacilo aerobio estricto prolifera mejor."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Qué estudio confirmatorio solicitarías de inmediato, y por qué la localización de las lesiones es característicamente apical en esta enfermedad?",
+          "respuestaModelo": "Solicitaría baciloscopía de esputo (2-3 muestras) y cultivo para M. tuberculosis, idealmente con prueba molecular rápida (GeneXpert) si está disponible. La localización apical es característica porque M. tuberculosis es un aerobio estricto, y los vértices pulmonares tienen mayor tensión de oxígeno (mayor ventilación relativa a la perfusión) que las bases — un ambiente que favorece su crecimiento sobre otras zonas del pulmón."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2. Nota: la atelectasia no es en sí una enfermedad pleural, pero se incluye aquí junto a los otros casos de este mismo taller porque comparte el diagnóstico diferencial por percusión/auscultación) Varón de 68 años, postoperado de cirugía abdominal, con disnea progresiva, tos inefectiva, hipoxemia leve. Al examen: expansión torácica disminuida en lado derecho, percusión con matidez en base pulmonar derecha, auscultación con disminución del murmullo vesicular.",
+        "imagen": {
+          "src": "assets/taller-imagenes-s2/taller-s2-atelectasia-hemitorax-derecho.jpg",
+          "caption": "Radiografía del caso — opacidad homogénea y pérdida de volumen del hemitórax derecho"
+        },
+        "preguntaMC": {
+          "enunciado": "¿Cómo describirías esta radiografía?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Opacidad homogénea y pérdida de volumen del hemitórax derecho, con elevación del diafragma y desplazamiento de cisuras hacia el área afectada — atelectasia"
+            },
+            {
+              "id": "b",
+              "texto": "Infiltrado alveolar con broncograma aéreo — neumonía"
+            },
+            {
+              "id": "c",
+              "texto": "Signo del menisco pleural — derrame pleural"
+            },
+            {
+              "id": "d",
+              "texto": "Línea pleural visible — neumotórax"
+            },
+            {
+              "id": "e",
+              "texto": "Radiografía sin hallazgos"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "El dato clave que distingue la atelectasia de otras causas de opacidad es que las estructuras se DESPLAZAN HACIA el área afectada (pérdida de volumen — el mediastino y las cisuras 'jalan' hacia el pulmón colapsado), a diferencia del derrame masivo, donde el mediastino se desplaza EN SENTIDO CONTRARIO (por el efecto de masa del líquido). El antecedente de cirugía abdominal reciente es un factor de riesgo clásico de atelectasia postoperatoria por hipoventilación y retención de secreciones."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Por qué la percusión da matidez en la atelectasia, igual que en el derrame pleural, si son dos entidades completamente distintas? ¿Cómo las diferenciarías clínicamente además de la imagen?",
+          "respuestaModelo": "Ambas dan matidez porque en ambos casos hay menos aire de lo normal en esa zona del tórax (en la atelectasia, el pulmón está colapsado; en el derrame, el espacio pleural está ocupado por líquido) — la percusión no distingue la causa, solo detecta 'menos aire'. Clínicamente, la clave diferenciadora es la dirección del desplazamiento mediastínico: hacia el lado afectado en la atelectasia (por pérdida de volumen), hacia el lado contrario en el derrame masivo (por efecto de masa) — y radiológicamente, la atelectasia muestra pérdida de volumen con elevación diafragmática ipsilateral, mientras que el derrame muestra el signo del menisco característico."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Varón de 22 años, previamente sano, consulta por dolor torácico súbito y disnea de inicio brusco tras ejercicio intenso. Al examen: disminución de la expansión torácica derecha, vibraciones vocales disminuidas en base derecha, percusión con matidez en base derecha, auscultación con abolición del murmullo vesicular basal derecha. Tráquea central.",
+        "imagen": {
+          "src": "assets/taller-imagenes-s2/taller-s2-neumotorax-linea-pleural.jpg",
+          "caption": "Radiografía del caso — línea pleural visible (flechas) separando el pulmón colapsado de la pared torácica"
+        },
+        "preguntaMC": {
+          "enunciado": "¿Cómo describirías esta radiografía y cuál es el diagnóstico?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Línea pleural visible que separa el pulmón colapsado de la pared torácica — neumotórax"
+            },
+            {
+              "id": "b",
+              "texto": "Signo del menisco pleural — derrame pleural"
+            },
+            {
+              "id": "c",
+              "texto": "Infiltrado alveolar con broncograma aéreo — neumonía"
+            },
+            {
+              "id": "d",
+              "texto": "Opacidad cavitada apical — tuberculosis"
+            },
+            {
+              "id": "e",
+              "texto": "Pérdida de volumen con elevación diafragmática — atelectasia"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "Las flechas marcan la línea pleural visceral, desplazada de la pared torácica por el aire acumulado en el espacio pleural — el hallazgo radiológico definitorio del neumotórax. El cuadro clínico (dolor súbito + disnea brusca tras esfuerzo en un varón joven sano) es el escenario típico de un neumotórax espontáneo primario."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Este paciente tiene tráquea central. ¿Qué cambiaría en tu manejo si la tráquea estuviera desviada hacia el lado contralateral, junto con hipotensión?",
+          "respuestaModelo": "Tráquea central + estabilidad hemodinámica es compatible con un neumotórax simple, que puede manejarse de forma más electiva (observación en neumotórax pequeño, o drenaje con tubo torácico en los más grandes). Si en cambio hubiera desviación traqueal contralateral E hipotensión, eso indicaría neumotórax A TENSIÓN — una emergencia real que requiere descompresión con aguja INMEDIATA (2do espacio intercostal, línea medioclavicular) sin esperar ningún estudio de imagen adicional, dado el riesgo de colapso cardiovascular por compresión del retorno venoso."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "(Taller Aplicativo: Imágenes — Semana 2) Paciente de 60 años con antecedente de neumonía hace una semana, consulta por disnea progresiva, tos seca y dolor torácico pleurítico izquierdo de 5 días de evolución.",
+        "imagen": {
+          "src": "assets/taller-imagenes-s2/taller-s2-derrame-menisco.jpg",
+          "caption": "Radiografía del caso — signo del menisco pleural (curva de Damoiseau), marcado en naranja"
+        },
+        "preguntaMC": {
+          "enunciado": "¿Cómo describirías esta radiografía?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Opacidad homogénea con borramiento del ángulo costofrénico y signo del menisco pleural — derrame pleural"
+            },
+            {
+              "id": "b",
+              "texto": "Infiltrado alveolar con broncograma aéreo"
+            },
+            {
+              "id": "c",
+              "texto": "Línea pleural visible sin trama vascular periférica"
+            },
+            {
+              "id": "d",
+              "texto": "Cavitación apical bilateral"
+            },
+            {
+              "id": "e",
+              "texto": "Radiografía normal"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "El signo del menisco (o curva de Damoiseau) — una línea cóncava hacia arriba y medial marcada en naranja en la imagen — junto con el borramiento del ángulo costofrénico, es el hallazgo clásico de derrame pleural. El antecedente de neumonía reciente orienta a que este sea un derrame paraneumónico."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Dado el antecedente de neumonía la semana previa, ¿qué procedimiento realizarías para caracterizar este derrame, y qué buscarías específicamente en el resultado?",
+          "respuestaModelo": "Realizaría una toracocentesis diagnóstica para obtener líquido pleural y aplicar los criterios de Light (proteínas líquido/suero, LDH líquido/suero, LDH en líquido vs. límite superior normal sérico) para clasificarlo como exudado o trasudado. Dado el antecedente de neumonía, buscaría específicamente signos de derrame paraneumónico complicado: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, y aspecto turbio/purulento — hallazgos que cambiarían la conducta de solo antibiótico a drenaje torácico obligatorio."
+        }
+      }
+    ]
+  },
+  {
+    "id": "taller-aga1-s2",
+    "nombre": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES",
+    "semana": "semana-02",
+    "dia": "Viernes",
+    "resumen": "Interpretación de gasometrías arteriales paso a paso — 5 casos, aplicando las fórmulas de compensación esperada y el cálculo del PaFi.",
+    "formulas": [
+      "Acidosis Respiratoria — HCO3 esperado = 24 + [(PaCO2−40)/10] × 1",
+      "Alcalosis Respiratoria — HCO3 esperado = 24 − [(40−PaCO2)/10] × 2",
+      "Acidosis Metabólica — PaCO2 esperado = (1.5 × HCO3) + 8 ± 2",
+      "Alcalosis Metabólica — PaCO2 esperado = 0.7 × (HCO3−24) + 40 ± 5",
+      "PaFi = PaO2 / FiO2 (FiO2 en fracción decimal, no porcentaje)"
+    ],
+    "casos": [
+      {
+        "nivel": "basico",
+        "vineta": "Varón de 68 años, tórax en tonel, EPOC diagnosticado hace 15 años, consulta por somnolencia y disnea a mínimos esfuerzos. FR 10 rpm, SatO2 83% ambiental. AGA: pH 7.30, PaCO2 60 mmHg, PaO2 55 mmHg, HCO3 32 mEq/L, FiO2 21%.",
+        "preguntaMC": {
+          "enunciado": "¿Qué alteración primaria presenta este paciente y es aguda o crónica?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis metabólica aguda"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria con compensación metabólica ya establecida (HCO3 muy elevado para ser solo agudo) — sugiere retención crónica de CO2 con descompensación aguda sobreagregada"
+            },
+            {
+              "id": "c",
+              "texto": "Alcalosis respiratoria aguda"
+            },
+            {
+              "id": "d",
+              "texto": "Gasometría normal"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "pH bajo + PaCO2 elevado = acidosis respiratoria. El HCO3 de 32 (bastante por encima de lo esperado para una compensación aguda, que sería solo ~+1 por cada 10 de CO2) indica que el riñón ya tuvo tiempo de compensar — es decir, el paciente ya era un retenedor crónico de CO2 (típico de EPOC avanzado), y ahora tiene una descompensación aguda sobreagregada que el riñón todavía no alcanza a compensar del todo (por eso el pH sigue bajo)."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Por qué la frecuencia respiratoria de 10 rpm en este paciente es un dato preocupante y no tranquilizador?",
+          "respuestaModelo": "En un paciente con acidosis respiratoria e hipoxemia severa, uno esperaría taquipnea compensatoria. Una frecuencia respiratoria baja (10 rpm) junto con somnolencia sugiere depresión del centro respiratorio por la hipercapnia severa (narcosis por CO2) o agotamiento respiratorio — es decir, el paciente está perdiendo la capacidad de compensar, no que esté mejorando. Es un signo de alarma que puede anticipar la necesidad de soporte ventilatorio urgente."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "Mujer de 35 años, sin comorbilidades, fiebre de 39°C, disnea progresiva, taquipnea 32 rpm, crepitantes bilaterales, SatO2 84%. AGA: pH 7.47, PaCO2 30 mmHg, PaO2 50 mmHg, HCO3 21 mEq/L, FiO2 21%.",
+        "preguntaMC": {
+          "enunciado": "¿Cuál es la interpretación correcta de esta gasometría?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis metabólica descompensada"
+            },
+            {
+              "id": "b",
+              "texto": "Alcalosis respiratoria aguda (por hiperventilación secundaria a hipoxemia/proceso infeccioso), con compensación metabólica renal aguda apropiada (HCO3 levemente disminuido)"
+            },
+            {
+              "id": "c",
+              "texto": "Acidosis respiratoria crónica"
+            },
+            {
+              "id": "d",
+              "texto": "Alcalosis metabólica pura"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "pH elevado + PaCO2 bajo = alcalosis respiratoria (hiperventilación, típica cuando el paciente 'sopla' CO2 de más al intentar compensar la hipoxemia). El HCO3 de 21 (levemente bajo) es la compensación renal esperada para un proceso agudo — usando la fórmula: HCO3 esperado = 24 − [(40−30)/10]×2 = 22, muy cercano al valor real (21), confirmando que es una alcalosis respiratoria aguda simple, sin trastorno mixto agregado."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Calcula la PaFi de esta paciente e interpreta qué tan grave es su compromiso de oxigenación.",
+          "respuestaModelo": "PaFi = PaO2 / FiO2 = 50 / 0.21 ≈ 238. Un valor de PaFi por debajo de 300 ya sugiere lesión pulmonar aguda; por debajo de 200 orienta a síndrome de dificultad respiratoria aguda (SDRA). Con 238, la paciente tiene un compromiso significativo de la oxigenación, consistente con un proceso infeccioso pulmonar grave (neumonía) que está alterando la relación ventilación/perfusión."
+        }
+      },
+      {
+        "nivel": "avanzado",
+        "vineta": "(Taller Aplicativo: Análisis de Gases Arteriales — Semana 2) Varón de 67 años, hipertenso y diabético, acude por 4 días de fiebre, tos productiva purulenta y disnea progresiva. Al examen: taquipnea (FR 30), uso de musculatura accesoria, estertores crepitantes en base derecha. Rx de tórax: consolidado en base de hemitórax derecho. AGA: pH 7.48, PaCO2 30 mmHg, PaO2 55 mmHg, HCO3 22 mEq/L, FiO2 21%, Lactato 2, Gradiente A-a 57, EB -2.",
+        "preguntaMC": {
+          "enunciado": "¿Qué alteración primaria presenta este paciente según el AGA?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Alcalosis respiratoria aguda (pH elevado, PaCO2 disminuido, HCO3 acorde a cambio agudo)"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria crónica compensada"
+            },
+            {
+              "id": "c",
+              "texto": "Acidosis metabólica pura"
+            },
+            {
+              "id": "d",
+              "texto": "Alcalosis metabólica"
+            },
+            {
+              "id": "e",
+              "texto": "Gasometría normal"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "pH elevado (7.48) = alcalemia. PaCO2 disminuido (30) = el trastorno primario es respiratorio (alcalosis respiratoria). El HCO3 (22) está acorde a lo esperado para un cambio AGUDO (fórmula: HCO3 esperado = 24 − [(40−PaCO2)/10]×2 = 24 − [(40−30)/10]×2 = 22), confirmando que es aguda, no una compensación crónica ya establecida."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Calcula el PaFi de este paciente y da tu conclusión fisiopatológica completa.",
+          "respuestaModelo": "PaFi = PaO2/FiO2 = 55/0.21 ≈ 262 (sin compromiso significativo de oxigenación por shunt). Conclusión: neumonía con alcalosis respiratoria secundaria a hiperventilación por sepsis temprana, con hipoxemia explicada por alteración de la relación ventilación/perfusión (V/Q) más que por shunt — el PaFi de 262 no indica un compromiso tan severo como para pensar en SDRA."
+        }
+      },
+      {
+        "nivel": "avanzado",
+        "vineta": "(Taller Aplicativo: Análisis de Gases Arteriales — Semana 2) Mujer de 74 años con antecedente de EPOC leve, consulta por disnea severa y compromiso del sensorio. Presenta hipotensión, taquicardia y fiebre; se documenta neumonía multilobar. Ingresa a emergencia con criterios de sepsis grave. AGA: pH 7.25, PaCO2 55 mmHg, PaO2 48 mmHg, HCO3 24 mEq/L, FiO2 0.4, Lactato 4.2, Gradiente A-a 156, EB +1.",
+        "preguntaMC": {
+          "enunciado": "¿Qué alteración primaria presenta esta paciente según el AGA?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis respiratoria aguda sin compensación (HCO3 no elevado pese al PaCO2 alto)"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria crónica compensada"
+            },
+            {
+              "id": "c",
+              "texto": "Alcalosis respiratoria"
+            },
+            {
+              "id": "d",
+              "texto": "Acidosis metabólica pura"
+            },
+            {
+              "id": "e",
+              "texto": "Alcalosis metabólica"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "pH bajo (7.25) = acidemia. PaCO2 elevado (55) = acidosis respiratoria. El HCO3 (24) NO está elevado como se esperaría en una compensación renal ya establecida (el HCO3 esperado por fórmula sería ≈25.5) — la ausencia de compensación confirma que es un proceso AGUDO, pese al antecedente de EPOC (que uno podría esperar generara ya una compensación crónica basal)."
+        },
+        "preguntaEscrita": {
+          "enunciado": "IMPORTANTE — verifica el cálculo: si alguien te dice que el PaFi de esta paciente es 262, ¿es correcto? Haz el cálculo real y dilo con tu propia conclusión fisiopatológica.",
+          "respuestaModelo": "NO es correcto — 262 correspondería a un cálculo con FiO2 de 0.21, pero esta paciente tiene FiO2 de 0.4 (recibe oxígeno suplementario). El cálculo real es PaFi = PaO2/FiO2 = 48/0.4 = 120, que sí indica compromiso significativo de la oxigenación (compatible con SDRA moderado según Berlín, 100-200). Conclusión: insuficiencia respiratoria mixta con shunt significativo (evidenciado por el gradiente A-a muy elevado de 156) y acidosis respiratoria aguda en el contexto de sepsis grave por neumonía multilobar."
+        }
+      },
+      {
+        "nivel": "avanzado",
+        "vineta": "(Taller Aplicativo: Análisis de Gases Arteriales — Semana 2) Varón de 60 años con peritonitis fecaloidea operada. En UCI desarrolla hipoxemia refractaria pese a oxígeno suplementario, gran tiraje intercostal y uso de musculatura accesoria, además de trastorno del sensorio e inestabilidad hemodinámica que requirió inotrópicos. Requiere ventilación mecánica. AGA: pH 7.31, PaCO2 40 mmHg, PaO2 55 mmHg, HCO3 19 mEq/L, FiO2 0.8, Lactato 3.7, Gradiente A-a 458, EB -6.",
+        "preguntaMC": {
+          "enunciado": "¿Qué alteración primaria presenta este paciente según el AGA?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis metabólica primaria (HCO3 bajo) con compensación respiratoria adecuada"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria pura"
+            },
+            {
+              "id": "c",
+              "texto": "Alcalosis respiratoria"
+            },
+            {
+              "id": "d",
+              "texto": "Alcalosis metabólica"
+            },
+            {
+              "id": "e",
+              "texto": "Gasometría normal"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "pH bajo (7.31) = acidemia. HCO3 bajo (19) = el trastorno primario es metabólico (acidosis metabólica), consistente con el contexto séptico postquirúrgico. Aplicando la fórmula de Winter: PaCO2 esperado = 1.5×19 + 8 = 36.5 ±2 (rango 34.5-38.5) — el PaCO2 real (40) cae dentro de ese rango, confirmando compensación respiratoria ADECUADA, no un trastorno mixto agregado."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Calcula el PaFi de este paciente y da tu conclusión fisiopatológica completa, explicando qué tan grave es su compromiso respiratorio.",
+          "respuestaModelo": "PaFi = PaO2/FiO2 = 55/0.8 ≈ 69. Un PaFi menor a 100 corresponde a SDRA SEVERO según los criterios de Berlín. Conclusión: SDRA severo con shunt intrapulmonar masivo (gradiente A-a de 458, extremadamente elevado) y acidosis metabólica por sepsis abdominal — el cuadro completo (postoperatorio de peritonitis + hipoxemia refractaria a oxígeno + necesidad de ventilación mecánica e inotrópicos) es el escenario clásico de SDRA secundario a sepsis de origen abdominal."
+        }
+      }
+    ]
+  },
+  {
+    "id": "taller-casos-clinicos-s3",
+    "nombre": "TALLER APLICATIVO: CASOS CLÍNICOS EN NEUMOLOGÍA",
+    "semana": "semana-03",
+    "dia": "Viernes",
+    "resumen": "Aplicación integral de todo el módulo de Neumología — 3 casos completos (diagnóstico, exámenes, tratamiento), como se pediría en el examen del curso.",
+    "casos": [
+      {
+        "nivel": "intermedio",
+        "vineta": "Varón de 58 años, taxista, hipertenso, exfumador (20 paq/año), no vacunado. Inicia con malestar general, escalofríos y fiebre no cuantificada hace 4 días. A las 48h aparece tos productiva con esputo amarillento, dolor torácico tipo punzada que aumenta con la inspiración, y disnea de pequeños esfuerzos. T° 39°C, FC 108, FR 26, PA 135/85, SatO2 90% aire ambiente. Disminución de la expansibilidad torácica derecha, matidez en base derecha, crepitantes y soplo tubario en lóbulo inferior derecho. Leucocitos 17,500/mm³ con neutrofilia, PCR y procalcitonina elevadas, gasometría con hipoxemia leve.",
+        "preguntaMC": {
+          "enunciado": "¿Qué hallazgo del examen físico confirma consolidación del lóbulo inferior derecho, más allá de la matidez?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Frémito vocal disminuido"
+            },
+            {
+              "id": "b",
+              "texto": "Soplo tubárico y crepitantes localizados en la misma zona"
+            },
+            {
+              "id": "c",
+              "texto": "Hiperresonancia a la percusión"
+            },
+            {
+              "id": "d",
+              "texto": "Murmullo vesicular aumentado"
+            },
+            {
+              "id": "e",
+              "texto": "Ausencia total de ruidos respiratorios"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "El soplo tubárico (transmisión de los ruidos bronquiales a través de tejido consolidado) junto con los crepitantes localizados en la misma zona que la matidez confirma consolidación del parénquima — el frémito en consolidación está AUMENTADO (no disminuido, eso sería derrame), y la hiperresonancia sería propia de neumotórax, no de neumonía."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Qué criterios usarías para decidir si este paciente requiere hospitalización, y cuál sería el tratamiento antibiótico empírico inicial más apropiado?",
+          "respuestaModelo": "Usaría el CURB-65 o el PSI. Con SatO2 90%, taquicardia, taquipnea y edad no mayor a 65, calculando CURB-65 este paciente probablemente puntúa bajo-moderado, pero la hipoxemia (SatO2 90%) y las comorbilidades (HTA, tabaquismo) inclinan a favor de hospitalización para observación y manejo con antibiótico parenteral. El tratamiento empírico inicial en un paciente hospitalizado no grave sería β-lactámico (ceftriaxona) más macrólido (azitromicina), o alternativamente una fluoroquinolona respiratoria en monoterapia."
+        }
+      },
+      {
+        "nivel": "avanzado",
+        "vineta": "Mujer de 34 años, asma desde la infancia, múltiples hospitalizaciones el último año, rinitis alérgica. Acude a emergencia por disnea intensa, opresión torácica y tos seca de inicio súbito. Usa salbutamol inhalado más de 10 veces al día sin mejoría. PA 140/90, FC 120, FR 32, SatO2 88% aire ambiental. Sibilancias generalizadas, uso de músculos accesorios, dificultad para hablar frases completas. Leucocitos 12,000/mm3 (eosinófilos 6%). AGA: pH 7.28, PaCO2 55 mmHg, PaO2 58 mmHg. Pico de flujo espiratorio <50% del valor personal mejor.",
+        "preguntaMC": {
+          "enunciado": "¿Cómo interpretas la gasometría de esta paciente en el contexto de su crisis asmática?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Alcalosis respiratoria compensatoria esperada — buen signo"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria con PaCO2 elevado — signo de ALARMA, indica fatiga de músculos respiratorios y crisis casi fatal"
+            },
+            {
+              "id": "c",
+              "texto": "Gasometría normal para una crisis asmática"
+            },
+            {
+              "id": "d",
+              "texto": "Acidosis metabólica pura"
+            },
+            {
+              "id": "e",
+              "texto": "Alcalosis metabólica"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "En una crisis asmática típica esperaríamos taquipnea con HIPOCAPNIA (alcalosis respiratoria) por hiperventilación compensatoria. Que esta paciente tenga PaCO2 ELEVADO (55 mmHg, con acidosis) es un signo de extrema gravedad — indica que la musculatura respiratoria ya está fatigada y no logra mantener la hiperventilación compensatoria. Esto define una crisis asmática casi fatal, con riesgo de paro respiratorio inminente."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿Cuál sería el manejo inmediato en emergencia para esta paciente, y qué factores podrían explicar el mal control crónico de su asma?",
+          "respuestaModelo": "Manejo inmediato: oxígeno suplementario, salbutamol + ipratropio nebulizados continuos, corticoide sistémico endovenoso, sulfato de magnesio endovenoso (indicado en crisis severas), y evaluación URGENTE para ventilación mecánica dado el patrón de fatiga respiratoria (PaCO2 elevado) — esta paciente está en riesgo de paro respiratorio y debe manejarse en una unidad con capacidad de intubación inmediata. Factores que explican el mal control: uso excesivo de SABA de rescate (>10 veces/día, muy por encima de lo recomendado) sin terapia controladora adecuada de base, múltiples hospitalizaciones previas (marcador de asma de difícil control), y posible mal apego a corticoide inhalado de mantenimiento."
+        }
+      },
+      {
+        "nivel": "intermedio",
+        "vineta": "Varón de 45 años, previamente sano. Fiebre, tos productiva purulenta, dolor torácico pleurítico y disnea progresiva de 5 días de evolución. T° 38.8°C, taquipnea, matidez a la percusión y disminución del murmullo vesicular en base pulmonar derecha. Leucocitosis con neutrofilia, PCR elevada.",
+        "preguntaMC": {
+          "enunciado": "Si la toracocentesis muestra un líquido con pH 7.1, glucosa 35 mg/dl y aspecto turbio, ¿qué tipo de derrame paraneumónico presenta?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Derrame paraneumónico simple — solo requiere antibiótico"
+            },
+            {
+              "id": "b",
+              "texto": "Derrame paraneumónico complicado / empiema — requiere drenaje obligatorio"
+            },
+            {
+              "id": "c",
+              "texto": "Trasudado — descartar causa cardiaca"
+            },
+            {
+              "id": "d",
+              "texto": "Derrame tuberculoso"
+            },
+            {
+              "id": "e",
+              "texto": "No se puede clasificar sin cultivo"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "pH <7.2 y glucosa muy baja (<40-60 mg/dl) en el líquido pleural, junto con aspecto turbio, son datos que indican un derrame paraneumónico COMPLICADO o empiema franco — esto cambia la conducta terapéutica de forma decisiva: ya no basta con antibiótico solo, se requiere drenaje torácico obligatorio."
+        },
+        "preguntaEscrita": {
+          "enunciado": "¿El derrame de este paciente es exudado o trasudado según los criterios de Light, y qué factores del líquido pleural sugieren mala evolución?",
+          "respuestaModelo": "Es un EXUDADO — un derrame paraneumónico por definición es un exudado (pleura inflamada por la infección adyacente), lo que se confirmaría cumpliendo al menos uno de los criterios de Light (proteínas líquido/suero >0.5, LDH líquido/suero >0.6, o LDH >2/3 del límite superior normal sérico). Los factores que sugieren mala evolución (progresión a empiema o necesidad de drenaje) son: pH <7.2, glucosa <40-60 mg/dl, LDH muy elevada, aspecto purulento/turbio, y cultivo o Gram positivo del líquido pleural."
+        }
+      }
+    ]
+  },
+  {
+    "id": "taller-aga2-s3",
+    "nombre": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES 2",
+    "semana": "semana-03",
+    "dia": "Miércoles",
+    "resumen": "Segunda ronda de interpretación de gasometrías — 2 casos más complejos, con lactato y gradiente A-a incluidos.",
+    "formulas": [
+      "Acidosis Respiratoria — HCO3 esperado = 24 + [(PaCO2−40)/10] × 1",
+      "Acidosis Metabólica — PaCO2 esperado = (1.5 × HCO3) + 8 ± 2 (fórmula de Winter)"
+    ],
+    "casos": [
+      {
+        "nivel": "avanzado",
+        "vineta": "(Taller Aplicativo: Análisis de Gases Arteriales 2 — Semana 3) Paciente varón de 55 años en UCI por sepsis abdominal, que evoluciona con disnea progresiva, taquipnea y aumento rápido de requerimientos de oxígeno. Radiografía muestra infiltrados bilaterales difusos no cardiogénicos. AGA: pH 7.28, PaCO2 48 mmHg, PaO2 60 mmHg, HCO3 22 mEq/L, FiO2 0.6, EB -1.",
+        "preguntaMC": {
+          "enunciado": "¿Qué alteración primaria presenta este paciente según el AGA?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis respiratoria aguda no compensada (HCO3 normal pese al PaCO2 elevado)"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis respiratoria crónica compensada"
+            },
+            {
+              "id": "c",
+              "texto": "Acidosis metabólica pura"
+            },
+            {
+              "id": "d",
+              "texto": "Alcalosis respiratoria"
+            },
+            {
+              "id": "e",
+              "texto": "Alcalosis metabólica"
+            }
+          ],
+          "correcta": "a",
+          "explicacion": "pH bajo (7.28) = acidemia. PaCO2 elevado (48) = el trastorno primario es respiratorio (acidosis respiratoria). El HCO3 (22) está en rango normal — usando la fórmula (HCO3 esperado = 24+[(PaCO2−40)/10]×1 = 24+0.8 ≈ 25, no compensado) se confirma que es AGUDA, no una compensación renal ya establecida."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Calcula el PaFi de este paciente y da tu conclusión fisiopatológica completa.",
+          "respuestaModelo": "PaFi = PaO2/FiO2 = 60/0.6 = 100. Un PaFi de exactamente 100 está en el límite entre SDRA moderado y severo según Berlín (100-200 = moderado; <100 = severo). Conclusión: SDRA de origen extrapulmonar (sepsis abdominal) con acidosis respiratoria aguda no compensada — los infiltrados bilaterales no cardiogénicos junto con el antecedente séptico y el deterioro respiratorio rápido confirman el diagnóstico de SDRA secundario a sepsis, uno de los escenarios más clásicos de esta entidad."
+        }
+      },
+      {
+        "nivel": "avanzado",
+        "vineta": "Varón de 25 años con diabetes mellitus tipo 1 mal controlada, ingresa por vómitos persistentes, dolor abdominal y compromiso del sensorio. Respiración profunda y rápida tipo Kussmaul, deshidratación severa, aliento cetónico. AGA: pH 7.10, PaCO2 19 mmHg, PaO2 98 mmHg, HCO3 6 mEq/L, FiO2 0.21, EB -18.",
+        "preguntaMC": {
+          "enunciado": "¿Cuál es el trastorno ácido-base primario, y la compensación respiratoria es adecuada?",
+          "opciones": [
+            {
+              "id": "a",
+              "texto": "Acidosis respiratoria con compensación metabólica"
+            },
+            {
+              "id": "b",
+              "texto": "Acidosis metabólica (HCO3 muy bajo) con compensación respiratoria adecuada (PaCO2 esperado ≈17±2, muy cercano al real de 19)"
+            },
+            {
+              "id": "c",
+              "texto": "Alcalosis metabólica"
+            },
+            {
+              "id": "d",
+              "texto": "Trastorno mixto no compensado"
+            },
+            {
+              "id": "e",
+              "texto": "Gasometría normal"
+            }
+          ],
+          "correcta": "b",
+          "explicacion": "pH muy bajo (7.10) + HCO3 muy bajo (6) = acidosis metabólica severa (típica de cetoacidosis diabética). Usando la fórmula de Winter: PaCO2 esperado = (1.5×HCO3) + 8 ± 2 = (1.5×6)+8 = 17±2 (rango 15-19). El PaCO2 real del paciente (19) cae justo dentro de ese rango esperado — confirmando que la respiración de Kussmaul (rápida y profunda) está logrando una compensación respiratoria ADECUADA, sin trastorno mixto agregado."
+        },
+        "preguntaEscrita": {
+          "enunciado": "Explica por qué este paciente presenta respiración de Kussmaul, relacionándolo con el mecanismo de compensación que estás calculando.",
+          "respuestaModelo": "La respiración de Kussmaul (profunda y rápida) es precisamente el mecanismo compensatorio respiratorio ante la acidosis metabólica severa. Al aumentar la ventilación alveolar, el paciente elimina más CO2 del que normalmente eliminaría, bajando el PaCO2 (hipocapnia compensatoria) para intentar normalizar el pH pese al HCO3 muy bajo. Es el pulmón 'ayudando' al riñón a compensar un problema metabólico — el mismo principio general por el que, ante cualquier acidosis metabólica, el cuerpo hiperventila de forma refleja."
+        }
+      }
+    ]
+  }
+];
 
 const LECTURAS = [
   {
