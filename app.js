@@ -9,6 +9,7 @@ function getEnfermedad(id){ return ENFERMEDADES.find(e => e.id === id); }
 function getTema(id){ return TEMAS.find(t => t.id === id); }
 function getSemana(id){ return SEMANAS.find(s => s.id === id); }
 function getLectura(id){ return LECTURAS.find(l => l.id === id); }
+function getTaller(id){ return TALLERES.find(t => t.id === id); }
 
 /* ---------- estado local: favoritos y "estudiado" (persistente por dispositivo) ---------- */
 function loadFlags(){
@@ -39,7 +40,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo', taller: 'view-taller' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -84,6 +85,7 @@ function navRenderCurrent(){
     case 'hospital': renderHospital(); break;
     case 'hospital-sesion': renderHospitalSesion(top.id); break;
     case 'modulo': renderModulo(top.id); break;
+    case 'taller': renderTaller(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -493,6 +495,32 @@ function renderModulo(moduloKey){
 function navQuizModulo(moduloKey){ navPush('quiz', 'modulo::' + moduloKey, 'Quiz comparativo — ' + MODULOS[moduloKey].nombre); }
 function navCasosModulo(moduloKey){ navPush('casos', 'modulo::' + moduloKey, 'Casos comparativos — ' + MODULOS[moduloKey].nombre); }
 
+/* ---------- vista: Taller Aplicativo (sección propia, independiente) ---------- */
+function openTallerFresh(id){ navReset('taller', id, getTaller(id).nombre); }
+function renderTaller(id){
+  const t = getTaller(id);
+  const wrap = document.getElementById('view-taller-content');
+  const sem = getSemana(t.semana);
+
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">Taller Aplicativo · Semana ${sem.numero}, ${t.dia}</span>
+    <h1 class="page-title">🎯 ${t.nombre}</h1>
+    <p class="page-sub">${t.resumen}</p>
+
+    ${t.formulas ? `
+    <div class="kcard formula-box">
+      <h3>📐 Fórmulas de este taller</h3>
+      <ul>${t.formulas.map(f => `<li>${f}</li>`).join('')}</ul>
+    </div>` : ''}
+
+    <div class="pcard" style="cursor:pointer;" onclick="navCasosTaller('${t.id}')">
+      <h3>🩺 Practicar los ${t.casos.length} casos de este taller</h3>
+      <p>Los mismos casos que se revisaron en clase justo antes de tu examen — practícalos las veces que quieras.</p>
+    </div>
+  `;
+}
+
 /* ---------- vista: Excel original (embebido desde Drive) ---------- */
 function openExcelFresh(){ navReset('excel', null, 'Excel del sílabo'); }
 function renderExcelViewer(){
@@ -803,6 +831,13 @@ function renderDia(compositeId){
 
   const vinculos = d.vinculos || [];
   const items = vinculos.map(v => {
+    if(v.tipo === 'taller'){
+      const t = getTaller(v.id);
+      if(!t) return '';
+      return `<div class="disease-card taller-card" onclick="openTallerFresh('${t.id}')" style="cursor:pointer;">
+        <div><div class="name">🎯 ${t.nombre}</div><div class="area">Taller · ${t.casos.length} casos — repasa aquí antes del examen práctico</div></div>
+      </div>`;
+    }
     if(v.tipo === 'tema'){
       const t = getTema(v.id);
       if(!t) return '';
