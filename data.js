@@ -621,209 +621,506 @@ const SEMANAS = [
 
 const ENFERMEDADES = [
   {
-    id: "epoc",
-    nombre: "EPOC (Enfermedad Pulmonar Obstructiva Crónica)",
-    area: "Neumología",
-    semanas: ["semana-02"],
-    favorito: false,
-    estudiado: false,
-    ilustracion: "assets/epoc-airway.svg",
-    relacionadas: [
-      { id: "asma-bronquial", relacion: "Principal diagnóstico diferencial — ambas cursan con obstrucción de la vía aérea, pero se distinguen por reversibilidad y edad de inicio" }
+  "id": "epoc",
+  "nombre": "EPOC (Enfermedad Pulmonar Obstructiva Crónica)",
+  "area": "Neumología",
+  "semanas": [
+    "semana-02"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "ilustracion": "assets/epoc-airway.svg",
+  "relacionadas": [
+    {
+      "id": "asma-bronquial",
+      "relacion": "Principal diagnóstico diferencial — ambas cursan con obstrucción de la vía aérea, pero se distinguen por reversibilidad y edad de inicio"
+    }
+  ],
+  "profundo": {
+    "definicion": "Condición pulmonar heterogénea caracterizada por síntomas respiratorios crónicos (disnea, tos, producción de esputo y/o exacerbaciones) debido a anomalías de las vías aéreas y/o alvéolos que provocan limitación persistente, a menudo progresiva, del flujo aéreo. <span class=\"fuente-ampliada\">Esta limitación se debe a una respuesta inflamatoria anormal de la vía aérea y el parénquima pulmonar frente a partículas o gases nocivos.</span>",
+    "epidemiologia": "Una de las principales causas de morbimortalidad a nivel mundial. Más frecuente en mayores de 40 años con historia de tabaquismo significativo.",
+    "etiologiaFactoresRiesgo": [
+      "La EPOC resulta de interacciones gen-ambiente que ocurren a lo largo de la vida del individuo (GETomics), que pueden dañar los pulmones y/o alterar sus procesos normales de desarrollo/envejecimiento",
+      "Principales exposiciones ambientales: tabaquismo e inhalación de partículas tóxicas y gases de la contaminación del aire",
+      "Factores prenatales y de primera infancia: el tabaquismo materno durante el embarazo conduce a mayor riesgo de función pulmonar reducida, alterando potencialmente el desarrollo pulmonar",
+      "Factores de mediana edad: los síntomas respiratorios crónicos antes de los 50 años se asocian con el inicio y progresión de la EPOC — la hipersecreción mucosa crónica suele PRECEDER al desarrollo de la obstrucción del flujo aéreo",
+      "Factores de edad avanzada: solo la mitad de los adultos mayores con EPOC tienen la trayectoria típica de disminución acelerada de la función pulmonar; la otra mitad nunca alcanzó la función pulmonar máxima normal en la adultez temprana",
+      "<span class=\"fuente-ampliada\">Déficit de alfa-1 antitripsina — causa genética específica; sospechar en EPOC de inicio temprano (<45 años) sin tabaquismo significativo</span>"
     ],
-
-    profundo: {
-      definicion: "Enfermedad respiratoria caracterizada por limitación crónica y progresiva del flujo aéreo, poco reversible, asociada a una respuesta inflamatoria anormal de la vía aérea y el parénquima pulmonar frente a partículas o gases nocivos, principalmente el humo de tabaco.",
-      epidemiologia: "Una de las principales causas de morbimortalidad a nivel mundial. Más frecuente en mayores de 40 años con historia de tabaquismo significativo (> 10 paquetes-año).",
-      etiologiaFactoresRiesgo: [
-        "Tabaquismo (principal factor de riesgo)",
-        "Exposición a biomasa (humo de leña en espacios cerrados)",
-        "Exposición ocupacional a polvos y químicos",
-        "Déficit de alfa-1 antitripsina (causa genética)",
-        "Antecedente de infecciones respiratorias recurrentes en la infancia"
+    "endotiposInflamacion": "La EPOC involucra una inflamación compleja: neutrófilos, macrófagos, eosinófilos, células T CD4+, células T CD8+, monocitos, mastocitos y células linfoides innatas. La EPOC eosinofílica representa una entidad DISTINTA del 'asma eosinofílica', con diferente biología y respuesta al tratamiento.",
+    "criteriosDiagnosticos": "En el contexto clínico apropiado, la presencia de limitación al flujo aéreo no completamente reversible (FEV1/FVC < 0.7 post broncodilatador, medida por espirometría) confirma el diagnóstico de EPOC. La espirometría forzada es OBLIGATORIA para establecer el diagnóstico — no basta con la clínica.",
+    "indicadoresClinicos": {
+      "sintomasRespiratorios": [
+        "Disnea progresiva en el tiempo, que empeora con el ejercicio y es persistente",
+        "Tos crónica (intermitente, con o sin expectoración)",
+        "Sibilancias recurrentes",
+        "Infecciones recurrentes del tracto respiratorio inferior"
       ],
-      fisiopatologia: {
-        resumen: "La exposición crónica a partículas nocivas desencadena inflamación sostenida de la vía aérea, con dos componentes que coexisten en proporción variable: enfermedad de la pequeña vía aérea (bronquiolitis) y destrucción del parénquima (enfisema).",
-        explicacionExtendida: "El EPOC combina en proporción variable dos procesos que comparten el mismo desencadenante (humo de tabaco u otras partículas inhaladas) pero dañan estructuras distintas. En el fenotipo enfisematoso, el desequilibrio entre proteasas (sobre todo elastasa neutrofílica) y antiproteasas (como la alfa-1 antitripsina) destruye progresivamente la matriz elástica del parénquima alveolar. Esto no solo colapsa las paredes alveolares y fusiona espacios aéreos, sino que también reduce la fuerza de retracción elástica que normalmente mantiene abierta la vía aérea pequeña durante la espiración — por eso el aire queda atrapado.\n\nEn el fenotipo de bronquitis crónica predomina la hipersecreción mucosa: la hiperplasia de células caliciformes y la hipertrofia de glándulas submucosas producen moco en exceso, mientras el epitelio ciliar dañado por la inflamación crónica pierde capacidad de barrerlo. El estrés oxidativo (agravado por el propio humo del cigarrillo, que agota las defensas antioxidantes) amplifica ambos procesos, perpetuando la inflamación incluso después de dejar de fumar. Con el tiempo, la inflamación deja de ser solo local: se vuelve sistémica de bajo grado, lo que explica por qué el EPOC se asocia a comorbilidades cardiovasculares y pérdida de masa muscular en etapas avanzadas.",
-        cascada: [
-          { paso: "Factor desencadenante", detalle: "Humo de tabaco / partículas inhaladas" },
-          { paso: "Células activadas", detalle: "Macrófagos alveolares, neutrófilos, linfocitos T CD8+" },
-          { paso: "Mediadores liberados", detalle: "IL-8, TNF-α, leucotrieno B4, proteasas (elastasa neutrofílica)" },
-          { paso: "Efecto tisular", detalle: "Desequilibrio proteasa/antiproteasa → destrucción de la matriz elástica alveolar" },
-          { paso: "Cambio estructural", detalle: "Pérdida de tabiques alveolares (enfisema) + engrosamiento e hipersecreción en vía aérea pequeña" },
-          { paso: "Cambio fisiológico", detalle: "Atrapamiento aéreo, hiperinsuflación, ↓ retracción elástica, limitación al flujo espiratorio" },
-          { paso: "Manifestación clínica", detalle: "Disnea progresiva, tos crónica, uso de musculatura accesoria" }
+      "factoresRiesgo": [
+        "Humo de tabaco",
+        "Humo de combustibles domésticos (biomasa)",
+        "Exposiciones ocupacionales (polvos, vapores, humos)",
+        "Factores del huésped (genéticos, bajo peso al nacer, etc.)"
+      ],
+      "nota": "Estos indicadores no son diagnósticos por sí solos, pero la presencia de múltiples indicadores aumenta la probabilidad de EPOC. La espirometría sigue siendo requerida para el diagnóstico definitivo."
+    },
+    "catScore": "Cuestionario CAT (COPD Assessment Test): 8 ítems que evalúan el estado de salud del paciente con EPOC. Puntuación de 0 a 40, correlaciona bien con el SGRQ. Un punto de corte de CAT ≥10 (equivalente a SGRQ ≥25) se considera el umbral para iniciar tratamiento regular de los síntomas, incluyendo la disnea. <span class=\"fuente-ampliada\">Se recomienda usar una evaluación multidimensional, ya que pacientes con mMRC bajo también pueden tener otros síntomas relevantes de EPOC no capturados por esa escala.</span>",
+    "fisiopatologia": {
+      "resumen": "La exposición crónica a partículas nocivas desencadena inflamación sostenida de la vía aérea, con dos componentes que coexisten en proporción variable: enfermedad de la pequeña vía aérea (bronquiolitis) y destrucción del parénquima (enfisema).",
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">El EPOC combina en proporción variable dos procesos que comparten el mismo desencadenante (humo de tabaco u otras partículas inhaladas) pero dañan estructuras distintas. En el fenotipo enfisematoso, el desequilibrio entre proteasas (sobre todo elastasa neutrofílica) y antiproteasas (como la alfa-1 antitripsina) destruye progresivamente la matriz elástica del parénquima alveolar. Esto no solo colapsa las paredes alveolares y fusiona espacios aéreos, sino que también reduce la fuerza de retracción elástica que normalmente mantiene abierta la vía aérea pequeña durante la espiración — por eso el aire queda atrapado.</span>\n\nLas vías respiratorias pequeñas (<2 mm) son un sitio temprano de alteración: la exposición a sustancias inhaladas causa lesiones inducidas por oxidantes que reprograman las células basales del epitelio, haciendo que el epitelio de la vía pequeña se parezca más al de la vía proximal, con pérdida de células secretoras y ciliadas. El estrés oxidativo es un factor patogénico central: la estimulación con humo conduce a daño celular, y la secreción excesiva de moco junto con la acumulación de neutrófilos produce grandes cantidades de especies reactivas de oxígeno (ROS). Los neutrófilos y macrófagos secretan proteasas de serina (metaloproteinasas de matriz, elastasa neutrofílica) centrales en la remodelación de la vía aérea, mientras que TNF-α, IL-1β, IL-6 e IL-8 se liberan en grandes cantidades durante las exacerbaciones. <span class=\"fuente-ampliada\">Con el tiempo, la inflamación deja de ser solo local: se vuelve sistémica de bajo grado, lo que explica por qué el EPOC se asocia a comorbilidades cardiovasculares y pérdida de masa muscular en etapas avanzadas.</span>",
+      "cascada": [
+        {
+          "paso": "Factor desencadenante",
+          "detalle": "Humo de tabaco / partículas inhaladas — interacción gen-ambiente (GETomics)"
+        },
+        {
+          "paso": "Reprogramación epitelial",
+          "detalle": "Lesión oxidativa de células basales en vía aérea pequeña (<2mm); pérdida de células secretoras y ciliadas"
+        },
+        {
+          "paso": "Células y mediadores activados",
+          "detalle": "Neutrófilos, macrófagos, linfocitos T CD8+; liberan TNF-α, IL-1β, IL-6, IL-8, proteasas de serina (MMP, elastasa neutrofílica)"
+        },
+        {
+          "paso": "Efecto tisular",
+          "detalle": "Desequilibrio proteasa/antiproteasa → destrucción de matriz elástica alveolar (enfisema) + hipersecreción/remodelación de vía pequeña"
+        },
+        {
+          "paso": "Cambio fisiológico",
+          "detalle": "Atrapamiento aéreo, hiperinsuflación, ↓ retracción elástica, limitación al flujo espiratorio"
+        },
+        {
+          "paso": "Manifestación clínica",
+          "detalle": "Disnea progresiva, tos crónica, uso de musculatura accesoria, exacerbaciones"
+        }
+      ]
+    },
+    "sintomasPrincipales": [
+      {
+        "sintoma": "Disnea",
+        "detalle": "Síntoma cardinal y causa importante de discapacidad. Los pacientes la describen como mayor esfuerzo para respirar, pesadez en el pecho o falta de aire."
+      },
+      {
+        "sintoma": "Expectoración",
+        "detalle": "Producción regular de esputo durante 3 o más meses en 2 años consecutivos. Puede ser difícil de evaluar porque los pacientes a veces tragan el esputo en vez de expectorarlo."
+      },
+      {
+        "sintoma": "Tos crónica",
+        "detalle": "Suele ser el primer síntoma. Puede ser intermitente al inicio y luego estar presente todos los días; productiva o no productiva."
+      },
+      {
+        "sintoma": "Fatiga",
+        "detalle": "Sensación subjetiva de cansancio o agotamiento que afecta la capacidad del paciente para realizar actividades diarias y su calidad de vida."
+      }
+    ],
+    "clinica": [
+      {
+        "signo": "Disnea progresiva",
+        "mecanismo": "Hiperinsuflación dinámica → ↑ trabajo respiratorio para un mismo volumen corriente"
+      },
+      {
+        "signo": "Tos crónica productiva",
+        "mecanismo": "Hipersecreción mucosa por hiperplasia de células caliciformes"
+      },
+      {
+        "signo": "Sibilancias espiratorias",
+        "mecanismo": "Turbulencia del flujo aéreo a través de la vía estrechada"
+      }
+    ],
+    "examenFisico": [
+      "Tórax en tonel (hiperinsuflación)",
+      "Espiración prolongada con labios fruncidos",
+      "↓ murmullo vesicular, roncantes/sibilantes",
+      "Signo de Hoover (movimiento paradójico de la parrilla costal inferior)"
+    ],
+    "semiologia": {
+      "inspeccion": "Observa el patrón respiratorio antes de tocar al paciente: tórax en tonel (aumento del diámetro anteroposterior por hiperinsuflación), uso de músculos accesorios, respiración con labios fruncidos, y el signo de Hoover — depresión paradójica de la parrilla costal inferior durante la inspiración (diafragma aplanado por hiperinsuflación crónica).",
+      "palpacion": "Expansión torácica DISMINUIDA y simétrica (a diferencia de un derrame/neumotórax, que es asimétrica). Frémito vocal disminuido de forma difusa por la hiperinsuflación.",
+      "percusion": "Hipersonoridad difusa por atrapamiento de aire; límites pulmonares inferiores descendidos (diafragma aplanado y bajo).",
+      "auscultacion": "Murmullo vesicular disminuido de forma difusa, espiración prolongada, roncantes/sibilantes si hay broncoespasmo asociado. En EPOC muy avanzado el tórax puede sonar casi 'silencioso' — signo de gravedad, no de mejoría (tan poco flujo de aire que ni genera ruido)."
+    },
+    "diagnostico": "La espirometría forzada que muestre un FEV1/FVC post-broncodilatador < 0.7 es OBLIGATORIA para establecer el diagnóstico. Se debe considerar el diagnóstico de EPOC en cualquier paciente con disnea, tos crónica/esputo, antecedentes de infecciones recurrentes del tracto respiratorio inferior, o antecedente de exposición a factores de riesgo. La evaluación inicial debe determinar: gravedad de la obstrucción (GOLD 1-4), impacto en el estado de salud (mMRC/CAT), y riesgo de eventos futuros (exacerbaciones) — esto guía la terapia.",
+    "historiaClinica": "Debe incluir: exposición a factores de riesgo, antecedentes médicos (eventos precoces, asma, alergias, infecciones respiratorias), antecedentes familiares de EPOC u otra enfermedad respiratoria crónica, patrón de desarrollo de los síntomas, antecedentes de exacerbaciones/hospitalizaciones previas, comorbilidades, impacto en la vida del paciente, apoyo social y familiar, y posibilidades de reducción de factores de riesgo.",
+    "biomarcadoresEImagenes": "Eosinófilos en sangre: ampliamente usado pero limitado por variabilidad diurna y no especificidad. Óxido nítrico exhalado (FeNO): más estable en EPOC estable, su rol como predictor para tratamientos como dupilumab aún no está dilucidado. TC/RM: permiten estudio in vivo de la relación estructura-función; hallazgo clave — hasta 70% menos bronquiolos terminales en pacientes con EPOC que en controles, y la pérdida de vías respiratorias puede ocurrir temprano en la enfermedad.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Sospecha clínica: disnea progresiva + tos crónica + antecedente de exposición a factores de riesgo"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Espirometría post-broncodilatador — OBLIGATORIA para confirmar"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿FEV1/FVC < 0.70 post-broncodilatador?",
+        "salidas": [
+          {
+            "etiqueta": "NO",
+            "texto": "EPOC descartado — buscar otra causa de disnea",
+            "color": "mint"
+          },
+          {
+            "etiqueta": "SÍ",
+            "texto": "Confirma EPOC → clasificar GOLD 1-4 (espirometría) + grupo A/B/E (síntomas + exacerbaciones)",
+            "color": "coral"
+          }
         ]
       },
-      clinica: [
-        { signo: "Disnea progresiva", mecanismo: "Hiperinsuflación dinámica → ↑ trabajo respiratorio para un mismo volumen corriente" },
-        { signo: "Tos crónica productiva", mecanismo: "Hipersecreción mucosa por hiperplasia de células caliciformes" },
-        { signo: "Sibilancias espiratorias", mecanismo: "Turbulencia del flujo aéreo a través de la vía estrechada" }
-      ],
-      examenFisico: [
-        "Tórax en tonel (hiperinsuflación)",
-        "Espiración prolongada con labios fruncidos",
-        "↓ murmullo vesicular, roncantes/sibilantes",
-        "Signo de Hoover (movimiento paradójico de la parrilla costal inferior)"
-      ],
-      semiologia: {
-            "inspeccion": "Observa el patrón respiratorio antes de tocar al paciente: tórax en tonel (aumento del diámetro anteroposterior por hiperinsuflación), uso de músculos accesorios (esternocleidomastoideos, escalenos), respiración con labios fruncidos (mecanismo que el paciente adopta espontáneamente para evitar el colapso de la vía aérea al espirar), y el signo de Hoover — depresión paradójica de la parrilla costal inferior durante la inspiración (indica diafragma aplanado por hiperinsuflación crónica).",
-            "palpacion": "Coloca ambas manos simétricamente sobre la parrilla costal posterior y pide al paciente que respire profundo: en EPOC vas a sentir expansión torácica DISMINUIDA y simétrica (a diferencia de un derrame o neumotórax, que es asimétrica). El frémito vocal (vibraciones al decir '33') suele estar disminuido de forma difusa por la hiperinsuflación.",
-            "percusion": "Percute de forma comparativa y simétrica, de arriba hacia abajo, en ambos hemitórax. Vas a encontrar hipersonoridad difusa (sonido más 'hueco' de lo normal) por el atrapamiento de aire, y los límites pulmonares inferiores descendidos (el diafragma está aplanado y bajo).",
-            "auscultacion": "Ausculta sistemáticamente ápices → bases, comparando lado a lado. Vas a encontrar murmullo vesicular disminuido de forma difusa (menos aire se mueve, más silencio de lo normal — dato clave), espiración prolongada, y roncantes/sibilantes si hay broncoespasmo asociado. Un dato práctico: en EPOC muy avanzado el tórax puede sonar casi 'silencioso' — eso NO es buena señal, es que hay tan poco flujo de aire que ni siquiera genera ruido."
+      {
+        "tipo": "paso",
+        "texto": "Tratamiento inicial según grupo: A = broncodilatador simple · B = LABA+LAMA · E = LABA+LAMA (+GCI si eosinófilos ≥300)"
       },
-
-
-
-
-      diagnostico: "Espirometría post-broncodilatador: relación VEF1/CVF < 0.70 confirma limitación al flujo aéreo no completamente reversible.",
-      algoritmo: [
-        { tipo: "paso", texto: "Sospecha clínica: disnea progresiva + tos crónica + antecedente de tabaquismo significativo" },
-        { tipo: "paso", texto: "Solicitar espirometría post-broncodilatador" },
-        { tipo: "decision", texto: "¿FEV1/FVC < 0.70 tras broncodilatador?", salidas: [
-          { etiqueta: "NO", texto: "EPOC descartado — buscar otra causa de disnea (asma, insuf. cardiaca, etc.)", color: "mint" },
-          { etiqueta: "SÍ", texto: "Confirma EPOC → clasificar gravedad (GOLD ABE) según síntomas y exacerbaciones", color: "coral" }
-        ]}
-      ],
-      diagnosticoDiferencial: ["Asma bronquial", "Bronquiectasias", "Insuficiencia cardiaca", "Bronquiolitis obliterante"],
-      tratamiento: {
-        noFarmacologico: ["Cese absoluto de tabaquismo (medida con mayor impacto en sobrevida)", "Rehabilitación pulmonar", "Vacunación antigripal y antineumocócica"],
-        farmacologico: ["Broncodilatadores de acción prolongada (LABA/LAMA)", "Corticoide inhalado en fenotipo con exacerbaciones frecuentes/eosinofilia", "Oxigenoterapia domiciliaria si hipoxemia crónica"]
-      },
-      complicaciones: ["Cor pulmonale", "Insuficiencia respiratoria aguda sobre crónica", "Neumotórax espontáneo (bulas)"],
-      prevencion: "Cese de tabaquismo y reducción de exposición a biomasa son las intervenciones de mayor impacto.",
-      perlasProfundo: "El VEF1/CVF post-broncodilatador < 0.70 confirma EPOC, pero la severidad y el pronóstico dependen más de la disnea, exacerbaciones y capacidad de ejercicio que del VEF1 aislado (clasificación GOLD ABE)."
-    },
-
-    repaso: {
-      conceptosClave: ["Limitación crónica y poco reversible del flujo aéreo", "Principal causa: tabaquismo", "Espirometría: VEF1/CVF < 0.70 post-BD"],
-      clinica: "Disnea progresiva + tos crónica productiva + antecedente tabáquico.",
-      diagnostico: "Espirometría post-broncodilatador.",
-      tratamientoResumen: "Cese de tabaco > broncodilatadores LABA/LAMA > corticoide inhalado si eosinofilia/exacerbador.",
-      diferenciales: [
-        { entidad: "Asma", clave: "Reversibilidad significativa post-BD, inicio en edad temprana" },
-        { entidad: "Insuficiencia cardiaca", clave: "Ortopnea, edema, crépitos bibasales, BNP elevado" }
-      ],
-      tablaComparativa: {
-        titulo: "EPOC vs Asma",
-        filas: [
-          ["Edad de inicio", "> 40 años", "Infancia/adolescencia"],
-          ["Reversibilidad", "Parcial/ausente", "Significativa (>12% y 200mL)"],
-          ["Antecedente", "Tabaquismo", "Atopia/alergias"]
+      {
+        "tipo": "decision",
+        "texto": "¿Persisten síntomas o exacerbaciones tras tratamiento inicial?",
+        "salidas": [
+          {
+            "etiqueta": "Disnea persistente",
+            "texto": "Escalar a LABA+LAMA si estaba en monoterapia",
+            "color": "coral"
+          },
+          {
+            "etiqueta": "Exacerbaciones persistentes",
+            "texto": "Escalar a LABA+LAMA → +GCI si eosinófilos ≥100 → considerar roflumilast/macrólido si persiste con triple terapia",
+            "color": "alert"
+          }
         ]
       }
-    },
-
-    imprescindible: {
-      loQueSiOSiDebesSaber: [
-        "El diagnóstico se confirma con espirometría, NO con clínica aislada",
-        "VEF1/CVF < 0.70 post-broncodilatador es el criterio diagnóstico clave",
-        "El cese de tabaquismo es la única intervención que modifica la sobrevida",
-        "Sospechar déficit de alfa-1 antitripsina en EPOC de inicio temprano sin tabaquismo"
+    ],
+    "diagnosticoDiferencial": [
+      "Asma bronquial",
+      "Bronquiectasias",
+      "Insuficiencia cardiaca",
+      "Bronquiolitis obliterante"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Cese absoluto de tabaquismo — la intervención clave para todos los pacientes que continúan fumando",
+        "Rehabilitación pulmonar: programas de 6-8 semanas con sesiones supervisadas (entrenamiento físico + educación + apoyo nutricional/psicosocial), seguidos de mantenimiento a largo plazo",
+        "Vacunación: COVID-19, antineumocócica, antigripal (anual), Tdap, herpes zóster, y virus sincitial respiratorio (VSR) según recomendaciones nacionales",
+        "Educación para el autocuidado, actividad física regular, nutrición adecuada, apoyo psicosocial"
       ],
-      redFlags: ["Disnea en reposo con uso de músculos accesorios → posible exacerbación grave", "Cianosis o alteración del sensorio → evaluar insuficiencia respiratoria"],
-      erroresFrecuentes: ["Diagnosticar EPOC solo por clínica sin espirometría", "Confundir con asma sin evaluar reversibilidad"],
-      asociacionesClinicas: ["EPOC + cor pulmonale → edema de miembros inferiores, ingurgitación yugular"]
-    }
-  ,
-    casosClinicos: [
-        {
-            "vineta": "Varón de 64 años, obrero de construcción jubilado, con antecedente de tabaquismo de 40 paquetes-año (dejó de fumar hace 2 años). Acude por disnea progresiva de 8 meses de evolución, actualmente con esfuerzos mínimos (subir un piso de escaleras), y tos con expectoración blanquecina matutina. Al examen: tórax en tonel, espiración prolongada con labios fruncidos, murmullo vesicular disminuido difusamente. Espirometría post-broncodilatador: FEV1/FVC 0.58, FEV1 48% del predicho.",
-            "preguntaMC": {
-                "enunciado": "Según la clasificación GOLD, ¿cuál es el paso MÁS apropiado a seguir en el manejo de este paciente?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Iniciar corticoide oral en pauta larga para reducir la inflamación de base"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "Clasificar la gravedad combinando síntomas (ej. mMRC/CAT) y riesgo de exacerbaciones, luego iniciar broncodilatador de acción prolongada"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Indicar oxigenoterapia domiciliaria continua de inmediato"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Repetir la espirometría en 6 meses antes de iniciar cualquier tratamiento"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "El FEV1/FVC <0.70 ya confirma EPOC. El siguiente paso correcto es clasificar la gravedad combinando síntomas y riesgo de exacerbaciones (grupo GOLD A/B/E) para elegir el tratamiento inicial — que empieza con broncodilatador de acción prolongada, no corticoide oral (sin indicación aquí) ni oxígeno (no hay dato de hipoxemia documentada)."
-            },
-            "preguntaEscrita": {
-                "enunciado": "Explica el mecanismo fisiopatológico por el cual este paciente presenta el signo de labios fruncidos al respirar, y por qué ese mismo mecanismo explica el 'tórax en tonel' al examen físico.",
-                "respuestaModelo": "La destrucción del parénquima alveolar y la pérdida de retracción elástica hacen que la vía aérea pequeña tienda a colapsar durante la espiración forzada. Al respirar con labios fruncidos, el paciente genera una resistencia adicional en la salida del aire que aumenta la presión dentro de la vía aérea, evitando ese colapso precoz y permitiendo vaciar mejor los pulmones. El mismo problema de fondo — aire atrapado que no se logra expulsar por completo en cada ciclo — lleva a hiperinsuflación pulmonar crónica, que con el tiempo remodela la caja torácica hacia el 'tórax en tonel' (aumento del diámetro anteroposterior)."
-            },
-            "nivel": "intermedio"
-        },
-        {
-            "vineta": "Mujer de 58 años con EPOC conocido (GOLD C) en tratamiento con LAMA, acude a emergencia por aumento de la disnea habitual, mayor volumen de esputo y cambio a esputo purulento en los últimos 2 días. No tiene fiebre. Saturación 91% con FiO2 ambiental, FR 24/min, sin uso marcado de músculos accesorios.",
-            "preguntaMC": {
-                "enunciado": "¿Cuál de los siguientes NO es un criterio típico para diagnosticar una exacerbación de EPOC en esta paciente?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Aumento de la disnea basal"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "Aumento del volumen del esputo"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Cambio del esputo a purulento"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Presencia de fiebre alta como criterio obligatorio"
-                    }
-                ],
-                "correcta": "d",
-                "explicacion": "Los criterios clásicos (criterios de Anthonisen) son: aumento de la disnea, aumento del volumen del esputo, y cambio a esputo purulento — con 2 de 3 ya se sospecha exacerbación. La fiebre NO es un criterio obligatorio ni forma parte de esta tríada; muchas exacerbaciones de EPOC cursan sin fiebre, a diferencia de una neumonía."
-            },
-            "preguntaEscrita": {
-                "enunciado": "¿Con cuántos y cuáles criterios de Anthonisen cursa esta paciente, y qué implicancia tiene eso sobre la indicación de antibióticos?",
-                "respuestaModelo": "Cursa con los 3 criterios de Anthonisen: aumento de disnea, aumento del volumen de esputo, y esputo purulento. Con los 3 criterios presentes (especialmente la purulencia, que sugiere causa bacteriana) sí está indicado iniciar antibióticos empíricos, además del ajuste de broncodilatadores y considerar corticoide sistémico según la gravedad de la exacerbación."
-            },
-            "nivel": "basico"
-        },
-        {
-            "nivel": "avanzado",
-            "vineta": "Varón de 70 años con EPOC GOLD D conocido, ingresa por disnea severa de 24h, somnoliento pero despertable. Gasometría arterial: pH 7.28, PaCO2 68 mmHg, PaO2 52 mmHg, HCO3 28 mEq/L. FR 12/min (bradipneico), usa musculatura accesoria de forma decreciente.",
-            "preguntaMC": {
-                "enunciado": "¿Cómo interpretas esta gasometría y cuál es la conducta más urgente?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Acidosis metabólica compensada — solo requiere hidratación"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "Acidosis respiratoria aguda sobre crónica (HCO3 elevado por compensación renal previa) con hipercapnia severa — considerar ventilación mecánica no invasiva de inmediato"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Alcalosis respiratoria — indicar sedación"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Gasometría normal para EPOC, no requiere intervención"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "El pH bajo con PaCO2 muy elevada confirma acidosis respiratoria; el HCO3 ya elevado (28) sugiere una compensación renal previa (retenedor crónico de CO2) sobre la que se sobreagrega una descompensación aguda. La disminución de la frecuencia respiratoria en un paciente que antes usaba músculos accesorios es un signo de ALARMA (agotamiento respiratorio, no mejoría) — requiere soporte ventilatorio urgente, típicamente VMNI si no hay contraindicación."
-            },
-            "preguntaEscrita": {
-                "enunciado": "¿Por qué la disminución de la frecuencia respiratoria en este paciente es un signo de alarma y no de mejoría clínica?",
-                "respuestaModelo": "Un paciente que venía taquipneico y usando músculos accesorios para compensar la falla respiratoria, si de pronto reduce su frecuencia respiratoria sin que mejoren los demás parámetros (gasometría, estado de conciencia), generalmente indica agotamiento de la musculatura respiratoria — ya no tiene fuerza para mantener el esfuerzo compensatorio, no que su situación esté mejorando. Es un signo de insuficiencia respiratoria inminente que requiere soporte ventilatorio urgente."
-            }
-        }
-    
-    
-  ]
+      "farmacologico": [
+        "Grupo A: broncodilatador (acción corta o prolongada) según efecto sobre la disnea",
+        "Grupo B: combinación LABA+LAMA como opción preferida (alternativa: broncodilatador de acción prolongada en monoterapia)",
+        "Grupo E: LABA+LAMA como opción preferida; considerar LABA+LAMA+GCI si eosinófilos ≥300 células/µl",
+        "Escalamiento por disnea persistente: a dos broncodilatadores de acción prolongada (LABA+LAMA)",
+        "Escalamiento por exacerbaciones persistentes: LABA+LAMA → +GCI si eosinófilos ≥100 → considerar roflumilast o macrólido según perfil del paciente si persiste con triple terapia",
+        "Oxigenoterapia a largo plazo si: PaO2 ≤55 mmHg o SatO2 ≤88% (con o sin hipercapnia), o PaO2 55-60 mmHg con hipertensión pulmonar/edema periférico/policitemia — mejora la supervivencia",
+        "Ventilación no invasiva (VMNI) si: hipercapnia crónica grave (PaCO2 ≥53 mmHg) + antecedente de hospitalización por insuficiencia respiratoria aguda — reduce mortalidad y reingresos"
+      ]
+    },
+    "exacerbaciones": {
+      "definicion": "Evento caracterizado por disnea y/o tos y expectoración que empeoran durante menos de 14 días.",
+      "clasificacion": [
+        [
+          "Leve",
+          "Tratada solo con broncodilatadores de acción corta (SABA)"
+        ],
+        [
+          "Moderada",
+          "SABA + corticosteroides orales ± antibióticos"
+        ],
+        [
+          "Grave",
+          "Requiere hospitalización o visita a emergencias; puede asociarse a insuficiencia respiratoria aguda"
+        ]
+      ],
+      "criteriosAnthonisen": "<span class=\"fuente-ampliada\">Los criterios de Anthonisen (aumento de disnea, aumento del volumen de esputo, esputo purulento) ayudan a decidir el uso de antibióticos — con los 3 presentes, especialmente la purulencia, está indicado el antibiótico empírico.</span>"
+    },
+    "intervencionesQueReducenMortalidad": [
+      "Triple terapia inhalada (LABA+LAMA+GCI) en pacientes sintomáticos con antecedente de exacerbaciones frecuentes/graves",
+      "Dejar de fumar — reduce la mortalidad general",
+      "Rehabilitación pulmonar iniciada durante la hospitalización o poco después del alta",
+      "Oxigenoterapia en pacientes con hipoxemia crónica grave",
+      "Ventilación no invasiva en pacientes con hipercapnia marcada"
+    ],
+    "complicaciones": [
+      "Cor pulmonale",
+      "Insuficiencia respiratoria aguda sobre crónica",
+      "Neumotórax espontáneo (bulas)",
+      "Comorbilidades: enfermedad cardiovascular (cardiopatía isquémica, insuficiencia cardiaca, arritmias, HTA), cáncer de pulmón (especialmente con enfisema), sarcopenia/disfunción muscular, síndrome metabólico, depresión/ansiedad, osteoporosis — influyen en mortalidad y hospitalizaciones independientemente de la gravedad de la obstrucción"
+    ],
+    "prevencion": "Cese de tabaquismo (principal factor modificable) y reducción de exposición a biomasa, contaminación ocupacional y ambiental. Vacunación según esquema recomendado.",
+    "perlasProfundo": "El FEV1/FVC post-broncodilatador < 0.70 confirma EPOC, pero la elección del tratamiento y el pronóstico dependen más de la clasificación GOLD por síntomas y riesgo de exacerbaciones (grupo A/B/E) que del FEV1 aislado.",
+    "tablasClinicas": [
+      {
+        "titulo": "Gravedad de la limitación al flujo aéreo (post-broncodilatador)",
+        "columnas": [
+          "Estadio",
+          "Gravedad",
+          "Criterio espirométrico"
+        ],
+        "filas": [
+          [
+            "GOLD 1",
+            "Leve",
+            "FEV1 ≥ 80% del valor de referencia"
+          ],
+          [
+            "GOLD 2",
+            "Moderada",
+            "50% ≤ FEV1 < 80% del valor de referencia"
+          ],
+          [
+            "GOLD 3",
+            "Grave",
+            "30% ≤ FEV1 < 50% del valor de referencia"
+          ],
+          [
+            "GOLD 4",
+            "Muy grave",
+            "FEV1 < 30% del valor de referencia"
+          ]
+        ]
+      },
+      {
+        "titulo": "Escala de disnea mMRC",
+        "columnas": [
+          "Grado",
+          "Descripción"
+        ],
+        "filas": [
+          [
+            "Grado 0",
+            "Ausencia de disnea, excepto al realizar ejercicio intenso"
+          ],
+          [
+            "Grado 1",
+            "Disnea al andar deprisa o al subir una pendiente poco pronunciada"
+          ],
+          [
+            "Grado 2",
+            "Incapacidad de mantener el paso de otras personas de la misma edad caminando en llano, o necesidad de parar a descansar al andar en llano al propio paso"
+          ],
+          [
+            "Grado 3",
+            "Necesidad de parar a descansar al andar unos 100 metros o a los pocos minutos de andar en llano"
+          ],
+          [
+            "Grado 4",
+            "La disnea impide al paciente salir de casa, o aparece con actividades como vestirse o desvestirse"
+          ]
+        ],
+        "nota": "La escala mMRC se relaciona bien con otras medidas del estado de salud y predice el riesgo de mortalidad futura."
+      },
+      {
+        "titulo": "Recuento de eosinófilos en sangre — predice el efecto de los corticoides inhalados (GCI)",
+        "columnas": [
+          "Recuento",
+          "Implicancia terapéutica"
+        ],
+        "filas": [
+          [
+            "< 100 células/µl",
+            "Poco o ningún efecto del GCI"
+          ],
+          [
+            "100–300 células/µl",
+            "Efecto moderado del GCI"
+          ],
+          [
+            "> 300 células/µl",
+            "Mayor probabilidad de beneficio del GCI"
+          ]
+        ],
+        "nota": "El uso de eosinófilos para predecir efecto del GCI debe combinarse siempre con la evaluación clínica del riesgo de exacerbación."
+      },
+      {
+        "titulo": "Evaluación combinada GOLD (grupos A / B / E)",
+        "columnas": [
+          "Grupo",
+          "Exacerbaciones",
+          "Síntomas"
+        ],
+        "filas": [
+          [
+            "Grupo A",
+            "0–1 exacerbación sin hospitalización",
+            "Pocos síntomas (mMRC 0-1, CAT <10)"
+          ],
+          [
+            "Grupo B",
+            "0–1 exacerbación sin hospitalización",
+            "Más síntomas (mMRC ≥2, CAT ≥10)"
+          ],
+          [
+            "Grupo E",
+            "≥2 exacerbaciones, o ≥1 con hospitalización",
+            "Independiente del nivel de síntomas"
+          ]
+        ],
+        "nota": "GOLD reconoce la relevancia clínica de las exacerbaciones por encima del nivel de síntomas — el grupo E (antes C y D) agrupa a todo paciente de alto riesgo de exacerbación sin importar cuántos síntomas tenga."
+      }
+    ]
   },
+  "repaso": {
+    "conceptosClave": [
+      "Limitación crónica y poco reversible del flujo aéreo",
+      "Principal causa: tabaquismo",
+      "Espirometría: VEF1/CVF < 0.70 post-BD confirma; GOLD 1-4 clasifica gravedad; grupo A/B/E guía tratamiento"
+    ],
+    "clinica": "Disnea progresiva + tos crónica productiva + antecedente de exposición a factores de riesgo.",
+    "diagnostico": "Espirometría post-broncodilatador obligatoria (FEV1/FVC<0.7) + mMRC/CAT + historial de exacerbaciones.",
+    "tratamientoResumen": "Cese de tabaco (siempre) + vacunas + rehabilitación > tratamiento por grupo: A=broncodilatador simple, B=LABA+LAMA, E=LABA+LAMA(+GCI si eos≥300) > escalar según disnea o exacerbaciones persistentes.",
+    "diferenciales": [
+      {
+        "entidad": "Asma",
+        "clave": "Reversibilidad significativa post-BD, inicio en edad temprana"
+      },
+      {
+        "entidad": "Insuficiencia cardiaca",
+        "clave": "Ortopnea, edema, crépitos bibasales, BNP elevado"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "EPOC vs Asma",
+      "filas": [
+        [
+          "Edad de inicio",
+          "> 40 años",
+          "Infancia/adolescencia"
+        ],
+        [
+          "Reversibilidad",
+          "Parcial/ausente",
+          "Significativa (>12% y 200mL)"
+        ],
+        [
+          "Antecedente",
+          "Tabaquismo",
+          "Atopia/alergias"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "El diagnóstico se confirma con espirometría (FEV1/FVC<0.7 post-BD), NO con clínica aislada",
+      "GOLD 1-4 clasifica la gravedad de la obstrucción; el grupo A/B/E (según síntomas + exacerbaciones) es lo que guía el tratamiento",
+      "CAT ≥10 o mMRC ≥2 = síntomas significativos; ≥2 exacerbaciones o ≥1 con hospitalización = grupo E automáticamente",
+      "Eosinófilos ≥300 → considerar GCI de entrada en grupo E; ≥100 → considerar al escalar por exacerbaciones persistentes",
+      "El cese de tabaquismo es la única intervención no farmacológica que modifica la sobrevida por sí sola",
+      "Oxigenoterapia si PaO2≤55/SatO2≤88%; VMNI si PaCO2≥53 + antecedente de hospitalización — ambas reducen mortalidad",
+      "Sospechar déficit de alfa-1 antitripsina en EPOC de inicio temprano sin tabaquismo"
+    ],
+    "redFlags": [
+      "Disnea en reposo con uso de músculos accesorios → posible exacerbación grave",
+      "Disminución de la FR en paciente que antes usaba músculos accesorios → agotamiento respiratorio, NO mejoría",
+      "Cianosis o alteración del sensorio → evaluar insuficiencia respiratoria"
+    ],
+    "erroresFrecuentes": [
+      "Diagnosticar EPOC solo por clínica sin espirometría",
+      "Usar la clasificación GOLD vieja (A/B/C/D) — ahora es A/B/E",
+      "Confundir con asma sin evaluar reversibilidad",
+      "Exigir fiebre como criterio de exacerbación (no lo es)"
+    ],
+    "asociacionesClinicas": [
+      "EPOC + cor pulmonale → edema de miembros inferiores, ingurgitación yugular",
+      "EPOC + inicio <45 años sin tabaquismo → descartar déficit de alfa-1 antitripsina"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Un varón de 68 años acude a consulta por disnea progresiva desde hace 2 años, que ha empeorado en los últimos 6 meses. Refiere tos con expectoración mucosa, especialmente matutina. Tiene antecedente de tabaquismo de 40 paquetes-año, suspendido hace 3 años. No presenta antecedentes de asma ni alergias conocidas. Al examen físico: tórax en 'barril', ruidos respiratorios disminuidos, espiración prolongada, sibilancias. Espirometría: FEV1/FVC 60% post-broncodilatador, FEV1 55% del valor predicho. Evaluación: CAT score 12, 1 exacerbación leve en el último año, sin hospitalización.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál es el diagnóstico más probable y la mejor opción terapéutica inicial según la clasificación GOLD 2024?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Asma persistente moderada; iniciar corticosteroides inhalados + beta-agonistas de acción prolongada (CI + LABA)"
+          },
+          {
+            "id": "b",
+            "texto": "EPOC moderado, grupo B; iniciar un broncodilatador de acción prolongada (LAMA o LABA)"
+          },
+          {
+            "id": "c",
+            "texto": "EPOC leve, grupo A; solo seguimiento clínico sin necesidad de tratamiento farmacológico"
+          },
+          {
+            "id": "d",
+            "texto": "EPOC grave, grupo E; iniciar terapia triple (LAMA + LABA + CI)"
+          },
+          {
+            "id": "e",
+            "texto": "Bronquitis crónica sin obstrucción; tratamiento antibiótico y mucolíticos"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "El paciente cumple criterios diagnósticos de EPOC: síntomas respiratorios crónicos, historia de tabaquismo importante, y obstrucción persistente al flujo aéreo (FEV1/FVC <70% post-broncodilatador). El FEV1=55% lo clasifica como EPOC moderado (GOLD 2). El CAT de 12 indica síntomas significativos (>10). Ha tenido solo una exacerbación leve, sin hospitalización → lo ubica en grupo B según GOLD 2024. Por tanto, el tratamiento inicial recomendado es un broncodilatador de acción prolongada (LAMA o LABA). Las demás opciones fallan: (A) no hay criterios para asma; (C) no corresponde a grupo A porque tiene síntomas significativos (CAT>10); (D) no pertenece al grupo E porque no tiene ≥2 exacerbaciones ni hospitalizaciones; (E) tiene obstrucción confirmada por espirometría, no es bronquitis crónica simple sin obstrucción."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica el mecanismo fisiopatológico por el cual este paciente presenta el signo de labios fruncidos al respirar, y por qué ese mismo mecanismo explica el 'tórax en tonel' al examen físico.",
+        "respuestaModelo": "La destrucción del parénquima alveolar y la pérdida de retracción elástica hacen que la vía aérea pequeña tienda a colapsar durante la espiración forzada. Al respirar con labios fruncidos, el paciente genera una resistencia adicional en la salida del aire que aumenta la presión dentro de la vía aérea, evitando ese colapso precoz y permitiendo vaciar mejor los pulmones. El mismo problema de fondo — aire atrapado que no se logra expulsar por completo en cada ciclo — lleva a hiperinsuflación pulmonar crónica, que con el tiempo remodela la caja torácica hacia el 'tórax en tonel'."
+      }
+    },
+    {
+      "nivel": "basico",
+      "vineta": "Mujer de 58 años con EPOC conocido (grupo B) en tratamiento con LAMA, acude a emergencia por aumento de la disnea habitual, mayor volumen de esputo y cambio a esputo purulento en los últimos 2 días. No tiene fiebre. Saturación 91% con FiO2 ambiental, FR 24/min, sin uso marcado de músculos accesorios.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál de los siguientes NO es un criterio típico para diagnosticar una exacerbación de EPOC en esta paciente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Aumento de la disnea basal"
+          },
+          {
+            "id": "b",
+            "texto": "Aumento del volumen del esputo"
+          },
+          {
+            "id": "c",
+            "texto": "Cambio del esputo a purulento"
+          },
+          {
+            "id": "d",
+            "texto": "Presencia de fiebre alta como criterio obligatorio"
+          }
+        ],
+        "correcta": "d",
+        "explicacion": "Los criterios clásicos (criterios de Anthonisen) son: aumento de la disnea, aumento del volumen del esputo, y cambio a esputo purulento — con 2 de 3 ya se sospecha exacerbación. La fiebre NO es un criterio obligatorio ni forma parte de esta tríada; muchas exacerbaciones de EPOC cursan sin fiebre, a diferencia de una neumonía."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Con cuántos y cuáles criterios de Anthonisen cursa esta paciente, y qué implicancia tiene eso sobre la indicación de antibióticos?",
+        "respuestaModelo": "Cursa con los 3 criterios de Anthonisen: aumento de disnea, aumento del volumen de esputo, y esputo purulento. Con los 3 criterios presentes (especialmente la purulencia, que sugiere causa bacteriana) sí está indicado iniciar antibióticos empíricos, además del ajuste de broncodilatadores y considerar corticoide sistémico según la gravedad de la exacerbación (que en este caso sería MODERADA: SABA + corticoide oral ± antibiótico, ya que no requiere hospitalización)."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "Varón de 70 años con EPOC grupo E conocido, ingresa por disnea severa de 24h, somnoliento pero despertable. Gasometría arterial: pH 7.28, PaCO2 68 mmHg, PaO2 52 mmHg, HCO3 28 mEq/L. FR 12/min (bradipneico), usa musculatura accesoria de forma decreciente.",
+      "preguntaMC": {
+        "enunciado": "¿Cómo interpretas esta gasometría y cuál es la conducta más urgente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Acidosis metabólica compensada — solo requiere hidratación"
+          },
+          {
+            "id": "b",
+            "texto": "Acidosis respiratoria aguda sobre crónica (HCO3 elevado por compensación renal previa) con hipercapnia severa — considerar ventilación mecánica no invasiva de inmediato"
+          },
+          {
+            "id": "c",
+            "texto": "Alcalosis respiratoria — indicar sedación"
+          },
+          {
+            "id": "d",
+            "texto": "Gasometría normal para EPOC, no requiere intervención"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "El pH bajo con PaCO2 muy elevada confirma acidosis respiratoria; el HCO3 ya elevado (28) sugiere compensación renal previa (retenedor crónico de CO2) sobre la que se sobreagrega una descompensación aguda. La disminución de la FR en un paciente que antes usaba músculos accesorios es un signo de ALARMA (agotamiento respiratorio, no mejoría) — requiere soporte ventilatorio urgente, típicamente VMNI si no hay contraindicación, cumpliendo el criterio de PaCO2≥53 con deterioro agudo."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué la disminución de la frecuencia respiratoria en este paciente es un signo de alarma y no de mejoría clínica?",
+        "respuestaModelo": "Un paciente que venía taquipneico y usando músculos accesorios para compensar la falla respiratoria, si de pronto reduce su frecuencia respiratoria sin que mejoren los demás parámetros (gasometría, estado de conciencia), generalmente indica agotamiento de la musculatura respiratoria — ya no tiene fuerza para mantener el esfuerzo compensatorio, no que su situación esté mejorando. Es un signo de insuficiencia respiratoria inminente que requiere soporte ventilatorio urgente."
+      }
+    }
+  ]
+},
 
   {
     id: "asma-bronquial",
