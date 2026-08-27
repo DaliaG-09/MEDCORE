@@ -1371,6 +1371,15 @@ function renderProfundo(p, diseaseId){
           ${p.fisiopatologia.explicacionExtendida ? p.fisiopatologia.explicacionExtendida.split('\n\n').map(par => `<p>${par}</p>`).join('') : '<p class="muted">Sin explicación extendida todavía para esta enfermedad.</p>'}
         </div>
       </div>
+      ${p.fisiopatologia.imagenes ? `
+      <div class="tema-imagenes" style="margin-top:14px;">
+        ${p.fisiopatologia.imagenes.map(im => `
+          <figure class="tema-figura" style="width:100%; max-width:520px;" onclick="openImageLightbox('${im.src}')">
+            <img src="${im.src}" alt="${im.caption}" loading="lazy" style="height:auto;">
+            <figcaption>${im.caption}</figcaption>
+          </figure>
+        `).join('')}
+      </div>` : ''}
       ${p.mecanismoEpitelial ? `<p style="margin-top:14px"><strong>Mecanismo celular clave:</strong> ${p.mecanismoEpitelial}</p>` : ''}
       ${noteBlockHTML(diseaseId + '::fisiopatologia', 'Tu explicación con tus propias palabras...')}
     </div>
@@ -1403,6 +1412,7 @@ function renderProfundo(p, diseaseId){
     ${p.tablasClinicas ? p.tablasClinicas.map(t => `
     <div class="kcard">
       <h3>${t.titulo}</h3>
+      ${t.contexto ? `<p>${t.contexto}</p>` : ''}
       <table class="compare">
         <tr>${t.columnas.map(c => `<th>${c}</th>`).join('')}</tr>
         ${t.filas.map(fila => `<tr>${fila.map(celda => `<td>${celda}</td>`).join('')}</tr>`).join('')}
@@ -1436,6 +1446,11 @@ function renderProfundo(p, diseaseId){
     <div class="kcard">
       <h3>Examen físico</h3>
       <ul>${p.examenFisico.map(x => `<li>${x}</li>`).join('')}</ul>
+      ${p.imagenExamenFisico ? `
+      <figure class="tema-figura" style="width:100%; max-width:420px; margin-top:12px;" onclick="openImageLightbox('${p.imagenExamenFisico.src}')">
+        <img src="${p.imagenExamenFisico.src}" alt="${p.imagenExamenFisico.caption}" loading="lazy" style="height:auto;">
+        <figcaption>${p.imagenExamenFisico.caption}</figcaption>
+      </figure>` : ''}
     </div>
 
     ${p.semiologia ? `
