@@ -286,7 +286,7 @@ function renderPreparar(compositeId){
     <p class="page-sub">Todo lo que necesitas reunido en un solo lugar antes de esta evaluación.</p>
 
     <div class="kcard">
-      <h3>Alcance de esta evaluación</h3>
+      <h3>🎯 Alcance de esta evaluación</h3>
       <p class="muted">Enfermedades y temas cubiertos hasta la Semana ${s.numero} (lo que llevas construido en MEDCORE hasta ahora).</p>
       <div class="progress-track" style="margin-top:10px;"><div class="progress-fill" style="width:${scope.length ? (estudiadas/scope.length*100) : 0}%"></div></div>
       <div class="progress-caption">${estudiadas}/${scope.length} enfermedades ya estudiadas</div>
@@ -294,7 +294,7 @@ function renderPreparar(compositeId){
 
     ${scope.length ? `
     <div class="kcard">
-      <h3>Checklist de repaso</h3>
+      <h3>✅ Checklist de repaso</h3>
       <div class="chip-list">
         ${scope.map(e => `
           <div class="chip" style="cursor:pointer;" onclick="toggleEstudiado('${e.id}')">
@@ -781,32 +781,32 @@ function renderSemana(id){
     ${total > 0 ? `<div class="btn-icon" style="margin-bottom:22px; display:inline-flex;" onclick="navQuizSemana('${s.id}')">🧠 Repaso de toda la semana</div>` : ''}
 
     <div class="section-block">
-      <h3>Días</h3>
+      <h3>📅 Días</h3>
       <div class="grid cols-3">${s.dias.map((d,i) => diaCardHTML(d, s.id, i)).join('')}</div>
     </div>
 
     ${(s.temas && s.temas.length) ? `
     <div class="section-block">
-      <h3>Anatomía y fisiología</h3>
+      <h3>🧬 Anatomía y fisiología</h3>
       <div class="grid cols-2">${s.temas.map(id => temaCardHTML(getTema(id))).join('')}</div>
     </div>` : ''}
 
     <div class="section-block">
-      <h3>Enfermedades de la semana</h3>
+      <h3>🔎 Enfermedades de la semana</h3>
       ${s.enfermedades.length ? `<div class="grid cols-2">${s.enfermedades.map(id => diseaseCardHTML(getEnfermedad(id))).join('')}</div>` : `
       <div class="kcard"><p class="muted">El contenido detallado de esta semana todavía no está construido. Cuando subas el material a Drive, lo agrego aquí — mientras tanto, esta semana solo muestra el cronograma real de tu sílabo (días, temas, lecturas, evaluaciones), sin inventar ni cruzar contenido de otras semanas.</p></div>`}
     </div>
 
     <div class="grid cols-2">
       <div class="section-block">
-        <h3>Lecturas</h3>
+        <h3>📚 Lecturas</h3>
         <ul>${s.lecturas.map(lid => {
           const l = LECTURAS.find(x => x.id === lid);
           return `<li><a class="link-quiet" style="font-size:14px;" onclick="openLectura('${lid}')">📚 ${l ? l.titulo : lid}</a> <span class="muted">(${l ? l.tipo : ''})</span></li>`;
         }).join('')}</ul>
       </div>
       <div class="section-block">
-        <h3>Talleres y exposiciones</h3>
+        <h3>🎯 Talleres y exposiciones</h3>
         <ul>
           ${s.talleres.map(t => {
             const normalizado = t.toUpperCase().replace(/\s+/g, ' ').trim();
@@ -823,7 +823,7 @@ function renderSemana(id){
     </div>
 
     <div class="section-block">
-      <h3>Evaluaciones</h3>
+      <h3>🗓️ Evaluaciones</h3>
       <ul>${s.evaluaciones.map(t => `<li>${t}</li>`).join('')}</ul>
     </div>
   `;
@@ -882,7 +882,7 @@ function renderDia(compositeId){
     <h1 class="page-title">${d.dia}</h1>
     <p class="page-sub">${badges}</p>
     <div class="kcard">
-      <h3>Qué toca hoy</h3>
+      <h3>📅 Qué toca hoy</h3>
       <p>${d.tema}</p>
     </div>
     ${hospitalSesion ? `
@@ -893,7 +893,7 @@ function renderDia(compositeId){
     </div>` : ''}
     ${items ? `
     <div class="section-block">
-      <h3>Contenido de esta clase</h3>
+      <h3>📚 Contenido de esta clase</h3>
       <div class="grid cols-2">${items}</div>
     </div>` : (d.tema.toLowerCase().includes('pendiente') ? '' : `
     <div class="kcard">
@@ -996,14 +996,14 @@ function renderLectura(id){
     <h1 class="page-title">📚 ${l.titulo}</h1>
 
     <div class="kcard">
-      <h3>Detalles</h3>
+      <h3>ℹ️ Detalles</h3>
       <p><strong>Tipo:</strong> ${l.tipo === 'obligatoria' ? 'Lectura obligatoria' : l.tipo}</p>
       <p><strong>Semana:</strong> <a class="link-quiet" onclick="navPush('semana','${s.id}','Semana ${s.numero}')">Semana ${s.numero} — ${s.titulo}</a></p>
       ${l.url ? `<p><strong>Fuente:</strong> <a href="${l.url}" target="_blank" rel="noopener">Abrir enlace original ↗</a></p>` : `<p class="muted">Esta lectura todavía no tiene un enlace directo cargado — la referencia completa es la que ves en el título.</p>`}
     </div>
 
     <div class="kcard">
-      <h3>Tu estado de avance</h3>
+      <h3>📈 Tu estado de avance</h3>
       <div class="lectura-estados">
         ${LECTURA_ESTADOS.map(est => `
           <div class="lectura-estado-btn ${l.estado === est ? 'activo' : ''}" style="--estado-color: var(--${LECTURA_ESTADO_COLOR[est]})" onclick="setLecturaEstado('${l.id}','${est}')">${est}</div>
@@ -1012,7 +1012,7 @@ function renderLectura(id){
     </div>
 
     <div class="section-block">
-      <h3>Apunte sobre esta lectura</h3>
+      <h3>✎ Apunte sobre esta lectura</h3>
       ${noteBlockHTML(l.id + '::general')}
     </div>
   `;
@@ -1050,12 +1050,12 @@ function renderTema(id){
     <div class="section-toc" id="tema-toc"></div>
 
     <div class="kcard">
-      <h3>Resumen</h3>
+      <h3>📝 Resumen</h3>
       <p>${c.resumen}</p>
     </div>
 
     <div class="kcard">
-      <h3>Estructuras clave</h3>
+      <h3>🔑 Estructuras clave</h3>
       ${c.estructuras.map(e => `
         <div class="tema-estructura">
           <p><strong>${e.nombre}:</strong> ${e.detalle}</p>
@@ -1090,7 +1090,7 @@ function renderTema(id){
     </div>
 
     <div class="section-block">
-      <h3>Apunte</h3>
+      <h3>✎ Apunte</h3>
       ${noteBlockHTML(t.id + '::general')}
     </div>
   `;
@@ -1337,13 +1337,13 @@ function renderProfundo(p, diseaseId){
   const enfermedad = getEnfermedad(diseaseId);
   return `
     <div class="kcard">
-      <h3>Definición y epidemiología</h3>
+      <h3>📝 Definición y epidemiología</h3>
       <p>${p.definicion}</p>
       <p class="muted">${p.epidemiologia}</p>
     </div>
 
     <div class="icard">
-      <h3>Etiología y factores de riesgo</h3>
+      <h3>⚠️ Etiología y factores de riesgo</h3>
       <ul>${p.etiologiaFactoresRiesgo.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
 
@@ -1402,7 +1402,7 @@ function renderProfundo(p, diseaseId){
 
     ${p.indicadoresClinicos ? `
     <div class="kcard">
-      <h3>Indicadores clínicos para sospechar el diagnóstico</h3>
+      <h3>🔎 Indicadores clínicos para sospechar el diagnóstico</h3>
       <div class="grid cols-2">
         <div><strong>Síntomas respiratorios</strong><ul>${p.indicadoresClinicos.sintomasRespiratorios.map(x=>`<li>${x}</li>`).join('')}</ul></div>
         <div><strong>Factores de riesgo</strong><ul>${p.indicadoresClinicos.factoresRiesgo.map(x=>`<li>${x}</li>`).join('')}</ul></div>
@@ -1435,17 +1435,17 @@ function renderProfundo(p, diseaseId){
 
     ${p.sintomasPrincipales ? `
     <div class="kcard">
-      <h3>Síntomas principales</h3>
+      <h3>🩺 Síntomas principales</h3>
       <ul>${p.sintomasPrincipales.map(s => `<li><strong>${s.sintoma}:</strong> ${s.detalle}</li>`).join('')}</ul>
     </div>` : ''}
 
     <div class="kcard">
-      <h3>Clínica explicada</h3>
+      <h3>🩺 Clínica explicada</h3>
       <ul>${p.clinica.map(c => `<li><strong>${c.signo}</strong> — <span class="muted">${c.mecanismo}</span></li>`).join('')}</ul>
     </div>
 
     <div class="kcard">
-      <h3>Examen físico</h3>
+      <h3>🖐️ Examen físico</h3>
       <ul>${p.examenFisico.map(x => `<li>${x}</li>`).join('')}</ul>
       ${p.imagenExamenFisico ? `
       <figure class="tema-figura" style="width:100%; max-width:420px; margin-top:12px;" onclick="openImageLightbox('${p.imagenExamenFisico.src}')">
@@ -1467,7 +1467,7 @@ function renderProfundo(p, diseaseId){
     </div>` : ''}
 
     <div class="icard">
-      <h3>Diagnóstico y diferenciales</h3>
+      <h3>🔬 Diagnóstico y diferenciales</h3>
       <p>${p.diagnostico}</p>
       <p class="muted"><strong>Diferenciales:</strong> ${p.diagnosticoDiferencial.join(', ')}</p>
     </div>
@@ -1491,7 +1491,7 @@ function renderProfundo(p, diseaseId){
     </div>` : ''}
 
     <div class="gcard">
-      <h3>Tratamiento</h3>
+      <h3>💊 Tratamiento</h3>
       <p><strong>No farmacológico:</strong></p>
       <ul>${p.tratamiento.noFarmacologico.map(x => `<li>${x}</li>`).join('')}</ul>
       <p><strong>Farmacológico:</strong></p>
@@ -1516,7 +1516,7 @@ function renderProfundo(p, diseaseId){
     </div>` : ''}
 
     <div class="ccard">
-      <h3>Complicaciones</h3>
+      <h3>⚡ Complicaciones</h3>
       <ul>${p.complicaciones.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
 
@@ -1533,7 +1533,7 @@ function renderProfundo(p, diseaseId){
     </div>` : ''}
 
     <div class="section-block">
-      <h3>Apunte general — modo profundo</h3>
+      <h3>✎ Apunte general — modo profundo</h3>
       ${noteBlockHTML(diseaseId + '::profundo-general')}
     </div>
   `;
@@ -1550,12 +1550,12 @@ function renderRepaso(r, diseaseId){
 
   return `
     <div class="kcard">
-      <h3>Conceptos clave</h3>
+      <h3>🔑 Conceptos clave</h3>
       <ul>${r.conceptosClave.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
 
     <div class="kcard">
-      <h3>Resumen rápido</h3>
+      <h3>⚡ Resumen rápido</h3>
       <p><strong>Clínica:</strong> ${r.clinica}</p>
       <p><strong>Diagnóstico:</strong> ${r.diagnostico}</p>
       <p><strong>Tratamiento:</strong> ${r.tratamientoResumen}</p>
@@ -1568,7 +1568,7 @@ function renderRepaso(r, diseaseId){
     </div>
 
     <div class="section-block">
-      <h3>Apunte — repaso</h3>
+      <h3>✎ Apunte — repaso</h3>
       ${noteBlockHTML(diseaseId + '::repaso')}
     </div>
   `;
@@ -1600,7 +1600,7 @@ function renderImprescindible(im, diseaseId){
     </div>
 
     <div class="section-block">
-      <h3>Apunte — lo imprescindible</h3>
+      <h3>✎ Apunte — lo imprescindible</h3>
       ${noteBlockHTML(diseaseId + '::imprescindible')}
     </div>
   `;
