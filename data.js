@@ -630,6 +630,10 @@ const ENFERMEDADES = [
   "favorito": false,
   "estudiado": false,
   "ilustracion": "assets/epoc-airway.svg",
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1eODa1niiD7cNWDqvvU6vJ1W-siV09wJI/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_2_SESIÓN-5-TEMA-2: Enfermedad Pulmonar Obstructiva Crónica"
+  },
   "relacionadas": [
     {
       "id": "asma-bronquial",
@@ -697,7 +701,8 @@ const ENFERMEDADES = [
       "imagenes": [
         {
           "src": "assets/epoc/epoc-patogenia-diagrama.jpg",
-          "caption": "Diagrama de patogenia (de tu clase) — cómo el humo activa cada célula y qué citoquina libera cada una, hasta converger en obstrucción respiratoria"
+          "caption": "Diagrama de patogenia (de tu clase)",
+          "explicacion": "Léelo de arriba hacia abajo: el humo (cuadro superior) es el único desencadenante, pero activa a la vez 4 tipos de células distintas (epitelio, macrófagos, mastocitos, y a través de estos, linfocitos T y B). Fíjate que TODAS las flechas, sin importar de qué célula salgan, terminan convergiendo en el mismo grupo de mediadores finales (LTB4, IL-8, TNF-α, MMPs, HNE, IL-17A, INF-γ) — esto es clave para entender por qué el daño no depende de una sola vía, sino de una respuesta inflamatoria en red. Luego, ese mismo grupo de mediadores se bifurca hacia DOS órganos diana distintos: bronquiolos (fibrosis + hipersecreción + contracción muscular = el fenotipo 'bronquítico') y parénquima (enfisema = el fenotipo 'enfisematoso'). Ambos caminos terminan en el mismo resultado funcional: obstrucción respiratoria. Si te preguntan por qué el EPOC es una enfermedad 'heterogénea', la respuesta visual está aquí: es una sola cascada inflamatoria que se expresa de forma distinta según qué órgano diana predomine en cada paciente."
         }
       ]
     },
@@ -986,7 +991,8 @@ const ENFERMEDADES = [
     ],
     "imagenExamenFisico": {
       "src": "assets/epoc/epoc-rx-hiperinflacion.jpg",
-      "caption": "Radiografía real de tu clase — espacios intercostales ensanchados y diafragma aplanado, los dos signos radiológicos de hiperinsuflación que corresponden al 'tórax en tonel' que sientes al examen físico"
+      "caption": "Radiografía real de tu clase",
+      "explicacion": "Es la contraparte radiológica de lo que sientes al examinar al paciente. Los espacios intercostales ensanchados (flecha derecha) ocurren porque el tórax se queda 'atrapado' en una posición de inspiración permanente — el mismo mecanismo que produce el tórax en tonel al examen físico. El diafragma aplanado (línea punteada inferior) es el signo más específico de hiperinsuflación crónica: un diafragma normal se ve curvo/en cúpula; aquí está literalmente empujado hacia abajo por el volumen de aire atrapado, lo que además explica por qué estos pacientes tienen el signo de Hoover — un diafragma ya aplanado no puede seguir contrayéndose de forma eficiente, así que la parrilla costal inferior se mueve paradójicamente hacia adentro en cada inspiración en vez de expandirse."
     }
   },
   "repaso": {
