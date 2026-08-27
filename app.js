@@ -1384,6 +1384,50 @@ function renderProfundo(p, diseaseId){
       </table>
     </div>` : ''}
 
+    ${p.criteriosDiagnosticos ? `
+    <div class="icard">
+      <h3>📋 Criterios diagnósticos</h3>
+      <p>${p.criteriosDiagnosticos}</p>
+    </div>` : ''}
+
+    ${p.indicadoresClinicos ? `
+    <div class="kcard">
+      <h3>Indicadores clínicos para sospechar el diagnóstico</h3>
+      <div class="grid cols-2">
+        <div><strong>Síntomas respiratorios</strong><ul>${p.indicadoresClinicos.sintomasRespiratorios.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+        <div><strong>Factores de riesgo</strong><ul>${p.indicadoresClinicos.factoresRiesgo.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      </div>
+      <p class="muted">${p.indicadoresClinicos.nota}</p>
+    </div>` : ''}
+
+    ${p.tablasClinicas ? p.tablasClinicas.map(t => `
+    <div class="kcard">
+      <h3>${t.titulo}</h3>
+      <table class="compare">
+        <tr>${t.columnas.map(c => `<th>${c}</th>`).join('')}</tr>
+        ${t.filas.map(fila => `<tr>${fila.map(celda => `<td>${celda}</td>`).join('')}</tr>`).join('')}
+      </table>
+      ${t.nota ? `<p class="muted" style="margin-top:8px;">${t.nota}</p>` : ''}
+    </div>`).join('') : ''}
+
+    ${p.catScore ? `
+    <div class="pcard">
+      <h3>📝 CAT score</h3>
+      <p>${p.catScore}</p>
+    </div>` : ''}
+
+    ${p.endotiposInflamacion ? `
+    <div class="mcard">
+      <h3>🧬 Endotipos de inflamación</h3>
+      <p>${p.endotiposInflamacion}</p>
+    </div>` : ''}
+
+    ${p.sintomasPrincipales ? `
+    <div class="kcard">
+      <h3>Síntomas principales</h3>
+      <ul>${p.sintomasPrincipales.map(s => `<li><strong>${s.sintoma}:</strong> ${s.detalle}</li>`).join('')}</ul>
+    </div>` : ''}
+
     <div class="kcard">
       <h3>Clínica explicada</h3>
       <ul>${p.clinica.map(c => `<li><strong>${c.signo}</strong> — <span class="muted">${c.mecanismo}</span></li>`).join('')}</ul>
@@ -1411,6 +1455,18 @@ function renderProfundo(p, diseaseId){
       <p class="muted"><strong>Diferenciales:</strong> ${p.diagnosticoDiferencial.join(', ')}</p>
     </div>
 
+    ${p.historiaClinica ? `
+    <div class="kcard">
+      <h3>🗂️ Qué debe incluir la historia clínica</h3>
+      <p>${p.historiaClinica}</p>
+    </div>` : ''}
+
+    ${p.biomarcadoresEImagenes ? `
+    <div class="mcard">
+      <h3>🔬 Biomarcadores e imágenes</h3>
+      <p>${p.biomarcadoresEImagenes}</p>
+    </div>` : ''}
+
     ${p.algoritmo ? `
     <div class="mcard">
       <h3>🔀 Algoritmo de decisión</h3>
@@ -1424,6 +1480,23 @@ function renderProfundo(p, diseaseId){
       <p><strong>Farmacológico:</strong></p>
       <ul>${p.tratamiento.farmacologico.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
+
+    ${p.exacerbaciones ? `
+    <div class="ccard">
+      <h3>⚡ Exacerbaciones</h3>
+      <p>${p.exacerbaciones.definicion}</p>
+      <table class="compare">
+        <tr><th>Gravedad</th><th>Manejo</th></tr>
+        ${p.exacerbaciones.clasificacion.map(fila => `<tr><td>${fila[0]}</td><td>${fila[1]}</td></tr>`).join('')}
+      </table>
+      ${p.exacerbaciones.criteriosAnthonisen ? `<p style="margin-top:8px;">${p.exacerbaciones.criteriosAnthonisen}</p>` : ''}
+    </div>` : ''}
+
+    ${p.intervencionesQueReducenMortalidad ? `
+    <div class="pcard">
+      <h3>❤️‍🩹 Intervenciones que reducen mortalidad</h3>
+      <ul>${p.intervencionesQueReducenMortalidad.map(x => `<li>${x}</li>`).join('')}</ul>
+    </div>` : ''}
 
     <div class="ccard">
       <h3>Complicaciones</h3>
