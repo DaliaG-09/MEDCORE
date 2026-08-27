@@ -11,6 +11,7 @@
 let hlPopupEl = null;
 let hlActiveZone = null;
 let hlSelectionTimer = null;
+let hlUltimoCreado = null; // { markEl, zona } — el último resaltado creado, para Ctrl+Z
 
 function initHighlighting(){
   if(hlPopupEl) return; // ya inicializado
@@ -40,6 +41,28 @@ function initHighlighting(){
   document.addEventListener('mousedown', (ev) => {
     if(!hlPopupEl.contains(ev.target) && !findHlZone(ev.target)) hidePopup();
   });
+
+  // Ctrl+Z (o Cmd+Z en Mac) deshace el ÚLTIMO resaltado creado — sin tocar los anteriores
+  document.addEventListener('keydown', (ev) => {
+    const esUndo = (ev.ctrlKey || ev.metaKey) && !ev.shiftKey && ev.key.toLowerCase() === 'z';
+    if(esUndo && hlUltimoCreado){
+      ev.preventDefault();
+      deshacerUltimoResaltado();
+    }
+  });
+}
+
+function deshacerUltimoResaltado(){
+  if(!hlUltimoCreado) return;
+  const { markEl, zona } = hlUltimoCreado;
+  if(markEl && markEl.parentNode){
+    const parent = markEl.parentNode;
+    while(markEl.firstChild) parent.insertBefore(markEl.firstChild, markEl);
+    parent.removeChild(markEl);
+    parent.normalize();
+    saveZoneHighlights(zona);
+  }
+  hlUltimoCreado = null;
 }
 
 function evaluateSelection(){
@@ -92,6 +115,7 @@ function applyHighlight(colorClass){
   }
   sel.removeAllRanges();
   hidePopup();
+  hlUltimoCreado = { markEl: mark, zona: hlActiveZone }; // para poder deshacer con Ctrl+Z
   saveZoneHighlights(hlActiveZone);
 }
 
@@ -103,6 +127,7 @@ function removeHighlight(){
   let markEl = node.nodeType === 3 ? node.parentElement : node;
   while(markEl && markEl.tagName !== 'MARK') markEl = markEl.parentElement;
   if(markEl && markEl.tagName === 'MARK'){
+    if(hlUltimoCreado && hlUltimoCreado.markEl === markEl) hlUltimoCreado = null; // ya no existe, evita que Ctrl+Z intente revivirlo
     const parent = markEl.parentNode;
     while(markEl.firstChild) parent.insertBefore(markEl.firstChild, markEl);
     parent.removeChild(markEl);
