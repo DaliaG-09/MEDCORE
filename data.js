@@ -667,7 +667,7 @@ const ENFERMEDADES = [
     "catScore": "Cuestionario CAT (COPD Assessment Test): 8 ítems que evalúan el estado de salud del paciente con EPOC. Puntuación de 0 a 40, correlaciona bien con el SGRQ. Un punto de corte de CAT ≥10 (equivalente a SGRQ ≥25) se considera el umbral para iniciar tratamiento regular de los síntomas, incluyendo la disnea. <span class=\"fuente-ampliada\">Se recomienda usar una evaluación multidimensional, ya que pacientes con mMRC bajo también pueden tener otros síntomas relevantes de EPOC no capturados por esa escala.</span>",
     "fisiopatologia": {
       "resumen": "La exposición crónica a partículas nocivas desencadena inflamación sostenida de la vía aérea, con dos componentes que coexisten en proporción variable: enfermedad de la pequeña vía aérea (bronquiolitis) y destrucción del parénquima (enfisema).",
-      "explicacionExtendida": "<span class=\"fuente-ampliada\">El EPOC combina en proporción variable dos procesos que comparten el mismo desencadenante (humo de tabaco u otras partículas inhaladas) pero dañan estructuras distintas. En el fenotipo enfisematoso, el desequilibrio entre proteasas (sobre todo elastasa neutrofílica) y antiproteasas (como la alfa-1 antitripsina) destruye progresivamente la matriz elástica del parénquima alveolar. Esto no solo colapsa las paredes alveolares y fusiona espacios aéreos, sino que también reduce la fuerza de retracción elástica que normalmente mantiene abierta la vía aérea pequeña durante la espiración — por eso el aire queda atrapado.</span>\n\nLas vías respiratorias pequeñas (<2 mm) son un sitio temprano de alteración: la exposición a sustancias inhaladas causa lesiones inducidas por oxidantes que reprograman las células basales del epitelio, haciendo que el epitelio de la vía pequeña se parezca más al de la vía proximal, con pérdida de células secretoras y ciliadas. El estrés oxidativo es un factor patogénico central: la estimulación con humo conduce a daño celular, y la secreción excesiva de moco junto con la acumulación de neutrófilos produce grandes cantidades de especies reactivas de oxígeno (ROS). Los neutrófilos y macrófagos secretan proteasas de serina (metaloproteinasas de matriz, elastasa neutrofílica) centrales en la remodelación de la vía aérea, mientras que TNF-α, IL-1β, IL-6 e IL-8 se liberan en grandes cantidades durante las exacerbaciones. <span class=\"fuente-ampliada\">Con el tiempo, la inflamación deja de ser solo local: se vuelve sistémica de bajo grado, lo que explica por qué el EPOC se asocia a comorbilidades cardiovasculares y pérdida de masa muscular en etapas avanzadas.</span>",
+      "explicacionExtendida": "El diagrama de tu clase muestra la cascada completa, célula por célula: el humo de tabaco/biomasa activa directamente el epitelio (libera IL-6, CXCL1, CXCL8 — atrayendo neutrófilos), los macrófagos (liberan MCP-1, PAF, TGF-β) y los mastocitos (liberan histamina, PG-D2, y activan células dendríticas y linfocitos T). Los linfocitos CD8+ liberan perforina/granzima B, y junto con CD4+ activan linfocitos B (IL-6) — toda esta señalización converge en un grupo común de mediadores finales: LTB4, IL-8, TNF-α, MMPs, HNE, IL-17A, INF-γ. Estos mediadores actúan sobre DOS estructuras distintas y explican por qué el EPOC es tan heterogéneo entre pacientes: sobre los <strong>bronquiolos</strong> producen fibrosis, hipersecreción mucosa, contracción del músculo liso e inflamación (el fenotipo 'bronquitis crónica'); sobre el <strong>parénquima</strong> producen enfisema e inflamación (el fenotipo 'enfisematoso'). Ambas vías terminan en el mismo resultado funcional: obstrucción respiratoria — por eso dos pacientes con EPOC pueden verse clínicamente muy distintos (uno más tosedor-abotagado, otro más disneico-soplador rosado) y aun así tener el mismo diagnóstico espirométrico.\n\n<span class=\"fuente-ampliada\">Mecanísticamente, el desequilibrio entre proteasas (elastasa neutrofílica, MMPs) y antiproteasas (como la alfa-1 antitripsina) es lo que explica por qué el daño del parénquima es progresivo e irreversible: cada episodio inflamatorio (cada exacerbación) destruye un poco más de matriz elástica alveolar de la que el cuerpo puede reparar. Esto también explica por qué dejar de fumar detiene la progresión pero no revierte el daño ya hecho — el objetivo del tratamiento nunca es 'curar' el enfisema ya establecido, sino evitar que seque avance más rápido de lo esperado por la edad.</span>",
       "cascada": [
         {
           "paso": "Factor desencadenante",
@@ -692,6 +692,12 @@ const ENFERMEDADES = [
         {
           "paso": "Manifestación clínica",
           "detalle": "Disnea progresiva, tos crónica, uso de musculatura accesoria, exacerbaciones"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/epoc/epoc-patogenia-diagrama.jpg",
+          "caption": "Diagrama de patogenia (de tu clase) — cómo el humo activa cada célula y qué citoquina libera cada una, hasta converger en obstrucción respiratoria"
         }
       ]
     },
@@ -846,7 +852,8 @@ const ENFERMEDADES = [
     "perlasProfundo": "El FEV1/FVC post-broncodilatador < 0.70 confirma EPOC, pero la elección del tratamiento y el pronóstico dependen más de la clasificación GOLD por síntomas y riesgo de exacerbaciones (grupo A/B/E) que del FEV1 aislado.",
     "tablasClinicas": [
       {
-        "titulo": "Gravedad de la limitación al flujo aéreo (post-broncodilatador)",
+        "titulo": "1️⃣ Primero: ¿qué tan obstruido está? — Clasificación GOLD por espirometría",
+        "contexto": "Una vez que la espirometría confirma EPOC (FEV1/FVC<0.7), el PRIMER número que necesitas es el FEV1 (% del predicho) — esto te da el estadio GOLD 1-4, que mide qué tan dañada está la vía aérea de forma objetiva y reproducible, sin depender de lo que el paciente reporte sentir.",
         "columnas": [
           "Estadio",
           "Gravedad",
@@ -873,10 +880,12 @@ const ENFERMEDADES = [
             "Muy grave",
             "FEV1 < 30% del valor de referencia"
           ]
-        ]
+        ],
+        "nota": "<span class=\"fuente-ampliada\">Ojo: el GOLD 1-4 clasifica la OBSTRUCCIÓN, pero por sí solo NO decide el tratamiento — para eso necesitas además saber cómo se siente el paciente y cuántas exacerbaciones ha tenido (siguiente tabla).</span>"
       },
       {
-        "titulo": "Escala de disnea mMRC",
+        "titulo": "2️⃣ Segundo: ¿cómo se siente el paciente? — Escala de disnea mMRC",
+        "contexto": "El FEV1 mide daño estructural, pero dos pacientes con el MISMO FEV1 pueden sentirse completamente distinto — por eso GOLD exige medir también el impacto funcional real con una escala de síntomas. La mMRC es la más simple: describe qué actividad le provoca disnea al paciente, en 5 grados.",
         "columnas": [
           "Grado",
           "Descripción"
@@ -903,35 +912,33 @@ const ENFERMEDADES = [
             "La disnea impide al paciente salir de casa, o aparece con actividades como vestirse o desvestirse"
           ]
         ],
-        "nota": "La escala mMRC se relaciona bien con otras medidas del estado de salud y predice el riesgo de mortalidad futura."
+        "nota": "mMRC ≥2 ya se considera síntomas significativos. La escala se relaciona bien con otras medidas del estado de salud y predice el riesgo de mortalidad futura — no es solo una pregunta de comodidad, tiene valor pronóstico real."
       },
       {
-        "titulo": "Recuento de eosinófilos en sangre — predice el efecto de los corticoides inhalados (GCI)",
+        "titulo": "3️⃣ CAT score — la alternativa más completa a mMRC",
+        "contexto": "El problema de mMRC es que solo pregunta por disnea — pero un paciente puede tener tos, opresión torácica o mal sueño sin necesariamente sentirse 'sin aire'. El CAT (COPD Assessment Test) captura eso con un cuestionario de 8 ítems (tos, flema, opresión, subir escaleras/pendientes, actividades en casa, confianza para salir, sueño, energía), puntuado de 0 a 40.",
         "columnas": [
-          "Recuento",
-          "Implicancia terapéutica"
+          "Punto de corte",
+          "Interpretación"
         ],
         "filas": [
           [
-            "< 100 células/µl",
-            "Poco o ningún efecto del GCI"
+            "CAT < 10",
+            "Síntomas poco significativos"
           ],
           [
-            "100–300 células/µl",
-            "Efecto moderado del GCI"
-          ],
-          [
-            "> 300 células/µl",
-            "Mayor probabilidad de beneficio del GCI"
+            "CAT ≥ 10",
+            "Síntomas significativos — umbral para iniciar tratamiento regular, incluyendo la disnea"
           ]
         ],
-        "nota": "El uso de eosinófilos para predecir efecto del GCI debe combinarse siempre con la evaluación clínica del riesgo de exacerbación."
+        "nota": "<span class=\"fuente-ampliada\">Se recomienda usar una evaluación multidimensional (no solo mMRC): un paciente con mMRC bajo puede igual tener CAT alto por otros síntomas no capturados por la escala de disnea sola.</span>"
       },
       {
-        "titulo": "Evaluación combinada GOLD (grupos A / B / E)",
+        "titulo": "4️⃣ Tercero: ¿cuántas exacerbaciones ha tenido? + síntomas → Grupo GOLD A/B/E",
+        "contexto": "Con el FEV1 (GOLD 1-4) y los síntomas (mMRC/CAT) ya medidos, el ÚLTIMO dato que falta — y el que más pesa para elegir tratamiento — es el historial de exacerbaciones. GOLD reconoce que las exacerbaciones predicen peor pronóstico incluso más que el nivel de síntomas, por eso el grupo E se define SOLO por exacerbaciones, sin importar qué tan sintomático esté el paciente.",
         "columnas": [
           "Grupo",
-          "Exacerbaciones",
+          "Exacerbaciones en el último año",
           "Síntomas"
         ],
         "filas": [
@@ -951,9 +958,36 @@ const ENFERMEDADES = [
             "Independiente del nivel de síntomas"
           ]
         ],
-        "nota": "GOLD reconoce la relevancia clínica de las exacerbaciones por encima del nivel de síntomas — el grupo E (antes C y D) agrupa a todo paciente de alto riesgo de exacerbación sin importar cuántos síntomas tenga."
+        "nota": "Este grupo A/B/E (NO el GOLD 1-4) es el que directamente decide con qué fármaco empezar — revisa el algoritmo de tratamiento más abajo."
+      },
+      {
+        "titulo": "5️⃣ ¿Necesita corticoide inhalado además del broncodilatador? — Eosinófilos en sangre",
+        "contexto": "Ya sabes el grupo (A/B/E) y por tanto el broncodilatador base — pero falta un dato para decidir si además conviene agregar un corticoide inhalado (GCI) desde el inicio: el conteo de eosinófilos en sangre, que predice qué tanto se va a beneficiar ESE paciente en particular del componente antiinflamatorio del GCI.",
+        "columnas": [
+          "Recuento",
+          "Implicancia terapéutica"
+        ],
+        "filas": [
+          [
+            "< 100 células/µl",
+            "Poco o ningún efecto del GCI — evitar, aumenta riesgo de neumonía sin beneficio claro"
+          ],
+          [
+            "100–300 células/µl",
+            "Efecto moderado del GCI"
+          ],
+          [
+            "> 300 células/µl",
+            "Mayor probabilidad de beneficio del GCI — considerar añadirlo desde el inicio en grupo E"
+          ]
+        ],
+        "nota": "El uso de eosinófilos para predecir el efecto del GCI debe combinarse SIEMPRE con la evaluación clínica del riesgo de exacerbación — no se usa aislado."
       }
-    ]
+    ],
+    "imagenExamenFisico": {
+      "src": "assets/epoc/epoc-rx-hiperinflacion.jpg",
+      "caption": "Radiografía real de tu clase — espacios intercostales ensanchados y diafragma aplanado, los dos signos radiológicos de hiperinsuflación que corresponden al 'tórax en tonel' que sientes al examen físico"
+    }
   },
   "repaso": {
     "conceptosClave": [
