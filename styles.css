@@ -240,15 +240,15 @@ h1.page-title{
   padding:6px 8px; gap:8px; align-items:center; box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 .hl-swatch{ width:20px; height:20px; border-radius:50%; cursor:pointer; border:2px solid rgba(255,255,255,0.3); }
-.hl-swatch.hl-yellow{ background:#F3D77A; }
-.hl-swatch.hl-mint{ background:#8FD3B6; }
-.hl-swatch.hl-coral{ background:#F5B38A; }
+.hl-swatch.hl-yellow{ background:#FFF3B0; }
+.hl-swatch.hl-mint{ background:#C1F0DC; }
+.hl-swatch.hl-coral{ background:#FFD1C7; }
 .hl-remove{ color:#fff; font-size:13px; cursor:pointer; padding:0 4px; opacity:0.7; }
 .hl-remove:hover{ opacity:1; }
 mark.hl{ border-radius:3px; padding:0 1px; }
-mark.hl-yellow{ background:#F3D77A; }
-mark.hl-mint{ background:#8FD3B6; }
-mark.hl-coral{ background:#F5B38A; }
+mark.hl-yellow{ background:#FFF3B0; }
+mark.hl-mint{ background:#C1F0DC; }
+mark.hl-coral{ background:#FFD1C7; }
 :root.dark mark.hl{ color:#1a1a1a; }
 .hl-zone{ cursor: text; }
 .note-editable{
@@ -1004,6 +1004,11 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .mis-notas strong{ color: #9C3D69; }
 :root.dark .mis-notas{ color: #E28FB8; }
 :root.dark .mis-notas strong{ color: #EDA9CB; }
+
+/* ---------- texto ampliado con libros/guías (fusionado en el mismo párrafo,
+   no en caja aparte — distinto SOLO por el color de letra, bien llamativo) ---------- */
+.fuente-ampliada{ color: #C2410C; font-weight: 600; font-style: italic; }
+:root.dark .fuente-ampliada{ color: #FF9D5C; }
 
 /* ---------- explicación de término (turquesa) ---------- */
 .explicacion-box{
