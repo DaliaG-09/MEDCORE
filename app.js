@@ -1372,12 +1372,13 @@ function renderProfundo(p, diseaseId){
         </div>
       </div>
       ${p.fisiopatologia.imagenes ? `
-      <div class="tema-imagenes" style="margin-top:14px;">
+      <div class="tema-imagenes" style="margin-top:14px; flex-direction:column;">
         ${p.fisiopatologia.imagenes.map(im => `
           <figure class="tema-figura" style="width:100%; max-width:520px;" onclick="openImageLightbox('${im.src}')">
             <img src="${im.src}" alt="${im.caption}" loading="lazy" style="height:auto;">
             <figcaption>${im.caption}</figcaption>
           </figure>
+          ${im.explicacion ? `<p style="max-width:640px;">${im.explicacion}</p>` : ''}
         `).join('')}
       </div>` : ''}
       ${p.mecanismoEpitelial ? `<p style="margin-top:14px"><strong>Mecanismo celular clave:</strong> ${p.mecanismoEpitelial}</p>` : ''}
@@ -1450,7 +1451,8 @@ function renderProfundo(p, diseaseId){
       <figure class="tema-figura" style="width:100%; max-width:420px; margin-top:12px;" onclick="openImageLightbox('${p.imagenExamenFisico.src}')">
         <img src="${p.imagenExamenFisico.src}" alt="${p.imagenExamenFisico.caption}" loading="lazy" style="height:auto;">
         <figcaption>${p.imagenExamenFisico.caption}</figcaption>
-      </figure>` : ''}
+      </figure>
+      ${p.imagenExamenFisico.explicacion ? `<p style="margin-top:8px;">${p.imagenExamenFisico.explicacion}</p>` : ''}` : ''}
     </div>
 
     ${p.semiologia ? `
@@ -1522,6 +1524,13 @@ function renderProfundo(p, diseaseId){
       <h3>✨ Perla clínica</h3>
       <p>${p.perlasProfundo}</p>
     </div>
+
+    ${enfermedad.pdfOrigen ? `
+    <div class="kcard" style="cursor:pointer; border:1.5px dashed var(--cobalt-line);" onclick="window.open('${enfermedad.pdfOrigen.url}', '_blank')">
+      <h3>📄 Ver el PDF original de esta clase</h3>
+      <p class="muted">${enfermedad.pdfOrigen.titulo}</p>
+      <p style="font-size:12px; color:var(--cobalt);">Se abre en una pestaña nueva de Google Drive ↗</p>
+    </div>` : ''}
 
     <div class="section-block">
       <h3>Apunte general — modo profundo</h3>
