@@ -1551,6 +1551,16 @@ function renderRepaso(r, diseaseId){
       <ul>${r.conceptosClave.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
 
+    ${r.chuletaRapida ? `
+    <div class="kcard">
+      <h3>${r.chuletaRapida.titulo}</h3>
+      <table class="compare">
+        <tr>${r.chuletaRapida.columnas.map(c => `<th>${c}</th>`).join('')}</tr>
+        ${r.chuletaRapida.filas.map(fila => `<tr>${fila.map(celda => `<td>${celda}</td>`).join('')}</tr>`).join('')}
+      </table>
+      <p class="muted" style="margin-top:8px;">${r.chuletaRapida.nota}</p>
+    </div>` : ''}
+
     <div class="kcard">
       <h3>⚡ Resumen rápido</h3>
       <p><strong>Clínica:</strong> ${r.clinica}</p>
