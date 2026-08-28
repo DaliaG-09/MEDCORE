@@ -1400,16 +1400,6 @@ function renderProfundo(p, diseaseId){
       <p>${p.criteriosDiagnosticos}</p>
     </div>` : ''}
 
-    ${p.indicadoresClinicos ? `
-    <div class="kcard">
-      <h3>🔎 Indicadores clínicos para sospechar el diagnóstico</h3>
-      <div class="grid cols-2">
-        <div><strong>Síntomas respiratorios</strong><ul>${p.indicadoresClinicos.sintomasRespiratorios.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-        <div><strong>Factores de riesgo</strong><ul>${p.indicadoresClinicos.factoresRiesgo.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-      </div>
-      <p class="muted">${p.indicadoresClinicos.nota}</p>
-    </div>` : ''}
-
     ${p.tablasClinicas ? p.tablasClinicas.map(t => `
     <div class="kcard">
       <h3>${t.titulo}</h3>
@@ -1433,15 +1423,9 @@ function renderProfundo(p, diseaseId){
       <p>${p.endotiposInflamacion}</p>
     </div>` : ''}
 
-    ${p.sintomasPrincipales ? `
     <div class="kcard">
-      <h3>🩺 Síntomas principales</h3>
-      <ul>${p.sintomasPrincipales.map(s => `<li><strong>${s.sintoma}:</strong> ${s.detalle}</li>`).join('')}</ul>
-    </div>` : ''}
-
-    <div class="kcard">
-      <h3>🩺 Clínica explicada</h3>
-      <ul>${p.clinica.map(c => `<li><strong>${c.signo}</strong> — <span class="muted">${c.mecanismo}</span></li>`).join('')}</ul>
+      <h3>🩺 Clínica</h3>
+      <ul>${p.clinica.map(c => `<li><strong>${c.signo}:</strong> ${c.detallePPT || ''} <span class="muted">— <strong>por qué pasa:</strong> ${c.mecanismo}</span></li>`).join('')}</ul>
     </div>
 
     <div class="kcard">
@@ -1524,6 +1508,19 @@ function renderProfundo(p, diseaseId){
       <h3>✨ Perla clínica</h3>
       <p>${p.perlasProfundo}</p>
     </div>
+
+    ${p.asiLoPreguntanExamen ? `
+    <div class="ccard">
+      <h3>🎯 Así lo preguntan en tu examen</h3>
+      <p>${p.asiLoPreguntanExamen.intro}</p>
+      ${p.asiLoPreguntanExamen.ejercicios.map(ej => `
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--line);">
+          <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.04em; font-weight:800; color:var(--coral);">${ej.tipo}</p>
+          <p><strong>Planteamiento:</strong> ${ej.planteamiento}</p>
+          <p class="muted"><strong>Respuesta modelo:</strong> ${ej.respuestaModelo}</p>
+        </div>
+      `).join('')}
+    </div>` : ''}
 
     ${enfermedad.pdfOrigen ? `
     <div class="kcard" style="cursor:pointer; border:1.5px dashed var(--cobalt-line);" onclick="window.open('${enfermedad.pdfOrigen.url}', '_blank')">
