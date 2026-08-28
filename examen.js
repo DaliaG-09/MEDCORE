@@ -62,6 +62,11 @@ function iniciarExamenModulo(moduloKey){
 }
 
 function prepararExamen(items, tituloExamen, scopeLabel, volverA){
+  // si había un examen anterior sin terminar con su cronómetro corriendo en segundo
+  // plano, hay que apagarlo — si no, seguiría descontando tiempo del examen nuevo
+  // (los dos timers a la vez), acelerando el reloj sin que te des cuenta.
+  if(examenState && examenState.timerId) clearInterval(examenState.timerId);
+
   shuffleArray(items);
   examenState = {
     items, tituloExamen, scopeLabel, volverA,
@@ -110,6 +115,7 @@ function renderIntroExamen(wrap){
 }
 
 function comenzarExamen(){
+  if(examenState.timerId) clearInterval(examenState.timerId); // por si acaso ya había uno corriendo
   examenState.iniciado = true;
   examenState.timerId = setInterval(tickExamen, 1000);
   navRenderCurrent();
