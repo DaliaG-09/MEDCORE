@@ -194,7 +194,16 @@ function initCuaderno(key, widgetId){
   });
   const endStroke = (ev) => {
     if(!state.current || (ev && ev.pointerId !== state.pointerIdActivo)) return;
-    if(state.current.points.length > 1) state.strokes.push(state.current);
+    const puntos = state.current.points;
+    const esUnTap = puntos.length <= 2 && distanciaTotal(puntos) < 6; // toque casi sin movimiento = "click", no un trazo
+    if(esUnTap){
+      state.current = null;
+      state.pointerIdActivo = undefined;
+      if(ev && ev.pointerType === 'pen') state.usandoLapiz = false;
+      manejarTapEnCuaderno(widgetId, puntos[0]);
+      return;
+    }
+    if(puntos.length > 1) state.strokes.push(state.current);
     state.current = null;
     state.pointerIdActivo = undefined;
     if(ev && ev.pointerType === 'pen') state.usandoLapiz = false;
@@ -226,6 +235,55 @@ function pointFromEventCuaderno(state, ev){
   const rect = state.canvas.getBoundingClientRect();
   const s = rect.width / PAGE_WIDTH;
   return { x: (ev.clientX - rect.left) / s, y: (ev.clientY - rect.top) / s };
+}
+function distanciaTotal(puntos){
+  if(puntos.length < 2) return 0;
+  let d = 0;
+  for(let i = 1; i < puntos.length; i++){
+    d += Math.hypot(puntos[i].x - puntos[i-1].x, puntos[i].y - puntos[i-1].y);
+  }
+  return d;
+}
+
+/* toca un bloque de texto ya escrito/pegado -> ofrece eliminarlo con un botón flotante */
+function manejarTapEnCuaderno(widgetId, punto){
+  const state = cuadernoStates[widgetId];
+  quitarBotonEliminarTexto(widgetId);
+  if(!punto) return;
+  const idx = state.texts.findIndex(t =>
+    punto.x >= t.x - 6 && punto.x <= t.x + t.w + 6 &&
+    punto.y >= t.y - 6 && punto.y <= t.y + t.h + 6
+  );
+  if(idx === -1) return; // no tocó ningún texto, no hacer nada
+
+  const rect = state.canvas.getBoundingClientRect();
+  const s = rect.width / PAGE_WIDTH;
+  const btn = document.createElement('button');
+  btn.className = 'cuaderno-borrar-texto';
+  btn.textContent = '✕ Eliminar este texto';
+  btn.style.left = (rect.left + window.scrollX + state.texts[idx].x * s) + 'px';
+  btn.style.top = (rect.top + window.scrollY + (state.texts[idx].y - 34) * s) + 'px';
+  btn.onclick = (ev) => { ev.stopPropagation(); eliminarBloqueTexto(widgetId, idx); };
+  btn.id = 'btn-borrar-texto-' + widgetId;
+  document.body.appendChild(btn);
+
+  // se quita solo si tocas cualquier otro lado
+  setTimeout(() => {
+    document.addEventListener('pointerdown', function cerrar(ev2){
+      if(ev2.target !== btn){ quitarBotonEliminarTexto(widgetId); document.removeEventListener('pointerdown', cerrar); }
+    });
+  }, 0);
+}
+function quitarBotonEliminarTexto(widgetId){
+  const existente = document.getElementById('btn-borrar-texto-' + widgetId);
+  if(existente) existente.remove();
+}
+function eliminarBloqueTexto(widgetId, idx){
+  const state = cuadernoStates[widgetId];
+  state.texts.splice(idx, 1);
+  quitarBotonEliminarTexto(widgetId);
+  redrawCuaderno(widgetId);
+  saveCuaderno(widgetId);
 }
 function resizeCuaderno(widgetId){
   const state = cuadernoStates[widgetId];
@@ -342,10 +400,18 @@ function handleCuadernoImageUpload(ev, widgetId){
 function handleCuadernoPaste(ev, widgetId){
   const items = Array.from((ev.clipboardData && ev.clipboardData.items) || []);
   const imgItem = items.find(it => it.type.startsWith('image/'));
-  if(!imgItem) return; // deja que el pegado normal de texto (si lo hubiera) siga su curso
-  ev.preventDefault();
-  const file = imgItem.getAsFile();
-  if(file) procesarImagenParaCuaderno(file, widgetId);
+  if(imgItem){
+    ev.preventDefault();
+    const file = imgItem.getAsFile();
+    if(file) procesarImagenParaCuaderno(file, widgetId);
+    return;
+  }
+  // si no hay imagen, revisa si hay TEXTO copiado (ej. seleccionado del PDF) y lo agrega como texto real
+  const texto = ev.clipboardData ? ev.clipboardData.getData('text/plain') : '';
+  if(texto && texto.trim()){
+    ev.preventDefault();
+    agregarTextoDirecto(widgetId, texto.trim());
+  }
 }
 async function procesarImagenParaCuaderno(file, widgetId){
   const state = cuadernoStates[widgetId];
@@ -403,16 +469,25 @@ function cerrarCajaTextoCuaderno(widgetId){
   if(box) box.style.display = 'none';
 }
 function agregarTextoCuaderno(widgetId){
-  const state = cuadernoStates[widgetId];
-  if(!state) return;
   const textarea = document.getElementById(widgetId + '-textarea');
   const texto = textarea.value.trim();
   if(!texto){ cerrarCajaTextoCuaderno(widgetId); return; }
+  agregarTextoDirecto(widgetId, texto);
+  cerrarCajaTextoCuaderno(widgetId);
+}
+
+/* agrega un bloque de texto a la hoja, venga de donde venga (tipeado a mano
+   o pegado con Ctrl+V desde el PDF u otra fuente) — misma lógica para ambos */
+function agregarTextoDirecto(widgetId, texto){
+  const state = cuadernoStates[widgetId];
+  if(!state || !texto) return;
 
   const size = 17;
   const lineHeight = size * 1.35;
-  const lineas = texto.split('\n');
+  // envuelve el texto pegado a un ancho legible, para que un párrafo largo del PDF no salga en una sola línea eterna
+  const anchoUtil = PAGE_WIDTH - 80;
   state.ctx.font = size + 'px "Inter", sans-serif';
+  const lineas = envolverTexto(state.ctx, texto, anchoUtil);
   const anchoMax = Math.max(...lineas.map(l => state.ctx.measureText(l).width));
   const alto = lineas.length * lineHeight + 10;
 
@@ -427,11 +502,30 @@ function agregarTextoCuaderno(widgetId){
     resizeCuaderno(widgetId);
   }
 
-  state.texts.push({ text: texto, x: 40, y, w: Math.min(anchoMax, PAGE_WIDTH - 80), h: alto, size, color: state.color, _ts: Date.now() });
+  state.texts.push({ text: lineas.join('\n'), x: 40, y, w: Math.min(anchoMax, anchoUtil), h: alto, size, color: state.color, _ts: Date.now() });
   redrawCuaderno(widgetId);
   saveCuaderno(widgetId);
-  cerrarCajaTextoCuaderno(widgetId);
 
   const wrapEl = state.canvas.parentElement;
   wrapEl.scrollTo({ top: (y / PAGE_WIDTH) * wrapEl.clientWidth, behavior: 'smooth' });
+}
+
+/* corta un texto largo en líneas que quepan dentro de "anchoMax", respetando los saltos de línea que ya traiga */
+function envolverTexto(ctx, texto, anchoMax){
+  const resultado = [];
+  texto.split('\n').forEach(parrafo => {
+    const palabras = parrafo.split(' ');
+    let lineaActual = '';
+    palabras.forEach(palabra => {
+      const prueba = lineaActual ? lineaActual + ' ' + palabra : palabra;
+      if(ctx.measureText(prueba).width > anchoMax && lineaActual){
+        resultado.push(lineaActual);
+        lineaActual = palabra;
+      } else {
+        lineaActual = prueba;
+      }
+    });
+    resultado.push(lineaActual);
+  });
+  return resultado;
 }
