@@ -1085,3 +1085,32 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 :root.dark .sugerencia-box{ background: rgba(193,99,62,0.14); }
 :root.dark .sugerencia-box .sg-body{ color: #f0c4a8; }
 :root.dark .sugerencia-box .sg-chevron{ color: #e8a682; }
+
+/* ---------- examen simulado ---------- */
+.examen-header-sticky{
+  position: sticky; top: 8px; z-index: 20; display:flex; justify-content:space-between; align-items:center;
+  background: var(--ink); color:#fff; padding: 10px 16px; border-radius: var(--radius-md);
+  font-family: var(--font-display); font-weight:700; font-size:14px; margin-bottom:18px; box-shadow: var(--shadow-hover);
+}
+.examen-timer{ font-family: var(--font-mono); font-size:18px; font-weight:800; color: var(--honey); }
+.examen-item-head{ display:flex; justify-content:space-between; font-family: var(--font-mono); font-size:11px; color: var(--ink-soft); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px; }
+.examen-pregunta{ margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
+.examen-puntos{ font-family: var(--font-mono); font-size:11px; color: var(--coral); font-weight:700; }
+.examen-opcion{
+  display:block; padding:9px 12px; margin-top:6px; border:1px solid var(--line); border-radius: var(--radius-sm);
+  cursor:pointer; font-size:13.5px; transition: border-color 0.15s ease, background 0.15s ease;
+}
+.examen-opcion:hover{ border-color: var(--cobalt-line); }
+.examen-opcion.seleccionada{ border-color: var(--cobalt); background: var(--cobalt-soft); }
+.examen-opcion input{ margin-right:8px; }
+.examen-escrita{
+  width:100%; margin-top:8px; padding:10px 12px; border:1px solid var(--line); border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size:13.5px; resize:vertical; background:#fff; color: var(--ink);
+}
+:root.dark .examen-escrita{ background: var(--card); color: var(--ink); }
+.examen-opcion-resultado{ padding:8px 12px; margin-top:5px; border-radius: var(--radius-sm); font-size:13.5px; background: var(--cream); }
+.examen-opcion-resultado.correcta{ background: rgba(120,201,163,0.25); font-weight:700; }
+.examen-opcion-resultado.marcada-incorrecta{ background: rgba(217,92,101,0.18); text-decoration: line-through; }
+:root.dark .examen-opcion-resultado{ background: rgba(255,255,255,0.05); }
+.examen-puntaje-obtenido{ font-family: var(--font-mono); font-weight:700; font-size:12px; margin-top:6px; color: var(--cobalt); }
+.examen-autoeval{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
