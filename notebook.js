@@ -196,13 +196,18 @@ function initCuaderno(key, widgetId){
     if(!state.current || (ev && ev.pointerId !== state.pointerIdActivo)) return;
     const puntos = state.current.points;
     const esUnTap = puntos.length <= 2 && distanciaTotal(puntos) < 6; // toque casi sin movimiento = "click", no un trazo
-    if(esUnTap){
+
+    // Un tap solo se trata como "quiero borrar este texto" si de verdad cae sobre un
+    // bloque de texto existente. Si no, es un trazo normal chiquito (un punto, una
+    // tilde de acento) y se guarda igual que cualquier otro — no se descarta.
+    if(esUnTap && hayTextoEnPunto(widgetId, puntos[0])){
       state.current = null;
       state.pointerIdActivo = undefined;
       if(ev && ev.pointerType === 'pen') state.usandoLapiz = false;
       manejarTapEnCuaderno(widgetId, puntos[0]);
       return;
     }
+
     if(puntos.length > 1) state.strokes.push(state.current);
     state.current = null;
     state.pointerIdActivo = undefined;
@@ -246,14 +251,22 @@ function distanciaTotal(puntos){
 }
 
 /* toca un bloque de texto ya escrito/pegado -> ofrece eliminarlo con un botón flotante */
-function manejarTapEnCuaderno(widgetId, punto){
-  const state = cuadernoStates[widgetId];
-  quitarBotonEliminarTexto(widgetId);
-  if(!punto) return;
-  const idx = state.texts.findIndex(t =>
+function indiceTextoEnPunto(state, punto){
+  if(!punto) return -1;
+  return state.texts.findIndex(t =>
     punto.x >= t.x - 6 && punto.x <= t.x + t.w + 6 &&
     punto.y >= t.y - 6 && punto.y <= t.y + t.h + 6
   );
+}
+function hayTextoEnPunto(widgetId, punto){
+  const state = cuadernoStates[widgetId];
+  return state ? indiceTextoEnPunto(state, punto) !== -1 : false;
+}
+
+function manejarTapEnCuaderno(widgetId, punto){
+  const state = cuadernoStates[widgetId];
+  quitarBotonEliminarTexto(widgetId);
+  const idx = indiceTextoEnPunto(state, punto);
   if(idx === -1) return; // no tocó ningún texto, no hacer nada
 
   const rect = state.canvas.getBoundingClientRect();
