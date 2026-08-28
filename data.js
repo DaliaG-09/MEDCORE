@@ -630,10 +630,6 @@ const ENFERMEDADES = [
   "favorito": false,
   "estudiado": false,
   "ilustracion": "assets/epoc-airway.svg",
-  "pdfOrigen": {
-    "url": "https://drive.google.com/file/d/1eODa1niiD7cNWDqvvU6vJ1W-siV09wJI/view",
-    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_2_SESIÓN-5-TEMA-2: Enfermedad Pulmonar Obstructiva Crónica"
-  },
   "relacionadas": [
     {
       "id": "asma-bronquial",
@@ -653,21 +649,6 @@ const ENFERMEDADES = [
     ],
     "endotiposInflamacion": "La EPOC involucra una inflamación compleja: neutrófilos, macrófagos, eosinófilos, células T CD4+, células T CD8+, monocitos, mastocitos y células linfoides innatas. La EPOC eosinofílica representa una entidad DISTINTA del 'asma eosinofílica', con diferente biología y respuesta al tratamiento.",
     "criteriosDiagnosticos": "En el contexto clínico apropiado, la presencia de limitación al flujo aéreo no completamente reversible (FEV1/FVC < 0.7 post broncodilatador, medida por espirometría) confirma el diagnóstico de EPOC. La espirometría forzada es OBLIGATORIA para establecer el diagnóstico — no basta con la clínica.",
-    "indicadoresClinicos": {
-      "sintomasRespiratorios": [
-        "Disnea progresiva en el tiempo, que empeora con el ejercicio y es persistente",
-        "Tos crónica (intermitente, con o sin expectoración)",
-        "Sibilancias recurrentes",
-        "Infecciones recurrentes del tracto respiratorio inferior"
-      ],
-      "factoresRiesgo": [
-        "Humo de tabaco",
-        "Humo de combustibles domésticos (biomasa)",
-        "Exposiciones ocupacionales (polvos, vapores, humos)",
-        "Factores del huésped (genéticos, bajo peso al nacer, etc.)"
-      ],
-      "nota": "Estos indicadores no son diagnósticos por sí solos, pero la presencia de múltiples indicadores aumenta la probabilidad de EPOC. La espirometría sigue siendo requerida para el diagnóstico definitivo."
-    },
     "catScore": "Cuestionario CAT (COPD Assessment Test): 8 ítems que evalúan el estado de salud del paciente con EPOC. Puntuación de 0 a 40, correlaciona bien con el SGRQ. Un punto de corte de CAT ≥10 (equivalente a SGRQ ≥25) se considera el umbral para iniciar tratamiento regular de los síntomas, incluyendo la disnea. <span class=\"fuente-ampliada\">Se recomienda usar una evaluación multidimensional, ya que pacientes con mMRC bajo también pueden tener otros síntomas relevantes de EPOC no capturados por esa escala.</span>",
     "fisiopatologia": {
       "resumen": "La exposición crónica a partículas nocivas desencadena inflamación sostenida de la vía aérea, con dos componentes que coexisten en proporción variable: enfermedad de la pequeña vía aérea (bronquiolitis) y destrucción del parénquima (enfisema).",
@@ -701,41 +682,41 @@ const ENFERMEDADES = [
       "imagenes": [
         {
           "src": "assets/epoc/epoc-patogenia-diagrama.jpg",
-          "caption": "Diagrama de patogenia (de tu clase)",
+          "caption": "Diagrama de patogenia (de tu clase) — cómo el humo activa cada célula y qué citoquina libera cada una, hasta converger en obstrucción respiratoria",
           "explicacion": "Léelo de arriba hacia abajo: el humo (cuadro superior) es el único desencadenante, pero activa a la vez 4 tipos de células distintas (epitelio, macrófagos, mastocitos, y a través de estos, linfocitos T y B). Fíjate que TODAS las flechas, sin importar de qué célula salgan, terminan convergiendo en el mismo grupo de mediadores finales (LTB4, IL-8, TNF-α, MMPs, HNE, IL-17A, INF-γ) — esto es clave para entender por qué el daño no depende de una sola vía, sino de una respuesta inflamatoria en red. Luego, ese mismo grupo de mediadores se bifurca hacia DOS órganos diana distintos: bronquiolos (fibrosis + hipersecreción + contracción muscular = el fenotipo 'bronquítico') y parénquima (enfisema = el fenotipo 'enfisematoso'). Ambos caminos terminan en el mismo resultado funcional: obstrucción respiratoria. Si te preguntan por qué el EPOC es una enfermedad 'heterogénea', la respuesta visual está aquí: es una sola cascada inflamatoria que se expresa de forma distinta según qué órgano diana predomine en cada paciente."
         }
       ]
     },
-    "sintomasPrincipales": [
-      {
-        "sintoma": "Disnea",
-        "detalle": "Síntoma cardinal y causa importante de discapacidad. Los pacientes la describen como mayor esfuerzo para respirar, pesadez en el pecho o falta de aire."
-      },
-      {
-        "sintoma": "Expectoración",
-        "detalle": "Producción regular de esputo durante 3 o más meses en 2 años consecutivos. Puede ser difícil de evaluar porque los pacientes a veces tragan el esputo en vez de expectorarlo."
-      },
-      {
-        "sintoma": "Tos crónica",
-        "detalle": "Suele ser el primer síntoma. Puede ser intermitente al inicio y luego estar presente todos los días; productiva o no productiva."
-      },
-      {
-        "sintoma": "Fatiga",
-        "detalle": "Sensación subjetiva de cansancio o agotamiento que afecta la capacidad del paciente para realizar actividades diarias y su calidad de vida."
-      }
-    ],
     "clinica": [
       {
-        "signo": "Disnea progresiva",
-        "mecanismo": "Hiperinsuflación dinámica → ↑ trabajo respiratorio para un mismo volumen corriente"
+        "signo": "Disnea",
+        "detallePPT": "Síntoma cardinal y causa importante de discapacidad — el paciente la describe como mayor esfuerzo para respirar, pesadez en el pecho o falta de aire. Progresiva en el tiempo, empeora con el ejercicio, es persistente.",
+        "mecanismo": "Hiperinsuflación dinámica → ↑ trabajo respiratorio para movilizar el mismo volumen corriente."
       },
       {
-        "signo": "Tos crónica productiva",
-        "mecanismo": "Hipersecreción mucosa por hiperplasia de células caliciformes"
+        "signo": "Tos crónica",
+        "detallePPT": "Suele ser el primer síntoma. Puede ser intermitente al inicio y luego estar presente todos los días; productiva o no productiva.",
+        "mecanismo": "Estimulación de receptores de la vía aérea por hipersecreción mucosa e inflamación crónica."
       },
       {
-        "signo": "Sibilancias espiratorias",
-        "mecanismo": "Turbulencia del flujo aéreo a través de la vía estrechada"
+        "signo": "Expectoración",
+        "detallePPT": "Producción regular de esputo durante 3 o más meses en 2 años consecutivos. Difícil de evaluar porque el paciente a veces traga el esputo en vez de expectorarlo.",
+        "mecanismo": "Hipersecreción mucosa por hiperplasia de células caliciformes."
+      },
+      {
+        "signo": "Sibilancias recurrentes",
+        "detallePPT": "Empeoran con el ejercicio.",
+        "mecanismo": "Turbulencia del flujo aéreo a través de la vía estrechada."
+      },
+      {
+        "signo": "Fatiga",
+        "detallePPT": "Sensación subjetiva de cansancio o agotamiento que afecta la capacidad del paciente para realizar actividades diarias y su calidad de vida.",
+        "mecanismo": "<span class=\"fuente-ampliada\">Hipoxemia crónica + desacondicionamiento muscular progresivo por el sedentarismo secundario a la disnea.</span>"
+      },
+      {
+        "signo": "Infecciones recurrentes del tracto respiratorio inferior",
+        "detallePPT": "Antecedente que aumenta la probabilidad de EPOC cuando se combina con los demás indicadores.",
+        "mecanismo": "<span class=\"fuente-ampliada\">Aclaramiento mucociliar dañado por la inflamación crónica y la reprogramación epitelial.</span>"
       }
     ],
     "examenFisico": [
@@ -991,8 +972,28 @@ const ENFERMEDADES = [
     ],
     "imagenExamenFisico": {
       "src": "assets/epoc/epoc-rx-hiperinflacion.jpg",
-      "caption": "Radiografía real de tu clase",
+      "caption": "Radiografía real de tu clase — espacios intercostales ensanchados y diafragma aplanado, los dos signos radiológicos de hiperinsuflación que corresponden al 'tórax en tonel' que sientes al examen físico",
       "explicacion": "Es la contraparte radiológica de lo que sientes al examinar al paciente. Los espacios intercostales ensanchados (flecha derecha) ocurren porque el tórax se queda 'atrapado' en una posición de inspiración permanente — el mismo mecanismo que produce el tórax en tonel al examen físico. El diafragma aplanado (línea punteada inferior) es el signo más específico de hiperinsuflación crónica: un diafragma normal se ve curvo/en cúpula; aquí está literalmente empujado hacia abajo por el volumen de aire atrapado, lo que además explica por qué estos pacientes tienen el signo de Hoover — un diafragma ya aplanado no puede seguir contrayéndose de forma eficiente, así que la parrilla costal inferior se mueve paradójicamente hacia adentro en cada inspiración en vez de expandirse."
+    },
+    "asiLoPreguntanExamen": {
+      "intro": "Basado en el patrón real de tus exámenes pasados de Medicina Interna I (parciales, modulares e integrados): rara vez piden solo el dato — casi siempre piden calcular/clasificar y sustentar el razonamiento.",
+      "ejercicios": [
+        {
+          "tipo": "Calcular y clasificar (el más frecuente)",
+          "planteamiento": "Paciente con FEV1 55% del predicho, CAT 12, 1 exacerbación leve sin hospitalización el último año. Clasifique GOLD y grupo A/B/E, y sustente.",
+          "respuestaModelo": "GOLD 2 (moderado): FEV1 55% cae en el rango 50-79%. Grupo B: CAT ≥10 (síntomas significativos) + solo 1 exacerbación sin hospitalización (no cumple criterio de grupo E, que exige ≥2 o ≥1 con hospitalización)."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste 4 vacunas recomendadas específicamente para el paciente con EPOC.",
+          "respuestaModelo": "Antineumocócica, antigripal (anual), COVID-19, y una de: Tdap, herpes zóster, o VSR."
+        },
+        {
+          "tipo": "Indique y sustente (examen físico)",
+          "planteamiento": "¿Qué esperaría encontrar al examen físico respiratorio de un paciente con EPOC en fase avanzada, y por qué?",
+          "respuestaModelo": "Tórax en tonel (hiperinsuflación crónica), murmullo vesicular disminuido difusamente (menos aire se mueve), espiración prolongada (colapso de vía aérea pequeña en espiración), y signo de Hoover (diafragma aplanado que ya no se contrae eficientemente, causando movimiento paradójico de la parrilla costal inferior)."
+        }
+      ]
     }
   },
   "repaso": {
@@ -1159,7 +1160,11 @@ const ENFERMEDADES = [
         "respuestaModelo": "Un paciente que venía taquipneico y usando músculos accesorios para compensar la falla respiratoria, si de pronto reduce su frecuencia respiratoria sin que mejoren los demás parámetros (gasometría, estado de conciencia), generalmente indica agotamiento de la musculatura respiratoria — ya no tiene fuerza para mantener el esfuerzo compensatorio, no que su situación esté mejorando. Es un signo de insuficiencia respiratoria inminente que requiere soporte ventilatorio urgente."
       }
     }
-  ]
+  ],
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1eODa1niiD7cNWDqvvU6vJ1W-siV09wJI/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_2_SESIÓN-5-TEMA-2: Enfermedad Pulmonar Obstructiva Crónica"
+  }
 },
 
   {
