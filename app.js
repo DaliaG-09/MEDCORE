@@ -40,7 +40,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo', taller: 'view-taller' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo', taller: 'view-taller', 'examen-simulado': 'view-examen-simulado' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -86,6 +86,7 @@ function navRenderCurrent(){
     case 'hospital-sesion': renderHospitalSesion(top.id); break;
     case 'modulo': renderModulo(top.id); break;
     case 'taller': renderTaller(top.id); break;
+    case 'examen-simulado': renderExamenSimulado(); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -489,6 +490,12 @@ function renderModulo(moduloKey){
         <div class="grid cols-2">${cat.ids.map(id => diseaseCardHTML(getEnfermedad(id))).join('')}</div>
       </div>
     `).join('')}
+
+    <div class="ccard" style="margin-top:10px; border:2px solid var(--coral);">
+      <h3>🎓 Examen final del módulo</h3>
+      <p>Antes de pasar al siguiente módulo, ponte a prueba con un examen que reúne un caso de cada enfermedad de ${m.nombre} — con cronómetro y nota sobre 20, tal como en un examen real.</p>
+      <div class="btn-icon" style="margin-top:8px; display:table;" onclick="iniciarExamenModulo('${moduloKey}')">▶️ Comenzar examen final</div>
+    </div>
   `;
 }
 
@@ -1119,7 +1126,7 @@ function renderEnfermedad(id){
       </div>
       <div class="toolbar">
         <div class="btn-icon" onclick="navCasos('${e.id}')">🩺 Casos clínicos</div>
-        <div class="btn-icon" onclick="navQuiz('${e.id}')">🧠 Ponte a prueba</div>
+        <div class="btn-icon" onclick="iniciarExamenEnfermedad('${e.id}')">📝 Ponte a prueba</div>
         <div class="btn-icon" onclick="navCuaderno('enfermedad','${e.id}')">⛶ Cuaderno a pantalla completa</div>
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${e.estudiado ? 'done' : ''}" onclick="toggleEstudiado('${e.id}', true)">${e.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
