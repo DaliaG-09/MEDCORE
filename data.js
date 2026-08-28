@@ -998,9 +998,9 @@ const ENFERMEDADES = [
   },
   "repaso": {
     "conceptosClave": [
-      "Limitación crónica y poco reversible del flujo aéreo",
-      "Principal causa: tabaquismo",
-      "Espirometría: VEF1/CVF < 0.70 post-BD confirma; GOLD 1-4 clasifica gravedad; grupo A/B/E guía tratamiento"
+      "Limitación crónica y poco reversible del flujo aéreo por daño combinado de bronquiolos + parénquima",
+      "Principal causa: tabaquismo (aunque GETomics = genes+ambiente+tiempo explica por qué no todos los fumadores desarrollan EPOC)",
+      "Espirometría post-BD confirma (FEV1/FVC<0.70) → GOLD 1-4 mide gravedad → grupo A/B/E decide tratamiento"
     ],
     "clinica": "Disnea progresiva + tos crónica productiva + antecedente de exposición a factores de riesgo.",
     "diagnostico": "Espirometría post-broncodilatador obligatoria (FEV1/FVC<0.7) + mMRC/CAT + historial de exacerbaciones.",
@@ -1008,11 +1008,15 @@ const ENFERMEDADES = [
     "diferenciales": [
       {
         "entidad": "Asma",
-        "clave": "Reversibilidad significativa post-BD, inicio en edad temprana"
+        "clave": "Reversibilidad significativa post-BD (>12% y 200mL), inicio en edad temprana"
       },
       {
         "entidad": "Insuficiencia cardiaca",
         "clave": "Ortopnea, edema, crépitos bibasales, BNP elevado"
+      },
+      {
+        "entidad": "Bronquiectasias",
+        "clave": "Esputo abundante purulento diario + TC con dilatación bronquial (signo del anillo de sello)"
       }
     ],
     "tablaComparativa": {
@@ -1034,17 +1038,49 @@ const ENFERMEDADES = [
           "Atopia/alergias"
         ]
       ]
+    },
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — todo el algoritmo en una sola tabla",
+      "columnas": [
+        "Grupo",
+        "Cómo se define",
+        "Tratamiento inicial",
+        "Si persisten síntomas/exacerbaciones"
+      ],
+      "filas": [
+        [
+          "A",
+          "0-1 exac. sin hosp. + mMRC 0-1/CAT<10",
+          "Broncodilatador simple",
+          "Escalar a LABA+LAMA"
+        ],
+        [
+          "B",
+          "0-1 exac. sin hosp. + mMRC≥2/CAT≥10",
+          "LABA+LAMA",
+          "Descartar otras causas de disnea antes de escalar más"
+        ],
+        [
+          "E",
+          "≥2 exac. o ≥1 con hospitalización",
+          "LABA+LAMA (+GCI si eos≥300)",
+          "+GCI si eos≥100 → considerar roflumilast/macrólido"
+        ]
+      ],
+      "nota": "Esta tabla resume TODO el algoritmo de tratamiento (Profundo) en una sola línea de repaso — para el detalle completo de cada escalón, revisa Profundo."
     }
   },
   "imprescindible": {
     "loQueSiOSiDebesSaber": [
-      "El diagnóstico se confirma con espirometría (FEV1/FVC<0.7 post-BD), NO con clínica aislada",
-      "GOLD 1-4 clasifica la gravedad de la obstrucción; el grupo A/B/E (según síntomas + exacerbaciones) es lo que guía el tratamiento",
-      "CAT ≥10 o mMRC ≥2 = síntomas significativos; ≥2 exacerbaciones o ≥1 con hospitalización = grupo E automáticamente",
-      "Eosinófilos ≥300 → considerar GCI de entrada en grupo E; ≥100 → considerar al escalar por exacerbaciones persistentes",
-      "El cese de tabaquismo es la única intervención no farmacológica que modifica la sobrevida por sí sola",
-      "Oxigenoterapia si PaO2≤55/SatO2≤88%; VMNI si PaCO2≥53 + antecedente de hospitalización — ambas reducen mortalidad",
-      "Sospechar déficit de alfa-1 antitripsina en EPOC de inicio temprano sin tabaquismo"
+      "¿Cómo se confirma EPOC? → Espirometría post-BD con FEV1/FVC<0.70 — NUNCA solo por clínica",
+      "¿Qué mide GOLD 1-4? → Gravedad de la OBSTRUCCIÓN (FEV1 % del predicho) — no decide el tratamiento por sí solo",
+      "¿Qué decide el tratamiento inicial? → El grupo A/B/E (síntomas + exacerbaciones), NO el GOLD 1-4",
+      "¿Cuándo es automáticamente grupo E? → ≥2 exacerbaciones en el año, o ≥1 que requirió hospitalización — sin importar los síntomas",
+      "¿Cuándo considerar GCI (corticoide inhalado)? → Eosinófilos ≥300 desde el inicio en grupo E; ≥100 si escalas por exacerbaciones persistentes",
+      "¿Cuál es la ÚNICA intervención no farmacológica que cambia la sobrevida por sí sola? → Dejar de fumar",
+      "¿Cuándo indicar oxigenoterapia domiciliaria? → PaO2≤55 mmHg o SatO2≤88%",
+      "¿Cuándo indicar VMNI? → PaCO2≥53 mmHg + antecedente de hospitalización por insuficiencia respiratoria aguda",
+      "¿Cuándo sospechar déficit de alfa-1 antitripsina? → EPOC de inicio temprano (<45 años) SIN tabaquismo significativo"
     ],
     "redFlags": [
       "Disnea en reposo con uso de músculos accesorios → posible exacerbación grave",
@@ -1053,9 +1089,10 @@ const ENFERMEDADES = [
     ],
     "erroresFrecuentes": [
       "Diagnosticar EPOC solo por clínica sin espirometría",
-      "Usar la clasificación GOLD vieja (A/B/C/D) — ahora es A/B/E",
-      "Confundir con asma sin evaluar reversibilidad",
-      "Exigir fiebre como criterio de exacerbación (no lo es)"
+      "Usar la clasificación GOLD vieja (grupos A/B/C/D) — desde 2023 es A/B/E, el grupo E reemplazó a C y D",
+      "Confundir con asma sin evaluar reversibilidad post-broncodilatador",
+      "Exigir fiebre como criterio de exacerbación — NO es un criterio de Anthonisen",
+      "Calcular el PaFi (PaO2/FiO2) usando la FiO2 equivocada — verifica SIEMPRE con qué FiO2 real está el paciente antes de dividir (es un error muy fácil de cometer bajo presión de examen)"
     ],
     "asociacionesClinicas": [
       "EPOC + cor pulmonale → edema de miembros inferiores, ingurgitación yugular",
