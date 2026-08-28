@@ -1130,3 +1130,10 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   .split-pdf-cuaderno{ flex-direction:column; }
   .split-pdf-frame{ height:50vh; }
 }
+
+/* ---------- botón flotante para borrar un bloque de texto del cuaderno ---------- */
+.cuaderno-borrar-texto{
+  position: absolute; z-index: 300; background: var(--coral); color:#fff; border:none;
+  border-radius: var(--radius-sm); padding: 6px 10px; font-size: 12px; font-weight:700;
+  cursor:pointer; box-shadow: var(--shadow-hover); font-family: var(--font-body);
+}
