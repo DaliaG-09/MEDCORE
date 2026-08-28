@@ -40,7 +40,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo', taller: 'view-taller', 'examen-simulado': 'view-examen-simulado' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo', taller: 'view-taller', 'examen-simulado': 'view-examen-simulado', 'pdf-dividido': 'view-pdf-dividido' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -87,6 +87,7 @@ function navRenderCurrent(){
     case 'modulo': renderModulo(top.id); break;
     case 'taller': renderTaller(top.id); break;
     case 'examen-simulado': renderExamenSimulado(); break;
+    case 'pdf-dividido': renderPdfDividido(top.id); break;
   }
   showView(VIEW_MAP[top.view]);
   renderBreadcrumb();
@@ -526,6 +527,56 @@ function renderTaller(id){
       <p>Los mismos casos que se revisaron en clase justo antes de tu examen — practícalos las veces que quieras.</p>
     </div>
   `;
+}
+
+/* ---------- vista: PDF + cuaderno lado a lado ---------- */
+function abrirVistaDividida(tipo, id){
+  navPush('pdf-dividido', tipo + '::' + id, 'PDF + cuaderno');
+}
+function extraerIdDrive(url){
+  const m = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  return m ? m[1] : null;
+}
+function renderPdfDividido(compositeId){
+  const [tipo, id] = compositeId.split('::');
+  const wrap = document.getElementById('view-pdf-dividido-content');
+
+  let pdfOrigen, cuadernoKey, titulo;
+  if(tipo === 'enfermedad'){
+    const e = getEnfermedad(id);
+    pdfOrigen = e.pdfOrigen;
+    cuadernoKey = e.id + '::cuaderno-clase';
+    titulo = e.nombre;
+  }
+
+  if(!pdfOrigen){
+    wrap.innerHTML = `${volverBtnHTML()}<p class="muted">No hay un PDF original registrado para esto todavía.</p>`;
+    return;
+  }
+
+  const fileId = extraerIdDrive(pdfOrigen.url);
+  const widgetId = 'ic-split-' + tipo + '-' + id;
+
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">Vista dividida</span>
+    <h1 class="page-title">📖✎ ${titulo}</h1>
+    <p class="page-sub" style="margin-bottom:14px;">Lee el PDF real de tu clase y escribe en tu cuaderno al mismo tiempo — es el mismo cuaderno que ya tienes en esta enfermedad, se guarda junto.</p>
+
+    <div class="split-pdf-cuaderno">
+      <div class="split-pane split-pdf">
+        <div class="split-pane-label">📄 PDF original</div>
+        <iframe src="https://drive.google.com/file/d/${fileId}/preview" class="split-pdf-frame" allow="autoplay"></iframe>
+      </div>
+      <div class="split-pane split-cuaderno">
+        <div class="split-pane-label">✎ Tu cuaderno</div>
+        ${cuadernoWidgetHTML(cuadernoKey, widgetId, '62vh')}
+      </div>
+    </div>
+    <p class="muted" style="font-size:11px; margin-top:8px;">En pantallas angostas (celular), el PDF y el cuaderno se acomodan uno debajo del otro en vez de lado a lado.</p>
+  `;
+
+  initCuaderno(cuadernoKey, widgetId);
 }
 
 /* ---------- vista: Excel original (embebido desde Drive) ---------- */
@@ -1530,10 +1581,13 @@ function renderProfundo(p, diseaseId){
     </div>` : ''}
 
     ${enfermedad.pdfOrigen ? `
-    <div class="kcard" style="cursor:pointer; border:1.5px dashed var(--cobalt-line);" onclick="window.open('${enfermedad.pdfOrigen.url}', '_blank')">
-      <h3>📄 Ver el PDF original de esta clase</h3>
+    <div class="kcard" style="border:1.5px dashed var(--cobalt-line);">
+      <h3>📄 PDF original de esta clase</h3>
       <p class="muted">${enfermedad.pdfOrigen.titulo}</p>
-      <p style="font-size:12px; color:var(--cobalt);">Se abre en una pestaña nueva de Google Drive ↗</p>
+      <div class="toolbar" style="margin-top:8px;">
+        <div class="btn-icon" onclick="abrirVistaDividida('enfermedad', '${diseaseId}')">📖✎ Ver PDF + escribir a la vez</div>
+        <div class="btn-icon" onclick="window.open('${enfermedad.pdfOrigen.url}', '_blank')">↗ Abrir en pestaña nueva</div>
+      </div>
     </div>` : ''}
 
     <div class="section-block">
