@@ -160,6 +160,8 @@ function initCuaderno(key, widgetId){
     texts: saved.texts || [],
     imagesLoaded: [], // <img> ya decodificados, mismo índice que "images"
     current: null,
+    pointerIdActivo: undefined, // qué dedo/lápiz está dibujando ahora mismo
+    usandoLapiz: false, // true mientras el lápiz esté trazando, para ignorar la palma
     color: esOscuro ? '#f0eef5' : '#24243A',
     size: 3.4,
     pageHeight: saved.pageHeight || 1100,
@@ -172,20 +174,30 @@ function initCuaderno(key, widgetId){
   window.addEventListener('resize', () => resizeCuaderno(widgetId));
 
   canvas.addEventListener('pointerdown', (ev) => {
+    // Rechazo de palma: si ya hay un trazo de LÁPIZ en curso, ignorar cualquier
+    // otro toque (la palma de la mano) hasta que ese trazo termine.
+    if(state.pointerIdActivo !== undefined && ev.pointerId !== state.pointerIdActivo) return;
+    // Si el dispositivo tiene lápiz y este toque es con el dedo/palma (no el lápiz), ignorarlo también.
+    if(ev.pointerType === 'touch' && state.usandoLapiz) return;
+
+    if(ev.pointerType === 'pen') state.usandoLapiz = true;
     ev.preventDefault();
     canvas.setPointerCapture(ev.pointerId);
+    state.pointerIdActivo = ev.pointerId;
     state.current = { color: state.color, size: state.size, points: [pointFromEventCuaderno(state, ev)], _ts: Date.now() };
   });
   canvas.addEventListener('pointermove', (ev) => {
-    if(!state.current) return;
+    if(!state.current || ev.pointerId !== state.pointerIdActivo) return;
     state.current.points.push(pointFromEventCuaderno(state, ev));
     redrawCuaderno(widgetId);
     paintStrokeCuaderno(state, state.current);
   });
-  const endStroke = () => {
-    if(!state.current) return;
+  const endStroke = (ev) => {
+    if(!state.current || (ev && ev.pointerId !== state.pointerIdActivo)) return;
     if(state.current.points.length > 1) state.strokes.push(state.current);
     state.current = null;
+    state.pointerIdActivo = undefined;
+    if(ev && ev.pointerType === 'pen') state.usandoLapiz = false;
     saveCuaderno(widgetId);
   };
   canvas.addEventListener('pointerup', endStroke);
