@@ -1205,185 +1205,505 @@ const ENFERMEDADES = [
 },
 
   {
-    id: "asma-bronquial",
-    nombre: "Asma bronquial",
-    area: "Neumología",
-    semanas: ["semana-01"],
-    favorito: false,
-    estudiado: false,
-    relacionadas: [
-      { id: "epoc", relacion: "Principal diagnóstico diferencial — a diferencia del EPOC, el asma es reversible con broncodilatador y suele iniciar en la infancia" }
-    ],
-    profundo: {
-      definicion: "Enfermedad inflamatoria crónica de la vía aérea caracterizada por hiperreactividad bronquial y obstrucción reversible del flujo aéreo.",
-      epidemiologia: "Frecuentemente inicia en la infancia; fuerte asociación con atopia.",
-      etiologiaFactoresRiesgo: ["Atopia / historia familiar de alergias", "Exposición a alérgenos (ácaros, pólenes)", "Infecciones virales respiratorias en la infancia"],
-      fisiopatologia: {
-        resumen: "Inflamación mediada predominantemente por linfocitos Th2 y eosinófilos frente a alérgenos, con hiperreactividad bronquial resultante.",
-        explicacionExtendida: "La hiperreactividad bronquial del asma se construye en dos tiempos. En la fase temprana (minutos tras la exposición al alérgeno), los mastocitos ya sensibilizados con IgE específica se degranulan al contacto con el antígeno, liberando histamina, triptasa y leucotrienos que provocan broncoconstricción inmediata, vasodilatación y edema de la mucosa. En la fase tardía (4 a 8 horas después), el infiltrado de eosinófilos y linfocitos Th2 reclutados por las citocinas IL-4, IL-5 e IL-13 mantiene la inflamación, lo que explica por qué los síntomas pueden reaparecer horas después de que pasó el estímulo inicial.\n\nCon episodios repetidos y mal controlados, este ciclo inflamatorio deja de ser completamente reversible: se produce remodelación de la vía aérea — engrosamiento de la membrana basal, hipertrofia del músculo liso bronquial, y angiogénesis submucosa — que reduce progresivamente el calibre basal de la vía aérea incluso fuera de las crisis. Por eso el objetivo del tratamiento controlador no es solo aliviar síntomas puntuales, sino frenar esta inflamación de fondo antes de que se vuelva estructural.",
-        cascada: [
-          { paso: "Factor desencadenante", detalle: "Alérgeno inhalado / irritante / ejercicio" },
-          { paso: "Células activadas", detalle: "Linfocitos Th2, eosinófilos, mastocitos" },
-          { paso: "Mediadores liberados", detalle: "IL-4, IL-5, IL-13, histamina, leucotrienos" },
-          { paso: "Efecto tisular", detalle: "Broncoconstricción, edema de la mucosa, hipersecreción" },
-          { paso: "Cambio fisiológico", detalle: "Estrechamiento reversible de la vía aérea" },
-          { paso: "Manifestación clínica", detalle: "Disnea episódica, sibilancias, tos nocturna" }
-        ]
-      },
-      clinica: [{ signo: "Sibilancias episódicas", mecanismo: "Broncoconstricción reversible mediada por mediadores Th2" }],
-      examenFisico: ["Sibilancias espiratorias difusas en crisis", "Examen normal en periodos intercrisis"],
-      semiologia: {
-            "inspeccion": "En crisis: taquipnea, uso de músculos accesorios, posición en trípode (el paciente se inclina hacia adelante apoyando los brazos). Busca signos de gravedad: dificultad para hablar en frases completas, cianosis, alteración del sensorio. Entre crisis, la inspección suele ser completamente normal — por eso el asma se puede pasar por alto si solo examinas cuando el paciente está asintomático.",
-            "palpacion": "Expansión torácica generalmente simétrica (a menos que la crisis sea muy severa). El frémito vocal no suele estar alterado de forma característica, a diferencia del EPOC.",
-            "percusion": "Normalmente normal entre crisis. Durante una crisis puede haber hipersonoridad leve por atrapamiento aéreo agudo, pero es menos marcada que en EPOC crónico.",
-            "auscultacion": "El hallazgo clásico: sibilancias espiratorias difusas y bilaterales, que empeoran con espiración forzada. Dato clínico crítico que debes recordar: el 'silencio auscultatorio' (ausencia de sibilancias en un paciente que sigue con dificultad respiratoria) NO significa mejoría — significa que el flujo de aire es tan bajo que ya no genera sonido. Es un signo de gravedad extrema que requiere manejo inmediato."
-      },
-      diagnostico: "Espirometría con prueba de broncodilatador: reversibilidad ≥ 12% y 200mL en VEF1.",
-      algoritmo: [
-            {
-                  "tipo": "paso",
-                  "texto": "Sospecha clínica: sibilancias + tos + disnea episódica, con desencadenantes claros"
-            },
-            {
-                  "tipo": "paso",
-                  "texto": "Espirometría con prueba de broncodilatador"
-            },
-            {
-                  "tipo": "decision",
-                  "texto": "¿Reversibilidad ≥12% y 200mL en FEV1 tras broncodilatador?",
-                  "salidas": [
-                        {
-                              "etiqueta": "SÍ",
-                              "texto": "Confirma asma → clasificar gravedad según frecuencia de síntomas",
-                              "color": "mint"
-                        },
-                        {
-                              "etiqueta": "NO",
-                              "texto": "Reconsiderar: EPOC u otra causa de disnea — repetir en otro momento si la sospecha persiste",
-                              "color": "coral"
-                        }
-                  ]
-            }
-      ],
-      diagnosticoDiferencial: ["EPOC", "Reflujo gastroesofágico", "Disfunción de cuerdas vocales"],
-      tratamiento: {
-        noFarmacologico: ["Evitar alérgenos identificados", "Plan de acción escrito para crisis"],
-        farmacologico: ["Corticoide inhalado (base del tratamiento controlador)", "SABA de rescate", "LABA como terapia add-on"]
-      },
-      complicaciones: ["Estado asmático", "Remodelación de la vía aérea en asma no controlada"],
-      prevencion: "Control ambiental de alérgenos y adherencia al tratamiento controlador.",
-      perlasProfundo: "La reversibilidad significativa post-broncodilatador es la clave que distingue asma de EPOC en la espirometría.",
-      mecanismoEpitelial: "Las células epiteliales de la vía aérea no son solo una barrera física, sino actores inmunológicamente activos. En el asma, esta barrera está alterada por pérdida de proteínas de unión estrecha. Al exponerse a alérgenos, las células epiteliales liberan 'alarminas' (IL-33, TSLP, IL-25) que activan células dendríticas y linfoides innatas tipo 2 (ILC2), iniciando y manteniendo la inflamación alérgica — este es el mecanismo molecular moderno detrás de la cascada Th2 clásica."
-    },
-    clasificacionGravedad: {
-      titulo: "Clasificación de gravedad del asma (según control de síntomas)",
-      categorias: [
-        { nombre: "Intermitente", criterio: "Síntomas <1 vez/semana, síntomas nocturnos ≤2 veces/mes" },
-        { nombre: "Persistente leve", criterio: "Síntomas >1 vez/semana pero <1 vez/día" },
-        { nombre: "Persistente moderada", criterio: "Síntomas diarios, síntomas nocturnos >1 vez/semana" },
-        { nombre: "Persistente grave", criterio: "Síntomas continuos, síntomas nocturnos frecuentes, limitación de la actividad física" }
-      ]
-    },
-    repaso: {
-      conceptosClave: ["Inflamación Th2/eosinofílica", "Obstrucción reversible", "Inicio frecuente en infancia"],
-      clinica: "Disnea + sibilancias + tos, episódicas, con desencadenantes claros.",
-      diagnostico: "Espirometría con reversibilidad ≥12% y 200mL.",
-      tratamientoResumen: "Corticoide inhalado como base + SABA de rescate.",
-      diferenciales: [{ entidad: "EPOC", clave: "Poco reversible, tabaquismo, inicio tardío" }],
-      tablaComparativa: {
-            "titulo": "Asma vs. EPOC (resumen)",
-            "filas": [
-                  [
-                        "Edad de inicio",
-                        "Infancia/adolescencia",
-                        "> 40 años"
-                  ],
-                  [
-                        "Reversibilidad",
-                        "Significativa (≥12%, 200mL)",
-                        "Parcial o ausente"
-                  ],
-                  [
-                        "Antecedente típico",
-                        "Atopia/alergias",
-                        "Tabaquismo"
-                  ]
-            ]
-      }
-    },
-    imprescindible: {
-      loQueSiOSiDebesSaber: ["La reversibilidad post-BD es el dato que distingue asma de EPOC", "El corticoide inhalado es el pilar del tratamiento controlador, no el SABA"],
-      redFlags: ["Uso de SABA > 2 veces por semana → mal control, requiere escalar tratamiento", "Silencio auscultatorio en crisis → signo de gravedad extrema"],
-      erroresFrecuentes: ["Tratar solo con SABA sin controlador de base"],
-      asociacionesClinicas: ["Asma + rinitis alérgica + eccema → tríada atópica"]
+  "id": "asma-bronquial",
+  "nombre": "Asma bronquial",
+  "area": "Neumología",
+  "semanas": [
+    "semana-01"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "tipoIlustracion": "obstructivo",
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1mEiSCA6VvcpTUhRnxwH2QVdPISP_P4fJ/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-2-TEMA-3: Asma Bronquial"
+  },
+  "relacionadas": [
+    {
+      "id": "epoc",
+      "relacion": "Principal diagnóstico diferencial — ambas cursan con obstrucción de la vía aérea, pero se distinguen por reversibilidad y edad de inicio"
     }
-  ,
-    casosClinicos: [
+  ],
+  "profundo": {
+    "definicion": "Enfermedad crónica potencialmente grave que causa síntomas respiratorios como sibilancias, dificultad para respirar, opresión en el pecho y tos, que varían en intensidad y frecuencia. Estos síntomas están asociados a una limitación variable del flujo de aire espiratorio debido a broncoconstricción, engrosamiento de las vías respiratorias y aumento de mucosidad. <span class=\"fuente-ampliada\">Afecta a más de 25 millones de personas en EE. UU., con una prevalencia del 7.8% en adultos — y el dato más preocupante: el 62% de los adultos con asma NO tienen sus síntomas adecuadamente controlados.</span>",
+    "epidemiologia": "Es una de las enfermedades crónicas más comunes en atención primaria. Afortunadamente, con el manejo adecuado la mayoría de los pacientes puede lograr buen control — atletas olímpicos y personas con vidas plenamente activas conviven con asma bien controlada.",
+    "etiologiaFactoresRiesgo": [
+      "Infecciones virales respiratorias",
+      "Alérgenos domésticos (ácaros, polen, cucarachas)",
+      "Alérgenos laborales (asma ocupacional)",
+      "Humo del tabaco",
+      "Ejercicio y aire frío",
+      "Estrés emocional",
+      "Algunos medicamentos (beta bloqueadores, aspirina, AINE)"
+    ],
+    "criteriosDiagnosticos": "El diagnóstico requiere DOS elementos: (1) antecedente de síntomas respiratorios variables (sibilancias, falta de aire, opresión torácica, tos — que varían en intensidad y en el tiempo, empeoran con infecciones virales, y se desencadenan por ejercicio, risa, alérgenos o aire frío), y (2) evidencia objetiva de limitación variable del flujo aéreo (documentada por pruebas de función pulmonar que muestren reversibilidad con broncodilatadores, o variabilidad del flujo espiratorio pico). Es importante confirmar el diagnóstico con evidencia objetiva ANTES de iniciar tratamiento con corticosteroides inhalados (ICS), ya que una vez iniciado el tratamiento se vuelve más difícil demostrar la reversibilidad.",
+    "fisiopatologia": {
+      "resumen": "Las células epiteliales de la vía aérea no son solo una barrera física — son actores inmunológicamente activos. En el asma, esta barrera está alterada (pierde proteínas de unión estrecha), y ante alérgenos libera 'alarminas' (IL-33, TSLP, IL-25) que disparan dos cascadas inflamatorias paralelas: la vía Th2/ILC2 (más lenta, orquestada por células dendríticas) y la vía de mastocitos/basófilos (inmediata, mediada por IgE).",
+      "imagenes": [
         {
-            "vineta": "Adolescente de 15 años con antecedente de rinitis alérgica y dermatitis atópica en la infancia. Consulta por episodios recurrentes de tos nocturna y sibilancias que se desencadenan con el ejercicio y la exposición al polvo, con resolución espontánea o tras uso de salbutamol. Examen físico entre episodios: normal. Espirometría: FEV1 88% del predicho, FEV1/FVC 0.81; tras salbutamol, FEV1 sube a 104% del predicho.",
-            "preguntaMC": {
-                "enunciado": "¿Qué porcentaje mínimo de mejoría en el FEV1 post-broncodilatador se considera clínicamente significativo para apoyar el diagnóstico de asma?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "≥5%"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "≥12% y 200 mL"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "≥25%"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "No existe un umbral estandarizado"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "El criterio estándar de reversibilidad significativa es un aumento ≥12% Y ≥200 mL en el FEV1 (o FVC) tras broncodilatador. En este caso, el FEV1 subió de 88% a 104% (16 puntos porcentuales), superando ampliamente el umbral — consistente con asma."
-            },
-            "preguntaEscrita": {
-                "enunciado": "Este paciente tiene antecedente de rinitis alérgica y dermatitis atópica. Explica cómo se relacionan estas tres condiciones desde el punto de vista fisiopatológico.",
-                "respuestaModelo": "Las tres forman parte de la llamada 'marcha atópica' o tríada atópica: comparten una base inmunológica común de hipersensibilidad tipo I mediada por IgE, con predominio de respuesta Th2. En cada órgano (piel, mucosa nasal, vía aérea) la exposición a alérgenos activa mastocitos y eosinófilos a través de IgE específica, liberando histamina y otros mediadores que producen inflamación local — dermatitis en la piel, rinitis en la mucosa nasal, y broncoespasmo/inflamación bronquial en el asma. Por eso es común que un mismo paciente atópico desarrolle las tres a lo largo de la vida."
-            },
-            "nivel": "basico"
+          "src": "assets/asma/asma-cascada-th2-ilc2.jpg",
+          "caption": "Cascada Th2/ILC2 (de tu clase)",
+          "explicacion": "Este diagrama muestra el brazo 'lento' de la respuesta: el complejo TH2/ILC2 (centro) recibe la señal de IL-33/TSLP desde el epitelio y responde liberando 3 citoquinas clave, cada una con un efecto distinto — memorízalas por separado: IL-5 → reclutamiento de eosinófilos (con sus gránulos característicos: los cristales de Charcot-Leyden); IL-13 → remodelación de la vía aérea + metaplasia de células caliciformes (más moco) + hiperreactividad bronquial; IL-4 → producción de IgE alérgeno-específica. Fíjate también en ICAM1/VCAM1 en la parte inferior — son moléculas de adhesión que 'preparan la pared del vaso' para que más células inflamatorias puedan salir de la sangre hacia el tejido (extravasación)."
         },
         {
-            "nivel": "intermedio",
-            "vineta": "Mujer de 28 años, panadera, refiere que desde hace 6 meses presenta tos y opresión torácica que empeora durante su turno laboral y mejora notablemente los fines de semana y en vacaciones. No tiene antecedentes atópicos personales ni familiares.",
-            "preguntaMC": {
-                "enunciado": "¿Cuál es la sospecha diagnóstica más importante a descartar en este caso?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Asma ocupacional por sensibilización a harina/polvo de panadería"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "EPOC de inicio temprano"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Ansiedad generalizada"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Reflujo gastroesofágico"
-                    }
-                ],
-                "correcta": "a",
-                "explicacion": "El patrón temporal (empeora en el trabajo, mejora en días libres/vacaciones) es la clave clásica de asma ocupacional. La panadería es una exposición de alto riesgo conocida por sensibilización a proteínas de harina y alfa-amilasa. No necesita antecedente atópico previo para desarrollarla."
-            },
-            "preguntaEscrita": {
-                "enunciado": "¿Qué le preguntarías específicamente a esta paciente para reforzar la sospecha de asma ocupacional antes de derivarla a estudios especializados?",
-                "respuestaModelo": "Preguntaría si los síntomas mejoran claramente los fines de semana y durante vacaciones prolongadas (patrón de mejoría con el alejamiento del agente), si otros compañeros de trabajo presentan síntomas similares, cuánto tiempo lleva expuesta antes del inicio de síntomas, y si existe algún cambio reciente en el proceso de trabajo (nuevo tipo de harina, aditivos). También registraría si usa medidas de protección respiratoria en el puesto de trabajo."
-            }
+          "src": "assets/asma/asma-mastocitos-basofilos.jpg",
+          "caption": "Vía de mastocitos/basófilos — reacción alérgica temprana y tardía",
+          "explicacion": "Este es el brazo 'rápido' e inmediato: los alérgenos activan receptores TLR4/PAR2 en el epitelio, que libera TSLP/IL-33/IL-1 — estas señales entrecruzan la IgE ya pegada a mastocitos y basófilos, haciendo que liberen histamina, PGD2 y citoquinas de inmediato. Fíjate en las 2 fases marcadas abajo: 'Reacción alérgica temprana' (plasma extravasation, vasodilatación — minutos) y 'Reacción alérgica tardía' (vessel wall priming — horas después). Esto explica clínicamente por qué algunos pacientes tienen una caída inicial de la función pulmonar que mejora, y luego una SEGUNDA caída varias horas después — son las dos fases de esta misma cascada."
         }
-    
-  ]
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">Estas dos vías no son independientes — se retroalimentan. La vía de mastocitos genera la broncoconstricción inmediata que sientes como \"crisis\", mientras que la vía Th2/ILC2 mantiene la inflamación crónica de fondo que hace que la vía aérea esté \"hiperreactiva\" incluso entre crisis, lista para reaccionar de forma exagerada al próximo estímulo. Por eso el tratamiento de mantenimiento (ICS) ataca la inflamación crónica (vía Th2), mientras que el rescate (SABA o formoterol) ataca la broncoconstricción aguda (vía mastocitos) — son dos problemas distintos que requieren dos tipos de fármaco distintos, y es la base de por qué 'solo usar el inhalador de rescate' nunca es suficiente.</span>",
+      "cascada": [
+        {
+          "paso": "Factor desencadenante",
+          "detalle": "Alérgeno, infección viral, ejercicio, aire frío u otro desencadenante altera la barrera epitelial (pérdida de proteínas de unión estrecha)"
+        },
+        {
+          "paso": "Alarminas epiteliales",
+          "detalle": "El epitelio dañado libera IL-33, TSLP e IL-25 — activan dos vías en paralelo"
+        },
+        {
+          "paso": "Vía rápida (mastocitos/basófilos)",
+          "detalle": "IgE ya fijada se entrecruza → liberación inmediata de histamina, PGD2, leucotrienos"
+        },
+        {
+          "paso": "Vía lenta (Th2/ILC2)",
+          "detalle": "Células dendríticas presentan antígeno → diferenciación Th2 → IL-4 (IgE), IL-5 (eosinófilos), IL-13 (remodelación + moco)"
+        },
+        {
+          "paso": "Efecto tisular",
+          "detalle": "Broncoconstricción inmediata (vía rápida) + inflamación crónica, hiperreactividad y remodelación de la vía aérea (vía lenta)"
+        },
+        {
+          "paso": "Manifestación clínica",
+          "detalle": "Sibilancias, disnea, opresión torácica y tos — variables en el tiempo, con posible reacción alérgica tardía horas después"
+        }
+      ]
+    },
+    "clinica": [
+      {
+        "signo": "Sibilancias",
+        "detallePPT": "Síntoma respiratorio variable, cambia en intensidad y frecuencia.",
+        "mecanismo": "Turbulencia del flujo aéreo por broncoconstricción y estrechamiento de la vía."
+      },
+      {
+        "signo": "Disnea / dificultad para respirar",
+        "detallePPT": "Varía con el tiempo, empeora con desencadenantes.",
+        "mecanismo": "Limitación del flujo aéreo espiratorio por broncoconstricción + engrosamiento de la pared + moco."
+      },
+      {
+        "signo": "Opresión en el pecho",
+        "detallePPT": "Sensación subjetiva de presión torácica.",
+        "mecanismo": "Hiperinsuflación dinámica durante episodios de obstrucción."
+      },
+      {
+        "signo": "Tos",
+        "detallePPT": "Puede ser el único síntoma en algunos casos ('variante de asma con tos').",
+        "mecanismo": "Estimulación de receptores de la vía aérea por inflamación e hiperreactividad bronquial."
+      }
+    ],
+    "examenFisico": [
+      "La exploración física suele ser NORMAL entre crisis",
+      "Sibilancias a la auscultación — el hallazgo más frecuente, especialmente en la ESPIRACIÓN FORZADA"
+    ],
+    "semiologia": {
+      "inspeccion": "Entre crisis, el paciente puede verse completamente normal — no descartes asma por una exploración física sin hallazgos. Durante una crisis, busca uso de músculos accesorios y dificultad para hablar en oraciones completas (marcador de gravedad).",
+      "palpacion": "Habitualmente sin hallazgos específicos fuera de una crisis.",
+      "percusion": "Normal — el asma no produce cambios de matidez o hiperresonancia como las enfermedades pleurales.",
+      "auscultacion": "El hallazgo más importante: sibilancias, especialmente al pedirle al paciente que espire FORZADO — esto 'saca a relucir' sibilancias que no se escuchan en respiración normal, porque el estrechamiento de la vía aérea es más evidente cuando el aire tiene que salir más rápido por un espacio ya reducido. <span class=\"fuente-ampliada\">Un dato de alarma: en una crisis MUY grave, las sibilancias pueden desaparecer — no porque el paciente mejoró, sino porque ya casi no está entrando ni saliendo aire (tórax silente), lo que es un signo de gravedad extrema, no de mejoría.</span>"
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "📊 Clasificación de gravedad del asma (evaluación inicial, sin tratamiento)",
+        "contexto": "Esta tabla se usa SOLO en pacientes que aún no reciben tratamiento de control — combina 2 dominios: Impairment (deterioro actual: síntomas, despertares nocturnos, uso de SABA, limitación de actividad, FEV1) y Risk (riesgo futuro: exacerbaciones/año que requirieron corticoide oral). Regla clave: se asigna la categoría MÁS GRAVE en la que aparezca cualquier característica — no un promedio entre todas.",
+        "columnas": [
+          "Categoría",
+          "Síntomas diurnos",
+          "Despertares nocturnos",
+          "Uso de SABA de rescate"
+        ],
+        "filas": [
+          [
+            "Intermitente",
+            "≤2 días/semana",
+            "≤2 veces/mes",
+            "≤2 días/semana"
+          ],
+          [
+            "Persistente leve",
+            ">2 días/semana, no diario",
+            "3-4 veces/mes",
+            ">2 días/semana, no diario"
+          ],
+          [
+            "Persistente moderada",
+            "Diario",
+            ">1 vez/semana, no cada noche",
+            "Diario"
+          ],
+          [
+            "Persistente grave",
+            "Durante todo el día",
+            "Frecuente, a menudo cada noche",
+            "Varias veces al día"
+          ]
+        ],
+        "nota": "<span class=\"fuente-ampliada\">GINA recomienda evitar el término \"asma leve\" cuando sea posible — genera la falsa idea de que implica bajo riesgo. Incluso pacientes con síntomas infrecuentes pueden tener exacerbaciones graves.</span>"
+      },
+      {
+        "titulo": "💊 Abordaje escalonado del tratamiento (GINA, adultos y adolescentes)",
+        "contexto": "GINA ya NO recomienda tratar el asma solo con SABA (broncodilatador de rescate solo) — aumenta el riesgo de exacerbaciones y muerte. TODOS los pacientes deben recibir un corticoide inhalado (ICS), incluso con síntomas infrecuentes.",
+        "columnas": [
+          "Escalón",
+          "Vía 1 (preferida)",
+          "Vía 2 (alternativa)"
+        ],
+        "filas": [
+          [
+            "Paso 1",
+            "ICS-formoterol dosis baja según necesidad",
+            "ICS dosis baja cada vez que se toma SABA"
+          ],
+          [
+            "Paso 2",
+            "ICS-formoterol dosis baja según necesidad",
+            "ICS dosis baja diaria + SABA según necesidad"
+          ],
+          [
+            "Paso 3",
+            "ICS-formoterol dosis baja como mantenimiento y rescate (MART)",
+            "ICS-LABA dosis baja + SABA según necesidad"
+          ],
+          [
+            "Paso 4",
+            "ICS-formoterol dosis intermedia como MART",
+            "ICS-LABA dosis intermedia/alta + SABA según necesidad"
+          ],
+          [
+            "Paso 5",
+            "Referir para evaluación fenotípica + tratamiento biológico complementario",
+            "—"
+          ]
+        ],
+        "nota": "MART = Maintenance And Reliever Therapy (mantenimiento Y rescate con el MISMO inhalador de ICS-formoterol) — reduce el riesgo de exacerbaciones graves comparado con SABA de rescate, y es más simple para el paciente."
+      },
+      {
+        "titulo": "💉 Dosis bajas de corticosteroides inhalados (ejemplos, adultos)",
+        "columnas": [
+          "Fármaco",
+          "Dosis baja diaria"
+        ],
+        "filas": [
+          [
+            "Beclometasona (HFA)",
+            "200-500 mcg/día"
+          ],
+          [
+            "Budesonida (DPI)",
+            "200-400 mcg/día"
+          ],
+          [
+            "Fluticasona propionato",
+            "100-250 mcg/día"
+          ]
+        ],
+        "nota": "Las dosis bajas dan la MAYOR PARTE del beneficio clínico para la mayoría de los pacientes — muy pocos necesitan dosis altas, que además aumentan el riesgo de efectos secundarios."
+      }
+    ],
+    "diagnostico": "Se debe identificar tanto los síntomas característicos como la evidencia objetiva de limitación variable del flujo aéreo, documentándolo ANTES de iniciar ICS. En situaciones especiales: asma ocupacional (preguntar exposiciones laborales), embarazo (confirmar objetivamente, evitar pruebas de provocación, NO suspender el ICS — es más seguro seguir tratando que dejar el asma sin controlar), adultos mayores (puede estar sub o sobrediagnosticado, considerar síndrome de superposición asma-EPOC en fumadores), y tos como único síntoma (considerar variante tusígena, goteo posnasal, ERGE, tos por IECA, o disfunción de cuerdas vocales).",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Sospecha clínica: síntomas respiratorios variables (sibilancias, disnea, opresión, tos) + antecedente de desencadenantes"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Confirmar con evidencia objetiva de limitación variable del flujo aéreo (espirometría con reversibilidad, o variabilidad del PEF) — ANTES de iniciar ICS"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Paciente ya recibe tratamiento de control?",
+        "salidas": [
+          {
+            "etiqueta": "NO — evaluación inicial",
+            "texto": "Clasificar gravedad (Intermitente/Leve/Moderada/Grave) según impairment + risk → iniciar en el escalón correspondiente",
+            "color": "coral"
+          },
+          {
+            "etiqueta": "SÍ — en seguimiento",
+            "texto": "Evaluar CONTROL (no gravedad) con ACT o Asthma APGAR → ciclo evaluar-ajustar-revisar",
+            "color": "mint"
+          }
+        ]
+      },
+      {
+        "tipo": "paso",
+        "texto": "Antes de escalar tratamiento por mal control: descartar técnica de inhalación incorrecta, mala adherencia, exposición ambiental persistente, diagnóstico incorrecto, o comorbilidades no tratadas"
+      }
+    ],
+    "diagnosticoDiferencial": [
+      "EPOC (y síndrome de superposición asma-EPOC)",
+      "Goteo posnasal / sinusitis crónica",
+      "ERGE",
+      "Tos inducida por IECA",
+      "Disfunción de cuerdas vocales"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Plan de acción por escrito para TODOS los pacientes (manuscrito, impreso, digital o pictórico)",
+        "Técnica correcta de inhalador — hasta el 80% de los pacientes NO usa bien su inhalador, lo que contribuye directamente al mal control; revisar en cada oportunidad y corregir por demostración física",
+        "Automanejo guiado: información sobre la enfermedad, adherencia, automonitoreo de síntomas/flujo pico, revisiones médicas regulares"
+      ],
+      "farmacologico": [
+        "TODOS los pacientes con asma necesitan ICS (corticoide inhalado), incluso con síntomas poco frecuentes",
+        "Inhalador de rescate: ICS-formoterol es el PREFERIDO (reduce exacerbaciones graves en dos tercios comparado con SABA solo) — alternativas: ICS-SABA o SABA solo",
+        "GINA ya NO recomienda SABA solo por seguridad — mayor riesgo de exacerbaciones y muerte, y el uso excesivo (≥3 inhaladores/año) predice crisis graves",
+        "Tratamiento escalonado según Pasos 1-5 (ver tabla) — subir o bajar según control de síntomas y riesgo de exacerbación",
+        "Considerar reducir tratamiento tras 2-3 meses de buen control (bajar ICS 25-50% cada 2-3 meses) — pero NUNCA suspender completamente el ICS en adultos/adolescentes con diagnóstico de asma",
+        "OCS (corticoide oral) de mantenimiento SOLO como último recurso, por sus efectos secundarios graves"
+      ]
+    },
+    "exacerbaciones": {
+      "definicion": "Las crisis de asma pueden ser fatales incluso en personas con asma aparentemente leve — son más comunes y graves cuando el asma no está controlada o en pacientes de alto riesgo.",
+      "clasificacion": [
+        [
+          "Reduce con ICS",
+          "El tratamiento regular con ICS reduce notablemente la frecuencia y gravedad de crisis, y el riesgo de muerte"
+        ],
+        [
+          "Plan de acción",
+          "Todo paciente debe tener un plan de acción escrito para saber qué hacer si empeora"
+        ]
+      ]
+    },
+    "prevencion": "Control ambiental de desencadenantes conocidos, adherencia al ICS de mantenimiento (incluso sin síntomas frecuentes), técnica correcta de inhalador, y plan de acción escrito.",
+    "perlasProfundo": "Evita pensar en 'asma leve' como sinónimo de 'bajo riesgo' — el dato más importante de esta clase es que incluso pacientes con síntomas infrecuentes pueden tener exacerbaciones graves o fatales. El tratamiento con ICS no es opcional según la 'gravedad percibida', es la base para TODOS.",
+    "asiLoPreguntanExamen": {
+      "intro": "Basado en el patrón real de tus exámenes: casi siempre presentan un caso y piden clasificar (usando la Tabla de gravedad) + sustentar el razonamiento — exactamente como el caso real que trae tu propio PPT.",
+      "ejercicios": [
+        {
+          "tipo": "Clasificar y sustentar (el más frecuente)",
+          "planteamiento": "Paciente con síntomas diarios, despertares nocturnos 2 veces por semana, uso de SABA diario. Clasifique la gravedad del asma y sustente.",
+          "respuestaModelo": "Persistente moderada: síntomas diarios + despertares nocturnos >1 vez/semana (pero no cada noche) + uso diario de SABA — estos 3 datos ya superan el umbral de persistente leve (síntomas >2 días/semana pero no diarios) sin llegar al patrón de persistente grave (síntomas durante todo el día, despertares casi cada noche)."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste 4 factores desencadenantes comunes de asma mencionados en tu clase.",
+          "respuestaModelo": "Cualquier 4 de: infecciones virales respiratorias, alérgenos domésticos, alérgenos laborales, humo de tabaco, ejercicio/aire frío, estrés emocional, medicamentos (beta bloqueadores, aspirina, AINE)."
+        },
+        {
+          "tipo": "Indique y sustente (examen físico)",
+          "planteamiento": "¿Por qué la exploración física de un paciente con asma puede ser completamente normal, y qué maniobra específica ayuda a encontrar el hallazgo más característico?",
+          "respuestaModelo": "Porque la limitación del flujo aéreo en el asma es VARIABLE — entre crisis, la vía aérea puede estar prácticamente sin obstrucción activa. La maniobra clave es pedirle al paciente que realice una ESPIRACIÓN FORZADA, que 'saca a relucir' sibilancias que no se escuchan en respiración normal, porque el estrechamiento se hace más evidente cuando el aire debe salir más rápido por una vía ya reducida."
+        }
+      ]
+    },
+    "complicaciones": [
+      "Crisis asmática casi fatal (paro respiratorio inminente)",
+      "Insuficiencia respiratoria aguda",
+      "Neumotórax (por hiperinsuflación severa durante una crisis grave)",
+      "Remodelación irreversible de la vía aérea (en asma crónica mal controlada, por inflamación sostenida — pérdida progresiva de función pulmonar con el tiempo)"
+    ]
   },
+  "repaso": {
+    "conceptosClave": [
+      "2 elementos para diagnosticar: síntomas respiratorios variables + evidencia objetiva de limitación variable del flujo aéreo",
+      "2 vías inflamatorias: Th2/ILC2 (inflamación crónica de fondo) + mastocitos/basófilos (broncoconstricción inmediata)",
+      "TODOS los pacientes necesitan ICS — ya no se recomienda SABA solo"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — escalones de tratamiento",
+      "columnas": [
+        "Paso",
+        "Tratamiento preferido (Vía 1)"
+      ],
+      "filas": [
+        [
+          "1-2",
+          "ICS-formoterol dosis baja según necesidad"
+        ],
+        [
+          "3",
+          "ICS-formoterol dosis baja como MART (mantenimiento + rescate)"
+        ],
+        [
+          "4",
+          "ICS-formoterol dosis intermedia como MART"
+        ],
+        [
+          "5",
+          "Referir + evaluar biológicos (anti-IgE, anti-IL5, anti-IL4R, anti-TSLP)"
+        ]
+      ],
+      "nota": "Antes de subir de escalón: siempre verificar técnica de inhalador, adherencia y exposiciones ambientales."
+    },
+    "clinica": "Sibilancias + disnea + opresión torácica + tos, variables en el tiempo — examen físico normal entre crisis.",
+    "diagnostico": "Síntomas variables + evidencia objetiva de limitación del flujo aéreo (espirometría con reversibilidad), confirmado ANTES de iniciar ICS.",
+    "tratamientoResumen": "ICS-formoterol de rescate (preferido, ya no SABA solo) + escalón según gravedad/control + plan de acción escrito + técnica de inhalador.",
+    "diferenciales": [
+      {
+        "entidad": "EPOC",
+        "clave": "Reversibilidad post-BD (asma) vs. obstrucción fija (EPOC); inicio en edad temprana vs. >40 años"
+      },
+      {
+        "entidad": "Disfunción de cuerdas vocales",
+        "clave": "Estridor más que sibilancias, no responde a broncodilatador"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Asma vs EPOC",
+      "filas": [
+        [
+          "Edad de inicio",
+          "Infancia/adolescencia",
+          "> 40 años"
+        ],
+        [
+          "Reversibilidad",
+          "Significativa (>12% y 200mL)",
+          "Parcial/ausente"
+        ],
+        [
+          "Antecedente",
+          "Atopia/alergias",
+          "Tabaquismo"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Qué 2 elementos confirman el diagnóstico? → Síntomas respiratorios variables + evidencia objetiva de limitación variable del flujo aéreo",
+      "¿Se debe confirmar el diagnóstico antes o después de iniciar ICS? → ANTES — después es más difícil demostrar reversibilidad",
+      "¿Se recomienda SABA solo? → NO, GINA ya no lo recomienda por seguridad (mayor riesgo de exacerbación y muerte)",
+      "¿Cuál es el inhalador de rescate preferido? → ICS-formoterol (no SABA solo)",
+      "¿Qué hallazgo semiológico es el más frecuente? → Sibilancias en espiración FORZADA (el examen físico basal suele ser normal)",
+      "¿Qué significa que las sibilancias desaparezcan en una crisis grave? → Signo de ALARMA (tórax silente por muy poco flujo de aire), no de mejoría",
+      "¿Se debe suspender completamente el ICS al mejorar? → NO, nunca suspender completamente en adultos/adolescentes con diagnóstico de asma"
+    ],
+    "redFlags": [
+      "Incapacidad para hablar en oraciones completas durante una crisis → gravedad significativa",
+      "Desaparición de sibilancias en plena crisis → tórax silente, señal de gravedad extrema",
+      "Uso de ≥3 inhaladores de rescate al año → marcador de riesgo de crisis grave"
+    ],
+    "erroresFrecuentes": [
+      "Tratar con SABA solo sin ICS de base",
+      "Asumir que 'asma leve' significa bajo riesgo de exacerbación grave",
+      "Suspender completamente el ICS al sentirse bien",
+      "No revisar la técnica de inhalador (hasta 80% de los pacientes la usa mal)"
+    ],
+    "asociacionesClinicas": [
+      "Embarazada + asma → NUNCA suspender ICS, es más seguro tratar que dejar sin controlar",
+      "Tos como único síntoma → pensar en variante tusígena de asma, pero también en ERGE/goteo posnasal/IECA"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "basico",
+      "vineta": "(Caso real de tu clase) Paciente mujer de 25 años gestante de 28 semanas, con diagnóstico de asma bronquial. Es evaluada en la emergencia por presentar sibilancias, tos, episodios de disnea frecuentes, síntomas intercrisis frecuentes, síntomas nocturnos de asma más de 2 veces por semana, sibilancias con esfuerzos mínimos.",
+      "preguntaMC": {
+        "enunciado": "¿Qué clasificación de gravedad del asma corresponde?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Intermitente"
+          },
+          {
+            "id": "b",
+            "texto": "Episódica frecuente"
+          },
+          {
+            "id": "c",
+            "texto": "Persistente moderada"
+          },
+          {
+            "id": "d",
+            "texto": "Persistente grave"
+          },
+          {
+            "id": "e",
+            "texto": "Intermitente moderada"
+          }
+        ],
+        "correcta": "c",
+        "explicacion": "Según la Tabla de clasificación: síntomas nocturnos >2 veces/semana (pero no cada noche) + síntomas intercrisis frecuentes + sibilancias con esfuerzos mínimos apunta a síntomas diarios/frecuentes con despertares nocturnos >1 vez/semana — el patrón de PERSISTENTE MODERADA. No es intermitente (eso sería ≤2 días/semana y ≤2 despertares/mes — muy por debajo de lo descrito). No es persistente grave (eso implicaría síntomas durante todo el día y despertares casi cada noche). 'Episódica frecuente' e 'intermitente moderada' no son categorías reales de la clasificación estándar — son distractores."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Dado que esta paciente está embarazada, ¿qué consideración especial aplica sobre continuar o suspender su tratamiento con ICS?",
+        "respuestaModelo": "NO se debe suspender el ICS durante el embarazo. Es más seguro para la madre y el bebé mantener el asma bien controlada con ICS que dejarla sin tratamiento — el asma mal controlada durante el embarazo representa un riesgo mayor (hipoxia materna-fetal, mayor riesgo de exacerbaciones) que el tratamiento con corticoide inhalado, que es seguro en el embarazo. Además, se debe evitar realizar pruebas de provocación bronquial hasta después del parto."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "Mujer de 34 años, asma desde la infancia, múltiples hospitalizaciones el último año, rinitis alérgica. Acude a emergencia por disnea intensa, opresión torácica y tos seca de inicio súbito. Usa salbutamol inhalado más de 10 veces al día sin mejoría. PA 140/90, FC 120, FR 32, SatO2 88% aire ambiental. Sibilancias generalizadas, uso de músculos accesorios, dificultad para hablar frases completas. Leucocitos 12,000/mm3 (eosinófilos 6%). AGA: pH 7.28, PaCO2 55 mmHg, PaO2 58 mmHg. Pico de flujo espiratorio <50% del valor personal mejor.",
+      "preguntaMC": {
+        "enunciado": "¿Cómo interpretas la gasometría de esta paciente en el contexto de su crisis asmática?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Alcalosis respiratoria compensatoria esperada — buen signo"
+          },
+          {
+            "id": "b",
+            "texto": "Acidosis respiratoria con PaCO2 elevado — signo de ALARMA, indica fatiga de músculos respiratorios y crisis casi fatal"
+          },
+          {
+            "id": "c",
+            "texto": "Gasometría normal para una crisis asmática"
+          },
+          {
+            "id": "d",
+            "texto": "Acidosis metabólica pura"
+          },
+          {
+            "id": "e",
+            "texto": "Alcalosis metabólica"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "En una crisis asmática típica esperaríamos taquipnea con HIPOCAPNIA (alcalosis respiratoria) por hiperventilación compensatoria. Que esta paciente tenga PaCO2 ELEVADO (55 mmHg, con acidosis) es un signo de extrema gravedad — indica que la musculatura respiratoria ya está fatigada y no logra mantener la hiperventilación compensatoria. Esto define una crisis asmática casi fatal, con riesgo de paro respiratorio inminente."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Cuál sería el manejo inmediato en emergencia para esta paciente, y qué factores podrían explicar el mal control crónico de su asma?",
+        "respuestaModelo": "Manejo inmediato: oxígeno suplementario, salbutamol + ipratropio nebulizados continuos, corticoide sistémico endovenoso, sulfato de magnesio endovenoso (indicado en crisis severas), y evaluación URGENTE para ventilación mecánica dado el patrón de fatiga respiratoria (PaCO2 elevado) — esta paciente está en riesgo de paro respiratorio y debe manejarse en una unidad con capacidad de intubación inmediata. Factores que explican el mal control: uso excesivo de SABA de rescate (>10 veces/día, muy por encima de lo recomendado, y GINA ya no recomienda SABA solo) sin terapia controladora adecuada de base (ICS), múltiples hospitalizaciones previas (marcador de asma de difícil control), y posible mal apego al ICS de mantenimiento."
+      }
+    },
+    {
+      "nivel": "intermedio",
+      "vineta": "Varón de 19 años, asma diagnosticada a los 8 años, actualmente usa salbutamol 'cuando lo necesita' sin ningún tratamiento diario. Refiere síntomas 4-5 veces por semana, sin despertares nocturnos frecuentes, buena tolerancia al ejercicio. Nunca ha sido hospitalizado.",
+      "preguntaMC": {
+        "enunciado": "Según el enfoque actual de GINA, ¿cuál es el manejo MÁS apropiado para este paciente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Continuar solo con salbutamol de rescate, ya que no ha sido hospitalizado"
+          },
+          {
+            "id": "b",
+            "texto": "Iniciar ICS-formoterol a dosis bajas según necesidad, sin necesidad de terapia diaria"
+          },
+          {
+            "id": "c",
+            "texto": "Solo indicar evitar desencadenantes, sin medicación"
+          },
+          {
+            "id": "d",
+            "texto": "Corticoide oral de mantenimiento de entrada"
+          },
+          {
+            "id": "e",
+            "texto": "Aumentar directamente a dosis altas de ICS-LABA"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "GINA ya NO recomienda SABA solo para ningún paciente con asma, sin importar la frecuencia de síntomas o si nunca ha sido hospitalizado — el riesgo de exacerbación grave existe incluso en pacientes con síntomas 'poco frecuentes'. El tratamiento preferido en el Paso 1-2 es ICS-formoterol a dosis bajas según necesidad (Vía 1), que reduce exacerbaciones graves en dos tercios comparado con SABA solo, sin necesitar terapia diaria obligatoria — es ideal para un paciente con esta adherencia irregular."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Este paciente probablemente seguirá usando su inhalador 'solo cuando lo necesita' independientemente de lo que le indiques. ¿Por qué el esquema ICS-formoterol según necesidad es especialmente adecuado para su perfil, comparado con indicarle ICS diario + SABA de rescate?",
+        "respuestaModelo": "Porque el ICS-formoterol según necesidad no depende de que el paciente tome una medicación DIARIA para tener el componente antiinflamatorio — cada vez que usa su inhalador de rescate (que de todas formas iba a usar por sus síntomas), automáticamente también está recibiendo ICS. Esto resuelve directamente el problema de mala adherencia a un tratamiento diario, que es extremadamente común en pacientes con síntomas infrecuentes que no ven la necesidad de tomar medicación todos los días — el estudio muestra que este esquema reduce exacerbaciones graves incluso en pacientes con este patrón de uso irregular."
+      }
+    }
+  ]
+},
   {
     "id": "bronquitis-bronquiectasias",
     "nombre": "Bronquitis aguda, bronquitis crónica y bronquiectasias",
