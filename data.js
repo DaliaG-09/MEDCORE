@@ -3424,234 +3424,472 @@ const ENFERMEDADES = [
   ]
 },
   {
-    "id": "enfermedades-pleurales",
-    "nombre": "Enfermedades Pleurales: Neumotórax, Hemotórax, Derrame Pleural y Empiema",
-    "area": "Neumología",
-    "semanas": [
-      "semana-02"
+  "id": "enfermedades-pleurales",
+  "nombre": "Enfermedades Pleurales: Neumotórax, Hemotórax, Derrame Pleural y Empiema",
+  "area": "Neumología",
+  "semanas": [
+    "semana-02"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1m1Q3nrQFTUc3sp64E6D8dqZGoh5a19p3/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_2_SESIÓN-5-TEMA-3: Enfermedades Pleurales"
+  },
+  "relacionadas": [
+    {
+      "id": "tuberculosis-pulmonar",
+      "relacion": "El derrame pleural tuberculoso es una presentación extrapulmonar frecuente — confirmado por ADA elevado"
+    },
+    {
+      "id": "neumonia-nac",
+      "relacion": "El derrame paraneumónico y el empiema son complicaciones directas de una neumonía mal resuelta"
+    }
+  ],
+  "profundo": {
+    "definicion": "Esta clase agrupa 4 entidades del espacio pleural: <strong>Neumotórax</strong> — acumulación de aire extrapulmonar dentro del tórax, por fuga de aire desde el pulmón. <strong>Hemotórax</strong> — presencia de SANGRE en la cavidad pleural. <strong>Derrame pleural</strong> — acumulación anormal de LÍQUIDO entre las dos hojas pleurales. <strong>Empiema</strong> — acumulación de PUS en el espacio pleural (del griego 'empyein' = meter pus), la forma más grave de derrame paraneumónico.",
+    "epidemiologia": "Neumotórax espontáneo: incidencia de 4 por 100,000 hombres y 1.1 por 100,000 mujeres. Empiema: complica 30-50% de las neumonías en niños, con duplicación de casos en menores de 2 años entre 1996-2007 pese a la disminución general de neumonía bacteriana. <span class=\"fuente-ampliada\">Las causas más frecuentes de derrame pleural (90% de los casos) son de origen cardíaco, infeccioso (tuberculoso y paraneumónico), y canceroso.</span>",
+    "etiologiaFactoresRiesgo": [
+      "Neumotórax primario: ruptura espontánea de bullas subpleurales — adolescentes altos y delgados (más varones), consumo de tabaco/marihuana/cocaína/vapeo, maniobra de Valsalva",
+      "Neumotórax secundario: síndromes genéticos (Birt-Hogg-Dubé, Marfan, Ehlers-Danlos), enfermedades pulmonares (fibrosis quística, asma), infecciones (neumonía estafilocócica, TB), neumotórax catamenial (relacionado a la menstruación)",
+      "Neumotórax traumático: penetrante o contuso; iatrogénico (toracotomía/toracoscopía, traqueostomía, ventilación mecánica, terapia de alto flujo, colocación de línea subclavia)",
+      "Hemotórax: trauma torácico, iatrogénico",
+      "Derrame pleural trasudado: insuficiencia cardíaca, cirrosis, síndrome nefrótico, embolia pulmonar, atelectasia",
+      "Derrame pleural exudado infeccioso: paraneumónico, TB, fúngico, viral, parasitario",
+      "Derrame pleural exudado neoplásico: carcinoma metastásico, linfoma, mesotelioma maligno, cáncer de pulmón/mama"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "alveolar",
-    "relacionadas": [
+    "criteriosDiagnosticos": "Criterios de Light (distinguen exudado de trasudado — un exudado cumple AL MENOS 1 de los 3, un trasudado no cumple ninguno): (1) Proteínas líquido pleural/suero >0.5, (2) LDH líquido pleural/suero >0.6, (3) LDH pleural >2/3 del límite superior normal sérico. Empiema/DPN complicado: pH<7.2, glucosa<60mg/dL, LDH muy elevada, aspecto turbio/purulento, predominio neutrofílico.",
+    "fisiopatologia": {
+      "resumen": "El pulmón se mantiene expandido gracias al equilibrio de presión negativa intrapleural. En el NEUMOTÓRAX, el aire rompe ese equilibrio y el pulmón colapsa — en el neumotórax A TENSIÓN, la fuga continua genera presión POSITIVA creciente que comprime el pulmón y desplaza el mediastino (emergencia). En el DERRAME PARANEUMÓNICO/EMPIEMA, existe una progresión en 3 etapas bien definidas que explica por qué el manejo cambia según la etapa.",
+      "cascada": [
+        {
+          "paso": "Etapa exudativa (DPN simple)",
+          "detalle": "Líquido pleural transparente, de flujo libre, con recuento bajo de leucocitos — pleuritis e inflamación inicial sin acumulación significativa"
+        },
+        {
+          "paso": "Etapa fibrinopurulenta (DPN complicado)",
+          "detalle": "Depósito de fibrina y material purulento; formación de tabiques y bandas de fibrina; ambiente PROCOAGULANTE"
+        },
+        {
+          "paso": "Fase organizativa",
+          "detalle": "Establecimiento de una CORTEZA fibrosa que puede comprimir el pulmón y causar enfermedad pulmonar restrictiva crónica"
+        },
+        {
+          "paso": "Cambio bioquímico progresivo",
+          "detalle": "A medida que avanzan las etapas: la GLUCOSA disminuye, el pH disminuye, y la LDH aumenta — este patrón bioquímico es lo que usas para saber en qué etapa está el paciente"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/pleurales/pleural-neumotorax-diagnostico.jpg",
+          "caption": "Diagnóstico del neumotórax espontáneo — 3 modalidades (de tu clase)",
+          "explicacion": "Izquierda: radiografía de tórax — la modalidad FUNDAMENTAL, donde buscas la línea pleural visceral separada de la pared torácica, con ausencia de trama vascular periférica a esa línea. Centro: TC de tórax — mira las flechas blancas señalando el neumotórax (área oscura sin trama pulmonar) junto a bullas subpleurales, que la TC identifica mejor que la Rx cuando hay patología subyacente. Derecha: ultrasonido — herramienta complementaria muy útil en emergencias, donde la ausencia del 'deslizamiento pleural' normal (lung sliding) sugiere neumotórax en tiempo real, sin necesidad de trasladar al paciente a radiología."
+        },
+        {
+          "src": "assets/pleurales/pleural-hemotorax-rx.jpg",
+          "caption": "Radiografía de hemotórax (de tu clase)",
+          "explicacion": "Nota la opacificación difusa del hemitórax — a diferencia de un derrame simple, el hemotórax en un paciente con trauma requiere pensar SIEMPRE en el volumen de sangrado (por eso las indicaciones de toracotomía urgente se basan en volumen: >1500mL inicial, o >200mL/hora por 3 horas) y no solo en la imagen. La radiografía confirma la presencia de líquido, pero NO te dice si es sangre — el diagnóstico definitivo de hemotórax es por el ASPECTO del líquido en la toracocentesis/tubo torácico (hematocrito del líquido pleural >50% del hematocrito sérico confirma hemotórax verdadero)."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">El motivo por el que la glucosa BAJA y el pH BAJA a medida que el derrame paraneumónico progresa hacia empiema es metabólico: las bacterias y los neutrófilos activados consumen glucosa por glucólisis anaeróbica en ese ambiente pobre en oxígeno, generando ácido láctico como subproducto — por eso el pH cae. La LDH sube porque refleja directamente la destrucción celular (de neutrófilos y bacterias) que ocurre en ese ambiente hostil. Estos 3 números juntos (glucosa baja + pH bajo + LDH alta) son, en esencia, una fotografía bioquímica de cuánta destrucción celular activa está ocurriendo en el espacio pleural en ese momento.</span>"
+    },
+    "clinica": [
       {
-        "id": "neumonia-nac",
-        "relacion": "El derrame paraneumónico es una complicación frecuente de la NAC (hasta 40% de las neumonías bacterianas hospitalizadas) — puede evolucionar a empiema si no se trata"
+        "signo": "Disnea, dolor torácico, cianosis (neumotórax)",
+        "detallePPT": "Inicio generalmente ABRUPTO",
+        "mecanismo": "Colapso pulmonar agudo con pérdida de superficie funcional de intercambio gaseoso"
+      },
+      {
+        "signo": "Astenia y adelgazamiento (derrame pleural)",
+        "detallePPT": "Síntoma común, sugiere cronicidad/etiología sistémica",
+        "mecanismo": "Estado catabólico crónico según etiología de base (neoplasia, TB, insuficiencia cardiaca)"
+      },
+      {
+        "signo": "Fiebre (derrame/empiema)",
+        "detallePPT": "Sugiere origen INFECCIOSO",
+        "mecanismo": "Respuesta inflamatoria sistémica a la infección pleural"
+      },
+      {
+        "signo": "Dolor torácico pleurítico de inicio súbito",
+        "detallePPT": "Bloquea la respiración, causa tos dolorosa que aumenta con cambios de posición",
+        "mecanismo": "Irritación aguda de la pleura parietal, muy inervada (a diferencia de la visceral)"
+      },
+      {
+        "signo": "Dificultad respiratoria + malestar general (empiema)",
+        "detallePPT": "Presentación clínica del derrame paraneumónico",
+        "mecanismo": "Compromiso mecánico del volumen pulmonar + respuesta sistémica a la infección purulenta"
       }
     ],
-    "profundo": {
-      "definicion": "Grupo de condiciones que comparten la afectación del espacio pleural, el espacio virtual entre la pleura visceral y parietal. El neumotórax es la acumulación de aire en ese espacio; el hemotórax, de sangre; el derrame pleural, de líquido (trasudado o exudado); y el empiema es un derrame pleural infectado con pus franco.",
-      "epidemiologia": "El neumotórax espontáneo primario tiene una incidencia de 4 por 100,000 hombres y 1.1 por 100,000 mujeres, típicamente en varones jóvenes altos y delgados. El derrame paraneumónico complica hasta 40% de las neumonías bacterianas que requieren hospitalización.",
-      "etiologiaFactoresRiesgo": [
-        "Neumotórax primario: ruptura espontánea de bullas subpleurales en varones jóvenes altos y delgados, tabaquismo/vapeo, maniobra de Valsalva",
-        "Neumotórax secundario: enfermedad pulmonar de base (EPOC, fibrosis quística, asma), síndromes genéticos (Marfan, Ehlers-Danlos, Birt-Hogg-Dubé)",
-        "Derrame pleural — trasudado: insuficiencia cardiaca, cirrosis, síndrome nefrótico (alteración de presiones hidrostática/oncótica, pleura no enferma)",
-        "Derrame pleural — exudado: neumonía (paraneumónico), tuberculosis, neoplasia (pleura inflamada o infiltrada)",
-        "Hemotórax: trauma torácico, iatrogenia (procedimientos), rotura de aneurisma",
-        "Empiema: derrame paraneumónico no tratado que se sobreinfecta"
-      ],
-      "fisiopatologia": {
-        "resumen": "El espacio pleural normal tiene presión negativa que mantiene el pulmón expandido pegado a la pared torácica. Cualquier proceso que introduzca aire, líquido o sangre en ese espacio rompe ese equilibrio de presión negativa, permitiendo que el pulmón colapse en mayor o menor grado.",
-        "explicacionExtendida": "En el neumotórax, la entrada de aire al espacio pleural elimina la presión negativa que normalmente 'pega' el pulmón a la pared torácica, permitiendo que el pulmón se retraiga por su propia elasticidad — el grado de colapso depende de cuánto aire haya entrado. La variante más peligrosa es el neumotórax a tensión: aquí existe un mecanismo de válvula unidireccional que permite que entre aire al espacio pleural con cada inspiración pero no permite que salga, generando una presión positiva progresivamente creciente que no solo colapsa el pulmón ipsilateral sino que empuja el mediastino hacia el lado contrario, comprimiendo el pulmón sano y acodando las venas cavas — esto compromete el retorno venoso al corazón y puede llevar a shock obstructivo en minutos si no se descomprime de urgencia.\n\nEn el derrame pleural, la clave fisiopatológica está en distinguir trasudado de exudado, porque apuntan a mecanismos completamente distintos. El trasudado ocurre cuando las presiones hidrostática y oncótica sistémicas están alteradas (por ejemplo, insuficiencia cardiaca que eleva la presión hidrostática capilar, o cirrosis/síndrome nefrótico que bajan la presión oncótica por hipoalbuminemia) — la pleura en sí está sana, simplemente 'rezuma' líquido por el desequilibrio de presiones a distancia. El exudado, en cambio, refleja una pleura enferma: inflamación (neumonía), infiltración tumoral, o aumento de la permeabilidad capilar local — por eso los criterios de Light comparan las proteínas y LDH del líquido pleural con las del suero, para diferenciar si el problema es sistémico (trasudado) o local en la pleura misma (exudado). El empiema es la evolución de un derrame paraneumónico no resuelto: las bacterias colonizan el líquido pleural, se organiza pus franco, y con el tiempo se pueden formar loculaciones fibrosas que dificultan el drenaje simple.",
-        "cascada": [
+    "examenFisico": [
+      "Neumotórax: disminución marcada de ruidos respiratorios, nota TIMPÁNICA a la percusión, desplazamiento de tráquea/laringe/corazón (si es a tensión)",
+      "Derrame pleural — Tríada pleurítica: disminución/abolición del murmullo vesicular + disminución/abolición de vibraciones vocales + matidez franca ('matidez de madera')"
+    ],
+    "semiologia": {
+      "inspeccion": "Neumotórax a tensión: desviación traqueal visible, distensión venosa yugular, dificultad respiratoria con retracciones — signos de una EMERGENCIA que no espera estudios de imagen.",
+      "palpacion": "Frémito vocal DISMINUIDO en derrame pleural (el líquido interpuesto entre pulmón y pared absorbe las vibraciones) — y también disminuido en neumotórax (el aire tampoco transmite bien el sonido). Expansión torácica asimétrica, menor en el lado afectado en ambos casos.",
+      "percusion": "Neumotórax: hiperresonancia/TIMPANISMO (aire libre = más resonante que el pulmón normal). Derrame pleural/hemotórax/empiema: MATIDEZ franca ('matidez de madera' — el líquido no deja pasar el sonido). Esta es la diferencia semiológica clave entre ambos grupos de patología pleural.",
+      "auscultacion": "Ambos grupos comparten: disminución/abolición del murmullo vesicular. La diferencia está en la percusión (timpanismo en neumotórax vs. matidez en derrame/hemotórax/empiema) — por eso la TRÍADA completa (auscultación + palpación + percusión) siempre se evalúa junta, nunca un solo hallazgo aislado."
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "🧪 Criterios de Light — Exudado vs Trasudado",
+        "contexto": "Se aplican al líquido pleural obtenido por toracocentesis. Un exudado cumple AL MENOS 1 de los 3 criterios; un trasudado no cumple NINGUNO.",
+        "columnas": [
+          "Criterio",
+          "Trasudado",
+          "Exudado"
+        ],
+        "filas": [
+          [
+            "Proteínas LP/suero",
+            "< 0.5",
+            "> 0.5"
+          ],
+          [
+            "LDH LP/suero",
+            "< 0.6",
+            "> 0.6"
+          ],
+          [
+            "Aspecto",
+            "Transparente",
+            "Serofibrinoso"
+          ],
+          [
+            "Células",
+            "< 500/mL",
+            "> 1000/mL"
+          ],
+          [
+            "Glucosa",
+            "≥ 60 mg/dL",
+            "< 60 mg/dL"
+          ]
+        ],
+        "nota": "El trasudado es 'mecánico' (permeabilidad capilar normal — el problema es de presión, no de inflamación); el exudado es 'inflamatorio' (permeabilidad capilar alterada)."
+      },
+      {
+        "titulo": "⚡ Etapas del derrame paraneumónico/empiema",
+        "columnas": [
+          "Etapa",
+          "Característica"
+        ],
+        "filas": [
+          [
+            "Previa a la acumulación",
+            "Pleuritis inicial sin líquido significativo"
+          ],
+          [
+            "Exudativa (DPN simple)",
+            "Líquido transparente, flujo libre, leucocitos bajos"
+          ],
+          [
+            "Fibrinopurulenta (DPN complicado)",
+            "Fibrina + pus, tabiques, ambiente procoagulante"
+          ],
+          [
+            "Organizativa",
+            "Corteza fibrosa — riesgo de restricción pulmonar crónica"
+          ]
+        ],
+        "nota": "A medida que avanza: glucosa↓, pH↓, LDH↑ — este patrón bioquímico define la etapa, no solo el aspecto macroscópico."
+      },
+      {
+        "titulo": "🚨 Indicaciones de toracotomía urgente en hemotórax",
+        "columnas": [
+          "Criterio"
+        ],
+        "filas": [
+          [
+            "Inestabilidad hemodinámica"
+          ],
+          [
+            "Salida inicial de 1,500 mL por tubo torácico"
+          ],
+          [
+            "Más de 1,500 mL durante 24 horas"
+          ],
+          [
+            "Más de 200 mL/hora durante 3 horas consecutivas"
+          ]
+        ],
+        "nota": "Sin tratar, un hemotórax retenido evoluciona a empiema en el 26% de los casos — la evacuación puede ser incompleta hasta en el 20%."
+      }
+    ],
+    "diagnostico": "Neumotórax: Rx de tórax (fundamental, vistas espiratorias acentúan el contraste); TC si sospecha con Rx no concluyente o para ver patología subyacente (no recomendada de rutina, baja sensibilidad relativa a su costo); ecografía complementaria en emergencias. Derrame pleural: Rx de tórax detecta desde 150cm³ en proyección frontal y 75cm³ en lateral (límite superior = curva de Ellis-Damoiseau); ecografía detecta desde 3-5mL, ideal en tiempo real, guía procedimientos (aumenta éxito de toracocentesis a 97%); TC más útil tras evacuación completa del derrame. Toracocentesis: primer procedimiento diagnóstico (análisis macroscópico, bioquímico, citológico, microbiológico). Biopsia pleural percutánea: 70% de rentabilidad en TB, 50% en cáncer. Toracoscopía médica: 95% de rendimiento en TB y cáncer metastásico pleural, indicada cuando citología es negativa en exudado de causa desconocida.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Sospecha por examen físico: ¿timpanismo (neumotórax) o matidez (derrame/hemo/empiema)?"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Confirmar con radiografía de tórax ± ecografía"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Es líquido (no aire)?",
+        "salidas": [
           {
-            "paso": "Factor desencadenante",
-            "detalle": "Ruptura de bulla subpleural (neumotórax), inflamación pleural por neumonía adyacente (derrame paraneumónico), o trauma (hemotórax)"
+            "etiqueta": "SÍ — líquido",
+            "texto": "Toracocentesis diagnóstica → aplicar criterios de Light",
+            "color": "coral"
           },
           {
-            "paso": "Cambio estructural",
-            "detalle": "Pérdida de la presión negativa pleural normal por entrada de aire, líquido o sangre al espacio pleural"
-          },
-          {
-            "paso": "Cambio fisiológico",
-            "detalle": "Colapso parcial o total del pulmón ipsilateral; en neumotórax a tensión, además desplazamiento mediastínico"
-          },
-          {
-            "paso": "Manifestación clínica",
-            "detalle": "Disnea, dolor torácico pleurítico, y hallazgos físicos específicos según el contenido del espacio pleural (timpanismo en neumotórax, matidez en derrame/hemotórax)"
+            "etiqueta": "NO — es aire (neumotórax)",
+            "texto": "Evaluar tamaño y estabilidad hemodinámica → observación, aspiración, o drenaje según tamaño",
+            "color": "mint"
           }
         ]
       },
-      "clinica": [
-        {
-          "signo": "Disnea de inicio súbito + dolor torácico pleurítico (neumotórax)",
-          "mecanismo": "Colapso pulmonar agudo que reduce la superficie de intercambio gaseoso disponible"
-        },
-        {
-          "signo": "Desviación traqueal contralateral + hipotensión (neumotórax a tensión)",
-          "mecanismo": "Presión positiva intrapleural progresiva que desplaza el mediastino y compromete el retorno venoso"
-        },
-        {
-          "signo": "Disnea progresiva con derrame pleural extenso",
-          "mecanismo": "Compresión pulmonar por el líquido acumulado, reduciendo el volumen pulmonar funcional"
-        }
-      ],
-      "examenFisico": [
-        "Neumotórax: hiperresonancia/timpanismo a la percusión, murmullo vesicular abolido, expansión torácica disminuida",
-        "Derrame pleural: matidez a la percusión, murmullo vesicular abolido, frémito vocal disminuido",
-        "Neumotórax a tensión: además, desviación traqueal, ingurgitación yugular, hipotensión"
-      ],
-      "semiologia": {
-        "inspeccion": "Busca asimetría en la expansión torácica, uso de músculos accesorios, y en el neumotórax a tensión, desviación visible de la tráquea hacia el lado sano e ingurgitación yugular por el compromiso del retorno venoso.",
-        "palpacion": "Expansión torácica disminuida en el lado afectado en ambas condiciones. El frémito vocal está DISMINUIDO en ambas (aire o líquido conducen peor las vibraciones que el tejido pulmonar sano) — por eso el frémito NO ayuda a diferenciarlas; la clave está en la percusión.",
-        "percusion": "Este es el hallazgo que SÍ diferencia ambas condiciones: hiperresonancia/timpanismo en el neumotórax (aire = más resonante de lo normal) versus matidez en el derrame pleural o hemotórax (líquido = menos resonante, más 'sólido' al percutir).",
-        "auscultacion": "Murmullo vesicular abolido o muy disminuido sobre la zona afectada en ambas condiciones — el aire o el líquido interpuesto entre el pulmón y el estetoscopio bloquea la transmisión del sonido respiratorio normal."
-      },
-      "diagnostico": "Neumotórax: radiografía de tórax (línea pleural visible separando el pulmón colapsado de la pared torácica); TC no se recomienda de rutina por baja sensibilidad adicional. Derrame pleural: radiografía (borramiento del ángulo costofrénico, signo del menisco) + toracocentesis diagnóstica con análisis del líquido (criterios de Light: es exudado si cumple al menos 1 de: proteínas líquido/suero >0.5, LDH líquido/suero >0.6, o LDH líquido > 2/3 del límite superior normal en suero).",
-      "algoritmo": [
-        {
-          "tipo": "paso",
-          "texto": "Paciente con disnea + dolor torácico pleurítico — sospecha de patología pleural"
-        },
-        {
-          "tipo": "paso",
-          "texto": "Radiografía de tórax urgente"
-        },
-        {
-          "tipo": "decision",
-          "texto": "¿Qué muestra la imagen y cómo está el paciente hemodinámicamente?",
-          "salidas": [
-            {
-              "etiqueta": "Línea pleural + inestabilidad hemodinámica/desviación traqueal",
-              "texto": "Neumotórax a TENSIÓN — descompresión con aguja INMEDIATA, no esperar más estudios",
-              "color": "alert"
-            },
-            {
-              "etiqueta": "Línea pleural, estable",
-              "texto": "Neumotórax simple — observación vs. drenaje según tamaño y síntomas",
-              "color": "coral"
-            },
-            {
-              "etiqueta": "Opacidad con borramiento del ángulo costofrénico",
-              "texto": "Derrame pleural — toracocentesis diagnóstica, aplicar criterios de Light",
-              "color": "cobalt"
-            }
-          ]
-        }
-      ],
-      "diagnosticoDiferencial": [
-        "Tromboembolismo pulmonar (disnea súbita + dolor pleurítico, sin los hallazgos de percusión característicos)",
-        "Infarto agudo de miocardio (dolor torácico, ECG diferencia)",
-        "Neumonía sin derrame asociado"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Neumotórax a tensión: descompresión con aguja de urgencia (2do espacio intercostal, línea medioclavicular) seguida de tubo torácico",
-          "Neumotórax simple pequeño: observación con oxígeno suplementario",
-          "Neumotórax grande o sintomático: drenaje con tubo torácico",
-          "Derrame pleural sintomático grande: toracocentesis terapéutica evacuadora",
-          "Empiema: drenaje torácico obligatorio ± fibrinolíticos intrapleurales si hay loculaciones, considerar cirugía (decorticación) si no resuelve"
-        ],
-        "farmacologico": [
-          "Empiema/derrame paraneumónico complicado: antibióticos dirigidos según cultivo del líquido pleural, igual que en NAC/nosocomial según el contexto de adquisición",
-          "Analgesia para el dolor pleurítico"
+      {
+        "tipo": "decision",
+        "texto": "¿Exudado (cumple algún criterio de Light)?",
+        "salidas": [
+          {
+            "etiqueta": "NO — trasudado",
+            "texto": "Buscar causa sistémica (IC, cirrosis, síndrome nefrótico) — tratar la causa de base",
+            "color": "mint"
+          },
+          {
+            "etiqueta": "SÍ — exudado",
+            "texto": "Evaluar pH/glucosa/aspecto para descartar empiema/DPN complicado",
+            "color": "coral"
+          }
         ]
       },
-      "complicaciones": [
-        "Neumotórax a tensión no tratado: shock obstructivo y paro cardiorrespiratorio",
-        "Empiema no drenado: sepsis, fibrotórax (pulmón atrapado por fibrosis pleural)",
-        "Recurrencia de neumotórax espontáneo (hasta 30-50% tras el primer episodio sin intervención definitiva)"
-      ],
-      "prevencion": "Cese de tabaquismo/vapeo reduce el riesgo de neumotórax espontáneo. El manejo oportuno del derrame paraneumónico (antes de que se infecte) previene la progresión a empiema.",
-      "perlasProfundo": "El frémito vocal NO diferencia neumotórax de derrame pleural (ambos lo disminuyen) — la percusión SÍ los diferencia: timpanismo (neumotórax, más aire) vs. matidez (derrame, más líquido). Este es un punto que se presta a confusión frecuente en el examen físico y en exámenes."
-    },
-    "repaso": {
-      "conceptosClave": [
-        "Neumotórax = aire en espacio pleural; derrame = líquido; hemotórax = sangre; empiema = derrame infectado con pus",
-        "Percusión diferencia neumotórax (timpanismo) de derrame (matidez) — el frémito NO los diferencia",
-        "Neumotórax a tensión = emergencia, descompresión con aguja inmediata"
-      ],
-      "clinica": "Disnea + dolor pleurítico súbito; neumotórax a tensión agrega desviación traqueal e hipotensión.",
-      "diagnostico": "Rx de tórax inicial; toracocentesis + criterios de Light para caracterizar el derrame.",
-      "tratamientoResumen": "Neumotórax a tensión: aguja urgente. Neumotórax simple: observación o tubo torácico según tamaño. Derrame/empiema: toracocentesis ± drenaje según criterios de Light y presencia de infección.",
-      "diferenciales": [
-        {
-          "entidad": "TEP",
-          "clave": "Disnea súbita + dolor pleurítico SIN los hallazgos de percusión característicos de neumotórax/derrame"
-        },
-        {
-          "entidad": "Neumonía sin derrame",
-          "clave": "Matidez presente pero con crépitos y broncofonía en vez de abolición completa del murmullo vesicular"
-        }
-      ],
-      "tablaComparativa": {
-        "titulo": "Neumotórax vs. Derrame pleural",
-        "filas": [
-          [
-            "Percusión",
-            "Timpanismo/hiperresonancia",
-            "Matidez"
-          ],
-          [
-            "Frémito vocal",
-            "Disminuido",
-            "Disminuido (igual, no diferencia)"
-          ],
-          [
-            "Contenido",
-            "Aire",
-            "Líquido (trasudado, exudado, sangre o pus)"
-          ]
+      {
+        "tipo": "decision",
+        "texto": "¿pH<7.2, glucosa<60, aspecto turbio/purulento?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Empiema/DPN complicado → antibiótico IV + DRENAJE pleural obligatorio",
+            "color": "alert"
+          },
+          {
+            "etiqueta": "NO",
+            "texto": "DPN simple → antibiótico, considerar solo observación si derrame pequeño (<1cm)",
+            "color": "coral"
+          }
         ]
       }
-    },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "El neumotórax a tensión es una emergencia clínica — se trata con descompresión con aguja, NO se espera a la radiografía si hay inestabilidad hemodinámica franca",
-        "Percusión diferencia neumotórax (timpanismo) de derrame (matidez); el frémito vocal NO los diferencia (disminuido en ambos)",
-        "Los criterios de Light distinguen exudado de trasudado — esencial para orientar la causa del derrame",
-        "El derrame paraneumónico no tratado puede evolucionar a empiema, que requiere drenaje obligatorio"
+    ],
+    "diagnosticoDiferencial": [
+      "Insuficiencia cardiaca (trasudado bilateral)",
+      "Tromboembolismo pulmonar (puede dar derrame pequeño)",
+      "Neoplasia pleural/mesotelioma",
+      "Pancreatitis (derrame exudativo izquierdo característico)"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Neumotórax pequeño (≤10%): observación, mascarilla con 100% O2, alta en 6-12h si estable",
+        "Neumotórax grande (>15%): catéter pigtail para evacuación",
+        "Neumotórax recurrente: toracoscopia (VATS) como primera opción — extirpación de bullas + pleurodesis (abrasión pleural más segura, pleurectomía apical con menor recurrencia)",
+        "Hemotórax: toracostomía con tubo inicial; VATS temprana (<5 días) reduce estancia hospitalaria y conversión a toracotomía abierta",
+        "Derrame recidivante sintomático: pleurodesis con talco (3-4g estéril, sínfisis pleural exitosa en ~50% espontáneamente) o drenaje torácico tunelizado (DTT) si pulmón 'atrapado' o fracaso de pleurodesis",
+        "Empiema — derrame pequeño (<1cm): puede tratarse SIN drenaje"
       ],
-      "redFlags": [
-        "Desviación traqueal + hipotensión + ingurgitación yugular en paciente con dolor torácico → neumotórax a tensión, actuar de inmediato",
-        "Derrame pleural con pH <7.2 o glucosa muy baja en el líquido → sugiere empiema, requiere drenaje urgente"
-      ],
-      "erroresFrecuentes": [
-        "Esperar la radiografía de tórax antes de descomprimir un neumotórax a tensión clínicamente evidente",
-        "Usar el frémito vocal para diferenciar neumotórax de derrame (no sirve para eso)",
-        "No aplicar los criterios de Light sistemáticamente ante todo derrame pleural nuevo"
-      ],
-      "asociacionesClinicas": [
-        "Varón joven, alto y delgado + dolor torácico súbito → pensar en neumotórax espontáneo primario",
-        "Neumonía que no mejora con antibiótico adecuado + fiebre persistente → sospechar derrame paraneumónico complicado o empiema"
+      "farmacologico": [
+        "Empiema/DPN complicado: antibióticos intravenosos de amplio espectro + drenaje pleural obligatorio",
+        "Desbridamiento químico con fibrinólisis intrapleural (urocinasa, estreptocinasa, tPA) — comparable a VATS como tratamiento inicial, tasa de fracaso 10-16% que requiere cirugía posterior",
+        "Preferencia por tubos torácicos Thal-Quick de 12 Fr con técnica de Seldinger para el drenaje"
       ]
     },
-    "casosClinicos": [
-      {
-        "nivel": "basico",
-        "vineta": "Varón de 22 años, previamente sano, presenta dolor torácico súbito y disnea de inicio brusco tras ejercicio intenso. Al examen: tráquea central, hiperresonancia y ausencia de murmullo vesicular en hemitórax derecho.",
-        "preguntaMC": {
-          "enunciado": "¿Cuál es el diagnóstico más probable y qué lo distingue de un neumotórax a tensión?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "Neumotórax a tensión, porque tiene dolor torácico súbito"
-            },
-            {
-              "id": "b",
-              "texto": "Neumotórax espontáneo primario simple — la tráquea central (no desviada) y la ausencia de compromiso hemodinámico descartan tensión"
-            },
-            {
-              "id": "c",
-              "texto": "Derrame pleural, por la disnea"
-            },
-            {
-              "id": "d",
-              "texto": "Neumonía, por el dolor torácico"
-            }
-          ],
-          "correcta": "b",
-          "explicacion": "El perfil (varón joven, alto/delgado típico, dolor súbito tras esfuerzo) junto con hiperresonancia y murmullo vesicular abolido es compatible con neumotórax. La tráquea CENTRAL (no desviada) es la clave que descarta neumotórax a TENSIÓN — en ese caso, sí esperaríamos desviación traqueal contralateral e inestabilidad hemodinámica."
+    "complicaciones": [
+      "Neumotórax a tensión (emergencia con compromiso hemodinámico)",
+      "Hemotórax retenido → evoluciona a empiema en 26% de los casos si no se trata",
+      "Empiema → corteza fibrosa con enfermedad pulmonar restrictiva crónica",
+      "Complicaciones de toracocentesis: dolor, hemorragia, neumotórax, infección pleural, edema pulmonar de reexpansión",
+      "Pulmón 'atrapado' (no expansible) tras derrame crónico no resuelto"
+    ],
+    "prevencion": "Manejo oportuno y completo de neumonías para evitar progresión a derrame paraneumónico complicado/empiema. Drenaje adecuado y completo de hemotórax para evitar su retención y progresión a empiema.",
+    "perlasProfundo": "La diferencia semiológica más rápida entre neumotórax y las otras 3 entidades pleurales está en UN solo hallazgo de percusión: TIMPANISMO (aire = neumotórax) vs. MATIDEZ (líquido = derrame/hemotórax/empiema) — el resto de la tríada (murmullo vesicular y vibraciones vocales, ambos disminuidos) es igual en los 4 casos.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con perfil bioquímico completo del líquido pleural (como el caso real de empiema de tu propia clase) donde debes aplicar los criterios de Light y luego evaluar si hay criterios de complicación.",
+      "ejercicios": [
+        {
+          "tipo": "Aplicar criterios y clasificar (el más frecuente)",
+          "planteamiento": "Líquido pleural: proteínas LP 3.8 g/dL, proteínas séricas 6.5 g/dL, LDH LP 250 U/L, LDH sérica 200 U/L, pH 7.35, glucosa 70 mg/dL. Clasifique y determine si requiere drenaje.",
+          "respuestaModelo": "Cociente proteínas = 3.8/6.5 = 0.58 (>0.5) → ya cumple 1 criterio de Light → EXUDADO (no importa que el cociente de LDH sea 250/200=1.25>0.6, que también lo confirma). NO requiere drenaje obligatorio: pH normal (7.35, no <7.2) y glucosa normal (70, no <60) — es un exudado SIN criterios de complicación, se maneja según la causa de base con antibiótico solo si es infeccioso simple, sin necesidad de drenaje pleural."
         },
-        "preguntaEscrita": {
-          "enunciado": "Si este mismo paciente, minutos después, desarrolla hipotensión y desviación traqueal hacia el lado izquierdo, ¿qué harías de inmediato y por qué no debes esperar la radiografía?",
-          "respuestaModelo": "Realizaría descompresión con aguja de urgencia en el segundo espacio intercostal, línea medioclavicular del lado afectado (derecho), sin esperar confirmación radiológica. Esto se debe a que los signos (hipotensión + desviación traqueal contralateral) indican que el neumotórax simple ha evolucionado a neumotórax a TENSIÓN, una emergencia donde la presión intrapleural creciente compromete el retorno venoso al corazón — cada minuto de retraso aumenta el riesgo de shock obstructivo y paro cardiorrespiratorio, por lo que el diagnóstico y tratamiento deben ser clínicos e inmediatos, no esperar estudios de imagen."
+        {
+          "tipo": "Indique y sustente (semiología)",
+          "planteamiento": "¿Por qué el murmullo vesicular está disminuido TANTO en el neumotórax como en el derrame pleural, si son entidades opuestas (aire vs. líquido)?",
+          "respuestaModelo": "Porque en ambos casos hay algo INTERPUESTO entre el parénquima pulmonar (donde se genera el sonido respiratorio) y el estetoscopio en la pared torácica — en el neumotórax es aire libre, en el derrame es líquido — y ambos actúan como una barrera que atenúa la transmisión del sonido, sin importar de qué esté hecha esa barrera. Por eso el murmullo vesicular disminuido NO distingue entre ambas entidades — necesitas la PERCUSIÓN (timpanismo vs. matidez) para diferenciarlas."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste las 4 indicaciones de toracotomía urgente en hemotórax.",
+          "respuestaModelo": "Inestabilidad hemodinámica, salida inicial de 1,500mL por tubo torácico, más de 1,500mL durante 24 horas, más de 200mL/hora durante 3 horas consecutivas."
         }
-      }
-    
-  
-  ]
+      ]
+    }
   },
+  "repaso": {
+    "conceptosClave": [
+      "4 entidades: neumotórax (aire), hemotórax (sangre), derrame pleural (líquido), empiema (pus) — el espacio pleural es el mismo, el contenido cambia",
+      "Criterios de Light: exudado cumple ≥1 criterio (proteínas/LDH), trasudado no cumple ninguno",
+      "Empiema/DPN complicado: pH<7.2 + glucosa<60 + turbio → SIEMPRE requiere drenaje, no solo antibiótico"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — percusión según entidad",
+      "columnas": [
+        "Entidad",
+        "Percusión",
+        "Manejo inicial"
+      ],
+      "filas": [
+        [
+          "Neumotórax",
+          "Timpanismo",
+          "Según tamaño: observación/aspiración/drenaje"
+        ],
+        [
+          "Derrame/Hemotórax/Empiema",
+          "Matidez",
+          "Toracocentesis diagnóstica primero"
+        ]
+      ],
+      "nota": "El murmullo vesicular está disminuido en LOS 4 — no distingue por sí solo, necesitas la percusión."
+    },
+    "clinica": "Neumotórax: inicio abrupto, disnea+dolor+timpanismo. Derrame: tríada pleurítica (↓MV, ↓vibraciones, matidez).",
+    "diagnostico": "Rx de tórax inicial en todos los casos. Toracocentesis + criterios de Light para caracterizar el líquido.",
+    "tratamientoResumen": "Neumotórax según tamaño. Derrame: tratar causa si trasudado; drenar si empiema/DPN complicado.",
+    "diferenciales": [
+      {
+        "entidad": "TEP",
+        "clave": "Puede dar derrame pequeño asociado, buscar contexto de trombosis"
+      },
+      {
+        "entidad": "Insuficiencia cardiaca",
+        "clave": "Trasudado, frecuentemente bilateral"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Neumotórax vs Derrame pleural",
+      "filas": [
+        [
+          "Contenido",
+          "Aire",
+          "Líquido"
+        ],
+        [
+          "Percusión",
+          "Timpanismo",
+          "Matidez"
+        ],
+        [
+          "Estudio inicial",
+          "Rx de tórax",
+          "Rx + toracocentesis"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cómo se distingue exudado de trasudado? → Criterios de Light: exudado cumple ≥1 de 3 (proteínas/LDH/LDH absoluta), trasudado ninguno",
+      "¿Qué hallazgo de percusión diferencia neumotórax de derrame? → Timpanismo (aire) vs. Matidez (líquido)",
+      "¿Cuándo un derrame paraneumónico requiere drenaje obligatorio? → pH<7.2, glucosa<60, aspecto turbio/purulento (empiema/DPN complicado)",
+      "¿Cuáles son las indicaciones de toracotomía urgente en hemotórax? → Inestabilidad hemodinámica, ≥1500mL inicial, >1500mL/24h, o >200mL/h×3h",
+      "¿Qué estudio tiene mejor rendimiento para TB pleural? → Toracoscopía médica (95%) > biopsia pleural percutánea (70%) > líquido solo",
+      "¿Qué % de hemotórax no tratado evoluciona a empiema? → 26%",
+      "¿La TC es de rutina en sospecha de neumotórax? → NO, baja sensibilidad relativa a su indicación — se reserva para casos específicos"
+    ],
+    "redFlags": [
+      "Desviación traqueal + hipotensión + distensión yugular → neumotórax A TENSIÓN, emergencia",
+      "Empiema no drenado → riesgo de corteza fibrosa y restricción pulmonar crónica permanente",
+      "Hemotórax con salida >200mL/h por 3h → toracotomía urgente"
+    ],
+    "erroresFrecuentes": [
+      "Tratar empiema/DPN complicado solo con antibiótico oral sin drenaje",
+      "Solicitar TC de rutina para todo neumotórax sospechado",
+      "No repetir toracocentesis o considerar biopsia cuando la citología inicial es negativa en exudado de causa incierta",
+      "Confundir matidez con timpanismo al no comparar ambos hemitórax"
+    ],
+    "asociacionesClinicas": [
+      "Neumotórax + varón alto y delgado + fumador → primario espontáneo típico",
+      "Derrame + fiebre + neumonía reciente → sospechar paraneumónico, evaluar progresión a empiema"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "Varón de 22 años, previamente sano, consulta por dolor torácico súbito y disnea de inicio brusco tras ejercicio intenso. Al examen: disminución de la expansión torácica derecha, vibraciones vocales disminuidas en base derecha, percusión con matidez en base derecha, auscultación con abolición del murmullo vesicular basal derecha. Tráquea central.",
+      "imagen": {
+        "src": "assets/taller-imagenes-s2/taller-s2-neumotorax-linea-pleural.jpg",
+        "caption": "Radiografía del caso — línea pleural visible (flechas) separando el pulmón colapsado de la pared torácica"
+      },
+      "preguntaMC": {
+        "enunciado": "¿Cómo describirías esta radiografía y cuál es el diagnóstico?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Línea pleural visible que separa el pulmón colapsado de la pared torácica — neumotórax"
+          },
+          {
+            "id": "b",
+            "texto": "Signo del menisco pleural — derrame pleural"
+          },
+          {
+            "id": "c",
+            "texto": "Infiltrado alveolar con broncograma aéreo — neumonía"
+          },
+          {
+            "id": "d",
+            "texto": "Opacidad cavitada apical — tuberculosis"
+          },
+          {
+            "id": "e",
+            "texto": "Pérdida de volumen con elevación diafragmática — atelectasia"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "Las flechas marcan la línea pleural visceral, desplazada de la pared torácica por el aire acumulado en el espacio pleural — el hallazgo radiológico definitorio del neumotórax. El cuadro clínico (dolor súbito + disnea brusca tras esfuerzo en un varón joven sano) es el escenario típico de un neumotórax espontáneo primario."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Este paciente tiene tráquea central. ¿Qué cambiaría en tu manejo si la tráquea estuviera desviada hacia el lado contralateral, junto con hipotensión?",
+        "respuestaModelo": "Tráquea central + estabilidad hemodinámica es compatible con un neumotórax simple, que puede manejarse de forma más electiva (observación en neumotórax pequeño, o drenaje con tubo torácico en los más grandes). Si en cambio hubiera desviación traqueal contralateral E hipotensión, eso indicaría neumotórax A TENSIÓN — una emergencia real que requiere descompresión con aguja INMEDIATA (2do espacio intercostal, línea medioclavicular) sin esperar ningún estudio de imagen adicional, dado el riesgo de colapso cardiovascular por compresión del retorno venoso."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Varón de 62 años acude a emergencia por disnea progresiva, dolor torácico tipo punzante en hemitórax derecho y fiebre de 38.5°C desde hace 3 días. Antecedentes: diabetes mellitus tipo 2, neumonía hace 1 semana tratada parcialmente con antibióticos orales. Examen: FR 24, matidez a la percusión en base derecha, disminución del murmullo vesicular en hemitórax derecho, egofonía presente. Rx: velamiento del ángulo costofrénico derecho compatible con derrame pleural moderado. Toracocentesis: líquido turbio. Proteínas LP 4.5 g/dL, LDH LP 370 U/L, LDH sérica 180 U/L, glucosa LP 45 mg/dL, pH 7.1, 13,000 leucocitos/mm³ (90% neutrófilos), cultivo pendiente.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál es el diagnóstico más probable y la conducta más apropiada?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Derrame pleural trasudado por insuficiencia cardíaca; iniciar diuréticos"
+          },
+          {
+            "id": "b",
+            "texto": "Derrame pleural paraneumónico complicado (empiema); iniciar antibióticos intravenosos y drenaje pleural"
+          },
+          {
+            "id": "c",
+            "texto": "Neoplasia pleural; solicitar citología y repetir toracocentesis"
+          },
+          {
+            "id": "d",
+            "texto": "Tuberculosis pleural; iniciar tratamiento antituberculoso empírico"
+          },
+          {
+            "id": "e",
+            "texto": "Derrame paraneumónico simple; antibióticos orales y observación"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "Por criterios de Light es EXUDADO: proteínas LP/suero >0.5 (4.5 no es trasudado) y LDH LP/LDH sérica = 370/180 = 2.05 (>0.6), además LDH pleural supera 2/3 del límite superior normal sérico. El contexto clínico (fiebre, disnea, dolor pleurítico tras neumonía tratada parcialmente), el aspecto TURBIO, pH bajo (<7.2), glucosa baja (<60) y predominio neutrofílico (90%) confirman empiema/derrame paraneumónico COMPLICADO — requiere antibióticos IV de amplio espectro + drenaje pleural obligatorio, no solo antibiótico oral. (A) descartada: no hay datos de IC y el líquido es exudado. (C) descartada: el contexto infeccioso es claro. (D) descartada: la TB pleural es más linfocitaria, con pH más alto. (E) descartada: el pH<7.2 y glucosa baja indican complicación que requiere drenaje, no solo antibiótico oral."
+      },
+      "preguntaEscrita": {
+        "enunciado": "El antecedente de 'neumonía tratada PARCIALMENTE con antibióticos orales' es clínicamente relevante. Explica por qué un tratamiento antibiótico incompleto pudo favorecer la progresión hacia este empiema.",
+        "respuestaModelo": "Un tratamiento antibiótico parcial o incompleto puede suprimir parcialmente la infección sin erradicarla completamente, permitiendo que el proceso inflamatorio pulmonar se extienda hacia el espacio pleural adyacente sin ser controlado a tiempo. Esto le da margen a la infección para progresar a través de las 3 etapas del derrame paraneumónico (exudativa → fibrinopurulenta → organizativa) sin la presión antibiótica adecuada para detenerla en la fase inicial simple, resultando en la acumulación de material purulento con las alteraciones bioquímicas características (pH bajo, glucosa baja, LDH alta) que definen el empiema establecido."
+      }
+    }
+  ]
+},
   {
     "id": "enfermedades-respiratorias-ocupacionales",
     "nombre": "Enfermedades Respiratorias Ocupacionales",
