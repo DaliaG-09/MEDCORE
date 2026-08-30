@@ -4132,252 +4132,381 @@ const ENFERMEDADES = [
     ]
   },
   {
-    "id": "epid",
-    "nombre": "Enfermedad Pulmonar Intersticial Difusa (EPID)",
-    "area": "Neumología",
-    "semanas": [
-      "semana-03"
+  "id": "epid",
+  "nombre": "Enfermedad Pulmonar Intersticial Difusa (EPID)",
+  "area": "Neumología",
+  "semanas": [
+    "semana-03"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1ULPtHdlxiuEf_b-PCOsELDj3Uh7bnEDp/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_3_SESIÓN-8-TEMA-2: Enfermedad Pulmonar Intersticial Difusa"
+  },
+  "relacionadas": [
+    {
+      "id": "epoc",
+      "relacion": "Ambas cursan con disnea crónica progresiva, pero se distinguen por el patrón espirométrico: obstructivo (EPOC) vs. restrictivo (EPID)"
+    }
+  ],
+  "profundo": {
+    "definicion": "Grupo HETEROGÉNEO de enfermedades que afectan predominantemente al intersticio pulmonar, aunque también pueden comprometer parénquima, vasos y vías respiratorias periféricas. Se caracterizan por inflamación y/o fibrosis progresiva que compromete la función respiratoria — enfermedades fibrosantes con limitación reversible o no de la capacidad de intercambio gaseoso, por causas conocidas o desconocidas. <span class=\"fuente-ampliada\">El nombre 'intersticial' puede ser engañoso: aunque el intersticio es el sitio predominante de daño, la enfermedad casi siempre también compromete el epitelio alveolar y el endotelio vascular adyacente — no es una enfermedad aislada de un solo compartimento anatómico.</span>",
+    "epidemiologia": "Las EPID más frecuentes son la fibrosis pulmonar idiopática (FPI) y la sarcoidosis, que en conjunto representan aproximadamente el 50% de todos los casos. Existen diferencias notables entre países: menor frecuencia de sarcoidosis en España, y menor frecuencia de EPID asociada a enfermedad del tejido conectivo (CTD) en Alemania y registros griegos — lo que sugiere factores genéticos/ambientales/de referencia diagnóstica distintos según la región.",
+    "etiologiaFactoresRiesgo": [
+      "Edad 20-40 años: más frecuentes sarcoidosis, histiocitosis X, asociadas a enfermedades del colágeno, y linfangioleiomiomatosis",
+      "Edad >50 años: predomina la fibrosis pulmonar idiopática (FPI)",
+      "Sexo femenino: más frecuentes las EPID asociadas a enfermedades del colágeno; la linfangioleiomiomatosis es EXCLUSIVA de mujeres",
+      "Antecedentes familiares: puede haber historia hereditaria en FPI, microlitiasis alveolar, neurofibromatosis, sarcoidosis, esclerosis tuberosa",
+      "Tabaquismo: asociado a neumonía intersticial descamativa (NID), bronquiolitis respiratoria, histiocitosis X — pero ocurre lo CONTRARIO con sarcoidosis y alveolitis alérgica extrínseca (el tabaco parece ser protector en estas)",
+      "Fármacos: quimioterápicos (busulfán, bleomicina, metotrexato), antibióticos (nitrofurantoína), miscelánea (sales de oro, amiodarona, difenilhidantoína, procainamida)",
+      "Exposición ocupacional: agentes orgánicos → alveolitis alérgica extrínseca; polvos inorgánicos → neumoconiosis (como el caso de tu clase: amianto, carbón activado, polvo de celulosa)",
+      "Radioterapia torácica previa",
+      "Enfermedades sistémicas: colagenosis (LES, AR, esclerosis sistémica, síndrome de Sjögren, polimiositis/dermatomiositis) y otras (sarcoidosis, vasculitis, carcinomatosis linfangítica)"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "alveolar",
-    "relacionadas": [
+    "criteriosDiagnosticos": "El diagnóstico a menudo se realiza mediante una COMBINACIÓN de características clínicas, fisiopatológicas, inmunológicas y de imágenes (TC) — evaluación multidisciplinaria (neumólogo, radiólogo, patólogo). Para un diagnóstico preciso, puede ser necesaria biopsia pulmonar quirúrgica con examen histológico si la TCAR no es concluyente. Criterios de progresión (ATS/ERS 2022) para EPID no-FPI: disminución de CVF ≥10%, aumento de disnea, empeoramiento radiológico en TCAR.",
+    "fisiopatologia": {
+      "resumen": "El intersticio pulmonar NORMAL es un espacio VIRTUAL entre la membrana basal del epitelio alveolar y el epitelio capilar — casi no existe como estructura visible. En la EPID, este espacio se llena patológicamente con: células inflamatorias, células epiteliales hiperplásicas, depósito de colágeno, proliferación de músculo liso, células malignas, granulomas, o fibras de amiloide (según la etiología específica) — por acumulación excesiva de células de distintas fuentes (mesenquimal, epitelial, inflamatoria) y productos de curación de heridas y matriz extracelular.",
+      "cascada": [
+        {
+          "paso": "Intersticio normal",
+          "detalle": "Espacio virtual entre membrana basal del epitelio alveolar y el epitelio capilar — prácticamente no ocupa volumen"
+        },
+        {
+          "paso": "Injuria inicial",
+          "detalle": "Causa conocida (fármaco, exposición ocupacional, enfermedad del tejido conectivo) o desconocida (idiopática) daña el epitelio alveolar"
+        },
+        {
+          "paso": "Acumulación patológica",
+          "detalle": "Células inflamatorias + células epiteliales hiperplásicas + depósito de colágeno + proliferación de músculo liso ocupan el espacio intersticial"
+        },
+        {
+          "paso": "Fibrosis progresiva",
+          "detalle": "Productos de curación de heridas y matriz extracelular se acumulan de forma sostenida — el intersticio ya NO es virtual, tiene volumen real"
+        },
+        {
+          "paso": "Compromiso funcional",
+          "detalle": "El intersticio engrosado dificulta la difusión de gases (↓DLCO) y reduce la distensibilidad pulmonar (patrón restrictivo: ↓CVF, ↓volúmenes)"
+        },
+        {
+          "paso": "Manifestación clínica",
+          "detalle": "Disnea progresiva + hipoxemia (inicialmente solo con ejercicio, luego en reposo) + crepitantes tipo Velcro"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/epid/epid-tcar-reticulacion.jpg",
+          "caption": "Reticulación en TCAR — 3 patrones (de tu clase)",
+          "explicacion": "La reticulación es líneas finas entrecruzadas que reflejan engrosamiento del intersticio, y se clasifica según SU UBICACIÓN exacta respecto al lobulillo pulmonar secundario: interlobular (siguiendo los tabiques QUE RODEAN el lobulillo — imagen superior derecha), perilobular (imagen grande de la izquierda, distribución subpleural siguiendo el contorno del lobulillo), e intralobular (DENTRO del lobulillo mismo — imagen inferior derecha, la más fina y densa). Distinguir estos 3 patrones importa porque cada uno se asocia más a ciertas etiologías — por ejemplo, la reticulación intralobular con panalización es más típica del patrón de neumonía intersticial usual (NIU) de la fibrosis pulmonar idiopática."
+        },
+        {
+          "src": "assets/epid/epid-tcar-panalizacion.jpg",
+          "caption": "Panalización (honeycombing) en TCAR",
+          "explicacion": "La panalización es EL hallazgo más específico de fibrosis pulmonar establecida e irreversible — mira los espacios quísticos agrupados de pared gruesa, típicamente SUBPLEURALES y basales, que le dan al pulmón una apariencia de 'panal de abeja' (de ahí el nombre). A diferencia de la reticulación simple (que puede ser parcialmente reversible según la causa), la panalización representa destrucción arquitectural DEFINITIVA del parénquima — es el hallazgo clave que define el patrón de neumonía intersticial usual (NIU), el patrón radiológico del prototipo de EPID progresiva: la fibrosis pulmonar idiopática."
+        },
+        {
+          "src": "assets/epid/epid-tcar-bronquiectasias-traccion.jpg",
+          "caption": "Bronquiectasias por tracción",
+          "explicacion": "Estas NO son bronquiectasias 'verdaderas' (por infección/inflamación de la propia vía aérea, como las que estudiaste en bronquiectasias) — son bronquios dilatados de forma IRREGULAR y ANGULADA porque la fibrosis del parénquima circundante literalmente 'tira' (tracciona) de sus paredes hacia afuera, deformándolos. Es una consecuencia MECÁNICA de la fibrosis retráctil, no una enfermedad primaria de la vía aérea — un dato clave para no confundir esta imagen con bronquiectasias clásicas al interpretar una TC."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">Estos 3 hallazgos (reticulación, panalización, bronquiectasias por tracción) casi siempre aparecen JUNTOS y progresivamente en el mismo paciente con fibrosis establecida — no son 3 enfermedades distintas, son 3 'fotografías' de la misma fibrosis progresiva vista en distintos momentos/grados de severidad: primero reticulación (fibrosis temprana), luego bronquiectasias por tracción (la fibrosis ya deforma estructuras vecinas), y finalmente panalización (destrucción arquitectural terminal). Reconocer los 3 juntos en una TC es lo que define el patrón de neumonía intersticial usual (NIU) característico de la fibrosis pulmonar idiopática.</span>"
+    },
+    "clinica": [
       {
-        "id": "enfermedades-respiratorias-ocupacionales",
-        "relacion": "La neumoconiosis es un subtipo de EPID de causa conocida (ocupacional) — mismo mecanismo final de fibrosis intersticial"
+        "signo": "Disnea y disminución de la tolerancia al ejercicio",
+        "detallePPT": "El síntoma MÁS frecuente — de inicio generalmente gradual, aunque puede ser agudo. El grado de disnea se relaciona con la gravedad y el pronóstico de la enfermedad",
+        "mecanismo": "Engrosamiento intersticial que dificulta la difusión de oxígeno + reducción de la distensibilidad pulmonar (patrón restrictivo)"
       },
       {
-        "id": "epoc",
-        "relacion": "Diagnóstico diferencial clave en disnea crónica progresiva — la EPID tiene patrón RESTRICTIVO en espirometría, el EPOC tiene patrón OBSTRUCTIVO"
+        "signo": "Tos seca",
+        "detallePPT": "Segundo síntoma más frecuente en el examen",
+        "mecanismo": "Estimulación de receptores de la tos por la distorsión de la arquitectura pulmonar y la inflamación intersticial"
+      },
+      {
+        "signo": "Rales tipo 'Velcro' inspiratorios",
+        "detallePPT": ">90% de los casos de FPI; crepitantes simétricos en 60% de EPID asociada a enfermedad del tejido conectivo; menos frecuentes en hipersensibilidad",
+        "mecanismo": "Apertura súbita de pequeñas vías aéreas colapsadas por la fibrosis circundante durante la inspiración — genera el sonido característico similar a separar velcro"
+      },
+      {
+        "signo": "Hipocratismo digital (clubbing)",
+        "detallePPT": "Marcador de enfermedad fibrótica AVANZADA, más frecuente en FPI; raro en sarcoidosis",
+        "mecanismo": "<span class=\"fuente-ampliada\">Mecanismo no completamente esclarecido — se relaciona con hipoxemia crónica y liberación de factores de crecimiento vascular en tejido pulmonar dañado de forma sostenida.</span>"
+      },
+      {
+        "signo": "Sibilancias (menos frecuente)",
+        "detallePPT": "Reflejan bronquiolitis y/o obstrucción bronquial; asociadas a síndrome de Churg-Strauss e hipersensibilidad",
+        "mecanismo": "Estrechamiento de la vía aérea pequeña por el proceso inflamatorio/fibrótico circundante"
       }
     ],
-    "profundo": {
-      "definicion": "Grupo heterogéneo de enfermedades que afectan predominantemente el intersticio pulmonar (el espacio virtual entre la membrana basal del epitelio alveolar y el epitelio capilar), aunque también pueden comprometer el parénquima, los vasos y las vías respiratorias periféricas. Se caracterizan por inflamación y/o fibrosis progresiva que compromete la función respiratoria — con características clínicas, funcionales y radiológicas muy semejantes entre sí a pesar de tener causas distintas.",
-      "epidemiologia": "Las EPID más frecuentes son la fibrosis pulmonar idiopática (FPI) y la sarcoidosis, que juntas representan cerca del 50% de los casos. Existen diferencias importantes entre países: menor frecuencia de sarcoidosis en España, y mayor frecuencia de EPID asociada a enfermedades del tejido conectivo en Alemania y en registros griegos.",
-      "etiologiaFactoresRiesgo": [
-        "Enfermedades del tejido conectivo (artritis reumatoide, esclerosis sistémica, dermatomiositis)",
-        "Exposición ocupacional/ambiental (neumoconiosis, alveolitis por hipersensibilidad)",
-        "Fármacos: quimioterápicos (busulfán, bleomicina, metotrexato), antibióticos (nitrofurantoína), amiodarona",
-        "Radioterapia torácica previa",
-        "Tabaquismo (asociado a neumonía intersticial descamativa, bronquiolitis respiratoria, histiocitosis X — pero relación INVERSA con sarcoidosis y alveolitis alérgica extrínseca)",
-        "Antecedente familiar/hereditario en FPI, esclerosis tuberosa, neurofibromatosis"
-      ],
-      "fisiopatologia": {
-        "resumen": "El intersticio pulmonar normal es solo un espacio virtual delgado entre el epitelio alveolar y el capilar. En la EPID, este espacio se llena progresivamente de células inflamatorias, colágeno depositado en exceso, y en algunos casos granulomas — el resultado es un intersticio engrosado que dificulta físicamente el intercambio gaseoso por difusión.",
-        "explicacionExtendida": "Independientemente de la causa desencadenante (autoinmune, ocupacional, farmacológica o idiopática), el proceso final converge en un patrón común: acumulación excesiva de células de distintas fuentes (mesenquimales, epiteliales, inflamatorias) junto con productos de la 'curación de heridas' — colágeno y matriz extracelular — depositándose en el intersticio pulmonar. Este engrosamiento del intersticio aumenta físicamente la distancia que debe recorrer el oxígeno para difundir desde el alvéolo hasta el capilar, lo que explica por qué la alteración funcional característica es la disminución de la difusión de monóxido de carbono (DLCO) y por qué la hipoxemia empeora notablemente con el ejercicio (el tiempo de tránsito del glóbulo rojo por el capilar se acorta, y ya no alcanza a completar el intercambio a través de un intersticio engrosado).\n\nA diferencia de las enfermedades obstructivas (como el EPOC o el asma, donde el problema es que el aire no puede SALIR bien), en la EPID el problema es que el pulmón se vuelve más rígido y pequeño — de ahí el patrón funcional RESTRICTIVO (disminución de la capacidad vital forzada y de la capacidad pulmonar total, con relación VEF1/FVC conservada o incluso aumentada, a diferencia del EPOC donde esa relación está reducida)."
-      ,cascada: [
-              {
-                      "paso": "Factor desencadenante",
-                      "detalle": "Causa conocida (tejido conectivo, ocupacional, fármacos) o desconocida (idiopática) que lesiona el epitelio alveolar"
-              },
-              {
-                      "paso": "Respuesta celular",
-                      "detalle": "Acumulación de células mesenquimales, epiteliales hiperplásicas e inflamatorias en el intersticio"
-              },
-              {
-                      "paso": "Cambio estructural",
-                      "detalle": "Depósito excesivo de colágeno y matriz extracelular — el intersticio, normalmente un espacio virtual delgado, se engrosa progresivamente"
-              },
-              {
-                      "paso": "Cambio fisiológico",
-                      "detalle": "El intersticio engrosado dificulta la difusión de oxígeno; patrón funcional restrictivo (↓CVF, ↓DLCO)"
-              },
-              {
-                      "paso": "Manifestación clínica",
-                      "detalle": "Disnea progresiva, tos seca, crépitos tipo velcro en bases, hipoxemia que empeora con el ejercicio"
-              }
-      ]
-      },
-      "clinica": [
-        {
-          "signo": "Disnea progresiva de meses a años de evolución + tos seca",
-          "mecanismo": "Fibrosis/inflamación intersticial progresiva que reduce la distensibilidad pulmonar y dificulta la difusión de oxígeno"
-        },
-        {
-          "signo": "Crépitos tipo 'velcro' en ambas bases pulmonares",
-          "mecanismo": "Apertura súbita de alvéolos y vías aéreas pequeñas colapsadas por la fibrosis, al final de la inspiración"
-        },
-        {
-          "signo": "Acropaquia (dedos en palillo de tambor)",
-          "mecanismo": "Hipoxemia crónica sostenida — marcador de enfermedad fibrótica avanzada, presente en >90% de la fibrosis pulmonar idiopática"
-        }
-      ],
-      "examenFisico": [
-        "Crépitos inspiratorios tipo velcro en bases (>90% de FPI, 60% de EPID asociada a tejido conectivo)",
-        "Acropaquia en enfermedad fibrótica avanzada",
-        "Sibilancias infrecuentes — cuando aparecen, sugieren bronquiolitis asociada o síndrome de Churg-Strauss"
-      ],
-      "semiologia": {
-        "inspeccion": "Observa el patrón respiratorio (taquipnea con esfuerzos progresivamente menores), coloración (cianosis en fases avanzadas), y examina las manos buscando acropaquia — un hallazgo que orienta fuertemente a fibrosis avanzada, especialmente FPI.",
-        "palpacion": "Expansión torácica puede estar simétricamente disminuida por la rigidez pulmonar bilateral. No hay hallazgos de asimetría como en el neumotórax o derrame, ya que el compromiso es difuso y bilateral.",
-        "percusion": "Habitualmente normal — la EPID no produce cambios de matidez o hiperresonancia como las enfermedades pleurales, porque el aire y la relación tisular general del pulmón no cambian de forma tan marcada.",
-        "auscultacion": "El hallazgo semiológico más característico y más preguntado: crépitos inspiratorios finos tipo 'velcro' en ambas bases — un sonido muy específico que se diferencia de los crépitos gruesos de la neumonía o insuficiencia cardiaca. Escúchalos al final de la inspiración profunda."
-      },
-      "diagnostico": "El diagnóstico combina características clínicas, funcionales (espirometría con patrón restrictivo: ↓CVF, ↓DLCO), e imagenológicas (TC de alta resolución — TCAR, la piedra angular del diagnóstico). Patrones en TCAR: FPI muestra patrón de neumonía intersticial usual (NIU); la neumonía intersticial no específica (NINE) muestra vidrio esmerilado difuso. En casos no concluyentes, puede requerirse biopsia pulmonar (transbronquial, criobiopsia o quirúrgica) y evaluación multidisciplinaria (neumólogo, radiólogo, patólogo).",
-      algoritmo: [
-            {
-                  "tipo": "paso",
-                  "texto": "Disnea progresiva + tos seca + crépitos tipo velcro en bases — sospecha de EPID"
-            },
-            {
-                  "tipo": "paso",
-                  "texto": "Espirometría: confirmar patrón restrictivo (↓CVF, ↓DLCO, VEF1/FVC normal o aumentado)"
-            },
-            {
-                  "tipo": "paso",
-                  "texto": "TC de alta resolución (TCAR) — estudio clave para caracterizar el patrón"
-            },
-            {
-                  "tipo": "decision",
-                  "texto": "¿Qué muestra la TCAR y la historia clínica?",
-                  "salidas": [
-                        {
-                              "etiqueta": "Patrón NIU + sin causa identificable",
-                              "texto": "Fibrosis pulmonar idiopática (FPI) — iniciar antifibrótico (pirfenidona/nintedanib)",
-                              "color": "alert"
-                        },
-                        {
-                              "etiqueta": "Asociada a enfermedad del tejido conectivo",
-                              "texto": "Inmunosupresores + corticoides según gravedad",
-                              "color": "coral"
-                        },
-                        {
-                              "etiqueta": "Causa ocupacional/ambiental identificada",
-                              "texto": "Es una neumoconiosis — cese de exposición, manejo de soporte",
-                              "color": "mint"
-                        }
-                  ]
-            }
-      ],
-      "diagnosticoDiferencial": [
-        "EPOC (patrón obstructivo, no restrictivo)",
-        "Insuficiencia cardiaca (crépitos también presentes, pero con otros signos de sobrecarga de volumen)",
-        "Neumonía atípica (curso más agudo)",
-        "Enfermedades respiratorias ocupacionales (pueden ser la CAUSA de la EPID, no un diferencial excluyente)"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Rehabilitación pulmonar",
-          "Oxigenoterapia si hay hipoxemia",
-          "Vacunación (neumococo, influenza)",
-          "Considerar trasplante pulmonar en casos avanzados y progresivos",
-          "Cuidados paliativos en fases avanzadas"
-        ],
-        "farmacologico": [
-          "Fibrosis pulmonar idiopática: antifibróticos — pirfenidona o nintedanib",
-          "EPID asociada a enfermedades del tejido conectivo: inmunosupresores (micofenolato, ciclofosfamida, azatioprina) + glucocorticoides según gravedad",
-          "EPID progresiva no FPI: nintedanib aprobado específicamente para el fenotipo progresivo"
-        ]
-      },
-      "complicaciones": [
-        "Insuficiencia respiratoria crónica progresiva",
-        "Hipertensión pulmonar secundaria",
-        "Cor pulmonale",
-        "Mayor riesgo de infecciones respiratorias por función pulmonar comprometida"
-      ],
-      "prevencion": "Evitar exposiciones ocupacionales conocidas (asbesto, sílice), revisar cuidadosamente medicamentos con potencial fibrosante antes de indicarlos en tratamientos prolongados, y control temprano de enfermedades del tejido conectivo para reducir el riesgo de EPID asociada.",
-      "perlasProfundo": "Los criterios de PROGRESIÓN según ATS/ERS 2022 (aplicables a cualquier EPID, no solo FPI) son: disminución de la CVF ≥10%, aumento de la disnea, o empeoramiento radiológico en la TCAR — reconocer este 'fenotipo progresivo' ha cambiado el enfoque terapéutico porque ahora el nintedanib (antes exclusivo de FPI) se usa también en EPID progresiva de otras causas."
+    "examenFisico": [
+      "Crepitantes tipo 'Velcro' en bases pulmonares bilaterales (el hallazgo más característico)",
+      "Hipocratismo digital en enfermedad avanzada",
+      "Puede haber signos de cor pulmonale en fases avanzadas (edemas, si hay hipertensión pulmonar asociada)"
+    ],
+    "semiologia": {
+      "inspeccion": "Busca hipocratismo digital (dedos en palillo de tambor) — marcador de fibrosis avanzada, y signos de trabajo respiratorio con el esfuerzo.",
+      "palpacion": "Sin hallazgos específicos más allá de lo esperado por cualquier proceso pulmonar restrictivo.",
+      "percusion": "Habitualmente normal — la EPID no produce cambios de matidez o hiperresonancia como las enfermedades pleurales, ya que el compromiso es del parénquima/intersticio, no del espacio pleural.",
+      "auscultacion": "El hallazgo semiológico más característico y buscado activamente: crepitantes tipo 'VELCRO' — inspiratorios, finos, simétricos, en ambas BASES pulmonares (por la distribución típicamente basal y subpleural de la fibrosis). Se llaman así porque el sonido recuerda literalmente al de separar dos superficies de velcro — se producen por la apertura súbita de pequeñas vías aéreas que estaban colapsadas por la fibrosis circundante durante la fase inicial de la inspiración."
     },
-    "repaso": {
-      "conceptosClave": [
-        "El intersticio se llena de células/colágeno → engrosamiento → dificulta la difusión de O2",
-        "Patrón funcional RESTRICTIVO (↓CVF, ↓DLCO, VEF1/FVC normal o aumentado) — a diferencia del EPOC (obstructivo)",
-        "TCAR es la piedra angular del diagnóstico"
-      ],
-      "clinica": "Disnea progresiva + tos seca + crépitos tipo velcro en bases + acropaquia en fases avanzadas.",
-      "diagnostico": "Clínica + espirometría restrictiva + TCAR (patrón NIU en FPI, vidrio esmerilado en NINE) ± biopsia.",
-      "tratamientoResumen": "FPI: antifibróticos (pirfenidona/nintedanib). Asociada a tejido conectivo: inmunosupresores + corticoides. Progresiva no-FPI: nintedanib.",
-      "diferenciales": [
-        {
-          "entidad": "EPOC",
-          "clave": "EPID = restrictivo (VEF1/FVC normal); EPOC = obstructivo (VEF1/FVC <0.70)"
-        },
-        {
-          "entidad": "Insuficiencia cardiaca",
-          "clave": "También da crépitos, pero con signos de sobrecarga (ingurgitación yugular, edemas) y respuesta a diuréticos"
-        }
-      ],
-      "tablaComparativa": {
-        "titulo": "EPID vs. EPOC (patrón funcional)",
+    "tablasClinicas": [
+      {
+        "titulo": "🗂️ Clasificación de las EPID",
+        "contexto": "Se dividen en 4 grandes categorías según su etiología — esto ORDENA todo el estudio diagnóstico posterior.",
+        "columnas": [
+          "Categoría",
+          "Ejemplos"
+        ],
         "filas": [
           [
-            "Patrón espirométrico",
-            "Restrictivo",
-            "Obstructivo"
+            "1. EPID de causa conocida",
+            "Asociada a tejido conectivo (AR, esclerosis sistémica, dermatomiositis); ocupacional/ambiental (neumoconiosis, alveolitis por hipersensibilidad); inducida por fármacos o radiación"
           ],
           [
-            "VEF1/FVC",
-            "Normal o aumentado",
-            "Disminuido (<0.70)"
+            "2. EPID idiopáticas",
+            "Fibrosis pulmonar idiopática (FPI — prototipo de EPID progresiva), neumonía intersticial no específica (NINE), neumonía intersticial descamativa (NID), bronquiolitis respiratoria con EPID, neumonía organizada criptogénica (NOC), neumonía intersticial aguda"
           ],
           [
-            "Auscultación",
-            "Crépitos tipo velcro en bases",
-            "Murmullo vesicular disminuido, espiración prolongada"
+            "3. EPID en condiciones especiales",
+            "Asociada a enfermedades hematológicas/trasplante; en inmunodeprimidos"
+          ],
+          [
+            "4. EPID no clasificadas",
+            "—"
           ]
         ]
+      },
+      {
+        "titulo": "🔬 Patrones radiológicos según etiología (TCAR)",
+        "columnas": [
+          "Entidad",
+          "Patrón TCAR característico"
+        ],
+        "filas": [
+          [
+            "Fibrosis pulmonar idiopática (FPI)",
+            "Patrón de neumonía intersticial usual (NIU): reticulación + panalización + bronquiectasias por tracción, basal y subpleural"
+          ],
+          [
+            "Neumonía intersticial no específica (NINE)",
+            "Vidrio esmerilado difuso"
+          ]
+        ],
+        "nota": "El 90% de los casos presentan alteraciones en la radiografía simple al momento del diagnóstico, pero la TCAR es la piedra angular del diagnóstico definitivo."
       }
+    ],
+    "diagnostico": "Espirometría: patrón RESTRICTIVO (↓CVF, ↓DLCO) — en algunos casos puede haber patrón obstructivo asociado. Pletismografía: capacidad pulmonar total y volúmenes disminuidos. DLCO: disminuida. AGA: gradiente A-a aumentado, hipocapnia moderada; hipoxemia e hipercapnia evidentes SOLO en estadios avanzados. Prueba de esfuerzo: hipoxemia y desaturación inducidas por ejercicio. Radiografía de tórax: patrón reticular bilateral (90% alterada al diagnóstico) — patrones posibles: vidrio esmerilado, nodular, reticular, retículonodular, panal de abeja, con disminución del tamaño de los campos pulmonares. TCAR: estándar de oro para caracterizar el patrón (NIU en FPI, vidrio esmerilado difuso en NINE). Laboratorio: serologías autoinmunes (ANA, anti-Scl70, anti-Jo-1), factor reumatoide, ANCA según sospecha clínica. Biopsia pulmonar (transbronquial, criobiopsia, o quirúrgica) si la TCAR no es concluyente.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Disnea progresiva + tos seca + antecedente relevante (exposición ocupacional, fármacos, enfermedad del tejido conectivo) → sospecha EPID"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Examen físico: buscar crepitantes tipo Velcro basales + hipocratismo digital"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Espirometría + DLCO: confirmar patrón restrictivo (↓CVF, ↓DLCO)"
+      },
+      {
+        "tipo": "paso",
+        "texto": "TCAR: caracterizar el patrón radiológico (NIU, vidrio esmerilado, etc.)"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿TCAR concluyente para un patrón específico + contexto clínico coherente?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Diagnóstico establecido por combinación clínico-radiológica, sin necesidad de biopsia",
+            "color": "mint"
+          },
+          {
+            "etiqueta": "NO — TCAR no concluyente",
+            "texto": "Biopsia pulmonar (transbronquial, criobiopsia o quirúrgica) + evaluación multidisciplinaria (neumólogo-radiólogo-patólogo)",
+            "color": "coral"
+          }
+        ]
+      }
+    ],
+    "diagnosticoDiferencial": [
+      "EPOC (patrón obstructivo vs. restrictivo en espirometría)",
+      "Insuficiencia cardiaca congestiva (puede dar crepitantes similares, pero con otros hallazgos de sobrecarga)",
+      "Neumonía atípica de curso prolongado",
+      "Carcinomatosis linfangítica"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Oxigenoterapia si hay hipoxemia",
+        "Rehabilitación pulmonar — parte del manejo integral en todos los tipos de EPID",
+        "Vacunación (neumococo, influenza)",
+        "Considerar trasplante pulmonar en FPI avanzada",
+        "Cuidados paliativos en fases avanzadas"
+      ],
+      "farmacologico": [
+        "FPI: antifibróticos — Pirfenidona o Nintedanib (los fármacos que han cambiado el pronóstico de esta enfermedad)",
+        "EPID asociada a enfermedad del tejido conectivo: inmunosupresores (micofenolato, ciclofosfamida, azatioprina) + glucocorticoides según dosis y duración por gravedad",
+        "EPID progresiva NO-FPI: Nintedanib está aprobado específicamente para el fenotipo progresivo (extensión reciente de indicación más allá de FPI)"
+      ]
     },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "Patrón RESTRICTIVO (↓CVF, ↓DLCO, VEF1/FVC normal) — no lo confundas con el patrón obstructivo del EPOC",
-        "TCAR es el estudio clave; el patrón NIU es característico de FPI",
-        "Crépitos tipo 'velcro' en bases es el hallazgo auscultatorio más característico",
-        "Los antifibróticos (pirfenidona, nintedanib) son el pilar del tratamiento en FPI y EPID progresiva"
-      ],
-      "redFlags": [
-        "Disnea progresiva + acropaquia + crépitos velcro en paciente >50 años → alta sospecha de FPI, derivar a neumología",
-        "Disminución de CVF ≥10% en controles seriados → fenotipo progresivo, cambio de estrategia terapéutica"
-      ],
-      "erroresFrecuentes": [
-        "Confundir el patrón restrictivo de la EPID con el obstructivo del EPOC solo por la disnea crónica compartida",
-        "No indagar antecedente ocupacional, farmacológico o de enfermedad del tejido conectivo en todo paciente con sospecha de EPID",
-        "Asumir que todas las EPID se tratan igual — FPI, asociada a tejido conectivo, y progresiva no-FPI tienen esquemas distintos"
-      ],
-      "asociacionesClinicas": [
-        "EPID + artritis/rigidez articular + Raynaud → sospechar EPID asociada a enfermedad del tejido conectivo",
-        "EPID + antecedente ocupacional (minero, construcción, asbesto) → considerar neumoconiosis como causa de base"
+    "complicaciones": [
+      "Insuficiencia respiratoria crónica progresiva",
+      "Hipertensión pulmonar secundaria (por destrucción del lecho vascular pulmonar)",
+      "Cor pulmonale",
+      "Exacerbación aguda de FPI (deterioro súbito y grave, alta mortalidad)",
+      "Aumento del riesgo de cáncer de pulmón (especialmente en FPI)"
+    ],
+    "prevencion": "Evitar exposiciones ocupacionales conocidas (asbesto, polvos inorgánicos), suspender fármacos causales cuando se identifican a tiempo, cese de tabaquismo (relevante para los subtipos asociados a tabaco), vacunación según esquema.",
+    "perlasProfundo": "El grado de disnea se correlaciona con la gravedad y el PRONÓSTICO de la enfermedad — no es solo un síntoma molesto, es un marcador pronóstico real que debes registrar sistemáticamente en cada consulta de seguimiento, junto con la espirometría (criterio de progresión: caída de CVF ≥10% ya es significativa).",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con historia ocupacional detallada + AGA + espirometría completa (como el caso real de tu propia clase), donde debes reconocer el patrón RESTRICTIVO y descartar el obstructivo pese a antecedentes que podrían confundir (como el tabaquismo).",
+      "ejercicios": [
+        {
+          "tipo": "Reconocer patrón funcional y sustentar (el más frecuente)",
+          "planteamiento": "Espirometría: VEF1/FVC 0.88, FVC 65%, VEF1 60%. ¿Patrón obstructivo o restrictivo? Sustente.",
+          "respuestaModelo": "Patrón RESTRICTIVO. La relación VEF1/FVC de 0.88 está POR ENCIMA de 0.7 (normal o incluso alta), lo que descarta obstrucción — en el patrón obstructivo esta relación estaría DISMINUIDA. Lo que sí está reducido es la FVC (65%, por debajo de 80%), lo que indica una reducción proporcional de todos los volúmenes pulmonares, característico de un proceso restrictivo como la EPID."
+        },
+        {
+          "tipo": "Indique y sustente (imagen)",
+          "planteamiento": "¿Por qué las bronquiectasias por tracción en TCAR NO deben confundirse con bronquiectasias verdaderas al describir una TC?",
+          "respuestaModelo": "Las bronquiectasias por tracción son una consecuencia MECÁNICA de la fibrosis del parénquima circundante que literalmente tira de las paredes bronquiales hacia afuera, deformándolas de forma irregular — no representan una enfermedad primaria de la vía aérea como sí lo son las bronquiectasias verdaderas (causadas por infección/inflamación crónica de la propia pared bronquial). Confundirlas llevaría a un enfoque diagnóstico y terapéutico completamente distinto (buscar causa infecciosa/inflamatoria de vía aérea vs. reconocer que son un signo de fibrosis pulmonar de fondo)."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste los 3 criterios de progresión de EPID según ATS/ERS 2022.",
+          "respuestaModelo": "Disminución de CVF ≥10%, aumento de disnea, empeoramiento radiológico en TCAR."
+        }
       ]
     }
-  ,
-    "casosClinicos": [
-        {
-            "nivel": "avanzado",
-            "vineta": "Varón de 63 años, HTA, exfumador (80 paq/año), trabajó 18 años en fábrica con amianto, carbón activado y polvo de celulosa. Consulta por disnea de 1 año que progresa a grado 3-4 mMRC en los últimos 10 días, con tos y expectoración mucopurulenta. Examen: SatO2 85% ambiental, 90% con FiO2 24%. Rales tipo velcro en ambas bases. Clubbing (acropaquia). AGA: pH 7.43, PaCO2 30.2, PaO2 55.7, HCO3 19.9. Espirometría: VEF1/FVC 0.84, VEF1 80%, FVC 76%, sin respuesta a broncodilatadores.",
-            "preguntaMC": {
-                "enunciado": "¿Qué patrón funcional confirma la espirometría de este paciente?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Patrón obstructivo — típico de EPOC dado el tabaquismo"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "Patrón restrictivo — VEF1/FVC normal-alto (0.84) con ambos volúmenes reducidos, sin respuesta a broncodilatador"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Patrón mixto obstructivo-restrictivo"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Espirometría normal"
-                    },
-                    {
-                        "id": "e",
-                        "texto": "No se puede interpretar sin DLCO"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "El VEF1/FVC de 0.84 (NORMAL o incluso alto) junto con VEF1 y FVC ambos reducidos (80% y 76%) es exactamente el patrón restrictivo característico de EPID — a diferencia del EPOC, donde el VEF1/FVC estaría DISMINUIDO (<0.70). La ausencia de respuesta a broncodilatadores refuerza que no es un componente obstructivo reversible."
-            },
-            "preguntaEscrita": {
-                "enunciado": "Considerando el antecedente laboral de 18 años con amianto, ¿qué diagnóstico específico de EPID sospecharías, y qué hallazgo del examen físico apoya un curso avanzado?",
-                "respuestaModelo": "Con el antecedente de exposición prolongada a amianto (asbesto), sospecharía EPID de causa ocupacional — específicamente asbestosis, que produce fibrosis pulmonar difusa con el mismo patrón restrictivo. El clubbing (acropaquia) presente en el examen es un marcador de enfermedad fibrótica avanzada, presente en más del 90% de los casos de fibrosis pulmonar establecida, y junto con los rales tipo velcro en ambas bases confirma un compromiso intersticial ya significativo, no incipiente."
-            }
-        }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "Grupo heterogéneo unido por el compromiso del intersticio — inflamación y/o fibrosis progresiva",
+      "Patrón restrictivo en espirometría (↓CVF, ↓DLCO) — a diferencia del obstructivo de EPOC/asma",
+      "TCAR es la piedra angular diagnóstica; NIU (reticulación+panalización+bronquiectasias por tracción) = patrón de FPI"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — hallazgo TCAR y su significado",
+      "columnas": [
+        "Hallazgo TCAR",
+        "Significado"
+      ],
+      "filas": [
+        [
+          "Reticulación",
+          "Engrosamiento intersticial — puede ser parcialmente reversible según causa"
+        ],
+        [
+          "Bronquiectasias por tracción",
+          "La fibrosis ya deforma estructuras vecinas — más avanzado"
+        ],
+        [
+          "Panalización",
+          "Destrucción arquitectural DEFINITIVA — el más específico de fibrosis establecida"
+        ]
+      ],
+      "nota": "Los 3 juntos = patrón NIU = prototipo FPI."
+    },
+    "clinica": "Disnea progresiva + tos seca + crepitantes tipo Velcro en bases + hipocratismo digital en fases avanzadas.",
+    "diagnostico": "Espirometría con patrón restrictivo + DLCO disminuida + TCAR (patrón NIU u otro) ± biopsia si no concluyente.",
+    "tratamientoResumen": "FPI: antifibróticos (Pirfenidona/Nintedanib). EPID-tejido conectivo: inmunosupresores+glucocorticoides. Progresiva no-FPI: Nintedanib.",
+    "diferenciales": [
+      {
+        "entidad": "EPOC",
+        "clave": "Patrón OBSTRUCTIVO (no restrictivo) en espirometría"
+      },
+      {
+        "entidad": "Insuficiencia cardiaca",
+        "clave": "Otros signos de sobrecarga de volumen, respuesta a diuréticos"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "EPID vs EPOC (patrón funcional)",
+      "filas": [
+        [
+          "Espirometría",
+          "Restrictivo (↓CVF, ↓DLCO)",
+          "Obstructivo (↓FEV1/FVC)"
+        ],
+        [
+          "Auscultación",
+          "Crepitantes tipo Velcro",
+          "Sibilancias/roncus"
+        ],
+        [
+          "Antecedente típico",
+          "Ocupacional/fármacos/colagenopatía",
+          "Tabaquismo"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Qué patrón espirométrico define la EPID? → Restrictivo (↓CVF, ↓DLCO) — NO obstructivo",
+      "¿Cuál es el hallazgo auscultatorio más característico? → Crepitantes tipo 'Velcro' inspiratorios en bases, presentes en >90% de FPI",
+      "¿Qué 3 hallazgos de TCAR definen el patrón NIU (FPI)? → Reticulación + panalización + bronquiectasias por tracción, de distribución basal/subpleural",
+      "¿Cuáles son los criterios de progresión ATS/ERS 2022? → Caída de CVF≥10%, aumento de disnea, empeoramiento radiológico en TCAR",
+      "¿Cuál es el tratamiento específico de FPI? → Antifibróticos: Pirfenidona o Nintedanib",
+      "¿En qué EPID el tabaquismo es PROTECTOR en vez de factor de riesgo? → Sarcoidosis y alveolitis alérgica extrínseca",
+      "¿Qué enfermedad es EXCLUSIVA de mujeres? → Linfangioleiomiomatosis"
+    ],
+    "redFlags": [
+      "Caída de CVF≥10% en el seguimiento → fenotipo progresivo, replantear manejo",
+      "Hipoxemia en reposo (no solo con ejercicio) → enfermedad avanzada",
+      "Deterioro agudo y grave sobre FPI conocida → exacerbación aguda, alta mortalidad"
+    ],
+    "erroresFrecuentes": [
+      "Confundir bronquiectasias por tracción con bronquiectasias verdaderas (infecciosas)",
+      "Asumir patrón obstructivo cuando en realidad es restrictivo",
+      "No realizar TCAR pensando que la Rx simple es suficiente para caracterizar el patrón",
+      "Iniciar corticoides de rutina en FPI (los antifibróticos son el tratamiento específico, no los corticoides)"
+    ],
+    "asociacionesClinicas": [
+      "EPID + artritis + rigidez matutina → sospechar asociada a artritis reumatoide",
+      "EPID + exposición ocupacional prolongada (asbesto, polvos) → neumoconiosis, como el caso de tu clase"
     ]
   },
+  "casosClinicos": [
+    {
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Varón de 63 años, con antecedentes de HTA esencial, miocardiopatía hipertensiva, tabaquismo crónico no actual (80 paquetes-año), obesidad grado II, quien trabajó 18 años en fábrica de filtros de precipitación con amianto, carbón activado y polvo de celulosa hasta hace 20 años. Consulta por disnea de 1 año de evolución, mMRC grado 2 que progresa a grado 3-4 en los últimos 10 días, con tos y expectoración mucopurulenta. No ortopnea, no disnea paroxística nocturna, no fiebre. Medicación: enalapril 40mg, amlodipino 20mg, furosemida 40mg, clonazepam 0.5mg. Examen: FR 20, FC 84, SatO2 ambiental 85% (con FiO2 24%: 90%), PA 140/80. R1-R2 normofonéticos, no ingurgitación yugular, edemas ++/++++ infrapatelares. Murmullo vesicular conservado, rales 'Velcro' en ambas bases. Clubbing. AGA: pH 7.43, pCO2 30.2, pO2 55.7, HCO3 19.9, SatO2 82.6%. Espirometría: VEF1/FVC 0.84, VEF1 80%, FVC 76%, sin respuesta a broncodilatadores.",
+      "preguntaMC": {
+        "enunciado": "Considerando la historia ocupacional y los hallazgos, ¿cuál es el planteamiento diagnóstico más apropiado?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "EPOC — por el antecedente de tabaquismo de 80 paquetes-año"
+          },
+          {
+            "id": "b",
+            "texto": "EPID de causa ocupacional (neumoconiosis) — por exposición a amianto/polvos + patrón restrictivo + crepitantes Velcro + clubbing"
+          },
+          {
+            "id": "c",
+            "texto": "Insuficiencia cardiaca descompensada — por los edemas infrapatelares"
+          },
+          {
+            "id": "d",
+            "texto": "Asma bronquial de inicio tardío"
+          },
+          {
+            "id": "e",
+            "texto": "Neumonía adquirida en la comunidad"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "La combinación es característica de EPID ocupacional: 18 años de exposición a amianto/carbón activado/polvo de celulosa (neumoconiosis), disnea progresiva, crepitantes tipo 'Velcro' bibasales (hallazgo característico de fibrosis), clubbing (marcador de fibrosis avanzada), y el dato CLAVE de la espirometría: VEF1/FVC de 0.84 (NO obstructivo, ya que está por encima de 0.7) con FVC reducida (76%) — un patrón RESTRICTIVO, no obstructivo. Esto descarta EPOC (A) pese al tabaquismo, ya que el patrón espirométrico es restrictivo, no obstructivo. Los edemas (C) podrían sugerir insuficiencia cardiaca, pero no explican el patrón restrictivo ni los crepitantes Velcro ni el clubbing — probablemente reflejan cor pulmonale secundario a hipoxemia crónica más que una IC primaria como causa del cuadro respiratorio."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Interpreta la gasometría arterial de este paciente (pH 7.43, pCO2 30.2, pO2 55.7, HCO3 19.9) y explica cómo esto es coherente con el diagnóstico de EPID.",
+        "respuestaModelo": "pH 7.43 está en el límite alto de lo normal (alcalemia leve). pCO2 30.2 (bajo) indica hiperventilación. HCO3 19.9 (bajo) sugiere una compensación metabólica (renal) ya en curso, consistente con un proceso RESPIRATORIO CRÓNICO con alcalosis respiratoria parcialmente compensada — el paciente hiperventila crónicamente en respuesta a la hipoxemia (pO2 55.7, claramente bajo) causada por el engrosamiento intersticial que dificulta la difusión de oxígeno. Este patrón (hipoxemia + hiperventilación compensatoria crónica) es exactamente lo esperado en una EPID avanzada: el gradiente alveolo-arterial de oxígeno está aumentado por el defecto de difusión, y el cuerpo compensa con hiperventilación (hipocapnia), un mecanismo que solo se agota y da paso a hipercapnia franca en estadios muy avanzados de la enfermedad."
+      }
+    }
+  ]
+},
   {
     "id": "insuficiencia-respiratoria-aguda",
     "nombre": "Insuficiencia Respiratoria Aguda y Síndrome de Distrés Respiratorio Agudo (SDRA)",
