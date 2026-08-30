@@ -1705,272 +1705,382 @@ const ENFERMEDADES = [
   ]
 },
   {
-    "id": "bronquitis-bronquiectasias",
-    "nombre": "Bronquitis aguda, bronquitis crónica y bronquiectasias",
-    "area": "Neumología",
-    "semanas": [
-      "semana-01"
+  "id": "bronquitis-bronquiectasias",
+  "nombre": "Bronquitis aguda, bronquitis crónica y bronquiectasias",
+  "area": "Neumología",
+  "semanas": [
+    "semana-01"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1ohOr9-rituv2LyxZ7OFBRtxaO6Z7Y5qT/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-2-TEMA-1: Bronquitis aguda, bronquitis crónica y bronquiectasias"
+  },
+  "relacionadas": [
+    {
+      "id": "epoc",
+      "relacion": "La bronquitis crónica es uno de los dos fenotipos clásicos del EPOC (junto al enfisema) — cuando la obstrucción se vuelve fija e irreversible, el cuadro pasa a clasificarse como EPOC"
+    },
+    {
+      "id": "neumonia-nac",
+      "relacion": "Principal diagnóstico diferencial de bronquitis aguda — la ausencia de infiltrado radiológico y de criterios de respuesta inflamatoria sistémica distingue bronquitis de neumonía"
+    }
+  ],
+  "profundo": {
+    "definicion": "Esta clase agrupa 3 entidades relacionadas pero distintas, que se diferencian principalmente por su DURACIÓN y por si el daño es reversible o permanente: <strong>Bronquitis aguda</strong> — proceso inflamatorio autolimitado (1-3 semanas) que afecta las vías respiratorias de mayor calibre del pulmón, extendiéndose hasta los bronquios terciarios; se diagnostica cuando NO hay indicios clínicos ni radiológicos de neumonía. <strong>Bronquitis crónica</strong> — tos con producción de esputo durante al menos 3 meses al año, durante 2 años consecutivos, una vez excluidas otras causas respiratorias o cardíacas. <strong>Bronquiectasias</strong> — enfermedad pulmonar CRÓNICA definida por dilatación PERMANENTE de los bronquios, con síndrome de tos, esputo y exacerbaciones recurrentes.",
+    "epidemiologia": "Bronquitis aguda: 44 casos por cada 1,000 adultos/año, afecta al 5% de adultos anualmente, mayor incidencia en otoño e invierno — es la novena enfermedad más frecuente en pacientes ambulatorios en EE.UU. Bronquiectasias: incidencia y prevalencia en aumento a nivel mundial, con retraso diagnóstico de 3.5 a 17 años desde el inicio de síntomas; prevalencia aproximada de 600 por 100,000 personas, más común en mujeres y mayores de 65 años. <span class=\"fuente-ampliada\">El costo anual estimado por paciente con bronquiectasias es de $80,000 USD.</span>",
+    "etiologiaFactoresRiesgo": [
+      "Bronquitis aguda: principalmente VIRAL (aunque solo se aíslan virus en 8-37% de los casos); bacterias típicas (S. pneumoniae, H. influenzae, M. catarrhalis); bacterias atípicas ~25% (B. pertussis, C. pneumoniae, M. pneumoniae)",
+      "Bronquitis crónica: tabaquismo (principal factor de riesgo mundial), combustibles de biomasa, toxinas/contaminantes ambientales, exposiciones ocupacionales",
+      "Bronquiectasias — causas hereditarias: fibrosis quística, discinesia ciliar primaria, deficiencia de alfa-1 antitripsina",
+      "Bronquiectasias — por inhalación: aspiración, reflujo gastroesofágico, lesión por inhalación tóxica/térmica",
+      "Bronquiectasias — postinfecciosas: infecciones del tracto respiratorio inferior en la infancia, bronquitis bacteriana prolongada, infecciones granulomatosas",
+      "Bronquiectasias — anomalías estructurales: síndrome de Williams-Campbell, síndrome de Mounier-Kuhn, síndrome de Marfan",
+      "Bronquiectasias — trastornos inflamatorios idiopáticos: sarcoidosis, artritis reumatoide, espondilitis anquilosante",
+      "Bronquiectasias — obstrucción: asma, EPOC/enfisema, compresión extrínseca de la vía aérea"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "relacionadas": [
+    "criteriosDiagnosticos": "Bronquitis aguda: tos de reciente aparición >1 semana + ausencia de indicios clínicos/radiológicos de neumonía + ausencia de criterios de respuesta inflamatoria sistémica. Bronquitis crónica: tos productiva ≥3 meses/año durante 2 años consecutivos, excluyendo otras causas. Bronquiectasias: TC de alta resolución (TCAR) es el ESTÁNDAR DE ORO — relación broncoarterial >1.5 (normal 0.7), falta de estrechamiento de la vía aérea hacia la periferia, quistes globulares terminales, impactación de moco.",
+    "fisiopatologia": {
+      "resumen": "Las 3 entidades comparten un mecanismo común de fondo: inflamación de la vía aérea que altera el aclaramiento mucociliar — pero en la bronquiectasia esto se vuelve un CICLO VICIOSO autoperpetuante que termina en daño estructural permanente, a diferencia de la bronquitis aguda (que se resuelve) o crónica (que es funcional, sin dilatación fija).",
+      "imagenes": [
+        {
+          "src": "assets/bronquitis/bronquiectasias-tc-patrones.jpg",
+          "caption": "Diagnóstico por imágenes de bronquiectasias (de tu clase)",
+          "explicacion": "Panel A (arriba): compara un bronquio NORMAL (izquierda) con uno en bronquiectasia (centro) — fíjate que en el bronquio afectado hay pérdida de cilios, aumento de moco y destrucción de la pared, con el LUMEN dilatado. Este dato anatómico es la clave para entender el signo del 'anillo de sello' que se ve en TC: cuando el bronquio dilatado (el 'anillo') se ve más grande que la arteria pulmonar que lo acompaña (el 'sello' o punto central), eso es anormal — normalmente deberían medir casi lo mismo. Panel B: los 3 subtipos radiológicos — cilíndrico (el más leve, dilatación uniforme), varicoide (irregular, con constricciones), y quístico (el más grave, con quistes terminales visibles como burbujas, marcados con flechas amarillas). Panel C: muestra la progresión desde la enfermedad de bronquiolos pequeños hasta afectar las arterias pulmonares adyacentes."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">El ciclo vicioso de la bronquiectasia funciona así: la inflamación (actividad neutrofílica con liberación de proteasas y citoquinas) daña el epitelio ciliar, lo que deteriora el aclaramiento mucociliar — esto permite que las secreciones se acumulen, lo cual favorece la infección (colonización bacteriana crónica) — la infección perpetúa más daño tisular estructural (dilatación bronquial, destrucción de la pared) — y ese daño estructural facilita aún más la acumulación de secreciones, retroalimentando el ciclo desde el inicio. Por eso las bronquiectasias, una vez establecidas, tienden a autoperpetuarse y empeorar progresivamente si no se rompe el ciclo con tratamiento (limpieza de vía aérea + control de infección).</span>",
+      "cascada": [
+        {
+          "paso": "Daño inicial",
+          "detalle": "Infección, aspiración, defecto genético del aclaramiento mucociliar, u obstrucción de la vía aérea"
+        },
+        {
+          "paso": "Inflamación",
+          "detalle": "Actividad neutrofílica aumentada, liberación de proteasas y citoquinas proinflamatorias"
+        },
+        {
+          "paso": "Deterioro del aclaramiento mucociliar",
+          "detalle": "El epitelio dañado ya no logra eliminar secreciones eficientemente"
+        },
+        {
+          "paso": "Acumulación de secreciones",
+          "detalle": "Favorece la colonización e infección bacteriana crónica"
+        },
+        {
+          "paso": "Infección persistente",
+          "detalle": "Perpetúa el daño tisular — cierra el ciclo retroalimentándose con más inflamación"
+        },
+        {
+          "paso": "Daño estructural permanente",
+          "detalle": "Dilatación bronquial irreversible + destrucción de la pared de la vía aérea = bronquiectasia establecida"
+        }
+      ]
+    },
+    "clinica": [
       {
-        "id": "epoc",
-        "relacion": "La bronquitis crónica es uno de los dos fenotipos clásicos del EPOC (junto al enfisema) — cuando la obstrucción se vuelve fija e irreversible, el cuadro pasa a clasificarse como EPOC"
+        "signo": "Tos de reciente aparición (bronquitis aguda)",
+        "detallePPT": "Síntoma cardinal, persiste >1 semana; el paciente suele consultar tras 4-7 días sin remitir",
+        "mecanismo": "Inflamación aguda de la vía aérea de mayor calibre por infección viral/bacteriana"
       },
       {
-        "id": "neumonia-nac",
-        "relacion": "Principal diagnóstico diferencial de bronquitis aguda — la ausencia de infiltrado radiológico y de criterios de respuesta inflamatoria sistémica distingue bronquitis de neumonía"
+        "signo": "Tos productiva crónica",
+        "detallePPT": "≥3 meses/año por 2 años consecutivos (bronquitis crónica) o crónica con esputo purulento abundante, especialmente matutino (bronquiectasias)",
+        "mecanismo": "Hipersecreción mucosa sostenida por inflamación crónica de la vía aérea"
+      },
+      {
+        "signo": "Esputo purulento abundante",
+        "detallePPT": "Característico de bronquiectasias, especialmente en las mañanas",
+        "mecanismo": "Acumulación de secreciones infectadas en vías dilatadas que drenan mal por gravedad durante el sueño"
+      },
+      {
+        "signo": "Acropaquia (dedos en palillo de tambor)",
+        "detallePPT": "Hallazgo del examen físico en bronquiectasias crónicas",
+        "mecanismo": "<span class=\"fuente-ampliada\">Mecanismo no completamente esclarecido — se relaciona con hipoxia tisular crónica y factores de crecimiento vascular liberados en tejido inflamado de forma sostenida.</span>"
+      },
+      {
+        "signo": "Exacerbaciones recurrentes",
+        "detallePPT": "Episodios de empeoramiento agudo sobre la enfermedad de base crónica (bronquiectasias)",
+        "mecanismo": "Reagudización del ciclo inflamación-infección-daño estructural"
       }
     ],
-    "profundo": {
-      "definicion": "Son tres entidades relacionadas pero distintas que comparten el síntoma de tos: la bronquitis aguda es una inflamación autolimitada de la vía aérea (generalmente viral); la bronquitis crónica es un diagnóstico clínico definido por tos productiva ≥3 meses al año durante 2 años consecutivos (una vez excluidas otras causas); y las bronquiectasias son una dilatación permanente e irreversible de los bronquios, con un ciclo de inflamación-infección-daño estructural que se autoperpetúa.",
-      "epidemiologia": "Bronquitis aguda: 44 casos por 1.000 adultos/año, afecta al 5% de adultos anualmente, novena enfermedad ambulatoria más frecuente en EE.UU. Bronquiectasias: prevalencia ~600 por 100.000 personas, en aumento, con retraso diagnóstico de 3.5 a 17 años desde el inicio de síntomas; más frecuente en mujeres y mayores de 65 años.",
-      "etiologiaFactoresRiesgo": [
-        "Bronquitis aguda: principalmente viral (solo se aíslan virus en 8-37% de los casos); bacterias típicas (S. pneumoniae, H. influenzae, M. catarrhalis) y atípicas (B. pertussis, C. pneumoniae, M. pneumoniae, ~25%)",
-        "Bronquitis crónica: tabaquismo como principal factor de riesgo; también biomasa y contaminantes ambientales",
-        "Bronquiectasias — causas hereditarias: fibrosis quística, discinesia ciliar primaria, déficit de alfa-1 antitripsina",
-        "Bronquiectasias — postinfecciosas: infecciones respiratorias bajas en la infancia, tos ferina, infecciones granulomatosas",
-        "Bronquiectasias — otras: aspiración/reflujo, EPOC/asma mal controlados, enfermedades inflamatorias sistémicas (artritis reumatoide, sarcoidosis)"
-      ],
-      "fisiopatologia": {
-        "resumen": "Bronquitis aguda: inflamación transitoria de la mucosa bronquial que se resuelve. Bronquiectasias: existe un 'círculo vicioso' que se autoalimenta — cada componente empeora a los demás, por eso la enfermedad progresa si no se rompe el ciclo.",
-        explicacionExtendida: "Las bronquiectasias se explican mejor con el modelo del 'círculo vicioso' de Cole: un evento inicial (infección grave, aspiración, o un defecto genético del aclaramiento mucociliar) daña el epitelio ciliar de la vía aérea. Con los cilios funcionando mal, las secreciones ya no se movilizan hacia arriba con eficacia, así que se acumulan y se convierten en un medio propicio para la colonización bacteriana crónica — típicamente por Haemophilus influenzae o, en casos avanzados, Pseudomonas aeruginosa.\n\nEsa colonización persistente mantiene reclutados a los neutrófilos en la pared bronquial de forma indefinida. El problema es que la respuesta neutrofílica, en su intento de controlar la infección, libera elastasa y otras proteasas que terminan destruyendo el cartílago y el músculo de la pared bronquial — la misma estructura que debería sostener el calibre de la vía aérea. Al debilitarse la pared, el bronquio se dilata permanentemente, lo que a su vez empeora aún más el aclaramiento de secreciones... y el ciclo se retroalimenta indefinidamente. Por eso las bronquiectasias no se 'curan': el objetivo del tratamiento es romper este círculo (mejorando el aclaramiento y controlando la infección) para frenar su progresión, no revertir el daño estructural ya establecido.",
-        "cascada": [
+    "examenFisico": [
+      "Bronquitis aguda: roncantes a la auscultación; en tos ferina, paroxismos de tos con 'gallos' o vómitos",
+      "Bronquiectasias: crépitos basales bilaterales (por secreciones acumuladas), acropaquia en casos crónicos avanzados"
+    ],
+    "semiologia": {
+      "inspeccion": "Busca signos de cronicidad: acropaquia (dedos en palillo de tambor) en bronquiectasias de larga evolución — sugiere hipoxia tisular sostenida, no es específico de una sola causa.",
+      "palpacion": "Generalmente sin hallazgos específicos, salvo los esperables por la tos crónica repetida.",
+      "percusion": "Habitualmente normal, salvo que coexista con complicaciones (atelectasia por tapón de moco, por ejemplo).",
+      "auscultacion": "Roncantes (bronquitis aguda, por secreciones en vías de mayor calibre) o crépitos basales bilaterales persistentes que NO desaparecen con la tos (bronquiectasias — a diferencia de los crépitos de una neumonía, que sí pueden cambiar con la tos porque están sobre secreciones más móviles)."
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "🔬 Comparación de las 3 entidades",
+        "contexto": "La pregunta de reflexión de tu propia clase lo resume bien: ¿qué distingue clínica, fisiopatológica y radiológicamente a estas 3? La respuesta corta: DURACIÓN y REVERSIBILIDAD.",
+        "columnas": [
+          "Entidad",
+          "Duración",
+          "¿Daño permanente?",
+          "Hallazgo clave"
+        ],
+        "filas": [
+          [
+            "Bronquitis aguda",
+            "1-3 semanas (autolimitada)",
+            "No",
+            "Sin infiltrado en Rx, sin criterios de SIRS"
+          ],
+          [
+            "Bronquitis crónica",
+            "≥3 meses/año, 2 años seguidos",
+            "Funcional, no estructural",
+            "Tos productiva crónica sin dilatación bronquial en TC"
+          ],
+          [
+            "Bronquiectasias",
+            "Crónica, progresiva",
+            "SÍ — dilatación permanente",
+            "TCAR: relación broncoarterial >1.5, signo del anillo de sello"
+          ]
+        ]
+      },
+      {
+        "titulo": "📷 Subtipos radiológicos de bronquiectasia",
+        "columnas": [
+          "Subtipo",
+          "Característica en TC"
+        ],
+        "filas": [
+          [
+            "Cilíndrica",
+            "Dilatación uniforme del bronquio (la más leve)"
+          ],
+          [
+            "Varicosa",
+            "Dilatación irregular, con zonas de constricción alternadas"
+          ],
+          [
+            "Quística",
+            "Quistes globulares terminales visibles (la más grave)"
+          ]
+        ],
+        "nota": "Los 3 subtipos a menudo se superponen y coexisten en un mismo paciente — no son mutuamente excluyentes."
+      }
+    ],
+    "diagnostico": "Bronquitis aguda: diagnóstico clínico, apoyado en pruebas rápidas moleculares si están disponibles; procalcitonina sérica <0.1 ng/mL hace improbable infección bacteriana. Bronquiectasias: la TC de alta resolución (TCAR) es el estándar de oro — muestra relación broncoarterial aumentada (>1.5), falta de afilamiento bronquial hacia la periferia, quistes terminales, e impactación de moco.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Paciente con tos: determinar duración y características"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Tos aguda (<3 semanas) sin datos de neumonía?",
+        "salidas": [
           {
-            "paso": "Factor desencadenante",
-            "detalle": "Infección repetida, obstrucción o defecto genético del aclaramiento mucociliar"
+            "etiqueta": "SÍ",
+            "texto": "Bronquitis aguda — manejo sintomático, sin antibióticos de rutina",
+            "color": "mint"
           },
           {
-            "paso": "Células activadas",
-            "detalle": "Neutrófilos con actividad aumentada"
-          },
-          {
-            "paso": "Mediadores liberados",
-            "detalle": "Proteasas y citocinas proinflamatorias liberadas por los neutrófilos"
-          },
-          {
-            "paso": "Cambio estructural",
-            "detalle": "Deterioro del aclaramiento mucociliar → acumulación de secreciones → colonización bacteriana crónica → dilatación bronquial permanente y destrucción de la pared de la vía aérea"
-          },
-          {
-            "paso": "Cambio fisiológico",
-            "detalle": "Vía aérea dilatada y dañada que ya no puede limpiarse a sí misma eficazmente — perpetúa el ciclo"
-          },
-          {
-            "paso": "Manifestación clínica",
-            "detalle": "Tos productiva crónica, esputo purulento abundante, exacerbaciones recurrentes"
+            "etiqueta": "NO — es crónica",
+            "texto": "Evaluar duración exacta y buscar dilatación estructural",
+            "color": "coral"
           }
         ]
       },
-      "clinica": [
-        {
-          "signo": "Tos de reciente aparición >1 semana (bronquitis aguda)",
-          "mecanismo": "Inflamación transitoria de la mucosa bronquial tras infección viral"
-        },
-        {
-          "signo": "Esputo purulento abundante, especialmente matutino (bronquiectasias)",
-          "mecanismo": "Acumulación de secreciones por aclaramiento mucociliar deteriorado + colonización bacteriana crónica"
-        },
-        {
-          "signo": "Acropaquia / dedos en palillo de tambor (bronquiectasias)",
-          "mecanismo": "Hipoxemia crónica e inflamación sistémica de bajo grado sostenida"
-        }
-      ],
-      "examenFisico": [
-        "Bronquitis aguda: roncantes, sin signos focales de consolidación",
-        "Bronquiectasias: crépitos basales bilaterales persistentes, acropaquia en casos evolucionados"
-      ],
-      semiologia: {
-            "inspeccion": "Bronquitis aguda: paciente con tos, generalmente sin signos de dificultad respiratoria significativa. Bronquiectasias: buscar acropaquia (dedos en palillo de tambor) en casos evolucionados — signo que NO aparece en bronquitis simple ni en EPOC típico, así que si lo ves, orienta fuerte a bronquiectasias.",
-            "palpacion": "Generalmente sin hallazgos relevantes en bronquitis aguda. En bronquiectasias con secreciones abundantes, puede palparse frémito aumentado sobre zonas con acumulación de secreciones espesas.",
-            "percusion": "Normal en bronquitis aguda. En bronquiectasias localizadas puede haber matidez leve sobre la zona afectada si hay colapso parcial por tapón mucoso.",
-            "auscultacion": "Bronquitis aguda: roncantes difusos que pueden cambiar o desaparecer con la tos (dato clave para diferenciarlo de neumonía, donde los crépitos NO cambian con la tos). Bronquiectasias: crépitos gruesos persistentes y localizados en las mismas zonas en exámenes repetidos — la persistencia y localización fija es lo que las distingue de una infección aguda transitoria."
-      },
-
-      "diagnostico": "Bronquitis aguda: clínico (ausencia de indicios de neumonía clínica/radiológica). Bronquitis crónica: clínico, por definición temporal (tos productiva ≥3 meses/año × 2 años). Bronquiectasias: TC de alta resolución — estándar de oro; signo característico: relación broncoarterial >1.5 (normal 0.7), 'anillo de sello', falta de estrechamiento bronquial hacia la periferia.",
-      algoritmo: [
-            {
-                  "tipo": "paso",
-                  "texto": "Paciente con tos productiva — determinar duración"
-            },
-            {
-                  "tipo": "decision",
-                  "texto": "¿Cuánto tiempo lleva la tos y qué muestra la TC?",
-                  "salidas": [
-                        {
-                              "etiqueta": "< 3 semanas",
-                              "texto": "Bronquitis aguda — manejo sintomático, sin antibióticos de rutina",
-                              "color": "mint"
-                        },
-                        {
-                              "etiqueta": "≥3 meses/año x2 años",
-                              "texto": "Bronquitis crónica — evaluar espirometría para descartar EPOC asociado",
-                              "color": "coral"
-                        },
-                        {
-                              "etiqueta": "TC: dilatación bronquial fija",
-                              "texto": "Bronquiectasias — TC de alta resolución confirma (signo del anillo de sello)",
-                              "color": "alert"
-                        }
-                  ]
-            }
-      ],
-      "diagnosticoDiferencial": [
-        "Neumonía (bronquitis aguda)",
-        "EPOC",
-        "Asma bronquial",
-        "Fibrosis quística (en bronquiectasias de inicio temprano)",
-        "Tuberculosis"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Cese de tabaquismo (bronquitis crónica)",
-          "Técnicas de aclaramiento de la vía aérea — ciclo de respiración activa, presión espiratoria positiva (bronquiectasias)",
-          "Ejercicio aeróbico regular"
-        ],
-        "farmacologico": [
-          "Bronquitis aguda: antibióticos NO recomendados de rutina (causa predominantemente viral); si se usan, azitromicina 500mg/día x3 días",
-          "Bronquitis crónica estable: sin evidencia suficiente para recomendar antibióticos, broncodilatadores o mucolíticos de rutina para la tos (guía CHEST)",
-          "Bronquiectasias — exacerbación: antibióticos guiados por cultivo de esputo, 14 días",
-          "Bronquiectasias — terapia crónica: macrólidos 3x/semana si ≥3 exacerbaciones/año; erradicación de Pseudomonas si se aísla"
-        ]
-      },
-      "complicaciones": [
-        "Progresión a EPOC (bronquitis crónica no controlada)",
-        "Exacerbaciones recurrentes con deterioro funcional progresivo (bronquiectasias)",
-        "Hemoptisis (bronquiectasias avanzadas)"
-      ],
-      "prevencion": "Cese de tabaquismo es la intervención más importante. En bronquiectasias, tratar oportunamente las infecciones respiratorias de la infancia y controlar bien el asma/EPOC de base reduce el riesgo de desarrollarlas.",
-      "perlasProfundo": "Antitos, antihistamínicos y expectorantes de venta libre NO tienen utilidad demostrada en bronquitis aguda — y los corticoides orales tampoco deben usarse. El manejo es sintomático y expectante; la tos puede durar 10-14 días y hasta 20% de pacientes tiene síntomas persistentes por 1 mes."
-    },
-    "repaso": {
-      "conceptosClave": [
-        "Bronquitis aguda = autolimitada, generalmente viral, tos >1 semana",
-        "Bronquitis crónica = definición TEMPORAL (tos productiva ≥3 meses/año × 2 años)",
-        "Bronquiectasias = dilatación PERMANENTE, ciclo inflamación-infección-daño que se autoperpetúa"
-      ],
-      "clinica": "Tos productiva es el hilo común; la diferencia está en duración, cronicidad y hallazgos en imagen (TC en bronquiectasias).",
-      "diagnostico": "Bronquitis: clínico. Bronquiectasias: TC de alta resolución (signo del anillo de sello).",
-      "tratamientoResumen": "Bronquitis aguda: sintomático, NO antibióticos de rutina. Bronquiectasias: aclaramiento de vía aérea + antibióticos guiados por cultivo en exacerbaciones.",
-      "diferenciales": [
-        {
-          "entidad": "Neumonía",
-          "clave": "Presencia de infiltrado radiológico y síndrome de respuesta inflamatoria sistémica — ausente en bronquitis"
-        },
-        {
-          "entidad": "EPOC",
-          "clave": "Obstrucción FIJA en espirometría (FEV1/FVC <70% sin reversibilidad); la bronquitis crónica pura no necesariamente tiene obstrucción demostrada"
-        }
-      ],
-      "tablaComparativa": {
-        "titulo": "Bronquitis aguda vs. crónica vs. bronquiectasias",
-        "filas": [
-          [
-            "Duración",
-            "Días-semanas, autolimitada",
-            "≥3 meses/año × 2 años"
-          ],
-          [
-            "Reversibilidad estructural",
-            "Sí, se resuelve",
-            "No — daño permanente (bronquiectasias)"
-          ],
-          [
-            "Estudio clave",
-            "Ninguno (clínico)",
-            "TC de alta resolución (bronquiectasias)"
-          ]
+      {
+        "tipo": "decision",
+        "texto": "¿Tos productiva ≥3 meses/año por 2 años, SIN dilatación bronquial en TC?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Bronquitis crónica — descartar EPOC superpuesto si hay tabaquismo",
+            "color": "coral"
+          },
+          {
+            "etiqueta": "NO — hay dilatación permanente en TCAR",
+            "texto": "Bronquiectasias — buscar etiología subyacente (ver factores de riesgo)",
+            "color": "alert"
+          }
         ]
       }
-    },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "NO uses antibióticos de rutina en bronquitis aguda — es predominantemente viral",
-        "La bronquitis crónica es un diagnóstico CLÍNICO por definición temporal, no por imagen",
-        "El signo radiológico clave de bronquiectasias es la relación broncoarterial >1.5 ('anillo de sello') en TC de alta resolución",
-        "La acropaquia en un paciente con tos crónica productiva sugiere bronquiectasias, no EPOC (que rara vez la presenta)"
+    ],
+    "diagnosticoDiferencial": [
+      "Neumonía (bronquitis aguda vs. NAC)",
+      "Asma / EPOC (bronquitis crónica)",
+      "Tuberculosis (bronquiectasias con hallazgos apicales)",
+      "Fibrosis quística (bronquiectasias de inicio temprano)"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Bronquiectasias: técnicas de aclaramiento de moco (ciclo de respiración activa, presión espiratoria positiva) — individualizadas según gravedad y cantidad de secreciones, enseñadas por profesionales con formación avanzada",
+        "Ejercicio aeróbico regular",
+        "Cese de tabaquismo (bronquitis crónica)"
       ],
-      "redFlags": [
-        "Esputo purulento abundante + acropaquia + infecciones recurrentes desde la infancia → sospechar bronquiectasias, pedir TC",
-        "Fiebre alta + infiltrado radiológico en paciente con tos → esto ya NO es bronquitis, es neumonía"
-      ],
-      "erroresFrecuentes": [
-        "Dar antibióticos por rutina en toda bronquitis aguda con tos",
-        "Confundir bronquitis crónica con EPOC sin espirometría que confirme obstrucción fija",
-        "Pedir espirometría para 'confirmar' bronquiectasias — el estudio correcto es la TC, no la espirometría"
-      ],
-      "asociacionesClinicas": [
-        "Bronquiectasias + infecciones respiratorias recurrentes desde la infancia + acropaquia → pensar en causa hereditaria (fibrosis quística, discinesia ciliar)",
-        "Bronquitis crónica + tabaquismo + obstrucción fija en espirometría → esto ya es EPOC fenotipo bronquitis crónica"
+      "farmacologico": [
+        "Bronquitis aguda: antibióticos NO recomendados de rutina (causa predominantemente viral); si se prescriben, azitromicina 500mg/día x3 días es preferible; para tos ferina: eritromicina, doxiciclina o azitromicina",
+        "Bronquitis aguda: antihistamínicos, antitusivos, expectorantes de venta libre — SIN utilidad demostrada; corticoides orales NO deben usarse",
+        "Bronquitis crónica estable: según el panel CHEST, NO hay evidencia suficiente para recomendar tratamiento farmacológico rutinario (antibióticos, broncodilatadores, mucolíticos) solo para aliviar la tos",
+        "Bronquiectasias — exacerbación: antibióticos basados en cultivo de esputo (14 días), oxígeno suplementario si hay hipoxemia, hospitalización con antibiótico IV en casos graves",
+        "Bronquiectasias — terapia crónica: erradicación de Pseudomonas aeruginosa, broncodilatadores antes de la fisioterapia, macrólidos 3 veces/semana si ≥3 exacerbaciones/año, antibióticos inhalados para infecciones recurrentes"
       ]
-    }
-  ,
-    casosClinicos: [
+    },
+    "complicaciones": [
+      "Bronquiectasias: exacerbaciones agudas recurrentes",
+      "Hemoptisis (por la vascularización anómala de la pared bronquial dañada)",
+      "Insuficiencia respiratoria crónica en casos avanzados",
+      "Infección por micobacterias no tuberculosas (aumenta la mortalidad a 5 años de 11.5% a 12.6%)"
+    ],
+    "prevencion": "Cese de tabaquismo, tratamiento oportuno de infecciones respiratorias en la infancia, control de reflujo gastroesofágico y aspiración, vacunación según esquema.",
+    "perlasProfundo": "El dato que más distingue estas 3 entidades entre sí no es tanto el síntoma (todas cursan con tos) sino LA DURACIÓN y si el daño estructural es reversible: agudo y autolimitado (bronquitis aguda) vs. crónico pero funcional (bronquitis crónica) vs. crónico y ESTRUCTURALMENTE PERMANENTE (bronquiectasias, confirmado por TCAR).",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: presentan un caso (como el de tu propia clase) y piden identificar la entidad correcta entre varias similares, descartando opciones con datos que NO encajan.",
+      "ejercicios": [
         {
-            "vineta": "Mujer de 45 años, sin comorbilidades ni tabaquismo, acude por tos seca que inició hace 5 días tras un cuadro catarral (rinorrea, malestar general). No tiene fiebre, no tiene disnea, auscultación con roncantes aislados que se modifican con la tos. Radiografía de tórax: sin infiltrados.",
-            "preguntaMC": {
-                "enunciado": "¿Cuál es la conducta MÁS apropiada respecto al uso de antibióticos en esta paciente?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Iniciar amoxicilina empírica por 7 días, ya que toda tos con roncantes sugiere sobreinfección bacteriana"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "No indicar antibióticos — el cuadro es compatible con bronquitis aguda, de etiología predominantemente viral"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Solicitar cultivo de esputo antes de decidir"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Indicar azitromicina como primera línea en todos los casos"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "La bronquitis aguda es predominantemente viral (solo se aísla un patógeno bacteriano en una minoría de casos) y autolimitada. La ausencia de infiltrado radiológico y de criterios de gravedad hace innecesario el uso de antibióticos de rutina — el manejo es sintomático."
-            },
-            "preguntaEscrita": {
-                "enunciado": "¿Qué dato clínico de esta viñeta ayuda a diferenciar bronquitis aguda de neumonía, y por qué es relevante buscarlo activamente en el examen?",
-                "respuestaModelo": "La ausencia de infiltrado en la radiografía de tórax es el dato clave que descarta neumonía — la definición de neumonía exige un infiltrado nuevo en imagen, mientras que la bronquitis aguda es un cuadro exclusivamente de la vía aérea de conducción sin compromiso del parénquima. Clínicamente, también apoya la diferencia la ausencia de fiebre y de signos focales de consolidación (matidez, egofonía, crépitos fijos), presentes en la neumonía pero no aquí."
-            },
-            "nivel": "basico"
+          "tipo": "Diferenciar y sustentar (el más frecuente)",
+          "planteamiento": "Paciente con tos productiva de 10 días de evolución, sin fiebre alta, radiografía de tórax normal, sin criterios de respuesta inflamatoria sistémica. ¿Bronquitis aguda o neumonía? Sustente.",
+          "respuestaModelo": "Bronquitis aguda — se diagnostica precisamente cuando NO hay indicios clínicos NI radiológicos de neumonía (radiografía normal) y no hay criterios de síndrome de respuesta inflamatoria sistémica. La duración de 10 días también encaja con el curso esperado (10-14 días) de bronquitis aguda, a diferencia de una neumonía que characteristically muestra infiltrado en la radiografía."
         },
         {
-            "nivel": "intermedio",
-            "vineta": "Varón de 55 años, fumador activo de 30 paquetes-año, consulta por tos productiva persistente 4 meses al año durante los últimos 3 años. Espirometría: FEV1/FVC 0.72 (normal), sin cambios significativos post-broncodilatador.",
-            "preguntaMC": {
-                "enunciado": "¿Cómo clasificarías este cuadro?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "EPOC, porque tiene tabaquismo significativo"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "Bronquitis crónica SIN obstrucción demostrada — el diagnóstico de EPOC requiere FEV1/FVC <0.70, que este paciente no tiene"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Asma bronquial de inicio tardío"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Bronquiectasias, se requiere TC urgente"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "La bronquitis crónica es un diagnóstico definido por criterios CLÍNICOS temporales (tos productiva ≥3 meses/año x2 años), independiente de la espirometría. Este paciente cumple la definición clínica de bronquitis crónica, pero SU espirometría es normal (FEV1/FVC 0.72 > 0.70), por lo que NO cumple criterios de EPOC — son diagnósticos relacionados pero no sinónimos."
-            },
-            "preguntaEscrita": {
-                "enunciado": "Explica la diferencia conceptual entre 'bronquitis crónica' y 'EPOC' usando este caso como ejemplo.",
-                "respuestaModelo": "La bronquitis crónica es una definición puramente clínica basada en la duración y frecuencia de la tos productiva (≥3 meses al año durante 2 años consecutivos), sin importar si hay o no obstrucción al flujo aéreo. El EPOC, en cambio, requiere confirmación espirométrica de obstrucción fija (FEV1/FVC <0.70 post-broncodilatador). Un paciente puede tener bronquitis crónica sin tener EPOC (como este caso, con espirometría normal) — aunque el tabaquismo sostenido aumenta el riesgo de que eventualmente desarrolle la obstrucción y el cuadro evolucione a EPOC fenotipo bronquítico."
-            }
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste 4 causas hereditarias o adquiridas de bronquiectasias mencionadas en tu clase.",
+          "respuestaModelo": "Cualquier 4 de: fibrosis quística, discinesia ciliar primaria, deficiencia de alfa-1 antitripsina, aspiración/reflujo gastroesofágico, infecciones respiratorias de la infancia, síndrome de Williams-Campbell, sarcoidosis, asma/EPOC (por obstrucción)."
+        },
+        {
+          "tipo": "Indique y sustente (imagen)",
+          "planteamiento": "En una TC de tórax, ¿qué medida específica confirma el diagnóstico de bronquiectasia, y cuál es su valor de corte?",
+          "respuestaModelo": "La relación broncoarterial: se mide el diámetro del bronquio y se divide entre el diámetro de la arteria pulmonar que lo acompaña. Un valor normal es aproximadamente 0.7; se considera bronquiectasia cuando esta relación supera 1.5, es decir, el bronquio se ve significativamente más dilatado que el vaso adyacente (signo del 'anillo de sello')."
         }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "3 entidades relacionadas, distinguidas por duración y reversibilidad del daño",
+      "Bronquiectasias = dilatación bronquial PERMANENTE, confirmada por TCAR (relación broncoarterial >1.5)",
+      "Bronquitis aguda: predominantemente viral, NO usar antibióticos de rutina"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — las 3 entidades en una tabla",
+      "columnas": [
+        "Entidad",
+        "Dato clave para el examen"
+      ],
+      "filas": [
+        [
+          "Bronquitis aguda",
+          "Tos >1 semana, sin datos de neumonía, sin antibiótico de rutina"
+        ],
+        [
+          "Bronquitis crónica",
+          "Tos productiva ≥3 meses/año x2 años, sin dilatación en TC"
+        ],
+        [
+          "Bronquiectasias",
+          "TCAR = estándar de oro, dilatación permanente, signo del anillo de sello"
+        ]
+      ]
+    },
+    "clinica": "Tos como síntoma común a las 3 — la clave está en la duración y si hay esputo purulento abundante + acropaquia (sugiere bronquiectasias).",
+    "diagnostico": "Bronquitis aguda: clínico. Bronquiectasias: TCAR (relación broncoarterial >1.5, quistes terminales, impactación de moco).",
+    "tratamientoResumen": "Bronquitis aguda: sintomático, sin antibiótico de rutina. Bronquiectasias: aclaramiento de vía aérea + antibiótico según cultivo en exacerbaciones + macrólidos si ≥3 exacerbaciones/año.",
+    "diferenciales": [
+      {
+        "entidad": "Neumonía",
+        "clave": "Infiltrado radiológico + criterios de SIRS — ausentes en bronquitis aguda"
+      },
+      {
+        "entidad": "EPOC",
+        "clave": "Obstrucción FIJA al flujo aéreo (espirometría) — la bronquitis crónica sola no la tiene necesariamente"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Bronquitis aguda vs Bronquiectasias",
+      "filas": [
+        [
+          "Duración",
+          "1-3 semanas",
+          "Crónica, progresiva"
+        ],
+        [
+          "Daño estructural",
+          "Ninguno",
+          "Dilatación permanente"
+        ],
+        [
+          "Estudio clave",
+          "Clínico ± Rx",
+          "TCAR"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Se debe dar antibiótico de rutina en bronquitis aguda? → NO, es predominantemente viral",
+      "¿Cuál es el estándar de oro para bronquiectasias? → TCAR (tomografía de alta resolución)",
+      "¿Qué relación broncoarterial es anormal? → >1.5 (normal es 0.7) — signo del 'anillo de sello'",
+      "¿Cuáles son los 3 subtipos radiológicos de bronquiectasia? → Cilíndrica, varicosa, quística",
+      "¿Qué hallazgo del examen físico sugiere bronquiectasias crónicas? → Acropaquia + crépitos basales bilaterales",
+      "¿Cuándo se indican macrólidos crónicos en bronquiectasias? → ≥3 exacerbaciones/año",
+      "¿La cirugía es el tratamiento principal de bronquiectasias? → NO, es principalmente médico (fisioterapia, antibióticos); cirugía solo en casos localizados y refractarios"
+    ],
+    "redFlags": [
+      "Hemoptisis en paciente con bronquiectasias conocidas → evaluar sangrado activo de vasos bronquiales anómalos",
+      "Acropaquia de aparición reciente → investigar causa (no asumir automáticamente bronquiectasias sin estudio)"
+    ],
+    "erroresFrecuentes": [
+      "Dar antibiótico de rutina en toda bronquitis aguda",
+      "Diagnosticar bronquiectasias solo con espirometría (no es sensible ni específica — se necesita TCAR)",
+      "Asumir EPOC en cualquier paciente con infecciones respiratorias recurrentes sin evaluar antecedente de tabaquismo",
+      "Pensar que la acropaquia siempre indica tuberculosis activa (puede verse en bronquiectasias crónicas de cualquier causa)"
+    ],
+    "asociacionesClinicas": [
+      "Bronquiectasias + colonización por Pseudomonas → considerar macrólidos + erradicación específica",
+      "Bronquiectasias de inicio muy temprano → descartar fibrosis quística o discinesia ciliar primaria"
     ]
   },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Una mujer de 42 años consulta por tos crónica productiva desde hace 2 años, con aumento de volumen del esputo en los últimos meses. Refiere haber tenido varias infecciones respiratorias desde la infancia. Actualmente expectora abundante secreción purulenta, especialmente en las mañanas. No fuma. Ha recibido varios ciclos de antibióticos por bronquitis, con mejoría parcial. En el examen físico presenta crépitos basales bilaterales y acropaquia. Se solicita una tomografía de tórax de alta resolución (TCAR).",
+      "preguntaMC": {
+        "enunciado": "¿Cuál de las siguientes afirmaciones es la más adecuada en relación con este caso clínico?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "El diagnóstico más probable es EPOC, por el antecedente de infecciones respiratorias"
+          },
+          {
+            "id": "b",
+            "texto": "La prueba diagnóstica más sensible para confirmar bronquiectasias es la espirometría"
+          },
+          {
+            "id": "c",
+            "texto": "La TC de tórax es el estudio de elección y puede mostrar dilatación bronquial en forma de 'anillo de sello'"
+          },
+          {
+            "id": "d",
+            "texto": "El tratamiento curativo consiste en cirugía pulmonar extensa en todos los casos"
+          },
+          {
+            "id": "e",
+            "texto": "La acropaquia sugiere tuberculosis activa como primera posibilidad"
+          }
+        ],
+        "correcta": "c",
+        "explicacion": "Tos crónica productiva + esputo purulento abundante + infecciones recurrentes desde la infancia + acropaquia + respuesta solo parcial a antibióticos son altamente sugestivos de bronquiectasias. La TC de tórax (TCAR) es el estudio de elección, mostrando dilatación bronquial en 'anillo de sello'. (A) Incorrecta: EPOC se asocia a tabaquismo/biomasa (ausente aquí) y rara vez cursa con acropaquia. (B) Incorrecta: la espirometría puede mostrar patrón obstructivo pero no confirma bronquiectasias, no es sensible ni específica. (D) Incorrecta: el tratamiento es principalmente médico; la cirugía solo para casos localizados y refractarios. (E) Incorrecta: la acropaquia puede verse en bronquiectasias crónicas de cualquier causa, no indica específicamente TB activa."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica por qué el signo radiológico se llama 'anillo de sello' y qué relación anatómica exacta debe superar el valor normal para considerarlo positivo.",
+        "respuestaModelo": "Se llama 'anillo de sello' porque en el corte transversal de la TC, el bronquio dilatado forma un 'anillo' hueco, y la arteria pulmonar adyacente (que normalmente viaja junto al bronquio y debería medir un diámetro similar) aparece como un pequeño punto central — semejando un anillo con su sello o piedra engastada. Se considera positivo cuando la relación broncoarterial (diámetro del bronquio dividido entre el diámetro de la arteria acompañante) supera 1.5, cuando lo normal es aproximadamente 0.7 — es decir, el bronquio se ha dilatado hasta verse considerablemente más grande que el vaso que lo acompaña."
+      }
+    }
+  ]
+},
   {
     "id": "neumonia-nac",
     "nombre": "Neumonía Adquirida en la Comunidad (NAC)",
