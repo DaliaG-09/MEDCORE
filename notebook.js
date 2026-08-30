@@ -263,6 +263,8 @@ function hayTextoEnPunto(widgetId, punto){
   return state ? indiceTextoEnPunto(state, punto) !== -1 : false;
 }
 
+let cuadernoListenerCierre = {}; // widgetId -> función "cerrar" activa, para poder limpiarla desde cualquier salida
+
 function manejarTapEnCuaderno(widgetId, punto){
   const state = cuadernoStates[widgetId];
   quitarBotonEliminarTexto(widgetId);
@@ -280,16 +282,23 @@ function manejarTapEnCuaderno(widgetId, punto){
   btn.id = 'btn-borrar-texto-' + widgetId;
   document.body.appendChild(btn);
 
-  // se quita solo si tocas cualquier otro lado
+  // se quita solo si tocas cualquier otro lado — y también se limpia solo (sin dejar
+  // el listener pegado) si en cambio tocas el propio botón de eliminar.
   setTimeout(() => {
-    document.addEventListener('pointerdown', function cerrar(ev2){
-      if(ev2.target !== btn){ quitarBotonEliminarTexto(widgetId); document.removeEventListener('pointerdown', cerrar); }
-    });
+    const cerrar = (ev2) => {
+      if(ev2.target !== btn) quitarBotonEliminarTexto(widgetId);
+    };
+    cuadernoListenerCierre[widgetId] = cerrar;
+    document.addEventListener('pointerdown', cerrar);
   }, 0);
 }
 function quitarBotonEliminarTexto(widgetId){
   const existente = document.getElementById('btn-borrar-texto-' + widgetId);
   if(existente) existente.remove();
+  if(cuadernoListenerCierre[widgetId]){
+    document.removeEventListener('pointerdown', cuadernoListenerCierre[widgetId]);
+    delete cuadernoListenerCierre[widgetId];
+  }
 }
 function eliminarBloqueTexto(widgetId, idx){
   const state = cuadernoStates[widgetId];
