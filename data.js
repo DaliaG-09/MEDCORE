@@ -2561,254 +2561,418 @@ const ENFERMEDADES = [
   ]
 },
   {
-    "id": "neumonia-intrahospitalaria",
-    "nombre": "Neumonía Intrahospitalaria y Neumonía Atípica",
-    "area": "Neumología",
-    "semanas": [
-      "semana-01"
+  "id": "neumonia-intrahospitalaria",
+  "nombre": "Neumonía Intrahospitalaria y Neumonía Atípica",
+  "area": "Neumología",
+  "semanas": [
+    "semana-01"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1eKuMzALQCRRKfawm9o6BYfaRg_jokbQh/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-3-TEMA-2: Neumonía Intrahospitalaria y Atípicas"
+  },
+  "relacionadas": [
+    {
+      "id": "neumonia-nac",
+      "relacion": "Principal diagnóstico diferencial por el LUGAR donde se adquiere la infección — cambia completamente la cobertura antibiótica empírica"
+    }
+  ],
+  "profundo": {
+    "definicion": "Esta clase agrupa 2 entidades distintas: <strong>Neumonía intrahospitalaria (NAH/NAV)</strong> — infección del parénquima pulmonar causada por patógenos presentes en entornos hospitalarios, desarrollada >48h después del ingreso (y en algunos casos hasta 30 días post-alta si hay factores de riesgo). <strong>Neumonía atípica</strong> — causada por patógenos que NO son detectables con tinción de Gram ni cultivables por métodos estándar (Mycoplasma pneumoniae, Chlamydia pneumoniae, Legionella spp.) — no tienen pared celular bacteriana, por eso no responden a β-lactámicos.",
+    "epidemiologia": "La mortalidad BRUTA de la neumonía nosocomial puede ser tan alta como 70%, aunque la mortalidad ATRIBUIBLE a NAV (el porcentaje de muertes que NO habrían ocurrido sin la infección) se estima en 10%. Mayor mortalidad con Pseudomonas aeruginosa y Acinetobacter spp. Las neumonías atípicas representan >15% de todas las NAC. <span class=\"fuente-ampliada\">Legionella tiene mortalidad ~10%, que puede subir a 27% si no recibe antibiótico adecuado a tiempo.</span>",
+    "etiologiaFactoresRiesgo": [
+      "NAAS (Neumonía Asociada a la Atención Sanitaria): hospitalización ≥2 días en los 90 días previos, residencia en hogar de ancianos, terapia de infusión domiciliaria, diálisis crónica, cuidado de heridas en casa, contacto con colonizados por MDR",
+      "Diferencias regionales importantes: en EE.UU. la NAAS suele ser por multirresistentes en críticos; en Europa, la etiología es similar a la NAC",
+      "Neumonía atípica: edad más joven, pocas comorbilidades — patrón inverso al de la NAC típica bacteriana"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "alveolar",
-    "relacionadas": [
+    "criteriosDiagnosticos": "NAH/NAV: >48h post-ingreso + infiltrado nuevo + criterios clínicos. Neumonía atípica: diagnóstico presuntivo con los 6 parámetros de la Sociedad Respiratoria Japonesa (JRS) — edad <60 años, sin comorbilidades o menores, tos persistente, ausencia de ruidos adventicios torácicos, sin esputo o sin agente identificado, leucocitos <10,000/µL.",
+    "fisiopatologia": {
+      "resumen": "En NAH/NAV, el paciente hospitalizado (especialmente intubado) está expuesto a patógenos nosocomiales — frecuentemente multirresistentes — que colonizan la vía aérea a través del tubo endotraqueal o por microaspiración, en un huésped ya debilitado por su enfermedad de base. En neumonía atípica, el mecanismo es fundamentalmente distinto: los patógenos (sin pared celular) invaden y generan una respuesta inflamatoria con manifestaciones EXTRAPULMONARES características, en vez del cuadro alveolar clásico.",
+      "cascada": [
+        {
+          "paso": "NAH/NAV — Exposición",
+          "detalle": "Colonización de la vía aérea por patógenos nosocomiales (frecuentemente MDR) a través del tubo endotraqueal o microaspiración"
+        },
+        {
+          "paso": "NAH/NAV — Factor de riesgo clave",
+          "detalle": "Inicio TEMPRANO (<5 días) vs. TARDÍO (≥5 días) determina el riesgo de patógenos resistentes — el inicio tardío se asocia a mayor riesgo MDR"
+        },
+        {
+          "paso": "NAH/NAV — Infección establecida",
+          "detalle": "Invasión del parénquima por patógenos frecuentemente resistentes (Pseudomonas, Acinetobacter, Enterobacteriaceae)"
+        },
+        {
+          "paso": "Atípica — Exposición",
+          "detalle": "Mycoplasma, Chlamydia o Legionella, sin pared celular bacteriana, invaden la vía respiratoria"
+        },
+        {
+          "paso": "Atípica — Respuesta inmune",
+          "detalle": "En M. pneumoniae grave, la patogénesis se relaciona con una respuesta inmune EXCESIVA contra el patógeno, no solo el daño directo"
+        },
+        {
+          "paso": "Atípica — Manifestación",
+          "detalle": "Cuadro clínico con hallazgos extrapulmonares característicos — la diferencia clave frente a la neumonía típica"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/nih/nih-algoritmo-atb-empirico.jpg",
+          "caption": "Algoritmo oficial ERS/ESICM/ESCMID/ALAT (de tu clase)",
+          "explicacion": "Este es el algoritmo real que usan las guías internacionales para decidir el antibiótico empírico en NAH/NAV. Síguelo de arriba hacia abajo: PRIMERO evalúas 2 cosas en paralelo — riesgo de patógeno MDR Y riesgo de mortalidad (>15% = alto). Si AMBOS son bajos → monoterapia simple (ertapenem, ceftriaxona, cefotaxima, moxifloxacino o levofloxacino). Si CUALQUIERA de los dos es alto, te bifurcas según si hay o no shock séptico: sin shock → un solo agente Gram-negativo (si es activo contra >90% de las Gram-negativas de tu UCI) ± cobertura MRSA; CON shock séptico → cobertura DOBLE para Pseudomonas ± MRSA. La lógica detrás del corte de 15% de mortalidad: por debajo de ese umbral, la monoterapia da MEJOR resultado que la terapia combinada — combinar antibióticos innecesariamente no es 'más seguro', puede ser peor."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">El motivo detrás del corte de 15% de mortalidad en el algoritmo no es arbitrario: estudios de infecciones graves han encontrado que cuando el riesgo de morir ya es bajo, agregar un segundo antibiótico solo suma toxicidad y presión selectiva para resistencia sin mejorar el desenlace — el paciente de bajo riesgo se beneficia MÁS de un tratamiento dirigido y simple que de 'cubrir todo por si acaso'.</span>"
+    },
+    "clinica": [
       {
-        "id": "neumonia-nac",
-        "relacion": "Se distinguen por el lugar y momento de adquisición — la intrahospitalaria se desarrolla >48h después del ingreso, con patógenos más resistentes"
+        "signo": "Fiebre + secreciones traqueales purulentas (NAH/NAV)",
+        "detallePPT": "En paciente hospitalizado >48h o intubado",
+        "mecanismo": "Respuesta inflamatoria a la infección del parénquima + hipersecreción de la vía aérea colonizada"
+      },
+      {
+        "signo": "Consolidación nueva en imagen (NAH/NAV)",
+        "detallePPT": "Infiltrado de aparición reciente durante la hospitalización",
+        "mecanismo": "Exudado inflamatorio alveolar por la infección nueva"
+      },
+      {
+        "signo": "Tos persistente (atípica)",
+        "detallePPT": "Una de las causas más comunes de tos persistente en niños y adultos — B. pertussis, M. pneumoniae, C. pneumoniae",
+        "mecanismo": "Inflamación sostenida de la vía aérea sin la resolución rápida típica de una infección bacteriana clásica tratada"
+      },
+      {
+        "signo": "Manifestaciones extrapulmonares (atípica)",
+        "detallePPT": "La característica diferenciadora CLAVE frente a la neumonía típica",
+        "mecanismo": "<span class=\"fuente-ampliada\">Estos patógenos (Mycoplasma, Legionella) tienen tropismo por tejidos más allá del pulmón, generando manifestaciones sistémicas (articulares, cutáneas, neurológicas según el patógeno) que no se ven en la neumonía bacteriana típica.</span>"
+      },
+      {
+        "signo": "Progresión rápida y grave (Legionella)",
+        "detallePPT": "A menudo se presenta como neumonía grave de progresión rápida",
+        "mecanismo": "Alta virulencia del patógeno con capacidad de replicación intracelular en macrófagos alveolares"
       }
     ],
-    "profundo": {
-      "definicion": "Son dos entidades distintas agrupadas por su dificultad diagnóstica. La neumonía intrahospitalaria (nosocomial) es una infección del parénquima pulmonar por patógenos hospitalarios, que se desarrolla >48h después del ingreso (o hasta 30 días post-alta si hay factores de riesgo). La neumonía atípica es causada por patógenos que NO se detectan con tinción de Gram ni se cultivan con métodos estándar (Mycoplasma pneumoniae, Chlamydia pneumoniae, Legionella spp.) — representan >15% de todas las NAC.",
-      "epidemiologia": "La mortalidad bruta de la neumonía nosocomial puede llegar a 70% en casos de neumonía asociada a ventilación mecánica (NAV) — aunque la mortalidad ATRIBUIBLE directamente a la infección es menor (~10% según estudios recientes). Mayor mortalidad con Pseudomonas aeruginosa y Acinetobacter spp. La neumonía por Legionella tiene mortalidad ~10%, que sube a 27% sin tratamiento antibiótico adecuado.",
-      "etiologiaFactoresRiesgo": [
-        "NAAS (neumonía asociada a la atención sanitaria): hospitalización ≥2 días en los últimos 90 días, residencia en centro de cuidados prolongados, diálisis crónica, terapia de infusión domiciliaria",
-        "Neumonía nosocomial de inicio tardío: mayor riesgo de patógenos multirresistentes (MDR)",
-        "Neumonía atípica — factores según patógeno: M. pneumoniae/C. pneumoniae en pacientes jóvenes con pocas comorbilidades; Legionella en edad avanzada, alcoholismo, inmunosupresión, trasplante"
-      ],
-      "fisiopatologia": {
-        "resumen": "En la neumonía nosocomial, el mecanismo central es la colonización de la vía aérea por flora hospitalaria (frecuentemente resistente) en un huésped con defensas alteradas (intubación, inmovilidad, comorbilidad grave). En la neumonía atípica, los patógenos carecen de pared celular bacteriana clásica (Mycoplasma) o son intracelulares obligados (Chlamydia, Legionella), lo que explica por qué NO responden a beta-lactámicos.",
-        explicacionExtendida: "La neumonía asociada a ventilación mecánica tiene un mecanismo bastante distinto al de la neumonía comunitaria: el tubo endotraqueal es, en sí mismo, parte del problema. Alrededor del tubo se forma una biopelícula (biofilm) bacteriana que actúa como reservorio protegido de antibióticos y del sistema inmune; fragmentos de esa biopelícula se desprenden y son microaspirados hacia la vía aérea baja, sorteando por completo las defensas naturales de la vía aérea superior que normalmente filtrarían esos microorganismos. Por eso los patógenos típicos de neumonía nosocomial (Pseudomonas, Acinetobacter, enterobacterias) tienden a ser más resistentes: se seleccionan bajo la presión de antibióticos previos y el ambiente hospitalario.\n\nLa neumonía atípica sigue una lógica biológica completamente distinta. Mycoplasma pneumoniae carece de pared celular bacteriana clásica (por eso los beta-lactámicos, que actúan inhibiendo la síntesis de esa pared, no le hacen nada). Chlamydia pneumoniae y Legionella son patógenos intracelulares obligados o facultativos: se replican dentro de las propias células del huésped, escondidos de anticuerpos y de muchos antibióticos que no penetran bien la membrana celular. Esto explica por qué el tratamiento de elección son los macrólidos y las tetraciclinas — antibióticos que sí logran concentrarse dentro de las células e interferir con la síntesis de proteínas del patógeno desde adentro.",
-        "cascada": [
+    "examenFisico": [
+      "NAH/NAV: crépitos focales sobre la zona de consolidación nueva, puede haber signos de sepsis (taquicardia, hipotensión)",
+      "Atípica: frecuentemente ausencia de ruidos adventicios torácicos pese a la clínica (uno de los 6 criterios JRS) — un dato semiológico clave para sospecharla"
+    ],
+    "semiologia": {
+      "inspeccion": "En NAV, revisa el ventilador y las secreciones traqueales — su cambio a purulentas es un signo clave de sospecha. En atípica, el paciente suele verse menos tóxico de lo que su fiebre sugeriría — un contraste llamativo frente a la neumonía bacteriana típica.",
+      "palpacion": "Sin hallazgos distintivos específicos más allá de lo esperado por cualquier consolidación (frémito aumentado si hay consolidación establecida).",
+      "percusion": "Matidez si hay consolidación franca — puede estar ausente o ser sutil en la neumonía atípica, que característicamente da MENOS hallazgos físicos de los que la clínica sugeriría.",
+      "auscultacion": "NAH/NAV: crépitos focales nuevos. Atípica: la AUSENCIA de ruidos adventicios pese a la clínica respiratoria es, paradójicamente, uno de los datos que más orienta a considerar un patógeno atípico — es una discordancia clínico-auscultatoria característica."
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "🔬 Diagnóstico presuntivo de neumonía atípica (criterios JRS)",
+        "contexto": "6 parámetros propuestos por la Sociedad Respiratoria Japonesa para diferenciar neumonía bacteriana típica de atípica (principalmente por M. pneumoniae) y guiar la selección del antibiótico.",
+        "columnas": [
+          "#",
+          "Parámetro"
+        ],
+        "filas": [
+          [
+            "1",
+            "Edad <60 años"
+          ],
+          [
+            "2",
+            "Sin comorbilidades o menores"
+          ],
+          [
+            "3",
+            "Presencia de tos persistente"
+          ],
+          [
+            "4",
+            "Ausencia de ruidos adventicios en el tórax"
+          ],
+          [
+            "5",
+            "Sin esputo o sin agente etiológico identificado"
+          ],
+          [
+            "6",
+            "Recuento de leucocitos <10,000/µL"
+          ]
+        ],
+        "nota": "A más criterios presentes, mayor probabilidad de neumonía atípica sobre bacteriana típica — orienta la elección inicial de antibiótico (macrólido/tetraciclina en vez de β-lactámico)."
+      },
+      {
+        "titulo": "🦠 Patógenos resistentes a vigilar en NAH/NAV",
+        "columnas": [
+          "Patógeno",
+          "Dato clave"
+        ],
+        "filas": [
+          [
+            "Pseudomonas aeruginosa",
+            "Asociado a mayor mortalidad; mayor tasa de recurrencia con tratamientos cortos (7-8 días) que con 15 días"
+          ],
+          [
+            "Acinetobacter spp.",
+            "Asociado a mayor mortalidad; con frecuencia requiere agentes de segunda línea (colistina, tigeciclina)"
+          ],
+          [
+            "Enterobacteriaceae resistente a carbapenémicos",
+            "Patógeno altamente resistente, requiere duración individualizada de terapia"
+          ]
+        ]
+      }
+    ],
+    "diagnostico": "NAH/NAV: se recomienda obtener muestra del tracto respiratorio inferior (cultivo cuantitativo distal o proximal, o cualitativo) para enfocar y reducir la terapia empírica inicial — recomendación FUERTE aunque de evidencia de baja calidad. Neumonía atípica: el cultivo es el estándar de oro pero NO está ampliamente disponible (aislamiento lento, técnicamente complejo, no crecen en medios estándar ni se tiñen con Gram) — por eso el diagnóstico suele ser clínico-presuntivo (criterios JRS) más que microbiológico.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Paciente hospitalizado >48h con fiebre + secreciones + infiltrado nuevo → sospecha NAH/NAV"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Evaluar riesgo de patógeno MDR Y riesgo de mortalidad (>15% = alto) en paralelo"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Bajo riesgo MDR Y bajo riesgo de mortalidad?",
+        "salidas": [
           {
-            "paso": "Factor desencadenante",
-            "detalle": "Intubación/ventilación mecánica o colonización por flora multirresistente del ambiente hospitalario"
+            "etiqueta": "SÍ",
+            "texto": "Monoterapia de espectro reducido (ertapenem, ceftriaxona, cefotaxima, moxifloxacino o levofloxacino)",
+            "color": "mint"
           },
           {
-            "paso": "Célula afectada",
-            "detalle": "Defensas mucociliares alteradas por el tubo endotraqueal; barrera epitelial comprometida"
-          },
-          {
-            "paso": "Mediadores/patógeno",
-            "detalle": "Patógenos MDR (Pseudomonas, Acinetobacter) o atípicos intracelulares evaden mecanismos de defensa estándar"
-          },
-          {
-            "paso": "Cambio estructural",
-            "detalle": "Consolidación pulmonar con patógenos difíciles de erradicar por resistencia antibiótica o localización intracelular"
-          },
-          {
-            "paso": "Manifestación clínica",
-            "detalle": "Fiebre, secreciones traqueales purulentas (nosocomial) o cuadro más insidioso con síntomas extrapulmonares (atípica)"
+            "etiqueta": "NO — alto riesgo en cualquiera de los dos",
+            "texto": "Evaluar presencia de shock séptico",
+            "color": "coral"
           }
         ]
       },
-      "clinica": [
-        {
-          "signo": "Fiebre + secreciones traqueales abundantes en paciente hospitalizado/intubado",
-          "mecanismo": "Colonización e infección por flora hospitalaria en vía aérea con defensas alteradas por el tubo endotraqueal"
-        },
-        {
-          "signo": "Tos persistente + síntomas extrapulmonares (atípica)",
-          "mecanismo": "Patógeno intracelular que genera respuesta inflamatoria sistémica más que consolidación focal clásica"
-        }
-      ],
-      "examenFisico": [
-        "Nosocomial: nuevo infiltrado + secreciones purulentas + hipoxemia en paciente ya hospitalizado",
-        "Atípica: auscultación pulmonar frecuentemente pobre en hallazgos pese a síntomas — 'disociación clínico-radiológica'"
-      ],
-      semiologia: {
-            "inspeccion": "En paciente ventilado: secreciones traqueales purulentas visibles al aspirar, desaturación progresiva en el monitor, fiebre nueva. En paciente no intubado con neumonía atípica: examen a veces sorprendentemente 'pobre' en hallazgos pese a síntomas — la llamada disociación clínico-radiológica (te ves con poco al examinar pero la Rx muestra bastante, o al revés).",
-            "palpacion": "En nosocomial: similar a NAC si hay consolidación franca (frémito aumentado). En atípica: con frecuencia poco llamativa, otro reflejo de la disociación clínico-radiológica típica de estos patógenos.",
-            "percusion": "Matidez localizada si hay consolidación establecida; puede ser sutil en fases tempranas de neumonía atípica.",
-            "auscultacion": "Nosocomial: similar a NAC — crépitos localizados, posible soplo tubárico. Atípica: auscultación con frecuencia normal o con hallazgos mínimos (roncantes leves) a pesar de tos persistente — este contraste entre 'poco que auscultar' y 'mucha tos/síntomas sistémicos' es justamente lo que debe hacerte sospechar un patógeno atípico en vez de bacteriano típico."
-      },
-      "diagnostico": "Nosocomial: cultivo de muestra respiratoria (distal o proximal) ANTES de iniciar/cambiar antibiótico. Atípica: diagnóstico presuntivo por criterios clínicos (edad <60, sin comorbilidades, tos persistente, sin ruidos adventicios, leucocitos <10,000) — el cultivo estándar no sirve porque estos patógenos no crecen en medios convencionales.",
-      algoritmo: [
-            {
-                  "tipo": "paso",
-                  "texto": "Fiebre nueva + secreciones purulentas en paciente hospitalizado >48h"
-            },
-            {
-                  "tipo": "paso",
-                  "texto": "Tomar cultivo de vía respiratoria baja ANTES de iniciar/cambiar antibiótico (sin retrasar tratamiento si está grave)"
-            },
-            {
-                  "tipo": "decision",
-                  "texto": "¿Tiene factores de riesgo para patógenos multirresistentes (MDR) o shock séptico?",
-                  "salidas": [
-                        {
-                              "etiqueta": "Bajo riesgo",
-                              "texto": "Antibiótico de espectro reducido",
-                              "color": "mint"
-                        },
-                        {
-                              "etiqueta": "Alto riesgo / shock séptico",
-                              "texto": "Antibiótico empírico de amplio espectro (recomendación fuerte)",
-                              "color": "alert"
-                        }
-                  ]
-            }
-      ],
-      "diagnosticoDiferencial": [
-        "Neumonía adquirida en la comunidad",
-        "Tromboembolismo pulmonar (en paciente hospitalizado con fiebre nueva)",
-        "Atelectasia"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Obtener cultivo respiratorio ANTES de iniciar tratamiento cuando sea posible, sin retrasar el inicio de antibióticos en pacientes graves",
-          "Reevaluar y desescalar terapia al día 3 según resultados de cultivo"
-        ],
-        "farmacologico": [
-          "Nosocomial de bajo riesgo (inicio temprano, sin factores MDR): antibiótico de espectro reducido",
-          "Nosocomial de alto riesgo (shock séptico, hospital con alta tasa de resistencia): antibiótico empírico de amplio espectro, recomendación fuerte",
-          "Atípica: macrólidos o tetraciclinas (interfieren la síntesis proteica bacteriana) — los beta-lactámicos NO sirven porque estos patógenos carecen de pared celular",
-          "M. pneumoniae grave/refractaria: considerar corticoides si LDH sérica 302-364 UI/L (criterio para iniciar terapia antiinflamatoria)"
+      {
+        "tipo": "decision",
+        "texto": "¿Shock séptico presente?",
+        "salidas": [
+          {
+            "etiqueta": "NO",
+            "texto": "Un solo agente Gram-negativo (activo >90% local) ± cobertura MRSA",
+            "color": "coral"
+          },
+          {
+            "etiqueta": "SÍ",
+            "texto": "Cobertura DOBLE para Pseudomonas ± MRSA",
+            "color": "alert"
+          }
         ]
-      },
-      "complicaciones": [
-        "Shock séptico",
-        "Falla respiratoria que requiere ventilación mecánica prolongada",
-        "Resistencia antimicrobiana progresiva (M. pneumoniae resistente a macrólidos, documentado desde 2000)"
+      }
+    ],
+    "diagnosticoDiferencial": [
+      "Neumonía adquirida en la comunidad (por el lugar/momento de adquisición)",
+      "Tromboembolismo pulmonar (puede simular consolidación + disnea + fiebre baja)",
+      "Síndrome de dificultad respiratoria aguda (SDRA) no infeccioso",
+      "Edema pulmonar cardiogénico"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Obtener muestra del tracto respiratorio inferior ANTES de iniciar/cambiar antibiótico cuando sea posible, para enfocar la terapia",
+        "Reevaluar/desescalar el antibiótico al día 3, cuando estén disponibles los datos de respuesta microbiológica y clínica — considerado buena práctica",
+        "Medir biomarcadores seriados (PCR, procalcitonina) en casos seleccionados para guiar duración de terapia"
       ],
-      "prevencion": "Medidas de control de infecciones hospitalarias (higiene de manos, protocolos de manejo de vía aérea en ventilación mecánica) para reducir NAV. No existe vacuna específica para la mayoría de patógenos atípicos.",
-      "perlasProfundo": "La duración estándar de tratamiento en neumonía nosocomial es 7-8 días — MÁS CORTO de lo que muchos asumen, salvo en casos de Pseudomonas/no fermentadores, inmunocompromiso severo, o terapia inicial inapropiada, donde sí se individualiza a plazos más largos."
+      "farmacologico": [
+        "NAH/NAV bajo riesgo MDR + bajo riesgo mortalidad: monoterapia de espectro reducido",
+        "NAH/NAV alto riesgo sin shock: un agente Gram-negativo (activo >90% local) ± MRSA",
+        "NAH/NAV alto riesgo con shock séptico: cobertura doble Pseudomonas ± MRSA",
+        "Duración estándar: 7-8 días en la mayoría de los casos (igual eficacia que cursos más largos, con MENOS resistencia) — EXCEPTO Pseudomonas/no fermentadores, donde 7-8 días se asocia a más recurrencia que 15 días",
+        "Precaución: cefalosporinas de 3ª generación aumentan el riesgo de infección por C. difficile comparadas con penicilinas o quinolonas",
+        "Neumonía atípica: macrólidos o tetraciclinas (interfieren la síntesis de proteínas intracelulares — por eso funcionan sin pared celular bacteriana como blanco)",
+        "En ancianos o con enfermedades crónicas (posible infección mixta): considerar β-lactámico + macrólido/tetraciclina, o fluoroquinolona sola, desde el inicio",
+        "M. pneumoniae refractario/grave: considerar corticosteroides si LDH sérica 302-364 UI/L — la respuesta inmune excesiva contribuye a la gravedad"
+      ]
     },
-    "repaso": {
-      "conceptosClave": [
-        "Nosocomial = >48h post-ingreso hospitalario, patógenos frecuentemente MDR",
-        "Atípica = no crece en cultivo estándar, no tiene pared celular clásica → no responde a beta-lactámicos",
-        "El cultivo respiratorio se toma ANTES de iniciar antibiótico, sin retrasar el tratamiento en pacientes graves"
-      ],
-      "clinica": "Nosocomial: fiebre + secreciones purulentas en paciente ya hospitalizado. Atípica: tos persistente con auscultación relativamente pobre (disociación clínico-radiológica).",
-      "diagnostico": "Nosocomial: cultivo de vía respiratoria baja. Atípica: criterios clínicos presuntivos (edad, comorbilidad, leucocitos).",
-      "tratamientoResumen": "Nosocomial: espectro reducido si bajo riesgo, amplio espectro si shock séptico/hospital de alta resistencia. Atípica: macrólidos o tetraciclinas, NUNCA beta-lactámicos solos.",
-      "diferenciales": [
+    "complicaciones": [
+      "Sepsis y shock séptico",
+      "Insuficiencia respiratoria que requiere ventilación mecánica",
+      "Infección por Clostridium difficile (especialmente con cefalosporinas de 3ª generación)",
+      "Neumonía por Legionella no tratada a tiempo: mortalidad hasta 27%",
+      "M. pneumoniae grave: progresión a neumonía refractaria que amenaza la vida"
+    ],
+    "prevencion": "Medidas de control de infecciones intrahospitalarias, higiene de manos, protocolos de manejo de vía aérea en pacientes intubados, uso racional de antibióticos para limitar la selección de resistencia.",
+    "perlasProfundo": "El dato que más cambia el manejo NO es solo 'qué tan grave se ve el paciente', sino el RIESGO específico de patógeno resistente y de mortalidad — dos pacientes igual de graves pueden requerir esquemas antibióticos completamente distintos según ese riesgo, y agregar más antibióticos de los necesarios no es 'más seguro', puede empeorar el pronóstico.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con signos vitales y contexto (hospitalización previa, UCI, ventilación mecánica) donde debes reconocer POR EL CONTEXTO qué tipo de neumonía es, no solo por la clínica — exactamente como los 2 casos reales de tu clase.",
+      "ejercicios": [
         {
-          "entidad": "NAC",
-          "clave": "Se adquiere fuera del hospital, sin el mismo riesgo de patógenos MDR"
+          "tipo": "Reconocer por contexto y sustentar (el más frecuente)",
+          "planteamiento": "Paciente hospitalizado hace 3 días por cirugía abdominal, desarrolla fiebre y consolidación nueva en Rx al 4to día de ingreso. ¿NAC o NAH? Sustente.",
+          "respuestaModelo": "NAH (Neumonía Intrahospitalaria) — el criterio temporal es clave: desarrolla el cuadro en el día 4 de hospitalización, superando las 48 horas que definen el corte entre NAC y NAH. El origen quirúrgico del ingreso no cambia esto: lo que importa es CUÁNDO se desarrolló la neumonía respecto al ingreso, no el motivo original de la hospitalización."
         },
         {
-          "entidad": "TEP",
-          "clave": "Fiebre nueva en hospitalizado con disnea súbita — considerar siempre en el diferencial de 'neumonía nueva' intrahospitalaria"
+          "tipo": "Indique y sustente (mecanismo de fármaco)",
+          "planteamiento": "¿Por qué los β-lactámicos NO son efectivos contra Mycoplasma pneumoniae, y qué clase de antibióticos sí funciona?",
+          "respuestaModelo": "Los β-lactámicos actúan inhibiendo la síntesis de la pared celular bacteriana — pero Mycoplasma pneumoniae NO TIENE pared celular, por lo que este mecanismo de acción no tiene ningún blanco sobre el cual actuar, siendo completamente ineficaz sin importar la dosis. Los macrólidos y tetraciclinas sí funcionan porque actúan sobre un blanco distinto: interfieren con la síntesis de proteínas intracelulares del patógeno, un mecanismo que no depende de la pared celular."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste los 6 parámetros de la Sociedad Respiratoria Japonesa (JRS) para el diagnóstico presuntivo de neumonía atípica.",
+          "respuestaModelo": "Edad <60 años, sin comorbilidades o menores, tos persistente, ausencia de ruidos adventicios en el tórax, sin esputo o sin agente etiológico identificado, leucocitos <10,000/µL."
         }
-      ],
-      "tablaComparativa": {
-            "titulo": "Neumonía nosocomial vs. atípica",
-            "filas": [
-                  [
-                        "Momento típico",
-                        ">48h post-ingreso hospitalario",
-                        "Puede ser comunitaria, curso insidioso"
-                  ],
-                  [
-                        "Cultivo estándar",
-                        "Sí sirve (bacterias típicas)",
-                        "NO sirve (no crece en medios estándar)"
-                  ],
-                  [
-                        "Tratamiento base",
-                        "β-lactámico ± cobertura MDR",
-                        "Macrólidos o tetraciclinas (sin pared celular)"
-                  ]
-            ]
-      }
-    },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "Neumonía atípica NO responde a beta-lactámicos — usa macrólidos o tetraciclinas",
-        "En sospecha de NAV, toma cultivo respiratorio ANTES de iniciar antibiótico, pero NO retrases el tratamiento en pacientes graves esperando el resultado",
-        "La duración estándar de tratamiento en nosocomial es 7-8 días, no más — salvo excepciones específicas",
-        "Legionella se presenta como neumonía grave de progresión rápida, con mortalidad hasta 27% sin tratamiento adecuado"
-      ],
-      "redFlags": [
-        "Fiebre nueva + secreciones purulentas en paciente intubado >48h → sospechar NAV, tomar cultivo de inmediato",
-        "Hiponatremia + tos seca + cuadro respiratorio → pensar en Legionella"
-      ],
-      "erroresFrecuentes": [
-        "Tratar neumonía atípica con beta-lactámicos solos (no tienen pared celular que atacar)",
-        "Prolongar tratamiento más allá de 7-8 días sin causa que lo justifique (aumenta resistencia sin beneficio)",
-        "No tomar cultivo antes de iniciar antibiótico cuando el paciente lo permite"
-      ],
-      "asociacionesClinicas": [
-        "Neumonía intrahospitalaria + Pseudomonas o Acinetobacter → mayor mortalidad asociada, requiere cobertura de amplio espectro",
-        "Neumonía atípica + paciente joven + síntomas extrapulmonares → Mycoplasma como primera sospecha"
       ]
     }
-  ,
-    casosClinicos: [
-        {
-            "vineta": "Paciente de 68 años, en UCI con ventilación mecánica por 6 días tras una cirugía abdominal complicada. El día 6 presenta fiebre de 38.6°C, aumento de secreciones traqueales purulentas, y nuevo infiltrado en radiografía de tórax. Hemodinámicamente estable, sin requerimiento de vasopresores.",
-            "preguntaMC": {
-                "enunciado": "¿Cuál es el paso MÁS apropiado antes de iniciar o ajustar el tratamiento antibiótico?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Iniciar de inmediato cobertura de amplísimo espectro para Pseudomonas y SARM sin cultivo previo"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "Obtener cultivo de una muestra respiratoria antes de iniciar el antibiótico, ya que el paciente está hemodinámicamente estable y esto no debe retrasar significativamente el inicio"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Esperar 48 horas de observación antes de tomar cualquier decisión"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "No es necesario cultivo porque el diagnóstico es únicamente clínico-radiológico"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "Al estar hemodinámicamente estable (sin shock séptico ni requerimiento de vasopresores), hay margen para obtener el cultivo respiratorio antes de iniciar el antibiótico empírico, lo que permite un tratamiento dirigido más preciso y evita sobretratamiento de amplio espectro innecesario. Si el paciente estuviera en shock séptico, el antibiótico no debería esperar al cultivo."
-            },
-            "preguntaEscrita": {
-                "enunciado": "¿Qué elementos de esta viñeta clasificarías como factores de riesgo para patógenos multirresistentes (MDR), y cómo influirían en tu elección antibiótica inicial?",
-                "respuestaModelo": "El principal factor de riesgo aquí es el tiempo de ventilación mecánica (6 días) — se considera neumonía nosocomial de inicio tardío (>4-5 días), lo cual se asocia a mayor probabilidad de patógenos multirresistentes como Pseudomonas aeruginosa o Acinetobacter, en comparación con la neumonía de inicio temprano. Esto orientaría a iniciar cobertura empírica de espectro más amplio mientras se esperan los resultados del cultivo, ajustando luego según el antibiograma."
-            },
-            "nivel": "intermedio"
-        },
-        {
-            "nivel": "basico",
-            "vineta": "Paciente hospitalizado hace 24 horas por una fractura de cadera, sin ventilación mecánica, presenta fiebre de 38°C y tos con expectoración. Radiografía de tórax: sin infiltrados nuevos.",
-            "preguntaMC": {
-                "enunciado": "¿Este cuadro cumple criterios de neumonía nosocomial?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Sí, porque está hospitalizado y tiene fiebre"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "No — la neumonía nosocomial requiere inicio >48 horas tras el ingreso, y este paciente lleva solo 24 horas; además no hay infiltrado nuevo confirmado"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Sí, porque tiene tos con expectoración"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "Es imposible saberlo sin cultivo"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "Dos elementos descartan neumonía nosocomial aquí: el tiempo (menos de 48h desde el ingreso, criterio temporal obligatorio) y la ausencia de infiltrado radiológico nuevo (criterio diagnóstico esencial de cualquier neumonía). Debe buscarse otra causa de fiebre postoperatoria."
-            },
-            "preguntaEscrita": {
-                "enunciado": "Además de una neumonía, ¿qué otras causas de fiebre postoperatoria temprana deberías considerar en este paciente?",
-                "respuestaModelo": "En el postoperatorio temprano (primeras 48-72h) las causas más frecuentes de fiebre suelen resumirse con la regla mnemotécnica de las '5 W': Wind (atelectasias/complicación pulmonar no infecciosa), Water (infección urinaria, sobre todo si tiene sonda vesical), Wound (infección de la herida quirúrgica, aunque es más típica después de las 72h), Walking (tromboembolismo venoso, relevante en fractura de cadera por inmovilización), y Wonder drugs (fiebre medicamentosa). En este caso, con fractura de cadera, también sería prioritario descartar trombosis venosa profunda/TEP dado el alto riesgo trombótico de la inmovilización."
-            }
-        }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "NAH/NAV: >48h post-ingreso; atípica: patógenos sin pared celular, no cultivables por métodos estándar",
+      "El riesgo de MDR + mortalidad (no solo la gravedad clínica) decide espectro antibiótico en NAH/NAV",
+      "Criterios JRS (6 parámetros) orientan el diagnóstico presuntivo de neumonía atípica"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — NAH/NAV según riesgo",
+      "columnas": [
+        "Riesgo",
+        "Tratamiento"
+      ],
+      "filas": [
+        [
+          "Bajo MDR + bajo mortalidad",
+          "Monoterapia espectro reducido"
+        ],
+        [
+          "Alto riesgo, sin shock",
+          "1 agente Gram-negativo ± MRSA"
+        ],
+        [
+          "Alto riesgo, con shock",
+          "Doble cobertura Pseudomonas ± MRSA"
+        ]
+      ],
+      "nota": "Duración estándar: 7-8 días (excepto Pseudomonas/no fermentadores: mejor 15 días)."
+    },
+    "clinica": "NAH/NAV: fiebre + secreciones purulentas + consolidación nueva en paciente hospitalizado >48h. Atípica: tos persistente + manifestaciones extrapulmonares + auscultación pobre para la clínica.",
+    "diagnostico": "NAH/NAV: muestra de tracto respiratorio inferior antes de tratar. Atípica: clínico-presuntivo (criterios JRS), cultivo poco disponible.",
+    "tratamientoResumen": "NAH/NAV según riesgo MDR+mortalidad+shock. Atípica: macrólidos/tetraciclinas (no β-lactámicos, sin pared celular).",
+    "diferenciales": [
+      {
+        "entidad": "NAC",
+        "clave": "Se adquiere FUERA del hospital — antibióticos de espectro más simple"
+      },
+      {
+        "entidad": "TEP",
+        "clave": "Puede simular consolidación + disnea, pero sin el contexto infeccioso típico"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Neumonía típica vs atípica",
+      "filas": [
+        [
+          "Pared celular del patógeno",
+          "Sí (responde a β-lactámicos)",
+          "No (requiere macrólido/tetraciclina)"
+        ],
+        [
+          "Hallazgos extrapulmonares",
+          "Infrecuentes",
+          "Característicos"
+        ],
+        [
+          "Auscultación",
+          "Crépitos/consolidación clara",
+          "Frecuentemente pobre pese a la clínica"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cuándo se considera NAH/NAV? → Desarrollo >48h después del ingreso hospitalario",
+      "¿Qué decide el espectro antibiótico en NAH/NAV? → Riesgo de MDR + riesgo de mortalidad (>15%) + presencia de shock séptico — NO solo la gravedad clínica",
+      "¿Por qué los patógenos atípicos no responden a β-lactámicos? → No tienen pared celular bacteriana (el blanco de estos fármacos)",
+      "¿Cuál es la duración estándar de NAH/NAV? → 7-8 días (EXCEPTO Pseudomonas/no fermentadores, donde 15 días tiene menos recurrencia)",
+      "¿Qué antibiótico aumenta más el riesgo de C. difficile? → Cefalosporinas de 3ª generación",
+      "¿Cuál es el hallazgo semiológico paradójico de la neumonía atípica? → Frecuente AUSENCIA de ruidos adventicios pese a la clínica respiratoria",
+      "¿Cuándo considerar corticosteroides en M. pneumoniae? → Casos refractarios/graves con LDH 302-364 UI/L"
+    ],
+    "redFlags": [
+      "Fiebre + secreciones purulentas nuevas en paciente intubado → sospechar NAV activamente",
+      "Shock séptico en NAH/NAV → requiere cobertura doble para Pseudomonas de inmediato",
+      "Legionella sin tratamiento adecuado → mortalidad hasta 27%"
+    ],
+    "erroresFrecuentes": [
+      "Dar terapia combinada de rutina en pacientes de bajo riesgo (empeora pronóstico, no lo mejora)",
+      "Usar β-lactámicos para tratar sospecha de neumonía atípica",
+      "Prolongar antibiótico más allá de 7-8 días en NAH/NAV sin Pseudomonas, sin razón individualizada",
+      "No reevaluar/desescalar el antibiótico al día 3 con los datos disponibles"
+    ],
+    "asociacionesClinicas": [
+      "Paciente institucionalizado (asilo) + neumonía → pensar NAAS con riesgo de patógenos multirresistentes",
+      "Tos persistente + pocas comorbilidades + edad joven → sospechar M. pneumoniae/C. pneumoniae"
     ]
-  }
+  },
+  "casosClinicos": [
+    {
+      "nivel": "basico",
+      "vineta": "(Caso real de tu clase) Paciente mujer de 72 años quien fue dada de alta hace 5 días del hospital por infección urinaria. Inicia cuadro de tos con expectoración verdosa, fiebre, malestar general, y leve disnea. A la auscultación se encuentran crépitos en hemitórax izquierdo.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál sería el diagnóstico más probable?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Neumonía adquirida en la comunidad"
+          },
+          {
+            "id": "b",
+            "texto": "Bronquitis aguda"
+          },
+          {
+            "id": "c",
+            "texto": "Neumonía intrahospitalaria (o asociada a la atención sanitaria)"
+          },
+          {
+            "id": "d",
+            "texto": "Tromboembolismo pulmonar"
+          }
+        ],
+        "correcta": "c",
+        "explicacion": "El antecedente de hospitalización reciente (dada de alta hace solo 5 días) es la clave del caso — esto la coloca en la categoría de Neumonía Asociada a la Atención Sanitaria (NAAS), que se desarrolla en pacientes NO hospitalizados actualmente pero con riesgo de estar colonizados por patógenos nosocomiales por su contacto reciente con el sistema de salud. No es NAC clásica precisamente por ese antecedente; no es bronquitis aguda porque tiene crépitos focales (signo de consolidación, no solo inflamación de vía aérea); no es TEP porque el cuadro con fiebre + esputo purulento + crépitos es mucho más consistente con un proceso infeccioso."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué el antecedente de hospitalización reciente (aunque haya sido por una causa no respiratoria, como la infección urinaria) es relevante para elegir la cobertura antibiótica empírica de esta paciente?",
+        "respuestaModelo": "Porque durante la hospitalización previa, la paciente pudo haber sido colonizada por patógenos nosocomiales (potencialmente multirresistentes) presentes en el ambiente hospitalario, independientemente de que la causa de esa hospitalización no haya sido respiratoria. Esto significa que el espectro de patógenos probables ya NO es el mismo que el de una NAC típica adquirida por una persona sin contacto reciente con el sistema de salud — se debe considerar cobertura empírica más amplia, evaluando factores de riesgo específicos para multirresistencia antes de decidir el antibiótico."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Mujer de 58 años con ACV hemorrágico ingresada en UCI hace 6 días, intubada. Al cuarto día de ventilación mecánica presenta fiebre de 38.9°C, secreciones traqueales abundantes, FR 32 rpm, SatO2 88% con FiO2 50%. Rx: consolidación nueva en base derecha. Hb 11.2 g/dL, Leucos 20,000/mm³, PCR 98 mg/L.",
+      "preguntaMC": {
+        "enunciado": "Calculando el PaFi (PaO2/FiO2) usando la SatO2 como aproximación de oxigenación, y considerando el cuadro completo, ¿qué tipo de infección respiratoria presenta esta paciente y qué riesgo de mortalidad implica de entrada?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "NAC — bajo riesgo, manejo ambulatorio"
+          },
+          {
+            "id": "b",
+            "texto": "Neumonía Asociada a Ventilación Mecánica (NAV) — alto riesgo por gravedad de la hipoxemia y contexto de UCI"
+          },
+          {
+            "id": "c",
+            "texto": "Bronquitis aguda — sin relevancia del contexto de UCI"
+          },
+          {
+            "id": "d",
+            "texto": "Neumonía atípica — por la fiebre y leucocitosis"
+          },
+          {
+            "id": "e",
+            "texto": "No se puede clasificar sin cultivo confirmado"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "6 días en UCI + intubada + fiebre + secreciones traqueales purulentas + consolidación NUEVA en la radiografía = Neumonía Asociada a Ventilación Mecánica (NAV), un subtipo de NAH. La hipoxemia marcada (SatO2 88% con FiO2 ya al 50%) junto con la leucocitosis marcada (20,000) y PCR muy elevada (98) sugieren un cuadro de ALTO riesgo — por gravedad clínica y por el contexto de UCI con probable exposición a patógenos nosocomiales, se debe asumir alto riesgo de mortalidad y de MDR hasta demostrar lo contrario, lo que orienta hacia terapia empírica de mayor espectro según el algoritmo (evaluando además si hay o no shock séptico asociado)."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Según el algoritmo de tratamiento antibiótico empírico de tu clase, ¿qué estudios pedirías de inmediato y qué esquema antibiótico empírico propondrías para esta paciente, asumiendo que NO presenta shock séptico?",
+        "respuestaModelo": "Estudios inmediatos: muestra del tracto respiratorio inferior (aspirado traqueal cuantitativo o cualitativo) ANTES de iniciar/cambiar el antibiótico, para enfocar la terapia posteriormente; hemocultivos; gasometría arterial completa para calcular el PaFi real. Dado que tiene alto riesgo (por gravedad e internamiento prolongado en UCI) pero SIN shock séptico, según el algoritmo correspondería iniciar un solo agente Gram-negativo (activo contra >90% de las bacterias Gram-negativas circulantes en esa UCI específica) más cobertura empírica para MRSA, en vez de la cobertura doble para Pseudomonas que solo estaría indicada si hubiera shock séptico asociado."
+      }
+    }
+  ]
+}
 ,
   {
     "id": "tuberculosis-pulmonar",
