@@ -2975,277 +2975,454 @@ const ENFERMEDADES = [
 }
 ,
   {
-    "id": "tuberculosis-pulmonar",
-    "nombre": "Tuberculosis Pulmonar",
-    "area": "Neumología",
-    "semanas": [
-      "semana-02"
+  "id": "tuberculosis-pulmonar",
+  "nombre": "Tuberculosis Pulmonar",
+  "area": "Neumología",
+  "semanas": [
+    "semana-02"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1fWwD_p1HT5YIF-gMELeZU5z_E4GkWIIf/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_2_SESIÓN-6-TEMA-2: Tuberculosis Pulmonar"
+  },
+  "relacionadas": [
+    {
+      "id": "enfermedades-pleurales",
+      "relacion": "El derrame pleural tuberculoso es una presentación extrapulmonar frecuente — confirmado por ADA elevado y exudado linfocitario"
+    }
+  ],
+  "profundo": {
+    "definicion": "Enfermedad infecciosa causada por un bacilo del grupo Mycobacterium tuberculosis (Mtb, o bacilo de Koch). El ser humano es el reservorio y transmisor de la micobacteria, que actúa como PARÁSITO — infecta a la persona sin destruirla, precisamente para poder seguir infectando a otros individuos. Es una enfermedad infecciosa, PREVENIBLE y CURABLE, considerada un reto de salud pública por su alta incidencia, formas resistentes, y asociación con VIH y diabetes mellitus.",
+    "epidemiologia": "Más de 10 millones de nuevos casos cada año en todo el mundo. Aproximadamente 25% de la población mundial está infectada por M. tuberculosis. 1.6 millones de muertes anuales — es la enfermedad infecciosa con MAYOR mortalidad causada por un único agente. Afecta mayormente a la población económicamente activa. <span class=\"fuente-ampliada\">La meta global (y el compromiso del Estado peruano) es la eliminación de la TB como problema de salud pública para el año 2030, con cobertura universal de diagnóstico/tratamiento gratuito y cero discriminación.</span>",
+    "etiologiaFactoresRiesgo": [
+      "Transmisión por inhalación de partículas en aerosol (0.65-7 µm) expulsadas al toser por una persona con enfermedad respiratoria activa",
+      "Contactos de pacientes con TB activa",
+      "Personas con VIH",
+      "Pacientes que inician tratamiento anti-TNF",
+      "Pacientes en diálisis o pre-trasplante",
+      "Diabetes mellitus (tamizaje obligatorio con glicemia en ayunas en TODA persona ≥40 años afectada por TB)",
+      "Personas privadas de libertad, personal de salud, inmigrantes de países de alta carga, personas sin hogar"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "alveolar",
-    "relacionadas": [
+    "criteriosDiagnosticos": "Caso de TB con confirmación bacteriológica: resultado positivo por baciloscopía, cultivo o prueba molecular rápida. Caso de TB SIN confirmación bacteriológica: diagnosticado por criterio clínico + apoyo de imagen/histología sugestiva, sin cumplir criterios de confirmación. Se solicita radiografía de tórax en TODO caso probable — pero ningún patrón radiográfico es específico para TB por sí solo.",
+    "fisiopatologia": {
+      "resumen": "La micobacteria es fagocitada por macrófagos, células dendríticas y neutrófilos en el alvéolo — pero la micobacteria VIRULENTA bloquea la maduración del fagosoma, impide su acidificación, e inhibe la fusión con el lisosoma (evasión inmunitaria activa, no pasiva). Las células inmunitarias entonces se organizan en GRANULOMAS, cuya capa externa está formada por linfocitos B y T — esta contención determina si la infección queda LATENTE o progresa a enfermedad activa.",
+      "cascada": [
+        {
+          "paso": "Transmisión",
+          "detalle": "Inhalación de aerosoles (0.65-7 µm) con M. tuberculosis expulsados por tos de un paciente con TB activa"
+        },
+        {
+          "paso": "Fagocitosis alveolar",
+          "detalle": "Macrófagos, células dendríticas y neutrófilos fagocitan la micobacteria en el compartimento alveolar"
+        },
+        {
+          "paso": "Evasión inmunitaria",
+          "detalle": "La micobacteria virulenta bloquea la maduración del fagosoma, impide su acidificación, e inhibe la fusión con el lisosoma — sobrevive DENTRO del macrófago"
+        },
+        {
+          "paso": "Formación del granuloma",
+          "detalle": "Las células inmunitarias se organizan en granulomas con linfocitos B y T en la capa externa — contención de la infección"
+        },
+        {
+          "paso": "Bifurcación",
+          "detalle": "Inmunidad mediada por macrófagos + granulomas + interferón CONTROLAN la diseminación → Infección Tuberculosa Latente (ITL). Si el sistema inmune NO controla → progresión a TB activa"
+        },
+        {
+          "paso": "TB posprimaria (enfermedad activa)",
+          "detalle": "Infiltrado alveolar precoz que puede remitir o propagarse — puede evolucionar a neumonía lobar obstructiva, neumonía caseosa, formación de cavernas, o diseminarse por vía sanguínea si hay inmunodepresión"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/tb/tb-rx-tc-diagnostico.jpg",
+          "caption": "Diagnóstico por imágenes (de tu clase)",
+          "explicacion": "De izquierda a derecha: la primera radiografía muestra opacidad/cavitación en vértice pulmonar — el patrón clásico de TB posprimaria por su localización apical. Los siguientes 3 cortes de TC muestran distintos grados del patrón de 'árbol en brote' (tree-in-bud) — pequeños nódulos centrolobulillares conectados a estructuras ramificadas, que representan bronquiolos impactados con material caseoso/purulento — este patrón es altamente sugestivo de diseminación endobronquial activa de la micobacteria, no solo de una cavidad aislada. Recuerda: ningún patrón radiológico es 100% específico de TB por sí solo, siempre se interpreta junto con la clínica y la bacteriología."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">Un dato evolutivo fascinante que menciona tu propio PPT: solo los HUMANOS desarrollan tuberculosis posprimaria (la forma que permite transmitir el bacilo a otras personas) — el animal infectado simplemente muere a consecuencia de la infección primaria, sin llegar a esta segunda fase. Esto sugiere que M. tuberculosis ha coevolucionado específicamente con el ser humano como su reservorio, optimizando su ciclo de transmisión a través de nosotros específicamente.</span>"
+    },
+    "clinica": [
       {
-        "id": "neumonia-nac",
-        "relacion": "Diagnóstico diferencial importante en tos crónica con pérdida de peso — la TB tiene curso más insidioso (semanas), la NAC es aguda (días)"
+        "signo": "Primoinfección — generalmente asintomática o paucisintomática",
+        "detallePPT": "Disminución del rendimiento intelectual, astenia, febrícula, eritema nodoso (raro)",
+        "mecanismo": "Respuesta inmune inicial contenida, sin gran replicación bacilar sistémica"
+      },
+      {
+        "signo": "Fiebre vespertina",
+        "detallePPT": "Signo frecuente de TB posprimaria",
+        "mecanismo": "Respuesta inflamatoria crónica con patrón circadiano característico"
+      },
+      {
+        "signo": "Sudores nocturnos + pérdida de peso",
+        "detallePPT": "Signos frecuentes de TB posprimaria",
+        "mecanismo": "Estado catabólico crónico por la respuesta inflamatoria sostenida (mediada por TNF y otras citoquinas)"
+      },
+      {
+        "signo": "Tos + expectoración hemoptoica",
+        "detallePPT": "Signos frecuentes; disnea en formas avanzadas",
+        "mecanismo": "Daño tisular cavitario con erosión de vasos sanguíneos de pequeño calibre"
+      },
+      {
+        "signo": "Ausencia de síntomas respiratorios en TB activa (en algunos casos)",
+        "detallePPT": "Tema de reflexión de tu propia clase",
+        "mecanismo": "<span class=\"fuente-ampliada\">Puede reflejar enfermedad en fase inicial, localización predominantemente extrapulmonar, o una respuesta inmune del huésped que limita la extensión de la afectación de la vía aérea — con implicancias serias: estos pacientes pueden seguir siendo bacilíferos y transmitir la enfermedad sin saberlo, dificultando el control epidemiológico.</span>"
       }
     ],
-    "profundo": {
-      "definicion": "Enfermedad infecciosa causada por Mycobacterium tuberculosis (bacilo de Koch), que afecta principalmente el parénquima pulmonar aunque puede diseminarse a cualquier órgano. El ser humano es el único reservorio conocido; la micobacteria actúa como parásito intracelular que infecta sin destruir rápidamente a su huésped, lo que le permite persistir y transmitirse a otras personas durante meses o años si no se trata.",
-      "epidemiologia": "Aproximadamente una cuarta parte de la población mundial está infectada por M. tuberculosis (infección latente, no enfermedad activa). Cada año se infectan más de 10 millones de personas y ocurren 1.6 millones de muertes anuales — es la enfermedad infecciosa con mayor mortalidad causada por un único agente a nivel mundial. Afecta predominantemente a población económicamente activa, y su control es un reto de salud pública por la resistencia a fármacos y su asociación con VIH y diabetes mellitus.",
-      "etiologiaFactoresRiesgo": [
-        "Contacto cercano y prolongado con un caso bacilífero (transmisión por aerosoles de 0.65-7 μm expulsados al toser)",
-        "Inmunosupresión — VIH/SIDA es el factor de riesgo más potente para progresión de infección latente a enfermedad activa",
-        "Diabetes mellitus",
-        "Desnutrición y hacinamiento",
-        "Silicosis y otras neumoconiosis",
-        "Uso de corticoides sistémicos o terapia biológica inmunosupresora"
-      ],
-      "fisiopatologia": {
-        "resumen": "La micobacteria es fagocitada por macrófagos alveolares, células dendríticas y neutrófilos, pero tiene la capacidad de evadir la destrucción bloqueando la maduración del fagosoma e impidiendo su fusión con el lisosoma. El sistema inmune responde formando granulomas para contener la infección, lo que en la mayoría de los casos resulta en infección latente (contenida pero no eliminada) en vez de enfermedad activa inmediata.",
-        "explicacionExtendida": "Cuando una persona inhala el bacilo, este llega hasta los alvéolos y es fagocitado por los macrófagos alveolares — el primer paso normal de defensa contra cualquier patógeno inhalado. Sin embargo, M. tuberculosis tiene un mecanismo de evasión inmunitaria muy particular: en vez de ser destruido dentro del fagosoma, bloquea activamente su maduración e impide que se acidifique y se fusione con el lisosoma, evitando así ser degradado. Esto le permite sobrevivir e incluso replicarse dentro del propio macrófago que se suponía debía eliminarlo.\n\nAnte esta persistencia, el sistema inmune organiza una respuesta de contención: células T, macrófagos activados y otras células inmunitarias se agrupan formando el granuloma característico, cuya capa externa está compuesta por linfocitos y fibroblastos que 'encapsulan' el foco infeccioso, muchas veces con necrosis caseosa central. En la mayoría de las personas inmunocompetentes, este granuloma logra contener la infección de forma indefinida — es lo que se llama infección tuberculosa latente (ILTB): la persona está infectada pero no tiene enfermedad activa ni transmite la bacteria. El riesgo real aparece cuando ese equilibrio se rompe (por inmunosupresión, desnutrición, VIH, edad avanzada, diabetes): el granuloma pierde su capacidad de contención, los bacilos se reactivan y proliferan, y la enfermedad se vuelve activa — con capacidad de causar daño tisular real y de transmitirse a otras personas.",
-        "cascada": [
+    "examenFisico": [
+      "Crépitos en el vértice pulmonar afectado (por la localización apical preferente)",
+      "Signos de consolidación si hay neumonía caseosa establecida",
+      "Puede ser normal en formas iniciales o extrapulmonares"
+    ],
+    "semiologia": {
+      "inspeccion": "Busca caquexia (por pérdida de peso crónica) y palidez si hay anemia de proceso crónico asociada.",
+      "palpacion": "Sin hallazgos específicos, salvo adenopatías palpables si hay compromiso ganglionar asociado.",
+      "percusion": "Puede haber matidez sobre zonas de consolidación caseosa extensa.",
+      "auscultacion": "Crépitos localizados en VÉRTICES pulmonares — la localización preferente de la TB posprimaria en segmentos apicales y dorsales de lóbulos superiores, y apicales de lóbulos inferiores, se explica por la mayor oxigenación relativa y menor circulación linfática en esas zonas (M. tuberculosis es aerobio estricto y prolifera mejor donde hay más oxígeno disponible)."
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "🧬 Tipos de tuberculosis resistente",
+        "contexto": "La resistencia se define por a qué fármaco(s) específico(s) es resistente el M. tuberculosis — esto determina completamente el esquema de tratamiento a usar.",
+        "columnas": [
+          "Tipo",
+          "Definición"
+        ],
+        "filas": [
+          [
+            "TB resistente a Isoniacida (TB rH)",
+            "Resistencia detectada a Isoniacida (H), SIN resistencia a Rifampicina"
+          ],
+          [
+            "TB resistente a Rifampicina (TB RR)",
+            "Resistencia detectada a Rifampicina"
+          ],
+          [
+            "TB multidrogorresistente (TB MDR)",
+            "Resistencia SIMULTÁNEA a Isoniacida Y Rifampicina"
+          ],
+          [
+            "TB pre-extensamente resistente (pre-XDR)",
+            "Cumple criterio MDR/RR + resistencia a cualquier fluoroquinolona"
+          ],
+          [
+            "TB extensamente resistente (XDR)",
+            "Cumple criterio RR/MDR + fluoroquinolona + al menos 1 medicamento adicional del Grupo A (Bedaquilina, Linezolid)"
+          ]
+        ]
+      },
+      {
+        "titulo": "💊 Esquema de tratamiento — TB sensible (MINSA 2023)",
+        "contexto": "El esquema estándar se divide en 2 fases con distinta frecuencia de dosis — HREZ son las siglas de los 4 fármacos de primera línea.",
+        "columnas": [
+          "Situación",
+          "Primera fase",
+          "Segunda fase"
+        ],
+        "filas": [
+          [
+            "TB sin VIH",
+            "2 meses HREZ diario (50 dosis)",
+            "4 meses H3R3 — 3 veces/semana (54 dosis)"
+          ],
+          [
+            "TB miliar / SNC / osteoarticular",
+            "2 meses HREZ diario (50 dosis)",
+            "10 meses HR diario (250 dosis)"
+          ],
+          [
+            "TB con VIH",
+            "2 meses HREZ diario (50 dosis)",
+            "4 meses HR diario (100 dosis)"
+          ]
+        ],
+        "nota": "H=Isoniacida, R=Rifampicina, E=Etambutol, Z=Pirazinamida. Todo esquema con Isoniacida requiere Piridoxina 50mg/día como acompañante para prevenir neuropatía."
+      },
+      {
+        "titulo": "🛡️ Esquemas para Terapia Preventiva de TB (TPTB)",
+        "columnas": [
+          "Esquema",
+          "Duración"
+        ],
+        "filas": [
+          [
+            "Isoniacida (H) sola",
+            "6 meses diario"
+          ],
+          [
+            "Isoniacida + Rifampicina (H+R)",
+            "3 meses diario"
+          ],
+          [
+            "Rifampicina (R) sola",
+            "4 meses diario"
+          ],
+          [
+            "Rifapentina + Isoniacida (>2 años)",
+            "3 meses, 1 vez/semana (12 dosis)"
+          ]
+        ],
+        "nota": "Indicado en: contactos de TB activa, personas con VIH, inicio de anti-TNF, diálisis/pre-trasplante, y grupos de riesgo con ITBL detectada (PPL, personal de salud, corticoides/inmunosupresores prolongados, ERC, neoplasias, DM)."
+      }
+    ],
+    "diagnostico": "Diagnóstico bacteriológico: se requieren 3 muestras pulmonares de buena calidad (esputo, esputo inducido, aspirado gástrico, o muestras endoscópicas), procesadas con tinción de Ziehl-Neelsen/auramina, cultivo (Löwenstein-Jensen, Ogawa, o MGIT), técnicas de amplificación génica, o Xpert MTB/RIF (GeneXpert). Se recomienda solicitar 2 muestras de esputo SERIADAS: la primera al identificar al caso probable, la segunda al día siguiente al despertar en su domicilio. TODA Persona Afectada por Tuberculosis (PAT) debe ser evaluada con pruebas moleculares rápidas para resistencia a Isoniacida y/o Rifampicina ANTES de iniciar tratamiento.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Síntomas respiratorios (tos ≥2-3 semanas) + síntomas generales → caso probable de TB"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Solicitar radiografía de tórax + 2 muestras seriadas de esputo para baciloscopía"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Baciloscopía/cultivo/prueba molecular positiva?",
+        "salidas": [
           {
-            "paso": "Factor desencadenante",
-            "detalle": "Inhalación de bacilos de M. tuberculosis en aerosoles expulsados por un caso bacilífero"
+            "etiqueta": "SÍ",
+            "texto": "Caso de TB CON confirmación bacteriológica — realizar prueba molecular de resistencia ANTES de iniciar tratamiento",
+            "color": "coral"
           },
           {
-            "paso": "Células activadas",
-            "detalle": "Macrófagos alveolares, células dendríticas y neutrófilos fagocitan al bacilo"
-          },
-          {
-            "paso": "Evasión inmunitaria",
-            "detalle": "El bacilo bloquea la maduración del fagosoma e impide su fusión con el lisosoma — sobrevive dentro del macrófago"
-          },
-          {
-            "paso": "Cambio estructural",
-            "detalle": "Formación de granuloma con necrosis caseosa central para contener la infección"
-          },
-          {
-            "paso": "Cambio fisiológico",
-            "detalle": "Infección latente contenida (mayoría de los casos) o reactivación si el sistema inmune se debilita"
-          },
-          {
-            "paso": "Manifestación clínica",
-            "detalle": "Tos crónica, pérdida de peso, sudoración nocturna, febrícula — solo si progresa a enfermedad activa"
+            "etiqueta": "NO, pero clínica + imagen sugestiva",
+            "texto": "Caso de TB SIN confirmación bacteriológica (diagnóstico clínico-radiológico)",
+            "color": "mint"
           }
         ]
       },
-      "clinica": [
-        {
-          "signo": "Tos crónica (>2 semanas)",
-          "mecanismo": "Irritación e inflamación de la vía aérea por el proceso infeccioso-granulomatoso activo"
-        },
-        {
-          "signo": "Pérdida de peso y sudoración nocturna",
-          "mecanismo": "Respuesta inflamatoria sistémica sostenida (citocinas como TNF-alfa) que aumenta el catabolismo"
-        },
-        {
-          "signo": "Hemoptisis",
-          "mecanismo": "Erosión de vasos sanguíneos por cavitación del parénquima pulmonar en enfermedad avanzada"
-        }
-      ],
-      "examenFisico": [
-        "Adelgazamiento / caquexia en casos avanzados",
-        "Crépitos en vértices pulmonares (localización típica por la mayor tensión de oxígeno apical)",
-        "Matidez si hay derrame pleural asociado"
-      ],
-      "semiologia": {
-        "inspeccion": "Observa el estado nutricional general — la caquexia es frecuente en TB avanzada ('tisis', término histórico). Busca palidez, y en casos con compromiso pleural, asimetría en la expansión torácica.",
-        "palpacion": "Expansión torácica puede estar disminuida en el lado afectado si hay derrame pleural asociado o fibrosis apical extensa. Frémito vocal aumentado sobre zonas de consolidación, disminuido sobre derrame.",
-        "percusion": "Habitualmente normal en enfermedad localizada leve. Matidez si hay derrame pleural tuberculoso asociado (complicación frecuente).",
-        "auscultacion": "Crépitos localizados típicamente en los vértices pulmonares (a diferencia de la neumonía típica, que predomina en bases) — esto refleja la localización preferencial de la reactivación tuberculosa en los lóbulos superiores, zona de mayor tensión de oxígeno."
-      },
-      "diagnostico": "Baciloscopía de esputo (2 muestras) como prueba inicial de tamizaje; prueba molecular (Xpert MTB/RIF) para diagnóstico rápido y detección simultánea de resistencia a rifampicina; cultivo (método de referencia, más sensible pero demora semanas). Radiografía de tórax: infiltrados cavitados típicamente en lóbulos superiores.",
-      "algoritmo": [
-        {
-          "tipo": "paso",
-          "texto": "Sintomático respiratorio: tos ≥2 semanas — sospecha de TB"
-        },
-        {
-          "tipo": "paso",
-          "texto": "Solicitar baciloscopía de esputo (2 muestras) + prueba molecular rápida si está disponible"
-        },
-        {
-          "tipo": "decision",
-          "texto": "¿Resultado de las pruebas?",
-          "salidas": [
-            {
-              "etiqueta": "Baciloscopía/molecular positiva",
-              "texto": "Caso confirmado — iniciar tratamiento antituberculoso estandarizado (esquema NTS 200-MINSA 2023) y notificar",
-              "color": "alert"
-            },
-            {
-              "etiqueta": "Negativa pero alta sospecha clínico-radiológica",
-              "texto": "Solicitar cultivo (más sensible) — no descartar TB solo con baciloscopía negativa",
-              "color": "coral"
-            },
-            {
-              "etiqueta": "Negativa y baja sospecha",
-              "texto": "Buscar diagnóstico alternativo",
-              "color": "mint"
-            }
-          ]
-        }
-      ],
-      "diagnosticoDiferencial": [
-        "Neumonía adquirida en la comunidad (curso agudo vs. insidioso)",
-        "Cáncer de pulmón",
-        "Micosis pulmonares",
-        "Sarcoidosis"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Aislamiento respiratorio hasta negativización bacteriológica en casos bacilíferos",
-          "Consejería y apoyo nutricional",
-          "Estudio de contactos e investigación de casos secundarios"
-        ],
-        "farmacologico": [
-          "Esquema estandarizado según NTS N°200-MINSA/DGIESP-2023: primera fase (2 meses) con Rifampicina + Isoniazida + Pirazinamida + Etambutol diario, seguida de segunda fase (4 meses) con Rifampicina + Isoniazida",
-          "Dosis ajustadas por peso según la norma técnica vigente — no se deben improvisar dosis",
-          "Tratamiento Directamente Observado (DOTS/TAES) para asegurar adherencia completa",
-          "En sospecha o confirmación de resistencia (TB-MDR/XDR): esquemas especializados totalmente orales, manejo por especialista"
-        ]
-      },
-      "complicaciones": [
-        "Derrame pleural tuberculoso",
-        "Hemoptisis masiva por erosión vascular",
-        "Fibrosis pulmonar residual",
-        "Diseminación miliar (hematógena) en inmunosuprimidos",
-        "Resistencia a fármacos (TB-MDR/XDR) por tratamiento incompleto o irregular"
-      ],
-      "prevencion": "Vacuna BCG al nacer (protege principalmente contra formas graves en la infancia, protección variable contra TB pulmonar del adulto). Terapia preventiva con isoniazida en contactos e infección latente de alto riesgo. Medidas de control de infecciones (ventilación, mascarillas) en establecimientos de salud.",
-      "perlasProfundo": "La localización preferencial en vértices pulmonares (a diferencia de la neumonía bacteriana típica de bases) se explica por la mayor tensión de oxígeno en los ápices — M. tuberculosis es un aerobio estricto que prolifera mejor donde hay más oxígeno disponible."
-    },
-    "repaso": {
-      "conceptosClave": [
-        "1/4 de la población mundial tiene infección latente, no enfermedad activa",
-        "El bacilo evade al macrófago bloqueando la fusión fagosoma-lisosoma",
-        "Localización típica: vértices pulmonares (mayor tensión de O2)"
-      ],
-      "clinica": "Tos crónica >2 semanas + pérdida de peso + sudoración nocturna + febrícula — curso insidioso de semanas a meses.",
-      "diagnostico": "Baciloscopía + prueba molecular (Xpert MTB/RIF) ± cultivo. Rx: cavitaciones en lóbulos superiores.",
-      "tratamientoResumen": "Esquema NTS-MINSA 2023: 2 meses RHZE diario + 4 meses RH — siempre DOTS/TAES para asegurar adherencia.",
-      "diferenciales": [
-        {
-          "entidad": "Neumonía adquirida en la comunidad",
-          "clave": "TB es insidiosa (semanas), NAC es aguda (días); TB predomina en vértices, NAC en bases"
-        },
-        {
-          "entidad": "Cáncer de pulmón",
-          "clave": "Ambos pueden cavitar y perder peso — biopsia/cultivo son clave para diferenciar"
-        }
-      ],
-      "tablaComparativa": {
-        "titulo": "TB pulmonar vs. NAC",
-        "filas": [
-          [
-            "Curso",
-            "Insidioso (semanas)",
-            "Agudo (días)"
-          ],
-          [
-            "Localización típica",
-            "Vértices pulmonares",
-            "Bases pulmonares"
-          ],
-          [
-            "Síntomas sistémicos",
-            "Pérdida de peso, sudoración nocturna",
-            "Fiebre alta, escalofríos"
-          ]
+      {
+        "tipo": "decision",
+        "texto": "¿Resistencia detectada a Isoniacida y/o Rifampicina?",
+        "salidas": [
+          {
+            "etiqueta": "NO — TB sensible",
+            "texto": "Esquema estándar: 2 meses HREZ + 4 meses H3R3 (o según situación especial)",
+            "color": "mint"
+          },
+          {
+            "etiqueta": "SÍ — TB resistente",
+            "texto": "Esquema específico según patrón de resistencia (rH, RR, MDR, pre-XDR, XDR) — consulta con médico consultor/experto en TB-DR",
+            "color": "alert"
+          }
         ]
       }
-    },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "Todo sintomático respiratorio (tos ≥2 semanas) debe estudiarse para TB",
-        "Una baciloscopía negativa NO descarta TB si la sospecha clínico-radiológica es alta — pedir cultivo",
-        "El tratamiento SIEMPRE debe ser supervisado (DOTS/TAES) — el abandono es la principal causa de resistencia",
-        "La localización en vértices pulmonares es un dato semiológico clave a diferencia de la neumonía típica"
+    ],
+    "diagnosticoDiferencial": [
+      "Neumonía adquirida en la comunidad de evolución prolongada",
+      "Neoplasia pulmonar (especialmente en cavitaciones de vértice en adultos mayores)",
+      "Micosis pulmonares endémicas (histoplasmosis, paracoccidioidomicosis)",
+      "Sarcoidosis (por el patrón granulomatoso y adenopatías)"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Medidas de control administrativo (primera línea): reducir exposición del personal de salud y pacientes",
+        "Medidas de control ambiental (segunda línea): ventilación adecuada del establecimiento de salud",
+        "Medidas de protección respiratoria (tercera línea, NO reemplaza las anteriores): reducir inhalación de partículas infecciosas",
+        "Estudio de contactos completo: censo + examen integral (clínico, radiológico, PPD/IGRA, bacteriológico) + control (mínimo 3 controles en TB sensible, mínimo 6 en TB resistente)",
+        "Vacuna BCG a todo recién nacido ≥1.5kg, dentro de las 24h de nacido (o lo antes posible durante el primer año de vida)",
+        "Rehabilitación respiratoria: fortalecimiento de músculos respiratorios + técnicas de respiración controlada, para secuelas funcionales"
       ],
-      "redFlags": [
-        "Hemoptisis en paciente con TB conocida o sospechada → posible erosión vascular, requiere evaluación urgente",
-        "Paciente VIH positivo con síntomas respiratorios → umbral de sospecha de TB debe ser muy bajo"
-      ],
-      "erroresFrecuentes": [
-        "Descartar TB solo por una baciloscopía negativa",
-        "No investigar contactos del caso índice",
-        "Modificar el esquema de tratamiento sin indicación de especialista"
-      ],
-      "asociacionesClinicas": [
-        "TB + derrame pleural unilateral exudativo con ADA elevado → altamente sugestivo de pleuritis tuberculosa",
-        "TB + VIH → mayor riesgo de formas atípicas y diseminadas (miliar)"
+      "farmacologico": [
+        "TB sensible sin VIH: 2 meses HREZ diario + 4 meses H3R3 (3 veces/semana)",
+        "TB miliar/SNC/osteoarticular: 2 meses HREZ + 10 meses HR diario (esquema más prolongado)",
+        "TB con VIH: 2 meses HREZ + 4 meses HR DIARIO (no intermitente, a diferencia del esquema sin VIH)",
+        "TB rH (resistente a Isoniacida): esquema 6 (R-E-Z-Levofloxacino) — 150 dosis, 6 meses (extensible a 9 meses con evaluación de médico consultor)",
+        "TB RR/MDR — Esquema Oral Acortado (EOA): Bedaquilina-Linezolid-Clofazimina-Levofloxacino, 9-12 meses (240-300 dosis)",
+        "TB RR/MDR — Esquema Oral Prolongado (EOP): 18 meses (450 dosis) cuando no es candidato al esquema acortado",
+        "Todo esquema con Isoniacida: agregar Piridoxina 50mg/día para prevenir neuropatía periférica",
+        "TB-VIH: agregar Piridoxina 50mg (prevención de neuropatía) + iniciar TARV + Terapia Preventiva con Cotrimoxazol (TPC)"
       ]
     },
-    "casosClinicos": [
-      {
-        "nivel": "intermedio",
-        "vineta": "Varón de 32 años, procedente de zona urbana marginal, consulta por tos productiva de 2 meses, pérdida de peso de 6 kg y sudoración nocturna. Al examen: adelgazado, crépitos en vértices pulmonares.",
-        "preguntaMC": {
-          "enunciado": "¿Cuál es el estudio inicial más apropiado para confirmar la sospecha diagnóstica?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "Hemograma completo únicamente"
-            },
-            {
-              "id": "b",
-              "texto": "Baciloscopía de esputo (2 muestras) y/o prueba molecular rápida"
-            },
-            {
-              "id": "c",
-              "texto": "Broncoscopía de entrada, sin estudios previos"
-            },
-            {
-              "id": "d",
-              "texto": "Iniciar antibiótico empírico para neumonía y reevaluar en una semana"
-            }
-          ],
-          "correcta": "b",
-          "explicacion": "Ante todo sintomático respiratorio (tos ≥2 semanas) con datos sugestivos de TB (pérdida de peso, sudoración nocturna, localización apical), el estudio inicial estándar es la baciloscopía de esputo, idealmente complementada con prueba molecular rápida (Xpert MTB/RIF) que además detecta resistencia a rifampicina."
+    "complicaciones": [
+      "Hemoptisis masiva o recurrente",
+      "Fístula broncopleural",
+      "Empiema pleural",
+      "Pulmón destruido / bronquiectasias / cavidades / pulmón atrapado (secuelas estructurales)",
+      "Insuficiencia respiratoria e hiperreactividad bronquial (secuelas funcionales)",
+      "Micetoma pulmonar (colonización por Aspergillus de una caverna residual)"
+    ],
+    "prevencion": "Vacuna BCG universal en recién nacidos. Terapia Preventiva de TB (TPTB) en grupos de alto riesgo. Estudio y control de contactos sistemático. Medidas de control de infecciones respiratorias en establecimientos de salud (administrativas > ambientales > protección respiratoria, en ese orden de prioridad).",
+    "perlasProfundo": "Una PAT (Persona Afectada por Tuberculosis) puede o no tener confirmación bacteriológica, pero SIEMPRE debe registrarse en el SIGTB una vez diagnosticada — inicie o no tratamiento. Y antes de iniciar CUALQUIER tratamiento, toda PAT debe tener evaluación molecular rápida de resistencia a Isoniacida/Rifampicina — no se trata 'a ciegas' asumiendo sensibilidad.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con perfil bioquímico completo (como el del derrame pleural de tu propia clase) donde debes aplicar criterios de Light + interpretar un marcador específico (ADA) para llegar a la sospecha diagnóstica correcta.",
+      "ejercicios": [
+        {
+          "tipo": "Aplicar criterios y sustentar (el más frecuente)",
+          "planteamiento": "Líquido pleural con proteínas pleura/suero 0.6, LDH pleura/suero 0.7, ADA 55 U/L, linfocitos predominantes. Clasifique y dé su sospecha diagnóstica.",
+          "respuestaModelo": "Exudado por criterios de Light (ambos cocientes superan 0.5 y 0.6 respectivamente). El ADA de 55 U/L (>40 U/L) junto con predominio linfocitario es altamente sugestivo de derrame pleural TUBERCULOSO."
         },
-        "preguntaEscrita": {
-          "enunciado": "¿Qué hallazgo esperarías en la radiografía de tórax de este paciente, y por qué se localiza ahí?",
-          "respuestaModelo": "Esperaría infiltrados cavitados en los lóbulos superiores (vértices pulmonares). Esto se debe a que M. tuberculosis es un aerobio estricto que prolifera mejor en zonas con mayor tensión de oxígeno, y los vértices pulmonares tienen precisamente mayor ventilación relativa a perfusión (mayor PO2 local) que las bases — por eso la reactivación tuberculosa tiene esa localización característica, a diferencia de procesos infecciosos típicos como la neumonía bacteriana, que predominan en las bases."
-        }
-      }
-    ,
-    {
-        "nivel": "avanzado",
-        "vineta": "Varón de 40 años, VIH positivo con mal control (últimos CD4: 180 cel/mm3), consulta por tos de 3 semanas, fiebre y pérdida de peso marcada. Radiografía de tórax: infiltrado difuso bilateral, sin cavitación clara. Baciloscopía de esputo: negativa en 2 muestras.",
-        "preguntaMC": {
-            "enunciado": "¿Qué interpretación es la más correcta ante esta baciloscopía negativa?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Descarta definitivamente tuberculosis, buscar otro diagnóstico"
-                },
-                {
-                    "id": "b",
-                    "texto": "En pacientes VIH positivos con inmunosupresión avanzada, la presentación radiológica es frecuentemente atípica (sin cavitación) y la baciloscopía tiene menor sensibilidad — se debe insistir con prueba molecular rápida y/o cultivo antes de descartar TB"
-                },
-                {
-                    "id": "c",
-                    "texto": "Repetir la baciloscopía en 6 meses"
-                },
-                {
-                    "id": "d",
-                    "texto": "Iniciar tratamiento para neumonía bacteriana únicamente"
-                }
-            ],
-            "correcta": "b",
-            "explicacion": "En la inmunosupresión avanzada (CD4 bajo), la TB pulmonar frecuentemente se presenta de forma atípica —con infiltrados difusos en vez de cavitación apical clásica— y la baciloscopía (que depende de una buena carga bacilar visible) pierde sensibilidad. La prueba molecular (Xpert MTB/RIF) y el cultivo son más sensibles y deben priorizarse antes de descartar TB en este contexto de alta sospecha."
+        {
+          "tipo": "Indique y sustente (fisiopatología)",
+          "planteamiento": "¿Por qué la TB posprimaria afecta preferentemente los vértices pulmonares y no las bases?",
+          "respuestaModelo": "Porque M. tuberculosis es un aerobio estricto, y los vértices pulmonares tienen mayor tensión de oxígeno relativa (menor perfusión sanguínea comparada con la ventilación) y menor circulación linfática que las bases — ambas condiciones favorecen la proliferación bacilar sobre otras zonas del pulmón."
         },
-        "preguntaEscrita": {
-            "enunciado": "¿Por qué la presentación radiológica de la tuberculosis cambia en pacientes con inmunosupresión avanzada por VIH?",
-            "respuestaModelo": "La localización apical clásica y la cavitación de la TB dependen en gran parte de una respuesta inmune celular relativamente intacta que forma granulomas bien organizados con necrosis caseosa. En la inmunosupresión avanzada por VIH, con conteos de CD4 muy bajos, el sistema inmune ya no logra montar esa respuesta granulomatosa organizada — por eso la enfermedad tiende a diseminarse de forma más difusa (patrón miliar o infiltrados difusos) en vez de formar las cavidades apicales clásicas, y la enfermedad extrapulmonar también es más frecuente en este contexto."
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste los 4 fármacos de primera línea del esquema HREZ y su duración en la primera fase.",
+          "respuestaModelo": "Isoniacida (H), Rifampicina (R), Etambutol (E), Pirazinamida (Z) — durante 2 meses, diario (50 dosis) en la primera fase."
         }
+      ]
     }
-  
-    
-  ]
   },
+  "repaso": {
+    "conceptosClave": [
+      "El bacilo evade al macrófago bloqueando fagosoma-lisosoma — la infección se contiene en granulomas (ITL) o progresa a enfermedad activa",
+      "Diagnóstico: 2 muestras de esputo seriadas + prueba molecular de resistencia ANTES de tratar",
+      "Esquema sensible estándar: 2 meses HREZ + 4 meses H3R3 (con VIH: HR diario, no intermitente)"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — resistencia y esquema",
+      "columnas": [
+        "Patrón de resistencia",
+        "Esquema"
+      ],
+      "filas": [
+        [
+          "Sensible",
+          "2m HREZ + 4m H3R3"
+        ],
+        [
+          "rH (solo Isoniacida)",
+          "Esquema 6: R-E-Z-Levofloxacino, 6 meses"
+        ],
+        [
+          "RR/MDR",
+          "EOA 9-12m o EOP 18m según elegibilidad"
+        ]
+      ],
+      "nota": "Con VIH: segunda fase HR DIARIO (no 3x/semana como en TB sensible sin VIH)."
+    },
+    "clinica": "Fiebre vespertina + sudores nocturnos + pérdida de peso + tos ± hemoptisis, localización preferente en vértices pulmonares.",
+    "diagnostico": "2 muestras de esputo seriadas + prueba molecular rápida de resistencia antes de iniciar tratamiento.",
+    "tratamientoResumen": "TB sensible: 2m HREZ + 4m H3R3 (HR diario si VIH+). TB resistente: esquema según patrón específico (rH/RR/MDR/XDR).",
+    "diferenciales": [
+      {
+        "entidad": "Neoplasia pulmonar",
+        "clave": "Cavitación en adulto mayor con antecedente de tabaquismo, sin síntomas B tan marcados"
+      },
+      {
+        "entidad": "Sarcoidosis",
+        "clave": "Adenopatías hiliares bilaterales simétricas, granulomas no caseificantes"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "TB posprimaria vs Primoinfección",
+      "filas": [
+        [
+          "Presentación",
+          "Sintomática (fiebre, sudores, pérdida de peso)",
+          "Asintomática/paucisintomática"
+        ],
+        [
+          "Contagiosidad",
+          "Sí, transmite el bacilo",
+          "No (a menos que progrese)"
+        ],
+        [
+          "Localización",
+          "Vértices pulmonares",
+          "Variable"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Por qué la TB prefiere los vértices pulmonares? → Mayor oxigenación relativa y menor circulación linfática — M. tuberculosis es aerobio estricto",
+      "¿Qué se debe hacer ANTES de iniciar tratamiento antituberculoso? → Prueba molecular rápida de resistencia a Isoniacida y Rifampicina",
+      "¿Cuál es la diferencia entre TB RR, MDR, pre-XDR y XDR? → RR=solo Rifampicina; MDR=Isoniacida+Rifampicina; pre-XDR=MDR+fluoroquinolona; XDR=pre-XDR+1 fármaco del Grupo A",
+      "¿Cómo cambia el esquema con VIH? → Segunda fase con HR DIARIO (no 3 veces/semana como en TB sensible sin VIH)",
+      "¿Qué vitamina se acompaña siempre con Isoniacida? → Piridoxina (B6) 50mg/día, para prevenir neuropatía",
+      "¿Todo caso de TB requiere confirmación bacteriológica para registrarse? → NO, pero SÍ debe registrarse en el SIGTB inicie o no tratamiento",
+      "¿Solo los humanos desarrollan TB posprimaria? → Sí — es lo que permite la transmisión; los animales mueren en la fase primaria"
+    ],
+    "redFlags": [
+      "Hemoptisis masiva → posible complicación grave, requiere manejo urgente",
+      "Falta de mejoría clínica con esquema sensible estándar → sospechar resistencia no detectada inicialmente",
+      "TB en paciente VIH+ → siempre TARV + TPC + ajuste de esquema (HR diario en 2da fase)"
+    ],
+    "erroresFrecuentes": [
+      "Iniciar tratamiento sin prueba de resistencia previa",
+      "Usar el esquema intermitente (H3R3) de 2da fase en un paciente con VIH (debe ser diario)",
+      "Olvidar la Piridoxina en esquemas con Isoniacida",
+      "Asumir que un patrón radiológico específico confirma TB sin bacteriología"
+    ],
+    "asociacionesClinicas": [
+      "TB + diabetes mellitus → tamizaje obligatorio de DM en TODA persona ≥40 años con TB, y de ITBL en todo diagnóstico reciente de DM",
+      "TB + derrame pleural con ADA elevado + exudado linfocitario → altamente sugestivo de TB pleural"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Paciente de 34 años que presenta un derrame pleural unilateral. Se le realiza una toracocentesis diagnóstica obteniéndose: aspecto amarillo citrino, pH 7.3, cociente de proteínas pleura/suero 0.8, cociente de LDH pleura/suero 0.9, Gram negativo, lípidos totales/colesterol/triglicéridos normales, células mesoteliales <3%, linfocitosis sin atipias, ADA 64 U/L.",
+      "preguntaMC": {
+        "enunciado": "Según los criterios de Light y el perfil bioquímico presentado, ¿cuál es la sospecha diagnóstica más probable?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Trasudado por insuficiencia cardiaca"
+          },
+          {
+            "id": "b",
+            "texto": "Exudado — derrame pleural tuberculoso (por ADA muy elevado + linfocitosis + células mesoteliales bajas)"
+          },
+          {
+            "id": "c",
+            "texto": "Empiema por neumonía bacteriana"
+          },
+          {
+            "id": "d",
+            "texto": "Quilotórax"
+          },
+          {
+            "id": "e",
+            "texto": "Derrame paramaligno"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "Por criterios de Light, es EXUDADO: cociente de proteínas pleura/suero 0.8 (>0.5) y cociente de LDH pleura/suero 0.9 (>0.6) — ambos superan el umbral de exudado. El perfil adicional apunta fuertemente a TB pleural: ADA (adenosina desaminasa) de 64 U/L está MUY elevado (valores >40 U/L son altamente sugestivos de TB pleural), junto con linfocitosis sin atipias y células mesoteliales <3% (la TB pleural típicamente cursa con pocas células mesoteliales, a diferencia de otros exudados). Los lípidos normales descartan quilotórax; el Gram negativo hace menos probable empiema bacteriano agudo."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Qué otro estudio solicitarías para confirmar la sospecha diagnóstica, y por qué el cultivo de líquido pleural por sí solo suele tener baja rentabilidad diagnóstica en TB pleural?",
+        "respuestaModelo": "Solicitaría biopsia pleural (con aguja o por toracoscopia) para estudio histopatológico (buscando granulomas) y cultivo del tejido, además de completar el estudio con baciloscopía de esputo si hay compromiso pulmonar asociado. El cultivo de LÍQUIDO pleural por sí solo tiene baja rentabilidad (aproximadamente 25-50%) porque la TB pleural es fundamentalmente una reacción de HIPERSENSIBILIDAD a antígenos micobacterianos en el espacio pleural, más que una infección con gran carga bacilar activa en el líquido mismo — por eso la biopsia pleural (que sí puede mostrar granulomas y mayor carga bacilar tisular) tiene mejor rendimiento diagnóstico que el líquido solo."
+      }
+    },
+    {
+      "nivel": "basico",
+      "vineta": "(Caso real de tu clase) Un paciente varón de 32 años acude al centro de salud por tos persistente con expectoración hemoptoica ocasional, pérdida de peso de 5 kg en los últimos 2 meses, sudoración nocturna y febrícula vespertina. No tiene comorbilidades conocidas. Es natural de Lima y vive en zona de alta densidad poblacional. No ha recibido tratamiento antituberculoso previo. Al examen físico se auscultan crépitos en el vértice pulmonar derecho. La radiografía de tórax muestra una cavitación en lóbulo superior derecho. Se toma esputo para baciloscopía.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál es el siguiente paso diagnóstico más apropiado para confirmar la tuberculosis pulmonar en este paciente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Tomografía de tórax"
+          },
+          {
+            "id": "b",
+            "texto": "PPD (Prueba de tuberculina)"
+          },
+          {
+            "id": "c",
+            "texto": "Baciloscopía seriada de esputo (al menos 2 muestras)"
+          },
+          {
+            "id": "d",
+            "texto": "Biopsia pulmonar"
+          }
+        ],
+        "correcta": "c",
+        "explicacion": "La baciloscopía seriada de esputo (mínimo 2 muestras) es el método inicial recomendado por la Norma Técnica de Salud MINSA 2023 para confirmar TB pulmonar bacilífera en sintomáticos respiratorios — accesible, de bajo costo, resultados rápidos. La TC de tórax puede complementar pero no es el examen confirmatorio de primera línea. El PPD es útil para evaluar exposición pero NO distingue infección activa de latente, sin valor confirmatorio en este contexto de sospecha de enfermedad activa. La biopsia pulmonar se reserva para casos atípicos sin diagnóstico por métodos convencionales."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Basándote en la localización de la cavitación de este paciente (lóbulo superior derecho) y en la fisiopatología de la TB, explica por qué esta localización es la esperada y no una coincidencia.",
+        "respuestaModelo": "La TB posprimaria afecta preferentemente los segmentos apicales y dorsales de los lóbulos superiores (y los segmentos apicales de los lóbulos inferiores), posiblemente debido a la mayor oxigenación relativa en esas zonas (por menor perfusión sanguínea relativa al flujo de aire, la relación ventilación/perfusión favorece más oxígeno disponible) y a la menor circulación linfática — condiciones que favorecen la proliferación de M. tuberculosis, que es un aerobio estricto. Por lo tanto, encontrar la cavitación precisamente en el lóbulo superior derecho es consistente con la fisiopatología esperada de la enfermedad, no una coincidencia anatómica."
+      }
+    }
+  ]
+},
   {
     "id": "enfermedades-pleurales",
     "nombre": "Enfermedades Pleurales: Neumotórax, Hemotórax, Derrame Pleural y Empiema",
