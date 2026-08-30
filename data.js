@@ -2082,292 +2082,484 @@ const ENFERMEDADES = [
   ]
 },
   {
-    "id": "neumonia-nac",
-    "nombre": "Neumonía Adquirida en la Comunidad (NAC)",
-    "area": "Neumología",
-    "semanas": [
-      "semana-01"
+  "id": "neumonia-nac",
+  "nombre": "Neumonía Adquirida en la Comunidad (NAC)",
+  "area": "Neumología",
+  "semanas": [
+    "semana-01"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1HezuNxMQmVaqAVcYeX-AVbTPsajpRQcV/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-2-TEMA-2: Neumonía Adquirida en la Comunidad"
+  },
+  "relacionadas": [
+    {
+      "id": "neumonia-intrahospitalaria",
+      "relacion": "Principal diagnóstico diferencial por el LUGAR donde se adquiere la infección — cambia completamente la cobertura antibiótica empírica"
+    },
+    {
+      "id": "enfermedades-pleurales",
+      "relacion": "Complicación frecuente: derrame paraneumónico y empiema"
+    }
+  ],
+  "profundo": {
+    "definicion": "Enfermedad aguda causada por una infección del parénquima pulmonar, adquirida FUERA del entorno hospitalario. Sigue siendo una de las principales causas de morbilidad, hospitalización y mortalidad a nivel mundial, afectando especialmente a adultos mayores.",
+    "epidemiologia": "336.5 millones de infecciones del tracto respiratorio inferior ocurrieron en 2016, resultando en 32.2 muertes por cada 100,000 personas a nivel mundial. La incidencia anual ajustada es de 649 pacientes por 100,000. Mortalidad hospitalaria significativa, con tasa de readmisión a 30 días de 15-20%. <span class=\"fuente-ampliada\">Hasta el 30% de los pacientes hospitalizados con NAC desarrollan complicaciones cardiovasculares — un dato que muchos subestiman al pensar en la NAC como 'solo' una enfermedad pulmonar.</span>",
+    "etiologiaFactoresRiesgo": [
+      "Condiciones médicas: historia previa de neumonía (OR≤6.25), enfermedad cardiovascular crónica (OR≤3.20), enfermedad cerebrovascular/ACV/demencia (OR≤2.68), enfermedad respiratoria crónica incluyendo EPOC (OR≤2.17), disfagia (OR 2.10-11.90)",
+      "Estilo de vida: abuso de alcohol (OR≤2.91), bajo peso (OR≤2.20), tabaquismo actual (OR≤2.00), contacto regular con niños (OR≤1.48)",
+      "A pesar de pruebas extensas de laboratorio, la causa solo puede identificarse en aproximadamente UN TERCIO de los pacientes"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "alveolar",
-    "relacionadas": [
+    "criteriosDiagnosticos": "El diagnóstico se basa en: (1) infiltrado nuevo mostrado en radiografía de tórax (o TC), (2) síntomas compatibles, (3) signos consistentes con enfermedad del espacio aéreo (estertores, roncus, egofonía), y (4) anomalías de laboratorio de las respuestas inflamatorias local y sistémica. La procalcitonina puede complementar el juicio clínico pero NO debe usarse para decidir si iniciar antibiótico — su sensibilidad varía de 38% a 91%, insuficiente para justificar retener el tratamiento.",
+    "fisiopatologia": {
+      "resumen": "La neumonía se desarrolla por la interacción de 3 factores: la susceptibilidad del huésped, la virulencia del patógeno, y el inóculo de microorganismos que llega a la vía aérea inferior. Los patógenos deben vencer varios mecanismos de defensa antes de alcanzar los alvéolos: atrapamiento de moco, aclaramiento mucociliar, tos y deglución.",
+      "cascada": [
+        {
+          "paso": "Exposición",
+          "detalle": "Microaspiración de secreciones orofaríngeas (la vía más común) o inhalación de aerosoles infecciosos"
+        },
+        {
+          "paso": "Defensas del huésped",
+          "detalle": "El patógeno debe vencer: atrapamiento de moco, aclaramiento mucociliar, reflejo tusígeno, deglución"
+        },
+        {
+          "paso": "Factores que inclinan la balanza",
+          "detalle": "Alta virulencia del patógeno + gran inóculo + huésped susceptible (edad, comorbilidades, alcoholismo, inmunosupresión) = infección establecida"
+        },
+        {
+          "paso": "Llegada al alvéolo",
+          "detalle": "El patógeno coloniza el espacio alveolar, escapando de las defensas de la vía aérea superior"
+        },
+        {
+          "paso": "Respuesta inflamatoria local y sistémica",
+          "detalle": "Reclutamiento de neutrófilos, liberación de citoquinas — origina las anomalías de laboratorio usadas para el diagnóstico"
+        },
+        {
+          "paso": "Consolidación",
+          "detalle": "El espacio alveolar se llena de exudado inflamatorio — visible como infiltrado en la radiografía, y origina los hallazgos semiológicos (crépitos, egofonía, matidez)"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/nac/nac-rx-caso-real.jpg",
+          "caption": "Radiografía REAL del caso de tu propia clase",
+          "explicacion": "Esta es la radiografía del varón de 60 años con alcoholismo del caso que abrió tu clase. Fíjate en la opacidad extensa que ocupa gran parte del campo pulmonar izquierdo (lado derecho de la imagen, ya que en radiología se ve en espejo) — esto corresponde exactamente a los 'estertores sibilantes y subcrepitantes generalizados' descritos en su examen físico. Este patrón de consolidación extensa, en un paciente con alteración del estado de conciencia y alcoholismo crónico, es consistente con una NAC grave — probablemente por aspiración (dado el antecedente de alcoholismo y alteración del sensorio) o por un patógeno agresivo como neumococo."
+        },
+        {
+          "src": "assets/nac/nac-rx-lobar-superior-nejm.jpg",
+          "caption": "Ejemplo comparativo: infiltrado lobar superior derecho (NEJM)",
+          "explicacion": "A diferencia de la radiografía del caso (más extensa/bilateral), esta muestra un infiltrado LOCALIZADO en el lóbulo superior derecho — el patrón clásico de neumonía lobar por neumococo. Comparar ambas imágenes te ayuda a reconocer que la NAC no tiene un solo 'aspecto' radiológico: puede ir desde un infiltrado lobar bien delimitado (panel A y B aquí, vista PA y lateral) hasta consolidación extensa y bilateral (como en el caso de tu clase) — la extensión radiológica generalmente se correlaciona con la gravedad clínica."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">El motivo por el que la causa exacta solo se identifica en un tercio de los casos no es una limitación tecnológica — es que muchas veces el propio proceso inflamatorio, antibióticos previos, o la naturaleza del patógeno (virus, atípicos) dificultan el aislamiento. Por eso las guías ATS-IDSA priorizan iniciar tratamiento EMPÍRICO basado en factores de riesgo y gravedad, sin esperar la identificación microbiológica.</span>"
+    },
+    "clinica": [
       {
-        "id": "bronquitis-bronquiectasias",
-        "relacion": "Diagnóstico diferencial de tos + fiebre — la NAC SÍ tiene infiltrado radiológico nuevo y criterios de respuesta inflamatoria sistémica, la bronquitis NO"
+        "signo": "Tos",
+        "detallePPT": "Síntoma común, predictor significativo cuando se combina con temperatura ≥37.8°C",
+        "mecanismo": "Estimulación de receptores de la vía aérea por el proceso inflamatorio"
       },
       {
-        "id": "neumonia-intrahospitalaria",
-        "relacion": "Se distinguen por el lugar y momento de adquisición — NAC es fuera del hospital, la intrahospitalaria se desarrolla >48h después del ingreso"
+        "signo": "Fiebre",
+        "detallePPT": "Predictor significativo cuando ≥37.8°C",
+        "mecanismo": "Respuesta inflamatoria sistémica a la infección"
+      },
+      {
+        "signo": "Producción de esputo",
+        "detallePPT": "Síntoma común",
+        "mecanismo": "Exudado inflamatorio alveolar que se moviliza hacia la vía aérea"
+      },
+      {
+        "signo": "Disnea",
+        "detallePPT": "Síntoma común",
+        "mecanismo": "Reducción del área funcional de intercambio gaseoso por consolidación"
+      },
+      {
+        "signo": "Dolor torácico",
+        "detallePPT": "Frecuentemente pleurítico",
+        "mecanismo": "Irritación de la pleura parietal adyacente al foco de consolidación"
+      },
+      {
+        "signo": "Presentación atípica en ancianos",
+        "detallePPT": "Letargo y cambios en el estado mental — puede ser la ÚNICA manifestación",
+        "mecanismo": "<span class=\"fuente-ampliada\">Respuesta inflamatoria e inmune atenuada en el adulto mayor, que enmascara los síntomas clásicos.</span>"
+      },
+      {
+        "signo": "Presentación en inmunocomprometidos",
+        "detallePPT": "Signos o síntomas atípicos",
+        "mecanismo": "Respuesta inflamatoria insuficiente para generar la clínica clásica"
       }
     ],
-    "profundo": {
-      "definicion": "Enfermedad aguda causada por una infección del parénquima pulmonar, adquirida fuera del entorno hospitalario. El diagnóstico requiere la combinación de síntomas/signos compatibles MÁS evidencia de un nuevo infiltrado en un estudio de imagen (Rx, TC o ecografía pulmonar).",
-      "epidemiologia": "Una de las principales causas de morbimortalidad a nivel mundial: 336.5 millones de infecciones del tracto respiratorio inferior en 2016, con 32.2 muertes por cada 100,000 personas. La mortalidad en pacientes hospitalizados es de 6% a 30 días, incluso tras mejoría clínica inicial (34% en quienes no mejoran o tienen neumonía no resuelta). Hasta 30% de los hospitalizados desarrolla complicaciones cardiovasculares.",
-      "etiologiaFactoresRiesgo": [
-        "Historia previa de neumonía (OR hasta 6.25) — el factor de riesgo individual más fuerte",
-        "Enfermedades cardiovasculares crónicas, EPOC, enfermedad cerebrovascular/demencia",
-        "Abuso de alcohol, bajo peso, tabaquismo actual",
-        "Bacterias comunes: S. pneumoniae, H. influenzae, M. catarrhalis, S. aureus",
-        "Organismos atípicos: Legionella, M. pneumoniae, C. pneumoniae — a pesar de pruebas extensas, la causa solo se identifica en ~1/3 de los pacientes"
-      ],
-      "fisiopatologia": {
-        "resumen": "La neumonía se desarrolla por el balance entre tres factores: susceptibilidad del huésped, virulencia del patógeno, y tamaño del inóculo microbiano. Los patógenos deben vencer varias barreras de defensa (atrapamiento de moco, aclaramiento mucociliar, tos, deglución) antes de alcanzar y colonizar el alvéolo.",
-        explicacionExtendida: "Que una persona desarrolle o no una neumonía depende del equilibrio entre tres factores: qué tan virulento es el microorganismo, cuántos microorganismos llegaron al pulmón (el inóculo), y qué tan bien están funcionando las defensas del huésped. Normalmente, el reflejo de tos, el aclaramiento mucociliar, y los macrófagos alveolares residentes eliminan la mayoría de los patógenos que llegan por microaspiración (algo que ocurre incluso en personas sanas mientras duermen). La neumonía se desarrolla cuando ese equilibrio se rompe — por ejemplo, un patógeno particularmente virulento, un inóculo grande, o defensas debilitadas (edad avanzada, EPOC de base, inmunosupresión).\n\nUna vez que el patógeno coloniza el alvéolo, los macrófagos alveolares lo reconocen y liberan citocinas (IL-1, IL-6, TNF-alfa) que reclutan neutrófilos en cascada. Estos neutrófilos, junto con el líquido exudativo rico en fibrina, llenan literalmente el espacio alveolar que normalmente contiene aire — es la consolidación que ves en la radiografía. Cuando esta respuesta inflamatoria se vuelve excesiva o se disemina más allá del pulmón hacia la circulación sistémica, es cuando aparecen las complicaciones más temidas: sepsis y shock séptico, que son la principal causa de mortalidad en neumonía grave, más que el fallo respiratorio en sí mismo.",
-        "cascada": [
+    "examenFisico": [
+      "Crepitantes en la auscultación (predictor significativo)",
+      "Nuevos signos focales en el tórax",
+      "Estertores, roncus o egofonía — signos de enfermedad del espacio aéreo",
+      "Saturación de oxígeno <95%, pulso ≥100 lpm — predictores significativos de NAC"
+    ],
+    "semiologia": {
+      "inspeccion": "Busca taquipnea, uso de músculos accesorios, y en casos graves cianosis (como en el caso de tu clase) — todos reflejan el compromiso del intercambio gaseoso por la consolidación.",
+      "palpacion": "Frémito vocal AUMENTADO sobre la zona de consolidación (a diferencia del derrame pleural, donde está disminuido) — el tejido consolidado (lleno de exudado, no de aire) transmite mejor las vibraciones vocales que el tejido pulmonar aireado normal.",
+      "percusion": "Matidez sobre el área consolidada — el exudado alveolar reemplaza el aire, por eso el sonido de percusión ya no es resonante.",
+      "auscultacion": "Crépitos (estertores) sobre la zona afectada, y en casos de consolidación bien establecida, EGOFONÍA — cuando le pides al paciente decir 'eee' y se escucha como 'aaa' a través del estetoscopio, porque el tejido consolidado transmite mejor las frecuencias que generan ese cambio acústico característico."
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "📊 CURB-65 — decide el lugar de atención",
+        "contexto": "Cada letra vale 1 punto si está presente. La suma total determina el riesgo y el lugar de manejo más apropiado.",
+        "columnas": [
+          "Letra",
+          "Criterio",
+          "Punto"
+        ],
+        "filas": [
+          [
+            "C",
+            "Confusión (nueva, desorientación)",
+            "1"
+          ],
+          [
+            "U",
+            "Urea >19 mg/dL (o BUN >19)",
+            "1"
+          ],
+          [
+            "R",
+            "Frecuencia Respiratoria ≥30 rpm",
+            "1"
+          ],
+          [
+            "B",
+            "Presión arterial (Blood pressure) sistólica <90 o diastólica ≤60 mmHg",
+            "1"
+          ],
+          [
+            "65",
+            "Edad ≥65 años",
+            "1"
+          ]
+        ],
+        "nota": "Puntaje 0-1 → manejo ambulatorio. 2 → considerar hospitalización breve/observación. 3-5 → hospitalización, considerar UCI si el puntaje es muy alto o hay criterios ATS-IDSA de gravedad."
+      },
+      {
+        "titulo": "🏥 Lugar de atención según gravedad",
+        "columnas": [
+          "Nivel",
+          "Criterio"
+        ],
+        "filas": [
+          [
+            "Ambulatorio",
+            "CURB-65 de 0-1 o PSI bajo, clínicamente estable, sin factores de riesgo significativos"
+          ],
+          [
+            "Hospitalización",
+            "CURB-65 de 2-5 o PSI elevado, hipoxemia, o soporte domiciliario inadecuado"
+          ],
+          [
+            "UCI",
+            "Necesidad de ventilación mecánica, presencia de shock, o criterios ATS-IDSA para NAC grave"
+          ]
+        ]
+      },
+      {
+        "titulo": "🦠 Factores de riesgo para patógenos específicos",
+        "columnas": [
+          "Patógeno",
+          "Factores de riesgo"
+        ],
+        "filas": [
+          [
+            "S. pneumoniae resistente",
+            "Asma, enfermedad hepática, bronquiectasias"
+          ],
+          [
+            "Legionella pneumophila",
+            "Edad avanzada, alcoholismo, tabaquismo, inmunosupresión, trasplante de órganos"
+          ],
+          [
+            "Mycoplasma/Chlamydophila",
+            "Edad más joven, sexo femenino, pocas comorbilidades"
+          ],
+          [
+            "Pseudomonas aeruginosa",
+            "Colonización previa, traqueostomía, bronquiectasias, EPOC muy grave"
+          ],
+          [
+            "SARM",
+            "Colonización/infección previa por SARM, infecciones cutáneas recurrentes, neumonía grave"
+          ]
+        ],
+        "nota": "Se recomienda cubrir empíricamente SARM o P. aeruginosa SOLO si existen factores de riesgo validados — no de rutina en todo paciente."
+      }
+    ],
+    "diagnostico": "Diagnóstico definitivo requiere evidencia de un NUEVO infiltrado pulmonar en radiografía de tórax, TC de tórax, o ecografía pulmonar — combinado con síntomas y signos compatibles. Pruebas sanguíneas: hemograma, PCR, procalcitonina, lactato, función renal/hepática/coagulación. Pruebas microbiológicas (Gram/cultivo de esputo, hemocultivos, antígeno urinario, PCR multiplex) SOLO se recomiendan en: NAC grave con sepsis/shock, inmunosupresión, riesgo de patógenos resistentes, o falta de respuesta al tratamiento empírico inicial — NO de rutina en NAC ambulatoria leve.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Sospecha clínica: tos + fiebre + disnea/dolor pleurítico + hallazgos focales al examen"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Confirmar con infiltrado NUEVO en radiografía/TC de tórax"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Calcular CURB-65 o PSI para estratificar gravedad"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿CURB-65 0-1, estable, sin factores de riesgo?",
+        "salidas": [
           {
-            "paso": "Factor desencadenante",
-            "detalle": "Microorganismo que vence las defensas de la vía aérea superior (moco, cilios, tos)"
+            "etiqueta": "SÍ",
+            "texto": "Manejo AMBULATORIO — sin pruebas microbiológicas de rutina, tratamiento empírico oral",
+            "color": "mint"
           },
           {
-            "paso": "Células activadas",
-            "detalle": "Macrófagos alveolares reconocen al patógeno y reclutan neutrófilos"
-          },
-          {
-            "paso": "Mediadores liberados",
-            "detalle": "Citocinas proinflamatorias generan la respuesta inflamatoria local y sistémica"
-          },
-          {
-            "paso": "Cambio estructural",
-            "detalle": "Exudado inflamatorio llena los alvéolos (consolidación) — visible como infiltrado en la radiografía"
-          },
-          {
-            "paso": "Cambio fisiológico",
-            "detalle": "El alvéolo lleno de exudado ya no intercambia gases eficazmente — alteración V/Q"
-          },
-          {
-            "paso": "Manifestación clínica",
-            "detalle": "Fiebre, tos productiva, disnea, dolor pleurítico, crépitos a la auscultación"
+            "etiqueta": "NO — CURB-65 2-5 o inestable",
+            "texto": "HOSPITALIZACIÓN — pruebas microbiológicas + antibiótico según gravedad y factores de riesgo",
+            "color": "coral"
           }
         ]
       },
-      "clinica": [
-        {
-          "signo": "Fiebre + tos + esputo",
-          "mecanismo": "Respuesta inflamatoria sistémica ante la infección del parénquima"
-        },
-        {
-          "signo": "Disnea y dolor torácico pleurítico",
-          "mecanismo": "Consolidación alveolar que altera el intercambio gaseoso e irrita la pleura adyacente"
-        },
-        {
-          "signo": "En ancianos: letargo y cambios del estado mental (puede ser la ÚNICA manifestación)",
-          "mecanismo": "Presentación atípica por reserva fisiológica reducida"
-        }
-      ],
-      "examenFisico": [
-        "Crépitos/estertores en la auscultación",
-        "Egofonía y frémito aumentado sobre la zona de consolidación",
-        "Taquipnea (FR≥30), taquicardia (FC≥100), SatO2 <95% son predictores de gravedad"
-      ],
-      semiologia: {
-            "inspeccion": "Taquipnea, uso de músculos accesorios si hay compromiso respiratorio significativo, posible cianosis en casos graves. Fíjate en el patrón respiratorio: respiración superficial y rápida por dolor pleurítico si existe compromiso de la pleura adyacente a la consolidación.",
-            "palpacion": "Frémito vocal AUMENTADO sobre la zona de consolidación (el tejido consolidado transmite mejor las vibraciones que el aire) — esto es un hallazgo clave que la distingue del derrame pleural, donde el frémito está DISMINUIDO o abolido.",
-            "percusion": "Matidez localizada sobre la zona de consolidación (el tejido lleno de exudado inflamatorio ya no contiene aire, por lo que percute 'sólido' en vez de resonante).",
-            "auscultacion": "Sobre la zona afectada: crépitos (estertores) que NO cambian con la tos, soplo tubárico si la consolidación es extensa, y egofonía (la voz del paciente suena como 'e' cambiada a 'a' al auscultar mientras dice 'eee' — signo clásico de consolidación). Este set de hallazgos (frémito aumentado + matidez + crépitos fijos + egofonía) todos apuntando al MISMO lado es lo que confirma clínicamente una consolidación antes incluso de ver la radiografía."
-      },
-      "diagnostico": "Nuevo infiltrado en imagen (Rx/TC/ecografía) + síntomas compatibles + signos de enfermedad del espacio aéreo. Pruebas de laboratorio (hemograma, PCR, procalcitonina) apoyan pero no reemplazan la imagen. Se recomienda NO usar la procalcitonina para decidir si iniciar antibióticos (su sensibilidad varía 38-91%).",
-      "algoritmo": [
-        { "tipo": "paso", "texto": "Diagnóstico confirmado de NAC (infiltrado nuevo + clínica compatible)" },
-        { "tipo": "paso", "texto": "Calcular CURB-65 o PSI (Pneumonia Severity Index)" },
-        { "tipo": "decision", "texto": "¿Cuál es el resultado y la estabilidad hemodinámica/respiratoria?", "salidas": [
-          { "etiqueta": "CURB-65 0-1", "texto": "Manejo ambulatorio — amoxicilina, doxiciclina o macrólido", "color": "mint" },
-          { "etiqueta": "CURB-65 2-5", "texto": "Hospitalización — β-lactámico + macrólido o fluoroquinolona respiratoria", "color": "coral" },
-          { "etiqueta": "Shock / requiere VM", "texto": "UCI directo, sin esperar el score — recomendación fuerte", "color": "alert" }
-        ]}
-      ],
-      "diagnosticoDiferencial": [
-        "Bronquitis aguda",
-        "Tromboembolismo pulmonar",
-        "Insuficiencia cardiaca descompensada (edema pulmonar)",
-        "Neumonía intrahospitalaria/atípica"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Determinar el lugar de atención con escalas validadas: CURB-65 o PSI (Pneumonia Severity Index)",
-          "Vacunación contra influenza y neumococo (prevención, no tratamiento agudo)"
-        ],
-        "farmacologico": [
-          "Ambulatorio sin comorbilidades: amoxicilina 1g c/8h, doxiciclina, o macrólido (solo si resistencia neumocócica local <25%)",
-          "Ambulatorio con comorbilidades: amoxi/clavulánico o cefalosporina + macrólido/doxiciclina, o fluoroquinolona respiratoria en monoterapia",
-          "Hospitalizado no grave: β-lactámico + macrólido, o fluoroquinolona respiratoria sola",
-          "Hospitalizado grave: β-lactámico + macrólido O β-lactámico + fluoroquinolona (recomendación fuerte)",
-          "Cobertura SARM/Pseudomonas SOLO si hay factores de riesgo validados localmente (aislamiento previo, hospitalización reciente + antibióticos parenterales en 90 días)",
-          "Duración mínima: 5 días, guiada por estabilidad clínica; NO usar corticoides de rutina (sin beneficio demostrado en mortalidad)"
-        ]
-      },
-      "complicaciones": [
-        "Derrame paraneumónico (~40% de neumonías bacterianas hospitalizadas)",
-        "Complicaciones cardiovasculares (hasta 30% de hospitalizados)",
-        "Sepsis / shock séptico",
-        "Neumonía no resuelta / progresión a absceso"
-      ],
-      "prevencion": "Vacuna antineumocócica (PPSV: eficacia 48-64% contra neumonía neumocócica) y vacuna antiinfluenza — esta última reduce significativamente tanto la influenza como la neumonía bacteriana secundaria.",
-      "perlasProfundo": "El CURB-65 (Confusión, Urea, frecuencia Respiratoria, presión arterial Baja, edad ≥65) y el PSI son las herramientas de decisión de lugar de tratamiento — pero ninguna reemplaza el juicio clínico. Un paciente con hipotensión que requiere vasopresores o insuficiencia respiratoria que requiere ventilación mecánica va DIRECTO a UCI, sin necesidad de calcular ningún score."
-    },
-    "repaso": {
-      "conceptosClave": [
-        "Definición = infección del parénquima + infiltrado NUEVO en imagen + síntomas compatibles",
-        "Causa identificable solo en ~1/3 de los casos a pesar de estudios extensos",
-        "CURB-65 y PSI determinan el lugar de tratamiento"
-      ],
-      "clinica": "Fiebre + tos + esputo + disnea + dolor pleurítico; en ancianos puede presentarse solo como confusión.",
-      "diagnostico": "Imagen con infiltrado nuevo + clínica compatible. Procalcitonina NO decide el inicio de antibióticos.",
-      "tratamientoResumen": "Ambulatorio leve: amoxicilina/doxiciclina/macrólido. Hospitalizado: β-lactámico + macrólido o fluoroquinolona respiratoria. Grave: mismo esquema pero recomendación fuerte, considerar UCI.",
-      "diferenciales": [
-        {
-          "entidad": "Bronquitis aguda",
-          "clave": "Sin infiltrado radiológico, sin criterios de respuesta inflamatoria sistémica"
-        },
-        {
-          "entidad": "TEP (tromboembolismo pulmonar)",
-          "clave": "Disnea súbita sin fiebre franca, factores de riesgo trombótico, dímero-D"
-        }
-      ],
-      "tablaComparativa": {
-        "titulo": "NAC vs. Neumonía intrahospitalaria",
-        "filas": [
-          [
-            "Momento",
-            "Fuera del hospital",
-            ">48h tras ingreso hospitalario"
-          ],
-          [
-            "Patógenos típicos",
-            "S. pneumoniae, atípicos",
-            "Multirresistentes (Pseudomonas, Acinetobacter)"
-          ],
-          [
-            "Mortalidad",
-            "6% a 30 días",
-            "Hasta 70% en NAV grave"
-          ]
+      {
+        "tipo": "decision",
+        "texto": "¿Shock, necesidad de vasopresores, o insuficiencia respiratoria que requiere ventilación mecánica?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Admisión directa a UCI",
+            "color": "alert"
+          },
+          {
+            "etiqueta": "NO",
+            "texto": "Usar criterios de severidad menores IDSA/ATS 2007 + juicio clínico para definir intensidad de manejo",
+            "color": "coral"
+          }
         ]
       }
+    ],
+    "diagnosticoDiferencial": [
+      "Neumonía intrahospitalaria (por el lugar de adquisición)",
+      "Bronquitis aguda (sin infiltrado radiológico ni SIRS)",
+      "Insuficiencia cardiaca / edema pulmonar",
+      "Embolia pulmonar",
+      "Tuberculosis pulmonar"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Vacunación contra influenza — disminuye significativamente el riesgo de influenza y neumonía bacteriana",
+        "Vacunas neumocócicas (PCV, PPSV) — eficacia agrupada de PPSV contra neumonía neumocócica: 48-64%",
+        "Seguimiento radiográfico NO rutinario si los síntomas se resuelven en 5-7 días (rendimiento positivo de repetir imagen: solo 0.2-5.0%)"
+      ],
+      "farmacologico": [
+        "Ambulatorio, sin comorbilidades: amoxicilina 1g c/8h, o doxiciclina 100mg c/12h, o macrólido (solo si resistencia neumocócica local <25%)",
+        "Ambulatorio, con comorbilidades: terapia combinada (amoxicilina/clavulanato o cefalosporina + macrólido o doxiciclina), o monoterapia con fluoroquinolona respiratoria",
+        "Hospitalizado, NAC no grave sin riesgo SARM/Pseudomonas: β-lactámico + macrólido, o fluoroquinolona respiratoria en monoterapia",
+        "Hospitalizado, NAC grave sin riesgo SARM/Pseudomonas: β-lactámico + macrólido, O β-lactámico + fluoroquinolona respiratoria (ambas recomendación fuerte)",
+        "Cubrir SARM/Pseudomonas SOLO si hay factores de riesgo validados (aislamiento previo, hospitalización reciente + antibiótico parenteral en 90 días)",
+        "Duración mínima: 5 días (NAC estándar) o 7 días (SARM/Pseudomonas) — guiada por estabilidad clínica, no por un número fijo de días",
+        "Corticosteroides: NO usar de rutina en NAC no grave ni en NAC grave — los ensayos no muestran diferencia en mortalidad ni estancia hospitalaria",
+        "Influenza positiva: oseltamivir en hospitalizados, independiente de días de evolución — la coinfección bacteriana es común y NO se excluye solo por PCR positivo a influenza"
+      ]
     },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "El diagnóstico SIEMPRE requiere un infiltrado NUEVO en imagen — sin eso, no es NAC",
-        "CURB-65 o PSI + juicio clínico determinan si el manejo es ambulatorio, hospitalario o UCI",
-        "Hipotensión que requiere vasopresores o necesidad de ventilación mecánica = UCI directo, sin calcular score",
-        "NO cubrir empíricamente SARM/Pseudomonas a menos que existan factores de riesgo validados — sobretratar también tiene costo"
-      ],
-      "redFlags": [
-        "SatO2 <90% al aire ambiente + FR≥30 + confusión → NAC grave, alto riesgo de UCI",
-        "Hipotensión (PAS<90) en paciente con neumonía → shock séptico hasta demostrar lo contrario"
-      ],
-      "erroresFrecuentes": [
-        "Usar procalcitonina para decidir si dar o no antibióticos (no está validado para esto)",
-        "Pedir Rx de control rutinaria en paciente que ya resolvió síntomas a los 5-7 días (rendimiento positivo solo 0.2-5%)",
-        "Dar corticoides de rutina en NAC — no hay beneficio demostrado en mortalidad"
-      ],
-      "asociacionesClinicas": [
-        "NAC + alcoholismo + confusión + cianosis → cuadro grave, considerar Legionella y evaluar UCI de inmediato",
-        "NAC en paciente joven + pocas comorbilidades + síntomas extrapulmonares → sospechar patógeno atípico (Mycoplasma)"
+    "complicaciones": [
+      "Derrame paraneumónico y empiema",
+      "Complicaciones cardiovasculares (hasta 30% de los hospitalizados)",
+      "Sepsis y shock séptico",
+      "Absceso pulmonar (considerar cobertura anaeróbica solo si se sospecha esto o empiema)",
+      "Insuficiencia respiratoria aguda"
+    ],
+    "prevencion": "Vacunación contra influenza y neumococo (PCV20 sola, o PCV15 seguida de PPSV23 al año, en ≥65 años o 19-64 con comorbilidades — la PCV13 ya no se recomienda de rutina). Vacunación contra SARS-CoV-2 según recomendación CDC.",
+    "perlasProfundo": "La procalcitonina NUNCA debe ser la razón para retener antibióticos en un paciente con sospecha clínica y confirmación radiográfica de NAC — su sensibilidad (38-91%) es insuficiente para ese uso. El tratamiento empírico se inicia independientemente de su valor.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casi siempre presentan un caso con signos vitales completos y piden calcular CURB-65/PSI y JUSTIFICAR el lugar de atención — exactamente como los 2 casos reales de tu propia clase.",
+      "ejercicios": [
+        {
+          "tipo": "Calcular y clasificar (el más frecuente)",
+          "planteamiento": "Paciente de 68 años, confuso, FR 32, PA 88/55, urea 45mg/dL. Calcule CURB-65 y determine conducta.",
+          "respuestaModelo": "CURB-65 = 5 (todos los criterios presentes: Confusión, Urea>19, FR≥30, PA sistólica<90, edad≥65). Con puntaje máximo, requiere hospitalización con evaluación URGENTE para UCI — este es el escenario de mayor riesgo de mortalidad según la escala."
+        },
+        {
+          "tipo": "Indique y sustente (semiología)",
+          "planteamiento": "¿Por qué el frémito vocal está AUMENTADO en la NAC, a diferencia del derrame pleural donde está disminuido?",
+          "respuestaModelo": "Porque en la NAC el alvéolo está lleno de exudado inflamatorio (líquido + células), que es un medio más denso y sólido que transmite mejor las vibraciones sonoras que el aire normal — por eso el frémito AUMENTA. En el derrame pleural, en cambio, el líquido se interpone ENTRE el pulmón y la pared torácica, actuando como una capa que ABSORBE y atenúa las vibraciones antes de que lleguen a la mano — por eso el frémito DISMINUYE. La diferencia clave es la ubicación: dentro del parénquima (NAC) transmite mejor; entre el parénquima y la pared (derrame) transmite peor."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste 4 factores de riesgo específicos para infección por Legionella pneumophila.",
+          "respuestaModelo": "Cualquier 4 de: edad avanzada, alcoholismo, tabaquismo, enfermedades crónicas, inmunosupresión, trasplante de órganos."
+        }
       ]
     }
-  ,
-    casosClinicos: [
-        {
-            "vineta": "Varón de 72 años, con antecedente de diabetes mellitus tipo 2, acude a emergencia por fiebre de 39°C, tos productiva con esputo herrumbroso, y dolor pleurítico derecho de 3 días de evolución. Signos vitales: FR 32/min, FC 108/min, PA 95/60 mmHg, SatO2 89% ambiental. Examen: confuso en tiempo, matidez y crépitos en base derecha, egofonía positiva.",
-            "preguntaMC": {
-                "enunciado": "Usando el CURB-65, ¿cuántos puntos tiene este paciente y qué conducta corresponde?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "1 punto — manejo ambulatorio"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "2 puntos — hospitalización en sala general"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "4 puntos (confusión + FR≥30 + PAS<90 + edad≥65) — considerar UCI, no solo hospitalización en sala"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "0 puntos — no cumple criterios de gravedad"
-                    }
-                ],
-                "correcta": "c",
-                "explicacion": "CURB-65: Confusión (1) + FR≥30 (1) + PAS<90 (1) + edad≥65 (1) = 4 puntos. Urea no está dada pero con 4 criterios claros ya alcanza el rango de alto riesgo (CURB-65 ≥3), lo que obliga a considerar manejo en UCI, no solo hospitalización en sala general — más aún con hipotensión que podría anticipar shock séptico."
-            },
-            "preguntaEscrita": {
-                "enunciado": "Explica por qué este paciente presenta egofonía y matidez en la base derecha, relacionando el hallazgo con lo que ocurre a nivel del parénquima pulmonar.",
-                "respuestaModelo": "En la neumonía, el exudado inflamatorio llena los alvéolos, reemplazando el aire que normalmente contienen (consolidación). Esto hace que el tejido pulmonar se comporte de forma más 'sólida' — al percutir, transmite un sonido mate en vez de resonante (matidez), y al auscultar, transmite mejor las vibraciones de la voz, generando el cambio característico de 'e' a 'a' (egofonía) sobre la zona consolidada. Ambos hallazgos reflejan el mismo proceso: pérdida del contenido aéreo normal del parénquima por el exudado inflamatorio."
-            },
-            "nivel": "avanzado"
-        },
-        {
-            "nivel": "basico",
-            "vineta": "Mujer de 30 años, previamente sana, sin comorbilidades, consulta por fiebre de 38.3°C, tos con esputo amarillento y malestar general de 2 días. Signos vitales: FR 18/min, FC 88/min, PA 118/76 mmHg, SatO2 97%. Examen: crépitos aislados en base izquierda. Sin confusión, orientada.",
-            "preguntaMC": {
-                "enunciado": "Según el CURB-65, ¿cuál es la conducta apropiada?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "CURB-65 = 0 puntos — manejo ambulatorio con antibiótico oral"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "CURB-65 = 3 puntos — hospitalización inmediata"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Requiere UCI de entrada por la fiebre"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "No se puede calcular el CURB-65 sin urea"
-                    }
-                ],
-                "correcta": "a",
-                "explicacion": "CURB-65: sin confusión (0), FR normal (0), PA normal (0), edad <65 (0) = 0 puntos, bajo riesgo. Con datos vitales estables y sin comorbilidad, corresponde manejo ambulatorio con antibiótico oral (amoxicilina, doxiciclina o macrólido según resistencia local)."
-            },
-            "preguntaEscrita": {
-                "enunciado": "¿Qué le indicarías a esta paciente sobre cuándo debe volver a consultar si el tratamiento ambulatorio no funciona?",
-                "respuestaModelo": "Le indicaría regresar de inmediato si presenta: dificultad para respirar o aumento marcado de la frecuencia respiratoria, fiebre persistente o en aumento después de 48-72 horas de antibiótico, confusión o somnolencia inusual, dolor torácico intenso, o si no logra mantenerse hidratada por vómitos. También debe completar el antibiótico según indicación aunque se sienta mejor antes de terminar el tratamiento."
-            }
-        }
-    ,
+  },
+  "repaso": {
+    "conceptosClave": [
+      "Diagnóstico = infiltrado NUEVO en imagen + síntomas + signos + anomalías de laboratorio",
+      "CURB-65 o PSI determinan el lugar de atención (ambulatorio/hospitalizado/UCI)",
+      "Cobertura SARM/Pseudomonas SOLO si hay factores de riesgo específicos, no de rutina"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — CURB-65 y manejo",
+      "columnas": [
+        "CURB-65",
+        "Manejo"
+      ],
+      "filas": [
+        [
+          "0-1",
+          "Ambulatorio"
+        ],
+        [
+          "2",
+          "Considerar hospitalización/observación"
+        ],
+        [
+          "3-5",
+          "Hospitalización (± UCI según gravedad)"
+        ]
+      ],
+      "nota": "C-onfusión, U-rea>19, R-espiración≥30, B-presión<90/60, 65 años — 1 punto cada uno."
+    },
+    "clinica": "Tos + fiebre + disnea + dolor pleurítico + crépitos focales — presentación atípica (solo confusión) en ancianos.",
+    "diagnostico": "Infiltrado nuevo en Rx/TC + clínica compatible. Procalcitonina NO decide inicio de antibiótico.",
+    "tratamientoResumen": "Ambulatorio sin comorbilidad: amoxicilina/doxiciclina/macrólido. Hospitalizado: β-lactámico+macrólido o fluoroquinolona respiratoria. SARM/Pseudomonas solo si factores de riesgo.",
+    "diferenciales": [
+      {
+        "entidad": "Neumonía intrahospitalaria",
+        "clave": "Se define por el LUGAR de adquisición, no por la clínica — cambia la cobertura antibiótica"
+      },
+      {
+        "entidad": "Bronquitis aguda",
+        "clave": "Sin infiltrado radiológico ni criterios de SIRS"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "NAC vs Neumonía Intrahospitalaria",
+      "filas": [
+        [
+          "Lugar de adquisición",
+          "Comunidad",
+          "Hospital (≥48h de ingreso)"
+        ],
+        [
+          "Patógenos típicos",
+          "Neumococo, atípicos",
+          "Gram negativos, SARM, resistentes"
+        ],
+        [
+          "Cobertura empírica",
+          "Más simple",
+          "Más amplia, considera multirresistencia"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Qué confirma el diagnóstico de NAC? → Infiltrado NUEVO en imagen + clínica compatible",
+      "¿La procalcitonina decide si dar antibiótico? → NO, nunca debe usarse para retener el tratamiento",
+      "¿Qué herramienta decide el lugar de atención? → CURB-65 o PSI, junto con juicio clínico",
+      "¿Cuándo cubrir empíricamente SARM/Pseudomonas? → SOLO con factores de riesgo validados, no de rutina",
+      "¿Se deben usar corticosteroides en NAC? → NO de rutina, ni en NAC no grave ni grave",
+      "¿Cuál es la duración mínima de tratamiento? → 5 días (guiada por estabilidad clínica, no un número fijo)",
+      "¿Se debe repetir la radiografía tras la mejoría clínica? → NO de rutina si los síntomas se resuelven en 5-7 días"
+    ],
+    "redFlags": [
+      "Confusión de nueva aparición en paciente con NAC → suma punto CURB-65, considerar mayor nivel de cuidado",
+      "SatO2 <95% + FR≥30 + hipotensión → evaluar criterios de UCI de inmediato",
+      "Alteración del sensorio + alcoholismo (como el caso de tu clase) → alto riesgo de aspiración y NAC grave"
+    ],
+    "erroresFrecuentes": [
+      "Usar procalcitonina para decidir NO dar antibiótico",
+      "Cubrir SARM/Pseudomonas de rutina sin factores de riesgo",
+      "Dar corticosteroides pensando que 'ayudan' en NAC grave",
+      "Repetir radiografía de rutina en un paciente que ya mejoró clínicamente"
+    ],
+    "asociacionesClinicas": [
+      "Alcoholismo + alteración del sensorio + NAC → pensar en aspiración y considerar Legionella",
+      "NAC + hiponatremia + tos seca → pensar en Legionella específicamente"
+    ]
+  },
+  "casosClinicos": [
     {
-        "nivel": "intermedio",
-        "vineta": "Varón de 58 años, taxista, hipertenso, exfumador (20 paq/año), no vacunado. Inicia con malestar general, escalofríos y fiebre no cuantificada hace 4 días. A las 48h aparece tos productiva con esputo amarillento, dolor torácico tipo punzada que aumenta con la inspiración, y disnea de pequeños esfuerzos. T° 39°C, FC 108, FR 26, PA 135/85, SatO2 90% aire ambiente. Disminución de la expansibilidad torácica derecha, matidez en base derecha, crepitantes y soplo tubario en lóbulo inferior derecho. Leucocitos 17,500/mm³ con neutrofilia, PCR y procalcitonina elevadas, gasometría con hipoxemia leve.",
-        "preguntaMC": {
-            "enunciado": "¿Qué hallazgo del examen físico confirma consolidación del lóbulo inferior derecho, más allá de la matidez?",
-            "opciones": [
-                {
-                    "id": "a",
-                    "texto": "Frémito vocal disminuido"
-                },
-                {
-                    "id": "b",
-                    "texto": "Soplo tubárico y crepitantes localizados en la misma zona"
-                },
-                {
-                    "id": "c",
-                    "texto": "Hiperresonancia a la percusión"
-                },
-                {
-                    "id": "d",
-                    "texto": "Murmullo vesicular aumentado"
-                },
-                {
-                    "id": "e",
-                    "texto": "Ausencia total de ruidos respiratorios"
-                }
-            ],
-            "correcta": "b",
-            "explicacion": "El soplo tubárico (transmisión de los ruidos bronquiales a través de tejido consolidado) junto con los crepitantes localizados en la misma zona que la matidez confirma consolidación del parénquima — el frémito en consolidación está AUMENTADO (no disminuido, eso sería derrame), y la hiperresonancia sería propia de neumotórax, no de neumonía."
-        },
-        "preguntaEscrita": {
-            "enunciado": "¿Qué criterios usarías para decidir si este paciente requiere hospitalización, y cuál sería el tratamiento antibiótico empírico inicial más apropiado?",
-            "respuestaModelo": "Usaría el CURB-65 o el PSI. Con SatO2 90%, taquicardia, taquipnea y edad no mayor a 65, calculando CURB-65 este paciente probablemente puntúa bajo-moderado, pero la hipoxemia (SatO2 90%) y las comorbilidades (HTA, tabaquismo) inclinan a favor de hospitalización para observación y manejo con antibiótico parenteral. El tratamiento empírico inicial en un paciente hospitalizado no grave sería β-lactámico (ceftriaxona) más macrólido (azitromicina), o alternativamente una fluoroquinolona respiratoria en monoterapia."
-        }
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Varón de 60 años con antecedentes de alcoholismo desde los 30 años, hasta la embriaguez. Acude a Emergencia traído por familiares con tiempo de enfermedad de 15 días, caracterizado por tos seca en accesos y fiebre. Cinco días antes de su ingreso se agregó disnea progresiva hasta por mínimos esfuerzos, así como alteración del estado de conciencia y cefalea generalizada. Acudió a médico particular quien indicó trimetoprim/sulfametoxazol, ambroxol y salbutamol, sin mejoría. Tres días antes presentó dolor precordial irradiado a la pared posterior del tórax, náuseas, vómitos y diaforesis. Luego la tos se acompañó de expectoración verdosa. En las 24 horas previas presentó cianosis. Al examen: PA 140/90 mmHg, FC 110x', FR 30x', T 38.9°C. Consciente, inquieto, desorientado en las 3 esferas; cianosis ungueal y peribucal con uso de músculos accesorios; disminución de amplexión/amplexación; estertores sibilantes y subcrepitantes generalizados; ruidos cardiacos normales.",
+      "imagen": {
+        "src": "assets/nac/nac-rx-caso-real.jpg",
+        "caption": "Radiografía real de este paciente"
+      },
+      "preguntaMC": {
+        "enunciado": "Calculando el CURB-65 con los datos disponibles (confusión presente, FR 30, PA sistólica 140 no cumple criterio de hipotensión, edad 60 no cumple ≥65 — falta dato de urea), ¿cuál es la conducta más apropiada?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Manejo ambulatorio con antibiótico oral, ya que no tiene 65 años"
+          },
+          {
+            "id": "b",
+            "texto": "Hospitalización — ya cumple al menos 2 criterios (confusión + FR≥30) independientemente del valor de urea"
+          },
+          {
+            "id": "c",
+            "texto": "Alta con observación domiciliaria por la familia"
+          },
+          {
+            "id": "d",
+            "texto": "Solo tratamiento sintomático sin antibiótico, ya que ya recibió trimetoprim/sulfametoxazol"
+          },
+          {
+            "id": "e",
+            "texto": "No se puede decidir nada sin conocer la urea"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "Ya con Confusión (desorientado en las 3 esferas) + Respiración ≥30 (FR 30) tiene al menos 2 puntos en CURB-65, lo que ya indica HOSPITALIZACIÓN independientemente del valor de urea (que sumaría un punto más si estuviera elevada). Además, este paciente tiene múltiples signos de gravedad adicionales: cianosis, uso de músculos accesorios, alteración del sensorio de 5 días de evolución — es un cuadro de NAC grave que requiere evaluación para nivel de cuidado intensivo, no solo hospitalización general."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Dado el antecedente de alcoholismo crónico y la alteración del estado de conciencia previa al inicio de la disnea, ¿qué mecanismo fisiopatológico específico deberías sospechar como causa de esta NAC, y qué patógeno se asocia clásicamente al alcoholismo?",
+        "respuestaModelo": "Se debe sospechar NEUMONÍA POR ASPIRACIÓN — el alcoholismo crónico predispone a episodios de alteración del sensorio (embriaguez) durante los cuales se pierden los reflejos protectores de la vía aérea (tos, deglución), permitiendo la microaspiración de contenido orofaríngeo hacia la vía aérea inferior. Además, el alcoholismo es un factor de riesgo específico y reconocido para infección por Legionella pneumophila, que también debería considerarse en este cuadro, especialmente si hubiera hiponatremia asociada (no mencionada en este caso, pero es un dato a buscar activamente)."
+      }
+    },
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase — actividad práctica) Paciente varón de 72 años, con antecedentes de hipertensión y diabetes mellitus tipo 2. Acude por fiebre, tos con esputo amarillento, disnea de esfuerzo y dolor torácico pleurítico desde hace 3 días. Al examen físico: PA 95/60 mmHg, FR 30 rpm, FC 112 lpm, SatO2 89% al aire ambiente, Glasgow 15.",
+      "preguntaMC": {
+        "enunciado": "Calcule el CURB-65 de este paciente y determine el lugar de atención más apropiado.",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "CURB-65 = 1 (solo por edad) — manejo ambulatorio"
+          },
+          {
+            "id": "b",
+            "texto": "CURB-65 = 3 (edad≥65 + FR≥30 + PA sistólica<90) — hospitalización, evaluar UCI por hipoxemia"
+          },
+          {
+            "id": "c",
+            "texto": "CURB-65 = 5 — requiere UCI obligatoriamente sin evaluación adicional"
+          },
+          {
+            "id": "d",
+            "texto": "CURB-65 = 0 — Glasgow 15 descarta cualquier punto"
+          },
+          {
+            "id": "e",
+            "texto": "No se puede calcular sin saber la urea, por lo que no hay conducta posible"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "Puntos confirmados: Edad≥65 (72 años, +1), FR≥30 (30rpm exacto, +1), PA sistólica<90 (95mmHg... en realidad 95 NO es <90, así que este punto NO se suma por PA sistólica, pero si consideramos que el criterio también incluye diastólica≤60 y aquí es 60 exacto, ese punto SÍ se sumaría) — el Glasgow 15 confirma AUSENCIA de confusión (0 puntos ahí). Sin el dato de urea, el puntaje mínimo confirmado es 2-3 (edad + FR + posible PA diastólica). Con puntaje ≥3 y además SatO2 89% (hipoxemia significativa), la conducta correcta es HOSPITALIZACIÓN, con evaluación para UCI dada la hipoxemia marcada y los signos de posible inestabilidad hemodinámica (PA en el límite bajo)."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Siguiendo la actividad práctica de tu clase: identifica los factores de riesgo y comorbilidades de este paciente, y propone un plan de tratamiento antibiótico empírico inicial considerando su condición de hospitalizado.",
+        "respuestaModelo": "Factores de riesgo/comorbilidades: edad avanzada (72 años), diabetes mellitus tipo 2 (inmunosupresión relativa), hipertensión arterial. No se mencionan factores de riesgo específicos para SARM o Pseudomonas (sin colonización previa, sin hospitalización/antibiótico parenteral reciente), por lo que NO está indicada cobertura empírica extendida para esos patógenos. Al ser NAC no grave hospitalizada sin esos factores de riesgo, el tratamiento empírico apropiado sería: terapia combinada con β-lactámico + macrólido, o alternativamente monoterapia con una fluoroquinolona respiratoria (levofloxacino o moxifloxacino), ajustando según evolución clínica y resultados microbiológicos si se solicitan por la gravedad del cuadro."
+      }
     }
   ]
-  },
+},
   {
     "id": "neumonia-intrahospitalaria",
     "nombre": "Neumonía Intrahospitalaria y Neumonía Atípica",
