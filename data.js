@@ -4744,233 +4744,392 @@ const ENFERMEDADES = [
     ]
   },
   {
-    "id": "saos",
-    "nombre": "Síndrome de Apnea-Hipopnea Obstructiva del Sueño (SAOS)",
-    "area": "Neumología",
-    "semanas": [
-      "semana-03"
+  "id": "saos",
+  "nombre": "Síndrome de Apnea-Hipopnea Obstructiva del Sueño (SAOS)",
+  "area": "Neumología",
+  "semanas": [
+    "semana-03"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/17S3FNJMXxl4Fx6LRgDR30KsZqw9zzlz2/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_3_SESIÓN-8-TEMA-3: Síndrome de Apnea-Hipopnea Obstructiva del Sueño"
+  },
+  "relacionadas": [
+    {
+      "id": "epoc",
+      "relacion": "El síndrome de superposición (overlap syndrome) EPOC+SAOS empeora significativamente el pronóstico cardiovascular de ambas por separado"
+    }
+  ],
+  "profundo": {
+    "definicion": "Episodios recurrentes de obstrucción PARCIAL o COMPLETA de la vía aérea superior durante el sueño, lo que provoca hipoxia intermitente, fragmentación del sueño y despertares repetidos (American Academy of Sleep Medicine, 2020).",
+    "epidemiologia": "La prevalencia global de SAHOS leve a severo se estima en 936 MILLONES de adultos entre 30-69 años, y alrededor de 425 millones tienen SAOS moderado a severo. La prevalencia varía entre 9% y 38%, más alta en hombres (13-33%) que en mujeres (6-19%). En mayores de 65 años, las cifras pueden alcanzar 84% (90% en hombres, 78% en mujeres). <span class=\"fuente-ampliada\">El subdiagnóstico es un problema real y reconocido: muchos casos permanecen sin diagnosticar por ausencia de somnolencia evidente o acceso limitado a estudios del sueño — es decir, la prevalencia REAL detectada es probablemente menor a la verdadera.</span>",
+    "etiologiaFactoresRiesgo": [
+      "Riesgos anatómicos y genéticos: cuello grueso, acúmulo adiposo perifaríngeo, micrognatia, retrognatia, hipertrofia amigdalar — todos favorecen el colapso de la vía aérea",
+      "Edad y sexo: mayor prevalencia con edad avanzada (>50 años); relación hombre:mujer ~4.9:1 en adultos — mas tras la MENOPAUSIA esta relación se aproxima a la paridad (pierde su factor protector hormonal)",
+      "Obesidad — el factor MODIFICABLE más importante: un aumento del 10% del peso se asocia a una multiplicación ×6 del riesgo de SAHOS moderado-grave",
+      "Otros modificables: tabaquismo, alcohol, sedantes/hipnóticos, posición supina al dormir, congestión nasal crónica, embarazo",
+      "Comorbilidades asociadas: hipertensión resistente, diabetes tipo 2, síndrome metabólico, acromegalia, hipotiroidismo, insuficiencia cardíaca, fibrilación auricular, falla renal crónica, síndrome de Down o Prader-Willi"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "obstructivo",
-    "relacionadas": [
-      {
-        "id": "epoc",
-        "relacion": "Ambas pueden coexistir en el llamado 'overlap syndrome', con mayor riesgo de hipoxemia nocturna combinada"
-      }
-    ],
-    "profundo": {
-      "definicion": "El SAOS se define como episodios recurrentes de obstrucción parcial o completa de la vía aérea superior durante el sueño, lo que provoca hipoxia intermitente, fragmentación del sueño y despertares repetidos.",
-      "epidemiologia": "La prevalencia global de SAHOS leve a severo se estima en 936 millones de adultos (30-69 años), con alrededor de 425 millones con SAOS moderado a severo. Varía entre 9% y 38%, más alta en hombres (13-33%) que en mujeres (6-19%). En mayores de 65 años puede alcanzar 84% (90% en hombres, 78% en mujeres). Está marcadamente subdiagnosticado.",
-      "etiologiaFactoresRiesgo": [
-        "Anatómicos: cuello grueso, acúmulo adiposo perifaríngeo, micrognatia, retrognatia, hipertrofia amigdalar",
-        "Edad avanzada (>50 años) y sexo masculino (relación 4.9:1, que se aproxima a la paridad tras la menopausia)",
-        "Obesidad — el factor modificable más importante: un aumento del 10% del peso multiplica x6 el riesgo de SAHOS moderado-grave",
-        "Tabaquismo, consumo de alcohol, sedantes/hipnóticos, posición supina al dormir, congestión nasal crónica",
-        "Comorbilidades: hipertensión resistente, diabetes tipo 2, síndrome metabólico, hipotiroidismo, síndrome de Down"
-      ],
-      "fisiopatologia": {
-        "resumen": "Durante el sueño, la relajación normal de la musculatura faríngea se combina con factores anatómicos predisponentes (cuello grueso, retrognatia, hipertrofia amigdalar) para producir colapso parcial o completo de la vía aérea superior, generando episodios repetidos de apnea (cese completo del flujo) o hipopnea (reducción parcial), cada uno seguido de un microdespertar que restaura el tono muscular momentáneamente.",
-        "explicacionExtendida": "Este ciclo de colapso-microdespertar se repite decenas a cientos de veces por noche, generando dos consecuencias fisiopatológicas centrales. La primera es la hipoxia intermitente: cada episodio de apnea/hipopnea interrumpe la oxigenación, y estos ciclos repetidos de desaturación-reoxigenación generan estrés oxidativo, inflamación sistémica de bajo grado y disfunción endotelial — mecanismos que explican por qué el SAOS se asocia de forma tan consistente a hipertensión arterial, arritmias, y mayor riesgo cardiovascular general, incluso en pacientes que no perciben somnolencia diurna significativa.\n\nLa segunda consecuencia es la fragmentación del sueño: cada microdespertar, aunque dure solo segundos y el paciente no lo recuerde, interrumpe la arquitectura normal del sueño, impidiendo alcanzar o mantener las fases de sueño profundo y REM que son necesarias para la restauración cognitiva y física. Esto explica la somnolencia diurna excesiva, el deterioro cognitivo (atención, memoria, funciones ejecutivas) y el mayor riesgo de accidentes que caracterizan al SAOS no tratado."
-      ,cascada: [
-              {
-                      "paso": "Factor predisponente",
-                      "detalle": "Factores anatómicos (cuello grueso, retrognatia, hipertrofia amigdalar) combinados con relajación muscular normal del sueño"
-              },
-              {
-                      "paso": "Colapso de la vía aérea",
-                      "detalle": "La musculatura faríngea relajada, junto con la predisposición anatómica, permite el colapso parcial o completo de la vía aérea superior"
-              },
-              {
-                      "paso": "Apnea/hipopnea",
-                      "detalle": "Cese o reducción marcada del flujo aéreo pese al esfuerzo respiratorio continuo"
-              },
-              {
-                      "paso": "Hipoxia intermitente + microdespertar",
-                      "detalle": "Desaturación de oxígeno que activa un microdespertar (arousal) que restaura brevemente el tono muscular y reabre la vía aérea"
-              },
-              {
-                      "paso": "Manifestación clínica",
-                      "detalle": "El ciclo se repite cientos de veces por noche: ronquidos, fragmentación del sueño, somnolencia diurna, y a largo plazo, riesgo cardiovascular por hipoxia intermitente repetida"
-              }
-      ]
-      },
-      "clinica": [
+    "criteriosDiagnosticos": "Apnea: reducción ≥90% del flujo aéreo durante ≥10 segundos. Hipopnea: caída ≥30% del flujo durante ≥10 segundos con desaturación ≥3-4% O arousal (microdespertar) asociado. Criterio diagnóstico: IAH ≥5 eventos/hora CON síntomas diurnos, O IAH/RDI ≥15 SIN síntomas (el umbral más alto compensa la ausencia de clínica).",
+    "fisiopatologia": {
+      "resumen": "Durante el sueño, el tono muscular de la faringe disminuye fisiológicamente en todas las personas — pero en el paciente con factores anatómicos predisponentes (cuello grueso, retrognatia, hipertrofia amigdalar), esta relajación normal es suficiente para colapsar completa o parcialmente la vía aérea superior, interrumpiendo el flujo de aire pese a que el esfuerzo respiratorio continúa (a diferencia de la apnea CENTRAL, donde el cerebro simplemente deja de enviar la señal de respirar).",
+      "cascada": [
         {
-          "signo": "Ronquidos fuertes y persistentes + episodios de apnea/asfixia reportados por la pareja",
-          "mecanismo": "Colapso parcial (ronquido) o completo (apnea) de la vía aérea superior durante el sueño"
+          "paso": "Relajación fisiológica del sueño",
+          "detalle": "El tono muscular faríngeo disminuye normalmente durante el sueño (más aún en fase REM)"
         },
         {
-          "signo": "Somnolencia excesiva diurna + deterioro cognitivo",
-          "mecanismo": "Fragmentación crónica del sueño por microdespertares repetidos que impiden alcanzar sueño reparador"
+          "paso": "Colapso de la vía aérea",
+          "detalle": "En presencia de factores anatómicos predisponentes, la vía aérea superior se colapsa parcial (hipopnea) o completamente (apnea)"
         },
         {
-          "signo": "Hipertensión arterial resistente al tratamiento",
-          "mecanismo": "Hipoxia intermitente que genera estrés oxidativo, inflamación sistémica y disfunción endotelial de forma sostenida"
+          "paso": "Hipoxia intermitente",
+          "detalle": "El flujo de aire se reduce o cesa pese a que el esfuerzo respiratorio continúa — desaturación de oxígeno progresiva"
+        },
+        {
+          "paso": "Microdespertar (arousal)",
+          "detalle": "El cerebro detecta la hipoxia/hipercapnia y genera un despertar breve que restaura el tono muscular y reabre la vía aérea — el paciente rara vez recuerda estos microdespertares"
+        },
+        {
+          "paso": "Fragmentación del sueño",
+          "detalle": "Los ciclos repetidos de colapso-despertar (decenas a cientos por noche) impiden alcanzar las fases de sueño profundo reparador"
+        },
+        {
+          "paso": "Consecuencias sistémicas",
+          "detalle": "La hipoxia intermitente crónica + fragmentación del sueño generan estrés oxidativo, inflamación sistémica, y activación simpática — la base del aumento de riesgo cardiovascular"
         }
       ],
-      "examenFisico": [
-        "Cuello grueso, circunferencia cervical aumentada",
-        "Retrognatia/micrognatia, hipertrofia amigdalar visible",
-        "Sobrepeso/obesidad con distribución central de grasa"
+      "imagenes": [
+        {
+          "src": "assets/saos/saos-stopbang-tabla.jpg",
+          "caption": "Cuestionario STOP-Bang (de tu clase)",
+          "explicacion": "Nota el acrónimo: cada letra es una pregunta de Sí/No que suma 1 punto. S-T-O-P son síntomas/signos que TÚ le preguntas directamente al paciente (ronquido, cansancio diurno, apneas observadas, presión arterial alta), mientras que B-A-N-G son datos ANTROPOMÉTRICOS objetivos que no dependen de lo que el paciente reporte (IMC>35, edad>50, cuello>40cm, sexo masculino). Esta combinación de síntomas subjetivos + datos objetivos es lo que le da al STOP-Bang su buena sensibilidad — no depende solo de que el paciente reconozca sus propios síntomas (muchos pacientes con SAOS no perciben bien su propia somnolencia)."
+        },
+        {
+          "src": "assets/saos/saos-iah-severidad-tabla.jpg",
+          "caption": "Interpretación del IAH — tabla de severidad",
+          "explicacion": "Esta tabla convierte un número (eventos por hora) en una categoría clínica accionable. Fíjate que el corte de <5 es 'Normal' — es decir, TODOS tenemos algunos eventos respiratorios ocasionales durante el sueño, y eso no define enfermedad; lo patológico empieza en ≥5. El salto de Moderado (15-29.9) a Grave (≥30) es clínicamente importante: ≥15 ya se asocia con mayor riesgo cardiovascular incluso SIN síntomas diurnos evidentes, por eso el criterio diagnóstico permite diagnosticar con IAH/RDI≥15 aunque el paciente no refiera somnolencia."
+        }
       ],
-      semiologia: {
-            "inspeccion": "Evalúa la circunferencia del cuello (>40cm en hombres es un dato de riesgo), presencia de retrognatia/micrognatia, y el hábito corporal general (obesidad central).",
-            "palpacion": "No hay hallazgo palpatorio específico de SAOS — la evaluación es fundamentalmente anatómica visual y por cuestionarios/estudios de sueño.",
-            "percusion": "No aporta información relevante para el diagnóstico de SAOS.",
-            "auscultacion": "No hay hallazgo auscultatorio pulmonar específico en vigilia — el hallazgo característico (ronquido, pausas) solo se documenta durante el sueño, típicamente reportado por la pareja o mediante estudio de sueño formal."
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">Un dato clínico importante que conecta la fisiopatología con el pronóstico: los niveles moderados a severos (IAH≥15) se asocian claramente con mayor riesgo cardiovascular, ACV y mortalidad, INCLUSO EN AUSENCIA de somnolencia clínica evidente — esto significa que un paciente puede sentirse relativamente bien durante el día y aun así estar acumulando daño cardiovascular silencioso cada noche por la hipoxia intermitente repetida. Es la razón por la que el criterio diagnóstico permite diagnosticar SAOS por IAH/RDI≥15 SIN necesidad de síntomas diurnos — el daño fisiopatológico no depende de que el paciente se sienta somnoliento.</span>"
+    },
+    "clinica": [
+      {
+        "signo": "Ronquidos fuertes y persistentes",
+        "detallePPT": "Síntoma nocturno, frecuentemente reportado por la pareja",
+        "mecanismo": "Vibración de tejidos blandos faríngeos por el flujo turbulento a través de la vía aérea parcialmente colapsada"
       },
-      "diagnostico": "Cuestionarios de cribado: escala de Epworth, cuestionario de Berlín, y especialmente STOP-Bang (0-2 puntos = bajo riesgo, 3-4 = riesgo intermedio, 5-8 = alto riesgo de SAHOS moderado/severo) — estos NO son diagnósticos definitivos. Estándar de oro: polisomnografía (PSG tipo I), que mide el Índice de Apnea-Hipopnea (IAH). Criterio diagnóstico: IAH ≥5 eventos/hora con síntomas diurnos, o IAH/RDI ≥15 sin síntomas. Alternativa: pruebas domiciliarias (HSAT)/poligrafía, sensibilidad >80% en casos sin comorbilidades complejas.",
-      algoritmo: [
-            {
-                  "tipo": "paso",
-                  "texto": "Ronquidos + pausas respiratorias presenciadas + somnolencia diurna — aplicar cuestionario STOP-Bang (cribado, no diagnóstico)"
-            },
-            {
-                  "tipo": "decision",
-                  "texto": "¿Cuál es el puntaje STOP-Bang y qué corresponde hacer?",
-                  "salidas": [
-                        {
-                              "etiqueta": "0-2 (bajo riesgo)",
-                              "texto": "Riesgo bajo — reevaluar si aparecen nuevos síntomas o factores de riesgo",
-                              "color": "mint"
-                        },
-                        {
-                              "etiqueta": "3-4 (riesgo intermedio)",
-                              "texto": "Considerar estudio del sueño según sospecha clínica adicional",
-                              "color": "coral"
-                        },
-                        {
-                              "etiqueta": "5-8 (alto riesgo)",
-                              "texto": "Derivar a polisomnografía (estándar de oro) para confirmar diagnóstico y medir IAH",
-                              "color": "alert"
-                        }
-                  ]
-            }
-      ],
-      "diagnosticoDiferencial": [
-        "Insomnio primario",
-        "Narcolepsia",
-        "Síndrome de piernas inquietas",
-        "Hipoventilación por obesidad"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "CPAP/APAP: tratamiento de elección en SAHOS moderado-severo — adherencia óptima ≥6h/noche",
-          "Dispositivos de avance mandibular (MAD): para SAOS leve-moderado o intolerancia a CPAP, reduce IAH >50% en ~1/3 de los casos",
-          "Modificación del estilo de vida: pérdida de peso ≥10% puede reducir el IAH en 26-56%; evitar alcohol/sedantes, terapia posicional",
-          "Cirugía de vías aéreas superiores (UPPP: éxito 35-50%) o avance maxilomandibular (reduce IAH ~85%) en casos seleccionados",
-          "Estimulación del nervio hipogloso en SAOS moderado-severo que no tolera CPAP (éxito clínico 74% a 3 años según STAR trial)"
+      {
+        "signo": "Episodios de apnea/asfixia observados",
+        "detallePPT": "Reportados por familiares o pareja — el paciente mismo rara vez los percibe",
+        "mecanismo": "Colapso completo de la vía aérea con cese del flujo pese a esfuerzo respiratorio continuo"
+      },
+      {
+        "signo": "Despertares bruscos con sensación de falta de aire",
+        "detallePPT": "Síntoma nocturno",
+        "mecanismo": "Microdespertar (arousal) generado por el cerebro al detectar hipoxia/hipercapnia, que restaura el tono muscular"
+      },
+      {
+        "signo": "Fragmentación del sueño, nicturia, boca seca",
+        "detallePPT": "Síntomas nocturnos asociados",
+        "mecanismo": "Múltiples despertares que impiden alcanzar sueño profundo reparador; respiración bucal por obstrucción nasal/orofaríngea"
+      },
+      {
+        "signo": "Somnolencia excesiva diurna + deterioro cognitivo",
+        "detallePPT": "Fatiga, disminución de atención/memoria/funciones ejecutivas; aumenta riesgo de accidentes vehiculares",
+        "mecanismo": "<span class=\"fuente-ampliada\">Privación crónica de sueño reparador (no solo de horas totales de sueño, sino de su CALIDAD/continuidad) afecta directamente la consolidación de memoria y las funciones ejecutivas dependientes de sueño profundo/REM.</span>"
+      }
+    ],
+    "examenFisico": [
+      "Cuello grueso, circunferencia >40cm (dato objetivo del STOP-Bang)",
+      "Micrognatia, retrognatia, hipertrofia amigdalar a la inspección orofaríngea",
+      "IMC elevado (frecuentemente >35 en casos de alto riesgo)",
+      "Presión arterial elevada (comorbilidad frecuentemente asociada)"
+    ],
+    "semiologia": {
+      "inspeccion": "Evalúa la anatomía craneofacial y orofaríngea: cuello grueso, retrognatia/micrognatia, hipertrofia amigdalar — todos factores anatómicos que predisponen al colapso. Mide la circunferencia del cuello (>40cm es un dato objetivo del STOP-Bang).",
+      "palpacion": "Sin hallazgos específicos más allá de la evaluación antropométrica general (IMC, circunferencia de cuello).",
+      "percusion": "No aplica de forma característica a esta entidad — el compromiso es funcional/anatómico de la vía aérea superior durante el sueño, no del parénquima pulmonar.",
+      "auscultacion": "Sin hallazgos pulmonares característicos durante la vigilia — el problema ocurre específicamente DURANTE el sueño y no se detecta en un examen físico convencional en el consultorio; por eso el diagnóstico depende de la HISTORIA (síntomas reportados por la pareja) y de estudios específicos del sueño, no del examen físico diurno."
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "📋 Cuestionario STOP-Bang",
+        "contexto": "El más recomendado en la literatura por su facilidad de aplicación, buena sensibilidad, y correlación del puntaje con la severidad del SAHOS.",
+        "columnas": [
+          "Puntaje",
+          "Riesgo"
         ],
-        "farmacologico": [
-          "Tirzepatida: aprobada por la FDA (2024-25) para SAHOS moderado-severo con obesidad, redujo el IAH hasta 63% en ensayos fase III"
+        "filas": [
+          [
+            "0-2",
+            "Bajo riesgo"
+          ],
+          [
+            "3-4",
+            "Riesgo intermedio"
+          ],
+          [
+            "5-8",
+            "Alto riesgo para SAHOS moderado/severo"
+          ]
+        ],
+        "nota": "S-T-O-P (síntomas: ronquido, cansancio diurno, apnea observada, presión arterial alta) + B-A-N-G (datos objetivos: IMC>35, edad>50, cuello>40cm, sexo masculino) = 8 preguntas Sí/No, 1 punto cada una."
+      },
+      {
+        "titulo": "📊 Severidad según IAH (Índice de Apnea-Hipopnea)",
+        "columnas": [
+          "Severidad",
+          "IAH (eventos/hora)"
+        ],
+        "filas": [
+          [
+            "Normal",
+            "< 5"
+          ],
+          [
+            "Leve",
+            "5 - 14.9"
+          ],
+          [
+            "Moderado",
+            "15 - 29.9"
+          ],
+          [
+            "Grave",
+            "≥ 30"
+          ]
+        ],
+        "nota": "IAH = apneas + hipopneas/hora. RDI (más sensible) = IAH + RERAs (microdespertares por esfuerzo respiratorio sin cumplir criterio completo de apnea/hipopnea)."
+      }
+    ],
+    "diagnostico": "Herramientas de cribado (Epworth, Berlin, STOP, STOP-Bang) identifican RIESGO pero NO son diagnósticas sin confirmación objetiva. Polisomnografía (PSG tipo I) es el ESTÁNDAR DE ORO: incluye EEG, EOG, EMG, ECG, flujo aéreo, esfuerzo respiratorio y oximetría, para medir IAH o RDI. Pruebas domiciliarias (HSAT)/poligrafía (equipos tipo II-III): sensibilidad >80%, aceptables en pacientes sin comorbilidades complejas, con fuerte correlación con PSG en casos moderados-graves. <span class=\"fuente-ampliada\">Técnicas emergentes (2025): radar milimétrico combinado con oxímetro ha alcanzado >90% de precisión frente a PSG en estudios recientes — una alternativa no invasiva en desarrollo.</span>",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Sospecha por síntomas (ronquido, apneas observadas, somnolencia diurna) o hallazgos de riesgo (obesidad, cuello grueso)"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Aplicar cuestionario STOP-Bang (u otro instrumento de cribado)"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Puntaje STOP-Bang de riesgo intermedio o alto (≥3)?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Solicitar estudio de sueño (PSG o HSAT según complejidad del paciente)",
+            "color": "coral"
+          },
+          {
+            "etiqueta": "NO — bajo riesgo (0-2)",
+            "texto": "Reevaluar si aparecen nuevos síntomas o factores de riesgo",
+            "color": "mint"
+          }
         ]
       },
-      "complicaciones": [
-        "Hipertensión arterial, arritmias (especialmente fibrilación auricular)",
-        "Infarto de miocardio, accidente cerebrovascular",
-        "Resistencia a la insulina, diabetes tipo 2",
-        "Accidentes de tránsito/laborales por somnolencia"
-      ],
-      "prevencion": "Control del peso corporal (factor modificable más importante), evitar alcohol y sedantes antes de dormir, tratamiento de congestión nasal crónica, y evitar la posición supina al dormir en pacientes con SAOS posicional.",
-      "perlasProfundo": "Niveles moderados a severos (IAH ≥15) se asocian a mayor riesgo cardiovascular y de ACV incluso en AUSENCIA de somnolencia clínica percibida — no descartes SAOS significativo solo porque el paciente diga que duerme bien y no se siente cansado."
-    },
-    "repaso": {
-      "conceptosClave": [
-        "IAH = eventos de apnea+hipopnea por hora de sueño; diagnóstico con IAH≥5 + síntomas, o IAH≥15 sin síntomas",
-        "Obesidad es el factor de riesgo modificable más importante",
-        "CPAP es el tratamiento de elección en SAHOS moderado-severo"
-      ],
-      "clinica": "Ronquidos + apneas presenciadas + somnolencia diurna excesiva ± hipertensión resistente.",
-      "diagnostico": "STOP-Bang para cribado (no diagnóstico); polisomnografía es el estándar de oro (IAH).",
-      "tratamientoResumen": "CPAP (primera línea moderado-severo), MAD (leve-moderado), pérdida de peso, cirugía en casos seleccionados.",
-      "diferenciales": [
-        {
-          "entidad": "Insomnio primario",
-          "clave": "No hay eventos obstructivos objetivables en polisomnografía"
-        }
-      ],
-      "tablaComparativa": {
-            "titulo": "Cribado STOP-Bang: interpretación",
-            "filas": [
-                  [
-                        "0-2 puntos",
-                        "Bajo riesgo de SAHOS",
-                        "Reevaluar si cambian factores de riesgo"
-                  ],
-                  [
-                        "3-4 puntos",
-                        "Riesgo intermedio",
-                        "Considerar estudio según contexto clínico"
-                  ],
-                  [
-                        "5-8 puntos",
-                        "Alto riesgo de SAHOS moderado-severo",
-                        "Derivar a polisomnografía"
-                  ]
-            ]
+      {
+        "tipo": "decision",
+        "texto": "¿IAH≥5 con síntomas, o IAH/RDI≥15 sin síntomas?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Diagnóstico de SAOS confirmado — clasificar severidad y definir tratamiento",
+            "color": "alert"
+          },
+          {
+            "etiqueta": "NO",
+            "texto": "SAOS descartado — buscar otra causa de los síntomas",
+            "color": "mint"
+          }
+        ]
       }
+    ],
+    "diagnosticoDiferencial": [
+      "Apnea central del sueño (sin esfuerzo respiratorio, a diferencia de la obstructiva)",
+      "Narcolepsia (somnolencia diurna sin el patrón obstructivo nocturno)",
+      "Insomnio primario",
+      "Síndrome de piernas inquietas"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "CPAP/APAP: tratamiento de ELECCIÓN en SAHOS moderado-severo y en pacientes con somnolencia, deterioro de calidad de vida, o hipertensión asociada — adherencia definida como uso ≥4h/noche en ≥70% de las noches, aunque se recomienda ≥6h/noche para beneficio óptimo",
+        "Aparatos de avance mandibular (MAD): para SAOS leve-moderado o intolerancia a CPAP — reducción del IAH >50% en ~1/3 de los casos; requiere dispositivo personalizado + seguimiento dental",
+        "Modificación del estilo de vida: pérdida de peso ≥10% puede disminuir el IAH en 26-56%; ejercicio regular, evitar alcohol/sedantes, dejar de fumar, terapia posicional (evitar decúbito supino)",
+        "Estimulación del nervio hipogloso (HNS): para SAOS moderado-severo que no tolera CPAP, con criterios anatómicos adecuados (IMC≤32, colapso no concéntrico en DISE) — éxito clínico en 74% a 3 años (estudio STAR)",
+        "Cirugía de vías aéreas superiores: UPPP (35-50% de éxito en reducción de IAH, para obstrucción palatal); avance maxilomandibular (MMA) — reducción de IAH ~85%, tasa de curación 50%, para SAOS severo con anomalías craneofaciales o fracaso de CPAP/MAD",
+        "Traqueostomía: elimina el SAOS pero se reserva exclusivamente para casos refractarios, dada su alta morbilidad"
+      ],
+      "farmacologico": [
+        "Tirzepatida (Zepbound): APROBADA por la FDA (2024-2025) — primer fármaco indicado específicamente para SAHOS moderado-severo en pacientes con obesidad; en ensayos fase III redujo el IAH hasta 63%, mejoró peso corporal, presión arterial y calidad de sueño",
+        "AD-109 (atomoxetina + aroxibutinina): en desarrollo, mostró mejora en SAOS leve en fase II, aún sin aprobación oficial"
+      ]
     },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "Polisomnografía (PSG) es el estándar de oro — STOP-Bang y Epworth son solo cribado, no diagnóstico",
-        "IAH ≥5 con síntomas, o IAH/RDI ≥15 sin síntomas = criterio diagnóstico",
-        "CPAP es primera línea en SAHOS moderado-severo; adherencia ≥6h/noche da mejores resultados",
-        "El riesgo cardiovascular aumenta con IAH≥15 aunque el paciente no tenga somnolencia percibida"
-      ],
-      "redFlags": [
-        "Hipertensión resistente a múltiples fármacos + ronquidos + pareja reporta pausas respiratorias → estudiar SAOS activamente",
-        "Somnolencia diurna severa en conductor profesional → riesgo de accidente, prioridad de estudio y tratamiento"
-      ],
-      "erroresFrecuentes": [
-        "Diagnosticar SAOS solo con STOP-Bang sin confirmación por polisomnografía",
-        "Asumir que sin somnolencia percibida no hay riesgo cardiovascular relevante",
-        "No reforzar la importancia de la adherencia real al CPAP (no basta con prescribirlo)"
-      ],
-      "asociacionesClinicas": [
-        "Obesidad + hipertensión resistente + fibrilación auricular → investigar SAOS activamente como factor contribuyente",
-        "Síndrome de Down o Prader-Willi → mayor prevalencia de SAOS, tamizar activamente"
+    "complicaciones": [
+      "Hipertensión arterial (especialmente resistente al tratamiento)",
+      "Arritmias, incluyendo fibrilación auricular",
+      "Infarto de miocardio y enfermedad cardiovascular",
+      "Accidente cerebrovascular",
+      "Resistencia a la insulina y diabetes tipo 2",
+      "Deterioro cognitivo progresivo",
+      "Accidentes vehiculares/laborales por somnolencia"
+    ],
+    "prevencion": "Control de peso (factor modificable más importante), evitar alcohol/sedantes antes de dormir, tratamiento de congestión nasal crónica, terapia posicional en casos leves relacionados con decúbito supino.",
+    "perlasProfundo": "El uso de CPAP ≥4h/día en pacientes con síndrome coronario agudo redujo eventos adversos derivados de SAOS (HR 0.17, p=0.03) — un dato que conecta directamente el tratamiento del sueño con desenlaces cardiovasculares duros, no solo con 'sentirse menos cansado'.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con historia clínica + STOP-Bang implícito, donde debes calcular el puntaje y decidir el siguiente paso — exactamente como la pregunta directa que trae tu propio PPT sobre el estándar de oro.",
+      "ejercicios": [
+        {
+          "tipo": "Pregunta directa (tal como aparece en tu propio PPT)",
+          "planteamiento": "¿Cuál es la prueba considerada el 'estándar de oro' para diagnóstico del Síndrome de Apnea-Hipopnea Obstructiva del Sueño? a) Oximetría nocturna b) Poligrafía respiratoria domiciliaria c) Polisomnografía nocturna d) Escala de Somnolencia de Epworth e) Cuestionario STOP-Bang",
+          "respuestaModelo": "c) Polisomnografía nocturna (PSG tipo I) — es el estándar de oro porque incluye monitoreo completo (EEG, EOG, EMG, ECG, flujo aéreo, esfuerzo respiratorio, oximetría), permitiendo calcular con precisión el IAH y el RDI. Las demás opciones son herramientas de cribado o alternativas menos completas: la oximetría nocturna y el STOP-Bang identifican riesgo pero no diagnostican; la poligrafía domiciliaria (HSAT) es una alternativa aceptable con sensibilidad >80% pero no es el estándar de oro; la Escala de Epworth mide somnolencia subjetiva, no eventos respiratorios."
+        },
+        {
+          "tipo": "Calcular y clasificar",
+          "planteamiento": "Paciente con IAH de 22 eventos/hora en polisomnografía. Clasifique la severidad e indique el tratamiento de elección más probable.",
+          "respuestaModelo": "Severidad MODERADA (rango 15-29.9). El tratamiento de elección en SAHOS moderado a severo es CPAP, especialmente si el paciente tiene somnolencia, deterioro de calidad de vida, o hipertensión asociada."
+        },
+        {
+          "tipo": "Indique y sustente (fisiopatología)",
+          "planteamiento": "¿Por qué el SAOS aumenta el riesgo cardiovascular incluso en pacientes sin somnolencia diurna evidente?",
+          "respuestaModelo": "Porque el daño cardiovascular se genera por la hipoxia intermitente y la activación simpática repetida DURANTE el sueño (estrés oxidativo, inflamación sistémica) — un proceso que ocurre independientemente de si el paciente PERCIBE somnolencia durante el día. Por eso niveles de IAH≥15 se asocian a mayor riesgo cardiovascular y mortalidad incluso sin síntomas diurnos evidentes, y el criterio diagnóstico permite diagnosticar SAOS con IAH/RDI≥15 sin necesidad de síntomas."
+        }
       ]
     }
-  ,
-    "casosClinicos": [
-        {
-            "nivel": "basico",
-            "vineta": "Varón de 52 años, obesidad grado II (IMC 34), circunferencia de cuello 44cm, hipertensión arterial resistente a 3 fármacos. Su esposa refiere ronquidos fuertes todas las noches y episodios donde 'deja de respirar' seguidos de un resoplido. El paciente refiere somnolencia diurna marcada y se ha quedado dormido manejando en 2 ocasiones.",
-            "preguntaMC": {
-                "enunciado": "¿Cuál es la conducta más apropiada como siguiente paso diagnóstico?",
-                "opciones": [
-                    {
-                        "id": "a",
-                        "texto": "Iniciar CPAP empíricamente sin más estudios"
-                    },
-                    {
-                        "id": "b",
-                        "texto": "Aplicar cuestionario STOP-Bang y, dado el alto riesgo clínico evidente, derivar a polisomnografía para confirmar diagnóstico y medir el IAH"
-                    },
-                    {
-                        "id": "c",
-                        "texto": "Solicitar únicamente radiografía de tórax"
-                    },
-                    {
-                        "id": "d",
-                        "texto": "No requiere estudio, son solo ronquidos"
-                    },
-                    {
-                        "id": "e",
-                        "texto": "Indicar pérdida de peso y reevaluar en 1 año sin más estudios"
-                    }
-                ],
-                "correcta": "b",
-                "explicacion": "Este paciente tiene múltiples factores de alto riesgo para SAOS (obesidad, cuello grueso >40cm, hipertensión resistente, apneas presenciadas, somnolencia con riesgo de accidente). El STOP-Bang confirmaría el alto riesgo clínico, pero el diagnóstico DEFINITIVO requiere polisomnografía (estándar de oro) — no se debe iniciar CPAP sin confirmar el diagnóstico y medir la severidad (IAH) primero."
-            },
-            "preguntaEscrita": {
-                "enunciado": "¿Cómo explicarías la relación entre la hipertensión resistente de este paciente y su probable SAOS?",
-                "respuestaModelo": "Los episodios repetidos de apnea generan hipoxia intermitente durante toda la noche, cientos de veces. Cada ciclo de desaturación-reoxigenación genera estrés oxidativo, inflamación sistémica de bajo grado y disfunción endotelial, mecanismos que activan el sistema nervioso simpático de forma sostenida. Esta activación simpática crónica es una de las razones por las que el SAOS no tratado se asocia tan fuertemente con hipertensión de difícil control — muchas veces, tratar el SAOS con CPAP mejora significativamente el control de la presión arterial en estos pacientes, incluso cuando los fármacos antihipertensivos solos no habían sido suficientes."
-            }
-        }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "SAOS: colapso de vía aérea superior durante el sueño CON esfuerzo respiratorio conservado (a diferencia de la apnea central)",
+      "STOP-Bang: cribado rápido; PSG: estándar de oro diagnóstico",
+      "IAH≥5 con síntomas, o IAH/RDI≥15 sin síntomas = diagnóstico confirmado"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — severidad y tratamiento",
+      "columnas": [
+        "IAH",
+        "Severidad",
+        "Tratamiento típico"
+      ],
+      "filas": [
+        [
+          "5-14.9",
+          "Leve",
+          "MAD, estilo de vida"
+        ],
+        [
+          "15-29.9",
+          "Moderado",
+          "CPAP (elección)"
+        ],
+        [
+          "≥30",
+          "Grave",
+          "CPAP + evaluar opciones quirúrgicas si no tolera"
+        ]
+      ],
+      "nota": "Obesidad es el factor modificable más importante: -10% de peso puede bajar el IAH 26-56%."
+    },
+    "clinica": "Ronquido + apneas observadas + somnolencia diurna + fragmentación del sueño — el paciente mismo rara vez percibe sus propias apneas.",
+    "diagnostico": "STOP-Bang para cribado → PSG (estándar de oro) o HSAT domiciliaria para confirmar con IAH/RDI.",
+    "tratamientoResumen": "CPAP es de elección en moderado-severo. MAD en leve-moderado/intolerancia a CPAP. Pérdida de peso siempre recomendada.",
+    "diferenciales": [
+      {
+        "entidad": "Apnea central",
+        "clave": "SIN esfuerzo respiratorio durante el evento (a diferencia de la obstructiva)"
+      },
+      {
+        "entidad": "Narcolepsia",
+        "clave": "Somnolencia diurna sin el patrón obstructivo nocturno característico"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "SAOS leve vs grave",
+      "filas": [
+        [
+          "IAH",
+          "5-14.9",
+          "≥30"
+        ],
+        [
+          "Tratamiento típico",
+          "MAD o estilo de vida",
+          "CPAP obligatorio ± cirugía"
+        ],
+        [
+          "Riesgo CV",
+          "Presente pero menor",
+          "Alto, incluso sin síntomas diurnos"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cuál es el estándar de oro diagnóstico? → Polisomnografía (PSG tipo I)",
+      "¿Qué diferencia una apnea de una hipopnea? → Apnea: reducción ≥90% del flujo ≥10seg. Hipopnea: caída ≥30% ≥10seg CON desaturación≥3-4% o arousal",
+      "¿Cuál es el criterio diagnóstico exacto? → IAH≥5 con síntomas diurnos, O IAH/RDI≥15 sin síntomas",
+      "¿Cuál es el tratamiento de elección en SAOS moderado-severo? → CPAP",
+      "¿Qué adherencia a CPAP se considera óptima? → ≥6 horas/noche (mínimo aceptable: ≥4h en ≥70% de noches)",
+      "¿Cuál es el factor de riesgo modificable más importante? → Obesidad (+10% de peso = ×6 riesgo de SAHOS moderado-grave)",
+      "¿Qué fármaco fue aprobado recientemente (2024-25) para SAHOS? → Tirzepatida, en pacientes con obesidad asociada"
+    ],
+    "redFlags": [
+      "IAH≥15 sin síntomas → igual requiere tratamiento por el riesgo cardiovascular silencioso",
+      "Somnolencia diurna + conducción de vehículos → riesgo de accidente, abordar con urgencia",
+      "SAOS no tratado + síndrome coronario agudo → mayor riesgo de eventos adversos recurrentes"
+    ],
+    "erroresFrecuentes": [
+      "Descartar SAOS solo porque el paciente 'no se siente cansado' — el daño cardiovascular puede ser silencioso",
+      "Confiar en el STOP-Bang como diagnóstico definitivo sin confirmación objetiva (PSG/HSAT)",
+      "No preguntar específicamente a la PAREJA sobre ronquidos/apneas observadas — el paciente mismo rara vez las percibe",
+      "Asumir que la pérdida de peso sola resuelve casos moderados-graves sin CPAP"
+    ],
+    "asociacionesClinicas": [
+      "SAOS + hipertensión RESISTENTE al tratamiento → buscar SAOS activamente como causa subyacente",
+      "SAOS + fibrilación auricular recurrente → el tratamiento del SAOS puede mejorar el control del ritmo"
     ]
-  }];
+  },
+  "casosClinicos": [
+    {
+      "nivel": "basico",
+      "vineta": "Varón de 52 años, obesidad grado II (IMC 38), acude a consulta porque su esposa refiere que ronca muy fuerte y en ocasiones 'deja de respirar' durante varios segundos mientras duerme. El paciente refiere sentirse cansado durante el día, con dificultad para concentrarse en el trabajo. Circunferencia de cuello 43cm. PA 145/92 mmHg en tratamiento con losartán.",
+      "preguntaMC": {
+        "enunciado": "Calculando el puntaje STOP-Bang de este paciente (ronquido fuerte=Sí, cansancio diurno=Sí, apneas observadas=Sí, hipertensión=Sí, IMC>35=Sí, edad>50=Sí, cuello>40cm=Sí, sexo masculino=Sí), ¿qué categoría de riesgo tiene y cuál sería el siguiente paso?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Puntaje 8/8 — alto riesgo; solicitar estudio de sueño (PSG o HSAT)"
+          },
+          {
+            "id": "b",
+            "texto": "Puntaje 3/8 — riesgo intermedio; solo modificación del estilo de vida"
+          },
+          {
+            "id": "c",
+            "texto": "Puntaje 8/8 — esto ya ES diagnóstico definitivo de SAOS, iniciar CPAP sin más estudios"
+          },
+          {
+            "id": "d",
+            "texto": "No se puede calcular sin saber el IAH primero"
+          },
+          {
+            "id": "e",
+            "texto": "Puntaje 2/8 — bajo riesgo, no requiere estudio adicional"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "Este paciente cumple los 8 criterios del STOP-Bang: Ronca duro (S), cansancio diurno (T), apneas observadas por la esposa (O), hipertensión en tratamiento (P), IMC 38>35 (B), edad 52>50 (A), cuello 43cm>40cm (N), sexo masculino (G) = 8/8, ALTO RIESGO para SAHOS moderado/severo. Sin embargo, el STOP-Bang es una herramienta de CRIBADO, no diagnóstica — el siguiente paso correcto es solicitar un estudio de sueño (polisomnografía o poligrafía domiciliaria) para confirmar el diagnóstico y determinar el IAH real antes de iniciar cualquier tratamiento específico como CPAP."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Este paciente tiene hipertensión en tratamiento con losartán. Explica la relación fisiopatológica entre el SAOS no diagnosticado y la dificultad para controlar la presión arterial en un paciente como este.",
+        "respuestaModelo": "La hipoxia intermitente y los microdespertares repetidos durante el sueño activan el sistema nervioso simpático de forma sostenida (no solo durante los eventos, sino generando un tono simpático elevado incluso durante la vigilia), lo que contribuye a hipertensión arterial persistente y frecuentemente RESISTENTE al tratamiento farmacológico convencional. Por eso, en un paciente con hipertensión difícil de controlar pese a tratamiento adecuado, sumado a factores de riesgo de SAOS (obesidad, ronquido, cuello grueso), se debe sospechar e investigar activamente el SAOS como causa contribuyente — tratarlo con CPAP puede mejorar significativamente el control de la presión arterial en estos casos."
+      }
+    }
+  ]
+}];
 
 /* ============================================================
    TEMAS — contenido que NO es una enfermedad: anatomía,
