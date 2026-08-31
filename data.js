@@ -3891,246 +3891,453 @@ const ENFERMEDADES = [
   ]
 },
   {
-    "id": "enfermedades-respiratorias-ocupacionales",
-    "nombre": "Enfermedades Respiratorias Ocupacionales",
-    "area": "Neumología",
-    "semanas": [
-      "semana-03"
+  "id": "enfermedades-respiratorias-ocupacionales",
+  "nombre": "Enfermedades Respiratorias Ocupacionales",
+  "area": "Neumología",
+  "semanas": [
+    "semana-03"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1y5kNjMi0xyPdqX10VSrHbfIdiImTFCNk/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_3_SESIÓN-9-TEMA-1: Enfermedades Respiratorias Ocupacionales"
+  },
+  "relacionadas": [
+    {
+      "id": "asma-bronquial",
+      "relacion": "El asma ocupacional comparte fisiopatología con el asma general, pero se distingue por la mejoría característica FUERA del ambiente laboral"
+    },
+    {
+      "id": "epid",
+      "relacion": "Las neumoconiosis (silicosis, asbestosis) son formas específicas de EPID de causa ocupacional conocida"
+    }
+  ],
+  "profundo": {
+    "definicion": "Patologías del aparato respiratorio causadas, DESENCADENADAS o AGRAVADAS por exposiciones en el lugar de trabajo. Representan un problema importante de salud pública, especialmente en industrias mineras, textiles, de la construcción y químicas.",
+    "epidemiologia": "A nivel mundial, más de 2 millones de personas mueren anualmente por enfermedades relacionadas al trabajo, siendo las respiratorias un grupo significativo. En Perú (MINSA), las neumoconiosis representan una de las principales causas de INCAPACIDAD en mineros y trabajadores de la construcción. <span class=\"fuente-ampliada\">La Ley N.º 29783 de Seguridad y Salud en el Trabajo establece la obligación del empleador de proteger la salud de los trabajadores, incluyendo evaluaciones médicas periódicas, identificación de agentes de riesgo, y uso de equipos de protección — es el marco legal peruano que respalda la vigilancia de estas enfermedades.</span>",
+    "etiologiaFactoresRiesgo": [
+      "Exposición a polvo mineral: sílice, carbón, asbesto",
+      "Sustancias químicas irritantes: amoníaco, cloro, vapores ácidos",
+      "Humos metálicos: plomo, cromo, estaño",
+      "Agentes biológicos: hongos, bacterias, endotoxinas",
+      "<span class=\"fuente-ampliada\">La respuesta del organismo a estos agentes depende de 4 variables: el tipo de partícula, su tamaño, la duración de la exposición, y la susceptibilidad individual del trabajador — dos personas con la misma exposición pueden tener desenlaces muy distintos.</span>"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "alveolar",
-    "relacionadas": [
+    "criteriosDiagnosticos": "El diagnóstico requiere correlacionar los síntomas clínicos CON la historia laboral detallada — no es un diagnóstico que se haga solo con clínica o solo con imagen, sino con la combinación de ambos más el nexo temporal/causal con la exposición ocupacional específica.",
+    "fisiopatologia": {
+      "resumen": "Los agentes inhalados pueden inducir 4 tipos de daño según su naturaleza: inflamación crónica, fibrosis, hiperreactividad bronquial, o mutaciones celulares (carcinogénesis). Cada categoría de la clasificación (neumoconiosis, asma ocupacional, alveolitis alérgica, cáncer ocupacional) corresponde a UNO de estos 4 mecanismos predominando sobre los demás.",
+      "cascada": [
+        {
+          "paso": "Exposición al agente",
+          "detalle": "Polvo mineral, químico irritante, humo metálico, o agente biológico, según el ambiente laboral específico"
+        },
+        {
+          "paso": "Factores que determinan la respuesta",
+          "detalle": "Tipo de partícula + tamaño + duración de exposición + susceptibilidad individual — determinan CUÁL de los 4 mecanismos de daño predominará"
+        },
+        {
+          "paso": "Mecanismo 1: Inflamación/fibrosis (partículas minerales)",
+          "detalle": "Sílice/asbesto/carbón fagocitados por macrófagos alveolares → activación crónica → depósito progresivo de colágeno (neumoconiosis)"
+        },
+        {
+          "paso": "Mecanismo 2: Hiperreactividad bronquial (alérgenos laborales)",
+          "detalle": "Sensibilización a harinas/látex/isocianatos → respuesta tipo asmática con cada nueva exposición (asma ocupacional)"
+        },
+        {
+          "paso": "Mecanismo 3: Reacción inmunológica alveolar (partículas orgánicas)",
+          "detalle": "Hongos/polvo de aves/caña de azúcar → reacción de hipersensibilidad (tipo III y IV) → infiltrado intersticial difuso (alveolitis alérgica extrínseca)"
+        },
+        {
+          "paso": "Mecanismo 4: Carcinogénesis (asbesto, arsénico, cromo, níquel, diesel)",
+          "detalle": "Mutaciones celulares acumuladas tras DÉCADAS de exposición → cáncer pulmonar ocupacional"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/ero/ero-rx-caso-hipersensibilidad.jpg",
+          "caption": "Radiografía real del caso de tu clase (granjera con neumonitis por hipersensibilidad)",
+          "explicacion": "Observa el infiltrado difuso bilateral, de distribución más bien fina/reticulonodular — este patrón corresponde a la alveolitis alérgica extrínseca (neumonitis por hipersensibilidad) por exposición a polvo orgánico del heno. Fíjate que este patrón radiológico es intersticial DIFUSO, no una consolidación lobar como verías en una neumonía típica — esta distinción radiológica es parte de por qué el diagnóstico de esta paciente NO es NAC pese a presentar fiebre y tos como síntomas."
+        },
+        {
+          "src": "assets/ero/ero-antracosis-pulmon-llamas.jpg",
+          "caption": "Antracosis — histología y el signo del 'pulmón en llamas'",
+          "explicacion": "Izquierda: corte histológico real mostrando el pigmento antracótico (partículas negras de carbón) dentro de macrófagos — nota que estos macrófagos cargados de pigmento se ubican característicamente en un LINFONÓDULO, no dispersos aleatoriamente en el parénquima. Derecha: la pieza anatómica que le da nombre al 'signo del pulmón en llamas' — el depósito de carbón en los surcos y superficie pulmonar crea un patrón oscuro irregular que recuerda a llamas o ceniza sobre el tejido pulmonar."
+        },
+        {
+          "src": "assets/ero/ero-silicosis-rx-tc.jpg",
+          "caption": "Silicosis — radiografía y TC reales",
+          "explicacion": "Izquierda (Rx): nódulos pequeños difusos, predominantemente en campos superiores — el patrón nodular típico de silicosis. Derecha (TC, 2 cortes): panel A muestra micronódulos difusos bien definidos distribuidos por el parénquima; panel B muestra un corte más inferior con nódulos que empiezan a confluir — esto ilustra la progresión de silicosis SIMPLE (nódulos aislados) hacia fibrosis masiva progresiva (nódulos que confluyen en masas) si la exposición continúa."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">Un patrón útil para memorizar: las neumoconiosis 'clásicas' (silicosis, asbestosis, antracosis) comparten el mismo principio fisiopatológico de fondo — partícula inhalada, fagocitada por macrófago, macrófago no puede degradarla completamente, se activa crónicamente liberando mediadores fibrogénicos — pero cada partícula tiene afinidad por sitios anatómicos ligeramente distintos (sílice→nódulos difusos con predominio en campos superiores; asbesto→fibrosis basal + placas pleurales; carbón→depósito perilinfático), lo que explica por qué sus patrones radiológicos, aunque relacionados, son distinguibles entre sí.</span>"
+    },
+    "clinica": [
       {
-        "id": "epid",
-        "relacion": "La neumoconiosis (silicosis, asbestosis, antracosis) es en realidad un subtipo de EPID de causa conocida (ocupacional) — comparten el mismo mecanismo final de fibrosis intersticial"
+        "signo": "Tos crónica",
+        "detallePPT": "Manifestación común a todas las ERO",
+        "mecanismo": "Inflamación/irritación sostenida de la vía aérea o el parénquima, según la entidad específica"
       },
       {
-        "id": "asma-bronquial",
-        "relacion": "El asma ocupacional comparte fisiopatología con el asma común, pero se distingue porque mejora claramente fuera del trabajo (patrón temporal característico)"
+        "signo": "Disnea progresiva",
+        "detallePPT": "Manifestación común",
+        "mecanismo": "Progresión de fibrosis (neumoconiosis) o de obstrucción (asma/EPOC ocupacional) según el mecanismo predominante"
+      },
+      {
+        "signo": "Sibilancias",
+        "detallePPT": "Manifestación común, más específica de asma ocupacional",
+        "mecanismo": "Broncoespasmo por hiperreactividad de la vía aérea sensibilizada a un alérgeno laboral"
+      },
+      {
+        "signo": "Opresión torácica",
+        "detallePPT": "Manifestación común",
+        "mecanismo": "Variable según la entidad — puede ser por broncoespasmo o por restricción fibrótica"
+      },
+      {
+        "signo": "Fiebre + tos + disnea recurrentes CON la exposición (patrón episódico)",
+        "detallePPT": "Característico del caso de neumonitis por hipersensibilidad — se resuelve en 2-5 días y REAPARECE con la re-exposición",
+        "mecanismo": "<span class=\"fuente-ampliada\">Reacción de hipersensibilidad tipo III/IV que se activa con cada nueva exposición significativa al antígeno orgánico, y se resuelve espontáneamente al alejarse de él — este patrón temporal característico (síntomas ligados estrechamente a la exposición, no continuos) es una pista diagnóstica clave, y explica por qué en el caso real NINGÚN otro trabajador estaba afectado: la hipersensibilidad es una respuesta INDIVIDUAL, no depende solo de la exposición ambiental compartida.</span>"
+      },
+      {
+        "signo": "Hemoptisis ocasional",
+        "detallePPT": "Manifestación en fases más avanzadas",
+        "mecanismo": "Daño tisular con compromiso de vasos de pequeño calibre"
+      },
+      {
+        "signo": "Fases avanzadas: hipoxemia, acropaquia, cor pulmonale",
+        "detallePPT": "Signos de enfermedad ya establecida y de larga evolución",
+        "mecanismo": "Fibrosis extensa con compromiso significativo del intercambio gaseoso y del lecho vascular pulmonar"
       }
     ],
-    "profundo": {
-      "definicion": "Grupo de patologías del aparato respiratorio causadas, desencadenadas o agravadas por exposiciones en el lugar de trabajo. Incluyen neumoconiosis (silicosis, asbestosis, antracosis), asma ocupacional, EPOC ocupacional, alveolitis alérgica extrínseca, bronquitis crónica por irritantes, cáncer pulmonar ocupacional, y lesiones agudas como edema pulmonar tóxico o bronquiolitis obliterante.",
-      "epidemiologia": "A nivel mundial, más de 2 millones de personas mueren anualmente por enfermedades relacionadas al trabajo, siendo las respiratorias un grupo significativo. En Perú (MINSA), las neumoconiosis representan una de las principales causas de incapacidad en mineros y trabajadores de la construcción. La Ley N°29783 de Seguridad y Salud en el Trabajo obliga al empleador a proteger la salud de los trabajadores, incluyendo evaluaciones médicas periódicas y uso de equipos de protección.",
-      "etiologiaFactoresRiesgo": [
-        "Exposición a polvo mineral (sílice → silicosis, carbón → antracosis, asbesto → asbestosis)",
-        "Sustancias químicas irritantes (amoníaco, cloro, vapores ácidos) → bronquitis crónica ocupacional",
-        "Humos metálicos (plomo, cromo, estaño)",
-        "Agentes biológicos orgánicos (hongos, polvo de aves, caña de azúcar) → alveolitis alérgica extrínseca",
-        "Alérgenos laborales (harinas, látex, isocianatos) → asma ocupacional",
-        "Exposición prolongada a asbesto, arsénico, cromo, níquel, humo de diésel → cáncer pulmonar ocupacional (aparece tras décadas)"
-      ],
-      "fisiopatologia": {
-        "resumen": "El mecanismo varía según el agente: las partículas inorgánicas inhaladas (sílice, asbesto, carbón) son fagocitadas por macrófagos alveolares que no logran degradarlas, generando inflamación crónica y fibrosis progresiva (neumoconiosis). Los agentes orgánicos e irritantes desencadenan mecanismos inmunológicos (alveolitis alérgica) o inflamatorios directos (bronquitis por irritantes).",
-        "explicacionExtendida": "En las neumoconiosis, las partículas inorgánicas inhaladas (sílice cristalina, fibras de asbesto, polvo de carbón) son demasiado pequeñas para ser eliminadas por el aclaramiento mucociliar normal, así que llegan hasta los alvéolos donde son fagocitadas por macrófagos. El problema es que estas partículas son citotóxicas para el macrófago: lo dañan o lo matan, liberando su contenido enzimático y desencadenando una respuesta inflamatoria crónica que con el tiempo se traduce en depósito de colágeno y fibrosis nodular progresiva (silicosis) o difusa (asbestosis). La sílice, además, tiene un efecto especialmente citotóxico que también incrementa el riesgo de tuberculosis en quienes la inhalan de forma crónica.\n\nEn el asma ocupacional y la alveolitis alérgica extrínseca, el mecanismo es inmunológico: el sistema inmune se sensibiliza a una proteína o partícula orgánica específica del ambiente laboral (harina, látex, hongos, polvo de aves), y cada nueva exposición desencadena una respuesta de hipersensibilidad — inmediata tipo I en el asma ocupacional (broncoespasmo), o una combinación de mecanismos tipo III/IV en la alveolitis alérgica extrínseca (infiltrado intersticial difuso). Por eso el dato clínico más característico de estas dos entidades es la MEJORÍA marcada al alejarse del ambiente laboral (fines de semana, vacaciones) y el EMPEORAMIENTO al regresar — un patrón que la neumoconiosis, al ser un daño estructural ya establecido, no sigue de la misma manera."
-      ,cascada: [
-              {
-                      "paso": "Factor desencadenante",
-                      "detalle": "Inhalación repetida de partículas inorgánicas (sílice, asbesto, carbón) o antígenos orgánicos/alérgenos en el ambiente laboral"
-              },
-              {
-                      "paso": "Células activadas",
-                      "detalle": "Macrófagos alveolares fagocitan las partículas; en asma/alveolitis ocupacional se activa además la respuesta inmunológica (IgE o hipersensibilidad tipo III/IV)"
-              },
-              {
-                      "paso": "Mediadores liberados",
-                      "detalle": "Citotoxicidad directa de la partícula sobre el macrófago (neumoconiosis) o liberación de mediadores inflamatorios/histamina (asma, alveolitis)"
-              },
-              {
-                      "paso": "Cambio estructural",
-                      "detalle": "Depósito de colágeno y fibrosis nodular/difusa (neumoconiosis) o broncoespasmo e inflamación de la vía aérea (asma ocupacional)"
-              },
-              {
-                      "paso": "Manifestación clínica",
-                      "detalle": "Disnea progresiva de años (neumoconiosis) o síntomas agudos que mejoran fuera del trabajo (asma/alveolitis ocupacional)"
-              }
-      ]
-      },
-      "clinica": [
-        {
-          "signo": "Tos, disnea y fiebre que reaparecen cada vez que regresa a la exposición laboral (ej. descargar heno)",
-          "mecanismo": "Reacción de hipersensibilidad tipo III/IV a antígenos orgánicos — alveolitis alérgica extrínseca"
-        },
-        {
-          "signo": "Disnea progresiva de años de evolución en trabajador de minas/construcción",
-          "mecanismo": "Fibrosis pulmonar progresiva por neumoconiosis — proceso lento, silente durante años"
-        },
-        {
-          "signo": "Sibilancias y opresión torácica que mejoran los fines de semana",
-          "mecanismo": "Asma ocupacional — sensibilización a alérgeno laboral específico"
-        }
-      ],
-      "examenFisico": [
-        "Neumoconiosis: crépitos tipo velcro en fases avanzadas, acropaquia si hay fibrosis extensa",
-        "Alveolitis alérgica extrínseca aguda: taquipnea, estertores finos, SIN sibilancias (dato clave para diferenciar de asma)",
-        "Asma ocupacional: sibilancias difusas durante o poco después de la jornada laboral"
-      ],
-      semiologia: {
-            "inspeccion": "Observa el estado general y busca acropaquia en casos de fibrosis avanzada (neumoconiosis). En crisis de asma ocupacional, busca uso de músculos accesorios y dificultad para hablar.",
-            "palpacion": "Expansión torácica simétricamente disminuida en neumoconiosis avanzada por la rigidez pulmonar bilateral. Sin hallazgos asimétricos característicos.",
-            "percusion": "Habitualmente normal — estas entidades no suelen alterar la percusión de forma marcada, a diferencia de las enfermedades pleurales.",
-            "auscultacion": "Neumoconiosis: crépitos tipo velcro en bases en fases avanzadas. Alveolitis alérgica extrínseca aguda: estertores finos SIN sibilancias (dato clave). Asma ocupacional: sibilancias difusas durante o poco después de la jornada laboral."
-      },
-      "diagnostico": "Historia laboral detallada (cronológica, con fechas y duración de cada exposición) es el paso más importante y frecuentemente el más olvidado. Radiografía/TC de tórax según sospecha (nódulos en silicosis, engrosamiento pleural en asbestosis). Espirometría (patrón restrictivo en neumoconiosis, obstructivo en asma ocupacional). Pruebas específicas: precipitinas séricas en alveolitis alérgica extrínseca.",
-      algoritmo: [
-            {
-                  "tipo": "paso",
-                  "texto": "Paciente con enfermedad respiratoria de causa poco clara — SIEMPRE preguntar historia laboral cronológica detallada"
-            },
-            {
-                  "tipo": "paso",
-                  "texto": "¿El cuadro se relaciona temporalmente con la exposición laboral (mejora fuera del trabajo)?"
-            },
-            {
-                  "tipo": "decision",
-                  "texto": "¿Qué patrón funcional/radiológico predomina?",
-                  "salidas": [
-                        {
-                              "etiqueta": "Patrón restrictivo + fibrosis en imagen",
-                              "texto": "Neumoconiosis (silicosis/asbestosis/antracosis) — cesar exposición, vigilar complicaciones (TB, mesotelioma)",
-                              "color": "coral"
-                        },
-                        {
-                              "etiqueta": "Sibilancias que mejoran fuera del trabajo",
-                              "texto": "Asma ocupacional — esquema de asma + cese de exposición",
-                              "color": "mint"
-                        },
-                        {
-                              "etiqueta": "Fiebre/tos recurrente tras exposición orgánica",
-                              "texto": "Alveolitis alérgica extrínseca — corticoide en agudo + cese de exposición",
-                              "color": "alert"
-                        }
-                  ]
-            }
-      ],
-      "diagnosticoDiferencial": [
-        "Neumonía adquirida en la comunidad (el caso de alveolitis alérgica se confunde fácilmente)",
-        "Bronquitis crónica no ocupacional",
-        "Asma bronquial común",
-        "Enfermedad pulmonar intersticial difusa de otra causa"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Cese INMEDIATO de la exposición al agente causal — es la medida más importante en todas estas entidades",
-          "Uso de equipo de protección personal si debe continuar en el ambiente laboral",
-          "Notificación y evaluación ocupacional según Ley N°29783",
-          "Rehabilitación pulmonar en casos con fibrosis establecida"
-        ],
-        "farmacologico": [
-          "Alveolitis alérgica extrínseca aguda: corticoides sistémicos en el episodio agudo",
-          "Asma ocupacional: mismo esquema que asma común (corticoide inhalado + broncodilatador)",
-          "Silicosis/asbestosis: sin tratamiento específico que revierta la fibrosis — manejo de soporte y de complicaciones (ej. quimioprofilaxis de TB en silicosis)"
-        ]
-      },
-      "complicaciones": [
-        "Tuberculosis (riesgo marcadamente elevado en silicosis)",
-        "Mesotelioma pleural maligno (asbestosis — asociación directa y específica)",
-        "Fibrosis masiva progresiva (antracosis complicada)",
-        "Cáncer pulmonar (asbesto, arsénico, cromo, níquel)"
-      ],
-      "prevencion": "Uso correcto y constante de equipo de protección respiratoria, ventilación adecuada en el ambiente laboral, evaluaciones médicas ocupacionales periódicas (obligatorias por ley), y rotación/limitación del tiempo de exposición a agentes de alto riesgo.",
-      "perlasProfundo": "El dato semiológico que más se presta a confusión (y que aparece explícitamente en tu PPT): en la alveolitis alérgica extrínseca aguda, el paciente tiene estertores finos pero NO sibilancias — si ves sibilancias, piensa más en asma ocupacional que en alveolitis. Además, ningún otro compañero de trabajo suele estar afectado de la misma manera (sensibilización individual), lo que a veces genera dudas sobre si el paciente está fingiendo — no lo está, es sensibilización específica de esa persona."
+    "examenFisico": [
+      "Taquipnea y estertores finos (crepitantes) — típico de neumonitis por hipersensibilidad aguda, SIN sibilancias (a diferencia del asma ocupacional)",
+      "Sibilancias — típico de asma ocupacional durante los episodios",
+      "Acropaquia y signos de cor pulmonale en fases avanzadas de neumoconiosis"
+    ],
+    "semiologia": {
+      "inspeccion": "Busca activamente signos de cronicidad (acropaquia) y correlaciona el momento de aparición de síntomas con la jornada laboral — un dato semiológico distintivo del asma ocupacional es la MEJORÍA durante días libres/vacaciones.",
+      "palpacion": "Sin hallazgos específicos más allá de lo esperado por cualquier proceso pulmonar restrictivo u obstructivo de fondo.",
+      "percusion": "Habitualmente normal salvo fibrosis muy extensa (matidez sutil en zonas de consolidación fibrótica densa).",
+      "auscultacion": "Distinción clave entre 2 entidades del mismo grupo: estertores finos tipo Velcro SIN sibilancias (neumonitis por hipersensibilidad — como en el caso real de tu clase) vs. sibilancias CON broncoespasmo (asma ocupacional — como en el segundo caso del operario de silo). Esta diferencia auscultatoria es la primera pista para separar estas 2 entidades antes incluso de tener estudios complementarios."
     },
-    "repaso": {
-      "conceptosClave": [
-        "El cese de la exposición es SIEMPRE la medida más importante, en todas las entidades",
-        "Neumoconiosis = daño estructural fibrótico progresivo, sin cura",
-        "Asma/alveolitis ocupacional = mejoran claramente fuera del trabajo — patrón temporal es la clave diagnóstica"
-      ],
-      "clinica": "Historia laboral detallada es el dato más importante — sin ella, es fácil confundir estas entidades con sus equivalentes no ocupacionales.",
-      "diagnostico": "Historia laboral cronológica + imagen + espirometría + pruebas específicas según sospecha (precipitinas en alveolitis).",
-      "tratamientoResumen": "Cese de exposición (siempre) + tratamiento sintomático específico según la entidad (corticoides en alveolitis aguda, esquema de asma en asma ocupacional).",
-      "diferenciales": [
-        {
-          "entidad": "Neumonía",
-          "clave": "La alveolitis alérgica se resuelve y reaparece con cada exposición — la neumonía no sigue ese patrón cíclico"
-        },
-        {
-          "entidad": "Asma común",
-          "clave": "El asma ocupacional mejora marcadamente fuera del trabajo (fines de semana, vacaciones) — el asma común no depende del lugar"
-        }
-      ],
-      "tablaComparativa": {
-        "titulo": "Silicosis vs. Asbestosis vs. Antracosis",
+    "tablasClinicas": [
+      {
+        "titulo": "🗂️ Clasificación de las ERO",
+        "contexto": "8 categorías, cada una con un mecanismo fisiopatológico predominante distinto.",
+        "columnas": [
+          "Categoría",
+          "Ejemplo/Agente típico"
+        ],
         "filas": [
           [
-            "Agente",
-            "Sílice cristalina",
-            "Fibras de asbesto"
+            "Neumoconiosis",
+            "Silicosis (sílice), asbestosis (asbesto), antracosis (carbón)"
           ],
           [
-            "Complicación específica",
-            "Tuberculosis",
-            "Mesotelioma pleural"
+            "Asma ocupacional",
+            "Harinas, látex, isocianatos"
           ],
           [
-            "Patrón",
-            "Fibrosis nodular",
-            "Fibrosis difusa + engrosamiento pleural"
+            "EPOC ocupacional",
+            "Irritantes crónicos en ambiente laboral"
+          ],
+          [
+            "Alveolitis alérgica extrínseca",
+            "Hongos, polvo de aves, caña de azúcar"
+          ],
+          [
+            "Bronquitis crónica por irritantes",
+            "Gases industriales"
+          ],
+          [
+            "Cáncer pulmonar ocupacional",
+            "Asbesto, arsénico, cromo, níquel, humo de diesel"
+          ],
+          [
+            "Lesiones agudas",
+            "Edema pulmonar tóxico, bronquiolitis obliterante"
+          ]
+        ]
+      },
+      {
+        "titulo": "🔬 Las 3 neumoconiosis clásicas",
+        "columnas": [
+          "Entidad",
+          "Agente",
+          "Característica distintiva"
+        ],
+        "filas": [
+          [
+            "Silicosis",
+            "Sílice cristalina (inhalación prolongada)",
+            "Fibrosis nodular progresiva, inicialmente asintomática, patrón restrictivo, RIESGO ELEVADO de tuberculosis"
+          ],
+          [
+            "Asbestosis",
+            "Fibras de asbesto",
+            "Fibrosis pulmonar difusa + engrosamiento pleural + relación DIRECTA con mesotelioma pleural maligno"
+          ],
+          [
+            "Antracosis",
+            "Polvo de carbón ('pulmón del minero')",
+            "Simple o complicada (fibrosis masiva); signo del 'pulmón en llamas'; pigmento en macrófagos de linfonódulos"
           ]
         ]
       }
-    },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "SIEMPRE pregunta historia laboral detallada ante cualquier enfermedad respiratoria de causa poco clara",
-        "El cese de la exposición es la intervención más importante en todas estas entidades",
-        "Silicosis aumenta marcadamente el riesgo de tuberculosis; asbestosis se asocia específicamente a mesotelioma",
-        "Alveolitis alérgica extrínseca: estertores SIN sibilancias — dato que la distingue de asma ocupacional"
+    ],
+    "diagnostico": "Historia clínica OCUPACIONAL detallada: tiempo de exposición, tipo de actividad, turnos laborales, uso de EPP (equipo de protección personal), evaluación de condiciones del entorno laboral. Espirometría: patrón obstructivo (asma/EPOC ocupacional) o restrictivo (neumoconiosis) según la entidad. Radiografía de tórax + TCAR: detectan fibrosis, nódulos, o engrosamiento pleural. Pruebas de provocación inespecíficas: para asma ocupacional. IgE específica o pruebas cutáneas: para hipersensibilidad.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "Síntomas respiratorios + antecedente de exposición laboral → sospechar ERO"
+      },
+      {
+        "tipo": "paso",
+        "texto": "Historia clínica ocupacional detallada: tiempo de exposición, actividad, uso de EPP"
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Auscultación con sibilancias y mejoría fuera del trabajo?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Sospechar asma ocupacional → espirometría + pruebas de provocación inespecíficas",
+            "color": "coral"
+          },
+          {
+            "etiqueta": "NO — estertores finos, síntomas episódicos con la exposición",
+            "texto": "Sospechar alveolitis alérgica extrínseca → IgE específica/pruebas cutáneas + Rx/TCAR",
+            "color": "mint"
+          }
+        ]
+      },
+      {
+        "tipo": "decision",
+        "texto": "¿Exposición crónica a polvo mineral (sílice/asbesto/carbón) + patrón restrictivo?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Sospechar neumoconiosis → Rx/TCAR para caracterizar patrón específico",
+            "color": "coral"
+          },
+          {
+            "etiqueta": "NO",
+            "texto": "Evaluar otras categorías (bronquitis por irritantes, cáncer ocupacional según exposición)",
+            "color": "coral"
+          }
+        ]
+      }
+    ],
+    "diagnosticoDiferencial": [
+      "EPOC de origen NO ocupacional",
+      "Tuberculosis pulmonar",
+      "Fibrosis pulmonar idiopática",
+      "Asma NO ocupacional"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "EVITAR nueva exposición al agente causal — la medida más importante y a menudo la única verdaderamente eficaz para detener la progresión",
+        "Oxigenoterapia si hay insuficiencia respiratoria",
+        "Rehabilitación pulmonar"
       ],
-      "redFlags": [
-        "Trabajador con disnea progresiva + antecedente de exposición a asbesto por años/décadas → descartar mesotelioma, no solo asbestosis simple",
-        "Fiebre + tos + disnea que reaparece cada vez que regresa al trabajo → alveolitis alérgica extrínseca, no 'está fingiendo'"
-      ],
-      "erroresFrecuentes": [
-        "No preguntar historia laboral por considerarla poco relevante",
-        "Confundir asma ocupacional con asma común y no investigar el patrón temporal con el trabajo",
-        "Asumir que un paciente con síntomas que sus compañeros no tienen está exagerando o fingiendo"
-      ],
-      "asociacionesClinicas": [
-        "Minero o trabajador de construcción + disnea progresiva + patrón restrictivo → sospechar neumoconiosis",
-        "Trabajador agrícola + fiebre/tos/disnea recurrente tras exposición a heno → alveolitis alérgica extrínseca ('pulmón del granjero')"
+      "farmacologico": [
+        "Tratamiento farmacológico según la entidad clínica específica: broncodilatadores y/o corticoides inhalados/sistémicos según corresponda al mecanismo predominante (obstructivo vs. inflamatorio)"
       ]
     },
-    "casosClinicos": [
-      {
-        "nivel": "intermedio",
-        "vineta": "Mujer de 43 años, trabaja en una granja. Refiere que cada vez que descarga heno presenta fiebre, tos, disnea y producción de esputo, que suele resolverse en 2 a 5 días pero reaparece al volver a exponerse. No usa mascarilla. Ninguno de sus compañeros de trabajo está afectado. Examen: taquipnea, estertores finos, sin sibilancias.",
-        "preguntaMC": {
-          "enunciado": "¿Cuál es el diagnóstico presuntivo más probable?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "Neumonía adquirida en la comunidad"
-            },
-            {
-              "id": "b",
-              "texto": "Neumonitis por hipersensibilidad (alveolitis alérgica extrínseca)"
-            },
-            {
-              "id": "c",
-              "texto": "Bronquitis crónica"
-            },
-            {
-              "id": "d",
-              "texto": "Bronquitis aguda"
-            },
-            {
-              "id": "e",
-              "texto": "Bronquiectasias"
-            }
-          ],
-          "correcta": "b",
-          "explicacion": "El patrón cíclico (síntomas que aparecen con la exposición al heno y se resuelven al alejarse) más la ausencia de sibilancias en el examen (estertores finos SIN sibilancias) es el cuadro clásico de neumonitis por hipersensibilidad / alveolitis alérgica extrínseca — una reacción inmunológica a antígenos orgánicos (hongos del heno), no una infección."
+    "complicaciones": [
+      "Tuberculosis (riesgo elevado específicamente en silicosis)",
+      "Mesotelioma pleural maligno (relación directa con asbestosis)",
+      "Fibrosis masiva progresiva (antracosis complicada)",
+      "Cor pulmonale en fases avanzadas de cualquier neumoconiosis",
+      "Discapacidad permanente con alto costo en salud pública y pérdida de productividad laboral"
+    ],
+    "prevencion": "Evaluaciones médicas periódicas, control ambiental y ventilación adecuada, equipos de protección personal (mascarillas, filtros), capacitación al trabajador, registro de enfermedades ocupacionales notificables, evaluación de patrones de incidencia/prevalencia por industria — todo esto respaldado por la Ley N.º 29783 de Seguridad y Salud en el Trabajo en Perú.",
+    "perlasProfundo": "Las ERO son PREVENIBLES y deben sospecharse ante TODO paciente con síntomas respiratorios y exposición laboral — un diagnóstico precoz y una intervención oportuna (que a menudo significa simplemente alejar al trabajador del agente causal) mejoran significativamente el pronóstico y reducen la carga de enfermedad. La colaboración interdisciplinaria entre neumólogos, médicos ocupacionales y empleadores es esencial, no opcional.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con historia laboral detallada donde debes distinguir entre entidades ocupacionales similares por el PATRÓN TEMPORAL de los síntomas respecto a la exposición — exactamente como los 2 casos reales de tu propia clase.",
+      "ejercicios": [
+        {
+          "tipo": "Distinguir por patrón temporal y sustentar (el más frecuente)",
+          "planteamiento": "Trabajador de fábrica textil con tos y sibilancias que empeoran progresivamente durante la semana laboral y mejoran notablemente el fin de semana. ¿Qué entidad ocupacional sospecha y qué la distingue de una neumoconiosis?",
+          "respuestaModelo": "Asma ocupacional. Se distingue de una neumoconiosis por el patrón temporal: el asma ocupacional MEJORA claramente fuera de la exposición (fines de semana, vacaciones) porque es una respuesta broncoespástica reversible a un alérgeno específico, mientras que las neumoconiosis (fibrosis por polvo mineral) NO mejoran con el descanso — el daño estructural fibrótico ya establecido es permanente independientemente de que el paciente se aleje temporalmente de la exposición."
         },
-        "preguntaEscrita": {
-          "enunciado": "¿Por qué es importante NO asumir que esta paciente está 'fingiendo' solo porque sus compañeros de trabajo no presentan los mismos síntomas?",
-          "respuestaModelo": "La alveolitis alérgica extrínseca es una reacción de HIPERSENSIBILIDAD individual — depende de la sensibilización inmunológica específica de cada persona a un antígeno particular, no de la exposición en sí. Así como no todos los que comen maní son alérgicos al maní, no todos los expuestos al mismo antígeno orgánico del heno desarrollan la enfermedad. Que sus compañeros no estén afectados no invalida el cuadro de la paciente — es exactamente el comportamiento esperado de una enfermedad de mecanismo inmunológico individual, no infeccioso."
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste las 3 neumoconiosis clásicas mencionadas en tu clase y su agente causal respectivo.",
+          "respuestaModelo": "Silicosis (sílice cristalina), asbestosis (fibras de asbesto), antracosis (polvo de carbón)."
+        },
+        {
+          "tipo": "Indique y sustente (complicación específica)",
+          "planteamiento": "Un minero con silicosis confirmada desarrolla fiebre, sudoración nocturna y pérdida de peso. ¿Qué complicación debe descartarse de inmediato y por qué esta neumoconiosis en particular predispone a ella?",
+          "respuestaModelo": "Debe descartarse TUBERCULOSIS activa de inmediato. La silicosis tiene un riesgo elevado específico y bien documentado de tuberculosis — se cree que la sílice fagocitada altera la función normal de los macrófagos alveolares, deteriorando su capacidad de contener eficazmente al M. tuberculosis, facilitando la reactivación de infección latente o una nueva infección activa."
         }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "8 categorías de ERO, cada una con mecanismo predominante distinto: inflamación/fibrosis, hiperreactividad, reacción inmunológica, o carcinogénesis",
+      "Silicosis→riesgo de TB; Asbestosis→riesgo de mesotelioma; Antracosis→signo del pulmón en llamas",
+      "El diagnóstico SIEMPRE requiere correlacionar clínica + historia laboral detallada — nunca uno sin el otro"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — distinguir por auscultación",
+      "columnas": [
+        "Hallazgo",
+        "Sospecha"
+      ],
+      "filas": [
+        [
+          "Sibilancias + mejoría fuera del trabajo",
+          "Asma ocupacional"
+        ],
+        [
+          "Estertores finos SIN sibilancias, episódico con exposición",
+          "Alveolitis alérgica extrínseca"
+        ],
+        [
+          "Patrón restrictivo crónico + exposición a polvo mineral",
+          "Neumoconiosis"
+        ]
+      ],
+      "nota": "EVITAR la exposición es siempre la medida terapéutica más importante en las 3."
+    },
+    "clinica": "Tos crónica + disnea progresiva ± sibilancias/estertores según entidad — SIEMPRE correlacionar con el momento respecto a la exposición laboral.",
+    "diagnostico": "Historia ocupacional detallada + espirometría (obstructivo/restrictivo) + Rx/TCAR + pruebas específicas (provocación, IgE) según sospecha.",
+    "tratamientoResumen": "Evitar la exposición (medida clave) + tratamiento farmacológico según entidad + rehabilitación pulmonar.",
+    "diferenciales": [
+      {
+        "entidad": "EPOC no ocupacional",
+        "clave": "Sin nexo temporal con exposición laboral específica"
+      },
+      {
+        "entidad": "Fibrosis pulmonar idiopática",
+        "clave": "Sin antecedente ocupacional identificable"
       }
+    ],
+    "tablaComparativa": {
+      "titulo": "Asma ocupacional vs Alveolitis alérgica extrínseca",
+      "filas": [
+        [
+          "Auscultación",
+          "Sibilancias",
+          "Estertores finos, sin sibilancias"
+        ],
+        [
+          "Patrón temporal",
+          "Mejora en días libres",
+          "Episodios de 2-5 días con cada exposición"
+        ],
+        [
+          "Espirometría",
+          "Obstructivo",
+          "Restrictivo"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Qué neumoconiosis tiene riesgo elevado de tuberculosis? → Silicosis",
+      "¿Qué neumoconiosis se relaciona directamente con mesotelioma? → Asbestosis",
+      "¿Cómo se llama el signo característico de antracosis? → 'Pulmón en llamas' — pigmento antracótico en macrófagos de linfonódulos",
+      "¿Cuál es la medida terapéutica MÁS importante en toda ERO? → Evitar nueva exposición al agente causal",
+      "¿Qué distingue clínicamente asma ocupacional de alveolitis alérgica extrínseca? → Asma: sibilancias + mejora en días libres. Alveolitis: estertores finos sin sibilancias, episodios de 2-5 días ligados a exposición puntual",
+      "¿Por qué en el caso real solo la trabajadora estaba afectada y no sus compañeros? → La hipersensibilidad es una respuesta INDIVIDUAL (no todos se sensibilizan igual), no depende solo de compartir la misma exposición ambiental",
+      "¿Qué ley peruana regula la protección respiratoria laboral? → Ley N.º 29783 de Seguridad y Salud en el Trabajo"
+    ],
+    "redFlags": [
+      "Trabajador con exposición a asbesto + dolor pleurítico nuevo → descartar mesotelioma activamente",
+      "Silicosis + síntomas sistémicos (fiebre, pérdida de peso) → descartar TB sobreagregada",
+      "Síntomas respiratorios que 'nadie más tiene' en el mismo ambiente laboral → no descartar por eso, considerar hipersensibilidad individual"
+    ],
+    "erroresFrecuentes": [
+      "Descartar el diagnóstico ocupacional porque otros compañeros de trabajo no tienen síntomas (en hipersensibilidad, es individual)",
+      "No preguntar activamente por historia laboral detallada en todo paciente con síntomas respiratorios crónicos",
+      "Confundir asma ocupacional con alveolitis alérgica extrínseca por presentar ambas síntomas 'relacionados al trabajo'",
+      "Asumir que suspender la exposición no es necesario si los síntomas mejoran con tratamiento farmacológico"
+    ],
+    "asociacionesClinicas": [
+      "Minero + fibrosis nodular + patrón restrictivo → silicosis, evaluar TB activamente",
+      "Trabajador de construcción antigua + engrosamiento pleural → asbestosis, vigilar mesotelioma a largo plazo"
     ]
   },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Evalúas a una paciente de 43 años, quien trabaja en una granja. La paciente observa que cada vez que descarga el heno tiene fiebre, tos, disnea y producción de esputo. Suele resolverse en dos a cinco días, pero reaparece cuando se vuelve a exponer al heno. No usa mascarilla. Además, ninguno de los demás trabajadores de la granja está afectado, y empiezan a preguntarse si está fingiendo. En la exploración física se encuentra taquipnea y estertores finos. No hay sibilancias.",
+      "imagen": {
+        "src": "assets/ero/ero-rx-caso-hipersensibilidad.jpg",
+        "caption": "Radiografía real de esta paciente"
+      },
+      "preguntaMC": {
+        "enunciado": "¿Cuál es el diagnóstico presuntivo más probable?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Neumonía adquirida en la comunidad"
+          },
+          {
+            "id": "b",
+            "texto": "Neumonitis por hipersensibilidad (alveolitis alérgica extrínseca)"
+          },
+          {
+            "id": "c",
+            "texto": "Bronquitis crónica"
+          },
+          {
+            "id": "d",
+            "texto": "Bronquitis aguda"
+          },
+          {
+            "id": "e",
+            "texto": "Bronquiectasia"
+          }
+        ],
+        "correcta": "b",
+        "explicacion": "El patrón temporal es la clave diagnóstica: síntomas que aparecen específicamente con la exposición al heno (polvo orgánico), se RESUELVEN en días sin tratamiento (2-5 días), y REAPARECEN con la re-exposición — este ciclo repetitivo ligado exactamente a un antígeno orgánico específico es característico de neumonitis por hipersensibilidad (alveolitis alérgica extrínseca), no de una infección. La ausencia de sibilancias descarta un componente asmático puro. Que otros trabajadores no estén afectados NO descarta el diagnóstico — la hipersensibilidad es una respuesta inmunológica INDIVIDUAL, no todos los expuestos se sensibilizan de la misma manera."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Los compañeros de trabajo de la paciente sospechan que está fingiendo, ya que ninguno de ellos tiene síntomas pese a la misma exposición. Explica por qué este razonamiento es médicamente incorrecto.",
+        "respuestaModelo": "El razonamiento es incorrecto porque la neumonitis por hipersensibilidad es una reacción INMUNOLÓGICA individual (de tipo III y IV) a un antígeno orgánico específico — requiere que el sistema inmune de ESA persona en particular se haya sensibilizado previamente al antígeno del heno. No todas las personas expuestas al mismo ambiente desarrollan esta sensibilización; depende de factores individuales de susceptibilidad inmunológica, no solo del grado de exposición ambiental compartida. Por eso es perfectamente consistente, y médicamente esperable, que solo una persona de todo un grupo de trabajadores igualmente expuestos desarrolle la enfermedad — esto NO invalida el diagnóstico ni sugiere simulación."
+      }
+    },
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Paciente varón de 31 años, sin antecedentes respiratorios o alérgicos, extabaquista con abandono desde hace diez años (IPA de 1); trabaja como operario en silo de almacenamiento de granos desde los 26 años. El 2019 presentó un primer episodio de broncoespasmo mientras realizaba vaciado de secadora de granos a pala, en espacio confinado de 6 metros de profundidad, levantando nube de polvo orgánico vegetal, sin utilizar protección respiratoria. Posterior a este episodio, continuó con cuadros de broncoespasmo progresivos en frecuencia e intensidad, con disnea clase funcional II y tos seca. Los síntomas respiratorios se presentan durante la jornada laboral, disminuyendo o estando ausentes durante días libres y licencias.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál es el diagnóstico presuntivo más probable y qué examen confirmaría la sospecha?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Asma ocupacional; confirmar con espirometría seriada (en el trabajo vs. fuera del trabajo) y/o pruebas de provocación bronquial específica"
+          },
+          {
+            "id": "b",
+            "texto": "EPOC; confirmar con espirometría única mostrando obstrucción fija"
+          },
+          {
+            "id": "c",
+            "texto": "Neumonitis por hipersensibilidad; confirmar con IgE específica"
+          },
+          {
+            "id": "d",
+            "texto": "Bronquitis crónica; no requiere estudios adicionales"
+          },
+          {
+            "id": "e",
+            "texto": "Silicosis; confirmar con TCAR"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "El patrón es clásico de ASMA OCUPACIONAL: broncoespasmo con nexo temporal claro a la exposición laboral (polvo orgánico vegetal en espacio confinado), sin protección respiratoria, con síntomas que DISMINUYEN o desaparecen en días libres/licencias — el patrón de mejoría fuera del trabajo es la pista diagnóstica clave que distingue esto de EPOC (que no mejora así) o de una neumoconiosis (que no se relaciona con días libres). La confirmación se hace demostrando la relación entre función pulmonar y exposición laboral: espirometría seriada comparando días de trabajo vs. días libres, y/o pruebas de provocación bronquial específica con el agente sospechoso bajo condiciones controladas."
+      },
+      "preguntaEscrita": {
+        "enunciado": "El IPA (índice paquete-año) de este paciente es de 1, muy bajo, y dejó de fumar hace 10 años. ¿Por qué este dato es relevante para descartar EPOC como diagnóstico alternativo?",
+        "respuestaModelo": "Un IPA de 1 es una carga tabáquica MÍNIMA (equivalente a fumar aproximadamente 1 cigarrillo diario durante 20 años, o su combinación equivalente) — muy por debajo de la exposición tabáquica típicamente asociada al desarrollo de EPOC (generalmente se requieren cargas mucho mayores, frecuentemente >10-20 paquetes-año, para desarrollar EPOC clínicamente relevante por tabaco). Sumado a que dejó de fumar hace 10 años (tiempo suficiente para que cualquier daño leve relacionado al tabaco se hubiera estabilizado, no progresado), este antecedente hace muy IMPROBABLE que el tabaquismo sea la causa del cuadro respiratorio actual, y refuerza la sospecha de que la exposición ocupacional reciente (polvo orgánico en el silo) es la causa real y predominante de sus síntomas."
+      }
+    }
+  ]
+},
   {
   "id": "epid",
   "nombre": "Enfermedad Pulmonar Intersticial Difusa (EPID)",
