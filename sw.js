@@ -7,7 +7,7 @@
    CACHE_NAME (ej. 'medcore-v2') y el navegador refresca la copia.
    ============================================================ */
 
-const CACHE_NAME = 'medcore-v88';
+const CACHE_NAME = 'medcore-v89';
 const ASSETS = [
   './',
   './index.html',
@@ -44,6 +44,9 @@ const ASSETS = [
   './assets/saos/saos-iah-severidad-tabla.jpg',
   './assets/ira/ira-dispositivos-oxigeno.jpg',
   './assets/ira/ira-algoritmo-manejo.jpg',
+  './assets/ero/ero-rx-caso-hipersensibilidad.jpg',
+  './assets/ero/ero-antracosis-pulmon-llamas.jpg',
+  './assets/ero/ero-silicosis-rx-tc.jpg',
   './assets/epoc/epoc-rx-hiperinflacion.jpg',
   './assets/nexu-logo.svg',
   './assets/referencia-panalizacion-tc.png',
