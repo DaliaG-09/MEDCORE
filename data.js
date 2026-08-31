@@ -4508,241 +4508,406 @@ const ENFERMEDADES = [
   ]
 },
   {
-    "id": "insuficiencia-respiratoria-aguda",
-    "nombre": "Insuficiencia Respiratoria Aguda y Síndrome de Distrés Respiratorio Agudo (SDRA)",
-    "area": "Neumología",
-    "semanas": [
-      "semana-03"
+  "id": "insuficiencia-respiratoria-aguda",
+  "nombre": "Insuficiencia Respiratoria Aguda y Síndrome de Distrés Respiratorio Agudo (SDRA)",
+  "area": "Neumología",
+  "semanas": [
+    "semana-03"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1Tpo7LJ_oC4hGndsdZ3xheakd9RoVH4yf/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_3_SESIÓN-7-TEMA-2: Insuficiencia Respiratoria Aguda. SDRA"
+  },
+  "relacionadas": [
+    {
+      "id": "neumonia-nac",
+      "relacion": "La neumonía grave es una de las causas más frecuentes de IRA hipoxémica y de SDRA secundario"
+    },
+    {
+      "id": "epoc",
+      "relacion": "La exacerbación de EPOC es la causa clásica de IRA hipercápnica (tipo II)"
+    }
+  ],
+  "profundo": {
+    "definicion": "Condición clínica GRAVE caracterizada por la incapacidad del sistema respiratorio para mantener niveles adecuados de oxigenación arterial, eliminación de CO2, o ambos — causa común de ingreso a UCI, considerada una URGENCIA MÉDICA. Definición operativa: PaO2 <60 mmHg y/o PaCO2 >50 mmHg en reposo, en un paciente PREVIAMENTE normocápnico (BMJ Best Practice, 2024). El Síndrome de Distrés Respiratorio Agudo (SDRA) es una de sus principales formas de presentación SEVERA.",
+    "epidemiologia": "En las UCI, la IRA es responsable del 20-30% de los ingresos, con mortalidad de 30-45% en su forma grave. <span class=\"fuente-ampliada\">La pandemia por SARS-CoV-2 incrementó notablemente la incidencia de SDRA secundario a neumonía viral, redefiniendo muchas estrategias de ventilación mecánica que hoy son estándar de manejo.</span>",
+    "etiologiaFactoresRiesgo": [
+      "Neumonía grave (causa más frecuente)",
+      "Exacerbaciones de EPOC",
+      "Embolia pulmonar masiva",
+      "Edema agudo de pulmón",
+      "Trauma torácico",
+      "Sepsis (vía respuesta inflamatoria sistémica)",
+      "Postoperatorio (frecuentemente causa mixta)"
     ],
-    "favorito": false,
-    "estudiado": false,
-    "tipoIlustracion": "alveolar",
-    "relacionadas": [
+    "criteriosDiagnosticos": "IRA: PaO2<60mmHg y/o PaCO2>50mmHg en reposo, en paciente previamente normocápnico. SDRA (Definición de Berlín, 2012): (1) inicio dentro de los 7 DÍAS posteriores a un evento clínico conocido (neumonía, sepsis, trauma), (2) opacidades BILATERALES en imágenes (Rx o TAC), (3) NO explicado completamente por edema cardiogénico (ecocardiograma útil para esto), (4) hipoxemia según el cociente PaO2/FiO2 (PaFi).",
+    "fisiopatologia": {
+      "resumen": "La función pulmonar normal depende del adecuado intercambio gaseoso en la membrana alveolo-capilar. En la IRA hay disrupción de este equilibrio por alteración de la ventilación, perfusión, o ambas. La HIPOXEMIA puede deberse a 5 mecanismos distintos, mientras que la HIPERCAPNIA se relaciona fundamentalmente con hipoventilación alveolar. En el SDRA específicamente, predomina el SHUNT intrapulmonar por colapso alveolar y presencia de membranas hialinas — con pérdida de la capacidad de RESPUESTA al oxígeno suplementario (a diferencia de otras causas de hipoxemia que sí mejoran con más O2).",
+      "cascada": [
+        {
+          "paso": "Injuria inicial",
+          "detalle": "Neumonía, sepsis, trauma, aspiración — daña directa o indirectamente la membrana alveolo-capilar"
+        },
+        {
+          "paso": "Respuesta inflamatoria intensa",
+          "detalle": "Liberación de citoquinas, daño epitelial, aumento de la permeabilidad alveolar (especialmente en IRA secundaria a sepsis/SDRA)"
+        },
+        {
+          "paso": "Edema no cardiogénico",
+          "detalle": "El aumento de permeabilidad genera edema alveolar por un mecanismo DISTINTO al cardiogénico (no es por presión hidrostática elevada, sino por fuga capilar)"
+        },
+        {
+          "paso": "Colapso alveolar + membranas hialinas",
+          "detalle": "El daño epitelial y el edema llevan a colapso de unidades alveolares y depósito de membranas hialinas — sustrato patológico del SDRA"
+        },
+        {
+          "paso": "Shunt intrapulmonar",
+          "detalle": "Sangre que pasa por alvéolos colapsados/llenos de líquido sin oxigenarse — mecanismo DOMINANTE de hipoxemia en SDRA, resistente a oxígeno suplementario"
+        },
+        {
+          "paso": "Manifestación clínica",
+          "detalle": "Hipoxemia refractaria + disnea + taquipnea + uso de músculos accesorios, con progresión potencial a falla multiorgánica"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/ira/ira-dispositivos-oxigeno.jpg",
+          "caption": "Dispositivos de oxigenoterapia (de tu clase)",
+          "explicacion": "Panel izquierdo: compara la máscara Venturi de ALTO flujo (25L/min salen de la máscara, entrega FiO2 más PRECISA y controlada — ideal para EPOC donde necesitas titular exacto) contra la máscara de BAJO flujo (30L/min hacia máscara pero el paciente inspira una mezcla variable con aire ambiental, dando FiO2 menos predecible). Panel derecho arriba: los 3 sistemas de bajo flujo más comunes — cánula nasal, mascarilla simple, mascarilla con reservorio (en ese orden, entregan FiO2 progresivamente mayor). Panel derecho abajo: el sistema AIRVO2+Válvula de Boussignac, una configuración más avanzada para cánula nasal de alto flujo (HFNC) con medición de presión — nota cómo requiere mucho más equipo y monitoreo que una simple cánula nasal."
+        },
+        {
+          "src": "assets/ira/ira-algoritmo-manejo.jpg",
+          "caption": "Algoritmo de manejo de la IRA (de tu clase)",
+          "explicacion": "Sigue los 6 pasos en orden: (1) Evaluación inicial con signos clínicos + gasometría — esto es lo que confirma que HAY una IRA; (2) Determinar el TIPO (hipoxémica/hipercápnica/mixta) — esto orienta la causa probable; (3) Estudios complementarios en paralelo; (4) Oxigenoterapia ESCALONADA según severidad (leve→cánula nasal, moderada→mascarilla, grave→alto flujo/VNI/VM invasiva) — nota que NO empiezas directo con lo más invasivo; (5) Considerar SDRA específicamente si hay inicio<7 días + hipoxemia + infiltrados bilaterales, con su manejo propio (VM protectora, prono, relajantes, PEEP); (6) Evaluación CONTINUA — el algoritmo no termina en un solo paso, es un ciclo de reevaluación constante (flechas rojas curvas de vuelta)."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">La distinción entre shunt (predominante en SDRA) y otras causas de hipoxemia (como el desajuste V/Q) tiene una implicancia práctica crucial: en el desajuste V/Q simple, dar más oxígeno suplementario generalmente mejora la saturación porque todavía hay ALGO de ventilación llegando a esas unidades mal perfundidas o viceversa. En el shunt verdadero (sangre que pasa por alvéolos COMPLETAMENTE colapsados o llenos de líquido), aumentar la FiO2 no sirve de mucho — no hay ventilación alveolar a la que ese oxígeno adicional pueda acceder. Por eso los pacientes con SDRA a menudo tienen hipoxemia 'refractaria' a oxígeno suplementario simple, y requieren estrategias que reclutan alvéolos colapsados (PEEP, posición prono) en vez de solo subir la FiO2.</span>"
+    },
+    "clinica": [
       {
-        "id": "neumonia-nac",
-        "relacion": "La neumonía grave es una de las causas más frecuentes de insuficiencia respiratoria aguda y puede evolucionar a SDRA"
+        "signo": "Disnea",
+        "detallePPT": "Síntoma cardinal",
+        "mecanismo": "Percepción del aumento del trabajo respiratorio y/o hipoxemia"
       },
       {
-        "id": "epoc",
-        "relacion": "La exacerbación de EPOC es la causa más común de insuficiencia respiratoria hipercápnica (tipo II)"
+        "signo": "Taquipnea",
+        "detallePPT": "Síntoma cardinal",
+        "mecanismo": "Respuesta compensatoria a la hipoxemia y/o acidosis"
+      },
+      {
+        "signo": "Uso de músculos accesorios",
+        "detallePPT": "Síntoma cardinal",
+        "mecanismo": "Reclutamiento muscular adicional cuando el diafragma solo ya no es suficiente para el trabajo respiratorio requerido"
+      },
+      {
+        "signo": "Cianosis",
+        "detallePPT": "Síntoma cardinal",
+        "mecanismo": "Hemoglobina desoxigenada >5g/dL en sangre capilar — refleja hipoxemia ya significativa"
+      },
+      {
+        "signo": "Confusión o alteración del sensorio",
+        "detallePPT": "Síntoma cardinal — signo de alarma",
+        "mecanismo": "Hipoxia cerebral y/o narcosis por CO2 (en la variante hipercápnica) — indica compromiso ya significativo"
       }
     ],
-    "profundo": {
-      "definicion": "La Insuficiencia Respiratoria Aguda (IRA) es la incapacidad del aparato respiratorio para mantener una adecuada oxigenación (PaO2 <60 mmHg) y/o eliminación de CO2 (PaCO2 >50 mmHg) en reposo, en un paciente previamente normocápnico. El Síndrome de Distrés Respiratorio Agudo (SDRA) es una de sus formas de presentación más grave, con alta mortalidad.",
-      "epidemiologia": "En las unidades de cuidados intensivos, la IRA es responsable del 20-30% de los ingresos y se asocia a una mortalidad del 30-45% en su forma grave. El SDRA severo tiene mortalidad de 35-45%, aunque ha disminuido gracias a estrategias de protección pulmonar y posición prona. La pandemia por SARS-CoV-2 incrementó notablemente la incidencia de SDRA secundario a neumonía viral.",
-      "etiologiaFactoresRiesgo": [
-        "Neumonía grave (causa más frecuente)",
-        "Exacerbaciones de EPOC",
-        "Embolia pulmonar masiva",
-        "Edema agudo de pulmón cardiogénico",
-        "Trauma torácico",
-        "Sepsis (causa extrapulmonar más frecuente de SDRA)"
-      ],
-      "fisiopatologia": {
-        "resumen": "La hipoxemia en la IRA puede deberse a 5 mecanismos: alteración de la relación ventilación/perfusión (V/Q), cortocircuito (shunt), hipoventilación alveolar, disminución del contenido de oxígeno inspirado, o alteración de la difusión. En el SDRA específicamente predomina el shunt intrapulmonar por colapso alveolar y formación de membranas hialinas.",
-      explicacionExtendida: "La hipoxemia en la insuficiencia respiratoria puede originarse por 5 mecanismos distintos, y diferenciarlos importa porque cada uno responde distinto al oxígeno suplementario. La alteración de la relación ventilación/perfusión (V/Q) — la causa más común — ocurre cuando hay zonas del pulmón mal ventiladas pero bien perfundidas (o viceversa); este tipo SÍ mejora administrando oxígeno suplementario. El cortocircuito o shunt, en cambio, ocurre cuando hay sangre que atraviesa el pulmón sin pasar por ningún alvéolo ventilado (como en el colapso alveolar masivo del SDRA) — este tipo NO mejora con oxígeno suplementario por más que se aumente la FiO2, porque el problema no es la concentración de oxígeno disponible sino que la sangre simplemente no está en contacto con alvéolos funcionantes.\n\nLa hipoventilación alveolar (típica de la sobredosis de sedantes o enfermedad neuromuscular) y la alteración de la difusión (engrosamiento de la membrana alveolo-capilar, como en la EPID) son los otros dos mecanismos relevantes. En el SDRA específicamente, el mecanismo predominante es el shunt intrapulmonar por colapso alveolar masivo y la formación de membranas hialinas — esto explica clínicamente por qué estos pacientes con frecuencia no logran normalizar su saturación pese a recibir oxígeno a altas concentraciones, y por qué el manejo definitivo casi siempre requiere estrategias que reabran el alvéolo colapsado (PEEP, posición prona) en vez de simplemente aumentar el oxígeno inspirado.",
-        "cascada": [
+    "examenFisico": [
+      "Taquipnea, uso de músculos accesorios, tiraje",
+      "Cianosis (central si es severa)",
+      "Estertores crepitantes según la causa de base (ej. neumonía, edema pulmonar)",
+      "En pacientes crónicos reagudizados, la presentación puede ser INSIDIOSA — no siempre abrupta"
+    ],
+    "semiologia": {
+      "inspeccion": "Busca activamente los 5 síntomas cardinales del PPT: disnea, taquipnea, uso de músculos accesorios, cianosis, y alteración del sensorio — su presencia conjunta es lo que define clínicamente una IRA antes incluso de tener la gasometría.",
+      "palpacion": "Según la causa de base — sin hallazgo único característico de la IRA en sí misma.",
+      "percusion": "Variable según etiología (matidez si hay consolidación/derrame asociado, normal en causas puramente de bomba ventilatoria).",
+      "auscultacion": "Depende de la causa subyacente — crépitos en neumonía/SDRA/edema pulmonar, sibilancias en exacerbación de EPOC/asma. El HALLAZGO ausente también importa: en IRA por causa neuromuscular pura, la auscultación pulmonar puede ser sorprendentemente NORMAL pese a la insuficiencia respiratoria grave, porque el problema no está en el parénquima sino en la bomba ventilatoria."
+    },
+    "tablasClinicas": [
+      {
+        "titulo": "🔬 Clasificación de la IRA",
+        "contexto": "El TIPO de IRA orienta directamente hacia la causa probable y el manejo inicial.",
+        "columnas": [
+          "Tipo",
+          "Característica",
+          "Causas típicas"
+        ],
+        "filas": [
+          [
+            "Tipo I — Hipoxémica",
+            "Hipoxemia SIN hipercapnia",
+            "Neumonía, SDRA, edema pulmonar"
+          ],
+          [
+            "Tipo II — Hipercápnica",
+            "CON retención de CO2",
+            "EPOC agudizado, enfermedades neuromusculares, fármacos depresores"
+          ],
+          [
+            "Tipo III/IV — Mixta",
+            "Combinación de ambas",
+            "Postoperatorio, trauma, sepsis, estados de bajo gasto"
+          ]
+        ]
+      },
+      {
+        "titulo": "📊 Clasificación de gravedad del SDRA (Berlín, según PaFi)",
+        "columnas": [
+          "Gravedad",
+          "PaO2/FiO2 (PaFi)"
+        ],
+        "filas": [
+          [
+            "Leve",
+            "200 - 300 mmHg"
+          ],
+          [
+            "Moderado",
+            "100 - 200 mmHg"
+          ],
+          [
+            "Severo",
+            "< 100 mmHg"
+          ]
+        ],
+        "nota": "Siempre verifica que se cumplan TAMBIÉN los otros 3 criterios de Berlín (inicio<7 días, opacidades bilaterales, no explicado por edema cardiogénico) — el PaFi solo NO diagnostica SDRA por sí mismo."
+      }
+    ],
+    "diagnostico": "Gasometría arterial (estándar diagnóstico): PaO2<60mmHg (hipoxemia), PaCO2>50mmHg (hipercapnia), pH<7.35 sugiere acidosis respiratoria. Radiografía/TC de tórax: identifica consolidaciones, infiltrados difusos (SDRA), colapso, o edema pulmonar — la TC de alta resolución es útil para patrón intersticial o embolia pulmonar. Ultrasonido pulmonar (protocolo BLUE): líneas B difusas→edema intersticial; consolidaciones subpleurales→neumonía/SDRA; pulmón deslizante presente→descarta neumotórax — permite diagnóstico sindrómico en <5 minutos.",
+    "algoritmo": [
+      {
+        "tipo": "paso",
+        "texto": "1. Evaluación inicial: signos clínicos (disnea, taquipnea, cianosis, uso de músculos accesorios) + gasometría arterial (PaO2<60, PaCO2>50, pH<7.35)"
+      },
+      {
+        "tipo": "paso",
+        "texto": "2. Determinar tipo de IRA: hipoxémica (I), hipercápnica (II), o mixta"
+      },
+      {
+        "tipo": "paso",
+        "texto": "3. Estudios complementarios: Rx/TC/ecografía pulmonar + ecocardiograma/laboratorio/cultivos según sospecha"
+      },
+      {
+        "tipo": "decision",
+        "texto": "4. Oxigenoterapia según severidad",
+        "salidas": [
           {
-            "paso": "Factor desencadenante",
-            "detalle": "Neumonía grave, sepsis, trauma, aspiración — daño directo o indirecto a la membrana alveolo-capilar"
+            "etiqueta": "Leve",
+            "texto": "Cánula nasal",
+            "color": "mint"
           },
           {
-            "paso": "Respuesta inflamatoria",
-            "detalle": "Liberación de citocinas, daño epitelial y aumento de la permeabilidad alveolar (especialmente en SDRA de origen séptico)"
+            "etiqueta": "Moderada",
+            "texto": "Mascarilla simple o con reservorio",
+            "color": "coral"
           },
           {
-            "paso": "Cambio estructural",
-            "detalle": "Edema no cardiogénico + colapso alveolar + formación de membranas hialinas, con pérdida de la capacidad de respuesta a oxígeno suplementario"
-          },
-          {
-            "paso": "Cambio fisiológico",
-            "detalle": "Shunt intrapulmonar predominante — la sangre pasa por alvéolos colapsados sin oxigenarse, sin importar cuánto oxígeno se administre"
-          },
-          {
-            "paso": "Manifestación clínica",
-            "detalle": "Disnea, taquipnea, uso de músculos accesorios, cianosis, hipoxemia refractaria a oxígeno suplementario"
+            "etiqueta": "Grave",
+            "texto": "Alto flujo (HFNC) / VNI / VM invasiva",
+            "color": "alert"
           }
         ]
       },
-      "clinica": [
-        {
-          "signo": "Disnea + taquipnea + uso de músculos accesorios",
-          "mecanismo": "Intento compensatorio de aumentar la ventilación ante el fallo del intercambio gaseoso"
-        },
-        {
-          "signo": "Cianosis",
-          "mecanismo": "Hipoxemia significativa con aumento de hemoglobina desoxigenada circulante"
-        },
-        {
-          "signo": "Confusión o alteración del sensorio",
-          "mecanismo": "Hipoxemia cerebral y/o hipercapnia con efecto narcótico sobre el sistema nervioso central"
-        }
-      ],
-      "examenFisico": [
-        "Taquipnea marcada, uso evidente de músculos accesorios",
-        "Crépitos difusos bilaterales en SDRA",
-        "Cianosis labial/periférica en casos severos"
-      ],
-      semiologia: {
-            "inspeccion": "Observa el patrón respiratorio: taquipnea, uso de músculos accesorios (tiraje intercostal/supraclavicular), cianosis central o periférica, y el nivel de consciencia (la confusión es un signo de gravedad).",
-            "palpacion": "Expansión torácica puede estar disminuida si hay consolidación o colapso asociado; sin hallazgo específico único para IRA en sí, depende de la causa de base.",
-            "percusion": "Depende de la causa subyacente: matidez si hay consolidación (neumonía) o derrame asociado, normal si el mecanismo es puramente de shunt/difusión sin ocupación del espacio aéreo.",
-            "auscultacion": "En SDRA: crépitos difusos bilaterales. La ausencia de mejoría de la oxigenación pese a aumentar la FiO2 administrada es un dato clínico clave que sugiere shunt intrapulmonar (típico del SDRA) más que un simple problema de difusión."
-      },
-      "diagnostico": "Gasometría arterial es el estándar diagnóstico: PaO2 <60 mmHg (hipoxemia), PaCO2 >50 mmHg (hipercapnia), pH <7.35 sugiere acidosis respiratoria. Radiografía/TC de tórax para identificar consolidaciones, infiltrados difusos o edema. Criterios de Berlín para SDRA: inicio en los 7 días posteriores a un evento clínico conocido + opacidades bilaterales en imagen + no explicado completamente por edema cardiogénico + hipoxemia según cociente PaO2/FiO2.",
-      "algoritmo": [
-        {
-          "tipo": "paso",
-          "texto": "Sospecha de IRA: disnea + taquipnea + hipoxemia clínica"
-        },
-        {
-          "tipo": "paso",
-          "texto": "Gasometría arterial: clasificar tipo (hipoxémica/hipercápnica/mixta) + calcular PaO2/FiO2"
-        },
-        {
-          "tipo": "decision",
-          "texto": "¿Cumple criterios de Berlín para SDRA?",
-          "salidas": [
-            {
-              "etiqueta": "PaFi 200-300",
-              "texto": "SDRA leve — HFNC o VMNI, tratar causa desencadenante",
-              "color": "mint"
-            },
-            {
-              "etiqueta": "PaFi 100-200",
-              "texto": "SDRA moderado — considerar ventilación mecánica protectora",
-              "color": "coral"
-            },
-            {
-              "etiqueta": "PaFi <100 refractario",
-              "texto": "SDRA severo — ventilación protectora + prono + considerar ECMO",
-              "color": "alert"
-            }
-          ]
-        }
-      ],
-      "diagnosticoDiferencial": [
-        "Edema pulmonar cardiogénico (ecocardiograma ayuda a diferenciar)",
-        "Neumonía sin criterios de SDRA",
-        "Tromboembolismo pulmonar masivo"
-      ],
-      "tratamiento": {
-        "noFarmacologico": [
-          "Oxigenoterapia individualizada: cánula nasal de alto flujo (HFNC) mejora oxigenación sin intubación, útil en SDRA leve",
-          "Mascarilla reservorio en hipoxemia severa transitoria",
-          "En EPOC: oxigenoterapia titulada, objetivo SatO2 88-92% para evitar hipercapnia inducida",
-          "Ventilación mecánica protectora (volúmenes tidales bajos) en casos moderados-severos",
-          "Posición prona en SDRA moderado-severo",
-          "ECMO en SDRA refractario con PaO2/FiO2 <80 pese a tratamiento óptimo"
-        ],
-        "farmacologico": [
-          "Corrección del factor desencadenante (antibióticos si infeccioso, etc.)",
-          "Corticosteroides: uso controversial en SDRA, indicación en fases tardías seleccionadas"
+      {
+        "tipo": "decision",
+        "texto": "5. ¿Cumple criterios de SDRA (Berlín)?",
+        "salidas": [
+          {
+            "etiqueta": "SÍ",
+            "texto": "Inicio<7 días + hipoxemia + infiltrados bilaterales → manejo específico: VM protectora, posición prono, relajantes musculares, PEEP personalizada",
+            "color": "alert"
+          },
+          {
+            "etiqueta": "NO",
+            "texto": "Continuar manejo de la IRA según causa de base identificada",
+            "color": "coral"
+          }
         ]
       },
-      "complicaciones": [
-        "Falla multiorgánica si no se corrige rápidamente",
-        "Fibrosis pulmonar residual post-SDRA",
-        "Disfunción muscular post-UCI"
-      ],
-      "prevencion": "Tratamiento oportuno y agresivo de neumonías graves y sepsis, vacunación (influenza, neumococo) para reducir el riesgo de neumonía grave que precipite IRA.",
-      "perlasProfundo": "El índice PaO2/FiO2 (PaFi) sigue siendo LA herramienta esencial para clasificar la gravedad del SDRA y guiar decisiones — calcularlo siempre que haya sospecha de compromiso respiratorio grave, no solo confiar en la saturación de oxígeno aislada."
-    },
-    "repaso": {
-      "conceptosClave": [
-        "3 tipos: hipoxémica (I), hipercápnica (II), mixta",
-        "SDRA = forma grave de IRA, criterios de Berlín",
-        "PaFi = PaO2/FiO2 — clasifica gravedad"
-      ],
-      "clinica": "Disnea + taquipnea + uso de músculos accesorios + cianosis ± confusión.",
-      "diagnostico": "Gasometría arterial (estándar) + imagen + criterios de Berlín para SDRA.",
-      "tratamientoResumen": "Oxigenoterapia escalonada (bajo flujo → HFNC → VMNI → VM invasiva) + tratar causa + prono/ECMO en SDRA severo.",
-      "diferenciales": [
-        {
-          "entidad": "Edema pulmonar cardiogénico",
-          "clave": "Ecocardiograma y contexto clínico (insuficiencia cardiaca) lo diferencian del SDRA"
-        }
-      ],
-      "tablaComparativa": {
-        "titulo": "IRA tipo I vs. tipo II",
-        "filas": [
-          [
-            "Mecanismo",
-            "Hipoxemia sin hipercapnia",
-            "Hipoventilación con retención de CO2"
-          ],
-          [
-            "Causas típicas",
-            "Neumonía, SDRA, edema pulmonar",
-            "EPOC agudizado, enfermedad neuromuscular"
-          ],
-          [
-            "PaCO2",
-            "Normal o bajo",
-            "Elevado (>50)"
-          ]
-        ]
+      {
+        "tipo": "paso",
+        "texto": "6. Evaluación CONTINUA y soporte avanzado según evolución — proceso cíclico, no un solo paso final"
       }
-    },
-    "imprescindible": {
-      "loQueSiOSiDebesSaber": [
-        "PaO2 <60 o PaCO2 >50 en reposo = insuficiencia respiratoria, por definición",
-        "Calcula SIEMPRE el PaO2/FiO2 ante sospecha de SDRA — es la base de la clasificación de Berlín",
-        "En EPOC, titula oxígeno a SatO2 88-92% — el exceso de oxígeno puede empeorar la hipercapnia",
-        "SDRA refractario (PaFi <80 pese a tratamiento óptimo) es indicación de considerar ECMO"
+    ],
+    "diagnosticoDiferencial": [
+      "Neumonía severa (sin cumplir criterios completos de SDRA)",
+      "Sepsis pulmonar",
+      "Edema agudo de pulmón cardiogénico (descartado por ecocardiograma en criterios de Berlín)",
+      "Embolia pulmonar masiva"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Oxigenoterapia individualizada según causa y gravedad (ver algoritmo)",
+        "HFNC (cánula nasal de alto flujo): mejora oxigenación sin intubación; útil en neumonía viral, SDRA leve, inmunocomprometidos; mejora comodidad y reduce necesidad de intubación",
+        "Mascarilla reservorio: en hipoxemia severa transitoria",
+        "Oxigenoterapia TITULADA en EPOC: objetivo SatO2 88-92% específicamente para evitar precipitar hipercapnia",
+        "Soporte hemodinámico",
+        "Vigilancia intensiva",
+        "SDRA — VM protectora: volúmenes corrientes bajos, PEEP personalizada, posición PRONO — estrategias que han reducido la mortalidad del SDRA severo con el tiempo",
+        "ECMO (membrana extracorpórea): indicada en SDRA REFRACTARIO con hipoxemia persistente (PaFi<80 pese a tratamiento óptimo)"
       ],
-      "redFlags": [
-        "Hipoxemia que no mejora pese a oxígeno suplementario en aumento → sospechar shunt (SDRA), no solo problema V/Q",
-        "Confusión + taquipnea + cianosis en paciente con neumonía → insuficiencia respiratoria establecida, actuar rápido"
-      ],
-      "erroresFrecuentes": [
-        "Dar oxígeno sin límite en pacientes EPOC (riesgo de narcosis por CO2)",
-        "No calcular el PaO2/FiO2 y subestimar la gravedad real del cuadro",
-        "Retrasar el escalamiento del soporte ventilatorio esperando mejoría espontánea en un paciente que se deteriora"
-      ],
-      "asociacionesClinicas": [
-        "Sepsis + infiltrados bilaterales + hipoxemia refractaria → SDRA de origen extrapulmonar",
-        "EPOC conocido + somnolencia + FR baja → sospechar narcosis por CO2, no mejoría"
+      "farmacologico": [
+        "Corrección del factor desencadenante: tratamiento de la infección, insuficiencia cardiaca, tromboembolismo, etc. según causa identificada",
+        "Corticosteroides en SDRA: uso sigue siendo CONTROVERSIAL, con indicación solo en fases tardías seleccionadas — no de rutina"
       ]
     },
-    "casosClinicos": [
-      {
-        "nivel": "avanzado",
-        "vineta": "Varón de 64 años, tiempo de enfermedad 5 días, acude por disnea progresiva, fiebre y tos con expectoración purulenta. Hoy presenta taquipnea y uso de músculos accesorios. Exfumador (20 paq/año), HTA controlada, vacunado COVID-19 pero no influenza ni neumococo. FC 112, FR 34, T° 38.3°C, SatO2 84% aire ambiente. Estertores crepitantes bilaterales, cianosis labial leve. Rx: opacidades alveolares bilaterales sin cardiomegalia. Gasometría (aire ambiente): pH 7.31, PaCO2 48 mmHg, PaO2 54 mmHg, HCO3 22 mEq/L, FiO2 0.21.",
-        "preguntaMC": {
-          "enunciado": "Calculando el índice PaO2/FiO2, ¿en qué categoría de gravedad de SDRA (criterios de Berlín) se clasificaría este paciente?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "PaFi = 54/0.21 ≈ 257 — SDRA leve"
-            },
-            {
-              "id": "b",
-              "texto": "PaFi = 54/0.21 ≈ 257 — SDRA moderado"
-            },
-            {
-              "id": "c",
-              "texto": "PaFi = 54/0.21 ≈ 257 — SDRA severo"
-            },
-            {
-              "id": "d",
-              "texto": "No cumple criterios de SDRA"
-            },
-            {
-              "id": "e",
-              "texto": "No se puede calcular sin saber la FiO2 exacta en litros"
-            }
-          ],
-          "correcta": "a",
-          "explicacion": "PaFi = PaO2/FiO2 = 54/0.21 ≈ 257, que cae en el rango 200-300 mmHg — SDRA LEVE según Berlín. Además cumple los otros criterios: inicio dentro de los 7 días de un evento conocido (neumonía), opacidades bilaterales en Rx, y no explicado por edema cardiogénico (sin cardiomegalia, sin antecedente de insuficiencia cardiaca)."
+    "complicaciones": [
+      "Falla multiorgánica si no se corrige rápidamente",
+      "Fibrosis pulmonar residual post-SDRA",
+      "Disfunción muscular adquirida en UCI",
+      "Complicaciones asociadas a ventilación mecánica prolongada",
+      "Mortalidad: SDRA severo tiene mortalidad de 35-45%, aunque ha disminuido con estrategias de protección pulmonar y posición prono"
+    ],
+    "prevencion": "Tratamiento oportuno de infecciones respiratorias graves, vacunación (influenza, neumococo, COVID-19), manejo adecuado de comorbilidades que predisponen a IRA (EPOC, insuficiencia cardiaca).",
+    "perlasProfundo": "El seguimiento post-UCI en sobrevivientes de SDRA es tan importante como el manejo agudo: incluye evaluación de función pulmonar, rehabilitación respiratoria, y monitoreo de complicaciones a largo plazo como fibrosis pulmonar o disfunción muscular — el 'alta de UCI' no significa recuperación completa automática.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con gasometría completa donde debes calcular el PaFi y aplicar los 4 criterios de Berlín — exactamente el patrón del caso real de tu propia clase.",
+      "ejercicios": [
+        {
+          "tipo": "Calcular y clasificar (el más frecuente)",
+          "planteamiento": "Paciente con sepsis de origen abdominal, día 3 de evolución, infiltrados bilaterales en Rx, sin cardiomegalia. AGA: PaO2 70mmHg, FiO2 0.5. Calcule PaFi, verifique criterios de Berlín, y clasifique.",
+          "respuestaModelo": "PaFi = 70/0.5 = 140 mmHg → rango 100-200 = SDRA MODERADO. Verificando los otros criterios de Berlín: inicio en día 3 (<7 días de sepsis, un evento conocido) ✓, infiltrados bilaterales ✓, sin cardiomegalia (sugiere no cardiogénico, aunque idealmente se confirmaría con ecocardiograma) ✓ — cumple los 4 criterios, diagnóstico de SDRA moderado confirmado."
         },
-        "preguntaEscrita": {
-          "enunciado": "¿Este paciente presenta insuficiencia respiratoria aguda? ¿De qué tipo, y qué manejo de oxigenoterapia sería apropiado iniciar?",
-          "respuestaModelo": "Sí, presenta insuficiencia respiratoria aguda: PaO2 54 mmHg (<60) confirma el componente hipoxémico. El PaCO2 de 48 está discretamente elevado pero no supera el umbral de 50 para definir hipercapnia franca, por lo que se clasifica predominantemente como IRA hipoxémica (tipo I), en el contexto de una neumonía grave con criterios de SDRA leve. El manejo inicial de oxigenoterapia apropiado sería cánula nasal de alto flujo (HFNC), que mejora la oxigenación sin necesidad de intubación inmediata y es especialmente útil en SDRA leve — reservando la ventilación mecánica invasiva para deterioro progresivo pese a estas medidas."
+        {
+          "tipo": "Indique y sustente (mecanismo)",
+          "planteamiento": "¿Por qué la hipoxemia del SDRA responde poco a aumentar la FiO2, a diferencia de otras causas de hipoxemia?",
+          "respuestaModelo": "Porque el mecanismo dominante en SDRA es el SHUNT intrapulmonar verdadero — sangre que atraviesa alvéolos completamente colapsados o llenos de líquido/membranas hialinas, sin ningún contacto con aire ventilado. Aumentar la FiO2 solo mejora el oxígeno disponible en el aire QUE SÍ LLEGA a alvéolos funcionantes — no puede ayudar a la sangre que pasa por alvéolos que no reciben ventilación en absoluto. Por eso la estrategia en SDRA no es solo 'más oxígeno', sino reclutar esos alvéolos colapsados con PEEP y posición prono."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste los 4 criterios diagnósticos de SDRA según la definición de Berlín.",
+          "respuestaModelo": "(1) Inicio dentro de los 7 días posteriores a un evento clínico conocido, (2) opacidades bilaterales en imágenes (Rx o TAC), (3) no explicado completamente por edema cardiogénico, (4) hipoxemia según el cociente PaO2/FiO2."
         }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "IRA: PaO2<60 y/o PaCO2>50, en paciente previamente normocápnico — urgencia médica",
+      "3 tipos: hipoxémica (I), hipercápnica (II), mixta (III/IV) — orientan la causa probable",
+      "SDRA (Berlín): inicio<7días + opacidades bilaterales + no cardiogénico + PaFi alterado; PaFi clasifica gravedad (leve 200-300, moderado 100-200, severo <100)"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — oxigenoterapia por gravedad",
+      "columnas": [
+        "Gravedad",
+        "Dispositivo"
+      ],
+      "filas": [
+        [
+          "Leve",
+          "Cánula nasal"
+        ],
+        [
+          "Moderada",
+          "Mascarilla simple/reservorio"
+        ],
+        [
+          "Grave",
+          "HFNC / VNI / VM invasiva"
+        ]
+      ],
+      "nota": "SDRA refractario (PaFi<80 pese a óptimo) → considerar ECMO."
+    },
+    "clinica": "5 síntomas cardinales: disnea, taquipnea, uso de músculos accesorios, cianosis, alteración del sensorio.",
+    "diagnostico": "Gasometría arterial es el estándar. Rx/TC + ecografía pulmonar (protocolo BLUE) apoyan según sospecha.",
+    "tratamientoResumen": "Oxigenoterapia escalonada según gravedad + corregir causa desencadenante + SDRA: VM protectora+prono+PEEP; ECMO si refractario.",
+    "diferenciales": [
+      {
+        "entidad": "Edema cardiogénico",
+        "clave": "Descartado en SDRA por ecocardiograma — criterio explícito de Berlín"
+      },
+      {
+        "entidad": "Neumonía severa sin SDRA",
+        "clave": "No cumple los 4 criterios de Berlín simultáneamente"
       }
+    ],
+    "tablaComparativa": {
+      "titulo": "IRA hipoxémica vs hipercápnica",
+      "filas": [
+        [
+          "Gas alterado",
+          "Solo PaO2 bajo",
+          "PaCO2 alto (± PaO2 bajo)"
+        ],
+        [
+          "Causa típica",
+          "Neumonía, SDRA",
+          "EPOC agudizado, neuromuscular"
+        ],
+        [
+          "Mecanismo dominante",
+          "Shunt/V-Q/difusión",
+          "Hipoventilación alveolar"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cuáles son los valores gasométricos que definen IRA? → PaO2<60mmHg y/o PaCO2>50mmHg, en paciente previamente normocápnico",
+      "¿Cuáles son los 4 criterios de Berlín para SDRA? → Inicio<7días de evento conocido + opacidades bilaterales + no explicado por edema cardiogénico + hipoxemia por PaFi",
+      "¿Qué mecanismo de hipoxemia predomina en SDRA? → Shunt intrapulmonar (resistente a oxígeno suplementario)",
+      "¿Cuál es el objetivo de SatO2 en EPOC con oxigenoterapia? → 88-92%, para evitar precipitar hipercapnia",
+      "¿Cuándo considerar ECMO? → SDRA refractario con PaFi<80 pese a tratamiento óptimo",
+      "¿Los corticosteroides son de rutina en SDRA? → NO, controversial, solo en fases tardías seleccionadas",
+      "¿Qué estrategias han reducido la mortalidad del SDRA severo? → VM protectora + posición prono"
+    ],
+    "redFlags": [
+      "Confusión/alteración del sensorio en paciente con disnea → signo de alarma, compromiso ya significativo",
+      "PaFi<80 pese a tratamiento óptimo → considerar ECMO",
+      "Hipoxemia que NO mejora con oxígeno suplementario → sospechar shunt verdadero (SDRA)"
+    ],
+    "erroresFrecuentes": [
+      "Dar oxígeno sin titular en EPOC, precipitando hipercapnia",
+      "Asumir SDRA solo por hipoxemia sin verificar los otros 3 criterios de Berlín",
+      "Usar corticosteroides de rutina en SDRA temprano",
+      "Subestimar la presentación insidiosa en pacientes con IRA sobre patología crónica"
+    ],
+    "asociacionesClinicas": [
+      "Neumonía grave + inicio<7días + infiltrados bilaterales → evaluar activamente criterios de SDRA",
+      "IRA hipercápnica + antecedente de EPOC → titular oxígeno con precaución (88-92%)"
     ]
   },
+  "casosClinicos": [
+    {
+      "nivel": "avanzado",
+      "vineta": "Varón de 64 años, tiempo de enfermedad 5 días, acude por disnea progresiva, fiebre y tos con expectoración purulenta. Hoy presenta taquipnea y uso de músculos accesorios. Exfumador (20 paq/año), HTA controlada, vacunado COVID-19 pero no influenza ni neumococo. FC 112, FR 34, T° 38.3°C, SatO2 84% aire ambiente. Estertores crepitantes bilaterales, cianosis labial leve. Rx: opacidades alveolares bilaterales sin cardiomegalia. Gasometría (aire ambiente): pH 7.31, PaCO2 48 mmHg, PaO2 54 mmHg, HCO3 22 mEq/L, FiO2 0.21.",
+      "preguntaMC": {
+        "enunciado": "Calculando el índice PaO2/FiO2, ¿en qué categoría de gravedad de SDRA (criterios de Berlín) se clasificaría este paciente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "PaFi = 54/0.21 ≈ 257 — SDRA leve"
+          },
+          {
+            "id": "b",
+            "texto": "PaFi = 54/0.21 ≈ 257 — SDRA moderado"
+          },
+          {
+            "id": "c",
+            "texto": "PaFi = 54/0.21 ≈ 257 — SDRA severo"
+          },
+          {
+            "id": "d",
+            "texto": "No cumple criterios de SDRA"
+          },
+          {
+            "id": "e",
+            "texto": "No se puede calcular sin saber la FiO2 exacta en litros"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "PaFi = PaO2/FiO2 = 54/0.21 ≈ 257, que cae en el rango 200-300 mmHg — SDRA LEVE según Berlín. Además cumple los otros criterios: inicio dentro de los 7 días de un evento conocido (neumonía), opacidades bilaterales en Rx, y no explicado por edema cardiogénico (sin cardiomegalia, sin antecedente de insuficiencia cardiaca)."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Este paciente presenta insuficiencia respiratoria aguda? ¿De qué tipo, y qué manejo de oxigenoterapia sería apropiado iniciar?",
+        "respuestaModelo": "Sí, presenta insuficiencia respiratoria aguda: PaO2 54 mmHg (<60) confirma el componente hipoxémico. El PaCO2 de 48 está discretamente elevado pero no supera el umbral de 50 para definir hipercapnia franca, por lo que se clasifica predominantemente como IRA hipoxémica (tipo I), en el contexto de una neumonía grave con criterios de SDRA leve. El manejo inicial de oxigenoterapia apropiado sería cánula nasal de alto flujo (HFNC), que mejora la oxigenación sin necesidad de intubación inmediata y es especialmente útil en SDRA leve — reservando la ventilación mecánica invasiva para deterioro progresivo pese a estas medidas."
+      }
+    }
+  ]
+},
   {
   "id": "saos",
   "nombre": "Síndrome de Apnea-Hipopnea Obstructiva del Sueño (SAOS)",
