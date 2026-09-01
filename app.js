@@ -547,6 +547,11 @@ function renderPdfDividido(compositeId){
     pdfOrigen = e.pdfOrigen;
     cuadernoKey = e.id + '::cuaderno-clase';
     titulo = e.nombre;
+  } else if(tipo === 'tema'){
+    const t = getTema(id);
+    pdfOrigen = t.pdfOrigen;
+    cuadernoKey = t.id + '::cuaderno-clase';
+    titulo = t.nombre;
   }
 
   if(!pdfOrigen){
@@ -1098,6 +1103,7 @@ function renderTema(id){
       <div class="toolbar">
         <div class="btn-icon" onclick="navCuaderno('tema','${t.id}')">⛶ Cuaderno a pantalla completa</div>
         ${t.casosClinicos ? `<div class="btn-icon" onclick="navCasos('${t.id}')">🩺 Casos clínicos</div>` : ''}
+        ${t.casosClinicos ? `<div class="btn-icon" onclick="iniciarExamenTema('${t.id}')">📝 Ponte a prueba</div>` : ''}
         <div class="btn-icon" onclick="window.print()">🖨 Imprimir</div>
         <div class="btn-icon ${t.estudiado ? 'done' : ''}" onclick="toggleEstudiadoTema('${t.id}')">${t.estudiado ? '✓ Estudiado' : 'Marcar como estudiado'}</div>
       </div>
@@ -1135,6 +1141,17 @@ function renderTema(id){
       <p>${c.fisiologiaNormal}</p>
     </div>
 
+    ${c.tablasClinicas ? c.tablasClinicas.map(tb => `
+    <div class="kcard">
+      <h3>${tb.titulo}</h3>
+      ${tb.contexto ? `<p>${tb.contexto}</p>` : ''}
+      <table class="compare">
+        <tr>${tb.columnas.map(col => `<th>${col}</th>`).join('')}</tr>
+        ${tb.filas.map(fila => `<tr>${fila.map(celda => `<td>${celda}</td>`).join('')}</tr>`).join('')}
+      </table>
+      ${tb.nota ? `<p class="muted" style="margin-top:8px;">${tb.nota}</p>` : ''}
+    </div>`).join('') : ''}
+
     <div class="pcard">
       <h3>🔗 Por qué importa (correlación clínica)</h3>
       <p>${c.correlacionClinica}</p>
@@ -1146,6 +1163,29 @@ function renderTema(id){
         ${c.puntosClave.map((x,i) => `<div class="chip"><span class="n">${String(i+1).padStart(2,'0')}</span><span>${x}</span></div>`).join('')}
       </div>
     </div>
+
+    ${c.asiLoPreguntanExamen ? `
+    <div class="ccard">
+      <h3>🎯 Así lo preguntan en tu examen</h3>
+      <p>${c.asiLoPreguntanExamen.intro}</p>
+      ${c.asiLoPreguntanExamen.ejercicios.map(ej => `
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--line);">
+          <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.04em; font-weight:800; color:var(--coral);">${ej.tipo}</p>
+          <p><strong>Planteamiento:</strong> ${ej.planteamiento}</p>
+          <p class="muted"><strong>Respuesta modelo:</strong> ${ej.respuestaModelo}</p>
+        </div>
+      `).join('')}
+    </div>` : ''}
+
+    ${t.pdfOrigen ? `
+    <div class="kcard" style="border:1.5px dashed var(--cobalt-line);">
+      <h3>📄 PDF original de esta clase</h3>
+      <p class="muted">${t.pdfOrigen.titulo}</p>
+      <div class="toolbar" style="margin-top:8px;">
+        <div class="btn-icon" onclick="abrirVistaDividida('tema', '${t.id}')">📖✎ Ver PDF + escribir a la vez</div>
+        <div class="btn-icon" onclick="window.open('${t.pdfOrigen.url}', '_blank')">↗ Abrir en pestaña nueva</div>
+      </div>
+    </div>` : ''}
 
     <div class="section-block">
       <h3>✎ Apunte</h3>
