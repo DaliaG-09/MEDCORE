@@ -236,7 +236,7 @@ h1.page-title{
 
 /* ---------- resaltado de texto ---------- */
 .hl-popup{
-  display:none; position:absolute; z-index:200; background: var(--ink); border-radius:999px;
+  display:none; position:absolute; z-index:200; background: #24243A; border-radius:999px;
   padding:6px 8px; gap:8px; align-items:center; box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 .hl-swatch{ width:20px; height:20px; border-radius:50%; cursor:pointer; border:2px solid rgba(255,255,255,0.3); }
@@ -957,7 +957,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .tarea-thumb-wrap{ position:relative; display:inline-block; }
 .tarea-thumb{ width:64px; height:64px; object-fit:cover; border-radius:8px; border:1px solid var(--line); cursor:pointer; display:block; }
 .tarea-thumb-remove{
-  position:absolute; top:-6px; right:-6px; background: var(--ink); color:#fff;
+  position:absolute; top:-6px; right:-6px; background: #24243A; color:#fff;
   width:18px; height:18px; border-radius:50%; font-size:11px; line-height:18px; text-align:center; cursor:pointer;
 }
 .tarea-upload-btn{
@@ -1089,7 +1089,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 /* ---------- examen simulado ---------- */
 .examen-header-sticky{
   position: sticky; top: 8px; z-index: 20; display:flex; justify-content:space-between; align-items:center;
-  background: var(--ink); color:#fff; padding: 10px 16px; border-radius: var(--radius-md);
+  background: #1F1F35; color:#fff; padding: 10px 16px; border-radius: var(--radius-md);
   font-family: var(--font-display); font-weight:700; font-size:14px; margin-bottom:18px; box-shadow: var(--shadow-hover);
 }
 .examen-timer{ font-family: var(--font-mono); font-size:18px; font-weight:800; color: var(--honey); }
@@ -1141,7 +1141,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 /* ---------- aviso cuando falla el guardado local (localStorage lleno) ---------- */
 .aviso-guardado-fallido{
   position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-  z-index: 500; background: var(--ink); color: #fff; padding: 14px 18px; border-radius: var(--radius-md);
+  z-index: 500; background: #24243A; color: #fff; padding: 14px 18px; border-radius: var(--radius-md);
   box-shadow: var(--shadow-hover); max-width: 90vw; width: 380px; font-size: 13px;
 }
 .aviso-guardado-fallido strong{ display:block; margin-bottom:6px; color: var(--honey); }
