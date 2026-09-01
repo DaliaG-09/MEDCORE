@@ -1188,11 +1188,12 @@ function renderTema(id){
     <div class="ccard">
       <h3>🎯 Así lo preguntan en tu examen</h3>
       <p>${c.asiLoPreguntanExamen.intro}</p>
-      ${c.asiLoPreguntanExamen.ejercicios.map(ej => `
+      ${c.asiLoPreguntanExamen.ejercicios.map((ej, i) => `
         <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--line);">
           <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.04em; font-weight:800; color:var(--coral);">${ej.tipo}</p>
           <p><strong>Planteamiento:</strong> ${ej.planteamiento}</p>
-          <p class="muted"><strong>Respuesta modelo:</strong> ${ej.respuestaModelo}</p>
+          <div class="btn-icon" style="margin-top:8px; display:table;" onclick="toggleRespuestaExamen('${t.id}-examen-${i}', this)">👁️ Ver respuesta modelo</div>
+          <p id="${t.id}-examen-${i}" class="muted" style="display:none; margin-top:8px;"><strong>Respuesta modelo:</strong> ${ej.respuestaModelo}</p>
         </div>
       `).join('')}
     </div>` : ''}
@@ -1216,6 +1217,16 @@ function renderTema(id){
   markHighlightZones('view-tema-content', t.id);
   initInlineCuaderno(t.id + '::cuaderno-clase', 'ic-tema-' + t.id);
 }
+/* muestra/oculta la respuesta modelo de un ejercicio de "Así lo preguntan en tu examen",
+   para que primero razones tú mismo antes de ver la respuesta */
+function toggleRespuestaExamen(elId, btnEl){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  const oculta = el.style.display === 'none' || el.style.display === '';
+  el.style.display = oculta ? 'block' : 'none';
+  btnEl.textContent = oculta ? '🙈 Ocultar respuesta' : '👁️ Ver respuesta modelo';
+}
+
 function toggleEstudiadoTema(id){
   const t = getTema(id);
   t.estudiado = !t.estudiado;
@@ -1631,11 +1642,12 @@ function renderProfundo(p, diseaseId){
     <div class="ccard">
       <h3>🎯 Así lo preguntan en tu examen</h3>
       <p>${p.asiLoPreguntanExamen.intro}</p>
-      ${p.asiLoPreguntanExamen.ejercicios.map(ej => `
+      ${p.asiLoPreguntanExamen.ejercicios.map((ej, i) => `
         <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--line);">
           <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.04em; font-weight:800; color:var(--coral);">${ej.tipo}</p>
           <p><strong>Planteamiento:</strong> ${ej.planteamiento}</p>
-          <p class="muted"><strong>Respuesta modelo:</strong> ${ej.respuestaModelo}</p>
+          <div class="btn-icon" style="margin-top:8px; display:table;" onclick="toggleRespuestaExamen('${diseaseId}-examen-${i}', this)">👁️ Ver respuesta modelo</div>
+          <p id="${diseaseId}-examen-${i}" class="muted" style="display:none; margin-top:8px;"><strong>Respuesta modelo:</strong> ${ej.respuestaModelo}</p>
         </div>
       `).join('')}
     </div>` : ''}
