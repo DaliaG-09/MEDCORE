@@ -31,7 +31,17 @@ const notebookAdapter = {
     catch(err){ return { strokes: [], images: [], texts: [], pageHeight: 1100 }; }
   },
   set(key, data){
-    localStorage.setItem('medcore-notebook::' + key, JSON.stringify(data));
+    let guardadoLocalOk = true;
+    try{
+      localStorage.setItem('medcore-notebook::' + key, JSON.stringify(data));
+    } catch(err){
+      // Esto pasa típicamente cuando se llena la cuota del navegador (muchas imágenes pegadas
+      // acumuladas). Sin este try/catch, el error se propagaría silenciosamente hacia arriba
+      // y el usuario nunca se enteraría de que sus notas DEJARON de guardarse.
+      guardadoLocalOk = false;
+      console.error('MEDCORE: no se pudo guardar el cuaderno "' + key + '" localmente — probablemente el almacenamiento del navegador está lleno.', err);
+      avisarErrorGuardadoCuaderno();
+    }
     if(typeof currentUser !== 'undefined' && currentUser && typeof fbDb !== 'undefined' && firestoreReady){
       const payload = JSON.stringify(data);
       if(payload.length > 950000){
@@ -41,8 +51,23 @@ const notebookAdapter = {
         .set({ data: payload, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true })
         .catch((err) => { if(err.code !== 'unavailable') console.warn('MEDCORE: no se pudo sincronizar el cuaderno "' + key + '".', err.message); });
     }
+    return guardadoLocalOk;
   }
 };
+
+let avisoGuardadoMostrado = false; // evita mostrar el aviso repetidas veces en la misma sesión
+function avisarErrorGuardadoCuaderno(){
+  if(avisoGuardadoMostrado) return;
+  avisoGuardadoMostrado = true;
+  const aviso = document.createElement('div');
+  aviso.className = 'aviso-guardado-fallido';
+  aviso.innerHTML = `
+    <strong>⚠️ No se pudo guardar tu último cambio</strong>
+    <p>El almacenamiento de tu navegador/tablet está lleno. Borra imágenes que ya no necesites de algún cuaderno (ocupan más espacio que el texto) para poder seguir guardando.</p>
+    <span onclick="this.parentElement.remove()">Cerrar ✕</span>
+  `;
+  document.body.appendChild(aviso);
+}
 
 function navCuaderno(sourceType, id){
   const nombre = sourceType === 'tema' ? getTema(id).nombre : sourceType === 'hospital' ? getHospitalSesion(id).titulo : getEnfermedad(id).nombre;
