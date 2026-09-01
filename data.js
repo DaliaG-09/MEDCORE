@@ -5741,6 +5741,10 @@ const TEMAS = [
     ],
     "favorito": false,
     "estudiado": false,
+    "pdfOrigen": {
+      "url": "https://drive.google.com/file/d/1ZJsp7Q_IKvVL7a-SUU2Wd_RMiIy03jTe/view",
+      "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-1-TEMA-2: Exámenes de ayuda diagnóstica en Neumología"
+    },
     "contenido": {
       "resumen": "Antes de estudiar cada enfermedad respiratoria, necesitas conocer las herramientas que se usan para diagnosticarlas. Cinco estudios cubren la mayoría de los escenarios clínicos en Neumología: radiografía de tórax (primera línea), tomografía (mayor detalle), espirometría (función pulmonar), toracocentesis (líquido pleural) y fibrobroncoscopía (visualización directa de la vía aérea).",
       "estructuras": [
