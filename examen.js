@@ -56,6 +56,18 @@ function iniciarExamenTema(temaId){
   navPush('examen-simulado', 'tema::' + temaId, 'Examen — ' + t.nombre);
 }
 
+function iniciarExamenTaller(tallerId){
+  const t = getTaller(tallerId);
+  const casos = t.casos || [];
+  if(!casos.length){
+    alert('Todavía no hay casos construidos para este taller — vuelve pronto.');
+    return;
+  }
+  const items = construirItemsDeCasos(casos);
+  prepararExamen(items, t.nombre, 'Examen de práctica', { tipo: 'taller', id: tallerId });
+  navPush('examen-simulado', 'taller::' + tallerId, 'Examen — ' + t.nombre);
+}
+
 /* ---------- por módulo completo (al final del módulo) ---------- */
 function iniciarExamenModulo(moduloKey){
   const m = MODULOS[moduloKey];
@@ -294,6 +306,9 @@ function reiniciarMismoExamen(){
   } else if(volverA.tipo === 'tema'){
     const t = getTema(volverA.id);
     prepararExamen(construirItemsDeCasos(t.casosClinicos || []), t.nombre, 'Examen de práctica', volverA);
+  } else if(volverA.tipo === 'taller'){
+    const t = getTaller(volverA.id);
+    prepararExamen(construirItemsDeCasos(t.casos || []), t.nombre, 'Examen de práctica', volverA);
   } else {
     const m = MODULOS[volverA.id];
     const todasIds = m.enfermedadesPorCategoria.flatMap(c => c.ids);
