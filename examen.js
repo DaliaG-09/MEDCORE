@@ -44,6 +44,18 @@ function iniciarExamenEnfermedad(enfermedadId){
   navPush('examen-simulado', 'enfermedad::' + enfermedadId, 'Examen — ' + e.nombre);
 }
 
+function iniciarExamenTema(temaId){
+  const t = getTema(temaId);
+  const casos = t.casosClinicos || [];
+  if(!casos.length){
+    alert('Todavía no hay casos clínicos construidos para ' + t.nombre + ', así que no se puede armar un examen de práctica — vuelve pronto.');
+    return;
+  }
+  const items = construirItemsDeCasos(casos);
+  prepararExamen(items, t.nombre, 'Examen de práctica', { tipo: 'tema', id: temaId });
+  navPush('examen-simulado', 'tema::' + temaId, 'Examen — ' + t.nombre);
+}
+
 /* ---------- por módulo completo (al final del módulo) ---------- */
 function iniciarExamenModulo(moduloKey){
   const m = MODULOS[moduloKey];
@@ -279,6 +291,9 @@ function reiniciarMismoExamen(){
   if(volverA.tipo === 'enfermedad'){
     const e = getEnfermedad(volverA.id);
     prepararExamen(construirItemsDeCasos(e.casosClinicos || []), e.nombre, 'Examen de práctica', volverA);
+  } else if(volverA.tipo === 'tema'){
+    const t = getTema(volverA.id);
+    prepararExamen(construirItemsDeCasos(t.casosClinicos || []), t.nombre, 'Examen de práctica', volverA);
   } else {
     const m = MODULOS[volverA.id];
     const todasIds = m.enfermedadesPorCategoria.flatMap(c => c.ids);
