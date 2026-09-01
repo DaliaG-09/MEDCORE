@@ -892,14 +892,14 @@ function cerrarPanelCalendario(){
 
 /* ---------- Mis Notas: calculadora de nota final del curso ---------- */
 const NOTAS_COMPONENTES = [
-  { id:'ec1', nombre:'EC1 — Neumología', peso:10, tipo:'ec' },
-  { id:'ec2', nombre:'EC2 — Cardiología', peso:10, tipo:'ec' },
-  { id:'ep1', nombre:'Examen Parcial 1 (Neumología + Cardiología)', peso:18, tipo:'examen' },
-  { id:'ec3', nombre:'EC3 — Nefrología', peso:10, tipo:'ec' },
-  { id:'ec4', nombre:'EC4 — Gastroenterología', peso:10, tipo:'ec' },
-  { id:'ec5', nombre:'EC5 — Dermatología', peso:10, tipo:'ec' },
-  { id:'ep2', nombre:'Examen Parcial 2 (Nefro + Gastro + Dermato)', peso:12, tipo:'examen' },
-  { id:'eif', nombre:'Examen Integrado Final', peso:20, tipo:'examen' },
+  { id:'ec1', nombre:'Neumología', nombreCompleto:'EC1 — Neumología', peso:10, tipo:'ec', emoji:'🫁', color:'#8EC5E8' },
+  { id:'ec2', nombre:'Cardiología', nombreCompleto:'EC2 — Cardiología', peso:10, tipo:'ec', emoji:'🫀', color:'#8FD3B6' },
+  { id:'ep1', nombre:'Examen Parcial 1', nombreCompleto:'Examen Parcial 1 — Neumología + Cardiología', peso:18, tipo:'examen', emoji:'📘' },
+  { id:'ec3', nombre:'Nefrología', nombreCompleto:'EC3 — Nefrología', peso:10, tipo:'ec', emoji:'🫘', color:'#E8A4C8' },
+  { id:'ec4', nombre:'Gastroenterología', nombreCompleto:'EC4 — Gastroenterología', peso:10, tipo:'ec', emoji:'🍽️', color:'#F0C68A' },
+  { id:'ec5', nombre:'Dermatología', nombreCompleto:'EC5 — Dermatología', peso:10, tipo:'ec', emoji:'🧴', color:'#D8A4C8' },
+  { id:'ep2', nombre:'Examen Parcial 2', nombreCompleto:'Examen Parcial 2 — Nefrología + Gastroenterología + Dermatología', peso:12, tipo:'examen', emoji:'📗' },
+  { id:'eif', nombre:'Examen Integrado Final', nombreCompleto:'Examen Integrado Final — todos los módulos', peso:20, tipo:'examen', emoji:'🎓' },
 ];
 const NOTA_MINIMA_APROBAR = 13;
 
@@ -963,39 +963,52 @@ function renderNotas(){
   const p = calcularProgresoNotas();
 
   const mensajes = {
-    'completo-aprobado': () => `<strong>¡Aprobaste el curso!</strong> Tu nota final es ${p.notaFinalSiTermino.toFixed(2)} — por encima del mínimo (${NOTA_MINIMA_APROBAR}).`,
-    'completo-desaprobado': () => `Tu nota final quedó en ${p.notaFinalSiTermino.toFixed(2)} — por debajo del mínimo (${NOTA_MINIMA_APROBAR}). Ya no quedan componentes pendientes.`,
-    'asegurado': () => `<strong>Ya aseguraste tu ${p.objetivo}</strong> — aunque saques 0 en lo que falta, sigues llegando a esa nota. (En lo que queda, ${(100-p.pesoPendiente).toFixed(0)}% del curso ya está resuelto).`,
-    'imposible': () => `Con lo que llevas, ya no es matemáticamente posible llegar a ${p.objetivo} — necesitarías más de 20 en lo que falta. El máximo posible ahora es <strong>${((p.ponderadoConocido + p.pesoPendiente*20)/100).toFixed(2)}</strong>.`,
-    'en-progreso': () => `Necesitas un promedio de <strong>${p.promedioNecesario.toFixed(2)}</strong> en lo que te falta (${p.pesoPendiente}% del curso) para llegar a ${p.objetivo}.`,
+    'completo-aprobado': () => `Aprobaste el curso: tu nota final es <strong>${p.notaFinalSiTermino.toFixed(2)}</strong>, por encima del mínimo (${NOTA_MINIMA_APROBAR}).`,
+    'completo-desaprobado': () => `Tu nota final quedó en <strong>${p.notaFinalSiTermino.toFixed(2)}</strong>, por debajo del mínimo (${NOTA_MINIMA_APROBAR}). Ya no quedan componentes pendientes.`,
+    'asegurado': () => `Ya aseguraste el ${p.objetivo}: aunque saques 0 en lo que falta, sigues llegando a esa nota.`,
+    'imposible': () => `Ya no es posible llegar a ${p.objetivo} — necesitarías más de 20 en lo que falta. Tu máximo posible ahora es <strong>${((p.ponderadoConocido + p.pesoPendiente*20)/100).toFixed(2)}</strong>.`,
+    'en-progreso': () => `Necesitas un promedio de <strong>${p.promedioNecesario.toFixed(2)}</strong> en lo que falta para llegar a ${p.objetivo}.`,
   };
-  const claseAviso = { 'completo-aprobado':'gcard', 'completo-desaprobado':'ccard', 'asegurado':'gcard', 'imposible':'ccard', 'en-progreso':'pcard' }[p.estado];
+
+  // barra de progreso segmentada: un bloque por componente, ancho proporcional a su peso real,
+  // coloreado si ya tiene nota (color del módulo, u honey para exámenes) o gris si está pendiente
+  const barraSegmentos = NOTAS_COMPONENTES.map(c => {
+    const item = p.detalle.find(d => d.id === c.id);
+    const tieneNota = item.nota !== null;
+    const color = tieneNota ? (c.color || 'var(--honey)') : 'var(--line)';
+    return `<div class="notas-barra-seg" style="flex:${c.peso}; background:${color};" title="${c.nombreCompleto} — ${c.peso}%"></div>`;
+  }).join('');
+
+  const ecs = NOTAS_COMPONENTES.filter(c => c.tipo === 'ec');
+  const examenes = NOTAS_COMPONENTES.filter(c => c.tipo === 'examen');
 
   wrap.innerHTML = `
     ${volverBtnHTML()}
-    <span class="eyebrow">${CURSO.nombre} — ${CURSO.formulaEvaluacion}</span>
+    <span class="eyebrow">${CURSO.nombre}</span>
     <h1 class="page-title">📊 Mis Notas</h1>
-    <p class="page-sub">Ve metiendo tus notas de talleres, prácticas y exámenes. Cada EC se promedia sola — tú solo escribe las notas sueltas.</p>
+    <p class="page-sub">Ve metiendo tus notas de talleres, prácticas y exámenes. Cada módulo se promedia solo.</p>
 
-    <div class="${claseAviso} notas-resumen">
-      <div class="notas-resumen-top">
-        <div>
-          <label class="notas-objetivo-label">Quiero sacar</label>
-          <div class="notas-objetivo-input-wrap">
-            <input type="number" min="0" max="20" step="0.1" class="notas-objetivo-input" id="notas-objetivo" value="${p.objetivo}" onchange="actualizarObjetivoNotas(this.value)">
-            <span class="muted">/ 20</span>
-          </div>
-        </div>
-        <div class="notas-avance">
-          <span class="notas-avance-num">${p.pesoConocido}%</span>
-          <span class="muted">del curso ya con nota</span>
+    <div class="notas-hero">
+      <div class="notas-hero-objetivo">
+        <label class="notas-objetivo-label">Quiero sacar</label>
+        <div class="notas-objetivo-input-wrap">
+          <input type="number" min="0" max="20" step="0.1" class="notas-objetivo-input" id="notas-objetivo" value="${p.objetivo}" onchange="actualizarObjetivoNotas(this.value)">
+          <span class="notas-objetivo-de20">/ 20</span>
         </div>
       </div>
-      <p class="notas-mensaje">${mensajes[p.estado]()}</p>
+      <p class="notas-hero-mensaje notas-estado-${p.estado}">${mensajes[p.estado]()}</p>
+      <div class="notas-barra">${barraSegmentos}</div>
+      <p class="notas-barra-caption muted">${p.pesoConocido}% del curso ya tiene nota · ${p.pesoPendiente}% pendiente</p>
     </div>
 
-    <div class="notas-lista">
-      ${NOTAS_COMPONENTES.map(c => renderComponenteNotas(c, p.datos)).join('')}
+    <p class="notas-seccion-titulo">Evaluación continua <span class="muted">— promedio de tus talleres y prácticas</span></p>
+    <div class="notas-grid-ec">
+      ${ecs.map(c => renderComponenteNotas(c, p.datos)).join('')}
+    </div>
+
+    <p class="notas-seccion-titulo">Exámenes <span class="muted">— una sola nota, todo o nada</span></p>
+    <div class="notas-grid-examen">
+      ${examenes.map(c => renderComponenteNotas(c, p.datos)).join('')}
     </div>
   `;
 }
@@ -1005,41 +1018,43 @@ function renderComponenteNotas(c, datos){
     const valor = datos.examen[c.id];
     const tieneNota = valor !== undefined && valor !== null && valor !== '';
     return `
-    <div class="notas-card ${tieneNota ? 'con-nota' : ''}">
-      <div class="notas-card-head">
-        <span class="notas-card-nombre">${c.nombre}</span>
-        <span class="notas-card-peso">${c.peso}%</span>
+    <div class="notas-examen-card ${tieneNota ? 'con-nota' : ''}">
+      <div class="notas-examen-info">
+        <span class="notas-examen-emoji">${c.emoji}</span>
+        <div>
+          <p class="notas-examen-nombre">${c.nombreCompleto}</p>
+          <p class="notas-examen-peso muted">vale ${c.peso}% de tu nota final</p>
+        </div>
       </div>
       <div class="notas-examen-input-wrap">
-        <input type="number" min="0" max="20" step="0.1" placeholder="Pendiente" class="notas-examen-input"
+        <input type="number" min="0" max="20" step="0.1" placeholder="—" class="notas-examen-input"
           value="${tieneNota ? valor : ''}" onchange="setNotaExamen('${c.id}', this.value)">
-        <span class="muted">/ 20</span>
+        <span class="muted">/20</span>
       </div>
     </div>`;
   }
   const items = datos.ec[c.id] || [];
   const promedio = calcularPromedioEC(items);
   return `
-  <div class="notas-card ${items.length ? 'con-nota' : ''}">
-    <div class="notas-card-head">
-      <span class="notas-card-nombre">${c.nombre}</span>
-      <span class="notas-card-peso">${c.peso}%</span>
+  <div class="notas-ec-card" style="--modulo-color:${c.color};">
+    <div class="notas-ec-head">
+      <span class="notas-ec-emoji">${c.emoji}</span>
+      <div class="notas-ec-titulos">
+        <p class="notas-ec-nombre">${c.nombre}</p>
+        <p class="notas-ec-peso muted">${c.peso}% de la nota final</p>
+      </div>
+      ${items.length ? `<span class="notas-ec-promedio">${promedio.toFixed(2)}</span>` : ''}
     </div>
     ${items.length ? `
-    <div class="notas-sueltas">
+    <div class="notas-chips">
       ${items.map((it, i) => `
-        <div class="notas-suelta-item">
-          <span>${it.nombre}</span>
-          <span class="notas-suelta-nota">${it.nota}</span>
-          <span class="notas-suelta-quitar" onclick="quitarNotaSuelta('${c.id}', ${i})">✕</span>
-        </div>
+        <span class="notas-chip">${it.nombre}: <strong>${it.nota}</strong> <i onclick="quitarNotaSuelta('${c.id}', ${i})">✕</i></span>
       `).join('')}
-    </div>
-    <p class="notas-promedio">Promedio: <strong>${promedio.toFixed(2)}</strong></p>` : `<p class="muted notas-vacio">Sin notas todavía</p>`}
+    </div>` : `<p class="muted notas-vacio">Aún no tienes notas aquí</p>`}
     <div class="notas-agregar-wrap">
       <input type="text" placeholder="Ej: Taller AGA 1" class="notas-agregar-nombre" id="notas-nombre-${c.id}">
-      <input type="number" min="0" max="20" step="0.1" placeholder="Nota" class="notas-agregar-nota" id="notas-nota-${c.id}">
-      <div class="btn-icon notas-agregar-btn" onclick="agregarNotaSuelta('${c.id}')">+ Agregar</div>
+      <input type="number" min="0" max="20" step="0.1" placeholder="0-20" class="notas-agregar-nota" id="notas-nota-${c.id}">
+      <div class="btn-icon notas-agregar-btn" onclick="agregarNotaSuelta('${c.id}')">+</div>
     </div>
   </div>`;
 }
