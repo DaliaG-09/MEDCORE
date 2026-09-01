@@ -6383,155 +6383,473 @@ const MODULOS = {
       "Bronquitis crónica es un diagnóstico CLÍNICO (tiempo), EPOC requiere confirmación ESPIROMÉTRICA — no son sinónimos aunque se usen así coloquialmente",
       "Neumonía nosocomial (>48h de hospitalización) tiene mayor riesgo de gérmenes multirresistentes que la NAC — cambia el antibiótico empírico"
     ],
-    "quizComparativo": [
-      {
-        "pregunta": "EPOC vs. Asma: ¿qué dato espirométrico los distingue con más certeza?",
-        "respuesta": "La reversibilidad post-broncodilatador: ≥12% y 200mL en FEV1 es compatible con asma; su ausencia (obstrucción fija) orienta a EPOC.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "EPOC vs. EPID: ambos dan disnea crónica progresiva. ¿Qué patrón funcional tiene cada uno?",
-        "respuesta": "EPOC = patrón obstructivo (VEF1/FVC <0.70). EPID = patrón restrictivo (VEF1/FVC normal o alto, con CVF y CPT reducidos).",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "Neumotórax vs. Derrame pleural: ambos abolen el murmullo vesicular. ¿Qué los distingue en la percusión?",
-        "respuesta": "Neumotórax = timpanismo/hiperresonancia (aire). Derrame = matidez (líquido). El frémito vocal está disminuido en ambos y NO los diferencia.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "NAC vs. Tuberculosis pulmonar: ambas dan tos y fiebre. ¿Cuál es la diferencia de curso temporal más útil?",
-        "respuesta": "NAC = curso agudo (días). TB = curso insidioso (semanas a meses), con pérdida de peso y sudoración nocturna más marcadas.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "NAC vs. Neumonía nosocomial: ¿qué cambia entre ambas más allá del lugar de adquisición?",
-        "respuesta": "La nosocomial (>48h de hospitalización) tiene mayor riesgo de patógenos multirresistentes (Pseudomonas, Acinetobacter), lo que obliga a ampliar la cobertura antibiótica empírica.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "Bronquitis crónica vs. EPOC: ¿en qué se diferencian exactamente, si comparten tanto?",
-        "respuesta": "Bronquitis crónica = diagnóstico clínico (tos productiva ≥3 meses/año x2 años). EPOC = requiere confirmación espirométrica de obstrucción fija (VEF1/FVC <0.70). Un paciente puede tener bronquitis crónica SIN tener EPOC.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "Alveolitis alérgica extrínseca vs. Asma ocupacional: ambas mejoran fuera del trabajo. ¿Qué hallazgo auscultatorio las distingue?",
-        "respuesta": "Alveolitis alérgica extrínseca = estertores finos SIN sibilancias. Asma ocupacional = sibilancias difusas. Presencia o ausencia de sibilancias es la clave.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "EPID vs. Insuficiencia cardiaca: ambas dan crépitos bibasales. ¿Qué otros datos las diferencian?",
-        "respuesta": "EPID: crépitos tipo 'velcro' específicos, sin signos de sobrecarga de volumen. Insuficiencia cardiaca: crépitos más húmedos/gruesos, con ingurgitación yugular, edemas, y respuesta a diuréticos.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "SDRA vs. edema pulmonar cardiogénico: ambos dan infiltrados bilaterales e hipoxemia. ¿Cómo se diferencian según Berlín?",
-        "respuesta": "SDRA requiere que el cuadro NO se explique completamente por edema cardiogénico (ecocardiograma ayuda) y que tenga un evento desencadenante conocido en los últimos 7 días.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "Derrame paraneumónico simple vs. complicado/empiema: ¿qué datos del líquido pleural marcan la diferencia práctica?",
-        "respuesta": "pH <7.2, glucosa <40-60 mg/dl, y aspecto turbio/purulento indican derrame complicado o empiema — cambia la conducta de solo antibiótico a drenaje torácico obligatorio.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "Silicosis vs. Asbestosis: ambas son neumoconiosis. ¿Cuál es la complicación específica de cada una?",
-        "respuesta": "Silicosis se asocia fuertemente a tuberculosis. Asbestosis se asocia específicamente a mesotelioma pleural maligno.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "Insuficiencia respiratoria tipo I vs. tipo II: ¿cuál es la diferencia central, y qué enfermedad típica representa cada una?",
-        "respuesta": "Tipo I = hipoxémica sin hipercapnia (típica de neumonía/SDRA). Tipo II = hipercápnica por hipoventilación (típica de EPOC agudizado o enfermedad neuromuscular).",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "TB pulmonar vs. neumonía atípica: ambas pueden dar auscultación relativamente pobre pese a síntomas importantes. ¿Qué las distingue mejor?",
-        "respuesta": "TB tiene curso de semanas con pérdida de peso marcada y localización apical; la neumonía atípica es de curso más agudo (días) y no tiene la misma pérdida de peso ni localización preferencial apical.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "SAOS vs. EPOC: ambos pueden coexistir ('overlap syndrome'). ¿Cuál es el riesgo particular de esa combinación?",
-        "respuesta": "La combinación de obstrucción crónica de vía aérea (EPOC) con apneas nocturnas (SAOS) genera mayor riesgo de hipoxemia nocturna combinada y peor pronóstico cardiovascular que cualquiera de las dos por separado.",
-        "tipo": "comparativo"
-      },
-      {
-        "pregunta": "Bronquiectasias vs. EPOC: ambas cursan con tos crónica productiva. ¿Qué estudio las distingue de forma definitiva?",
-        "respuesta": "La TC de alta resolución: bronquiectasias muestran dilatación bronquial permanente (signo del anillo de sello); el EPOC no tiene ese hallazgo estructural específico, se confirma con espirometría.",
-        "tipo": "comparativo"
-      }
-    ],
     "casosComparativos": [
-      {
-        "nivel": "avanzado",
-        "vineta": "Varón de 55 años, tabaquismo 30 paq/año, consulta por disnea progresiva de 2 años y tos con expectoración matutina. Otro paciente, mujer de 60 años, sin tabaquismo, consulta por disnea progresiva de 1 año y tos SECA, con crépitos tipo velcro en ambas bases y acropaquia. Ambos tienen disnea crónica progresiva de causa aparentemente similar.",
-        "preguntaMC": {
-          "enunciado": "¿Qué estudio inicial permite diferenciar de entrada estos dos cuadros clínicos?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "Hemograma completo"
-            },
-            {
-              "id": "b",
-              "texto": "Espirometría — el patrón (obstructivo vs. restrictivo) orienta inmediatamente hacia direcciones diagnósticas distintas"
-            },
-            {
-              "id": "c",
-              "texto": "Electrocardiograma"
-            },
-            {
-              "id": "d",
-              "texto": "Ecografía abdominal"
-            },
-            {
-              "id": "e",
-              "texto": "Ninguno, ambos requieren el mismo manejo"
-            }
-          ],
-          "correcta": "b",
-          "explicacion": "El primer paciente (tabaquismo, tos productiva) orienta a EPOC — esperaríamos un patrón OBSTRUCTIVO (VEF1/FVC <0.70). La segunda paciente (tos seca, crépitos velcro, acropaquia, sin tabaquismo) orienta a EPID — esperaríamos un patrón RESTRICTIVO (VEF1/FVC normal con CVF reducida). La espirometría es el primer estudio que separa estos dos caminos diagnósticos completamente distintos, pese a que ambos comparten el síntoma principal de disnea crónica progresiva."
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con obstrucción confirmada por espirometría (FEV1/FVC<0.70). Necesitas decidir entre EPOC y Asma antes de elegir tratamiento.",
+    "preguntaMC": {
+      "enunciado": "¿Qué dato espirométrico distingue con más certeza entre EPOC y Asma?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "La reversibilidad post-broncodilatador: ≥12% y 200mL en FEV1 es compatible con asma; su ausencia orienta a EPOC"
         },
-        "preguntaEscrita": {
-          "enunciado": "Además de la espirometría, ¿qué otro dato semiológico (auscultatorio) esperarías encontrar diferente entre estos dos pacientes?",
-          "respuestaModelo": "En el paciente con EPOC esperaría murmullo vesicular disminuido de forma difusa, con espiración prolongada, y posibles roncantes/sibilantes si hay broncoespasmo asociado — un pulmón que suena 'con poco aire moviéndose'. En la paciente con EPID esperaría crépitos inspiratorios finos tipo 'velcro' específicamente en las bases pulmonares, un sonido característico y bien localizado, distinto del murmullo vesicular globalmente disminuido del EPOC."
-        }
-      },
-      {
-        "nivel": "avanzado",
-        "vineta": "Dos pacientes acuden por dolor torácico y disnea súbita. Paciente A: varón joven, alto y delgado, tráquea central, hiperresonancia y murmullo vesicular abolido en hemitórax derecho. Paciente B: varón de 45 años con fiebre de 5 días previos, matidez y murmullo vesicular abolido en base derecha, con leucocitosis.",
-        "preguntaMC": {
-          "enunciado": "¿Qué hallazgo semiológico específico permite diferenciar de inmediato estos dos cuadros, más allá del contexto clínico?",
-          "opciones": [
-            {
-              "id": "a",
-              "texto": "La frecuencia cardiaca"
-            },
-            {
-              "id": "b",
-              "texto": "La percusión: hiperresonancia (paciente A, neumotórax) vs. matidez (paciente B, derrame paraneumónico)"
-            },
-            {
-              "id": "c",
-              "texto": "La presión arterial"
-            },
-            {
-              "id": "d",
-              "texto": "El frémito vocal, que está aumentado en ambos"
-            },
-            {
-              "id": "e",
-              "texto": "No hay forma de diferenciarlos sin radiografía"
-            }
-          ],
-          "correcta": "b",
-          "explicacion": "Aunque ambos abolen el murmullo vesicular (por aire en un caso, líquido en el otro), la PERCUSIÓN es el hallazgo que los separa con claridad: hiperresonancia/timpanismo en el neumotórax (más aire de lo normal) versus matidez en el derrame (menos aire, más 'sólido'). El frémito vocal está DISMINUIDO en ambos, no aumentado — por eso no sirve para diferenciarlos, es un error frecuente asumir que sí."
+        {
+          "id": "b",
+          "texto": "El valor absoluto de FEV1, que siempre es más bajo en asma que en EPOC"
         },
-        "preguntaEscrita": {
-          "enunciado": "Si el paciente A (sospecha de neumotórax) de pronto presenta hipotensión y desviación traqueal, ¿qué cambia en tu conducta inmediata?",
-          "respuestaModelo": "Esos dos signos (hipotensión + desviación traqueal contralateral) indican que el neumotórax simple ha evolucionado a neumotórax A TENSIÓN, una emergencia real. La conducta cambia de 'esperar radiografía para confirmar' a actuar de inmediato con descompresión con aguja en el segundo espacio intercostal, línea medioclavicular — sin esperar ningún estudio de imagen, porque cada minuto de retraso aumenta el riesgo de shock obstructivo y paro cardiorrespiratorio."
+        {
+          "id": "c",
+          "texto": "La presencia de sibilancias, exclusiva del asma"
+        },
+        {
+          "id": "d",
+          "texto": "La edad del paciente, que por sí sola confirma el diagnóstico"
         }
-      }
-    ]
+      ],
+      "correcta": "a",
+      "explicacion": "La reversibilidad post-broncodilatador (≥12% y 200mL de aumento en FEV1) es el dato espirométrico clave: compatible con asma si está presente; su AUSENCIA (obstrucción fija) orienta a EPOC. El valor absoluto de FEV1 (b) no distingue por sí solo, ambas pueden tener cualquier grado de obstrucción. Las sibilancias (c) pueden estar presentes en ambas. La edad (d) es orientadora pero nunca diagnóstica por sí sola."
+    },
+    "preguntaEscrita": {
+      "enunciado": "Explica por qué la reversibilidad post-broncodilatador es fisiopatológicamente distinta entre asma y EPOC.",
+      "respuestaModelo": "En el asma, la obstrucción es principalmente por broncoespasmo e inflamación reversible de la vía aérea — el músculo liso bronquial se relaja con el broncodilatador, revirtiendo gran parte de la obstrucción. En EPOC, la obstrucción se debe a cambios estructurales permanentes (destrucción de la pared alveolar en enfisema, fibrosis peribronquial en bronquitis crónica) que un broncodilatador no puede revertir — por eso la mejoría con broncodilatador es mínima o ausente."
+    }
+  },
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con disnea crónica progresiva. Necesitas decidir si el patrón funcional es obstructivo o restrictivo antes de continuar el estudio.",
+    "preguntaMC": {
+      "enunciado": "EPOC y EPID comparten disnea crónica progresiva. ¿Qué patrón funcional tiene cada uno?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "EPOC = patrón obstructivo (FEV1/FVC<0.70). EPID = patrón restrictivo (FEV1/FVC normal o alto, con CVF y CPT reducidos)"
+        },
+        {
+          "id": "b",
+          "texto": "Ambos tienen patrón obstructivo, solo cambia la gravedad"
+        },
+        {
+          "id": "c",
+          "texto": "EPOC = restrictivo. EPID = obstructivo"
+        },
+        {
+          "id": "d",
+          "texto": "Ninguno altera la espirometría de forma característica"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "EPOC produce un patrón OBSTRUCTIVO (FEV1/FVC<0.70, por resistencia aumentada al flujo de aire). EPID produce un patrón RESTRICTIVO (FEV1/FVC normal o incluso alto, pero con CVF y capacidad pulmonar total reducidas, por la fibrosis que rigidiza el pulmón y reduce todos los volúmenes proporcionalmente)."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué en el patrón restrictivo el cociente FEV1/FVC puede estar normal o incluso alto, pese a que el paciente tiene claramente una enfermedad pulmonar?",
+      "respuestaModelo": "Porque en el patrón restrictivo, TANTO el FEV1 como la FVC están reducidos de forma proporcional (el pulmón rígido por fibrosis no logra expandirse ni vaciarse completamente, pero lo que sí sale, sale rápido porque no hay obstrucción al flujo). Al mantenerse la proporción entre ambos valores, el cociente FEV1/FVC no cae por debajo de lo normal — de hecho puede estar en el límite alto porque la FVC se reduce relativamente más que el FEV1."
+    }
+  },
+  {
+    "nivel": "basico",
+    "vineta": "Comparativo de módulo: paciente con abolición del murmullo vesicular en un hemitórax. Necesitas decidir entre neumotórax y derrame pleural antes de solicitar más estudios.",
+    "preguntaMC": {
+      "enunciado": "Neumotórax y derrame pleural abolen ambos el murmullo vesicular. ¿Qué los distingue en la percusión?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Neumotórax = timpanismo/hiperresonancia. Derrame = matidez"
+        },
+        {
+          "id": "b",
+          "texto": "Neumotórax = matidez. Derrame = timpanismo"
+        },
+        {
+          "id": "c",
+          "texto": "Ambos dan matidez, no se distinguen por percusión"
+        },
+        {
+          "id": "d",
+          "texto": "El frémito vocal es la única forma de distinguirlos"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "El AIRE libre del neumotórax genera TIMPANISMO/hiperresonancia a la percusión (más resonante que el pulmón normal). El LÍQUIDO del derrame genera MATIDEZ (el líquido no deja pasar bien el sonido). El frémito vocal (d) está DISMINUIDO en ambos casos y por lo tanto NO los diferencia — es un distractor común en examen."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué el frémito vocal está disminuido tanto en el neumotórax como en el derrame pleural, si son entidades opuestas (aire vs. líquido)?",
+      "respuestaModelo": "Porque en ambos casos hay algo interpuesto entre el parénquima pulmonar (donde se genera el sonido) y la pared torácica — en el neumotórax es aire libre, en el derrame es líquido — y ambos actúan como una barrera que atenúa la transmisión de las vibraciones, sin importar de qué esté hecha esa barrera. Por eso el frémito vocal disminuido no distingue entre ambas entidades; se necesita la percusión (timpanismo vs. matidez) para diferenciarlas."
+    }
+  },
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con tos y fiebre de varios días de evolución. Necesitas diferenciar entre un proceso agudo típico y uno de curso más prolongado antes de decidir estudios.",
+    "preguntaMC": {
+      "enunciado": "NAC y Tuberculosis pulmonar ambas dan tos y fiebre. ¿Cuál es la diferencia de curso temporal más útil?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "NAC = curso agudo (días). TB = curso insidioso (semanas a meses), con pérdida de peso y sudoración nocturna más marcadas"
+        },
+        {
+          "id": "b",
+          "texto": "Ambas tienen exactamente el mismo curso temporal"
+        },
+        {
+          "id": "c",
+          "texto": "NAC siempre dura más tiempo que la TB"
+        },
+        {
+          "id": "d",
+          "texto": "El curso temporal no es un dato útil, solo importa el cultivo"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La NAC tiene un curso AGUDO, de días de evolución. La TB tiene un curso INSIDIOSO, de semanas a meses, típicamente acompañado de síntomas sistémicos más marcados: pérdida de peso progresiva y sudoración nocturna — síntomas que no son característicos de una NAC típica."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué la TB tiene un curso tan insidioso comparado con la NAC, si ambas son infecciones respiratorias?",
+      "respuestaModelo": "Porque M. tuberculosis es un patógeno de crecimiento LENTO (tiempo de duplicación de aproximadamente 20 horas, muy superior al de las bacterias típicas de NAC como el neumococo), y además genera una respuesta inmune granulomatosa que inicialmente CONTIENE la infección antes de que progrese a enfermedad activa — este proceso de contención y eventual escape toma semanas a meses, a diferencia de la NAC donde la bacteria prolifera rápidamente y genera síntomas agudos en cuestión de días."
+    }
+  },
+  {
+    "nivel": "avanzado",
+    "vineta": "Comparativo de módulo: paciente con neumonía, necesitas determinar si el espectro antibiótico empírico debe ser el estándar o ampliado según el lugar de adquisición.",
+    "preguntaMC": {
+      "enunciado": "NAC vs. Neumonía nosocomial: ¿qué cambia entre ambas más allá del lugar de adquisición?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "La nosocomial (>48h de hospitalización) tiene mayor riesgo de patógenos multirresistentes, obligando a ampliar la cobertura antibiótica empírica"
+        },
+        {
+          "id": "b",
+          "texto": "No hay ninguna diferencia real en el manejo"
+        },
+        {
+          "id": "c",
+          "texto": "La NAC siempre requiere antibióticos de mayor espectro"
+        },
+        {
+          "id": "d",
+          "texto": "La nosocomial nunca requiere cobertura para Pseudomonas"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La neumonía nosocomial (definida por desarrollarse >48h después del ingreso hospitalario) conlleva mayor riesgo de patógenos multirresistentes (Pseudomonas aeruginosa, Acinetobacter, Enterobacteriaceae resistentes) por la exposición al ambiente hospitalario — esto obliga a ampliar el espectro antibiótico empírico comparado con una NAC típica, donde el espectro de patógenos esperado es más simple y predecible."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué el simple hecho de estar hospitalizado aumenta el riesgo de infección por patógenos multirresistentes?",
+      "respuestaModelo": "Porque el ambiente hospitalario alberga una flora bacteriana distinta a la comunitaria — con presión selectiva constante por el uso extenso de antibióticos, lo que favorece la supervivencia y proliferación de cepas resistentes. Además, el paciente hospitalizado puede colonizarse con estos patógenos a través de superficies, personal de salud, o dispositivos médicos (catéteres, tubos endotraqueales), independientemente de la razón original de su hospitalización — por eso incluso una neumonía que se desarrolla después de una cirugía no respiratoria debe considerarse de alto riesgo para multirresistencia."
+    }
+  },
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con tos productiva crónica. Necesitas decidir si cumple criterios de bronquitis crónica, de EPOC, o de ambas antes de continuar el estudio.",
+    "preguntaMC": {
+      "enunciado": "Bronquitis crónica vs. EPOC: ¿en qué se diferencian exactamente, si comparten tanto?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Bronquitis crónica = diagnóstico clínico (tos productiva ≥3 meses/año x2 años). EPOC = requiere confirmación espirométrica de obstrucción fija"
+        },
+        {
+          "id": "b",
+          "texto": "Son exactamente lo mismo, términos intercambiables"
+        },
+        {
+          "id": "c",
+          "texto": "EPOC es un diagnóstico exclusivamente clínico, sin necesidad de espirometría"
+        },
+        {
+          "id": "d",
+          "texto": "La bronquitis crónica siempre implica EPOC"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La bronquitis crónica es un diagnóstico puramente CLÍNICO (tos productiva ≥3 meses/año durante 2 años consecutivos, sin necesidad de espirometría). El EPOC requiere CONFIRMACIÓN espirométrica de obstrucción fija al flujo aéreo (FEV1/FVC<0.70 post-broncodilatador). Un paciente puede tener bronquitis crónica SIN tener EPOC (si su espirometría es normal) — son conceptos relacionados pero no sinónimos."
+    },
+    "preguntaEscrita": {
+      "enunciado": "Describe un escenario clínico coherente de un paciente que tenga bronquitis crónica pero NO cumpla criterios de EPOC.",
+      "respuestaModelo": "Un fumador de larga data que desarrolla tos productiva crónica (cumpliendo el criterio de ≥3 meses/año por 2 años consecutivos, por la hipersecreción mucosa inducida por el tabaco) pero cuya espirometría todavía muestra un FEV1/FVC ≥0.70 — es decir, sin obstrucción fija establecida todavía. Este paciente tiene bronquitis crónica (por definición clínica) pero NO cumple los criterios espirométricos de EPOC, aunque podría desarrollarlos en el futuro si continúa la exposición al tabaco."
+    }
+  },
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con síntomas respiratorios que mejoran fuera del ambiente laboral. Necesitas diferenciar entre 2 entidades ocupacionales antes de decidir el tratamiento.",
+    "preguntaMC": {
+      "enunciado": "Alveolitis alérgica extrínseca vs. Asma ocupacional: ambas mejoran fuera del trabajo. ¿Qué hallazgo auscultatorio las distingue?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Alveolitis alérgica extrínseca = estertores finos SIN sibilancias. Asma ocupacional = sibilancias difusas"
+        },
+        {
+          "id": "b",
+          "texto": "Ambas dan exactamente los mismos hallazgos auscultatorios"
+        },
+        {
+          "id": "c",
+          "texto": "Alveolitis alérgica extrínseca = sibilancias. Asma ocupacional = estertores"
+        },
+        {
+          "id": "d",
+          "texto": "Ninguna de las dos tiene hallazgos auscultatorios característicos"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La presencia o ausencia de sibilancias es la clave: la alveolitis alérgica extrínseca (por su naturaleza de reacción de hipersensibilidad alveolar/intersticial) da estertores finos SIN sibilancias, mientras que el asma ocupacional (por su naturaleza de broncoespasmo de vía aérea) da sibilancias difusas características."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué la alveolitis alérgica extrínseca no produce sibilancias, si también es una reacción de hipersensibilidad respiratoria como el asma?",
+      "respuestaModelo": "Porque el sitio anatómico de la reacción es distinto: la alveolitis alérgica extrínseca es una reacción de hipersensibilidad que ocurre a nivel ALVEOLAR e INTERSTICIAL (produciendo infiltrado intersticial e inflamación del parénquima), no a nivel de la vía aérea de mediano/pequeño calibre donde se genera el broncoespasmo. Las sibilancias requieren estrechamiento de una vía aérea con capacidad de turbulencia de flujo — algo que no ocurre cuando el proceso inflamatorio está confinado al espacio alveolar, como en la alveolitis."
+    }
+  },
+  {
+    "nivel": "avanzado",
+    "vineta": "Comparativo de módulo: paciente con crépitos bibasales. Necesitas diferenciar entre una causa pulmonar primaria y una causa cardíaca antes de decidir el estudio inicial.",
+    "preguntaMC": {
+      "enunciado": "EPID vs. Insuficiencia cardiaca: ambas dan crépitos bibasales. ¿Qué otros datos las diferencian?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "EPID: crépitos tipo 'velcro' específicos, sin sobrecarga de volumen. IC: crépitos más húmedos/gruesos, con ingurgitación yugular, edemas, y respuesta a diuréticos"
+        },
+        {
+          "id": "b",
+          "texto": "No existe ninguna forma de diferenciarlas clínicamente"
+        },
+        {
+          "id": "c",
+          "texto": "La EPID siempre cursa con edemas de miembros inferiores"
+        },
+        {
+          "id": "d",
+          "texto": "La insuficiencia cardiaca nunca da crépitos bibasales"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La EPID da crépitos tipo 'Velcro' (finos, secos, característicos) SIN signos de sobrecarga de volumen. La insuficiencia cardiaca da crépitos más húmedos/gruesos, ACOMPAÑADOS de signos de sobrecarga (ingurgitación yugular, edemas de miembros inferiores) y típicamente MEJORAN con diuréticos — algo que no ocurriría en EPID, ya que su causa no es de sobrecarga de volumen."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué el sonido de los crépitos tipo 'Velcro' de la EPID suena distinto a los crépitos húmedos de la insuficiencia cardiaca?",
+      "respuestaModelo": "Los crépitos tipo Velcro de la EPID se generan por la apertura súbita de pequeñas vías aéreas que estaban colapsadas por la FIBROSIS circundante (tejido rígido y seco) — produciendo un sonido fino, seco y de alta frecuencia, similar a separar velcro. Los crépitos de la insuficiencia cardiaca se generan por la presencia de LÍQUIDO (edema alveolar por congestión) en los espacios aéreos — produciendo un sonido más húmedo, burbujeante y de menor frecuencia, porque el mecanismo es el paso de aire a través de líquido acumulado, no la apertura de tejido fibrótico rígido."
+    }
+  },
+  {
+    "nivel": "avanzado",
+    "vineta": "Comparativo de módulo: paciente con infiltrados bilaterales e hipoxemia aguda. Necesitas aplicar los criterios de Berlín para diferenciar SDRA de edema cardiogénico.",
+    "preguntaMC": {
+      "enunciado": "SDRA vs. edema pulmonar cardiogénico: ambos dan infiltrados bilaterales e hipoxemia. ¿Cómo se diferencian según Berlín?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "SDRA requiere que el cuadro NO se explique completamente por edema cardiogénico (ecocardiograma ayuda) y tenga un evento desencadenante conocido en los últimos 7 días"
+        },
+        {
+          "id": "b",
+          "texto": "El edema cardiogénico siempre cumple los criterios de SDRA"
+        },
+        {
+          "id": "c",
+          "texto": "No hay ninguna forma de distinguirlos, se tratan igual"
+        },
+        {
+          "id": "d",
+          "texto": "El SDRA nunca cursa con infiltrados bilaterales"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "Uno de los 4 criterios de Berlín para SDRA es explícitamente que el cuadro NO se explique completamente por edema cardiogénico o sobrecarga de volumen — el ecocardiograma (evaluando función ventricular) ayuda a descartar esta causa. Además, el SDRA requiere un evento desencadenante conocido (neumonía, sepsis, trauma) dentro de los 7 días previos al inicio del cuadro."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué es clínicamente importante distinguir entre SDRA y edema cardiogénico si ambos pueden verse similares en la radiografía?",
+      "respuestaModelo": "Porque el manejo es radicalmente distinto: el edema cardiogénico se trata principalmente con diuréticos y optimización de la función cardíaca, mientras que el SDRA requiere ventilación mecánica protectora (volúmenes corrientes bajos, PEEP personalizada, posición prono) y NO responde a diuréticos de la misma manera, ya que su mecanismo es un aumento de la PERMEABILIDAD capilar por inflamación, no un aumento de la presión hidrostática por sobrecarga de volumen. Tratar un SDRA como si fuera edema cardiogénico (con diuréticos agresivos) podría no beneficiar al paciente e incluso ser perjudicial si genera hipoperfusión."
+    }
+  },
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con derrame paraneumónico. Necesitas decidir si requiere solo antibiótico o también drenaje pleural obligatorio.",
+    "preguntaMC": {
+      "enunciado": "Derrame paraneumónico simple vs. complicado/empiema: ¿qué datos del líquido pleural marcan la diferencia práctica?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "pH<7.2, glucosa<40-60 mg/dl, y aspecto turbio/purulento indican derrame complicado o empiema"
+        },
+        {
+          "id": "b",
+          "texto": "El color del líquido es el único dato relevante"
+        },
+        {
+          "id": "c",
+          "texto": "Todos los derrames paraneumónicos requieren drenaje obligatorio, sin excepción"
+        },
+        {
+          "id": "d",
+          "texto": "El pH nunca cambia entre derrame simple y complicado"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "pH<7.2, glucosa<40-60mg/dl, y aspecto turbio/purulento son los 3 datos clave que definen derrame complicado o empiema — y cambian la conducta de solo antibiótico (derrame simple) a DRENAJE torácico OBLIGATORIO (complicado/empiema). Sin estos criterios, un derrame paraneumónico simple puede manejarse solo con antibiótico."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué la glucosa BAJA y el pH BAJO en el líquido pleural indican progresión hacia empiema?",
+      "respuestaModelo": "Porque las bacterias y los neutrófilos activados consumen glucosa por glucólisis anaeróbica en ese ambiente pobre en oxígeno del espacio pleural infectado, generando ácido láctico como subproducto — por eso el pH cae. Este patrón bioquímico (glucosa baja + pH bajo) es, en esencia, una fotografía de cuánta destrucción celular activa está ocurriendo — cuanto más avanzada la infección hacia empiema, más consumo de glucosa y más acidosis local."
+    }
+  },
+  {
+    "nivel": "basico",
+    "vineta": "Comparativo de módulo: paciente minero con neumoconiosis confirmada. Necesitas conocer la complicación específica esperada según el tipo exacto de neumoconiosis.",
+    "preguntaMC": {
+      "enunciado": "Silicosis vs. Asbestosis: ambas son neumoconiosis. ¿Cuál es la complicación específica de cada una?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Silicosis se asocia fuertemente a tuberculosis. Asbestosis se asocia específicamente a mesotelioma pleural maligno"
+        },
+        {
+          "id": "b",
+          "texto": "Ambas se asocian igualmente a las mismas complicaciones"
+        },
+        {
+          "id": "c",
+          "texto": "Silicosis se asocia a mesotelioma. Asbestosis se asocia a tuberculosis"
+        },
+        {
+          "id": "d",
+          "texto": "Ninguna de las dos tiene complicaciones específicas conocidas"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "Cada neumoconiosis tiene su complicación característica y específica: la silicosis se asocia fuertemente a TUBERCULOSIS (la sílice altera la función de los macrófagos alveolares, facilitando la reactivación/infección por M. tuberculosis). La asbestosis se asocia específicamente a MESOTELIOMA PLEURAL MALIGNO (relación causal directa y bien documentada con la exposición a fibras de asbesto)."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué es importante recordar la complicación específica de cada neumoconiosis en la práctica clínica?",
+      "respuestaModelo": "Porque orienta la vigilancia activa que se debe hacer en cada paciente según su exposición ocupacional específica: en un paciente con silicosis, se debe descartar activamente tuberculosis ante cualquier síntoma sistémico nuevo (fiebre, pérdida de peso, sudoración nocturna). En un paciente con asbestosis, se debe mantener vigilancia a largo plazo para detectar tempranamente signos de mesotelioma pleural (que puede aparecer décadas después de la exposición). Confundir estas asociaciones llevaría a buscar la complicación equivocada en cada paciente."
+    }
+  },
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con insuficiencia respiratoria aguda. Necesitas clasificar el tipo exacto según el patrón gasométrico antes de decidir el manejo.",
+    "preguntaMC": {
+      "enunciado": "Insuficiencia respiratoria tipo I vs. tipo II: ¿cuál es la diferencia central, y qué enfermedad típica representa cada una?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Tipo I = hipoxémica sin hipercapnia (típica de neumonía/SDRA). Tipo II = hipercápnica por hipoventilación (típica de EPOC agudizado)"
+        },
+        {
+          "id": "b",
+          "texto": "Tipo I y tipo II son exactamente lo mismo"
+        },
+        {
+          "id": "c",
+          "texto": "Tipo I = hipercápnica. Tipo II = hipoxémica"
+        },
+        {
+          "id": "d",
+          "texto": "Ninguna de las dos se relaciona con enfermedades pulmonares específicas"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "IRA Tipo I es HIPOXÉMICA (PaO2 baja) SIN hipercapnia significativa — típica de neumonía o SDRA, donde el problema es de intercambio gaseoso (shunt, alteración V/Q). IRA Tipo II es HIPERCÁPNICA (PaCO2 alto) por hipoventilación alveolar — típica de EPOC agudizado o enfermedades neuromusculares, donde el problema es de bomba ventilatoria."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué el mecanismo de hipoxemia es distinto entre una IRA tipo I y una tipo II, aunque ambas terminen con PaO2 baja?",
+      "respuestaModelo": "En la IRA tipo I, la hipoxemia se debe a un problema de intercambio gaseoso A NIVEL ALVEOLAR (shunt por alvéolos colapsados/llenos de exudado, o alteración V/Q) — el paciente puede estar respirando adecuadamente en volumen, pero el oxígeno no logra pasar bien a la sangre. En la IRA tipo II, la hipoxemia (cuando está presente) es secundaria a una hipoventilación GLOBAL — el paciente simplemente no está moviendo suficiente aire hacia los alvéolos en absoluto, lo que también retiene CO2 (a diferencia de tipo I, donde el CO2 puede estar incluso bajo por hiperventilación compensatoria)."
+    }
+  },
+  {
+    "nivel": "avanzado",
+    "vineta": "Comparativo de módulo: paciente con auscultación relativamente pobre pese a síntomas respiratorios importantes. Necesitas diferenciar entre 2 entidades con esta discordancia clínica característica.",
+    "preguntaMC": {
+      "enunciado": "TB pulmonar vs. neumonía atípica: ambas pueden dar auscultación relativamente pobre pese a síntomas importantes. ¿Qué las distingue mejor?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "TB tiene curso de semanas con pérdida de peso marcada y localización apical; la atípica es de curso más agudo (días) sin esa pérdida de peso ni localización preferencial"
+        },
+        {
+          "id": "b",
+          "texto": "Ambas tienen exactamente el mismo curso temporal y localización"
+        },
+        {
+          "id": "c",
+          "texto": "La neumonía atípica siempre dura más tiempo que la TB"
+        },
+        {
+          "id": "d",
+          "texto": "La localización apical es exclusiva de la neumonía atípica"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La TB tiene curso INSIDIOSO de semanas, con pérdida de peso marcada y localización preferencial APICAL (por su fisiopatología de aerobio estricto que prolifera mejor donde hay más oxígeno). La neumonía atípica tiene curso más AGUDO (días), sin la misma pérdida de peso marcada ni localización apical preferencial — puede afectar cualquier zona pulmonar."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué tanto la TB como la neumonía atípica pueden dar una auscultación pobre pese a síntomas respiratorios importantes?",
+      "respuestaModelo": "En ambos casos, el mecanismo de daño no siempre genera los hallazgos auscultatorios 'clásicos' de consolidación franca (como en una neumonía típica bacteriana). En la TB, la lesión puede ser predominantemente cavitaria o localizada en zonas que no siempre generan crépitos evidentes a la auscultación convencional. En la neumonía atípica, los patógenos (Mycoplasma, Chlamydia) generan un patrón inflamatorio más intersticial que alveolar, lo cual característicamente da MENOS hallazgos físicos de los que la clínica sintomática sugeriría — es parte de la definición 'atípica' de estas neumonías."
+    }
+  },
+  {
+    "nivel": "avanzado",
+    "vineta": "Comparativo de módulo: paciente con EPOC conocido que también podría tener SAOS. Necesitas entender el riesgo particular de esta combinación (overlap syndrome).",
+    "preguntaMC": {
+      "enunciado": "SAOS vs. EPOC: ambos pueden coexistir ('overlap syndrome'). ¿Cuál es el riesgo particular de esa combinación?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "La combinación genera mayor riesgo de hipoxemia nocturna combinada y peor pronóstico cardiovascular que cualquiera de las dos por separado"
+        },
+        {
+          "id": "b",
+          "texto": "No hay ningún riesgo adicional al combinar ambas condiciones"
+        },
+        {
+          "id": "c",
+          "texto": "El SAOS mejora automáticamente el pronóstico del EPOC"
+        },
+        {
+          "id": "d",
+          "texto": "Solo el EPOC contribuye al riesgo, el SAOS es irrelevante en la combinación"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "El síndrome de superposición (overlap syndrome) EPOC+SAOS combina 2 mecanismos DISTINTOS de hipoxemia nocturna: la limitación crónica al flujo aéreo del EPOC (especialmente durante el sueño, cuando el tono muscular basal ya disminuye) más los episodios de apnea obstructiva del SAOS — generando una hipoxemia nocturna combinada más severa que cualquiera de las dos condiciones por separado, con peor pronóstico cardiovascular (mayor riesgo de hipertensión pulmonar, arritmias, y mortalidad)."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Por qué el tratamiento de SAOS con CPAP podría ser especialmente beneficioso en un paciente con overlap syndrome, más allá de solo mejorar el sueño?",
+      "respuestaModelo": "Porque al corregir el componente obstructivo de la vía aérea SUPERIOR durante el sueño (con CPAP), se elimina uno de los 2 mecanismos que contribuyen a la hipoxemia nocturna combinada — reduciendo la carga total de hipoxemia intermitente que el paciente experimenta cada noche. Esto puede traducirse en menor estrés cardiovascular nocturno, mejor control de comorbilidades asociadas (hipertensión, arritmias), y potencialmente mejor pronóstico a largo plazo, incluso si el componente de EPOC (limitación crónica de base) sigue presente y requiere su propio manejo específico."
+    }
+  },
+  {
+    "nivel": "intermedio",
+    "vineta": "Comparativo de módulo: paciente con tos crónica productiva. Necesitas decidir qué estudio distingue definitivamente entre bronquiectasias y EPOC.",
+    "preguntaMC": {
+      "enunciado": "Bronquiectasias vs. EPOC: ambas cursan con tos crónica productiva. ¿Qué estudio las distingue de forma definitiva?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "La TC de alta resolución: bronquiectasias muestran dilatación bronquial permanente (signo del anillo de sello); EPOC no tiene ese hallazgo, se confirma con espirometría"
+        },
+        {
+          "id": "b",
+          "texto": "La espirometría distingue definitivamente entre ambas"
+        },
+        {
+          "id": "c",
+          "texto": "Ambas se diagnostican exclusivamente por clínica, sin estudios de imagen"
+        },
+        {
+          "id": "d",
+          "texto": "La radiografía simple de tórax es suficiente para diferenciarlas con certeza"
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La TC de alta resolución (TCAR) es el estudio definitivo: en bronquiectasias muestra dilatación bronquial PERMANENTE (relación broncoarterial >1.5, signo del 'anillo de sello'), un hallazgo ESTRUCTURAL que el EPOC no tiene. El EPOC se confirma con espirometría (obstrucción fija), no con hallazgos estructurales de dilatación bronquial. Ambas entidades pueden coexistir en un mismo paciente, pero el estudio que las distingue estructuralmente es la TCAR."
+    },
+    "preguntaEscrita": {
+      "enunciado": "¿Puede un paciente tener bronquiectasias Y EPOC al mismo tiempo? Explica por qué esto no es contradictorio.",
+      "respuestaModelo": "Sí, pueden coexistir perfectamente, ya que evalúan aspectos DISTINTOS del pulmón: el EPOC es un diagnóstico FUNCIONAL (definido por obstrucción fija en la espirometría), mientras que las bronquiectasias son un diagnóstico ESTRUCTURAL (definido por dilatación bronquial permanente en la TCAR). Un paciente con EPOC de larga evolución puede desarrollar bronquiectasias secundarias por el daño estructural acumulado de infecciones respiratorias recurrentes — de hecho, el asma y el EPOC/enfisema están listados como causas de bronquiectasias 'por obstrucción' en la clasificación etiológica que ya estudiaste."
+    }
+  }
+]
   }
 };
 
