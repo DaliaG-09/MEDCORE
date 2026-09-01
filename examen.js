@@ -72,17 +72,62 @@ function iniciarExamenTaller(tallerId){
 function iniciarExamenModulo(moduloKey){
   const m = MODULOS[moduloKey];
   const todasIds = m.enfermedadesPorCategoria.flatMap(c => c.ids);
+  const enfermedades = todasIds.map(id => getEnfermedad(id));
+  const items = armarItemsPorEnfermedades(enfermedades);
+  prepararExamen(items, m.nombre, 'Examen final del módulo — tu filtro antes de pasar al siguiente', { tipo: 'modulo', id: moduloKey });
+  navPush('examen-simulado', 'modulo::' + moduloKey, 'Examen final — ' + m.nombre);
+}
+
+/* toma 1 caso representativo (el de mayor nivel disponible) de cada enfermedad de la lista,
+   para armar un examen combinado que sea completo pero no eterno — reutilizado por módulo,
+   semana y "prepárate para tu examen" */
+function armarItemsPorEnfermedades(enfermedades){
   let items = [];
-  todasIds.forEach(id => {
-    const e = getEnfermedad(id);
-    // 1 caso representativo por enfermedad (el de mayor nivel disponible), para que el examen sea completo pero no eterno
+  enfermedades.forEach(e => {
     const casos = e.casosClinicos || [];
     if(!casos.length) return;
     const elegido = casos.find(c => c.nivel === 'avanzado') || casos.find(c => c.nivel === 'intermedio') || casos[0];
     items.push({ ...construirItemsDeCasos([elegido])[0], enfermedadOrigen: e.nombre });
   });
-  prepararExamen(items, m.nombre, 'Examen final del módulo — tu filtro antes de pasar al siguiente', { tipo: 'modulo', id: moduloKey });
-  navPush('examen-simulado', 'modulo::' + moduloKey, 'Examen final — ' + m.nombre);
+  return items;
+}
+
+function iniciarExamenComparativoModulo(moduloKey){
+  const m = MODULOS[moduloKey];
+  const casos = m.casosComparativos || [];
+  if(!casos.length){
+    alert('Todavía no hay casos comparativos construidos para este módulo — vuelve pronto.');
+    return;
+  }
+  const items = construirItemsDeCasos(casos);
+  prepararExamen(items, m.nombre, 'Examen comparativo — enfermedades que se prestan a confusión entre sí', { tipo: 'comparativo-modulo', id: moduloKey });
+  navPush('examen-simulado', 'comparativo-modulo::' + moduloKey, 'Comparativo — ' + m.nombre);
+}
+
+function iniciarExamenSemana(semanaId){
+  const s = getSemana(semanaId);
+  const enfermedades = s.enfermedades.map(id => getEnfermedad(id));
+  const items = armarItemsPorEnfermedades(enfermedades);
+  if(!items.length){
+    alert('Todavía no hay suficientes casos clínicos construidos para armar el examen de esta semana — vuelve pronto.');
+    return;
+  }
+  prepararExamen(items, 'Semana ' + s.numero, 'Examen combinado de toda la semana', { tipo: 'semana', id: semanaId });
+  navPush('examen-simulado', 'semana::' + semanaId, 'Examen — Semana ' + s.numero);
+}
+
+function iniciarExamenPreparar(semanaId, evalIndex){
+  const s = getSemana(semanaId);
+  const evalLabel = s.evaluaciones[evalIndex];
+  const enfermedades = getEnfermedadesHastaSemana(s.numero);
+  const items = armarItemsPorEnfermedades(enfermedades);
+  if(!items.length){
+    alert('Todavía no hay suficientes casos clínicos construidos para armar este examen combinado — vuelve pronto.');
+    return;
+  }
+  const compositeId = semanaId + '::' + evalIndex;
+  prepararExamen(items, evalLabel, 'Examen combinado — todo lo visto hasta ahora', { tipo: 'preparar', id: compositeId });
+  navPush('examen-simulado', 'preparar::' + compositeId, 'Examen — ' + evalLabel);
 }
 
 function prepararExamen(items, tituloExamen, scopeLabel, volverA){
@@ -309,17 +354,23 @@ function reiniciarMismoExamen(){
   } else if(volverA.tipo === 'taller'){
     const t = getTaller(volverA.id);
     prepararExamen(construirItemsDeCasos(t.casos || []), t.nombre, 'Examen de práctica', volverA);
+  } else if(volverA.tipo === 'semana'){
+    const s = getSemana(volverA.id);
+    const items = armarItemsPorEnfermedades(s.enfermedades.map(id => getEnfermedad(id)));
+    prepararExamen(items, 'Semana ' + s.numero, 'Examen combinado de toda la semana', volverA);
+  } else if(volverA.tipo === 'preparar'){
+    const [semanaId, evalIndexStr] = volverA.id.split('::');
+    const s = getSemana(semanaId);
+    const evalLabel = s.evaluaciones[parseInt(evalIndexStr, 10)];
+    const items = armarItemsPorEnfermedades(getEnfermedadesHastaSemana(s.numero));
+    prepararExamen(items, evalLabel, 'Examen combinado — todo lo visto hasta ahora', volverA);
+  } else if(volverA.tipo === 'comparativo-modulo'){
+    const m = MODULOS[volverA.id];
+    prepararExamen(construirItemsDeCasos(m.casosComparativos || []), m.nombre, 'Examen comparativo — enfermedades que se prestan a confusión entre sí', volverA);
   } else {
     const m = MODULOS[volverA.id];
     const todasIds = m.enfermedadesPorCategoria.flatMap(c => c.ids);
-    let items = [];
-    todasIds.forEach(id => {
-      const e = getEnfermedad(id);
-      const casos = e.casosClinicos || [];
-      if(!casos.length) return;
-      const elegido = casos.find(c => c.nivel === 'avanzado') || casos.find(c => c.nivel === 'intermedio') || casos[0];
-      items.push({ ...construirItemsDeCasos([elegido])[0], enfermedadOrigen: e.nombre });
-    });
+    const items = armarItemsPorEnfermedades(todasIds.map(id => getEnfermedad(id)));
     prepararExamen(items, m.nombre, 'Examen final del módulo — tu filtro antes de pasar al siguiente', volverA);
   }
   navRenderCurrent(); // solo refresca la vista actual, sin apilar una entrada nueva
