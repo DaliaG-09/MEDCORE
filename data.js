@@ -5513,32 +5513,224 @@ const ENFERMEDADES = [
    ============================================================ */
 const TEMAS = [
   {
-    id: "anatofisio-respiratorio",
-    nombre: "Anatomía y fisiología del aparato respiratorio",
-    area: "Neumología",
-    tipo: "anatomia-fisiologia",
-    semanas: ["semana-01"],
-    favorito: false,
-    estudiado: false,
-    contenido: {
-      resumen: "La función del aparato respiratorio es el intercambio gaseoso: llevar oxígeno de la atmósfera a la sangre y eliminar CO2. Para lograrlo, el sistema combina una vía de conducción (que no participa en el intercambio) con una zona respiratoria (donde sí ocurre el intercambio), todo impulsado por una bomba mecánica (caja torácica + músculos respiratorios) y regulado por el sistema nervioso.",
-      estructuras: [
-        { nombre: "Vía aérea de conducción", detalle: "Nariz → faringe → laringe → tráquea → bronquios → bronquiolos terminales. Ventila pero NO participa en el intercambio gaseoso (espacio muerto anatómico, ~150 mL)." },
-        { nombre: "Zona respiratoria", detalle: "Bronquiolos respiratorios → conductos alveolares → alvéolos (~300 millones, superficie total ~70 m²). Aquí ocurre el intercambio de O2/CO2 por difusión simple a través de la membrana alveolo-capilar." },
-        { nombre: "Caja torácica y músculos", detalle: "Diafragma (principal músculo inspiratorio) + intercostales. La espiración en reposo es pasiva (retracción elástica del pulmón); en esfuerzo se vuelve activa (músculos abdominales, intercostales internos)." },
-        { nombre: "Circulación pulmonar", detalle: "Sistema de baja presión y baja resistencia — recibe todo el gasto cardíaco derecho. Su función es exponer toda la sangre venosa a la superficie alveolar." }
-      ],
-      fisiologiaNormal: "El ciclo respiratorio depende de la diferencia de presión entre el alvéolo y la atmósfera. Al contraerse el diafragma, aumenta el volumen torácico, la presión intrapleural se vuelve más negativa, el pulmón se expande y entra aire (inspiración). La espiración en reposo es pasiva: el pulmón, por su elasticidad natural, tiende a colapsar y expulsa el aire solo. El intercambio gaseoso depende de tres factores que se estudian juntos porque cualquier enfermedad pulmonar altera uno o varios: ventilación (V, aire que llega al alvéolo), perfusión (Q, sangre que llega al capilar) y difusión (paso del gas a través de la membrana). La relación V/Q ideal es cercana a 1; casi todas las enfermedades pulmonares alteran esta relación de alguna forma.",
-      correlacionClinica: "Entender esta anatomía es la base para comprender por qué cada enfermedad respiratoria se manifiesta como lo hace: el EPOC y el asma alteran principalmente la vía de conducción (obstrucción al flujo de aire); la neumonía y las enfermedades intersticiales alteran la zona respiratoria (afectan el intercambio gaseoso, no tanto el flujo); el neumotórax y las enfermedades neuromusculares afectan la bomba mecánica. Cuando entiendas dónde actúa cada enfermedad — vía aérea, zona respiratoria o bomba — vas a poder predecir su clínica en vez de memorizarla.",
-      puntosClave: [
-        "La vía de conducción no intercambia gases — solo transporta aire (espacio muerto)",
-        "El intercambio gaseoso real ocurre solo en la zona respiratoria (alvéolos)",
-        "La espiración en reposo es pasiva; en esfuerzo o en obstrucción se vuelve activa",
-        "Casi toda enfermedad respiratoria puede entenderse como: ¿afecta la vía aérea, la zona respiratoria, o la bomba mecánica?",
-        "La relación ventilación/perfusión (V/Q) es el concepto que conecta anatomía con clínica — su alteración explica la mayoría de los síntomas respiratorios"
+  "id": "anatofisio-respiratorio",
+  "nombre": "Anatomía y fisiología del aparato respiratorio",
+  "area": "Neumología",
+  "tipo": "anatomia-fisiologia",
+  "semanas": [
+    "semana-01"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1oJIZscyDhTPtnlxS-ewHzB9OabmjHtd7/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-1-TEMA-1: Anatomía y Fisiología del Aparato Respiratorio"
+  },
+  "contenido": {
+    "resumen": "La función del aparato respiratorio es el intercambio gaseoso: llevar oxígeno de la atmósfera a la sangre y eliminar CO2. El sistema combina una vía de conducción (que calienta, humedece y filtra el aire, sin intercambiar gases) con una zona respiratoria (donde sí ocurre el intercambio), impulsado por una bomba mecánica (caja torácica + músculos) y regulado por el centro respiratorio del tronco encefálico según factores neurogénicos y químicos.",
+    "estructuras": [
+      {
+        "nombre": "Nariz y faringe",
+        "detalle": "Calientan y humedecen el aire, eliminan partículas, contienen secreciones con IgA, lisozima e interferones. Los cilios desplazan el moco hacia la orofaringe.",
+        "imagenes": [
+          {
+            "src": "assets/anatofisio/anatofisio-via-aerea-superior.jpg",
+            "caption": "Anatomía de la vía aérea superior (de tu clase)"
+          }
+        ]
+      },
+      {
+        "nombre": "Laringe",
+        "detalle": "Conecta la faringe con la tráquea y contiene las cuerdas vocales necesarias para la fonación."
+      },
+      {
+        "nombre": "Tráquea, bronquios y bronquiolos",
+        "detalle": "Tráquea: 10-12 cm de longitud, se divide en la carina en bronquios principales derecho e izquierdo. Bronquios: paredes con cartílago y músculo liso, revestimiento con cilios y células caliciformes. Bronquiolos: sin cartílago, capa muscular más fina, células ciliadas y células de Clara (producen surfactante). En total hay ~25 divisiones entre la tráquea y los alvéolos: las primeras 7 forman los bronquios, las siguientes 16-18 forman los bronquiolos."
+      },
+      {
+        "nombre": "Alvéolos",
+        "detalle": "~300 millones por pulmón, superficie total 40-80 m². Revestimiento de neumocitos tipo I (capa extremadamente delgada, facilita el intercambio gaseoso) y tipo II (producen surfactante, esencial para la estabilidad alveolar). Presencia de macrófagos alveolares para defensa pulmonar."
+      },
+      {
+        "nombre": "Pulmones y pleura",
+        "detalle": "Pulmón derecho: 3 lóbulos (superior, medio, inferior) separados por cisuras. Pulmón izquierdo: 2 lóbulos (superior, inferior) separados por la cisura oblicua. Pleura: tejido conectivo recubierto por epitelio escamoso simple, dividida en visceral y parietal."
+      },
+      {
+        "nombre": "Diafragma y vasculatura pulmonar",
+        "detalle": "Diafragma: cubierto por pleura parietal arriba y peritoneo abajo, fibras desde costillas inferiores, inervado por nervios frénicos, 50% de fibras de contracción lenta (resistentes a fatiga). Vasculatura: suministro dual (arteria pulmonar + arterias bronquiales), arteriolas de paredes delgadas, vénulas drenan a las 4 venas pulmonares principales, canales linfáticos en el espacio intersticial."
+      }
+    ],
+    "fisiologiaNormal": "El ciclo respiratorio depende de la diferencia de presión entre el alvéolo y la atmósfera. La INSPIRACIÓN es un proceso ACTIVO: contracción del diafragma y músculos intercostales crea presión intrapleural negativa, el pulmón se expande y entra aire. La ESPIRACIÓN en reposo es generalmente PASIVA, por la tendencia natural del pulmón a colapsar. La ventilación está controlada por factores neurogénicos (centro respiratorio del tronco encefálico, nervios frénico e intercostal) y químicos (el AUMENTO de PaCO2 es el principal estímulo respiratorio; la DISMINUCIÓN de PaO2 es el estímulo secundario, y se vuelve principal en EPOC; la acidosis metabólica aumenta la ventilación — respiración de Kussmaul). El intercambio gaseoso depende de ventilación (V), perfusión (Q) y difusión — la relación V/Q ideal es cercana a 1. La ventilación alveolar normal es ~5 L/min, similar al flujo sanguíneo pulmonar. El espacio muerto (porción que no participa en el intercambio) puede ser anatómico (vía de conducción, 100-150mL) o fisiológico (anatómico + áreas ventiladas pero no perfundidas) — en EPOC o embolia pulmonar, el cociente espacio muerto/volumen corriente puede llegar a 0.8-0.9, requiriendo gran aumento compensador de la ventilación.",
+    "correlacionClinica": "Entender esta anatomía y fisiología es la base para comprender por qué cada enfermedad respiratoria se manifiesta como lo hace. El transporte de oxígeno depende de la hemoglobina (97-98% del O2 se transporta unido a ella, solo 2-3% disuelto en plasma) — por eso condiciones que alteran la hemoglobina (intoxicación por CO, metahemoglobinemia) alteran gravemente la oxigenación aunque la PaO2 medida parezca normal. El CO2 se transporta principalmente como bicarbonato (90%), 5% disuelto y 5% unido a proteínas (carbamino) — y difunde ~20 veces más rápido que el O2 por su mayor solubilidad, pese a tener mayor peso molecular; esto explica por qué en enfermedades que afectan la DIFUSIÓN (como la fibrosis pulmonar/EPID) la hipoxemia aparece mucho antes que la hipercapnia — el CO2 sigue difundiendo bien pese al engrosamiento de la membrana, mientras que el O2 ya no. <span class=\"fuente-ampliada\">La relación entre capacidad de cierre (CC) y capacidad residual funcional (CRF) explica la disminución de oxigenación con la edad: cuando CC supera a CRF, ocurre cierre de la vía aérea durante la respiración NORMAL — esto pasa más con la edad, en posición supina, y en enfermedad pulmonar.</span>",
+    "tablasClinicas": [
+      {
+        "titulo": "📊 Mecanismos de hipoxemia en diferentes trastornos pulmonares (Tabla 13.2, de tu clase)",
+        "contexto": "Esta tabla conecta directamente la fisiología que acabas de repasar con las enfermedades que ya estudiaste — cada fila te dice qué mecanismo predomina en cada una. +++ = más importante, ++ = importante, + = algo importante, – = sin importancia.",
+        "columnas": [
+          "Trastorno",
+          "Hipoventilación",
+          "Alt. difusión",
+          "Alt. V/Q",
+          "Cortocircuito"
+        ],
+        "filas": [
+          [
+            "Bronquitis crónica",
+            "(+)",
+            "–",
+            "++",
+            "–"
+          ],
+          [
+            "Enfisema (EPOC)",
+            "+",
+            "++",
+            "+++",
+            "–"
+          ],
+          [
+            "Asma",
+            "–",
+            "–",
+            "++",
+            "–"
+          ],
+          [
+            "Fibrosis (EPID)",
+            "–",
+            "++",
+            "+",
+            "+"
+          ],
+          [
+            "Neumonía",
+            "–",
+            "–",
+            "+",
+            "++"
+          ],
+          [
+            "Atelectasia",
+            "–",
+            "–",
+            "–",
+            "++"
+          ],
+          [
+            "Edema pulmonar",
+            "–",
+            "+",
+            "+",
+            "++"
+          ],
+          [
+            "Embolia pulmonar",
+            "–",
+            "–",
+            "++",
+            "+"
+          ],
+          [
+            "SDRA",
+            "–",
+            "–",
+            "+",
+            "+++"
+          ]
+        ],
+        "nota": "Fíjate en el patrón: las enfermedades OBSTRUCTIVAS (bronquitis, enfisema, asma) predominan por alteración V/Q; las que llenan el alvéolo de golpe (neumonía, SDRA) predominan por cortocircuito; la fibrosis es la única con alteración de difusión como mecanismo relevante."
+      },
+      {
+        "titulo": "🫁 Causas de hipoxemia — resumen mecanístico",
+        "columnas": [
+          "Mecanismo",
+          "Respuesta a O2 suplementario"
+        ],
+        "filas": [
+          [
+            "Hipoventilación",
+            "Responde BIEN al oxígeno suplementario"
+          ],
+          [
+            "Alteración V/Q (la causa más frecuente de hipoxemia)",
+            "Mejora PARCIALMENTE con oxígeno"
+          ],
+          [
+            "Alteración de la difusión (más evidente en ejercicio)",
+            "Responde al oxígeno"
+          ],
+          [
+            "Cortocircuito (shunt)",
+            "NO responde o responde POCO al oxígeno suplementario"
+          ]
+        ],
+        "nota": "Esta tabla es la base fisiológica de por qué en SDRA (shunt puro) el oxígeno solo no basta y se necesitan estrategias de reclutamiento alveolar (PEEP, prono) — ya lo viste en la clase de IRA/SDRA."
+      }
+    ],
+    "puntosClave": [
+      "La vía de conducción no intercambia gases — solo transporta, calienta y filtra el aire (espacio muerto anatómico)",
+      "El intercambio gaseoso real ocurre solo en la zona respiratoria (alvéolos) — neumocitos tipo I para el intercambio, tipo II para el surfactante",
+      "La inspiración es ACTIVA; la espiración en reposo es PASIVA (se vuelve activa en esfuerzo u obstrucción)",
+      "El estímulo respiratorio principal es el AUMENTO de PaCO2 — la disminución de PaO2 es secundario, salvo en EPOC",
+      "El CO2 difunde ~20 veces más rápido que el O2 — por eso la hipoxemia aparece antes que la hipercapnia en enfermedades que afectan la difusión",
+      "4 mecanismos de hipoxemia: hipoventilación (responde bien a O2), alteración V/Q (la más frecuente, mejora parcial), alteración de difusión (responde a O2), y cortocircuito (NO responde a O2)",
+      "La relación ventilación/perfusión (V/Q) es el concepto que conecta anatomía con clínica — casi toda enfermedad respiratoria puede entenderse alterando V, Q, o ambas"
+    ],
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con gasometría arterial completa donde debes identificar el mecanismo fisiopatológico exacto detrás de la alteración — exactamente como el caso real de tu propia clase (la paciente con sospecha de SAOS).",
+      "ejercicios": [
+        {
+          "tipo": "Identificar mecanismo por gasometría (el más frecuente — tal como aparece en tu propio PPT)",
+          "planteamiento": "Mujer de 58 años, obesidad grado II, disnea progresiva, somnolencia diurna, ronquidos, cefalea matutina. FR 10 (bajo), SatO2 88%, PaCO2 60mmHg, PaO2 58mmHg, pH 7.28, HCO3 29 mEq/L. Radiografía y espirometría normales. Polisomnografía: múltiples apneas obstructivas. ¿Qué mecanismo fisiopatológico explica mejor la alteración gasométrica?",
+          "respuestaModelo": "Hipoventilación alveolar por obstrucción intermitente de la vía aérea superior. El patrón es de hipoventilación crónica COMPENSADA: PaCO2 elevado + pH bajo + HCO3 elevado (compensación renal ya en marcha) = acidosis respiratoria crónica. No hay enfermedad del parénquima pulmonar (Rx normal) ni alteración obstructiva de la vía aérea INFERIOR (espirometría normal) — el problema es el colapso INTERMITENTE de la vía aérea SUPERIOR durante el sueño (SAOS confirmado por polisomnografía), que genera hipoventilación intermitente y desaturación nocturna repetida, con el riñón compensando elevando el HCO3 crónicamente."
+        },
+        {
+          "tipo": "Indique y sustente (mecanismo de difusión)",
+          "planteamiento": "¿Por qué en un paciente con fibrosis pulmonar temprana la hipoxemia se hace evidente durante el ejercicio antes que en reposo?",
+          "respuestaModelo": "Porque el mecanismo predominante en fibrosis es la alteración de la DIFUSIÓN (membrana alveolo-capilar engrosada). En reposo, el tiempo de tránsito de un glóbulo rojo por el capilar pulmonar es relativamente largo, dando tiempo suficiente para que el oxígeno difunda pese al engrosamiento de la membrana. Durante el ejercicio, el gasto cardíaco aumenta y el tiempo de tránsito capilar se ACORTA significativamente — ya no hay tiempo suficiente para que el oxígeno difunda completamente a través de la membrana engrosada, y la hipoxemia se hace evidente."
+        },
+        {
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste los 4 mecanismos de hipoxemia y para cada uno indique si responde bien o mal al oxígeno suplementario.",
+          "respuestaModelo": "Hipoventilación (responde bien), alteración V/Q (mejora parcial — es la causa más frecuente), alteración de la difusión (responde al oxígeno), cortocircuito/shunt (no responde o responde poco)."
+        }
       ]
     }
   },
+  "casosClinicos": [
+    {
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Mujer de 58 años, con antecedente de obesidad grado II e hipertensión controlada. Acude al servicio de urgencias por disnea progresiva, somnolencia diurna, ronquidos nocturnos y cefalea matutina. Al examen físico: FR 10 rpm (VN 12-20), SatO2 88% al aire ambiente (VN >95%), PaCO2 60 mmHg (VN 40±4), PaO2 58 mmHg (VN >80), pH arterial 7.28 (VN 7.35-7.45), HCO3 29 mEq/L (VN 24±2). Examen neurológico: somnolencia sin déficit focal. Polisomnografía respiratoria: múltiples eventos de apnea obstructiva durante el sueño. Radiografía: sin consolidaciones, sin derrames. Espirometría: dentro de parámetros normales.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál de los siguientes mecanismos fisiológicos explica mejor la alteración gasométrica observada en este caso?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Disminución del gradiente alveolo-capilar por edema pulmonar"
+          },
+          {
+            "id": "b",
+            "texto": "Hipoventilación alveolar por alteración neuromuscular primaria"
+          },
+          {
+            "id": "c",
+            "texto": "Hipoventilación alveolar por obstrucción intermitente de la vía aérea superior"
+          },
+          {
+            "id": "d",
+            "texto": "Cortocircuito (shunt) fisiológico aumentado por fibrosis pulmonar basal"
+          }
+        ],
+        "correcta": "c",
+        "explicacion": "La paciente tiene un patrón de hipoventilación crónica COMPENSADA (↑PaCO2, ↓pH, ↑HCO3). No hay signos de enfermedad parenquimatosa pulmonar (Rx normal, descarta A y D) ni alteraciones obstructivas en espirometría (descarta causas de vía aérea inferior). El diagnóstico probable es SAOS: durante el sueño hay colapso de la vía aérea SUPERIOR, generando hipoventilación intermitente → aumento sostenido de CO2 y desaturación nocturna. El sistema renal compensa elevando HCO3, típico de una acidosis respiratoria crónica. No es (B) alteración neuromuscular primaria porque el mecanismo es obstructivo (vía aérea superior), no una falla primaria de los músculos respiratorios."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica por qué la frecuencia respiratoria de esta paciente está BAJA (10 rpm) pese a tener hipoxemia e hipercapnia significativas — ¿no debería estar taquipneica compensando?",
+        "respuestaModelo": "Normalmente, la hipoxemia e hipercapnia deberían estimular taquipnea compensatoria a través del centro respiratorio. Sin embargo, esta paciente presenta somnolencia (registrada en el examen neurológico), lo que sugiere que la hipercapnia crónica y grave (PaCO2 60) ya está teniendo un efecto DEPRESOR sobre el centro respiratorio — un fenómeno de 'narcosis por CO2' que paradójicamente REDUCE el estímulo ventilatorio en vez de aumentarlo cuando la hipercapnia es muy marcada y crónica. Esta frecuencia respiratoria baja en un paciente hipoxémico e hipercápnico es un signo de ALARMA — sugiere fatiga/depresión del centro respiratorio, no estabilidad, y requiere vigilancia estrecha de la vía aérea y posible soporte ventilatorio."
+      }
+    }
+  ]
+},
   {
     "id": "examenes-diagnostico-neumo",
     "nombre": "Exámenes de ayuda diagnóstica en Neumología",
