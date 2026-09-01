@@ -1147,3 +1147,82 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .aviso-guardado-fallido strong{ display:block; margin-bottom:6px; color: var(--honey); }
 .aviso-guardado-fallido p{ margin: 0 0 8px 0; line-height:1.4; }
 .aviso-guardado-fallido span{ cursor:pointer; text-decoration:underline; font-weight:700; }
+
+/* ---------- calendario mensual del ciclo ---------- */
+.cal-leyenda{ display:flex; flex-wrap:wrap; gap:12px; margin:16px 0 20px; }
+.cal-leyenda span{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--ink-soft); }
+.cal-dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+.cal-tabs{ display:flex; gap:6px; margin-bottom:18px; overflow-x:auto; padding-bottom:4px; }
+.cal-tab{
+  font-family:var(--font-display); font-weight:800; font-size:13px; padding:9px 16px;
+  border-radius:999px; background:var(--card); border:1.5px solid var(--line); color:var(--ink-soft);
+  cursor:pointer; white-space:nowrap; transition:all .15s; flex-shrink:0;
+}
+.cal-tab.active{ background:var(--cobalt); color:#fff; border-color:var(--cobalt); }
+
+.cal-mes-titulo{ font-family:var(--font-display); font-weight:800; font-size:18px; margin:0 0 12px; }
+
+.cal-grid-dias{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:6px; }
+.cal-etiqueta{ text-align:center; font-size:11px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.02em; padding-bottom:4px; }
+
+.cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:24px; }
+.cal-celda{
+  min-height:66px; border-radius:12px; padding:6px 6px 22px; position:relative;
+  background:var(--card); border:1.5px solid var(--line);
+}
+.cal-celda.cal-vacia{ background:transparent; border:none; }
+.cal-num{ font-family:var(--font-display); font-weight:800; font-size:13px; }
+
+.cal-celda.cal-teoria{ background:var(--cobalt-soft); border-color:var(--cobalt-line); }
+.cal-celda.cal-hospital{ background:var(--coral-soft); border-color:var(--coral-line); }
+.cal-celda.cal-mixta{ background:linear-gradient(135deg, var(--cobalt-soft) 50%, var(--coral-soft) 50%); border-color:var(--cobalt-line); }
+.cal-celda.cal-examen-parcial, .cal-celda.cal-examen-final{ background:var(--honey); border-color:var(--honey); }
+.cal-celda.cal-examen-parcial .cal-num, .cal-celda.cal-examen-final .cal-num{ color:#fff; }
+
+.cal-celda:not(.cal-vacia){ cursor:pointer; }
+.cal-celda:not(.cal-vacia):hover{ box-shadow:0 3px 10px rgba(0,0,0,.08); transform:translateY(-1px); }
+
+.cal-tag{
+  position:absolute; bottom:6px; left:6px; right:6px; font-size:8.5px; font-weight:800;
+  padding:2px 3px; border-radius:5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  text-align:center; letter-spacing:-0.02em;
+}
+.cal-tag-teoria{ background:var(--cobalt); color:#fff; }
+.cal-tag-hospital{ background:var(--coral); color:#fff; }
+.cal-tag-examen-parcial, .cal-tag-examen-final{ background:#fff; color:var(--honey); }
+.cal-tag-evaluacion-continua{ background:var(--mint); color:#fff; }
+
+.cal-overlay{
+  display:none; position:fixed; inset:0; background:rgba(36,36,58,.45); z-index:300;
+  align-items:flex-end; justify-content:center;
+}
+.cal-overlay.show{ display:flex; }
+.cal-panel{
+  background:var(--card); border-radius:20px 20px 0 0; width:100%; max-width:560px; padding:22px 22px 28px;
+  max-height:80vh; overflow-y:auto;
+}
+@media (min-width:600px){
+  .cal-overlay{ align-items:center; }
+  .cal-panel{ border-radius:20px; }
+}
+.cal-panel-fecha{ font-family:var(--font-display); font-weight:800; font-size:17px; margin:0 0 4px; text-transform:capitalize; }
+.cal-panel-semana{ font-size:13px; margin:0 0 16px; }
+.cal-panel-item{ padding:12px 14px; border-radius:12px; margin-bottom:10px; font-size:14px; line-height:1.5; }
+.cal-panel-item-teoria{ background:var(--cobalt-soft); }
+.cal-panel-item-hospital{ background:var(--coral-soft); }
+.cal-panel-item-examen-parcial, .cal-panel-item-examen-final{ background:var(--honey-soft); }
+.cal-panel-item-evaluacion-continua{ background:var(--mint-soft); }
+.cal-etiqueta-tipo{ display:block; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; margin-bottom:5px; }
+.cal-panel-item-teoria .cal-etiqueta-tipo{ color:var(--cobalt); }
+.cal-panel-item-hospital .cal-etiqueta-tipo{ color:var(--coral); }
+.cal-panel-item-examen-parcial .cal-etiqueta-tipo, .cal-panel-item-examen-final .cal-etiqueta-tipo{ color:var(--honey); }
+.cal-panel-item-evaluacion-continua .cal-etiqueta-tipo{ color:var(--mint); }
+.cal-clicable{ cursor:pointer; }
+.cal-clicable:hover{ filter:brightness(0.97); }
+.cal-ver-mas{ display:block; margin-top:6px; font-size:12px; font-weight:700; color:var(--cobalt); }
+.cal-cerrar{
+  text-align:center; margin-top:14px; padding:10px; border-radius:10px;
+  background:var(--cream); font-weight:700; font-size:13px; cursor:pointer; color:var(--ink-soft);
+}
+:root.dark .cal-cerrar{ background: var(--card-alt, rgba(255,255,255,0.05)); }
