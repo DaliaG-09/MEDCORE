@@ -205,6 +205,40 @@ function parseRangoFin(rango, year){
   if(mesIdx === undefined) return null;
   return new Date(year, mesIdx, dia, 23, 59);
 }
+function parseRangoInicio(rango, year){
+  // "31 ago – 4 set" -> toma "31 ago" (con su propio mes, no el del final)
+  // "17 – 21 ago" -> el primer número no trae mes, así que usa el mes del final
+  const finMatch = rango.match(/(\d{1,2})\s*([a-záéíóú]{3})\s*$/i);
+  const mesFin = finMatch ? MESES_MAP[finMatch[2].toLowerCase()] : undefined;
+  const inicioConMes = rango.match(/^(\d{1,2})\s*([a-záéíóú]{3})/i);
+  let dia, mesIdx;
+  if(inicioConMes){
+    dia = parseInt(inicioConMes[1], 10);
+    mesIdx = MESES_MAP[inicioConMes[2].toLowerCase()];
+  } else {
+    const soloDia = rango.match(/^(\d{1,2})/);
+    if(!soloDia || mesFin === undefined) return null;
+    dia = parseInt(soloDia[1], 10);
+    mesIdx = mesFin;
+  }
+  if(mesIdx === undefined) return null;
+  return new Date(year, mesIdx, dia, 0, 0);
+}
+function parseRangoInicioDesdeTexto(texto, year){
+  // para semanas de examen donde s.rango es solo una etiqueta ("Semana de evaluación") sin fecha —
+  // extrae el inicio directamente del texto de la evaluación, tipo "SEMANA DEL 5 AL 11 DE OCTUBRE"
+  // o "SEMANA DEL 30 NOVIEMBRE AL 6 DE DICIEMBRE"
+  const meses = 'enero|febrero|marzo|abril|mayo|junio|julio|agosto|setiembre|septiembre|octubre|noviembre|diciembre';
+  const re = new RegExp(`DEL\\s+(\\d{1,2})\\s*(?:DE\\s+)?(${meses})?\\s+AL\\s+(\\d{1,2})\\s*(?:DE\\s+)?(${meses})`, 'i');
+  const m = texto.match(re);
+  if(!m) return null;
+  const diaInicio = parseInt(m[1], 10);
+  // si el mes de inicio no viene explícito (ej. "DEL 5 AL 11 DE OCTUBRE"), usa el mes del fin
+  const mesTxt = (m[2] || m[4]).toLowerCase().slice(0,3);
+  const mesIdx = MESES_MAP[mesTxt];
+  if(mesIdx === undefined) return null;
+  return new Date(year, mesIdx, diaInicio, 0, 0);
+}
 function getProximaEvaluacion(){
   const hoy = new Date();
   const year = hoy.getFullYear();
@@ -680,45 +714,179 @@ function renderCronograma(){
 }
 
 /* ---------- vista: calendario de evaluaciones ---------- */
-function openCalendarioFresh(){ navReset('calendario', null, 'Calendario de evaluaciones'); }
-function renderCalendarioEvaluaciones(){
-  const wrap = document.getElementById('view-calendario-content');
-  const hoy = new Date();
-  const year = hoy.getFullYear();
-  const items = [];
+/* ---------- calendario mensual completo: teoría, hospital, evaluaciones ---------- */
+const CAL_NOMBRES_TIPO = {
+  'teoria':'Teoría', 'hospital':'Hospital', 'teoria+hospital':'Teoría + Hospital',
+  'examen-parcial':'Examen Parcial', 'examen-final':'Examen Integrado Final',
+  'evaluacion-continua':'Evaluación continua'
+};
+const CAL_NOMBRES_TIPO_CORTO = {
+  'teoria':'Clase', 'hospital':'Hosp.', 'teoria+hospital':'Ambos',
+  'examen-parcial':'Parcial', 'examen-final':'Final',
+  'evaluacion-continua':'Evaluación'
+};
+function generarEventosCalendario(){
+  const year = new Date().getFullYear();
+  const eventos = [];
   SEMANAS.forEach(s => {
-    (s.evaluaciones || []).forEach((ev, idx) => {
-      const fecha = parseFechaTextoLibre(ev, year) || parseRangoFin(s.rango, year);
-      items.push({ fecha, label: ev, semana: s, idx });
+    const evalsStr = (s.evaluaciones||[]).join(' ').toUpperCase();
+    const esParcial = evalsStr.includes('EXAMEN PARCIAL');
+    const esFinal = evalsStr.includes('EXAMEN INTEGRADO FINAL');
+
+    let inicio = parseRangoInicio(s.rango, year);
+    if(!inicio && (esParcial || esFinal)){
+      // estas semanas suelen tener rango="Semana de evaluación" (sin fecha) — la fecha real
+      // vive dentro del texto de la propia evaluación ("SEMANA DEL 5 AL 11 DE OCTUBRE")
+      const evalConFecha = (s.evaluaciones||[]).find(ev => /DEL\s+\d/i.test(ev));
+      if(evalConFecha) inicio = parseRangoInicioDesdeTexto(evalConFecha, year);
+    }
+    if(!inicio) return;
+
+    if(esParcial || esFinal){
+      const tipo = esParcial ? 'examen-parcial' : 'examen-final';
+      const texto = esParcial ? 'Examen Parcial: Neumología y Cardiología' : 'Examen Integrado Final: todos los módulos';
+      for(let offset=0; offset<6; offset++){
+        const f = new Date(inicio); f.setDate(f.getDate()+offset);
+        eventos.push({ fecha: fechaISO(f), tipo, texto, semana: s.numero, semanaId: s.id });
+      }
+      return;
+    }
+
+    const offsetsPorDia = { 'Lunes':0, 'Martes':1, 'Miércoles':2, 'Jueves':3, 'Viernes':4, 'Sábado':5, 'Domingo':6 };
+    (s.dias||[]).forEach(d => {
+      const off = offsetsPorDia[d.dia];
+      if(off === undefined) return;
+      const f = new Date(inicio); f.setDate(f.getDate()+off);
+      eventos.push({ fecha: fechaISO(f), tipo: d.tipo, texto: d.tema, semana: s.numero, semanaId: s.id });
+    });
+
+    (s.evaluaciones||[]).forEach((ev, idx) => {
+      const f = new Date(inicio); f.setDate(f.getDate()+5); // sábado de esa semana, como marcador de cierre
+      eventos.push({ fecha: fechaISO(f), tipo: 'evaluacion-continua', texto: ev, semana: s.numero, semanaId: s.id, evalIdx: idx });
     });
   });
-  items.sort((a,b) => (a.fecha||0) - (b.fecha||0));
+  return eventos;
+}
+function fechaISO(d){
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function claseCeldaCalendario(eventosDia){
+  if(!eventosDia.length) return 'cal-libre';
+  const tipos = eventosDia.map(e=>e.tipo);
+  if(tipos.includes('examen-parcial')) return 'cal-examen-parcial';
+  if(tipos.includes('examen-final')) return 'cal-examen-final';
+  if(tipos.includes('teoria+hospital')) return 'cal-mixta';
+  if(tipos.includes('teoria') && tipos.includes('hospital')) return 'cal-mixta';
+  if(tipos.includes('teoria')) return 'cal-teoria';
+  if(tipos.includes('hospital')) return 'cal-hospital';
+  return 'cal-libre';
+}
+function tagPrincipalCalendario(eventosDia){
+  const orden = ['examen-parcial','examen-final','teoria+hospital','teoria','hospital','evaluacion-continua'];
+  for(const t of orden){ const e = eventosDia.find(x=>x.tipo===t); if(e) return e; }
+  return eventosDia[0];
+}
+let calMesActivo = null;
+function openCalendarioFresh(){ navReset('calendario', null, 'Calendario'); }
+function renderCalendarioEvaluaciones(){
+  const wrap = document.getElementById('view-calendario-content');
+  const year = new Date().getFullYear();
+  const eventos = generarEventosCalendario();
+
+  // determinar rango de meses a mostrar: desde el mes de la primera semana hasta el mes de la última
+  const primeraFecha = eventos.reduce((min,e) => e.fecha < min ? e.fecha : min, eventos[0].fecha);
+  const ultimaFecha = eventos.reduce((max,e) => e.fecha > max ? e.fecha : max, eventos[0].fecha);
+  const [anioIni, mesIni] = primeraFecha.split('-').map(Number);
+  const [anioFin, mesFin] = ultimaFecha.split('-').map(Number);
+
+  const NOMBRES_MES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const meses = [];
+  let a = anioIni, m = mesIni;
+  while(a < anioFin || (a === anioFin && m <= mesFin)){
+    const diasEnMes = new Date(a, m, 0).getDate();
+    meses.push({ clave: a + '-' + String(m).padStart(2,'0'), nombre: NOMBRES_MES[m-1] + ' ' + a, diasEnMes });
+    m++; if(m > 12){ m = 1; a++; }
+  }
+
+  const hoy = new Date();
+  const claveHoy = hoy.getFullYear() + '-' + String(hoy.getMonth()+1).padStart(2,'0');
+  let idxActivo = meses.findIndex(x => x.clave === claveHoy);
+  if(idxActivo < 0) idxActivo = 0;
+  if(calMesActivo !== null && meses[calMesActivo]) idxActivo = calMesActivo;
+
+  const DIAS_LABEL = ['Lun','Mar','Miér','Jue','Vier','Sáb','Dom'];
+
+  function construirGridMes(mes){
+    const primerDia = new Date(mes.clave + '-01T00:00:00');
+    let diaSemanaInicio = primerDia.getDay();
+    diaSemanaInicio = (diaSemanaInicio + 6) % 7;
+    let celdas = '';
+    for(let i=0;i<diaSemanaInicio;i++) celdas += `<div class="cal-celda cal-vacia"></div>`;
+    for(let dia=1; dia<=mes.diasEnMes; dia++){
+      const fechaStr = mes.clave + '-' + String(dia).padStart(2,'0');
+      const evts = eventos.filter(e => e.fecha === fechaStr);
+      const clase = claseCeldaCalendario(evts);
+      let tagHtml = '';
+      if(evts.length){
+        const principal = tagPrincipalCalendario(evts);
+        tagHtml = `<span class="cal-tag cal-tag-${principal.tipo}">${CAL_NOMBRES_TIPO_CORTO[principal.tipo]||principal.tipo}</span>`;
+      }
+      const onclick = evts.length ? `onclick='abrirPanelCalendario(${JSON.stringify(fechaStr)})'` : '';
+      celdas += `<div class="cal-celda ${clase}" ${onclick}><span class="cal-num">${dia}</span>${tagHtml}</div>`;
+    }
+    return celdas;
+  }
+
+  window.__calEventos = eventos; // para que abrirPanelCalendario los lea sin recalcular
 
   wrap.innerHTML = `
     ${volverBtnHTML()}
     <span class="eyebrow">${CURSO.formulaEvaluacion}</span>
-    <h1 class="page-title">📅 Calendario de evaluaciones</h1>
-    <p class="page-sub">Todas las evaluaciones del ciclo, en orden. Toca cualquiera para prepararte: alcance, checklist, quiz y casos.</p>
+    <h1 class="page-title">📅 Calendario del ciclo</h1>
+    <p class="page-sub">Teoría, hospital, talleres, lecturas y evaluaciones — todo lo que te toca cada día, según tu propio sílabo.</p>
 
-    <div class="calendario-lista">
-      ${items.map(it => {
-        const theme = getWeekTheme(it.semana.numero);
-        const pasado = it.fecha && it.fecha < hoy;
-        const dias = it.fecha ? Math.ceil((it.fecha - hoy) / (1000*60*60*24)) : null;
-        return `
-        <div class="calendario-item ${pasado ? 'pasado' : ''}" onclick="navPreparar('${it.semana.id}', ${it.idx})">
-          <div class="calendario-fecha" style="background:${theme.color}33;">
-            <span class="calendario-emoji">${theme.emoji}</span>
-            <span class="calendario-semana-num">S${it.semana.numero}</span>
-          </div>
-          <div class="calendario-info">
-            <div class="calendario-label">${it.label}</div>
-            <div class="calendario-sub muted">${it.fecha ? it.fecha.toLocaleDateString('es-PE', {day:'numeric', month:'long'}) : it.semana.rango}${!pasado && dias !== null ? ` — faltan ${dias} días` : (pasado ? ' — ya pasó' : '')}</div>
-          </div>
-        </div>`;
-      }).join('')}
+    <div class="cal-leyenda">
+      <span><i class="cal-dot" style="background:var(--cobalt)"></i> Teoría</span>
+      <span><i class="cal-dot" style="background:var(--coral)"></i> Hospital</span>
+      <span><i class="cal-dot" style="background:var(--mint)"></i> Evaluación continua</span>
+      <span><i class="cal-dot" style="background:var(--honey)"></i> Examen parcial / final</span>
+    </div>
+
+    <div class="cal-tabs">
+      ${meses.map((mes,i) => `<div class="cal-tab ${i===idxActivo?'active':''}" onclick="calMesActivo=${i}; renderCalendarioEvaluaciones();">${mes.nombre.split(' ')[0]}</div>`).join('')}
+    </div>
+
+    <p class="cal-mes-titulo">${meses[idxActivo].nombre}</p>
+    <div class="cal-grid-dias">${DIAS_LABEL.map(d=>`<div class="cal-etiqueta">${d}</div>`).join('')}</div>
+    <div class="cal-grid">${construirGridMes(meses[idxActivo])}</div>
+
+    <div class="cal-overlay" id="cal-overlay" onclick="if(event.target.id==='cal-overlay') cerrarPanelCalendario()">
+      <div class="cal-panel">
+        <p class="cal-panel-fecha" id="cal-panel-fecha"></p>
+        <p class="cal-panel-semana muted" id="cal-panel-semana"></p>
+        <div id="cal-panel-items"></div>
+        <div class="cal-cerrar" onclick="cerrarPanelCalendario()">Cerrar</div>
+      </div>
     </div>
   `;
+}
+function abrirPanelCalendario(fechaStr){
+  const evts = (window.__calEventos||[]).filter(e => e.fecha === fechaStr);
+  if(!evts.length) return;
+  const fecha = new Date(fechaStr + 'T00:00:00');
+  document.getElementById('cal-panel-fecha').textContent = fecha.toLocaleDateString('es-PE', { weekday:'long', day:'numeric', month:'long' });
+  document.getElementById('cal-panel-semana').textContent = 'Semana ' + evts[0].semana + ' del sílabo';
+  document.getElementById('cal-panel-items').innerHTML = evts.map(e => `
+    <div class="cal-panel-item cal-panel-item-${e.tipo} ${e.evalIdx !== undefined ? 'cal-clicable' : ''}" ${e.evalIdx !== undefined ? `onclick="cerrarPanelCalendario(); navPreparar('${e.semanaId}', ${e.evalIdx})"` : ''}>
+      <span class="cal-etiqueta-tipo">${CAL_NOMBRES_TIPO[e.tipo]||e.tipo}</span>${e.texto}
+      ${e.evalIdx !== undefined ? '<span class="cal-ver-mas">Toca para prepararte →</span>' : ''}
+    </div>
+  `).join('');
+  document.getElementById('cal-overlay').classList.add('show');
+}
+function cerrarPanelCalendario(){
+  const el = document.getElementById('cal-overlay');
+  if(el) el.classList.remove('show');
 }
 
 function saludoSegunHora(){
