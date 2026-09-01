@@ -5732,209 +5732,258 @@ const TEMAS = [
   ]
 },
   {
-  "id": "examenes-diagnostico-neumo",
-  "nombre": "Exámenes de ayuda diagnóstica en Neumología",
+    "id": "examenes-diagnostico-neumo",
+    "nombre": "Exámenes de ayuda diagnóstica en Neumología",
+    "area": "Neumología",
+    "tipo": "metodo-diagnostico",
+    "semanas": [
+      "semana-01"
+    ],
+    "favorito": false,
+    "estudiado": false,
+    "contenido": {
+      "resumen": "Antes de estudiar cada enfermedad respiratoria, necesitas conocer las herramientas que se usan para diagnosticarlas. Cinco estudios cubren la mayoría de los escenarios clínicos en Neumología: radiografía de tórax (primera línea), tomografía (mayor detalle), espirometría (función pulmonar), toracocentesis (líquido pleural) y fibrobroncoscopía (visualización directa de la vía aérea).",
+      "estructuras": [
+        {
+          "nombre": "Radiografía de tórax",
+          "detalle": "Proyecciones básicas: PA (posteroanterior, de pie, inspiración máxima), lateral, y AP (cuando el paciente no puede pararse). Lectura sistemática en 7 pasos: partes blandas → huesos → parénquima → pleura → mediastino → hilios/vasos → corazón/aorta. Las 4 densidades radiológicas son aire, agua, grasa y calcio.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/rx-torax-pa-normal.jpg", "caption": "Rx de tórax PA normal — referencia para comparar" },
+            { "src": "assets/examenes-dx/rx-torax-lateral.jpg", "caption": "Proyección lateral — complementa la vista PA" },
+            { "src": "assets/examenes-dx/rx-torax-hallazgos-anotados.jpg", "caption": "Ejemplo con hallazgos anotados (flechas) — así se marcan los hallazgos en la práctica" }
+          ]
+        },
+        {
+          "nombre": "Tomografía de tórax (TC)",
+          "detalle": "Mayor resolución que la radiografía. Los patrones básicos que debes reconocer son: lineal, micronodular, en vidrio esmerilado (opacidad) y quístico — cada uno orienta a familias distintas de enfermedades intersticiales/infecciosas.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/tc-torax-cortes-axiales.jpg", "caption": "TC de tórax — 4 cortes axiales a distintos niveles" }
+          ]
+        },
+        {
+          "nombre": "Espirometría",
+          "detalle": "Mide FVC (capacidad vital forzada), FEV1 (volumen espirado en el primer segundo) y su cociente FEV1/FVC. Es la prueba clave para diferenciar patrón obstructivo (FEV1/FVC bajo — EPOC, asma) de restrictivo (FVC bajo con cociente normal — enfermedades intersticiales).",
+          "imagenes": [
+            { "src": "assets/examenes-dx/espirometria-procedimiento.jpg", "caption": "Cómo se realiza — el paciente sopla con fuerza en la boquilla" },
+            { "src": "assets/examenes-dx/asa-flujo-volumen.jpg", "caption": "Asa de flujo-volumen — distintos patrones (A-E) según el tipo de alteración" }
+          ]
+        },
+        {
+          "nombre": "Toracocentesis",
+          "detalle": "Punción del espacio pleural (6º-8º espacio intercostal, guiada por ecografía) para extraer líquido o aire con fines diagnósticos o terapéuticos. Indicada en derrame pleural inexplicado, sospecha de infección/malignidad, o alivio de disnea.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/toracocentesis-tecnica.jpg", "caption": "Técnica: paciente sentado, inclinado hacia adelante — el líquido se drena por gravedad" },
+            { "src": "assets/examenes-dx/toracocentesis-guiada-ecografia.jpg", "caption": "Guiada por ecografía — reduce el riesgo de neumotórax iatrogénico" }
+          ]
+        },
+        {
+          "nombre": "Fibrobroncoscopía",
+          "detalle": "Visualización endoscópica directa del árbol bronquial hasta nivel subsegmentario, bajo anestesia local y sedación. Permite biopsia de lesiones sospechosas, estudio de un pulmón/lóbulo colapsado, y muestreo microbiológico en infecciones no resueltas.",
+          "imagenes": [
+            { "src": "assets/examenes-dx/arbol-bronquial-3d.jpg", "caption": "Árbol traqueobronquial — la ruta que sigue el broncoscopio" }
+          ]
+        }
+      ],
+      "fisiologiaNormal": "Estos estudios no evalúan 'lo normal' en sí, sino que sirven para detectar desviaciones de la anatomía y función normales. Por eso su interpretación siempre depende de conocer primero cómo se ve/funciona un pulmón sano: en la Rx, un parénquima con densidad aire uniforme sin opacidades ni pérdida de volumen; en la espirometría, un FEV1/FVC normal (>70% aproximadamente) con volúmenes dentro de lo predicho para edad/talla/sexo.",
+      "correlacionClinica": "Cada síntoma respiratorio 'apunta' a un estudio distinto: disnea aguda o hemoptisis → Rx de tórax urgente; sospecha de EPOC/asma → espirometría con prueba post-broncodilatador (respuesta significativa = aumento ≥10% del FEV1 o FVC según ERS/ATS); derrame pleural → toracocentesis; lesión endobronquial o infección no resuelta → fibrobroncoscopía. Vas a usar esta lógica de selección de estudio en cada enfermedad que veas de aquí en adelante — por ejemplo, el diagnóstico de EPOC exige espirometría con FEV1/FVC <70% sin reversibilidad significativa, dato que ya vas a reconocer.",
+      "puntosClave": [
+        "La Rx de tórax siempre se interpreta junto con la historia clínica, nunca aislada",
+        "Espirometría: FEV1/FVC bajo = obstructivo; FVC bajo con cociente normal = restrictivo",
+        "Reversibilidad post-broncodilatador ≥10% en FEV1 o FVC distingue asma de EPOC",
+        "La toracocentesis tiene complicación más frecuente el neumotórax (12-30% de los procedimientos)",
+        "La TC de alta resolución es el estándar de oro para bronquiectasias (signo del anillo de sello — diámetro bronquial > diámetro del vaso adyacente)"
+      ]
+    }
+  }
+,
+  {
+  "id": "analisis-gases-arteriales",
+  "nombre": "Análisis de Gases Arteriales: bases fisiopatológicas e interpretación clínica",
   "area": "Neumología",
   "tipo": "metodo-diagnostico",
   "semanas": [
-    "semana-01"
+    "semana-02"
   ],
   "favorito": false,
   "estudiado": false,
   "pdfOrigen": {
-    "url": "https://drive.google.com/file/d/1ZJsp7Q_IKvVL7a-SUU2Wd_RMiIy03jTe/view",
-    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-1-TEMA-2: Exámenes de ayuda diagnóstica en Neumología"
+    "url": "https://drive.google.com/file/d/1eqtsjbBAkjIyAnDS-kgiI0tWvRKytKZb/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_2_SESIÓN-4-TEMA-2: Análisis de Gases Arteriales"
   },
   "contenido": {
-    "resumen": "Antes de estudiar cada enfermedad respiratoria, necesitas conocer las herramientas que se usan para diagnosticarlas. Cinco estudios cubren la mayoría de los escenarios clínicos en Neumología: radiografía de tórax (primera línea), tomografía (mayor detalle), espirometría (función pulmonar), toracocentesis (líquido pleural) y fibrobroncoscopía (visualización directa de la vía aérea).",
+    "resumen": "El análisis de gases arteriales (AGA) es la herramienta que permite cuantificar cómo está funcionando el intercambio gaseoso y el equilibrio ácido-base del paciente en tiempo real. Mide cuatro parámetros clave: PaO2 (oxigenación), PaCO2 (ventilación), pH (equilibrio ácido-base) y HCO3- (componente metabólico/renal).",
     "estructuras": [
       {
-        "nombre": "Radiografía de tórax",
-        "detalle": "Proyecciones básicas: PA (posteroanterior, de pie, inspiración máxima), lateral, y AP (cuando el paciente no puede pararse). Proyecciones complementarias: PA en inspiración/espiración forzadas (para neumotórax), oblicuas (fracturas costales), decúbito lateral con rayo horizontal (derrames pleurales). Calidad técnica: centrada (clavículas equidistantes), exposición adecuada, inspiración correcta (diafragma a nivel del 5º-6º arco costal). Lectura sistemática en 7 pasos: partes blandas → huesos → parénquima → pleura → mediastino → hilios/vasos → corazón/aorta. Las 4 densidades radiológicas son aire, agua, grasa y calcio.",
+        "nombre": "PaO2 (presión arterial de oxígeno)",
+        "detalle": "Refleja la oxigenación. Normal: 80-100 mmHg respirando aire ambiental. Se relaciona con el gradiente alveolo-arterial (A-a) y la relación PaFi (PaO2/FiO2) para evaluar la gravedad del compromiso respiratorio."
+      },
+      {
+        "nombre": "PaCO2 (presión arterial de CO2)",
+        "detalle": "Refleja la ventilación alveolar — es el componente RESPIRATORIO del equilibrio ácido-base. Normal: 35-45 mmHg. Sube en hipoventilación (retención de CO2), baja en hiperventilación."
+      },
+      {
+        "nombre": "pH",
+        "detalle": "Refleja el equilibrio ácido-base neto. Normal: 7.35-7.45, compatible con vida entre 6.80-7.70. Es una escala LOGARÍTMICA: un cambio de 0.3 duplica o reduce a la mitad la concentración de H+.",
         "imagenes": [
           {
-            "src": "assets/examenes-dx/rx-torax-pa-normal.jpg",
-            "caption": "Rx de tórax PA normal — referencia para comparar"
-          },
-          {
-            "src": "assets/examenes-dx/rx-torax-lateral.jpg",
-            "caption": "Proyección lateral — complementa la vista PA"
-          },
-          {
-            "src": "assets/examenes-dx/rx-torax-hallazgos-anotados.jpg",
-            "caption": "Ejemplo con hallazgos anotados (flechas) — así se marcan los hallazgos en la práctica"
+            "src": "assets/aga/aga-metodo-3-pasos.jpg",
+            "caption": "Ejemplo visual del metodo de 3 pasos (de tu clase)",
+            "explicacion": "Este ejemplo trabajado muestra los 3 valores lado a lado con codigo de color: verde=normal, naranja/rojo=anormal. HCO3 muy bajo (6) define ACIDOSIS METABOLICA primaria. El pH bajo (7.29) confirma que el trastorno metabolico domina. El PaCO2 bajo (13) es la RESPUESTA COMPENSATORIA esperada (formula de Winter: 1.5x6+8+-2 = 15 a 19), y cae ligeramente por debajo del rango esperado, sugiriendo verificar un componente de alcalosis respiratoria agregada."
           }
         ]
       },
       {
-        "nombre": "Tomografía de tórax (TC)",
-        "detalle": "Mayor resolución que la radiografía. Los patrones básicos que debes reconocer son: lineal, micronodular, en vidrio esmerilado (opacidad) y quístico — cada uno orienta a familias distintas de enfermedades intersticiales/infecciosas.",
-        "imagenes": [
-          {
-            "src": "assets/examenes-dx/tc-torax-cortes-axiales.jpg",
-            "caption": "TC de tórax — 4 cortes axiales a distintos niveles"
-          }
-        ]
+        "nombre": "HCO3- (bicarbonato)",
+        "detalle": "Es el componente METABÓLICO/RENAL del equilibrio ácido-base. Normal: 22-26 mEq/L. Es el buffer más significativo en sangre. Los riñones lo ajustan más lento (días) que los pulmones ajustan el CO2 (minutos-horas)."
       },
       {
-        "nombre": "Espirometría",
-        "detalle": "Mide FVC (capacidad vital forzada), FEV1 (volumen espirado en el primer segundo) y su cociente FEV1/FVC. Volúmenes pulmonares fundamentales: Capacidad Vital (CV) — volumen máximo exhalado tras inspiración máxima; Capacidad Residual Funcional (CRF) — aire que queda al final de una respiración normal; Volumen Residual (VR) — aire que queda tras exhalación máxima; Capacidad Pulmonar Total (CPT) — aire en los pulmones al final de la inspiración máxima. Es la prueba clave para diferenciar patrón obstructivo (FEV1/FVC bajo — EPOC, asma) de restrictivo (FVC bajo con cociente normal — enfermedades intersticiales).",
-        "imagenes": [
-          {
-            "src": "assets/examenes-dx/espirometria-procedimiento.jpg",
-            "caption": "Cómo se realiza — el paciente sopla con fuerza en la boquilla"
-          },
-          {
-            "src": "assets/examenes-dx/asa-flujo-volumen.jpg",
-            "caption": "Asa de flujo-volumen — distintos patrones (A-E) según el tipo de alteración"
-          }
-        ]
-      },
-      {
-        "nombre": "Toracocentesis",
-        "detalle": "Punción del espacio pleural (6º-8º espacio intercostal, guiada por ecografía) para extraer líquido o aire con fines diagnósticos o terapéuticos. Indicada en derrame pleural inexplicado, sospecha de infección/malignidad, alivio de disnea, preparación para pleurodesis, diferenciación entre causas cardíacas y no cardíacas, drenaje de empiema/hemotórax. Contraindicaciones absolutas: trastornos hemorrágicos no corregidos, infección cutánea en el sitio de punción. Relativas: ventilación mecánica, inestabilidad hemodinámica grave.",
-        "imagenes": [
-          {
-            "src": "assets/examenes-dx/toracocentesis-tecnica.jpg",
-            "caption": "Técnica: paciente sentado, inclinado hacia adelante — el líquido se drena por gravedad"
-          },
-          {
-            "src": "assets/examenes-dx/toracocentesis-guiada-ecografia.jpg",
-            "caption": "Guiada por ecografía — reduce el riesgo de neumotórax iatrogénico"
-          }
-        ]
-      },
-      {
-        "nombre": "Fibrobroncoscopía",
-        "detalle": "Visualización endoscópica directa del árbol bronquial hasta nivel subsegmentario, bajo anestesia local y sedación. Indicaciones principales: (1) visualización y biopsia de lesiones endobronquiales sospechosas de malignidad, (2) estudio de pulmón/lóbulo colapsado para determinar la causa de obstrucción (cuerpo extraño, tapón mucoso, tumor), (3) muestreo microbiológico en infecciones no resueltas o TB sospechada, (4) evaluación citológica de lavado broncoalveolar para malignidad y enfermedades parenquimatosas difusas.",
-        "imagenes": [
-          {
-            "src": "assets/examenes-dx/arbol-bronquial-3d.jpg",
-            "caption": "Árbol traqueobronquial — la ruta que sigue el broncoscopio"
-          }
-        ]
+        "nombre": "Los 3 buffers principales del cuerpo",
+        "detalle": "Proteínas, hemoglobina (6 veces más capacidad amortiguadora que las proteínas plasmáticas), y bicarbonato (el más significativo en sangre)."
       }
     ],
-    "fisiologiaNormal": "Estos estudios no evalúan 'lo normal' en sí, sino que sirven para detectar desviaciones de la anatomía y función normales. Por eso su interpretación siempre depende de conocer primero cómo se ve/funciona un pulmón sano: en la Rx, un parénquima con densidad aire uniforme sin opacidades ni pérdida de volumen; en la espirometría, un FEV1/FVC normal (>70% aproximadamente) con volúmenes dentro de lo predicho para edad/talla/sexo.",
+    "fisiologiaNormal": "El pH sanguíneo se mantiene estable gracias al equilibrio entre el sistema respiratorio (ajusta CO2 en minutos) y el sistema renal (ajusta bicarbonato en horas a días). Cuando uno falla primero (trastorno primario), el otro compensa en la dirección que normaliza el pH — nunca lo sobrecorrige. El transporte de oxígeno depende en 98.5% de la hemoglobina y solo 1.5% va disuelto en plasma. La desigualdad ventilación-perfusión (V'A/Q') está presente en casi todas las enfermedades pulmonares, con 3 mecanismos compensatorios: mayor extracción tisular de O2, aumento de la ventilación, e incremento del gasto cardíaco.",
     "tablasClinicas": [
       {
-        "titulo": "📷 Patrones radiológicos por patología (de tu clase)",
-        "contexto": "Cada enfermedad deja una 'firma' radiológica reconocible en la Rx de tórax — aprenderte estos patrones te permite reconocer la patología antes incluso de tener el resto de la historia clínica completa.",
+        "titulo": "Valores normales y críticos de los gases arteriales",
         "columnas": [
-          "Patología",
-          "Hallazgos radiológicos clave"
+          "Parametro",
+          "Rango normal",
+          "Valor critico"
         ],
         "filas": [
           [
-            "Neumonía",
-            "Aumento de densidad, distribución segmentaria/lobular, broncograma aéreo, signo de la silueta (borramiento del contorno cardíaco/diafragmático adyacente)"
+            "pH",
+            "7.35 - 7.45",
+            "menor a 7.25 o mayor a 7.60"
           ],
           [
-            "Atelectasia",
-            "Aumento de densidad, desplazamiento de cisuras HACIA la zona colapsada, desplazamiento mediastínico, elevación del hemidiafragma"
+            "SaO2",
+            "80% - 100%",
+            "menor a 80%"
           ],
           [
-            "Edema pulmonar",
-            "Opacidades perihiliares, patrón 'en alas de mariposa', líneas B y A de Kerley, cardiomegalia asociada"
+            "PaO2",
+            "80 - 100 mmHg",
+            "menor a 50 mmHg"
           ],
           [
-            "Derrame pleural",
-            "Opacidad homogénea con margen superior CÓNCAVO, obliteración del seno costofrénico"
+            "PaCO2",
+            "35 - 45 mmHg",
+            "mayor a 45 (acidosis) o menor a 35 (alcalosis)"
           ],
           [
-            "Neumotórax",
-            "Línea fina de pleura visceral separada de la parietal por espacio aéreo SIN vasos pulmonares"
+            "HCO3-",
+            "22 - 26 mEq/L",
+            "mayor a 26 (alcalosis) o menor a 22 (acidosis)"
           ],
           [
-            "Neumomediastino",
-            "Imágenes lineales o aéreas localizadas centralmente a lo largo de la silueta cardíaca y grandes vasos"
+            "Exceso/deficit de base",
+            "-2 a +2 mEq/L",
+            "fuera de ese rango"
           ]
         ]
       },
       {
-        "titulo": "📈 Los 5 patrones del bucle flujo-volumen",
-        "contexto": "La FORMA del bucle (no solo los números) te dice DÓNDE está el problema de la vía aérea.",
+        "titulo": "Causas de hipoxemia arterial - patron por mecanismo",
+        "contexto": "Cada mecanismo de hipoxemia deja un patron distinto en 3 variables.",
         "columnas": [
-          "Patrón",
-          "Hallazgo característico"
+          "Causa",
+          "PCO2 arterial",
+          "Gradiente A-aO2",
+          "PO2 con O2 100%"
         ],
         "filas": [
           [
-            "A — Normal",
-            "Ascenso rápido a flujo máximo + caída casi lineal; rama inspiratoria simétrica en 'silla de montar'"
+            "PO2 inspirada baja (altitud)",
+            "Disminuida",
+            "Normal",
+            "Normal"
           ],
           [
-            "B — Obstrucción extratorácica dinámica",
-            "Aplanamiento en la rama INSPIRATORIA del asa"
+            "Hipoventilacion",
+            "Aumentada",
+            "Normal",
+            "Normal"
           ],
           [
-            "C — Obstrucción intratorácica dinámica",
-            "Aplanamiento en la rama ESPIRATORIA del asa"
+            "Desigualdad V-Q",
+            "Variable",
+            "Aumentada",
+            "Normal"
           ],
           [
-            "D — Obstrucción fija de vía superior",
-            "Aplanamiento en AMBAS ramas (inspiratoria y espiratoria)"
+            "Limitacion de difusion",
+            "Normal",
+            "Aumentada",
+            "Normal"
           ],
           [
-            "E — Obstrucción de vía periférica/inferior",
-            "Rama espiratoria cóncava hacia arriba ('ahuecada')"
+            "Shunt",
+            "Variable",
+            "Aumentada",
+            "Anormal (NO corrige)"
           ]
         ],
-        "nota": "Los bucles de flujo-volumen son especialmente útiles cuando hay estridor cervical, disnea de causa desconocida, o sospecha de obstrucción de vía aérea superior."
+        "nota": "El shunt es el unico que NO normaliza la PO2 con oxigeno al 100 por ciento."
       },
       {
-        "titulo": "🚨 Indicaciones urgentes de radiografía de tórax",
+        "titulo": "Guia clinica de interpretacion - 5 pasos",
         "columnas": [
-          "Indicación"
+          "Paso",
+          "Pregunta"
         ],
         "filas": [
           [
-            "Politraumatismo o trauma torácico"
+            "1",
+            "Evaluar PO2: hay hipoxia? (considerar FiO2, calcular gradiente A-a)"
           ],
           [
-            "Sospecha de enfermedad parenquimatosa pulmonar"
+            "2",
+            "Examinar el pH: es normal?"
           ],
           [
-            "EPOC o asma bronquial agudizadas"
+            "3",
+            "Revisar PaCO2 en contexto con el pH"
           ],
           [
-            "Insuficiencia cardíaca aguda"
+            "4",
+            "Evaluar componente metabolico: revisar HCO3 y exceso de base"
           ],
           [
-            "Disnea aguda o hemoptisis"
-          ],
-          [
-            "Dolor torácico en punta de costado"
+            "5",
+            "Valorar la compensacion: es parcial o completa?"
           ]
         ]
       }
     ],
-    "correlacionClinica": "Cada síntoma respiratorio 'apunta' a un estudio distinto: disnea aguda o hemoptisis → Rx de tórax urgente; sospecha de EPOC/asma → espirometría con prueba post-broncodilatador (respuesta significativa = aumento ≥10% del FEV1 o FVC según ERS/ATS); derrame pleural → toracocentesis; lesión endobronquial o infección no resuelta → fibrobroncoscopía. La radiografía de tórax SIEMPRE debe valorarse junto con la historia clínica — los datos clínicos son imprescindibles para interpretar correctamente los hallazgos radiológicos. <span class=\"fuente-ampliada\">El derrame paraneumónico está presente en aproximadamente el 40% de los pacientes hospitalizados con neumonía bacteriana — otra razón por la que la Rx de control en una neumonía que no mejora es tan importante.</span>",
+    "correlacionClinica": "La guia practica de interpretacion sigue siempre los mismos pasos: pH, PaCO2, HCO3, calcular compensacion esperada, calcular PaFi, e integrar con la clinica.",
     "puntosClave": [
-      "La Rx de tórax siempre se interpreta junto con la historia clínica, nunca aislada",
-      "Espirometría: FEV1/FVC bajo = obstructivo; FVC bajo con cociente normal = restrictivo",
-      "Reversibilidad post-broncodilatador ≥10% en FEV1 o FVC distingue asma de EPOC",
-      "La toracocentesis tiene como complicación más frecuente el neumotórax (12-30% de los procedimientos)",
-      "El signo de la silueta (neumonía) y el margen cóncavo (derrame) son 2 de los hallazgos radiológicos más preguntados",
-      "La forma del bucle flujo-volumen (no solo los números) localiza el sitio de obstrucción de la vía aérea"
+      "PaCO2 es el componente respiratorio; HCO3- es el componente metabolico/renal",
+      "Acidosis respiratoria: HCO3 esperado = 24 + [(PaCO2-40)/10]",
+      "Alcalosis respiratoria: HCO3 esperado = 24 menos [(40-PaCO2)/10] por 2",
+      "Acidosis metabolica: PaCO2 esperado = (1.5 x HCO3) + 8 +-2 (formula de Winter)",
+      "Alcalosis metabolica: PaCO2 esperado = 0.7 x (HCO3-24) + 40 +-5",
+      "PaFi = PaO2 / FiO2",
+      "El SHUNT es el unico mecanismo de hipoxemia que NO corrige con O2 al 100 por ciento",
+      "La compensacion nunca es excesiva"
     ],
     "asiLoPreguntanExamen": {
-      "intro": "Patrón real de tus exámenes: presentan un caso con espirometría completa (como el caso real de tu propia clase) y piden el diagnóstico funcional, sustentando con cada uno de los 3 valores (FEV1, FVC, FEV1/FVC) y la reversibilidad.",
+      "intro": "Patron real de tus examenes: casos con AGA completa donde debes seguir los 5 pasos de interpretacion y conectar con el anion gap.",
       "ejercicios": [
         {
-          "tipo": "Interpretar espirometría y sustentar (tal como aparece en tu propio PPT)",
-          "planteamiento": "Varón de 65 años, fumador desde los 20 años, disnea progresiva de 6 meses que mejora con el reposo, roncus bilaterales y espiración prolongada. Espirometría: FEV1 60% del predicho, FVC 82% del predicho, FEV1/FVC 60%, sin reversibilidad significativa post-broncodilatador. ¿Cuál es el diagnóstico funcional más probable?",
-          "respuestaModelo": "EPOC (Enfermedad Pulmonar Obstructiva Crónica). FEV1 está disminuido (60%) mientras que FVC está casi normal (82%) — esta discordancia, junto con el cociente FEV1/FVC por debajo de 70% (60% en este caso), define un trastorno OBSTRUCTIVO. La ausencia de reversibilidad significativa tras broncodilatador descarta asma (que típicamente SÍ revierte). Un trastorno obstructivo no reversible, con antecedente de tabaquismo significativo y síntomas respiratorios crónicos, es altamente sugestivo de EPOC — el diagnóstico se basa en clínica + espirometría post-broncodilatador con FEV1/FVC<70% sin reversibilidad significativa."
+          "tipo": "Interpretar AGA completa y sustentar",
+          "planteamiento": "Mujer 83 anos con NAC. AGA sin oxigenoterapia: pH 7.55, pO2 52, pCO2 26, HCO3 22. Que alteracion presenta?",
+          "respuestaModelo": "ALCALOSIS RESPIRATORIA. pH elevado (alcalemia) + PaCO2 bajo ya explica el pH = trastorno RESPIRATORIO primario. El HCO3 en limite bajo-normal sugiere compensacion metabolica apenas iniciandose. La hipoxemia (PaO2 52) por la neumonia estimula hiperventilacion compensatoria, causando la caida secundaria del CO2."
         },
         {
-          "tipo": "Reconocer patrón radiológico y sustentar",
-          "planteamiento": "Radiografía con opacidad homogénea en base pulmonar izquierda, de margen superior CÓNCAVO, con obliteración del seno costofrénico. ¿Qué patología sugiere y qué la distingue de una consolidación neumónica?",
-          "respuestaModelo": "Sugiere DERRAME PLEURAL. Se distingue de la neumonía por la FORMA del margen superior: el derrame tiene un margen CÓNCAVO característico (por la forma en que el líquido se acomoda por gravedad en el espacio pleural, más alto lateralmente que medialmente — línea de Damoiseau), mientras que la consolidación neumónica no tiene ese borde cóncavo definido y característicamente muestra broncograma aéreo (bronquios llenos de aire visibles dentro de la opacidad, porque el proceso está DENTRO del parénquima, no en el espacio pleural)."
+          "tipo": "Conectar con anion gap (MUDPILES)",
+          "planteamiento": "Varon 65 anos, diabetico, Kussmaul, pH 7.10, HCO3 9, PaCO2 22, anion gap 24, glucosa 360, cetonas positivas. Causa mas probable?",
+          "respuestaModelo": "Cetoacidosis diabetica. pH bajo + HCO3 muy bajo = acidosis metabolica; PaCO2 bajo = compensacion respiratoria (Kussmaul). Anion gap elevado descarta causas hipercloremicas y orienta a MUDPILES. Los datos clinicos (glucosa alta, cetonuria, Kussmaul) apuntan especificamente a cetoacidosis diabetica."
         },
         {
-          "tipo": "Liste N... (recuerdo puro)",
-          "planteamiento": "Liste las 4 densidades radiológicas básicas y qué estructura normal representa cada una.",
-          "respuestaModelo": "Aire → parénquima pulmonar. Agua → silueta cardíaca (y otros tejidos blandos/líquidos). Grasa → tejidos blandos. Calcio → estructuras óseas."
+          "tipo": "Liste N...",
+          "planteamiento": "Liste las causas de acidosis metabolica con anion gap elevado segun MUDPILES.",
+          "respuestaModelo": "Metanol, Uremia, Diabetes (cetoacidosis), Propilenglicol, Infeccion/Isquemia, Lactic acidosis, Etanol/Etilenglicol, Salicilatos."
         }
       ]
     }
@@ -5942,85 +5991,76 @@ const TEMAS = [
   "casosClinicos": [
     {
       "nivel": "intermedio",
-      "vineta": "(Caso real de tu clase) Un paciente varón de 65 años, fumador desde los 20 años, con antecedentes de hipertensión arterial controlada, acude a consulta por disnea progresiva desde hace 6 meses, acompañada de tos seca ocasional. Refiere que la disnea empeora con el ejercicio y mejora con el reposo. No presenta fiebre ni pérdida de peso. Al examen físico se auscultan roncus bilaterales y espiración prolongada. Se decide solicitar una espirometría. Los resultados muestran: FEV1 60% del valor predicho, FVC 82% del valor predicho, FEV1/FVC 60%, sin reversibilidad significativa tras broncodilatador.",
+      "vineta": "(Caso real de tu clase) Paciente mujer de 83 anos acude a emergencia por trastorno del sensorio. Desde hace 2 dias presenta fiebre, tos con expectoracion verdosa, hiporexia y disnea a minimos esfuerzos. Crepitos en base izquierda. FR 32x'. Radiografia: consolidado basal izquierdo con broncograma aereo. Gasometria sin oxigenoterapia: pH 7.55, pO2 52 mmHg, pCO2 26 mmHg, HCO3 22 mEq/L.",
       "preguntaMC": {
-        "enunciado": "¿Cuál es el diagnóstico funcional más probable según los hallazgos espirométricos?",
+        "enunciado": "Que alteracion acido-base se evidencia y cual seria su diagnostico respiratorio principal?",
         "opciones": [
           {
             "id": "a",
-            "texto": "Asma bronquial"
+            "texto": "Acidosis metabolica; diagnostico: sepsis de origen pulmonar"
           },
           {
             "id": "b",
-            "texto": "Enfermedad pulmonar intersticial"
+            "texto": "Alcalosis respiratoria (trastorno primario respiratorio); diagnostico: neumonia adquirida en la comunidad"
           },
           {
             "id": "c",
-            "texto": "Enfermedad pulmonar obstructiva crónica (EPOC)"
+            "texto": "Acidosis respiratoria; diagnostico: EPOC reagudizado"
           },
           {
             "id": "d",
-            "texto": "Fibrosis pulmonar idiopática"
+            "texto": "Trastorno mixto acidosis metabolica + alcalosis respiratoria; diagnostico: sepsis"
           },
           {
             "id": "e",
-            "texto": "Patrón restrictivo leve sin causa aparente"
+            "texto": "Gasometria normal, sin alteracion acido-base"
           }
         ],
-        "correcta": "c",
-        "explicacion": "FEV1 disminuido (60%) + FVC casi normal (82%) + FEV1/FVC por debajo de 70% (60%) = trastorno OBSTRUCTIVO. La ausencia de reversibilidad tras broncodilatador descarta asma (B es incorrecta). El antecedente de tabaquismo significativo (desde los 20 años) junto con síntomas respiratorios crónicos y un trastorno obstructivo no reversible es altamente sugestivo de EPOC. Las opciones de enfermedad intersticial y fibrosis pulmonar (B y D) corresponderían a un patrón RESTRICTIVO (FVC bajo con cociente FEV1/FVC normal o alto), no al patrón obstructivo mostrado aquí."
+        "correcta": "b",
+        "explicacion": "pH elevado (7.55) define alcalemia, y PaCO2 bajo (26) ya explica esa alcalemia = trastorno RESPIRATORIO primario, alcalosis respiratoria. HCO3 (22) en limite bajo-normal, consistente con inicio de compensacion metabolica. Con la clinica (fiebre, tos productiva, crepitos focales) + radiologia (consolidado con broncograma aereo) + gasometria (hipoxemia con alcalosis respiratoria por hiperventilacion compensatoria), el diagnostico principal es Neumonia Adquirida en la Comunidad."
       },
       "preguntaEscrita": {
-        "enunciado": "Explica paso a paso cómo llegaste al diagnóstico funcional usando los 3 valores espirométricos (FEV1, FVC, FEV1/FVC) y el dato de reversibilidad.",
-        "respuestaModelo": "Paso 1: Reviso el FEV1/FVC — está en 60%, por debajo del umbral de 70% que define obstrucción. Paso 2: Comparo FEV1 (60%, claramente reducido) con FVC (82%, casi normal) — esta discordancia (FEV1 mucho más afectado que FVC) es típica del patrón OBSTRUCTIVO, a diferencia del restrictivo donde ambos bajarían de forma proporcional con el cociente normal. Paso 3: Reviso la reversibilidad post-broncodilatador — al NO haber respuesta significativa (que se define como aumento ≥10% del FEV1 o FVC), descarto asma, que típicamente sí revierte de forma significativa. Paso 4: Integro con la clínica (tabaquismo de 45 años, disnea progresiva crónica, roncus y espiración prolongada) para concluir EPOC como el diagnóstico funcional más probable."
+        "enunciado": "Explica el mecanismo por el cual esta paciente desarrolla alcalosis respiratoria en el contexto de una neumonia.",
+        "respuestaModelo": "La consolidacion neumonica genera desigualdad ventilacion-perfusion (V/Q) — parte del pulmon sigue perfundido pero ya no se ventila adecuadamente, causando hipoxemia (PaO2 52). Esta hipoxemia estimula los quimiorreceptores perifericos, que estimulan el centro respiratorio para AUMENTAR la ventilacion. Este aumento tambien expulsa mas CO2 de lo normal, causando hipocapnia secundaria (PaCO2 26) y alcalosis respiratoria. La hiperventilacion no es la enfermedad primaria, es la RESPUESTA a la hipoxemia causada por la neumonia."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Varon de 65 anos, diabetico tipo 2, acude a Emergencias con letargo, respiracion rapida y profunda, y dolor abdominal difuso. Automedicacion con antiinflamatorios, glucosa mal controlada, vomitos. PA 90/60, FC 110, FR 28, SatO2 96%. Laboratorio: pH 7.10, HCO3 9 mEq/L, pCO2 22 mmHg, anion gap 24, glucosa 360 mg/dL, creatinina 2.2 mg/dL, cetonas urinarias positivas.",
+      "preguntaMC": {
+        "enunciado": "Cual es la causa mas probable de la acidosis metabolica en este paciente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Cetoacidosis diabetica"
+          },
+          {
+            "id": "b",
+            "texto": "Acidosis lactica"
+          },
+          {
+            "id": "c",
+            "texto": "Acidosis tubular renal tipo 1"
+          },
+          {
+            "id": "d",
+            "texto": "Acidosis por perdida gastrointestinal de bicarbonato"
+          },
+          {
+            "id": "e",
+            "texto": "Insuficiencia renal cronica compensada"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "pH bajo + HCO3 muy disminuido (9) = acidosis metabolica; PaCO2 bajo (22) = compensacion respiratoria tipo Kussmaul. El anion gap elevado (24) orienta a causas MUDPILES, descartando causas hipercloremicas (C y D). Los datos clave (glucosa 360, cetonas positivas, vomitos, Kussmaul) son muy compatibles con cetoacidosis diabetica. B podria coexistir pero no hay evidencia de shock franco. E no genera cuadro tan agudo ni cetonuria."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Por que el anion gap elevado es la pista clave que distingue entre las opciones, y que mnemotecnia usarias?",
+        "respuestaModelo": "El anion gap elevado (24) indica acidos no medidos habitualmente (cetoacidos, acido lactico) acumulandose en sangre — esto descarta las causas de anion gap NORMAL (hipercloremicas), como acidosis tubular renal tipo 1 o perdida GI de bicarbonato. La mnemotecnia MUDPILES ayuda: Metanol, Uremia, Diabetes, Propilenglicol, Infeccion/Isquemia, Lactic acidosis, Etanol/Etilenglicol, Salicilatos — el cuadro clinico (diabetes mal controlada + cetonuria + hiperglicemia) apunta especificamente a Diabetes/cetoacidosis."
       }
     }
   ]
-}
-,
-  {
-    "id": "analisis-gases-arteriales",
-    "nombre": "Análisis de Gases Arteriales: bases fisiopatológicas e interpretación clínica",
-    "area": "Neumología",
-    "tipo": "metodo-diagnostico",
-    "semanas": [
-      "semana-02"
-    ],
-    "favorito": false,
-    "estudiado": false,
-    "contenido": {
-      "resumen": "El análisis de gases arteriales (AGA) es la herramienta que permite cuantificar cómo está funcionando el intercambio gaseoso y el equilibrio ácido-base del paciente en tiempo real. Mide cuatro parámetros clave: PaO2 (oxigenación), PaCO2 (ventilación), pH (equilibrio ácido-base) y HCO3- (componente metabólico/renal). Interpretarlo correctamente, paso a paso, es una habilidad que vas a usar constantemente en la práctica clínica — desde una crisis asmática hasta un paciente séptico.",
-      "estructuras": [
-        {
-          "nombre": "PaO2 (presión arterial de oxígeno)",
-          "detalle": "Refleja la oxigenación. Normal: 80-100 mmHg respirando aire ambiental. Se relaciona con el gradiente alveolo-arterial (A-a) y la relación PaFi (PaO2/FiO2) para evaluar la gravedad del compromiso respiratorio."
-        },
-        {
-          "nombre": "PaCO2 (presión arterial de CO2)",
-          "detalle": "Refleja la ventilación alveolar — es el componente RESPIRATORIO del equilibrio ácido-base. Normal: 35-45 mmHg. Sube en hipoventilación (retención de CO2), baja en hiperventilación."
-        },
-        {
-          "nombre": "pH",
-          "detalle": "Refleja el equilibrio ácido-base neto. Normal: 7.35-7.45. <7.35 = acidemia, >7.45 = alcalemia."
-        },
-        {
-          "nombre": "HCO3- (bicarbonato)",
-          "detalle": "Es el componente METABÓLICO/RENAL del equilibrio ácido-base. Normal: 22-26 mEq/L. Los riñones lo ajustan de forma más lenta (días) que los pulmones ajustan el CO2 (minutos-horas) — por eso distingue trastornos agudos de crónicos."
-        }
-      ],
-      "fisiologiaNormal": "El pH sanguíneo se mantiene estable gracias al equilibrio entre dos sistemas que trabajan en direcciones opuestas cuando uno falla: el sistema respiratorio (que ajusta el CO2 en minutos, exhalando más o menos según la ventilación) y el sistema renal (que ajusta el bicarbonato en horas a días, reteniendo o excretando según necesite). Cuando uno de los dos sistemas falla primero (trastorno primario), el otro intenta compensar en la dirección que normaliza el pH — nunca lo sobrecorrige por completo. Por eso, calcular si la compensación es 'la esperada' matemáticamente es la clave para saber si hay un segundo trastorno agregado (mixto) o no.",
-      "correlacionClinica": "La guía práctica de interpretación sigue siempre los mismos 5-6 pasos: 1) ¿Cómo está el pH? (acidemia/alcalemia) 2) ¿Cómo está el PaCO2? (¿explica el pH? = trastorno respiratorio primario) 3) ¿Cómo está el HCO3? (¿explica el pH? = trastorno metabólico primario) 4) Calcular la compensación esperada con la fórmula correspondiente y comparar con el HCO3/CO2 real — si no coincide, hay un trastorno mixto agregado. 5) Calcular la PaFi (PaO2/FiO2) para cuantificar la gravedad de la hipoxemia. 6) Integrar todo con la clínica del paciente para llegar al diagnóstico fisiopatológico completo (ej. 'acidosis respiratoria aguda sobre crónica en paciente con EPOC reagudizado').",
-      "puntosClave": [
-        "PaCO2 = componente respiratorio; HCO3- = componente metabólico/renal",
-        "Acidosis respiratoria: HCO3 esperado = 24 + [(PaCO2-40)/10] — si es agudo, sube poco; si es crónico, sube más (compensación renal ya establecida)",
-        "Alcalosis respiratoria: HCO3 esperado = 24 − [(40−PaCO2)/10] × 2 (agudo) o ×4-5 (crónico)",
-        "Acidosis metabólica: PaCO2 esperado = (1.5 × HCO3) + 8 ± 2 (fórmula de Winter)",
-        "Alcalosis metabólica: PaCO2 esperado = 0.7 × (HCO3−24) + 40 ± 5",
-        "PaFi = PaO2 / FiO2 — valores <300 sugieren lesión pulmonar aguda, <200 sugiere SDRA"
-      ]
-    },
-    "casosClinicos": []
-  }];
+}];
 
 /* ============================================================
    BANCOS DE EXAMEN — preguntas y casos estilo examen real de la
