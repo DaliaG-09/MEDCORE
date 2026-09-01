@@ -526,6 +526,21 @@ function renderTaller(id){
       <h3>🩺 Practicar los ${t.casos.length} casos de este taller</h3>
       <p>Los mismos casos que se revisaron en clase justo antes de tu examen — practícalos las veces que quieras.</p>
     </div>
+
+    <div class="ccard" style="cursor:pointer;" onclick="iniciarExamenTaller('${t.id}')">
+      <h3>📝 Ponte a prueba (examen simulado)</h3>
+      <p>Los mismos ${t.casos.length} casos, pero con cronómetro y nota sobre 20 — para sentir la presión real antes de tu examen.</p>
+    </div>
+
+    ${t.pdfOrigen ? `
+    <div class="kcard" style="border:1.5px dashed var(--cobalt-line);">
+      <h3>📄 PDF original de este taller</h3>
+      <p class="muted">${t.pdfOrigen.titulo}</p>
+      <div class="toolbar" style="margin-top:8px;">
+        <div class="btn-icon" onclick="abrirVistaDividida('taller', '${t.id}')">📖✎ Ver PDF + escribir a la vez</div>
+        <div class="btn-icon" onclick="window.open('${t.pdfOrigen.url}', '_blank')">↗ Abrir en pestaña nueva</div>
+      </div>
+    </div>` : ''}
   `;
 }
 
@@ -549,6 +564,11 @@ function renderPdfDividido(compositeId){
     titulo = e.nombre;
   } else if(tipo === 'tema'){
     const t = getTema(id);
+    pdfOrigen = t.pdfOrigen;
+    cuadernoKey = t.id + '::cuaderno-clase';
+    titulo = t.nombre;
+  } else if(tipo === 'taller'){
+    const t = getTaller(id);
     pdfOrigen = t.pdfOrigen;
     cuadernoKey = t.id + '::cuaderno-clase';
     titulo = t.nombre;
