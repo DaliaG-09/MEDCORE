@@ -5732,69 +5732,251 @@ const TEMAS = [
   ]
 },
   {
-    "id": "examenes-diagnostico-neumo",
-    "nombre": "Exámenes de ayuda diagnóstica en Neumología",
-    "area": "Neumología",
-    "tipo": "metodo-diagnostico",
-    "semanas": [
-      "semana-01"
+  "id": "examenes-diagnostico-neumo",
+  "nombre": "Exámenes de ayuda diagnóstica en Neumología",
+  "area": "Neumología",
+  "tipo": "metodo-diagnostico",
+  "semanas": [
+    "semana-01"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1ZJsp7Q_IKvVL7a-SUU2Wd_RMiIy03jTe/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_1_SESIÓN-1-TEMA-2: Exámenes de ayuda diagnóstica en Neumología"
+  },
+  "contenido": {
+    "resumen": "Antes de estudiar cada enfermedad respiratoria, necesitas conocer las herramientas que se usan para diagnosticarlas. Cinco estudios cubren la mayoría de los escenarios clínicos en Neumología: radiografía de tórax (primera línea), tomografía (mayor detalle), espirometría (función pulmonar), toracocentesis (líquido pleural) y fibrobroncoscopía (visualización directa de la vía aérea).",
+    "estructuras": [
+      {
+        "nombre": "Radiografía de tórax",
+        "detalle": "Proyecciones básicas: PA (posteroanterior, de pie, inspiración máxima), lateral, y AP (cuando el paciente no puede pararse). Proyecciones complementarias: PA en inspiración/espiración forzadas (para neumotórax), oblicuas (fracturas costales), decúbito lateral con rayo horizontal (derrames pleurales). Calidad técnica: centrada (clavículas equidistantes), exposición adecuada, inspiración correcta (diafragma a nivel del 5º-6º arco costal). Lectura sistemática en 7 pasos: partes blandas → huesos → parénquima → pleura → mediastino → hilios/vasos → corazón/aorta. Las 4 densidades radiológicas son aire, agua, grasa y calcio.",
+        "imagenes": [
+          {
+            "src": "assets/examenes-dx/rx-torax-pa-normal.jpg",
+            "caption": "Rx de tórax PA normal — referencia para comparar"
+          },
+          {
+            "src": "assets/examenes-dx/rx-torax-lateral.jpg",
+            "caption": "Proyección lateral — complementa la vista PA"
+          },
+          {
+            "src": "assets/examenes-dx/rx-torax-hallazgos-anotados.jpg",
+            "caption": "Ejemplo con hallazgos anotados (flechas) — así se marcan los hallazgos en la práctica"
+          }
+        ]
+      },
+      {
+        "nombre": "Tomografía de tórax (TC)",
+        "detalle": "Mayor resolución que la radiografía. Los patrones básicos que debes reconocer son: lineal, micronodular, en vidrio esmerilado (opacidad) y quístico — cada uno orienta a familias distintas de enfermedades intersticiales/infecciosas.",
+        "imagenes": [
+          {
+            "src": "assets/examenes-dx/tc-torax-cortes-axiales.jpg",
+            "caption": "TC de tórax — 4 cortes axiales a distintos niveles"
+          }
+        ]
+      },
+      {
+        "nombre": "Espirometría",
+        "detalle": "Mide FVC (capacidad vital forzada), FEV1 (volumen espirado en el primer segundo) y su cociente FEV1/FVC. Volúmenes pulmonares fundamentales: Capacidad Vital (CV) — volumen máximo exhalado tras inspiración máxima; Capacidad Residual Funcional (CRF) — aire que queda al final de una respiración normal; Volumen Residual (VR) — aire que queda tras exhalación máxima; Capacidad Pulmonar Total (CPT) — aire en los pulmones al final de la inspiración máxima. Es la prueba clave para diferenciar patrón obstructivo (FEV1/FVC bajo — EPOC, asma) de restrictivo (FVC bajo con cociente normal — enfermedades intersticiales).",
+        "imagenes": [
+          {
+            "src": "assets/examenes-dx/espirometria-procedimiento.jpg",
+            "caption": "Cómo se realiza — el paciente sopla con fuerza en la boquilla"
+          },
+          {
+            "src": "assets/examenes-dx/asa-flujo-volumen.jpg",
+            "caption": "Asa de flujo-volumen — distintos patrones (A-E) según el tipo de alteración"
+          }
+        ]
+      },
+      {
+        "nombre": "Toracocentesis",
+        "detalle": "Punción del espacio pleural (6º-8º espacio intercostal, guiada por ecografía) para extraer líquido o aire con fines diagnósticos o terapéuticos. Indicada en derrame pleural inexplicado, sospecha de infección/malignidad, alivio de disnea, preparación para pleurodesis, diferenciación entre causas cardíacas y no cardíacas, drenaje de empiema/hemotórax. Contraindicaciones absolutas: trastornos hemorrágicos no corregidos, infección cutánea en el sitio de punción. Relativas: ventilación mecánica, inestabilidad hemodinámica grave.",
+        "imagenes": [
+          {
+            "src": "assets/examenes-dx/toracocentesis-tecnica.jpg",
+            "caption": "Técnica: paciente sentado, inclinado hacia adelante — el líquido se drena por gravedad"
+          },
+          {
+            "src": "assets/examenes-dx/toracocentesis-guiada-ecografia.jpg",
+            "caption": "Guiada por ecografía — reduce el riesgo de neumotórax iatrogénico"
+          }
+        ]
+      },
+      {
+        "nombre": "Fibrobroncoscopía",
+        "detalle": "Visualización endoscópica directa del árbol bronquial hasta nivel subsegmentario, bajo anestesia local y sedación. Indicaciones principales: (1) visualización y biopsia de lesiones endobronquiales sospechosas de malignidad, (2) estudio de pulmón/lóbulo colapsado para determinar la causa de obstrucción (cuerpo extraño, tapón mucoso, tumor), (3) muestreo microbiológico en infecciones no resueltas o TB sospechada, (4) evaluación citológica de lavado broncoalveolar para malignidad y enfermedades parenquimatosas difusas.",
+        "imagenes": [
+          {
+            "src": "assets/examenes-dx/arbol-bronquial-3d.jpg",
+            "caption": "Árbol traqueobronquial — la ruta que sigue el broncoscopio"
+          }
+        ]
+      }
     ],
-    "favorito": false,
-    "estudiado": false,
-    "contenido": {
-      "resumen": "Antes de estudiar cada enfermedad respiratoria, necesitas conocer las herramientas que se usan para diagnosticarlas. Cinco estudios cubren la mayoría de los escenarios clínicos en Neumología: radiografía de tórax (primera línea), tomografía (mayor detalle), espirometría (función pulmonar), toracocentesis (líquido pleural) y fibrobroncoscopía (visualización directa de la vía aérea).",
-      "estructuras": [
-        {
-          "nombre": "Radiografía de tórax",
-          "detalle": "Proyecciones básicas: PA (posteroanterior, de pie, inspiración máxima), lateral, y AP (cuando el paciente no puede pararse). Lectura sistemática en 7 pasos: partes blandas → huesos → parénquima → pleura → mediastino → hilios/vasos → corazón/aorta. Las 4 densidades radiológicas son aire, agua, grasa y calcio.",
-          "imagenes": [
-            { "src": "assets/examenes-dx/rx-torax-pa-normal.jpg", "caption": "Rx de tórax PA normal — referencia para comparar" },
-            { "src": "assets/examenes-dx/rx-torax-lateral.jpg", "caption": "Proyección lateral — complementa la vista PA" },
-            { "src": "assets/examenes-dx/rx-torax-hallazgos-anotados.jpg", "caption": "Ejemplo con hallazgos anotados (flechas) — así se marcan los hallazgos en la práctica" }
+    "fisiologiaNormal": "Estos estudios no evalúan 'lo normal' en sí, sino que sirven para detectar desviaciones de la anatomía y función normales. Por eso su interpretación siempre depende de conocer primero cómo se ve/funciona un pulmón sano: en la Rx, un parénquima con densidad aire uniforme sin opacidades ni pérdida de volumen; en la espirometría, un FEV1/FVC normal (>70% aproximadamente) con volúmenes dentro de lo predicho para edad/talla/sexo.",
+    "tablasClinicas": [
+      {
+        "titulo": "📷 Patrones radiológicos por patología (de tu clase)",
+        "contexto": "Cada enfermedad deja una 'firma' radiológica reconocible en la Rx de tórax — aprenderte estos patrones te permite reconocer la patología antes incluso de tener el resto de la historia clínica completa.",
+        "columnas": [
+          "Patología",
+          "Hallazgos radiológicos clave"
+        ],
+        "filas": [
+          [
+            "Neumonía",
+            "Aumento de densidad, distribución segmentaria/lobular, broncograma aéreo, signo de la silueta (borramiento del contorno cardíaco/diafragmático adyacente)"
+          ],
+          [
+            "Atelectasia",
+            "Aumento de densidad, desplazamiento de cisuras HACIA la zona colapsada, desplazamiento mediastínico, elevación del hemidiafragma"
+          ],
+          [
+            "Edema pulmonar",
+            "Opacidades perihiliares, patrón 'en alas de mariposa', líneas B y A de Kerley, cardiomegalia asociada"
+          ],
+          [
+            "Derrame pleural",
+            "Opacidad homogénea con margen superior CÓNCAVO, obliteración del seno costofrénico"
+          ],
+          [
+            "Neumotórax",
+            "Línea fina de pleura visceral separada de la parietal por espacio aéreo SIN vasos pulmonares"
+          ],
+          [
+            "Neumomediastino",
+            "Imágenes lineales o aéreas localizadas centralmente a lo largo de la silueta cardíaca y grandes vasos"
           ]
+        ]
+      },
+      {
+        "titulo": "📈 Los 5 patrones del bucle flujo-volumen",
+        "contexto": "La FORMA del bucle (no solo los números) te dice DÓNDE está el problema de la vía aérea.",
+        "columnas": [
+          "Patrón",
+          "Hallazgo característico"
+        ],
+        "filas": [
+          [
+            "A — Normal",
+            "Ascenso rápido a flujo máximo + caída casi lineal; rama inspiratoria simétrica en 'silla de montar'"
+          ],
+          [
+            "B — Obstrucción extratorácica dinámica",
+            "Aplanamiento en la rama INSPIRATORIA del asa"
+          ],
+          [
+            "C — Obstrucción intratorácica dinámica",
+            "Aplanamiento en la rama ESPIRATORIA del asa"
+          ],
+          [
+            "D — Obstrucción fija de vía superior",
+            "Aplanamiento en AMBAS ramas (inspiratoria y espiratoria)"
+          ],
+          [
+            "E — Obstrucción de vía periférica/inferior",
+            "Rama espiratoria cóncava hacia arriba ('ahuecada')"
+          ]
+        ],
+        "nota": "Los bucles de flujo-volumen son especialmente útiles cuando hay estridor cervical, disnea de causa desconocida, o sospecha de obstrucción de vía aérea superior."
+      },
+      {
+        "titulo": "🚨 Indicaciones urgentes de radiografía de tórax",
+        "columnas": [
+          "Indicación"
+        ],
+        "filas": [
+          [
+            "Politraumatismo o trauma torácico"
+          ],
+          [
+            "Sospecha de enfermedad parenquimatosa pulmonar"
+          ],
+          [
+            "EPOC o asma bronquial agudizadas"
+          ],
+          [
+            "Insuficiencia cardíaca aguda"
+          ],
+          [
+            "Disnea aguda o hemoptisis"
+          ],
+          [
+            "Dolor torácico en punta de costado"
+          ]
+        ]
+      }
+    ],
+    "correlacionClinica": "Cada síntoma respiratorio 'apunta' a un estudio distinto: disnea aguda o hemoptisis → Rx de tórax urgente; sospecha de EPOC/asma → espirometría con prueba post-broncodilatador (respuesta significativa = aumento ≥10% del FEV1 o FVC según ERS/ATS); derrame pleural → toracocentesis; lesión endobronquial o infección no resuelta → fibrobroncoscopía. La radiografía de tórax SIEMPRE debe valorarse junto con la historia clínica — los datos clínicos son imprescindibles para interpretar correctamente los hallazgos radiológicos. <span class=\"fuente-ampliada\">El derrame paraneumónico está presente en aproximadamente el 40% de los pacientes hospitalizados con neumonía bacteriana — otra razón por la que la Rx de control en una neumonía que no mejora es tan importante.</span>",
+    "puntosClave": [
+      "La Rx de tórax siempre se interpreta junto con la historia clínica, nunca aislada",
+      "Espirometría: FEV1/FVC bajo = obstructivo; FVC bajo con cociente normal = restrictivo",
+      "Reversibilidad post-broncodilatador ≥10% en FEV1 o FVC distingue asma de EPOC",
+      "La toracocentesis tiene como complicación más frecuente el neumotórax (12-30% de los procedimientos)",
+      "El signo de la silueta (neumonía) y el margen cóncavo (derrame) son 2 de los hallazgos radiológicos más preguntados",
+      "La forma del bucle flujo-volumen (no solo los números) localiza el sitio de obstrucción de la vía aérea"
+    ],
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: presentan un caso con espirometría completa (como el caso real de tu propia clase) y piden el diagnóstico funcional, sustentando con cada uno de los 3 valores (FEV1, FVC, FEV1/FVC) y la reversibilidad.",
+      "ejercicios": [
+        {
+          "tipo": "Interpretar espirometría y sustentar (tal como aparece en tu propio PPT)",
+          "planteamiento": "Varón de 65 años, fumador desde los 20 años, disnea progresiva de 6 meses que mejora con el reposo, roncus bilaterales y espiración prolongada. Espirometría: FEV1 60% del predicho, FVC 82% del predicho, FEV1/FVC 60%, sin reversibilidad significativa post-broncodilatador. ¿Cuál es el diagnóstico funcional más probable?",
+          "respuestaModelo": "EPOC (Enfermedad Pulmonar Obstructiva Crónica). FEV1 está disminuido (60%) mientras que FVC está casi normal (82%) — esta discordancia, junto con el cociente FEV1/FVC por debajo de 70% (60% en este caso), define un trastorno OBSTRUCTIVO. La ausencia de reversibilidad significativa tras broncodilatador descarta asma (que típicamente SÍ revierte). Un trastorno obstructivo no reversible, con antecedente de tabaquismo significativo y síntomas respiratorios crónicos, es altamente sugestivo de EPOC — el diagnóstico se basa en clínica + espirometría post-broncodilatador con FEV1/FVC<70% sin reversibilidad significativa."
         },
         {
-          "nombre": "Tomografía de tórax (TC)",
-          "detalle": "Mayor resolución que la radiografía. Los patrones básicos que debes reconocer son: lineal, micronodular, en vidrio esmerilado (opacidad) y quístico — cada uno orienta a familias distintas de enfermedades intersticiales/infecciosas.",
-          "imagenes": [
-            { "src": "assets/examenes-dx/tc-torax-cortes-axiales.jpg", "caption": "TC de tórax — 4 cortes axiales a distintos niveles" }
-          ]
+          "tipo": "Reconocer patrón radiológico y sustentar",
+          "planteamiento": "Radiografía con opacidad homogénea en base pulmonar izquierda, de margen superior CÓNCAVO, con obliteración del seno costofrénico. ¿Qué patología sugiere y qué la distingue de una consolidación neumónica?",
+          "respuestaModelo": "Sugiere DERRAME PLEURAL. Se distingue de la neumonía por la FORMA del margen superior: el derrame tiene un margen CÓNCAVO característico (por la forma en que el líquido se acomoda por gravedad en el espacio pleural, más alto lateralmente que medialmente — línea de Damoiseau), mientras que la consolidación neumónica no tiene ese borde cóncavo definido y característicamente muestra broncograma aéreo (bronquios llenos de aire visibles dentro de la opacidad, porque el proceso está DENTRO del parénquima, no en el espacio pleural)."
         },
         {
-          "nombre": "Espirometría",
-          "detalle": "Mide FVC (capacidad vital forzada), FEV1 (volumen espirado en el primer segundo) y su cociente FEV1/FVC. Es la prueba clave para diferenciar patrón obstructivo (FEV1/FVC bajo — EPOC, asma) de restrictivo (FVC bajo con cociente normal — enfermedades intersticiales).",
-          "imagenes": [
-            { "src": "assets/examenes-dx/espirometria-procedimiento.jpg", "caption": "Cómo se realiza — el paciente sopla con fuerza en la boquilla" },
-            { "src": "assets/examenes-dx/asa-flujo-volumen.jpg", "caption": "Asa de flujo-volumen — distintos patrones (A-E) según el tipo de alteración" }
-          ]
-        },
-        {
-          "nombre": "Toracocentesis",
-          "detalle": "Punción del espacio pleural (6º-8º espacio intercostal, guiada por ecografía) para extraer líquido o aire con fines diagnósticos o terapéuticos. Indicada en derrame pleural inexplicado, sospecha de infección/malignidad, o alivio de disnea.",
-          "imagenes": [
-            { "src": "assets/examenes-dx/toracocentesis-tecnica.jpg", "caption": "Técnica: paciente sentado, inclinado hacia adelante — el líquido se drena por gravedad" },
-            { "src": "assets/examenes-dx/toracocentesis-guiada-ecografia.jpg", "caption": "Guiada por ecografía — reduce el riesgo de neumotórax iatrogénico" }
-          ]
-        },
-        {
-          "nombre": "Fibrobroncoscopía",
-          "detalle": "Visualización endoscópica directa del árbol bronquial hasta nivel subsegmentario, bajo anestesia local y sedación. Permite biopsia de lesiones sospechosas, estudio de un pulmón/lóbulo colapsado, y muestreo microbiológico en infecciones no resueltas.",
-          "imagenes": [
-            { "src": "assets/examenes-dx/arbol-bronquial-3d.jpg", "caption": "Árbol traqueobronquial — la ruta que sigue el broncoscopio" }
-          ]
+          "tipo": "Liste N... (recuerdo puro)",
+          "planteamiento": "Liste las 4 densidades radiológicas básicas y qué estructura normal representa cada una.",
+          "respuestaModelo": "Aire → parénquima pulmonar. Agua → silueta cardíaca (y otros tejidos blandos/líquidos). Grasa → tejidos blandos. Calcio → estructuras óseas."
         }
-      ],
-      "fisiologiaNormal": "Estos estudios no evalúan 'lo normal' en sí, sino que sirven para detectar desviaciones de la anatomía y función normales. Por eso su interpretación siempre depende de conocer primero cómo se ve/funciona un pulmón sano: en la Rx, un parénquima con densidad aire uniforme sin opacidades ni pérdida de volumen; en la espirometría, un FEV1/FVC normal (>70% aproximadamente) con volúmenes dentro de lo predicho para edad/talla/sexo.",
-      "correlacionClinica": "Cada síntoma respiratorio 'apunta' a un estudio distinto: disnea aguda o hemoptisis → Rx de tórax urgente; sospecha de EPOC/asma → espirometría con prueba post-broncodilatador (respuesta significativa = aumento ≥10% del FEV1 o FVC según ERS/ATS); derrame pleural → toracocentesis; lesión endobronquial o infección no resuelta → fibrobroncoscopía. Vas a usar esta lógica de selección de estudio en cada enfermedad que veas de aquí en adelante — por ejemplo, el diagnóstico de EPOC exige espirometría con FEV1/FVC <70% sin reversibilidad significativa, dato que ya vas a reconocer.",
-      "puntosClave": [
-        "La Rx de tórax siempre se interpreta junto con la historia clínica, nunca aislada",
-        "Espirometría: FEV1/FVC bajo = obstructivo; FVC bajo con cociente normal = restrictivo",
-        "Reversibilidad post-broncodilatador ≥10% en FEV1 o FVC distingue asma de EPOC",
-        "La toracocentesis tiene complicación más frecuente el neumotórax (12-30% de los procedimientos)",
-        "La TC de alta resolución es el estándar de oro para bronquiectasias (signo del anillo de sello — diámetro bronquial > diámetro del vaso adyacente)"
       ]
     }
-  }
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Un paciente varón de 65 años, fumador desde los 20 años, con antecedentes de hipertensión arterial controlada, acude a consulta por disnea progresiva desde hace 6 meses, acompañada de tos seca ocasional. Refiere que la disnea empeora con el ejercicio y mejora con el reposo. No presenta fiebre ni pérdida de peso. Al examen físico se auscultan roncus bilaterales y espiración prolongada. Se decide solicitar una espirometría. Los resultados muestran: FEV1 60% del valor predicho, FVC 82% del valor predicho, FEV1/FVC 60%, sin reversibilidad significativa tras broncodilatador.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál es el diagnóstico funcional más probable según los hallazgos espirométricos?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Asma bronquial"
+          },
+          {
+            "id": "b",
+            "texto": "Enfermedad pulmonar intersticial"
+          },
+          {
+            "id": "c",
+            "texto": "Enfermedad pulmonar obstructiva crónica (EPOC)"
+          },
+          {
+            "id": "d",
+            "texto": "Fibrosis pulmonar idiopática"
+          },
+          {
+            "id": "e",
+            "texto": "Patrón restrictivo leve sin causa aparente"
+          }
+        ],
+        "correcta": "c",
+        "explicacion": "FEV1 disminuido (60%) + FVC casi normal (82%) + FEV1/FVC por debajo de 70% (60%) = trastorno OBSTRUCTIVO. La ausencia de reversibilidad tras broncodilatador descarta asma (B es incorrecta). El antecedente de tabaquismo significativo (desde los 20 años) junto con síntomas respiratorios crónicos y un trastorno obstructivo no reversible es altamente sugestivo de EPOC. Las opciones de enfermedad intersticial y fibrosis pulmonar (B y D) corresponderían a un patrón RESTRICTIVO (FVC bajo con cociente FEV1/FVC normal o alto), no al patrón obstructivo mostrado aquí."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica paso a paso cómo llegaste al diagnóstico funcional usando los 3 valores espirométricos (FEV1, FVC, FEV1/FVC) y el dato de reversibilidad.",
+        "respuestaModelo": "Paso 1: Reviso el FEV1/FVC — está en 60%, por debajo del umbral de 70% que define obstrucción. Paso 2: Comparo FEV1 (60%, claramente reducido) con FVC (82%, casi normal) — esta discordancia (FEV1 mucho más afectado que FVC) es típica del patrón OBSTRUCTIVO, a diferencia del restrictivo donde ambos bajarían de forma proporcional con el cociente normal. Paso 3: Reviso la reversibilidad post-broncodilatador — al NO haber respuesta significativa (que se define como aumento ≥10% del FEV1 o FVC), descarto asma, que típicamente sí revierte de forma significativa. Paso 4: Integro con la clínica (tabaquismo de 45 años, disnea progresiva crónica, roncus y espiración prolongada) para concluir EPOC como el diagnóstico funcional más probable."
+      }
+    }
+  ]
+}
 ,
   {
     "id": "analisis-gases-arteriales",
