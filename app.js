@@ -1130,6 +1130,7 @@ function renderTema(id){
                 <img src="${im.src}" alt="${im.caption}" loading="lazy">
                 <figcaption>${im.caption}</figcaption>
               </figure>
+              ${im.explicacion ? `<p style="flex-basis:100%; max-width:640px;">${im.explicacion}</p>` : ''}
             `).join('')}
           </div>` : ''}
         </div>
