@@ -1137,3 +1137,13 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   border-radius: var(--radius-sm); padding: 6px 10px; font-size: 12px; font-weight:700;
   cursor:pointer; box-shadow: var(--shadow-hover); font-family: var(--font-body);
 }
+
+/* ---------- aviso cuando falla el guardado local (localStorage lleno) ---------- */
+.aviso-guardado-fallido{
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 500; background: var(--ink); color: #fff; padding: 14px 18px; border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hover); max-width: 90vw; width: 380px; font-size: 13px;
+}
+.aviso-guardado-fallido strong{ display:block; margin-bottom:6px; color: var(--honey); }
+.aviso-guardado-fallido p{ margin: 0 0 8px 0; line-height:1.4; }
+.aviso-guardado-fallido span{ cursor:pointer; text-decoration:underline; font-weight:700; }
