@@ -309,7 +309,7 @@ function renderPreparar(compositeId){
     <div class="kcard"><p class="muted">Todavía no hay enfermedades construidas en este alcance — pásame el material y las armamos.</p></div>`}
 
     <div class="grid cols-2">
-      <div class="pcard" style="cursor:pointer;" onclick="navQuizPreparar('${semanaId}', ${idx})">
+      <div class="pcard" style="cursor:pointer;" onclick="iniciarExamenPreparar('${semanaId}', ${idx})">
         <h3>🧠 Quiz combinado</h3>
         <p>Tarjetas de recall activo de TODAS las enfermedades del alcance, mezcladas.</p>
       </div>
@@ -470,9 +470,9 @@ function renderModulo(moduloKey){
     </div>
 
     <div class="grid cols-2" style="margin-bottom:18px;">
-      <div class="pcard" style="cursor:pointer;" onclick="navQuizModulo('${moduloKey}')">
-        <h3>🧠 Quiz comparativo</h3>
-        <p>${m.quizComparativo.length} preguntas NUEVAS que comparan enfermedades del módulo entre sí — no repite las de cada enfermedad.</p>
+      <div class="pcard" style="cursor:pointer;" onclick="iniciarExamenComparativoModulo('${moduloKey}')">
+        <h3>🧠 Examen comparativo</h3>
+        <p>${m.casosComparativos.length} casos NUEVOS que comparan enfermedades del módulo entre sí — con cronómetro y nota, no repiten los de cada enfermedad.</p>
       </div>
       <div class="gcard" style="cursor:pointer;" onclick="navCasosModulo('${moduloKey}')">
         <h3>🩺 Casos comparativos</h3>
@@ -500,7 +500,6 @@ function renderModulo(moduloKey){
   `;
 }
 
-function navQuizModulo(moduloKey){ navPush('quiz', 'modulo::' + moduloKey, 'Quiz comparativo — ' + MODULOS[moduloKey].nombre); }
 function navCasosModulo(moduloKey){ navPush('casos', 'modulo::' + moduloKey, 'Casos comparativos — ' + MODULOS[moduloKey].nombre); }
 
 /* ---------- vista: Taller Aplicativo (sección propia, independiente) ---------- */
@@ -861,7 +860,7 @@ function renderSemana(id){
 
     <div class="progress-track"><div class="progress-fill" style="width:${total ? (estudiadas/total*100) : 0}%"></div></div>
     <div class="progress-caption" style="margin-bottom:14px">${estudiadas}/${total} enfermedades revisadas</div>
-    ${total > 0 ? `<div class="btn-icon" style="margin-bottom:22px; display:inline-flex;" onclick="navQuizSemana('${s.id}')">🧠 Repaso de toda la semana</div>` : ''}
+    ${total > 0 ? `<div class="btn-icon" style="margin-bottom:22px; display:inline-flex;" onclick="iniciarExamenSemana('${s.id}')">📝 Examen combinado de toda la semana</div>` : ''}
 
     <div class="section-block">
       <h3>📅 Días</h3>
