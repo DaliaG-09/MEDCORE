@@ -3489,6 +3489,11 @@ const ENFERMEDADES = [
           "src": "assets/pleurales/pleural-hemotorax-rx.jpg",
           "caption": "Radiografía de hemotórax (de tu clase)",
           "explicacion": "Nota la opacificación difusa del hemitórax — a diferencia de un derrame simple, el hemotórax en un paciente con trauma requiere pensar SIEMPRE en el volumen de sangrado (por eso las indicaciones de toracotomía urgente se basan en volumen: >1500mL inicial, o >200mL/hora por 3 horas) y no solo en la imagen. La radiografía confirma la presencia de líquido, pero NO te dice si es sangre — el diagnóstico definitivo de hemotórax es por el ASPECTO del líquido en la toracocentesis/tubo torácico (hematocrito del líquido pleural >50% del hematocrito sérico confirma hemotórax verdadero)."
+        },
+        {
+          "src": "assets/taller-imagenes-s2/taller-s2-neumotorax-linea-pleural.jpg",
+          "caption": "Radiografía del caso clínico de neumotórax (varón 22 años)",
+          "explicacion": "Esta es la misma radiografía del caso clínico que puedes practicar en la sección de Casos — las flechas marcan la línea pleural visceral, desplazada de la pared torácica por el aire acumulado en el espacio pleural. Es el hallazgo radiológico definitorio del neumotórax: fíjate cómo, a diferencia del diagrama esquemático de la imagen anterior, aquí ves el hallazgo real tal como aparece en una radiografía de verdad — sin trama vascular visible más allá de esa línea."
         }
       ],
       "explicacionExtendida": "<span class=\"fuente-ampliada\">El motivo por el que la glucosa BAJA y el pH BAJA a medida que el derrame paraneumónico progresa hacia empiema es metabólico: las bacterias y los neutrófilos activados consumen glucosa por glucólisis anaeróbica en ese ambiente pobre en oxígeno, generando ácido láctico como subproducto — por eso el pH cae. La LDH sube porque refleja directamente la destrucción celular (de neutrófilos y bacterias) que ocurre en ese ambiente hostil. Estos 3 números juntos (glucosa baja + pH bajo + LDH alta) son, en esencia, una fotografía bioquímica de cuánta destrucción celular activa está ocurriendo en el espacio pleural en ese momento.</span>"
