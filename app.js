@@ -40,7 +40,7 @@ function saveFlags(){
    la ruta y cada nivel es clickeable.
    ============================================================ */
 
-const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo', taller: 'view-taller', 'examen-simulado': 'view-examen-simulado', 'pdf-dividido': 'view-pdf-dividido' };
+const VIEW_MAP = { inicio: 'view-inicio', semana: 'view-semana', dia: 'view-dia', enfermedad: 'view-enfermedad', tema: 'view-tema', cuaderno: 'view-cuaderno', quiz: 'view-quiz', favoritos: 'view-favoritos', apuntes: 'view-apuntes', casos: 'view-casos', lectura: 'view-lectura', cronograma: 'view-cronograma', calendario: 'view-calendario', excel: 'view-excel', 'todas-semanas': 'view-todas-semanas', preparar: 'view-preparar', hospital: 'view-hospital', 'hospital-sesion': 'view-hospital-sesion', modulo: 'view-modulo', taller: 'view-taller', 'examen-simulado': 'view-examen-simulado', 'pdf-dividido': 'view-pdf-dividido', notas: 'view-notas' };
 let navStack = [{ view: 'inicio', id: null, label: 'Inicio' }];
 
 function navPush(view, id, label){
@@ -79,6 +79,7 @@ function navRenderCurrent(){
     case 'lectura': renderLectura(top.id); break;
     case 'cronograma': renderCronograma(); break;
     case 'calendario': renderCalendarioEvaluaciones(); break;
+    case 'notas': renderNotas(); break;
     case 'excel': renderExcelViewer(); break;
     case 'todas-semanas': renderTodasSemanas(); break;
     case 'preparar': renderPreparar(top.id); break;
@@ -887,6 +888,191 @@ function abrirPanelCalendario(fechaStr){
 function cerrarPanelCalendario(){
   const el = document.getElementById('cal-overlay');
   if(el) el.classList.remove('show');
+}
+
+/* ---------- Mis Notas: calculadora de nota final del curso ---------- */
+const NOTAS_COMPONENTES = [
+  { id:'ec1', nombre:'EC1 — Neumología', peso:10, tipo:'ec' },
+  { id:'ec2', nombre:'EC2 — Cardiología', peso:10, tipo:'ec' },
+  { id:'ep1', nombre:'Examen Parcial 1 (Neumología + Cardiología)', peso:18, tipo:'examen' },
+  { id:'ec3', nombre:'EC3 — Nefrología', peso:10, tipo:'ec' },
+  { id:'ec4', nombre:'EC4 — Gastroenterología', peso:10, tipo:'ec' },
+  { id:'ec5', nombre:'EC5 — Dermatología', peso:10, tipo:'ec' },
+  { id:'ep2', nombre:'Examen Parcial 2 (Nefro + Gastro + Dermato)', peso:12, tipo:'examen' },
+  { id:'eif', nombre:'Examen Integrado Final', peso:20, tipo:'examen' },
+];
+const NOTA_MINIMA_APROBAR = 13;
+
+const notasAdapter = {
+  get(){
+    try{
+      return JSON.parse(localStorage.getItem('medcore-notas-curso') || 'null') || { objetivo: NOTA_MINIMA_APROBAR, ec: {}, examen: {} };
+    }catch(err){ return { objetivo: NOTA_MINIMA_APROBAR, ec: {}, examen: {} }; }
+  },
+  set(data){
+    try{ localStorage.setItem('medcore-notas-curso', JSON.stringify(data)); }
+    catch(err){ console.error('MEDCORE: no se pudieron guardar las notas.', err); avisarErrorGuardadoCuaderno(); }
+  }
+};
+
+function calcularPromedioEC(items){
+  if(!items || !items.length) return null;
+  const suma = items.reduce((acc,it) => acc + Number(it.nota), 0);
+  return suma / items.length;
+}
+
+function calcularProgresoNotas(){
+  const datos = notasAdapter.get();
+  let pesoConocido = 0, ponderadoConocido = 0, pesoPendiente = 0;
+  const detalle = NOTAS_COMPONENTES.map(c => {
+    let nota = null;
+    if(c.tipo === 'ec'){
+      nota = calcularPromedioEC(datos.ec[c.id]);
+    } else {
+      const v = datos.examen[c.id];
+      nota = (v === undefined || v === null || v === '') ? null : Number(v);
+    }
+    if(nota !== null && !isNaN(nota)){
+      pesoConocido += c.peso;
+      ponderadoConocido += c.peso * nota;
+    } else {
+      pesoPendiente += c.peso;
+    }
+    return { ...c, nota };
+  });
+
+  const objetivo = Number(datos.objetivo) || NOTA_MINIMA_APROBAR;
+  let promedioNecesario = null, notaFinalSiTermino = null, estado;
+  if(pesoPendiente === 0){
+    notaFinalSiTermino = ponderadoConocido / 100;
+    estado = notaFinalSiTermino >= NOTA_MINIMA_APROBAR ? 'completo-aprobado' : 'completo-desaprobado';
+  } else {
+    const faltantePonderado = objetivo * 100 - ponderadoConocido;
+    promedioNecesario = faltantePonderado / pesoPendiente;
+    if(promedioNecesario <= 0) estado = 'asegurado';
+    else if(promedioNecesario > 20) estado = 'imposible';
+    else estado = 'en-progreso';
+  }
+
+  return { datos, detalle, pesoConocido, pesoPendiente, ponderadoConocido, objetivo, promedioNecesario, notaFinalSiTermino, estado };
+}
+
+function openNotasFresh(){ navReset('notas', null, 'Mis Notas'); }
+function renderNotas(){
+  const wrap = document.getElementById('view-notas-content');
+  const p = calcularProgresoNotas();
+
+  const mensajes = {
+    'completo-aprobado': () => `<strong>¡Aprobaste el curso!</strong> Tu nota final es ${p.notaFinalSiTermino.toFixed(2)} — por encima del mínimo (${NOTA_MINIMA_APROBAR}).`,
+    'completo-desaprobado': () => `Tu nota final quedó en ${p.notaFinalSiTermino.toFixed(2)} — por debajo del mínimo (${NOTA_MINIMA_APROBAR}). Ya no quedan componentes pendientes.`,
+    'asegurado': () => `<strong>Ya aseguraste tu ${p.objetivo}</strong> — aunque saques 0 en lo que falta, sigues llegando a esa nota. (En lo que queda, ${(100-p.pesoPendiente).toFixed(0)}% del curso ya está resuelto).`,
+    'imposible': () => `Con lo que llevas, ya no es matemáticamente posible llegar a ${p.objetivo} — necesitarías más de 20 en lo que falta. El máximo posible ahora es <strong>${((p.ponderadoConocido + p.pesoPendiente*20)/100).toFixed(2)}</strong>.`,
+    'en-progreso': () => `Necesitas un promedio de <strong>${p.promedioNecesario.toFixed(2)}</strong> en lo que te falta (${p.pesoPendiente}% del curso) para llegar a ${p.objetivo}.`,
+  };
+  const claseAviso = { 'completo-aprobado':'gcard', 'completo-desaprobado':'ccard', 'asegurado':'gcard', 'imposible':'ccard', 'en-progreso':'pcard' }[p.estado];
+
+  wrap.innerHTML = `
+    ${volverBtnHTML()}
+    <span class="eyebrow">${CURSO.nombre} — ${CURSO.formulaEvaluacion}</span>
+    <h1 class="page-title">📊 Mis Notas</h1>
+    <p class="page-sub">Ve metiendo tus notas de talleres, prácticas y exámenes. Cada EC se promedia sola — tú solo escribe las notas sueltas.</p>
+
+    <div class="${claseAviso} notas-resumen">
+      <div class="notas-resumen-top">
+        <div>
+          <label class="notas-objetivo-label">Quiero sacar</label>
+          <div class="notas-objetivo-input-wrap">
+            <input type="number" min="0" max="20" step="0.1" class="notas-objetivo-input" id="notas-objetivo" value="${p.objetivo}" onchange="actualizarObjetivoNotas(this.value)">
+            <span class="muted">/ 20</span>
+          </div>
+        </div>
+        <div class="notas-avance">
+          <span class="notas-avance-num">${p.pesoConocido}%</span>
+          <span class="muted">del curso ya con nota</span>
+        </div>
+      </div>
+      <p class="notas-mensaje">${mensajes[p.estado]()}</p>
+    </div>
+
+    <div class="notas-lista">
+      ${NOTAS_COMPONENTES.map(c => renderComponenteNotas(c, p.datos)).join('')}
+    </div>
+  `;
+}
+
+function renderComponenteNotas(c, datos){
+  if(c.tipo === 'examen'){
+    const valor = datos.examen[c.id];
+    const tieneNota = valor !== undefined && valor !== null && valor !== '';
+    return `
+    <div class="notas-card ${tieneNota ? 'con-nota' : ''}">
+      <div class="notas-card-head">
+        <span class="notas-card-nombre">${c.nombre}</span>
+        <span class="notas-card-peso">${c.peso}%</span>
+      </div>
+      <div class="notas-examen-input-wrap">
+        <input type="number" min="0" max="20" step="0.1" placeholder="Pendiente" class="notas-examen-input"
+          value="${tieneNota ? valor : ''}" onchange="setNotaExamen('${c.id}', this.value)">
+        <span class="muted">/ 20</span>
+      </div>
+    </div>`;
+  }
+  const items = datos.ec[c.id] || [];
+  const promedio = calcularPromedioEC(items);
+  return `
+  <div class="notas-card ${items.length ? 'con-nota' : ''}">
+    <div class="notas-card-head">
+      <span class="notas-card-nombre">${c.nombre}</span>
+      <span class="notas-card-peso">${c.peso}%</span>
+    </div>
+    ${items.length ? `
+    <div class="notas-sueltas">
+      ${items.map((it, i) => `
+        <div class="notas-suelta-item">
+          <span>${it.nombre}</span>
+          <span class="notas-suelta-nota">${it.nota}</span>
+          <span class="notas-suelta-quitar" onclick="quitarNotaSuelta('${c.id}', ${i})">✕</span>
+        </div>
+      `).join('')}
+    </div>
+    <p class="notas-promedio">Promedio: <strong>${promedio.toFixed(2)}</strong></p>` : `<p class="muted notas-vacio">Sin notas todavía</p>`}
+    <div class="notas-agregar-wrap">
+      <input type="text" placeholder="Ej: Taller AGA 1" class="notas-agregar-nombre" id="notas-nombre-${c.id}">
+      <input type="number" min="0" max="20" step="0.1" placeholder="Nota" class="notas-agregar-nota" id="notas-nota-${c.id}">
+      <div class="btn-icon notas-agregar-btn" onclick="agregarNotaSuelta('${c.id}')">+ Agregar</div>
+    </div>
+  </div>`;
+}
+
+function actualizarObjetivoNotas(valor){
+  const datos = notasAdapter.get();
+  datos.objetivo = Number(valor) || NOTA_MINIMA_APROBAR;
+  notasAdapter.set(datos);
+  renderNotas();
+}
+function setNotaExamen(id, valor){
+  const datos = notasAdapter.get();
+  datos.examen[id] = valor === '' ? null : Number(valor);
+  notasAdapter.set(datos);
+  renderNotas();
+}
+function agregarNotaSuelta(ecId){
+  const nombreEl = document.getElementById('notas-nombre-' + ecId);
+  const notaEl = document.getElementById('notas-nota-' + ecId);
+  const nombre = nombreEl.value.trim();
+  const nota = notaEl.value;
+  if(!nombre || nota === '' || isNaN(Number(nota))) return;
+  const datos = notasAdapter.get();
+  if(!datos.ec[ecId]) datos.ec[ecId] = [];
+  datos.ec[ecId].push({ nombre, nota: Number(nota) });
+  notasAdapter.set(datos);
+  renderNotas();
+}
+function quitarNotaSuelta(ecId, idx){
+  const datos = notasAdapter.get();
+  datos.ec[ecId].splice(idx, 1);
+  notasAdapter.set(datos);
+  renderNotas();
 }
 
 function saludoSegunHora(){
