@@ -6544,6 +6544,10 @@ const TALLERES = [
     "nombre": "TALLER APLICATIVO: IMÁGENES",
     "semana": "semana-02",
     "dia": "Lunes",
+    "pdfOrigen": {
+      "url": "https://drive.google.com/file/d/1rdfplaCqYU5rAqzwTseVMa6AjIDcmlhE/view",
+      "titulo": "SEMANA 02-PDF-TALLER APLICATIVO IMÁGENES"
+    },
     "resumen": "Interpretación de radiografías de tórax según el contexto clínico — 5 casos reales, cada uno con su imagen. Aplicado justo antes de un examen práctico.",
     "casos": [
       {
@@ -6748,6 +6752,10 @@ const TALLERES = [
     "nombre": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES",
     "semana": "semana-02",
     "dia": "Viernes",
+    "pdfOrigen": {
+      "url": "https://drive.google.com/file/d/1DNmoyN4-LkslKC4tCaL0qgLVUpaMZFgP/view",
+      "titulo": "SEMANA 02-PDF-TALLER APLICATIVO DE AGA 1"
+    },
     "resumen": "Interpretación de gasometrías arteriales paso a paso — 5 casos, aplicando las fórmulas de compensación esperada y el cálculo del PaFi.",
     "formulas": [
       "Acidosis Respiratoria — HCO3 esperado = 24 + [(PaCO2−40)/10] × 1",
@@ -6931,6 +6939,10 @@ const TALLERES = [
     "nombre": "TALLER APLICATIVO: CASOS CLÍNICOS EN NEUMOLOGÍA",
     "semana": "semana-03",
     "dia": "Viernes",
+    "pdfOrigen": {
+      "url": "https://drive.google.com/file/d/1B0X_MErIkyTxwMoAG-PCbrloupXYNXpY/view",
+      "titulo": "SEMANA 03-PDF-TALLER APLICATIVO DE CASOS CLÍNICOS"
+    },
     "resumen": "Aplicación integral de todo el módulo de Neumología — 3 casos completos (diagnóstico, exámenes, tratamiento), como se pediría en el examen del curso.",
     "casos": [
       {
@@ -7045,6 +7057,10 @@ const TALLERES = [
     "nombre": "TALLER APLICATIVO: ANÁLISIS DE GASES ARTERIALES 2",
     "semana": "semana-03",
     "dia": "Miércoles",
+    "pdfOrigen": {
+      "url": "https://drive.google.com/file/d/1M2RhMZlRSd-wrF7Yhvyz_8GNMWq3J1JI/view",
+      "titulo": "SEMANA 03-PDF-TALLER APLICATIVO DE AGA 2"
+    },
     "resumen": "Segunda ronda de interpretación de gasometrías — 2 casos más complejos, con lactato y gradiente A-a incluidos.",
     "formulas": [
       "Acidosis Respiratoria — HCO3 esperado = 24 + [(PaCO2−40)/10] × 1",
