@@ -652,7 +652,7 @@ const ENFERMEDADES = [
     "catScore": "Cuestionario CAT (COPD Assessment Test): 8 ítems que evalúan el estado de salud del paciente con EPOC. Puntuación de 0 a 40, correlaciona bien con el SGRQ. Un punto de corte de CAT ≥10 (equivalente a SGRQ ≥25) se considera el umbral para iniciar tratamiento regular de los síntomas, incluyendo la disnea. <span class=\"fuente-ampliada\">Se recomienda usar una evaluación multidimensional, ya que pacientes con mMRC bajo también pueden tener otros síntomas relevantes de EPOC no capturados por esa escala.</span>",
     "fisiopatologia": {
       "resumen": "La exposición crónica a partículas nocivas desencadena inflamación sostenida de la vía aérea, con dos componentes que coexisten en proporción variable: enfermedad de la pequeña vía aérea (bronquiolitis) y destrucción del parénquima (enfisema).",
-      "explicacionExtendida": "El diagrama de tu clase muestra la cascada completa, célula por célula: el humo de tabaco/biomasa activa directamente el epitelio (libera IL-6, CXCL1, CXCL8 — atrayendo neutrófilos), los macrófagos (liberan MCP-1, PAF, TGF-β) y los mastocitos (liberan histamina, PG-D2, y activan células dendríticas y linfocitos T). Los linfocitos CD8+ liberan perforina/granzima B, y junto con CD4+ activan linfocitos B (IL-6) — toda esta señalización converge en un grupo común de mediadores finales: LTB4, IL-8, TNF-α, MMPs, HNE, IL-17A, INF-γ. Estos mediadores actúan sobre DOS estructuras distintas y explican por qué el EPOC es tan heterogéneo entre pacientes: sobre los <strong>bronquiolos</strong> producen fibrosis, hipersecreción mucosa, contracción del músculo liso e inflamación (el fenotipo 'bronquitis crónica'); sobre el <strong>parénquima</strong> producen enfisema e inflamación (el fenotipo 'enfisematoso'). Ambas vías terminan en el mismo resultado funcional: obstrucción respiratoria — por eso dos pacientes con EPOC pueden verse clínicamente muy distintos (uno más tosedor-abotagado, otro más disneico-soplador rosado) y aun así tener el mismo diagnóstico espirométrico.\n\n<span class=\"fuente-ampliada\">Mecanísticamente, el desequilibrio entre proteasas (elastasa neutrofílica, MMPs) y antiproteasas (como la alfa-1 antitripsina) es lo que explica por qué el daño del parénquima es progresivo e irreversible: cada episodio inflamatorio (cada exacerbación) destruye un poco más de matriz elástica alveolar de la que el cuerpo puede reparar. Esto también explica por qué dejar de fumar detiene la progresión pero no revierte el daño ya hecho — el objetivo del tratamiento nunca es 'curar' el enfisema ya establecido, sino evitar que seque avance más rápido de lo esperado por la edad.</span>",
+      "explicacionExtendida": "El diagrama de tu clase muestra la cascada completa, célula por célula: el humo de tabaco/biomasa activa directamente el epitelio (libera IL-6, CXCL1, CXCL8 — atrayendo neutrófilos), los macrófagos (liberan MCP-1, PAF, TGF-β) y los mastocitos (liberan histamina, PG-D2, y activan células dendríticas y linfocitos T). Los linfocitos CD8+ liberan perforina/granzima B, y junto con CD4+ activan linfocitos B (IL-6) — toda esta señalización converge en un grupo común de mediadores finales: LTB4, IL-8, TNF-α, MMPs, HNE, IL-17A, INF-γ. Estos mediadores actúan sobre DOS estructuras distintas y explican por qué el EPOC es tan heterogéneo entre pacientes: sobre los <strong>bronquiolos</strong> producen fibrosis, hipersecreción mucosa, contracción del músculo liso e inflamación (el fenotipo 'bronquitis crónica'); sobre el <strong>parénquima</strong> producen enfisema e inflamación (el fenotipo 'enfisematoso'). Ambas vías terminan en el mismo resultado funcional: obstrucción respiratoria — por eso dos pacientes con EPOC pueden verse clínicamente muy distintos (uno más tosedor-abotagado, otro más disneico-soplador rosado) y aun así tener el mismo diagnóstico espirométrico.\n\n<span class=\"fuente-ampliada\">Mecanísticamente, el desequilibrio entre proteasas (elastasa neutrofílica, MMPs) y antiproteasas (como la alfa-1 antitripsina) es lo que explica por qué el daño del parénquima es progresivo e irreversible: cada episodio inflamatorio (cada exacerbación) destruye un poco más de matriz elástica alveolar de la que el cuerpo puede reparar. Esto también explica por qué dejar de fumar detiene la progresión pero no revierte el daño ya hecho — el objetivo del tratamiento nunca es 'curar' el enfisema ya establecido, sino evitar que seque avance más rápido de lo esperado por la edad. Dos datos adicionales de imagen que trae tu clase: (1) estudios con TC muestran hasta 70% MENOS bronquiolos terminales en pacientes con EPOC comparado con controles — la pérdida de vía aérea pequeña puede ocurrir tempranamente, antes de que se vea 'EPOC' en la espirometría; (2) la DISANAPSIS (desajuste entre el calibre del árbol de vías aéreas y el tamaño del pulmón) es un factor de riesgo importante e independiente para desarrollar EPOC — dos personas con el mismo pulmón 'de tamaño' pueden tener árboles bronquiales de calibre distinto, y el más estrecho tiene más riesgo.</span>",
       "cascada": [
         {
           "paso": "Factor desencadenante",
@@ -837,139 +837,166 @@ const ENFERMEDADES = [
     "prevencion": "Cese de tabaquismo (principal factor modificable) y reducción de exposición a biomasa, contaminación ocupacional y ambiental. Vacunación según esquema recomendado.",
     "perlasProfundo": "El FEV1/FVC post-broncodilatador < 0.70 confirma EPOC, pero la elección del tratamiento y el pronóstico dependen más de la clasificación GOLD por síntomas y riesgo de exacerbaciones (grupo A/B/E) que del FEV1 aislado.",
     "tablasClinicas": [
-      {
-        "titulo": "1️⃣ Primero: ¿qué tan obstruido está? — Clasificación GOLD por espirometría",
-        "contexto": "Una vez que la espirometría confirma EPOC (FEV1/FVC<0.7), el PRIMER número que necesitas es el FEV1 (% del predicho) — esto te da el estadio GOLD 1-4, que mide qué tan dañada está la vía aérea de forma objetiva y reproducible, sin depender de lo que el paciente reporte sentir.",
-        "columnas": [
-          "Estadio",
-          "Gravedad",
-          "Criterio espirométrico"
-        ],
-        "filas": [
-          [
-            "GOLD 1",
-            "Leve",
-            "FEV1 ≥ 80% del valor de referencia"
-          ],
-          [
-            "GOLD 2",
-            "Moderada",
-            "50% ≤ FEV1 < 80% del valor de referencia"
-          ],
-          [
-            "GOLD 3",
-            "Grave",
-            "30% ≤ FEV1 < 50% del valor de referencia"
-          ],
-          [
-            "GOLD 4",
-            "Muy grave",
-            "FEV1 < 30% del valor de referencia"
-          ]
-        ],
-        "nota": "<span class=\"fuente-ampliada\">Ojo: el GOLD 1-4 clasifica la OBSTRUCCIÓN, pero por sí solo NO decide el tratamiento — para eso necesitas además saber cómo se siente el paciente y cuántas exacerbaciones ha tenido (siguiente tabla).</span>"
-      },
-      {
-        "titulo": "2️⃣ Segundo: ¿cómo se siente el paciente? — Escala de disnea mMRC",
-        "contexto": "El FEV1 mide daño estructural, pero dos pacientes con el MISMO FEV1 pueden sentirse completamente distinto — por eso GOLD exige medir también el impacto funcional real con una escala de síntomas. La mMRC es la más simple: describe qué actividad le provoca disnea al paciente, en 5 grados.",
-        "columnas": [
-          "Grado",
-          "Descripción"
-        ],
-        "filas": [
-          [
-            "Grado 0",
-            "Ausencia de disnea, excepto al realizar ejercicio intenso"
-          ],
-          [
-            "Grado 1",
-            "Disnea al andar deprisa o al subir una pendiente poco pronunciada"
-          ],
-          [
-            "Grado 2",
-            "Incapacidad de mantener el paso de otras personas de la misma edad caminando en llano, o necesidad de parar a descansar al andar en llano al propio paso"
-          ],
-          [
-            "Grado 3",
-            "Necesidad de parar a descansar al andar unos 100 metros o a los pocos minutos de andar en llano"
-          ],
-          [
-            "Grado 4",
-            "La disnea impide al paciente salir de casa, o aparece con actividades como vestirse o desvestirse"
-          ]
-        ],
-        "nota": "mMRC ≥2 ya se considera síntomas significativos. La escala se relaciona bien con otras medidas del estado de salud y predice el riesgo de mortalidad futura — no es solo una pregunta de comodidad, tiene valor pronóstico real."
-      },
-      {
-        "titulo": "3️⃣ CAT score — la alternativa más completa a mMRC",
-        "contexto": "El problema de mMRC es que solo pregunta por disnea — pero un paciente puede tener tos, opresión torácica o mal sueño sin necesariamente sentirse 'sin aire'. El CAT (COPD Assessment Test) captura eso con un cuestionario de 8 ítems (tos, flema, opresión, subir escaleras/pendientes, actividades en casa, confianza para salir, sueño, energía), puntuado de 0 a 40.",
-        "columnas": [
-          "Punto de corte",
-          "Interpretación"
-        ],
-        "filas": [
-          [
-            "CAT < 10",
-            "Síntomas poco significativos"
-          ],
-          [
-            "CAT ≥ 10",
-            "Síntomas significativos — umbral para iniciar tratamiento regular, incluyendo la disnea"
-          ]
-        ],
-        "nota": "<span class=\"fuente-ampliada\">Se recomienda usar una evaluación multidimensional (no solo mMRC): un paciente con mMRC bajo puede igual tener CAT alto por otros síntomas no capturados por la escala de disnea sola.</span>"
-      },
-      {
-        "titulo": "4️⃣ Tercero: ¿cuántas exacerbaciones ha tenido? + síntomas → Grupo GOLD A/B/E",
-        "contexto": "Con el FEV1 (GOLD 1-4) y los síntomas (mMRC/CAT) ya medidos, el ÚLTIMO dato que falta — y el que más pesa para elegir tratamiento — es el historial de exacerbaciones. GOLD reconoce que las exacerbaciones predicen peor pronóstico incluso más que el nivel de síntomas, por eso el grupo E se define SOLO por exacerbaciones, sin importar qué tan sintomático esté el paciente.",
-        "columnas": [
-          "Grupo",
-          "Exacerbaciones en el último año",
-          "Síntomas"
-        ],
-        "filas": [
-          [
-            "Grupo A",
-            "0–1 exacerbación sin hospitalización",
-            "Pocos síntomas (mMRC 0-1, CAT <10)"
-          ],
-          [
-            "Grupo B",
-            "0–1 exacerbación sin hospitalización",
-            "Más síntomas (mMRC ≥2, CAT ≥10)"
-          ],
-          [
-            "Grupo E",
-            "≥2 exacerbaciones, o ≥1 con hospitalización",
-            "Independiente del nivel de síntomas"
-          ]
-        ],
-        "nota": "Este grupo A/B/E (NO el GOLD 1-4) es el que directamente decide con qué fármaco empezar — revisa el algoritmo de tratamiento más abajo."
-      },
-      {
-        "titulo": "5️⃣ ¿Necesita corticoide inhalado además del broncodilatador? — Eosinófilos en sangre",
-        "contexto": "Ya sabes el grupo (A/B/E) y por tanto el broncodilatador base — pero falta un dato para decidir si además conviene agregar un corticoide inhalado (GCI) desde el inicio: el conteo de eosinófilos en sangre, que predice qué tanto se va a beneficiar ESE paciente en particular del componente antiinflamatorio del GCI.",
-        "columnas": [
-          "Recuento",
-          "Implicancia terapéutica"
-        ],
-        "filas": [
-          [
-            "< 100 células/µl",
-            "Poco o ningún efecto del GCI — evitar, aumenta riesgo de neumonía sin beneficio claro"
-          ],
-          [
-            "100–300 células/µl",
-            "Efecto moderado del GCI"
-          ],
-          [
-            "> 300 células/µl",
-            "Mayor probabilidad de beneficio del GCI — considerar añadirlo desde el inicio en grupo E"
-          ]
-        ],
-        "nota": "El uso de eosinófilos para predecir el efecto del GCI debe combinarse SIEMPRE con la evaluación clínica del riesgo de exacerbación — no se usa aislado."
-      }
+  {
+    "titulo": "1️⃣ Primero: ¿qué tan obstruido está? — Clasificación GOLD por espirometría",
+    "contexto": "Una vez que la espirometría confirma EPOC (FEV1/FVC<0.7), el PRIMER número que necesitas es el FEV1 (% del predicho) — esto te da el estadio GOLD 1-4, que mide qué tan dañada está la vía aérea de forma objetiva y reproducible, sin depender de lo que el paciente reporte sentir.",
+    "columnas": [
+      "Estadio",
+      "Gravedad",
+      "Criterio espirométrico"
     ],
+    "filas": [
+      [
+        "GOLD 1",
+        "Leve",
+        "FEV1 ≥ 80% del valor de referencia"
+      ],
+      [
+        "GOLD 2",
+        "Moderada",
+        "50% ≤ FEV1 < 80% del valor de referencia"
+      ],
+      [
+        "GOLD 3",
+        "Grave",
+        "30% ≤ FEV1 < 50% del valor de referencia"
+      ],
+      [
+        "GOLD 4",
+        "Muy grave",
+        "FEV1 < 30% del valor de referencia"
+      ]
+    ],
+    "nota": "<span class=\"fuente-ampliada\">Ojo: el GOLD 1-4 clasifica la OBSTRUCCIÓN, pero por sí solo NO decide el tratamiento — para eso necesitas además saber cómo se siente el paciente y cuántas exacerbaciones ha tenido (siguiente tabla).</span>"
+  },
+  {
+    "titulo": "2️⃣ Segundo: ¿cómo se siente el paciente? — Escala de disnea mMRC",
+    "contexto": "El FEV1 mide daño estructural, pero dos pacientes con el MISMO FEV1 pueden sentirse completamente distinto — por eso GOLD exige medir también el impacto funcional real con una escala de síntomas. La mMRC es la más simple: describe qué actividad le provoca disnea al paciente, en 5 grados.",
+    "columnas": [
+      "Grado",
+      "Descripción"
+    ],
+    "filas": [
+      [
+        "Grado 0",
+        "Ausencia de disnea, excepto al realizar ejercicio intenso"
+      ],
+      [
+        "Grado 1",
+        "Disnea al andar deprisa o al subir una pendiente poco pronunciada"
+      ],
+      [
+        "Grado 2",
+        "Incapacidad de mantener el paso de otras personas de la misma edad caminando en llano, o necesidad de parar a descansar al andar en llano al propio paso"
+      ],
+      [
+        "Grado 3",
+        "Necesidad de parar a descansar al andar unos 100 metros o a los pocos minutos de andar en llano"
+      ],
+      [
+        "Grado 4",
+        "La disnea impide al paciente salir de casa, o aparece con actividades como vestirse o desvestirse"
+      ]
+    ],
+    "nota": "mMRC ≥2 ya se considera síntomas significativos. La escala se relaciona bien con otras medidas del estado de salud y predice el riesgo de mortalidad futura — no es solo una pregunta de comodidad, tiene valor pronóstico real."
+  },
+  {
+    "titulo": "3️⃣ CAT score — la alternativa más completa a mMRC",
+    "contexto": "El problema de mMRC es que solo pregunta por disnea — pero un paciente puede tener tos, opresión torácica o mal sueño sin necesariamente sentirse 'sin aire'. El CAT (COPD Assessment Test) captura eso con un cuestionario de 8 ítems (tos, flema, opresión, subir escaleras/pendientes, actividades en casa, confianza para salir, sueño, energía), puntuado de 0 a 40.",
+    "columnas": [
+      "Punto de corte",
+      "Interpretación"
+    ],
+    "filas": [
+      [
+        "CAT < 10",
+        "Síntomas poco significativos"
+      ],
+      [
+        "CAT ≥ 10",
+        "Síntomas significativos — umbral para iniciar tratamiento regular, incluyendo la disnea"
+      ]
+    ],
+    "nota": "<span class=\"fuente-ampliada\">Se recomienda usar una evaluación multidimensional (no solo mMRC): un paciente con mMRC bajo puede igual tener CAT alto por otros síntomas no capturados por la escala de disnea sola.</span>"
+  },
+  {
+    "titulo": "4️⃣ Tercero: ¿cuántas exacerbaciones ha tenido? + síntomas → Grupo GOLD A/B/E",
+    "contexto": "Con el FEV1 (GOLD 1-4) y los síntomas (mMRC/CAT) ya medidos, el ÚLTIMO dato que falta — y el que más pesa para elegir tratamiento — es el historial de exacerbaciones. GOLD reconoce que las exacerbaciones predicen peor pronóstico incluso más que el nivel de síntomas, por eso el grupo E se define SOLO por exacerbaciones, sin importar qué tan sintomático esté el paciente.",
+    "columnas": [
+      "Grupo",
+      "Exacerbaciones en el último año",
+      "Síntomas"
+    ],
+    "filas": [
+      [
+        "Grupo A",
+        "0–1 exacerbación sin hospitalización",
+        "Pocos síntomas (mMRC 0-1, CAT <10)"
+      ],
+      [
+        "Grupo B",
+        "0–1 exacerbación sin hospitalización",
+        "Más síntomas (mMRC ≥2, CAT ≥10)"
+      ],
+      [
+        "Grupo E",
+        "≥2 exacerbaciones, o ≥1 con hospitalización",
+        "Independiente del nivel de síntomas"
+      ]
+    ],
+    "nota": "Este grupo A/B/E (NO el GOLD 1-4) es el que directamente decide con qué fármaco empezar — revisa el algoritmo de tratamiento más abajo."
+  },
+  {
+    "titulo": "5️⃣ ¿Necesita corticoide inhalado además del broncodilatador? — Eosinófilos en sangre",
+    "contexto": "Ya sabes el grupo (A/B/E) y por tanto el broncodilatador base — pero falta un dato para decidir si además conviene agregar un corticoide inhalado (GCI) desde el inicio: el conteo de eosinófilos en sangre, que predice qué tanto se va a beneficiar ESE paciente en particular del componente antiinflamatorio del GCI.",
+    "columnas": [
+      "Recuento",
+      "Implicancia terapéutica"
+    ],
+    "filas": [
+      [
+        "< 100 células/µl",
+        "Poco o ningún efecto del GCI — evitar, aumenta riesgo de neumonía sin beneficio claro"
+      ],
+      [
+        "100–300 células/µl",
+        "Efecto moderado del GCI"
+      ],
+      [
+        "> 300 células/µl",
+        "Mayor probabilidad de beneficio del GCI — considerar añadirlo desde el inicio en grupo E"
+      ]
+    ],
+    "nota": "El uso de eosinófilos para predecir el efecto del GCI debe combinarse SIEMPRE con la evaluación clínica del riesgo de exacerbación — no se usa aislado."
+  },
+  {
+    "titulo": "🔥 4 endotipos de exacerbación",
+    "contexto": "No todas las exacerbaciones de EPOC son iguales por dentro — se han identificado 4 endotipos según el mecanismo predominante, cada uno asociado a un desencadenante típico.",
+    "columnas": [
+      "Endotipo",
+      "Asociado típicamente con"
+    ],
+    "filas": [
+      [
+        "Proinflamatorio",
+        "Respuesta inflamatoria general aumentada"
+      ],
+      [
+        "Inflamatorio tipo 1 (T1)",
+        "Infección bacteriana"
+      ],
+      [
+        "Inflamatorio tipo 2 (T2)",
+        "Inflamación eosinofílica — el que más se beneficia de corticosteroides"
+      ],
+      [
+        "Pauci-inflamatorio",
+        "Poca inflamación medible — frecuentemente asociado a virus"
+      ]
+    ],
+    "nota": "Los estudios que usan eosinófilos en sangre para dirigir corticosteroides sistémicos según el endotipo son prometedores pero aún requieren más validación antes de aplicarse de rutina."
+  }
+],
     "imagenExamenFisico": {
       "src": "assets/epoc/epoc-rx-hiperinflacion.jpg",
       "caption": "Radiografía real de tu clase — espacios intercostales ensanchados y diafragma aplanado, los dos signos radiológicos de hiperinsuflación que corresponden al 'tórax en tonel' que sientes al examen físico",
@@ -1251,7 +1278,7 @@ const ENFERMEDADES = [
           "explicacion": "Este es el brazo 'rápido' e inmediato: los alérgenos activan receptores TLR4/PAR2 en el epitelio, que libera TSLP/IL-33/IL-1 — estas señales entrecruzan la IgE ya pegada a mastocitos y basófilos, haciendo que liberen histamina, PGD2 y citoquinas de inmediato. Fíjate en las 2 fases marcadas abajo: 'Reacción alérgica temprana' (plasma extravasation, vasodilatación — minutos) y 'Reacción alérgica tardía' (vessel wall priming — horas después). Esto explica clínicamente por qué algunos pacientes tienen una caída inicial de la función pulmonar que mejora, y luego una SEGUNDA caída varias horas después — son las dos fases de esta misma cascada."
         }
       ],
-      "explicacionExtendida": "<span class=\"fuente-ampliada\">Estas dos vías no son independientes — se retroalimentan. La vía de mastocitos genera la broncoconstricción inmediata que sientes como \"crisis\", mientras que la vía Th2/ILC2 mantiene la inflamación crónica de fondo que hace que la vía aérea esté \"hiperreactiva\" incluso entre crisis, lista para reaccionar de forma exagerada al próximo estímulo. Por eso el tratamiento de mantenimiento (ICS) ataca la inflamación crónica (vía Th2), mientras que el rescate (SABA o formoterol) ataca la broncoconstricción aguda (vía mastocitos) — son dos problemas distintos que requieren dos tipos de fármaco distintos, y es la base de por qué 'solo usar el inhalador de rescate' nunca es suficiente.</span>",
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">Estas dos vías no son independientes — se retroalimentan. La vía de mastocitos genera la broncoconstricción inmediata que sientes como \"crisis\", mientras que la vía Th2/ILC2 mantiene la inflamación crónica de fondo que hace que la vía aérea esté \"hiperreactiva\" incluso entre crisis, lista para reaccionar de forma exagerada al próximo estímulo. Por eso el tratamiento de mantenimiento (ICS) ataca la inflamación crónica (vía Th2), mientras que el rescate (SABA o formoterol) ataca la broncoconstricción aguda (vía mastocitos) — son dos problemas distintos que requieren dos tipos de fármaco distintos, y es la base de por qué 'solo usar el inhalador de rescate' nunca es suficiente. Un dato adicional de tu clase que vale la pena conocer: la IgE elevada en el asma también tiene un efecto NEGATIVO — reduce la señalización de interferón tipo I en las células dendríticas plasmacitoides, lo que AUMENTA la susceptibilidad a infecciones virales respiratorias. Esto explica en parte por qué las infecciones virales son un desencadenante tan frecuente de exacerbaciones asmáticas: no es solo que el virus irrite la vía aérea ya inflamada, sino que la propia IgE del paciente asmático debilita su defensa antiviral innata.</span>",
       "cascada": [
         {
           "paso": "Factor desencadenante",
@@ -1729,7 +1756,7 @@ const ENFERMEDADES = [
   ],
   "profundo": {
     "definicion": "Esta clase agrupa 3 entidades relacionadas pero distintas, que se diferencian principalmente por su DURACIÓN y por si el daño es reversible o permanente: <strong>Bronquitis aguda</strong> — proceso inflamatorio autolimitado (1-3 semanas) que afecta las vías respiratorias de mayor calibre del pulmón, extendiéndose hasta los bronquios terciarios; se diagnostica cuando NO hay indicios clínicos ni radiológicos de neumonía. <strong>Bronquitis crónica</strong> — tos con producción de esputo durante al menos 3 meses al año, durante 2 años consecutivos, una vez excluidas otras causas respiratorias o cardíacas. <strong>Bronquiectasias</strong> — enfermedad pulmonar CRÓNICA definida por dilatación PERMANENTE de los bronquios, con síndrome de tos, esputo y exacerbaciones recurrentes.",
-    "epidemiologia": "Bronquitis aguda: 44 casos por cada 1,000 adultos/año, afecta al 5% de adultos anualmente, mayor incidencia en otoño e invierno — es la novena enfermedad más frecuente en pacientes ambulatorios en EE.UU. Bronquiectasias: incidencia y prevalencia en aumento a nivel mundial, con retraso diagnóstico de 3.5 a 17 años desde el inicio de síntomas; prevalencia aproximada de 600 por 100,000 personas, más común en mujeres y mayores de 65 años. <span class=\"fuente-ampliada\">El costo anual estimado por paciente con bronquiectasias es de $80,000 USD.</span>",
+    "epidemiologia": "Bronquitis aguda: 44 casos por cada 1,000 adultos/año, afecta al 5% de adultos anualmente, mayor incidencia en otoño e invierno — es la novena enfermedad más frecuente en pacientes ambulatorios en EE.UU. Bronquiectasias: incidencia y prevalencia en aumento a nivel mundial, con retraso diagnóstico de 3.5 a 17 años desde el inicio de síntomas; prevalencia aproximada de 600 por 100,000 personas, más común en mujeres y mayores de 65 años. <span class=\"fuente-ampliada\">El costo anual estimado por paciente con bronquiectasias es de $80,000 USD. La tos de la bronquitis aguda suele durar 10-14 días, pero hasta un 20% de los pacientes tiene síntomas persistentes o recidivantes durante 1 mes completo — un dato útil para manejar expectativas del paciente que espera mejorar en pocos días.</span>",
     "etiologiaFactoresRiesgo": [
       "Bronquitis aguda: principalmente VIRAL (aunque solo se aíslan virus en 8-37% de los casos); bacterias típicas (S. pneumoniae, H. influenzae, M. catarrhalis); bacterias atípicas ~25% (B. pertussis, C. pneumoniae, M. pneumoniae)",
       "Bronquitis crónica: tabaquismo (principal factor de riesgo mundial), combustibles de biomasa, toxinas/contaminantes ambientales, exposiciones ocupacionales",
@@ -2205,95 +2232,95 @@ const ENFERMEDADES = [
       "auscultacion": "Crépitos (estertores) sobre la zona afectada, y en casos de consolidación bien establecida, EGOFONÍA — cuando le pides al paciente decir 'eee' y se escucha como 'aaa' a través del estetoscopio, porque el tejido consolidado transmite mejor las frecuencias que generan ese cambio acústico característico."
     },
     "tablasClinicas": [
-      {
-        "titulo": "📊 CURB-65 — decide el lugar de atención",
-        "contexto": "Cada letra vale 1 punto si está presente. La suma total determina el riesgo y el lugar de manejo más apropiado.",
-        "columnas": [
-          "Letra",
-          "Criterio",
-          "Punto"
-        ],
-        "filas": [
-          [
-            "C",
-            "Confusión (nueva, desorientación)",
-            "1"
-          ],
-          [
-            "U",
-            "Urea >19 mg/dL (o BUN >19)",
-            "1"
-          ],
-          [
-            "R",
-            "Frecuencia Respiratoria ≥30 rpm",
-            "1"
-          ],
-          [
-            "B",
-            "Presión arterial (Blood pressure) sistólica <90 o diastólica ≤60 mmHg",
-            "1"
-          ],
-          [
-            "65",
-            "Edad ≥65 años",
-            "1"
-          ]
-        ],
-        "nota": "Puntaje 0-1 → manejo ambulatorio. 2 → considerar hospitalización breve/observación. 3-5 → hospitalización, considerar UCI si el puntaje es muy alto o hay criterios ATS-IDSA de gravedad."
-      },
-      {
-        "titulo": "🏥 Lugar de atención según gravedad",
-        "columnas": [
-          "Nivel",
-          "Criterio"
-        ],
-        "filas": [
-          [
-            "Ambulatorio",
-            "CURB-65 de 0-1 o PSI bajo, clínicamente estable, sin factores de riesgo significativos"
-          ],
-          [
-            "Hospitalización",
-            "CURB-65 de 2-5 o PSI elevado, hipoxemia, o soporte domiciliario inadecuado"
-          ],
-          [
-            "UCI",
-            "Necesidad de ventilación mecánica, presencia de shock, o criterios ATS-IDSA para NAC grave"
-          ]
-        ]
-      },
-      {
-        "titulo": "🦠 Factores de riesgo para patógenos específicos",
-        "columnas": [
-          "Patógeno",
-          "Factores de riesgo"
-        ],
-        "filas": [
-          [
-            "S. pneumoniae resistente",
-            "Asma, enfermedad hepática, bronquiectasias"
-          ],
-          [
-            "Legionella pneumophila",
-            "Edad avanzada, alcoholismo, tabaquismo, inmunosupresión, trasplante de órganos"
-          ],
-          [
-            "Mycoplasma/Chlamydophila",
-            "Edad más joven, sexo femenino, pocas comorbilidades"
-          ],
-          [
-            "Pseudomonas aeruginosa",
-            "Colonización previa, traqueostomía, bronquiectasias, EPOC muy grave"
-          ],
-          [
-            "SARM",
-            "Colonización/infección previa por SARM, infecciones cutáneas recurrentes, neumonía grave"
-          ]
-        ],
-        "nota": "Se recomienda cubrir empíricamente SARM o P. aeruginosa SOLO si existen factores de riesgo validados — no de rutina en todo paciente."
-      }
+  {
+    "titulo": "📊 CURB-65 — decide el lugar de atención",
+    "contexto": "Cada letra vale 1 punto si está presente. La suma total determina el riesgo y el lugar de manejo más apropiado.",
+    "columnas": [
+      "Letra",
+      "Criterio",
+      "Punto"
     ],
+    "filas": [
+      [
+        "C",
+        "Confusión (nueva, desorientación)",
+        "1"
+      ],
+      [
+        "U",
+        "Urea >19 mg/dL (o BUN >19)",
+        "1"
+      ],
+      [
+        "R",
+        "Frecuencia Respiratoria ≥30 rpm",
+        "1"
+      ],
+      [
+        "B",
+        "Presión arterial (Blood pressure) sistólica <90 o diastólica ≤60 mmHg",
+        "1"
+      ],
+      [
+        "65",
+        "Edad ≥65 años",
+        "1"
+      ]
+    ],
+    "nota": "Puntaje 0-1 → manejo ambulatorio. 2 → considerar hospitalización breve/observación. 3-5 → hospitalización, considerar UCI si el puntaje es muy alto o hay criterios ATS-IDSA de gravedad. Existen otras 2 escalas alternativas mencionadas en las guías (SMART-COP, más orientada a predecir necesidad de soporte respiratorio/vasopresor; y REA-ICU), pero CURB-65 y PSI siguen siendo las más usadas en la práctica clínica habitual."
+  },
+  {
+    "titulo": "🏥 Lugar de atención según gravedad",
+    "columnas": [
+      "Nivel",
+      "Criterio"
+    ],
+    "filas": [
+      [
+        "Ambulatorio",
+        "CURB-65 de 0-1 o PSI bajo, clínicamente estable, sin factores de riesgo significativos"
+      ],
+      [
+        "Hospitalización",
+        "CURB-65 de 2-5 o PSI elevado, hipoxemia, o soporte domiciliario inadecuado"
+      ],
+      [
+        "UCI",
+        "Necesidad de ventilación mecánica, presencia de shock, o criterios ATS-IDSA para NAC grave"
+      ]
+    ]
+  },
+  {
+    "titulo": "🦠 Factores de riesgo para patógenos específicos",
+    "columnas": [
+      "Patógeno",
+      "Factores de riesgo"
+    ],
+    "filas": [
+      [
+        "S. pneumoniae resistente",
+        "Asma, enfermedad hepática, bronquiectasias"
+      ],
+      [
+        "Legionella pneumophila",
+        "Edad avanzada, alcoholismo, tabaquismo, inmunosupresión, trasplante de órganos"
+      ],
+      [
+        "Mycoplasma/Chlamydophila",
+        "Edad más joven, sexo femenino, pocas comorbilidades"
+      ],
+      [
+        "Pseudomonas aeruginosa",
+        "Colonización previa, traqueostomía, bronquiectasias, EPOC muy grave"
+      ],
+      [
+        "SARM",
+        "Colonización/infección previa por SARM, infecciones cutáneas recurrentes, neumonía grave"
+      ]
+    ],
+    "nota": "Se recomienda cubrir empíricamente SARM o P. aeruginosa SOLO si existen factores de riesgo validados — no de rutina en todo paciente."
+  }
+],
     "diagnostico": "Diagnóstico definitivo requiere evidencia de un NUEVO infiltrado pulmonar en radiografía de tórax, TC de tórax, o ecografía pulmonar — combinado con síntomas y signos compatibles. Pruebas sanguíneas: hemograma, PCR, procalcitonina, lactato, función renal/hepática/coagulación. Pruebas microbiológicas (Gram/cultivo de esputo, hemocultivos, antígeno urinario, PCR multiplex) SOLO se recomiendan en: NAC grave con sepsis/shock, inmunosupresión, riesgo de patógenos resistentes, o falta de respuesta al tratamiento empírico inicial — NO de rutina en NAC ambulatoria leve.",
     "algoritmo": [
       {
@@ -2623,7 +2650,7 @@ const ENFERMEDADES = [
           "explicacion": "Este es el algoritmo real que usan las guías internacionales para decidir el antibiótico empírico en NAH/NAV. Síguelo de arriba hacia abajo: PRIMERO evalúas 2 cosas en paralelo — riesgo de patógeno MDR Y riesgo de mortalidad (>15% = alto). Si AMBOS son bajos → monoterapia simple (ertapenem, ceftriaxona, cefotaxima, moxifloxacino o levofloxacino). Si CUALQUIERA de los dos es alto, te bifurcas según si hay o no shock séptico: sin shock → un solo agente Gram-negativo (si es activo contra >90% de las Gram-negativas de tu UCI) ± cobertura MRSA; CON shock séptico → cobertura DOBLE para Pseudomonas ± MRSA. La lógica detrás del corte de 15% de mortalidad: por debajo de ese umbral, la monoterapia da MEJOR resultado que la terapia combinada — combinar antibióticos innecesariamente no es 'más seguro', puede ser peor."
         }
       ],
-      "explicacionExtendida": "<span class=\"fuente-ampliada\">El motivo detrás del corte de 15% de mortalidad en el algoritmo no es arbitrario: estudios de infecciones graves han encontrado que cuando el riesgo de morir ya es bajo, agregar un segundo antibiótico solo suma toxicidad y presión selectiva para resistencia sin mejorar el desenlace — el paciente de bajo riesgo se beneficia MÁS de un tratamiento dirigido y simple que de 'cubrir todo por si acaso'.</span>"
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">El motivo detrás del corte de 15% de mortalidad en el algoritmo no es arbitrario: estudios de infecciones graves han encontrado que cuando el riesgo de morir ya es bajo, agregar un segundo antibiótico solo suma toxicidad y presión selectiva para resistencia sin mejorar el desenlace — el paciente de bajo riesgo se beneficia MÁS de un tratamiento dirigido y simple que de 'cubrir todo por si acaso'. Dato adicional sobre biomarcadores: además de PCR y procalcitonina, estudios han evaluado copeptina y MR-proANP como predictores pronósticos en NAV — ambos están significativamente elevados al inicio del cuadro en los pacientes que NO sobreviven, con el MR-proANP mostrando la mejor razón de verosimilitud positiva (2.71) como predictor de mal resultado en algunos estudios. Y sobre M. pneumoniae: desde el año 2000 se han aislado cepas resistentes a macrólidos (por mutaciones en el gen ARNr 23S), con prevalencia creciente desde entonces — un dato relevante si la respuesta clínica a macrólidos no es la esperada en una neumonía atípica.</span>"
     },
     "clinica": [
       {
@@ -3688,13 +3715,13 @@ const ENFERMEDADES = [
     ],
     "tratamiento": {
       "noFarmacologico": [
-        "Neumotórax pequeño (≤10%): observación, mascarilla con 100% O2, alta en 6-12h si estable",
-        "Neumotórax grande (>15%): catéter pigtail para evacuación",
-        "Neumotórax recurrente: toracoscopia (VATS) como primera opción — extirpación de bullas + pleurodesis (abrasión pleural más segura, pleurectomía apical con menor recurrencia)",
-        "Hemotórax: toracostomía con tubo inicial; VATS temprana (<5 días) reduce estancia hospitalaria y conversión a toracotomía abierta",
-        "Derrame recidivante sintomático: pleurodesis con talco (3-4g estéril, sínfisis pleural exitosa en ~50% espontáneamente) o drenaje torácico tunelizado (DTT) si pulmón 'atrapado' o fracaso de pleurodesis",
-        "Empiema — derrame pequeño (<1cm): puede tratarse SIN drenaje"
-      ],
+  "Neumotórax pequeño (≤10%): observación, mascarilla con 100% O2, alta en 6-12h si estable",
+  "Neumotórax grande (>15%): catéter pigtail para evacuación",
+  "Neumotórax recurrente: toracoscopia (VATS) como primera opción — extirpación de bullas + pleurodesis (abrasión pleural más segura, pleurectomía apical con menor recurrencia) (las tasas de recurrencia son más altas en niños que en adultos: 11-60%)",
+  "Hemotórax: toracostomía con tubo inicial; VATS temprana (<5 días) reduce estancia hospitalaria y conversión a toracotomía abierta",
+  "Derrame recidivante sintomático: pleurodesis con talco (3-4g estéril, sínfisis pleural exitosa en ~50% espontáneamente) o drenaje torácico tunelizado (DTT) si pulmón 'atrapado' o fracaso de pleurodesis",
+  "Empiema — derrame pequeño (<1cm): puede tratarse SIN drenaje"
+],
       "farmacologico": [
         "Empiema/DPN complicado: antibióticos intravenosos de amplio espectro + drenaje pleural obligatorio",
         "Desbridamiento químico con fibrinólisis intrapleural (urocinasa, estreptocinasa, tPA) — comparable a VATS como tratamiento inicial, tasa de fracaso 10-16% que requiere cirugía posterior",
