@@ -4366,16 +4366,16 @@ const ENFERMEDADES = [
     "definicion": "Grupo HETEROGÉNEO de enfermedades que afectan predominantemente al intersticio pulmonar, aunque también pueden comprometer parénquima, vasos y vías respiratorias periféricas. Se caracterizan por inflamación y/o fibrosis progresiva que compromete la función respiratoria — enfermedades fibrosantes con limitación reversible o no de la capacidad de intercambio gaseoso, por causas conocidas o desconocidas. <span class=\"fuente-ampliada\">El nombre 'intersticial' puede ser engañoso: aunque el intersticio es el sitio predominante de daño, la enfermedad casi siempre también compromete el epitelio alveolar y el endotelio vascular adyacente — no es una enfermedad aislada de un solo compartimento anatómico.</span>",
     "epidemiologia": "Las EPID más frecuentes son la fibrosis pulmonar idiopática (FPI) y la sarcoidosis, que en conjunto representan aproximadamente el 50% de todos los casos. Existen diferencias notables entre países: menor frecuencia de sarcoidosis en España, y menor frecuencia de EPID asociada a enfermedad del tejido conectivo (CTD) en Alemania y registros griegos — lo que sugiere factores genéticos/ambientales/de referencia diagnóstica distintos según la región.",
     "etiologiaFactoresRiesgo": [
-      "Edad 20-40 años: más frecuentes sarcoidosis, histiocitosis X, asociadas a enfermedades del colágeno, y linfangioleiomiomatosis",
-      "Edad >50 años: predomina la fibrosis pulmonar idiopática (FPI)",
-      "Sexo femenino: más frecuentes las EPID asociadas a enfermedades del colágeno; la linfangioleiomiomatosis es EXCLUSIVA de mujeres",
-      "Antecedentes familiares: puede haber historia hereditaria en FPI, microlitiasis alveolar, neurofibromatosis, sarcoidosis, esclerosis tuberosa",
-      "Tabaquismo: asociado a neumonía intersticial descamativa (NID), bronquiolitis respiratoria, histiocitosis X — pero ocurre lo CONTRARIO con sarcoidosis y alveolitis alérgica extrínseca (el tabaco parece ser protector en estas)",
-      "Fármacos: quimioterápicos (busulfán, bleomicina, metotrexato), antibióticos (nitrofurantoína), miscelánea (sales de oro, amiodarona, difenilhidantoína, procainamida)",
-      "Exposición ocupacional: agentes orgánicos → alveolitis alérgica extrínseca; polvos inorgánicos → neumoconiosis (como el caso de tu clase: amianto, carbón activado, polvo de celulosa)",
-      "Radioterapia torácica previa",
-      "Enfermedades sistémicas: colagenosis (LES, AR, esclerosis sistémica, síndrome de Sjögren, polimiositis/dermatomiositis) y otras (sarcoidosis, vasculitis, carcinomatosis linfangítica)"
-    ],
+  "Edad 20-40 años: más frecuentes sarcoidosis, histiocitosis X, asociadas a enfermedades del colágeno, y linfangioleiomiomatosis",
+  "Edad >50 años: predomina la fibrosis pulmonar idiopática (FPI)",
+  "Sexo femenino: más frecuentes las EPID asociadas a enfermedades del colágeno; la linfangioleiomiomatosis es EXCLUSIVA de mujeres",
+  "Antecedentes familiares: puede haber historia hereditaria en FPI, microlitiasis alveolar, neurofibromatosis, sarcoidosis, esclerosis tuberosa",
+  "Tabaquismo: asociado a neumonía intersticial descamativa (NID), bronquiolitis respiratoria, histiocitosis X — pero ocurre lo CONTRARIO con sarcoidosis y alveolitis alérgica extrínseca (el tabaco parece ser protector en estas)",
+  "Fármacos: quimioterápicos (busulfán, bleomicina, metotrexato), antibióticos (nitrofurantoína), miscelánea (sales de oro, amiodarona, difenilhidantoína, procainamida)",
+  "Exposición ocupacional: agentes orgánicos → alveolitis alérgica extrínseca; polvos inorgánicos → neumoconiosis (como el caso de tu clase: amianto, carbón activado, polvo de celulosa)",
+  "Radioterapia torácica previa",
+  "Enfermedades sistémicas: colagenosis (LES, AR, esclerosis sistémica, síndrome de Sjögren, polimiositis/dermatomiositis, enfermedad mixta del tejido conectivo) y otras (sarcoidosis, vasculitis, carcinomatosis linfangítica, síndromes hemorrágicos)"
+],
     "criteriosDiagnosticos": "El diagnóstico a menudo se realiza mediante una COMBINACIÓN de características clínicas, fisiopatológicas, inmunológicas y de imágenes (TC) — evaluación multidisciplinaria (neumólogo, radiólogo, patólogo). Para un diagnóstico preciso, puede ser necesaria biopsia pulmonar quirúrgica con examen histológico si la TCAR no es concluyente. Criterios de progresión (ATS/ERS 2022) para EPID no-FPI: disminución de CVF ≥10%, aumento de disnea, empeoramiento radiológico en TCAR.",
     "fisiopatologia": {
       "resumen": "El intersticio pulmonar NORMAL es un espacio VIRTUAL entre la membrana basal del epitelio alveolar y el epitelio capilar — casi no existe como estructura visible. En la EPID, este espacio se llena patológicamente con: células inflamatorias, células epiteliales hiperplásicas, depósito de colágeno, proliferación de músculo liso, células malignas, granulomas, o fibras de amiloide (según la etiología específica) — por acumulación excesiva de células de distintas fuentes (mesenquimal, epitelial, inflamatoria) y productos de curación de heridas y matriz extracelular.",
@@ -4463,51 +4463,109 @@ const ENFERMEDADES = [
       "auscultacion": "El hallazgo semiológico más característico y buscado activamente: crepitantes tipo 'VELCRO' — inspiratorios, finos, simétricos, en ambas BASES pulmonares (por la distribución típicamente basal y subpleural de la fibrosis). Se llaman así porque el sonido recuerda literalmente al de separar dos superficies de velcro — se producen por la apertura súbita de pequeñas vías aéreas que estaban colapsadas por la fibrosis circundante durante la fase inicial de la inspiración."
     },
     "tablasClinicas": [
-      {
-        "titulo": "🗂️ Clasificación de las EPID",
-        "contexto": "Se dividen en 4 grandes categorías según su etiología — esto ORDENA todo el estudio diagnóstico posterior.",
-        "columnas": [
-          "Categoría",
-          "Ejemplos"
-        ],
-        "filas": [
-          [
-            "1. EPID de causa conocida",
-            "Asociada a tejido conectivo (AR, esclerosis sistémica, dermatomiositis); ocupacional/ambiental (neumoconiosis, alveolitis por hipersensibilidad); inducida por fármacos o radiación"
-          ],
-          [
-            "2. EPID idiopáticas",
-            "Fibrosis pulmonar idiopática (FPI — prototipo de EPID progresiva), neumonía intersticial no específica (NINE), neumonía intersticial descamativa (NID), bronquiolitis respiratoria con EPID, neumonía organizada criptogénica (NOC), neumonía intersticial aguda"
-          ],
-          [
-            "3. EPID en condiciones especiales",
-            "Asociada a enfermedades hematológicas/trasplante; en inmunodeprimidos"
-          ],
-          [
-            "4. EPID no clasificadas",
-            "—"
-          ]
-        ]
-      },
-      {
-        "titulo": "🔬 Patrones radiológicos según etiología (TCAR)",
-        "columnas": [
-          "Entidad",
-          "Patrón TCAR característico"
-        ],
-        "filas": [
-          [
-            "Fibrosis pulmonar idiopática (FPI)",
-            "Patrón de neumonía intersticial usual (NIU): reticulación + panalización + bronquiectasias por tracción, basal y subpleural"
-          ],
-          [
-            "Neumonía intersticial no específica (NINE)",
-            "Vidrio esmerilado difuso"
-          ]
-        ],
-        "nota": "El 90% de los casos presentan alteraciones en la radiografía simple al momento del diagnóstico, pero la TCAR es la piedra angular del diagnóstico definitivo."
-      }
+  {
+    "titulo": "🗂️ Clasificación de las EPID",
+    "contexto": "Se dividen en 4 grandes categorías según su etiología — esto ORDENA todo el estudio diagnóstico posterior.",
+    "columnas": [
+      "Categoría",
+      "Ejemplos"
     ],
+    "filas": [
+      [
+        "1. EPID de causa conocida",
+        "Asociada a tejido conectivo (AR, esclerosis sistémica, dermatomiositis); ocupacional/ambiental (neumoconiosis, alveolitis por hipersensibilidad); inducida por fármacos o radiación"
+      ],
+      [
+        "2. EPID idiopáticas",
+        "Fibrosis pulmonar idiopática (FPI — prototipo de EPID progresiva), neumonía intersticial no específica (NINE), neumonía intersticial descamativa (NID), bronquiolitis respiratoria con EPID, neumonía organizada criptogénica (NOC), neumonía intersticial aguda"
+      ],
+      [
+        "3. EPID en condiciones especiales",
+        "Asociada a enfermedades hematológicas/trasplante; en inmunodeprimidos"
+      ],
+      [
+        "4. EPID no clasificadas",
+        "—"
+      ]
+    ]
+  },
+  {
+    "titulo": "🧪 Marcadores de laboratorio inespecíficos y por etiología",
+    "contexto": "Ningún marcador aislado diagnostica una EPID, pero orientan fuertemente hacia una etiología específica cuando se correlacionan con la clínica.",
+    "columnas": [
+      "Marcador",
+      "Orienta a"
+    ],
+    "filas": [
+      [
+        "VSG elevada, hipergammaglobulinemia",
+        "Hallazgos inespecíficos de inflamación"
+      ],
+      [
+        "Eosinofilia",
+        "Eosinofilias pulmonares"
+      ],
+      [
+        "DHL aumentada",
+        "Proteinosis alveolar"
+      ],
+      [
+        "Hipercalcemia e hipercalciuria",
+        "Sarcoidosis"
+      ],
+      [
+        "Enzima convertidora de angiotensina (ACE)",
+        "Sarcoidosis y otras EPID"
+      ],
+      [
+        "Factor reumatoideo",
+        "Artritis reumatoide"
+      ],
+      [
+        "Anticuerpos antinucleares (ANA)",
+        "Lupus eritematoso sistémico"
+      ],
+      [
+        "Anticuerpos anti-ENA",
+        "Esclerosis sistémica progresiva"
+      ],
+      [
+        "Anticuerpo anti-Jo-1",
+        "Dermatomiositis, polimiositis"
+      ],
+      [
+        "Enzimas musculares (CPK, aldolasa)",
+        "Dermatomiositis, polimiositis"
+      ],
+      [
+        "Precipitinas séricas",
+        "Alveolitis alérgica extrínseca"
+      ],
+      [
+        "Anticuerpo anticitoplasma de neutrófilo (ANCA)",
+        "Vasculitis"
+      ]
+    ]
+  },
+  {
+    "titulo": "🔬 Patrones radiológicos según etiología (TCAR)",
+    "columnas": [
+      "Entidad",
+      "Patrón TCAR característico"
+    ],
+    "filas": [
+      [
+        "Fibrosis pulmonar idiopática (FPI)",
+        "Patrón de neumonía intersticial usual (NIU): reticulación + panalización + bronquiectasias por tracción, basal y subpleural"
+      ],
+      [
+        "Neumonía intersticial no específica (NINE)",
+        "Vidrio esmerilado difuso"
+      ]
+    ],
+    "nota": "El 90% de los casos presentan alteraciones en la radiografía simple al momento del diagnóstico, pero la TCAR es la piedra angular del diagnóstico definitivo."
+  }
+],
     "diagnostico": "Espirometría: patrón RESTRICTIVO (↓CVF, ↓DLCO) — en algunos casos puede haber patrón obstructivo asociado. Pletismografía: capacidad pulmonar total y volúmenes disminuidos. DLCO: disminuida. AGA: gradiente A-a aumentado, hipocapnia moderada; hipoxemia e hipercapnia evidentes SOLO en estadios avanzados. Prueba de esfuerzo: hipoxemia y desaturación inducidas por ejercicio. Radiografía de tórax: patrón reticular bilateral (90% alterada al diagnóstico) — patrones posibles: vidrio esmerilado, nodular, reticular, retículonodular, panal de abeja, con disminución del tamaño de los campos pulmonares. TCAR: estándar de oro para caracterizar el patrón (NIU en FPI, vidrio esmerilado difuso en NINE). Laboratorio: serologías autoinmunes (ANA, anti-Scl70, anti-Jo-1), factor reumatoide, ANCA según sospecha clínica. Biopsia pulmonar (transbronquial, criobiopsia, o quirúrgica) si la TCAR no es concluyente.",
     "algoritmo": [
       {
@@ -4571,6 +4629,7 @@ const ENFERMEDADES = [
       "Aumento del riesgo de cáncer de pulmón (especialmente en FPI)"
     ],
     "prevencion": "Evitar exposiciones ocupacionales conocidas (asbesto, polvos inorgánicos), suspender fármacos causales cuando se identifican a tiempo, cese de tabaquismo (relevante para los subtipos asociados a tabaco), vacunación según esquema.",
+    "pronostico": "Variable según el tipo específico: la FPI tiene una supervivencia media de 2 a 5 años desde el diagnóstico, considerablemente peor que la NINE y la NOC, que tienen mejor pronóstico en general. Los factores de mal pronóstico incluyen: fenotipo progresivo, hipoxemia persistente, y afectación extensa en la TCAR — estos 3 datos, evaluados juntos, orientan qué pacientes requieren seguimiento más estrecho y consideración temprana de trasplante pulmonar.",
     "perlasProfundo": "El grado de disnea se correlaciona con la gravedad y el PRONÓSTICO de la enfermedad — no es solo un síntoma molesto, es un marcador pronóstico real que debes registrar sistemáticamente en cada consulta de seguimiento, junto con la espirometría (criterio de progresión: caída de CVF ≥10% ya es significativa).",
     "asiLoPreguntanExamen": {
       "intro": "Patrón real de tus exámenes: casos con historia ocupacional detallada + AGA + espirometría completa (como el caso real de tu propia clase), donde debes reconocer el patrón RESTRICTIVO y descartar el obstructivo pese a antecedentes que podrían confundir (como el tabaquismo).",
@@ -5355,6 +5414,7 @@ const ENFERMEDADES = [
       "Accidentes vehiculares/laborales por somnolencia"
     ],
     "prevencion": "Control de peso (factor modificable más importante), evitar alcohol/sedantes antes de dormir, tratamiento de congestión nasal crónica, terapia posicional en casos leves relacionados con decúbito supino.",
+    "pronostico": "Sin tratamiento: alto riesgo de hipertensión, arritmias, enfermedad cardiovascular, ACV, resistencia a la insulina y deterioro cognitivo. Con tratamiento adecuado (CPAP u otra estrategia efectiva): mejoría de la calidad de vida, reducción del riesgo cardiovascular, y aumento de la expectativa de vida — la diferencia entre ambos escenarios es sustancial, lo que hace que el diagnóstico y tratamiento oportunos cambien realmente el pronóstico a largo plazo del paciente.",
     "perlasProfundo": "El uso de CPAP ≥4h/día en pacientes con síndrome coronario agudo redujo eventos adversos derivados de SAOS (HR 0.17, p=0.03) — un dato que conecta directamente el tratamiento del sueño con desenlaces cardiovasculares duros, no solo con 'sentirse menos cansado'.",
     "asiLoPreguntanExamen": {
       "intro": "Patrón real de tus exámenes: casos con historia clínica + STOP-Bang implícito, donde debes calcular el puntaje y decidir el siguiente paso — exactamente como la pregunta directa que trae tu propio PPT sobre el estándar de oro.",
