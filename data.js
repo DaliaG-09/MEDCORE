@@ -3036,31 +3036,31 @@ const ENFERMEDADES = [
     "fisiopatologia": {
       "resumen": "La micobacteria es fagocitada por macrófagos, células dendríticas y neutrófilos en el alvéolo — pero la micobacteria VIRULENTA bloquea la maduración del fagosoma, impide su acidificación, e inhibe la fusión con el lisosoma (evasión inmunitaria activa, no pasiva). Las células inmunitarias entonces se organizan en GRANULOMAS, cuya capa externa está formada por linfocitos B y T — esta contención determina si la infección queda LATENTE o progresa a enfermedad activa.",
       "cascada": [
-        {
-          "paso": "Transmisión",
-          "detalle": "Inhalación de aerosoles (0.65-7 µm) con M. tuberculosis expulsados por tos de un paciente con TB activa"
-        },
-        {
-          "paso": "Fagocitosis alveolar",
-          "detalle": "Macrófagos, células dendríticas y neutrófilos fagocitan la micobacteria en el compartimento alveolar"
-        },
-        {
-          "paso": "Evasión inmunitaria",
-          "detalle": "La micobacteria virulenta bloquea la maduración del fagosoma, impide su acidificación, e inhibe la fusión con el lisosoma — sobrevive DENTRO del macrófago"
-        },
-        {
-          "paso": "Formación del granuloma",
-          "detalle": "Las células inmunitarias se organizan en granulomas con linfocitos B y T en la capa externa — contención de la infección"
-        },
-        {
-          "paso": "Bifurcación",
-          "detalle": "Inmunidad mediada por macrófagos + granulomas + interferón CONTROLAN la diseminación → Infección Tuberculosa Latente (ITL). Si el sistema inmune NO controla → progresión a TB activa"
-        },
-        {
-          "paso": "TB posprimaria (enfermedad activa)",
-          "detalle": "Infiltrado alveolar precoz que puede remitir o propagarse — puede evolucionar a neumonía lobar obstructiva, neumonía caseosa, formación de cavernas, o diseminarse por vía sanguínea si hay inmunodepresión"
-        }
-      ],
+  {
+    "paso": "Transmisión",
+    "detalle": "Inhalación de aerosoles (0.65-7 µm) con M. tuberculosis expulsados por tos de un paciente con TB activa"
+  },
+  {
+    "paso": "Fagocitosis alveolar",
+    "detalle": "Macrófagos, células dendríticas y neutrófilos fagocitan la micobacteria en el compartimento alveolar"
+  },
+  {
+    "paso": "Evasión inmunitaria",
+    "detalle": "La micobacteria virulenta bloquea la maduración del fagosoma, impide su acidificación, e inhibe la fusión con el lisosoma — sobrevive DENTRO del macrófago"
+  },
+  {
+    "paso": "Formación del granuloma",
+    "detalle": "Las células inmunitarias se organizan en granulomas con linfocitos B y T en la capa externa — contención de la infección"
+  },
+  {
+    "paso": "Bifurcación",
+    "detalle": "Inmunidad mediada por macrófagos + granulomas + interferón CONTROLAN la diseminación → Infección Tuberculosa Latente (ITL). Si el sistema inmune NO controla → progresión a TB activa Del total de personas infectadas, solo el 5-10% desarrolla tuberculosis activa a lo largo de su vida — y de ese grupo, la mayoría lo hace en los primeros 5 años tras la infección inicial (el resto puede reactivarse años o décadas después si las defensas se debilitan)."
+  },
+  {
+    "paso": "TB posprimaria (enfermedad activa)",
+    "detalle": "Infiltrado alveolar precoz que puede remitir o propagarse — puede evolucionar a neumonía lobar obstructiva, neumonía caseosa, formación de cavernas, o diseminarse por vía sanguínea si hay inmunodepresión"
+  }
+],
       "imagenes": [
         {
           "src": "assets/tb/tb-rx-tc-diagnostico.jpg",
@@ -3109,90 +3109,113 @@ const ENFERMEDADES = [
       "auscultacion": "Crépitos localizados en VÉRTICES pulmonares — la localización preferente de la TB posprimaria en segmentos apicales y dorsales de lóbulos superiores, y apicales de lóbulos inferiores, se explica por la mayor oxigenación relativa y menor circulación linfática en esas zonas (M. tuberculosis es aerobio estricto y prolifera mejor donde hay más oxígeno disponible)."
     },
     "tablasClinicas": [
-      {
-        "titulo": "🧬 Tipos de tuberculosis resistente",
-        "contexto": "La resistencia se define por a qué fármaco(s) específico(s) es resistente el M. tuberculosis — esto determina completamente el esquema de tratamiento a usar.",
-        "columnas": [
-          "Tipo",
-          "Definición"
-        ],
-        "filas": [
-          [
-            "TB resistente a Isoniacida (TB rH)",
-            "Resistencia detectada a Isoniacida (H), SIN resistencia a Rifampicina"
-          ],
-          [
-            "TB resistente a Rifampicina (TB RR)",
-            "Resistencia detectada a Rifampicina"
-          ],
-          [
-            "TB multidrogorresistente (TB MDR)",
-            "Resistencia SIMULTÁNEA a Isoniacida Y Rifampicina"
-          ],
-          [
-            "TB pre-extensamente resistente (pre-XDR)",
-            "Cumple criterio MDR/RR + resistencia a cualquier fluoroquinolona"
-          ],
-          [
-            "TB extensamente resistente (XDR)",
-            "Cumple criterio RR/MDR + fluoroquinolona + al menos 1 medicamento adicional del Grupo A (Bedaquilina, Linezolid)"
-          ]
-        ]
-      },
-      {
-        "titulo": "💊 Esquema de tratamiento — TB sensible (MINSA 2023)",
-        "contexto": "El esquema estándar se divide en 2 fases con distinta frecuencia de dosis — HREZ son las siglas de los 4 fármacos de primera línea.",
-        "columnas": [
-          "Situación",
-          "Primera fase",
-          "Segunda fase"
-        ],
-        "filas": [
-          [
-            "TB sin VIH",
-            "2 meses HREZ diario (50 dosis)",
-            "4 meses H3R3 — 3 veces/semana (54 dosis)"
-          ],
-          [
-            "TB miliar / SNC / osteoarticular",
-            "2 meses HREZ diario (50 dosis)",
-            "10 meses HR diario (250 dosis)"
-          ],
-          [
-            "TB con VIH",
-            "2 meses HREZ diario (50 dosis)",
-            "4 meses HR diario (100 dosis)"
-          ]
-        ],
-        "nota": "H=Isoniacida, R=Rifampicina, E=Etambutol, Z=Pirazinamida. Todo esquema con Isoniacida requiere Piridoxina 50mg/día como acompañante para prevenir neuropatía."
-      },
-      {
-        "titulo": "🛡️ Esquemas para Terapia Preventiva de TB (TPTB)",
-        "columnas": [
-          "Esquema",
-          "Duración"
-        ],
-        "filas": [
-          [
-            "Isoniacida (H) sola",
-            "6 meses diario"
-          ],
-          [
-            "Isoniacida + Rifampicina (H+R)",
-            "3 meses diario"
-          ],
-          [
-            "Rifampicina (R) sola",
-            "4 meses diario"
-          ],
-          [
-            "Rifapentina + Isoniacida (>2 años)",
-            "3 meses, 1 vez/semana (12 dosis)"
-          ]
-        ],
-        "nota": "Indicado en: contactos de TB activa, personas con VIH, inicio de anti-TNF, diálisis/pre-trasplante, y grupos de riesgo con ITBL detectada (PPL, personal de salud, corticoides/inmunosupresores prolongados, ERC, neoplasias, DM)."
-      }
+  {
+    "titulo": "🧬 Tipos de tuberculosis resistente",
+    "contexto": "La resistencia se define por a qué fármaco(s) específico(s) es resistente el M. tuberculosis — esto determina completamente el esquema de tratamiento a usar.",
+    "columnas": [
+      "Tipo",
+      "Definición"
     ],
+    "filas": [
+      [
+        "TB resistente a Isoniacida (TB rH)",
+        "Resistencia detectada a Isoniacida (H), SIN resistencia a Rifampicina"
+      ],
+      [
+        "TB resistente a Rifampicina (TB RR)",
+        "Resistencia detectada a Rifampicina"
+      ],
+      [
+        "TB multidrogorresistente (TB MDR)",
+        "Resistencia SIMULTÁNEA a Isoniacida Y Rifampicina"
+      ],
+      [
+        "TB pre-extensamente resistente (pre-XDR)",
+        "Cumple criterio MDR/RR + resistencia a cualquier fluoroquinolona"
+      ],
+      [
+        "TB extensamente resistente (XDR)",
+        "Cumple criterio RR/MDR + fluoroquinolona + al menos 1 medicamento adicional del Grupo A (Bedaquilina, Linezolid)"
+      ]
+    ]
+  },
+  {
+    "titulo": "💊 Esquema de tratamiento — TB sensible (MINSA 2023)",
+    "contexto": "El esquema estándar se divide en 2 fases con distinta frecuencia de dosis — HREZ son las siglas de los 4 fármacos de primera línea.",
+    "columnas": [
+      "Situación",
+      "Primera fase",
+      "Segunda fase"
+    ],
+    "filas": [
+      [
+        "TB sin VIH",
+        "2 meses HREZ diario (50 dosis)",
+        "4 meses H3R3 — 3 veces/semana (54 dosis)"
+      ],
+      [
+        "TB miliar / SNC / osteoarticular",
+        "2 meses HREZ diario (50 dosis)",
+        "10 meses HR diario (250 dosis)"
+      ],
+      [
+        "TB con VIH",
+        "2 meses HREZ diario (50 dosis)",
+        "4 meses HR diario (100 dosis)"
+      ]
+    ],
+    "nota": "H=Isoniacida, R=Rifampicina, E=Etambutol, Z=Pirazinamida. Todo esquema con Isoniacida requiere Piridoxina 50mg/día como acompañante para prevenir neuropatía."
+  },
+  {
+    "titulo": "🛡️ Esquemas para Terapia Preventiva de TB (TPTB)",
+    "columnas": [
+      "Esquema",
+      "Duración"
+    ],
+    "filas": [
+      [
+        "Isoniacida (H) sola",
+        "6 meses diario"
+      ],
+      [
+        "Isoniacida + Rifampicina (H+R)",
+        "3 meses diario"
+      ],
+      [
+        "Rifampicina (R) sola",
+        "4 meses diario"
+      ],
+      [
+        "Rifapentina + Isoniacida (>2 años)",
+        "3 meses, 1 vez/semana (12 dosis)"
+      ]
+    ],
+    "nota": "Indicado en: contactos de TB activa, personas con VIH, inicio de anti-TNF, diálisis/pre-trasplante, y grupos de riesgo con ITBL detectada (PPL, personal de salud, corticoides/inmunosupresores prolongados, ERC, neoplasias, DM)."
+  },
+  {
+    "titulo": "💊 Clasificación de medicamentos anti-TB para TB resistente (MINSA 2023)",
+    "contexto": "Los esquemas de TB DR (rH, EOA, EOP) que ya viste se arman combinando fármacos de estos 3 grupos, priorizando siempre el Grupo A primero.",
+    "columnas": [
+      "Grupo",
+      "Fármacos"
+    ],
+    "filas": [
+      [
+        "Grupo A (prioridad más alta)",
+        "Levofloxacino, Moxifloxacino, Bedaquilina, Linezolid"
+      ],
+      [
+        "Grupo B",
+        "Clofazimina, Cicloserina"
+      ],
+      [
+        "Grupo C",
+        "Etambutol, Pirazinamida, Imipenem-cilastatina/Meropenem, Amikacina, Etionamida"
+      ]
+    ],
+    "nota": "Los esquemas se construyen incluyendo primero todos los fármacos del Grupo A que sean posibles usar, luego se completa con B y C según sea necesario, según el patrón de resistencia del paciente."
+  }
+],
     "diagnostico": "Diagnóstico bacteriológico: se requieren 3 muestras pulmonares de buena calidad (esputo, esputo inducido, aspirado gástrico, o muestras endoscópicas), procesadas con tinción de Ziehl-Neelsen/auramina, cultivo (Löwenstein-Jensen, Ogawa, o MGIT), técnicas de amplificación génica, o Xpert MTB/RIF (GeneXpert). Se recomienda solicitar 2 muestras de esputo SERIADAS: la primera al identificar al caso probable, la segunda al día siguiente al despertar en su domicilio. TODA Persona Afectada por Tuberculosis (PAT) debe ser evaluada con pruebas moleculares rápidas para resistencia a Isoniacida y/o Rifampicina ANTES de iniciar tratamiento.",
     "algoritmo": [
       {
