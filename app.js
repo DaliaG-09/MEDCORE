@@ -2021,6 +2021,12 @@ function renderProfundo(p, diseaseId){
       <ul>${p.complicaciones.map(x => `<li>${x}</li>`).join('')}</ul>
     </div>
 
+    ${p.prevencion || p.pronostico ? `
+    <div class="mcard">
+      ${p.prevencion ? `<h3>🛡️ Prevención</h3><p>${p.prevencion}</p>` : ''}
+      ${p.pronostico ? `<h3 style="${p.prevencion ? 'margin-top:16px;' : ''}">📈 Pronóstico</h3><p>${p.pronostico}</p>` : ''}
+    </div>` : ''}
+
     <div class="pcard">
       <h3>✨ Perla clínica</h3>
       <p>${p.perlasProfundo}</p>
