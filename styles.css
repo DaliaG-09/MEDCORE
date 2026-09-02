@@ -1192,6 +1192,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .cal-tag-hospital{ background:var(--coral); color:#fff; }
 .cal-tag-examen-parcial, .cal-tag-examen-final{ background:#fff; color:var(--honey); }
 .cal-tag-evaluacion-continua{ background:var(--mint); color:#fff; }
+.cal-tag[class*="teoria+hospital"]{ background:linear-gradient(135deg, var(--cobalt) 50%, var(--coral) 50%); color:#fff; }
 
 .cal-overlay{
   display:none; position:fixed; inset:0; background:rgba(36,36,58,.45); z-index:300;
@@ -1213,11 +1214,13 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .cal-panel-item-hospital{ background:var(--coral-soft); }
 .cal-panel-item-examen-parcial, .cal-panel-item-examen-final{ background:var(--honey-soft); }
 .cal-panel-item-evaluacion-continua{ background:var(--mint-soft); }
+.cal-panel-item[class*="teoria+hospital"]{ background:linear-gradient(135deg, var(--cobalt-soft) 50%, var(--coral-soft) 50%); }
 .cal-etiqueta-tipo{ display:block; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; margin-bottom:5px; }
 .cal-panel-item-teoria .cal-etiqueta-tipo{ color:var(--cobalt); }
 .cal-panel-item-hospital .cal-etiqueta-tipo{ color:var(--coral); }
 .cal-panel-item-examen-parcial .cal-etiqueta-tipo, .cal-panel-item-examen-final .cal-etiqueta-tipo{ color:var(--honey); }
 .cal-panel-item-evaluacion-continua .cal-etiqueta-tipo{ color:var(--mint); }
+.cal-panel-item[class*="teoria+hospital"] .cal-etiqueta-tipo{ color:var(--cobalt); }
 .cal-clicable{ cursor:pointer; }
 .cal-clicable:hover{ filter:brightness(0.97); }
 .cal-ver-mas{ display:block; margin-top:6px; font-size:12px; font-weight:700; color:var(--cobalt); }
