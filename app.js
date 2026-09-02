@@ -1060,12 +1060,26 @@ function renderComponenteNotas(c, datos){
 }
 
 function actualizarObjetivoNotas(valor){
+  const num = Number(valor);
+  if(isNaN(num) || num < 0 || num > 20){
+    alert('El objetivo debe estar entre 0 y 20.');
+    renderNotas();
+    return;
+  }
   const datos = notasAdapter.get();
-  datos.objetivo = Number(valor) || NOTA_MINIMA_APROBAR;
+  datos.objetivo = num || NOTA_MINIMA_APROBAR;
   notasAdapter.set(datos);
   renderNotas();
 }
 function setNotaExamen(id, valor){
+  if(valor !== ''){
+    const num = Number(valor);
+    if(isNaN(num) || num < 0 || num > 20){
+      alert('La nota debe estar entre 0 y 20.');
+      renderNotas(); // reconstruye para revertir el input al valor guardado anteriormente
+      return;
+    }
+  }
   const datos = notasAdapter.get();
   datos.examen[id] = valor === '' ? null : Number(valor);
   notasAdapter.set(datos);
@@ -1077,9 +1091,14 @@ function agregarNotaSuelta(ecId){
   const nombre = nombreEl.value.trim();
   const nota = notaEl.value;
   if(!nombre || nota === '' || isNaN(Number(nota))) return;
+  const num = Number(nota);
+  if(num < 0 || num > 20){
+    alert('La nota debe estar entre 0 y 20.');
+    return;
+  }
   const datos = notasAdapter.get();
   if(!datos.ec[ecId]) datos.ec[ecId] = [];
-  datos.ec[ecId].push({ nombre, nota: Number(nota) });
+  datos.ec[ecId].push({ nombre, nota: num });
   notasAdapter.set(datos);
   renderNotas();
 }
