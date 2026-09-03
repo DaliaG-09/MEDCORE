@@ -743,6 +743,7 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
   display:flex; align-items:center; gap:6px; transition: all 0.15s ease;
 }
 .btn-icon:hover{ border-color: var(--cobalt); color: var(--cobalt); background: var(--cobalt-soft); }
+.herramienta-btn.active{ background: var(--cobalt); color: #fff; border-color: var(--cobalt); }
 
 /* ---------- print ---------- */
 @media print{
