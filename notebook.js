@@ -146,6 +146,8 @@ function cuadernoWidgetHTML(key, widgetId, maxHeight){
         <input type="file" accept="image/*" multiple style="display:none" onchange="handleCuadernoImageUpload(event, '${widgetId}')">
       </label>
       <span class="btn-icon" onclick="abrirCajaTextoCuaderno('${widgetId}')">⌨️ Texto</span>
+      <span class="btn-icon herramienta-btn active" id="${widgetId}-herr-lapiz" onclick="setCuadernoHerramienta('${widgetId}','lapiz', this)">✏️ Lápiz</span>
+      <span class="btn-icon herramienta-btn" id="${widgetId}-herr-borrador" onclick="setCuadernoHerramienta('${widgetId}','borrador', this)">🧹 Borrador</span>
       <span class="btn-icon" onclick="undoCuaderno('${widgetId}')">↩ Deshacer</span>
       <span class="btn-icon" onclick="clearCuaderno('${widgetId}')">🗑 Borrar todo</span>
       <span class="notebook-save-status" id="${widgetId}-save-status"></span>
@@ -189,6 +191,7 @@ function initCuaderno(key, widgetId){
     usandoLapiz: false, // true mientras el lápiz esté trazando, para ignorar la palma
     color: esOscuro ? '#f0eef5' : '#24243A',
     size: 3.4,
+    herramienta: 'lapiz', // 'lapiz' o 'borrador'
     pageHeight: saved.pageHeight || 1100,
     key
   };
@@ -209,7 +212,14 @@ function initCuaderno(key, widgetId){
     ev.preventDefault();
     canvas.setPointerCapture(ev.pointerId);
     state.pointerIdActivo = ev.pointerId;
-    state.current = { color: state.color, size: state.size, points: [pointFromEventCuaderno(state, ev)], _ts: Date.now() };
+    const esBorrador = state.herramienta === 'borrador';
+    state.current = {
+      color: state.color,
+      size: esBorrador ? state.size * 6 : state.size, // el borrador es más ancho que la punta del lápiz, como uno real
+      esBorrador,
+      points: [pointFromEventCuaderno(state, ev)],
+      _ts: Date.now()
+    };
   });
   canvas.addEventListener('pointermove', (ev) => {
     if(!state.current || ev.pointerId !== state.pointerIdActivo) return;
@@ -223,9 +233,10 @@ function initCuaderno(key, widgetId){
     const esUnTap = puntos.length <= 2 && distanciaTotal(puntos) < 6; // toque casi sin movimiento = "click", no un trazo
 
     // Un tap solo se trata como "quiero borrar este texto" si de verdad cae sobre un
-    // bloque de texto existente. Si no, es un trazo normal chiquito (un punto, una
-    // tilde de acento) y se guarda igual que cualquier otro — no se descarta.
-    if(esUnTap && hayTextoEnPunto(widgetId, puntos[0])){
+    // bloque de texto existente Y estamos usando el lápiz (no el borrador — con el
+    // borrador, hasta un toque cortito debe comportarse como un puntito borrado, no
+    // como "elimina todo el bloque de texto").
+    if(esUnTap && state.herramienta === 'lapiz' && hayTextoEnPunto(widgetId, puntos[0])){
       state.current = null;
       state.pointerIdActivo = undefined;
       if(ev && ev.pointerType === 'pen') state.usandoLapiz = false;
@@ -241,7 +252,11 @@ function initCuaderno(key, widgetId){
   };
   canvas.addEventListener('pointerup', endStroke);
   canvas.addEventListener('pointercancel', endStroke);
-  canvas.addEventListener('pointerleave', endStroke);
+  // Nota: NO escuchamos 'pointerleave' aquí a propósito. Con setPointerCapture activo,
+  // pointerup/pointercancel ya son suficientes para saber cuándo de verdad termina el trazo.
+  // Antes sí escuchábamos pointerleave, y eso cortaba el trazo apenas el lápiz/dedo se
+  // acercaba al BORDE del lienzo — algo que pasa muy seguido en la vista dividida
+  // (PDF + cuaderno), donde el área de escritura es más angosta que en pantalla completa.
 
   // pegar imagen con Ctrl+V (o el menú de pegar en móvil) mientras el lienzo tiene el foco
   canvas.tabIndex = 0; // para que pueda recibir foco y el evento "paste"
@@ -372,6 +387,14 @@ function paintTextCuaderno(state, t){
 function paintStrokeCuaderno(state, stroke){
   if(stroke.points.length < 2) return;
   const { ctx } = state;
+  ctx.save();
+  if(stroke.esBorrador){
+    // Esto es lo que hace que el borrador funcione de verdad: en vez de pintar con un
+    // color, "recorta" (vuelve transparente) lo que sea que haya debajo — sea un trazo
+    // de lápiz, texto o imagen — sin importar si es una palabra completa o solo un
+    // pedacito. Es la misma técnica que usa cualquier app de dibujo para un borrador real.
+    ctx.globalCompositeOperation = 'destination-out';
+  }
   ctx.strokeStyle = stroke.color;
   ctx.lineWidth = stroke.size;
   ctx.lineCap = 'round';
@@ -379,6 +402,7 @@ function paintStrokeCuaderno(state, stroke){
   ctx.beginPath();
   stroke.points.forEach((p, i) => { if(i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y); });
   ctx.stroke();
+  ctx.restore();
 }
 function saveCuaderno(widgetId){
   const state = cuadernoStates[widgetId];
@@ -399,6 +423,13 @@ function setCuadernoSize(widgetId, size, el){
   if(!state) return;
   state.size = size;
   el.parentElement.querySelectorAll('.size-dot').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+}
+function setCuadernoHerramienta(widgetId, herramienta, el){
+  const state = cuadernoStates[widgetId];
+  if(!state) return;
+  state.herramienta = herramienta;
+  el.parentElement.querySelectorAll('.herramienta-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
 function undoCuaderno(widgetId){
