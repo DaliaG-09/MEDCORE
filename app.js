@@ -903,6 +903,17 @@ const NOTAS_COMPONENTES = [
 ];
 const NOTA_MINIMA_APROBAR = 13;
 
+/* convierte texto escrito por el usuario a número, aceptando tanto "15.5" como "15,5"
+   (la coma es el separador decimal normal en muchas configuraciones en español, y el
+   <input type="number"> nativo del navegador a veces la rechaza en silencio, dejando
+   el campo vacío sin ningún aviso — por eso usamos texto libre + este parseo propio) */
+function parsearNumeroNotas(texto){
+  if(texto === undefined || texto === null) return NaN;
+  const limpio = String(texto).trim().replace(',', '.');
+  if(limpio === '') return NaN;
+  return Number(limpio);
+}
+
 const notasAdapter = {
   get(){
     try{
@@ -992,7 +1003,7 @@ function renderNotas(){
       <div class="notas-hero-objetivo">
         <label class="notas-objetivo-label">Quiero sacar</label>
         <div class="notas-objetivo-input-wrap">
-          <input type="number" min="0" max="20" step="0.1" class="notas-objetivo-input" id="notas-objetivo" value="${p.objetivo}" onchange="actualizarObjetivoNotas(this.value)">
+          <input type="text" inputmode="decimal" class="notas-objetivo-input" id="notas-objetivo" value="${p.objetivo}" onchange="actualizarObjetivoNotas(this.value)">
           <span class="notas-objetivo-de20">/ 20</span>
         </div>
       </div>
@@ -1027,7 +1038,7 @@ function renderComponenteNotas(c, datos){
         </div>
       </div>
       <div class="notas-examen-input-wrap">
-        <input type="number" min="0" max="20" step="0.1" placeholder="—" class="notas-examen-input"
+        <input type="text" inputmode="decimal" placeholder="—" class="notas-examen-input"
           value="${tieneNota ? valor : ''}" onchange="setNotaExamen('${c.id}', this.value)">
         <span class="muted">/20</span>
       </div>
@@ -1053,35 +1064,40 @@ function renderComponenteNotas(c, datos){
     </div>` : `<p class="muted notas-vacio">Aún no tienes notas aquí</p>`}
     <div class="notas-agregar-wrap">
       <input type="text" placeholder="Ej: Taller AGA 1" class="notas-agregar-nombre" id="notas-nombre-${c.id}">
-      <input type="number" min="0" max="20" step="0.1" placeholder="0-20" class="notas-agregar-nota" id="notas-nota-${c.id}">
+      <input type="text" inputmode="decimal" placeholder="0-20" class="notas-agregar-nota" id="notas-nota-${c.id}">
       <div class="btn-icon notas-agregar-btn" onclick="agregarNotaSuelta('${c.id}')">+</div>
     </div>
   </div>`;
 }
 
 function actualizarObjetivoNotas(valor){
-  const num = Number(valor);
+  const num = parsearNumeroNotas(valor);
   if(isNaN(num) || num < 0 || num > 20){
-    alert('El objetivo debe estar entre 0 y 20.');
+    alert('Escribe un objetivo válido entre 0 y 20 (puedes usar coma o punto para decimales, ej: 15 o 15,5).');
     renderNotas();
     return;
   }
   const datos = notasAdapter.get();
-  datos.objetivo = num || NOTA_MINIMA_APROBAR;
+  datos.objetivo = num;
   notasAdapter.set(datos);
   renderNotas();
 }
 function setNotaExamen(id, valor){
-  if(valor !== ''){
-    const num = Number(valor);
+  if(valor.trim() !== ''){
+    const num = parsearNumeroNotas(valor);
     if(isNaN(num) || num < 0 || num > 20){
-      alert('La nota debe estar entre 0 y 20.');
-      renderNotas(); // reconstruye para revertir el input al valor guardado anteriormente
+      alert('Escribe una nota válida entre 0 y 20 (puedes usar coma o punto para decimales, ej: 15 o 15,5).');
+      renderNotas();
       return;
     }
+    const datos = notasAdapter.get();
+    datos.examen[id] = num;
+    notasAdapter.set(datos);
+    renderNotas();
+    return;
   }
   const datos = notasAdapter.get();
-  datos.examen[id] = valor === '' ? null : Number(valor);
+  datos.examen[id] = null;
   notasAdapter.set(datos);
   renderNotas();
 }
@@ -1089,11 +1105,13 @@ function agregarNotaSuelta(ecId){
   const nombreEl = document.getElementById('notas-nombre-' + ecId);
   const notaEl = document.getElementById('notas-nota-' + ecId);
   const nombre = nombreEl.value.trim();
-  const nota = notaEl.value;
-  if(!nombre || nota === '' || isNaN(Number(nota))) return;
-  const num = Number(nota);
-  if(num < 0 || num > 20){
-    alert('La nota debe estar entre 0 y 20.');
+  if(!nombre){
+    alert('Ponle un nombre a esta nota (ej: "Taller AGA 1") para poder agregarla.');
+    return;
+  }
+  const num = parsearNumeroNotas(notaEl.value);
+  if(isNaN(num) || num < 0 || num > 20){
+    alert('Escribe una nota válida entre 0 y 20 (puedes usar coma o punto para decimales, ej: 15 o 15,5).');
     return;
   }
   const datos = notasAdapter.get();
