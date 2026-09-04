@@ -901,6 +901,12 @@ const NOTAS_COMPONENTES = [
   { id:'ep2', nombre:'Examen Parcial 2', nombreCompleto:'Examen Parcial 2 — Nefrología + Gastroenterología + Dermatología', peso:12, tipo:'examen', emoji:'📗' },
   { id:'eif', nombre:'Examen Integrado Final', nombreCompleto:'Examen Integrado Final — todos los módulos', peso:20, tipo:'examen', emoji:'🎓' },
 ];
+/* cada EC se arma con 2 grupos, cada uno vale 50% de esa EC — según tu plan de actividades real
+   (idéntico para las 5 EC, según confirmaste) */
+const GRUPOS_EC = [
+  { id:'grupoA', nombre:'Control de Lectura y Talleres Aplicativos', peso:0.5 },
+  { id:'grupoB', nombre:'Examen Práctico y Exposiciones', peso:0.5 },
+];
 const NOTA_MINIMA_APROBAR = 13;
 
 /* convierte texto escrito por el usuario a número, aceptando tanto "15.5" como "15,5"
@@ -914,11 +920,27 @@ function parsearNumeroNotas(texto){
   return Number(limpio);
 }
 
+/* si hay datos guardados con el formato VIEJO (un array plano de notas, de antes de
+   saber que cada EC se calcula en 2 grupos de 50%), los migra metiéndolos todos en
+   grupoA para no perderlos — Dalia puede reclasificarlos a mano si corresponde. */
+function migrarFormatoViejoEC(datosEc){
+  Object.keys(datosEc).forEach(ecId => {
+    if(Array.isArray(datosEc[ecId])){
+      datosEc[ecId] = { grupoA: datosEc[ecId], grupoB: [] };
+    }
+  });
+  return datosEc;
+}
+
+
 const notasAdapter = {
   get(){
+    let datos;
     try{
-      return JSON.parse(localStorage.getItem('medcore-notas-curso') || 'null') || { objetivo: NOTA_MINIMA_APROBAR, ec: {}, examen: {} };
-    }catch(err){ return { objetivo: NOTA_MINIMA_APROBAR, ec: {}, examen: {} }; }
+      datos = JSON.parse(localStorage.getItem('medcore-notas-curso') || 'null') || { objetivo: NOTA_MINIMA_APROBAR, ec: {}, examen: {} };
+    }catch(err){ datos = { objetivo: NOTA_MINIMA_APROBAR, ec: {}, examen: {} }; }
+    datos.ec = migrarFormatoViejoEC(datos.ec || {});
+    return datos;
   },
   set(data){
     try{ localStorage.setItem('medcore-notas-curso', JSON.stringify(data)); }
@@ -926,10 +948,22 @@ const notasAdapter = {
   }
 };
 
-function calcularPromedioEC(items){
+function calcularPromedioSimple(items){
   if(!items || !items.length) return null;
   const suma = items.reduce((acc,it) => acc + Number(it.nota), 0);
   return suma / items.length;
+}
+/* la nota de una EC = 50% del promedio de Control de Lectura/Talleres + 50% del promedio
+   de Examen Práctico/Exposiciones — según tu plan de actividades real. Solo se considera
+   "completa" (con nota final) cuando AMBOS grupos ya tienen al menos 1 nota — si falta
+   uno entero, todavía no se puede saber la nota real de esa EC, aunque el otro grupo ya
+   esté lleno. */
+function calcularPromedioEC(ecData){
+  if(!ecData) return null;
+  const promA = calcularPromedioSimple(ecData.grupoA);
+  const promB = calcularPromedioSimple(ecData.grupoB);
+  if(promA === null || promB === null) return null;
+  return promA * GRUPOS_EC[0].peso + promB * GRUPOS_EC[1].peso;
 }
 
 function calcularProgresoNotas(){
@@ -1044,8 +1078,8 @@ function renderComponenteNotas(c, datos){
       </div>
     </div>`;
   }
-  const items = datos.ec[c.id] || [];
-  const promedio = calcularPromedioEC(items);
+  const ecData = datos.ec[c.id] || { grupoA: [], grupoB: [] };
+  const promedioFinal = calcularPromedioEC(ecData);
   return `
   <div class="notas-ec-card" style="--modulo-color:${c.color};">
     <div class="notas-ec-head">
@@ -1054,18 +1088,32 @@ function renderComponenteNotas(c, datos){
         <p class="notas-ec-nombre">${c.nombre}</p>
         <p class="notas-ec-peso muted">${c.peso}% de la nota final</p>
       </div>
-      ${items.length ? `<span class="notas-ec-promedio">${promedio.toFixed(2)}</span>` : ''}
+      ${promedioFinal !== null ? `<span class="notas-ec-promedio">${promedioFinal.toFixed(2)}</span>` : ''}
+    </div>
+    ${GRUPOS_EC.map(g => renderGrupoEC(c.id, g, ecData[g.id] || [])).join('')}
+    ${promedioFinal === null && (ecData.grupoA.length || ecData.grupoB.length) ? `<p class="notas-ec-incompleta muted">Aún falta el otro 50% para tener la nota final de esta EC.</p>` : ''}
+  </div>`;
+}
+
+function renderGrupoEC(ecId, grupo, items){
+  const promedio = calcularPromedioSimple(items);
+  return `
+  <div class="notas-grupo">
+    <div class="notas-grupo-head">
+      <span class="notas-grupo-nombre">${grupo.nombre}</span>
+      <span class="notas-grupo-peso">50% de esta EC</span>
+      ${promedio !== null ? `<span class="notas-grupo-promedio">${promedio.toFixed(2)}</span>` : ''}
     </div>
     ${items.length ? `
     <div class="notas-chips">
       ${items.map((it, i) => `
-        <span class="notas-chip">${it.nombre}: <strong>${it.nota}</strong> <i onclick="quitarNotaSuelta('${c.id}', ${i})">✕</i></span>
+        <span class="notas-chip">${it.nombre}: <strong>${it.nota}</strong> <i onclick="quitarNotaSuelta('${ecId}', '${grupo.id}', ${i})">✕</i></span>
       `).join('')}
-    </div>` : `<p class="muted notas-vacio">Aún no tienes notas aquí</p>`}
+    </div>` : `<p class="muted notas-vacio">Sin notas todavía</p>`}
     <div class="notas-agregar-wrap">
-      <input type="text" placeholder="Ej: Taller AGA 1" class="notas-agregar-nombre" id="notas-nombre-${c.id}">
-      <input type="text" inputmode="decimal" placeholder="0-20" class="notas-agregar-nota" id="notas-nota-${c.id}">
-      <div class="btn-icon notas-agregar-btn" onclick="agregarNotaSuelta('${c.id}')">+</div>
+      <input type="text" placeholder="Ej: Taller AGA 1" class="notas-agregar-nombre" id="notas-nombre-${ecId}-${grupo.id}">
+      <input type="text" inputmode="decimal" placeholder="0-20" class="notas-agregar-nota" id="notas-nota-${ecId}-${grupo.id}">
+      <div class="btn-icon notas-agregar-btn" onclick="agregarNotaSuelta('${ecId}', '${grupo.id}')">+</div>
     </div>
   </div>`;
 }
@@ -1101,9 +1149,10 @@ function setNotaExamen(id, valor){
   notasAdapter.set(datos);
   renderNotas();
 }
-function agregarNotaSuelta(ecId){
-  const nombreEl = document.getElementById('notas-nombre-' + ecId);
-  const notaEl = document.getElementById('notas-nota-' + ecId);
+function agregarNotaSuelta(ecId, grupoId){
+  const sufijo = ecId + '-' + grupoId;
+  const nombreEl = document.getElementById('notas-nombre-' + sufijo);
+  const notaEl = document.getElementById('notas-nota-' + sufijo);
   const nombre = nombreEl.value.trim();
   if(!nombre){
     alert('Ponle un nombre a esta nota (ej: "Taller AGA 1") para poder agregarla.');
@@ -1115,14 +1164,14 @@ function agregarNotaSuelta(ecId){
     return;
   }
   const datos = notasAdapter.get();
-  if(!datos.ec[ecId]) datos.ec[ecId] = [];
-  datos.ec[ecId].push({ nombre, nota: num });
+  if(!datos.ec[ecId]) datos.ec[ecId] = { grupoA: [], grupoB: [] };
+  datos.ec[ecId][grupoId].push({ nombre, nota: num });
   notasAdapter.set(datos);
   renderNotas();
 }
-function quitarNotaSuelta(ecId, idx){
+function quitarNotaSuelta(ecId, grupoId, idx){
   const datos = notasAdapter.get();
-  datos.ec[ecId].splice(idx, 1);
+  datos.ec[ecId][grupoId].splice(idx, 1);
   notasAdapter.set(datos);
   renderNotas();
 }
