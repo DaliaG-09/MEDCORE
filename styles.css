@@ -1271,6 +1271,14 @@ table.compare th{ background: var(--cobalt-soft); font-family: var(--font-mono);
 .notas-ec-nombre{ margin:0; font-weight:700; font-size:14px; }
 .notas-ec-peso{ margin:1px 0 0; font-size:11.5px; }
 .notas-ec-promedio{ font-family:var(--font-display); font-weight:800; font-size:20px; color:var(--modulo-color); }
+.notas-ec-incompleta{ margin:8px 0 0; font-size:11.5px; font-style:italic; }
+
+.notas-grupo{ padding:10px 0; border-top:1px solid var(--line); }
+.notas-grupo:first-of-type{ border-top:none; padding-top:4px; }
+.notas-grupo-head{ display:flex; align-items:baseline; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+.notas-grupo-nombre{ font-size:12.5px; font-weight:700; flex:1; min-width:150px; }
+.notas-grupo-peso{ font-size:10.5px; color:var(--ink-soft); background:var(--cream); padding:2px 7px; border-radius:999px; }
+.notas-grupo-promedio{ font-family:var(--font-display); font-weight:800; font-size:14px; color:var(--modulo-color); }
 
 .notas-chips{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
 .notas-chip{
