@@ -202,7 +202,7 @@ const SEMANAS = [
         "dia": "Lunes",
         "tipo": "teoria",
         "tema": "Anatomía, semiología y fisiología Cardiaca: estructura del corazón y de los grandes vasos. Ciclo cardiaco y hemodinamia. Examen físico. / Exámenes de ayuda diagnóstica en Cardiología: Radiografía, Ecocardiograma, Doppler, Holter, MAPA, prueba de esfuerzo y cateterismo.",
-        "vinculos": [ { "tipo": "tema", "id": "anatofisio-cardiaca" } ]
+        "vinculos": [ { "tipo": "tema", "id": "anatofisio-cardiaca" }, { "tipo": "tema", "id": "examenes-diagnostico-cardio" } ]
       },
       {
         "dia": "Miércoles",
@@ -6308,6 +6308,135 @@ const TEMAS = [
       "preguntaEscrita": {
         "enunciado": "Explica el mecanismo exacto por el cual el pulso deficitario ocurre específicamente en la fibrilación auricular, y por qué es un signo de alarma.",
         "respuestaModelo": "En la fibrilación auricular, los ventrículos se contraen de forma irregular y a intervalos variables e impredecibles (dado que reciben impulsos eléctricos caóticos desde las aurículas fibrilando). Cuando dos latidos ventriculares ocurren muy seguidos uno del otro, el segundo latido puede ocurrir ANTES de que el ventrículo haya tenido tiempo suficiente para llenarse adecuadamente durante la diástole — esto genera un volumen de eyección muy bajo en ese latido, insuficiente para generar una onda de pulso palpable en la periferia (por ejemplo, en la muñeca), aunque SÍ se ausculte como un latido cardiaco en el pecho. Por eso la frecuencia cardiaca contada por auscultación es mayor que la frecuencia de pulso contada por palpación — esa diferencia (el 'déficit') es precisamente el pulso deficitario. Es un signo de alarma porque indica que el paciente está en fibrilación auricular activa (o una arritmia similar), lo que conlleva riesgo de estasis sanguínea en la aurícula, formación de trombos, y embolización sistémica (más frecuentemente ACV)."
+      }
+    }
+  ]
+},
+  {
+  "id": "examenes-diagnostico-cardio",
+  "nombre": "Procedimientos invasivos y de ayuda diagnóstica en Cardiología",
+  "area": "Cardiología",
+  "tipo": "metodo-diagnostico",
+  "semanas": [
+    "semana-04"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1cuVjj7kebWeW4gguYdvTZuGbhLRtwigH/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_4_SESIÓN-10-TEMA-2: Exámenes de ayuda diagnóstica en Cardiología"
+  },
+  "contenido": {
+    "resumen": "En Cardiología existen pruebas diagnósticas invasivas y no invasivas, cada una con una indicación específica. Se piden por 2 grandes razones: fines DIAGNÓSTICOS (en pacientes sintomáticos con dolor torácico, o asintomáticos con alto riesgo) y fines VALORATIVOS/PRONÓSTICOS (seguimiento de cardiopatía isquémica conocida, post-IAM, valorar eficacia de tratamiento).",
+    "estructuras": [
+      {
+        "nombre": "Prueba de esfuerzo",
+        "detalle": "3 tipos: tradicional (EKG de esfuerzo/ergometría), ecocardiografía de esfuerzo, y con radioisótopos. Indicada tanto en pacientes sintomáticos (dolor torácico típico/atípico, equivalentes isquémicos) como asintomáticos de alto riesgo. Contraindicaciones ABSOLUTAS: IAM en fase aguda (<3 días), angina inestable, estenosis aórtica severa sintomática, arritmia con repercusión hemodinámica sin control, pericarditis aguda, miocarditis aguda, insuficiencia cardiaca descompensada, incapacidad física/psíquica, disección aórtica."
+      },
+      {
+        "nombre": "Monitoreo Ambulatorio de Presión Arterial (MAPA)",
+        "detalle": "Equipo: mango inflable con sensor auscultatorio u oscilométrico + caja de comando con batería, debe estar adecuadamente validado. Indicaciones: descartar HTA de bata blanca, HTA limítrofe/lábil, pobre control pese a terapia adecuada, empeoramiento de daño de órgano blanco pese a control aparente, riesgo CV elevado (diabetes, ACV previo), decidir tratamiento en ancianos/embarazadas, sospecha de HTA episódica, sospecha de síncope/hipotensión ortostática. Valores normales: día <135/85, noche <120/75, 24h <130/80 mmHg. La 'carga' de PA diurna/nocturna debe ser <20% por encima de lo normal, y las medias diurna/nocturna deben diferir >10% (patrón dipper normal)."
+      },
+      {
+        "nombre": "Holter",
+        "detalle": "Dispositivo electrónico pequeño que registra el ECG del paciente durante al menos 24 horas de forma ambulatoria (en domicilio). Indicaciones: sospecha de arritmia cardiaca, diagnóstico de isquemia, estudio de síncopes de causa indeterminada, control de marcapasos implantados, evaluación de fármacos antiarrítmicos y antianginosos."
+      },
+      {
+        "nombre": "Ecocardiografía transtorácica y transesofágica",
+        "detalle": "Transtorácica (ETT): estudio BASAL en cualquier paciente con síntomas cardiovasculares — evalúa función sistólica, válvulas, cavidades, derrames. Transesofágica (ETE): mayor resolución para válvulas, aorta, trombos en orejuela izquierda; indicada en endocarditis infecciosa, evaluación de válvula protésica, planeamiento de cierre de CIA/PFO."
+      },
+      {
+        "nombre": "Tilt Test (prueba de la mesa basculante)",
+        "detalle": "Se inclina al paciente en camilla basculante a 60-80° con la cabeza hacia arriba, monitoreando continuamente FC y PA durante 30 minutos — pueden aparecer fatiga, mareos, disnea, palidez, sudoración o síncope. Si la primera etapa es normal, se puede sensibilizar la prueba con un vasodilatador en dosis mínima (adenosina, ATP, dinitrato de isosorbide, isoproterenol). Indicación principal: estudio de síncope o presíncope de causa no clara."
+      },
+      {
+        "nombre": "Cardioimagen avanzada no invasiva",
+        "detalle": "Tomografía cardiaca (CTC): valora arterias coronarias con alta sensibilidad, útil en probabilidad pre-test baja-intermedia de enfermedad coronaria; técnicas nuevas: CTC con FFR (FFR-CT) y scoring de calcio (CAC) como predictor de riesgo. Resonancia cardiaca (CMR): evalúa viabilidad miocárdica, función sistólica, fibrosis y perfusión, SIN radiación ionizante; indicada en miocardiopatías, diagnóstico de miocarditis, viabilidad post-IAM; avances: perfusión miocárdica cuantitativa, mapas paramétricos T1/T2/ECV."
+      },
+      {
+        "nombre": "Cateterismo cardiaco diagnóstico y angiografía coronaria",
+        "detalle": "Procedimiento invasivo que evalúa anatómicamente las arterias coronarias, presiones intracardiacas y válvulas. Indicaciones: síndrome coronario agudo con o sin elevación del ST, angina estable con isquemia documentada, evaluación hemodinámica en insuficiencia cardiaca, enfermedades valvulares antes de cirugía. Técnica: acceso radial o femoral, catéteres hasta cavidades cardiacas y ostium coronarios, inyección de contraste, medición de presiones, ventriculografía y cinecoronariografía. Complicaciones: hematomas, pseudoaneurisma, infarto, arritmias, reacciones alérgicas, nefropatía por contraste.",
+        "imagenes": [
+          {
+            "src": "assets/cardio/cardio-angiografia-estenosis.jpg",
+            "caption": "Angiografía coronaria real (de tu clase)",
+            "explicacion": "Arriba: comparación entre la anatomía coronaria normal (izquierda) y la imagen radiológica del cateterismo (derecha) — nota cómo el contraste inyectado dibuja exactamente el árbol de las arterias coronarias. Abajo: 2 angiografías reales con flechas marcando el punto de estenosis — el vaso se ve más ESTRECHO justo donde señala la flecha, comparado con el calibre normal antes y después de esa zona. Esto es lo que buscas activamente al leer una angiografía: comparar el calibre del vaso en cada segmento."
+          }
+        ]
+      },
+      {
+        "nombre": "Intervención Coronaria Percutánea (ICP) e implante de stent",
+        "detalle": "Técnica terapéutica para abrir arterias coronarias obstruidas mediante balones y stents. Indicaciones: IAM con elevación del ST (ICP primaria), SCA sin elevación del ST de alto riesgo, angina refractaria con lesiones significativas. Técnica: angioplastia con balón + implantación de stent (farmacológico o convencional), cada vez más guiada por imagen intracoronaria (IVUS/OCT). Acceso recomendado: vía radial, por menor riesgo de sangrado. Avances: stents de tercera generación, ICP compleja en tronco coronario/bifurcaciones/multivaso.",
+        "imagenes": [
+          {
+            "src": "assets/cardio/cardio-implante-stent.jpg",
+            "caption": "Mecanismo del implante de stent (de tu clase)",
+            "explicacion": "Las 3 vistas de corte muestran el proceso paso a paso: primero el catéter con balón desinflado pasa a través de la placa de ateroma que obstruye la luz; luego el balón se infla, comprimiendo la placa contra la pared arterial y expandiendo el stent metálico (el enrejado); finalmente el balón se retira dejando el stent expandido, que sostiene la pared arterial abierta permanentemente. Las 2 angiografías de la derecha muestran el efecto real: la flecha señala el mismo punto ANTES (arteria muy estrecha, apenas visible el contraste pasando) y DESPUÉS (arteria con calibre normal, flujo de contraste amplio) del implante."
+          }
+        ]
+      },
+      {
+        "nombre": "Otros procedimientos invasivos",
+        "detalle": "Evaluación hemodinámica en insuficiencia cardiaca (cateterismo derecho): mide presiones de cavidades derechas, presión capilar pulmonar (PCWP) y gasto cardiaco; indicado en IC refractaria, valoración para trasplante cardiaco, confirmación de IC con fracción de eyección conservada (ICFEc) — la prueba de ejercicio invasiva puede revelar una ICFEc cuando el reposo es normal. Estudios electrofisiológicos: evaluación invasiva del sistema de conducción para diagnóstico y tratamiento de arritmias — incluye estudio diagnóstico, ablación con radiofrecuencia, e implantación de dispositivos (marcapasos, desfibrilador automático implantable/DAI, resincronizador). TAVI (implante de válvula aórtica transcatéter): nueva válvula colocada sin cirugía abierta, para reemplazo valvular aórtico en pacientes de alto riesgo quirúrgico."
+      }
+    ],
+    "fisiologiaNormal": "Estos estudios no evalúan solo 'si hay enfermedad', sino que cuantifican qué tan bien está funcionando el corazón en distintos escenarios: en reposo (ecocardiograma basal), bajo estrés (prueba de esfuerzo, que revela isquemia que no se ve en reposo), durante 24 horas reales de vida cotidiana (Holter, MAPA), o de forma directamente anatómica e invasiva (cateterismo, que visualiza las arterias coronarias con contraste en tiempo real).",
+    "correlacionClinica": "La elección del estudio depende del escenario clínico exacto: dolor torácico típico con alta sospecha de isquemia → cateterismo diagnóstico (o prueba de esfuerzo si es de menor riesgo); sospecha de arritmia intermitente → Holter; síncope de causa no clara → Tilt Test; sospecha de HTA de bata blanca o mal control → MAPA; paciente con IAM con elevación del ST → ICP primaria urgente (el tratamiento y el diagnóstico ocurren en el mismo procedimiento). <span class=\"fuente-ampliada\">La cardiología invasiva ha evolucionado significativamente: el acceso radial (en vez de femoral) es ahora el recomendado por sociedades como la SEC y ACC/AHA específicamente porque reduce el riesgo de sangrado — un cambio de práctica reciente que vale la pena conocer si comparas guías más antiguas con las actuales.</span>",
+    "puntosClave": [
+      "2 fines de las pruebas cardiológicas: diagnóstico (pacientes sintomáticos/asintomáticos de riesgo) y valorativo/pronóstico (seguimiento, post-IAM, eficacia de tratamiento)",
+      "Contraindicación absoluta más preguntada de la prueba de esfuerzo: IAM en fase aguda (<3 días) y angina inestable",
+      "MAPA valores normales: <135/85 (día), <120/75 (noche), <130/80 (24h) — y la caída nocturna >10% es el patrón 'dipper' normal",
+      "ETT es el estudio ecocardiográfico BASAL; ETE se reserva para mayor resolución (endocarditis, válvula protésica, trombos en orejuela)",
+      "Tilt Test: la indicación clásica es síncope/presíncope de causa no aclarada",
+      "Acceso RADIAL es el preferido actualmente en cateterismo/ICP por menor riesgo de sangrado, sobre el femoral",
+      "ICP primaria = tratamiento de elección en IAM con elevación del ST — diagnóstico y tratamiento en el mismo procedimiento"
+    ],
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos donde debes elegir la prueba diagnóstica correcta según el escenario clínico específico, sustentando por qué esa y no otra.",
+      "ejercicios": [
+        {
+          "tipo": "Elegir la prueba correcta y sustentar",
+          "planteamiento": "Paciente de 68 años con episodios recurrentes de palpitaciones de segundos de duración, que ya tuvo un ECG normal en la consulta (asintomático en ese momento). ¿Qué estudio pedirías y por qué NO un ECG simple repetido?",
+          "respuestaModelo": "Holter de 24 horas. Un ECG simple solo captura una 'fotografía' de unos segundos del ritmo cardiaco — si la arritmia es intermitente y el paciente está asintomático en el momento del ECG, es muy probable que el registro salga normal aunque la arritmia sí exista. El Holter registra el ritmo cardiaco de forma continua durante 24 horas en la vida cotidiana del paciente, aumentando mucho la probabilidad de capturar el episodio arrítmico mientras ocurre naturalmente."
+        },
+        {
+          "tipo": "Indique y sustente (contraindicación)",
+          "planteamiento": "Un paciente con angina inestable diagnosticada hace 2 días es referido para prueba de esfuerzo. ¿Es apropiado realizarla ahora?",
+          "respuestaModelo": "No. La angina inestable es una contraindicación ABSOLUTA para la prueba de esfuerzo, ya que el ejercicio físico podría precipitar isquemia miocárdica grave o un infarto en un paciente cuya placa coronaria ya está inestable. Se debe estabilizar clínicamente al paciente primero (y probablemente estudiar con cateterismo diagnóstico en su lugar, dado el contexto de síndrome coronario agudo), y solo considerar la prueba de esfuerzo más adelante si está clínicamente indicado para seguimiento."
+        }
+      ]
+    }
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "Varón de 60 años, sin antecedentes cardiovasculares conocidos, con dolor torácico opresivo de esfuerzo desde hace 3 meses, que cede con el reposo en menos de 5 minutos (angina estable). Su ECG en reposo es normal. Tiene 2 factores de riesgo cardiovascular (dislipidemia y sedentarismo), sin contraindicaciones para ejercicio.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál es el estudio inicial más apropiado para confirmar isquemia en este paciente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Prueba de esfuerzo (ergometría), dado que el ECG en reposo puede ser normal en angina estable y el paciente no tiene contraindicaciones"
+          },
+          {
+            "id": "b",
+            "texto": "Cateterismo cardiaco diagnóstico de entrada, sin estudios previos"
+          },
+          {
+            "id": "c",
+            "texto": "Tilt Test, para descartar causa vasovagal del dolor"
+          },
+          {
+            "id": "d",
+            "texto": "MAPA de 24 horas"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "En angina estable con ECG de reposo normal (esperable, ya que la isquemia solo se manifiesta con el esfuerzo) y sin contraindicaciones, la prueba de esfuerzo es el estudio inicial de elección para intentar reproducir la isquemia bajo condiciones controladas y confirmar el diagnóstico antes de considerar estudios invasivos. El cateterismo (b) se reserva típicamente para cuando la prueba no invasiva es positiva/de alto riesgo, o hay alta sospecha clínica que amerita ir directo a la anatomía coronaria. Tilt Test (c) es para síncope, no para dolor torácico de esfuerzo. MAPA (d) es para presión arterial, no para isquemia."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica por qué el ECG de reposo de este paciente es normal pese a tener angina estable verdadera.",
+        "respuestaModelo": "En la angina ESTABLE, la obstrucción coronaria (generalmente por placa aterosclerótica) permite un flujo sanguíneo suficiente para el miocardio EN REPOSO, cuando la demanda de oxígeno del corazón es baja. El desbalance entre aporte y demanda de oxígeno solo se hace evidente cuando la demanda AUMENTA con el esfuerzo físico (mayor frecuencia cardiaca, mayor contractilidad), superando la capacidad del vaso obstruido de entregar suficiente flujo — es en ese momento que aparece la isquemia (y el dolor). Por eso el ECG en reposo suele ser normal, y se necesita PROVOCAR esa demanda aumentada (con ejercicio en la prueba de esfuerzo) para poder detectar los cambios eléctricos de isquemia en el trazado."
       }
     }
   ]
