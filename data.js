@@ -207,7 +207,8 @@ const SEMANAS = [
       {
         "dia": "Miércoles",
         "tipo": "teoria",
-        "tema": "EKG normal I / EKG normal II / Cardiopatía Coronaria Isquémica: Infarto Agudo de Miocardio (IMA). Fisiopatología de la angina e IMA. Diagnóstico, tipos y manejo inicial."
+        "tema": "EKG normal I / EKG normal II / Cardiopatía Coronaria Isquémica: Infarto Agudo de Miocardio (IMA). Fisiopatología de la angina e IMA. Diagnóstico, tipos y manejo inicial.",
+        "vinculos": [ { "tipo": "tema", "id": "ekg-normal-1" } ]
       },
       { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
@@ -6440,6 +6441,126 @@ const TEMAS = [
       }
     }
   ]
+},
+  {
+  "id": "ekg-normal-1",
+  "nombre": "Electrocardiograma I: generalidades, toma y frecuencia",
+  "area": "Cardiología",
+  "tipo": "metodo-diagnostico",
+  "semanas": [
+    "semana-04"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1ppLwQLl4bESthIpeT13mL1oh_4tdKMSS/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_4_SESIÓN-11-TEMA-1: EKG normal I"
+  },
+  "contenido": {
+    "resumen": "El electrocardiograma (EKG) es la representación en papel milimetrado de la actividad eléctrica del corazón durante el ciclo cardiaco. Usa 12 derivaciones (6 del plano frontal + 6 horizontales/precordiales) para 'ver' esa actividad eléctrica desde distintos ángulos. Registra: onda P (despolarización auricular), complejo QRS (despolarización ventricular), onda T (repolarización ventricular), y a veces onda U (repolarización de músculos papilares). Leerlo bien, siempre en el mismo orden, es una habilidad que se entrena — no se improvisa.",
+    "estructuras": [
+  {
+    "nombre": "Colocación de electrodos y derivaciones",
+    "detalle": "Electrodos de miembros: aVL (brazo izquierdo), aVR (brazo derecho), aVF (pie izquierdo). Electrodos precordiales: V1 (4º espacio intercostal, línea paraesternal derecha), V2 (4º espacio intercostal, línea paraesternal izquierda), V3 (entre V2 y V4), V4 (5º espacio intercostal, línea medioclavicular), V5 (5º espacio intercostal, línea axilar anterior), V6 (5º espacio intercostal, línea axilar media).",
+    "imagenes": [
+      {
+        "src": "assets/cardio/ekg-derivaciones-precordiales.jpg",
+        "caption": "Ubicación de las derivaciones precordiales V1-V6 (de tu clase)",
+        "explicacion": "Fíjate en la progresión: V1 y V2 están a ambos lados del esternón (a la altura del 4º espacio), mientras que V3 a V6 se van moviendo lateralmente y bajan al 5º espacio intercostal. Esta disposición permite que las derivaciones precordiales 'vean' el corazón desde múltiples ángulos horizontales — V1-V2 exploran más el ventrículo derecho y el septo, mientras que V5-V6 exploran más la pared lateral del ventrículo izquierdo."
+      }
+    ]
+  },
+  {
+    "nombre": "Derivaciones del plano frontal (triángulo de Einthoven)",
+    "detalle": "Bipolares (registran diferencia de potencial entre 2 puntos): Derivación I (brazo izquierdo positivo, brazo derecho negativo), Derivación II (pierna izquierda positivo, brazo derecho negativo), Derivación III (pierna izquierda positivo, brazo izquierdo negativo). Monopolares aumentadas (ideadas por Frank Wilson, unen las 3 derivaciones del triángulo a través de una central terminal con potencial cercano a cero): aVR (brazo derecho positivo), aVL (brazo izquierdo positivo), aVF (pierna izquierda positivo)."
+  },
+  {
+    "nombre": "Derivaciones del plano horizontal (precordiales)",
+    "detalle": "Verdaderamente mono/unipolares — comparan la actividad del electrodo precordial (explorador) contra la suma de los 3 miembros activos o Central Terminal (LL+LA+RA, que da como resultado 0). Son V1 a V6."
+  },
+  {
+    "nombre": "Papel milimetrado y trazado",
+    "detalle": "1 mm horizontal = 0.04 segundos. 1 mm de alto = 0.1 milivoltio. Cada 5 cuadrados pequeños hay un cuadrado grande (línea gruesa). Un EKG completo tiene 12 derivaciones: 6 frontales (DI, DII, DIII, aVR, aVL, aVF) y 6 horizontales (V1 a V6).",
+    "imagenes": [
+      {
+        "src": "assets/cardio/ekg-ondas-intervalos-trazado.jpg",
+        "caption": "Trazado real con todas las ondas e intervalos marcados (de tu clase)",
+        "explicacion": "Este trazado muestra, en un solo latido, TODO lo que debes identificar: la onda P, el complejo QRS (con su Q, R y S individuales), la onda T, y los 3 intervalos clave marcados abajo — PR (desde el inicio de P hasta el inicio de QRS), QT completo, y ST (el segmento entre el final de QRS y el inicio de T, el que se eleva o deprime en isquemia/infarto). Practica ubicar cada uno de estos puntos en cualquier EKG que veas de ahora en adelante, antes de intentar interpretar nada más."
+      }
+    ]
+  }
+],
+    "fisiologiaNormal": "MEMOTECNIA para leer cualquier EKG en orden, sin saltarte nada: FREH II = Frecuencia, Ritmo, Eje, Hipertrofias, Isquemia, Infartos, Intervalos. FRECUENCIA: normal 60-99 lpm (bradicardia <59, taquicardia >100). Si el ritmo es REGULAR: buscar una onda R que coincida con una línea gruesa del papel, localizar el siguiente latido, y usar la secuencia 300-150-100-75-60-50 según cuántos cuadrados grandes hay entre ambos. Si el ritmo es IRREGULAR o la FC >150: método de 6 segundos (contar los QRS en 30 cuadrados grandes = 6 segundos, multiplicar por 10) o método de 5 segundos (multiplicar por 12); o dividir 1500 entre los mm que hay entre R-R (ej: 1500/6=250 lpm). RITMO: el ritmo de base normal lo da el nodo sinusal (FC 60-100) — el corazón tiene automatismo, así que si el nodo sinusal deja de predominar, el ritmo lo toma la siguiente estructura en la jerarquía. Para confirmar ritmo SINUSAL se necesitan 5 criterios: FC 60-100, intervalo R-R constante, onda P positiva en DII y negativa en aVR, cada onda P seguida de un QRS, e intervalo PR ≥0.12 segundos. Si no hay onda P y el R-R es variable → pensar en fibrilación auricular (con ondas f minúsculas asociadas). <span class=\"fuente-ampliada\">¿Por qué la onda P sinusal es positiva en cara inferior (DII, DIII, aVF) y negativa en aVR? El vector de despolarización auricular apunta hacia abajo y a la izquierda (desde el nodo sinusal hacia el nodo AV) — ese vector se ACERCA a DII/DIII/aVF (por eso da deflexión positiva) y se ALEJA de aVR (por eso da deflexión negativa). Es geometría pura: la dirección del vector eléctrico respecto a cada derivación determina si esa derivación registra una onda positiva o negativa.</span>",
+    "tablasClinicas": [
+      {
+        "titulo": "❤️ Componentes de un EKG normal",
+        "columnas": [
+          "Onda/Intervalo",
+          "Qué representa",
+          "Valor normal"
+        ],
+        "filas": [
+          [
+            "Onda P",
+            "Despolarización auricular (1ª mitad = atrio derecho, 2ª mitad = atrio izquierdo)",
+            "<0.10-0.12 seg, <2.5mm de alto; positiva en todas las derivaciones excepto aVR (y V1 bifásica)"
+          ],
+          [
+            "Complejo QRS",
+            "Despolarización ventricular — Q: septo interventricular, R: paredes libres, S: bases ventriculares",
+            "Duración 0.06-0.12 seg (>0.12 = QRS ancho); onda R no >25mm en V5/V6"
+          ],
+          [
+            "Onda Q",
+            "Primera deflexión negativa del QRS",
+            "<0.04 seg, no mayor al 25% de la onda R que la sigue; NO se observa en V1 y V2"
+          ],
+          [
+            "Intervalo PR",
+            "Desde el inicio de P hasta el inicio del QRS",
+            "0.12 a 0.20 seg (3 a 5 cuadritos) — alargado = bloqueo AV 1er grado; acortado = taquicardias, WPW, ritmos nodales"
+          ],
+          [
+            "Intervalo QT",
+            "Desde el inicio de Q hasta el final de la T (se ajusta según FC)",
+            "Aproximadamente 0.30 a 0.40 seg; QTc normal 400-440ms; límite alto: 430-450ms (hombres), 451-470ms (mujeres)"
+          ]
+        ]
+      },
+      {
+        "titulo": "🔢 Frecuencia según la estructura marcapasos",
+        "columnas": [
+          "Estructura",
+          "Frecuencia normal"
+        ],
+        "filas": [
+          [
+            "Nodo sinusal",
+            "60 - 100 lpm"
+          ],
+          [
+            "Nodo auriculoventricular (unión AV)",
+            "40 - 60 lpm"
+          ],
+          [
+            "Ventricular (idioventricular)",
+            "20 - 40 lpm"
+          ]
+        ],
+        "nota": "Esta jerarquía explica por qué, si el nodo sinusal falla, el corazón no se detiene — otra estructura toma el relevo, aunque a una frecuencia más lenta."
+      }
+    ],
+    "correlacionClinica": "Dominar la mecánica de la toma y lectura del EKG (dónde va cada electrodo, cómo calcular la frecuencia, qué define un ritmo sinusal) es el fundamento indispensable antes de poder reconocer arritmias, hipertrofias, isquemia o infartos — que verás en las siguientes sesiones. Un error común de principiante es intentar 'reconocer patrones' sin primero confirmar la frecuencia y el ritmo de forma sistemática — la mnemotecnia FREH II existe justamente para evitar que te saltes pasos y termines diagnosticando mal por apresurarte a la parte 'interesante' del trazado.",
+    "puntosClave": [
+      "12 derivaciones: 6 del plano frontal (DI, DII, DIII, aVR, aVL, aVF) + 6 precordiales (V1-V6)",
+      "1mm horizontal = 0.04 segundos; 1mm vertical = 0.1 milivoltio",
+      "Mnemotecnia para leer en orden: FREH II = Frecuencia, Ritmo, Eje, Hipertrofias, Isquemia, Infartos, Intervalos",
+      "FC normal 60-99 lpm; método rápido si el ritmo es regular: secuencia 300-150-100-75-60-50",
+      "5 criterios de ritmo sinusal: FC 60-100, R-R constante, P positiva en DII/negativa en aVR, cada P seguida de QRS, PR≥0.12seg",
+      "Onda P = despolarización auricular; QRS = despolarización ventricular; onda T = repolarización ventricular",
+      "Intervalo PR alargado = bloqueo AV de primer grado; acortado = preexcitación (WPW) o ritmos nodales"
+    ]
+  }
 }
 ];
 
