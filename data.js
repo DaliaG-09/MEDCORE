@@ -208,7 +208,7 @@ const SEMANAS = [
         "dia": "Miércoles",
         "tipo": "teoria",
         "tema": "EKG normal I / EKG normal II / Cardiopatía Coronaria Isquémica: Infarto Agudo de Miocardio (IMA). Fisiopatología de la angina e IMA. Diagnóstico, tipos y manejo inicial.",
-        "vinculos": [ { "tipo": "tema", "id": "ekg-normal-1" } ]
+        "vinculos": [ { "tipo": "tema", "id": "ekg-normal-1" }, { "tipo": "tema", "id": "ekg-normal-2" } ]
       },
       { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
@@ -6560,6 +6560,77 @@ const TEMAS = [
       "Onda P = despolarización auricular; QRS = despolarización ventricular; onda T = repolarización ventricular",
       "Intervalo PR alargado = bloqueo AV de primer grado; acortado = preexcitación (WPW) o ritmos nodales"
     ]
+  }
+},
+  {
+  "id": "ekg-normal-2",
+  "nombre": "Electrocardiograma II: agrupación de derivaciones y lectura práctica",
+  "area": "Cardiología",
+  "tipo": "metodo-diagnostico",
+  "semanas": [
+    "semana-04"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1rRxBpwbnvmoSDMi4Otu-nt0zVtVvNnu1/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_4_SESIÓN-11-TEMA-2: EKG normal II"
+  },
+  "contenido": {
+    "resumen": "Esta sesión repasa las 12 derivaciones (ya vistas en EKG I) pero agrega la pieza que realmente importa para localizar isquemia e infarto: agrupar las derivaciones según qué TERRITORIO anatómico del corazón observa cada una. El resto de la clase es práctica pura — tu propio PPT trae 8 trazados de EKG reales para que apliques la lectura sistemática completa (Ritmo, FC, PR, QRS, QT, Eje, Anomalías, Diagnóstico).",
+    "estructuras": [
+      {
+        "nombre": "Agrupación de derivaciones según el plano corporal",
+        "detalle": "Plano frontal o de miembros: I, II, III, aVR, aVL, aVF. Plano horizontal o precordial: V1, V2, V3, V4, V5, V6."
+      },
+      {
+        "nombre": "Agrupación de derivaciones según la anatomía cardiaca",
+        "detalle": "Este criterio de agrupación tiene GRAN VALOR en lesiones isquémicas, donde suelen alterarse juntas las derivaciones que son anatómicamente compatibles entre sí: II-III-aVF (cara inferior, territorio de la coronaria derecha), I-aVL-V5-V6 (cara lateral, territorio de la circunfleja), V1-V2-V3 (septo, territorio de la descendente anterior), aVR (derivación de control). Derivaciones IZQUIERDAS: I, aVL, V5, V6. Derivaciones DERECHAS: II, III, aVF (miran hacia el ventrículo derecho).",
+        "imagenes": [
+          {
+            "src": "assets/cardio/ekg-agrupacion-anatomica-derivaciones.jpg",
+            "caption": "Agrupación anatómica de derivaciones (de tu clase)",
+            "explicacion": "Este corte transversal del corazón muestra literalmente hacia dónde 'mira' cada derivación precordial: V1-V2 (círculo morado) miran el septo/ventrículo derecho, V3-V4 (círculo verde) miran la pared anterior, y V5-V6 (círculo rojo) miran la pared lateral del ventrículo izquierdo. Esta es la base de por qué, cuando ves elevación del ST en V1-V2-V3 juntas, piensas en infarto ANTEROSEPTAL — no es memorización arbitraria, es geometría: esas 3 derivaciones literalmente observan esa misma zona del corazón desde ángulos cercanos."
+          }
+        ]
+      },
+      {
+        "nombre": "Práctica de lectura sistemática (trazados reales de tu clase)",
+        "detalle": "Tu propio PPT trae 8 electrocardiogramas reales de 12 derivaciones, cada uno pidiendo completar la misma ficha: Ritmo, Frecuencia cardiaca, Intervalo PR, Duración QRS, Intervalo QT, Eje, Anomalías, y Diagnóstico. El PPT no trae las respuestas impresas (es material de práctica en vivo con el profesor) — la forma correcta de aprovechar esto es aplicar el orden FREH II (de tu clase de EKG I) a cada trazado, sistemáticamente, sin saltarte pasos.",
+        "imagenes": [
+          {
+            "src": "assets/cardio/ekg-practica-trazado-real-1.jpg",
+            "caption": "Uno de los 8 trazados reales de práctica de tu clase",
+            "explicacion": "Practica completar la ficha completa con este trazado: identifica primero si hay onda P antes de cada QRS (ritmo), luego calcula la frecuencia contando cuadros entre las ondas R, mide el PR y el QRS, y solo al final busca anomalías. Este PPT no trae la respuesta impresa porque se resolvía en vivo con tu profesor — trata este trazado como el que más se parece a los que probablemente te tomen en tu examen práctico."
+          }
+        ]
+      }
+    ],
+    "fisiologiaNormal": "La razón por la que agrupar derivaciones por anatomía (no solo por plano corporal) es tan valiosa: cada derivación registra la actividad eléctrica desde un ángulo específico respecto al corazón, determinado por la posición física del electrodo. Cuando una zona del miocardio sufre isquemia o necrosis, ESA zona deja de generar su señal eléctrica normal — y esto se refleja específicamente en las derivaciones que 'miran' hacia esa zona, mientras que las derivaciones que miran zonas alejadas permanecen normales (o incluso muestran cambios recíprocos/en espejo). Por eso un infarto no se ve en 'el EKG' en general, sino en un GRUPO ESPECÍFICO Y PREDECIBLE de derivaciones según su territorio anatómico.",
+    "correlacionClinica": "Esta agrupación territorial es exactamente la herramienta que usarás para LOCALIZAR un infarto agudo de miocardio con solo mirar qué derivaciones tienen elevación del ST: cara inferior (II, III, aVF) sugiere compromiso de la coronaria derecha; cara lateral (I, aVL, V5, V6) sugiere compromiso de la circunfleja; septal/anterior (V1-V2-V3) sugiere compromiso de la descendente anterior. <span class=\"fuente-ampliada\">Este mismo principio territorial explica por qué en un infarto de cara inferior a veces se piden derivaciones adicionales del lado derecho (V3R, V4R) — para descartar extensión al ventrículo derecho, que cambia significativamente el manejo (evitar nitratos, por ejemplo, ya que el ventrículo derecho comprometido depende más de la precarga).</span>",
+    "puntosClave": [
+      "Agrupación por plano: frontal (I, II, III, aVR, aVL, aVF) vs horizontal/precordial (V1-V6)",
+      "Agrupación por anatomía (la que realmente importa en isquemia): II-III-aVF=inferior, I-aVL-V5-V6=lateral, V1-V2-V3=septal/anterior",
+      "aVR es la derivación de 'control' — no pertenece a ningún territorio específico de pared",
+      "Derivaciones izquierdas: I, aVL, V5, V6. Derivaciones derechas: II, III, aVF (miran el ventrículo derecho)",
+      "Un infarto se refleja en el GRUPO de derivaciones que anatómicamente miran hacia la zona afectada, no en el EKG completo de forma difusa",
+      "La práctica sistemática con trazados reales (siguiendo FREH II en orden) es la única forma real de volverte rápido leyendo EKG — no hay atajo"
+    ],
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: te dan un EKG con cambios en un grupo específico de derivaciones y debes decir qué territorio/arteria está comprometida.",
+      "ejercicios": [
+        {
+          "tipo": "Localizar territorio por derivaciones alteradas",
+          "planteamiento": "Un EKG muestra elevación del segmento ST en II, III y aVF. ¿Qué territorio anatómico está comprometido y qué arteria coronaria es la más probablemente afectada?",
+          "respuestaModelo": "Territorio de la cara INFERIOR del corazón. La arteria más frecuentemente responsable es la CORONARIA DERECHA (en la mayoría de personas, ya que la coronaria derecha irriga la cara inferior en la circulación 'dominante derecha', que es la más común). Esto se deduce directamente de la agrupación anatómica de derivaciones: II-III-aVF observan específicamente la cara inferior del corazón."
+        },
+        {
+          "tipo": "Liste N...",
+          "planteamiento": "Liste las derivaciones que corresponden a cada territorio: inferior, lateral, y septal/anterior.",
+          "respuestaModelo": "Inferior: II, III, aVF. Lateral: I, aVL, V5, V6. Septal/anterior: V1, V2, V3."
+        }
+      ]
+    }
   }
 }
 ];
