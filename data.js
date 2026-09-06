@@ -201,7 +201,8 @@ const SEMANAS = [
       {
         "dia": "Lunes",
         "tipo": "teoria",
-        "tema": "Anatomía, semiología y fisiología Cardiaca: estructura del corazón y de los grandes vasos. Ciclo cardiaco y hemodinamia. Examen físico. / Exámenes de ayuda diagnóstica en Cardiología: Radiografía, Ecocardiograma, Doppler, Holter, MAPA, prueba de esfuerzo y cateterismo."
+        "tema": "Anatomía, semiología y fisiología Cardiaca: estructura del corazón y de los grandes vasos. Ciclo cardiaco y hemodinamia. Examen físico. / Exámenes de ayuda diagnóstica en Cardiología: Radiografía, Ecocardiograma, Doppler, Holter, MAPA, prueba de esfuerzo y cateterismo.",
+        "vinculos": [ { "tipo": "tema", "id": "anatofisio-cardiaca" } ]
       },
       {
         "dia": "Miércoles",
@@ -6179,7 +6180,139 @@ const TEMAS = [
       }
     }
   ]
-}];
+},
+  {
+  "id": "anatofisio-cardiaca",
+  "nombre": "Anatomía, semiología y fisiología cardiaca",
+  "area": "Cardiología",
+  "tipo": "anatomia-fisiologia",
+  "semanas": [
+    "semana-04"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1JHVvWYuYs7eIJ1sjeb-f0Rq67f1iRHUH/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_4_SESIÓN-10-TEMA-1: Anatomía, semiología y fisiología Cardiaca"
+  },
+  "contenido": {
+    "resumen": "El corazón es un órgano muscular hueco dedicado a bombear sangre a todo el cuerpo, rodeado por el pericardio. Se divide en 4 cavidades (2 aurículas/atrios arriba, 2 ventrículos abajo) separadas por el tabique, con circuitos derecho (sangre venosa → pulmones) e izquierdo (sangre oxigenada → todo el cuerpo) trabajando en serie. Entender su anatomía y el ciclo cardiaco es la base para interpretar cualquier soplo, ruido cardiaco o hallazgo del examen físico cardiovascular.",
+    "estructuras": [
+  {
+    "nombre": "Localización y capas del corazón",
+    "detalle": "Ubicado en el mediastino medio, entre ambos pulmones, con forma de pirámide inclinada (punta hacia abajo y a la izquierda, base hacia arriba). Peso normal: 250-300 gramos. 3 capas: ENDOCARDIO (capa interna delgada, endotelio + tejido conectivo subendotelial, también recubre las valvas), MIOCARDIO (capa media gruesa y helicoidal, músculo cardiaco), EPICARDIO (capa externa delgada, mesotelio — es la lámina visceral del pericardio seroso). Nomenclatura: en inglés/latín 'auricula' es un falso amigo — no se traduce como 'aurícula' sino como 'orejuela'; el término anatómico preferido para lo que tradicionalmente llamamos 'aurícula' es ATRIO."
+  },
+  {
+    "nombre": "Morfología externa e interna",
+    "detalle": "Externa: 2 venas cavas, arteria pulmonar, 4 venas pulmonares, aorta ascendente, pericardio, arterias coronarias, grasa. Interna: 4 cavidades separadas en 2 lados (derecho e izquierdo) — arriba la AURÍCULA, abajo el VENTRÍCULO, separados por el TABIQUE; además fosa oval y músculos pectíneos."
+  },
+  {
+    "nombre": "Corazón derecho",
+    "detalle": "Aurícula derecha: recibe sangre venosa de las venas cavas (seno venoso la recoge), tiene la orejuela derecha (cara anterior) y la fosa oval (cara lateral); se comunica con el ventrículo derecho a través de la VÁLVULA TRICÚSPIDE (3 valvas: anterior, septal, posterior — se cierra en sístole, se abre en diástole, sostenida por cuerdas tendíneas y músculos papilares). Ventrículo derecho: músculos papilares anterior/posterior, VÁLVULA PULMONAR (3 valvas semilunares: anterior, derecha, izquierda — se abre en sístole, se cierra en diástole), lleva la sangre hacia los pulmones a través de la arteria pulmonar."
+  },
+  {
+    "nombre": "Corazón izquierdo",
+    "detalle": "Aurícula izquierda: recibe las 4 venas pulmonares, tiene orejuela izquierda y fosa oval; la VÁLVULA MITRAL (anillo de implantación, pilares anterior/posterior, valvas anterior/posterior, cuerdas tendíneas) la comunica con el ventrículo izquierdo. Ventrículo izquierdo: más ancho y largo que el derecho, cuerdas tendinosas, músculos papilares anterior/posterior; la VÁLVULA AÓRTICA lo comunica con la aorta ascendente y de ahí a todo el cuerpo (se abre en sístole, se cierra en diástole)."
+  },
+  {
+    "nombre": "Arterias coronarias",
+    "detalle": "Irrigan al propio músculo cardiaco. Se originan en la aorta ascendente, justo por encima de la válvula aórtica.",
+    "imagenes": [
+      {
+        "src": "assets/cardio/cardio-rx-siluetas-cardiacas.jpg",
+        "caption": "Radiografía de tórax: silueta cardiaca real (de tu clase)",
+        "explicacion": "Esta radiografía marca exactamente qué estructura forma cada borde de la silueta cardiaca normal: el lado derecho lo forman la vena cava superior (arriba) y la aurícula derecha (abajo); el lado izquierdo lo forman, de arriba a abajo, el botón/arco de la aorta, la arteria pulmonar, la aurícula izquierda, y el ventrículo izquierdo (el borde más largo e inferior). Reconocer estos bordes es la base para detectar cardiomegalia o crecimiento de cavidades específicas en cualquier Rx de tórax que veas de aquí en adelante — por ejemplo, un crecimiento aislado del borde de la aurícula izquierda orienta a valvulopatía mitral."
+      }
+    ]
+  },
+  {
+    "nombre": "Focos de auscultación cardiaca",
+    "detalle": "Cada válvula se ausculta mejor en un punto específico del tórax, no necesariamente donde está anatómicamente la válvula.",
+    "imagenes": [
+      {
+        "src": "assets/cardio/cardio-focos-auscultacion.jpg",
+        "caption": "Los 4 focos de auscultación (de tu clase)",
+        "explicacion": "Fíjate en la posición exacta del estetoscopio en cada foto — el foco Mitral está en el ápice (donde el corazón realmente 'late' contra la pared torácica), mientras que el foco Aórtico y Pulmonar están arriba, cerca del esternón, porque ahí es donde el flujo turbulento de esas válvulas se proyecta con más fuerza hacia la pared torácica, aunque anatómicamente esas válvulas estén más centrales."
+      }
+    ]
+  }
+],
+    "fisiologiaNormal": "El potencial de acción es distinto entre el tejido muscular (respuesta rápida) y el tejido de conducción (respuesta lenta) — esta diferencia es la base de toda la actividad eléctrica organizada del corazón. El GASTO CARDIACO (GC) = Volumen de Eyección × Frecuencia Cardiaca. La función SISTÓLICA depende de: contractilidad ventricular (precarga + geometría ventricular) y postcarga (impedancia aórtica + resistencia periférica). La función DIASTÓLICA depende de: relajación ventricular y distensibilidad ventricular + sístole auricular. PRECARGA: grado de tensión del músculo al inicio de la contracción = presión al final de la diástole = presión durante el llenado ventricular; depende de geometría ventricular, impedancia aórtica y resistencia periférica. POSTCARGA: presión en la arteria transmitida por el ventrículo = presión arterial contra la cual el ventrículo se contrae; depende de retorno venoso, distensibilidad ventricular y sístole auricular. Ley de Frank-Starling: cuanto más se estira el músculo cardiaco, mayor su fuerza de contracción y mayor el volumen de eyección. Presión arterial media = PD + (PS-PD)/3, equivalente a (PS + 2PD)/3.",
+    "tablasClinicas": [
+      {
+        "titulo": "🩺 Focos de auscultación cardiaca",
+        "contexto": "Cada válvula se ausculta mejor en un punto específico del tórax — no necesariamente donde está anatómicamente la válvula, sino hacia donde el flujo turbulento se proyecta con más fuerza.",
+        "columnas": [
+          "Foco",
+          "Ubicación exacta"
+        ],
+        "filas": [
+          [
+            "Mitral (M)",
+            "Espacio intercostal izquierdo medial a la línea medioclavicular (ápice del corazón)"
+          ],
+          [
+            "Tricúspide (T)",
+            "4º-5º espacio intercostal derecho, junto al borde esternal"
+          ],
+          [
+            "Pulmonar (P)",
+            "2º espacio intercostal izquierdo, junto al borde esternal"
+          ],
+          [
+            "Aórtico (Ao)",
+            "2º espacio intercostal derecho, junto al borde esternal"
+          ]
+        ],
+        "nota": "Recuerda el orden desde el ápice: Mitral → Tricúspide → Pulmonar → Aórtico, subiendo y alternando lados."
+      }
+    ],
+    "correlacionClinica": "Entender los focos de auscultación y las capas del corazón es la base de toda la semiología cardiovascular: un soplo sistólico en el foco mitral orienta a insuficiencia mitral o estenosis aórtica (dependiendo del foco exacto e irradiación), mientras que un soplo diastólico en el mismo foco orienta a estenosis mitral. La localización correcta del punto de auscultación, sumada al momento del ciclo cardiaco (sístole vs diástole) en que se ausculta el soplo, es lo que permite sospechar qué válvula específica está afectada — antes incluso de pedir un ecocardiograma. <span class=\"fuente-ampliada\">La Ley de Frank-Starling explica por qué en la insuficiencia cardiaca el corazón inicialmente se dilata como mecanismo compensador (más estiramiento = más fuerza de contracción), pero ese mecanismo tiene un límite — pasado cierto punto de dilatación, la fuerza de contracción en realidad CAE en vez de seguir aumentando, precipitando el deterioro clínico.</span>",
+    "puntosClave": [
+      "3 capas del corazón: endocardio (interna), miocardio (media, gruesa), epicardio (externa)",
+      "Corazón derecho maneja sangre venosa (válvula tricúspide + pulmonar); corazón izquierdo maneja sangre oxigenada (válvula mitral + aórtica)",
+      "Gasto Cardiaco = Volumen de Eyección x Frecuencia Cardiaca",
+      "Precarga = presión de llenado ventricular (fin de diástole); Postcarga = presión que el ventrículo debe vencer para eyectar",
+      "Ley de Frank-Starling: mayor estiramiento del músculo = mayor fuerza de contracción (hasta un límite)",
+      "4 focos de auscultación en orden ápice-a-base: Mitral, Tricúspide, Pulmonar, Aórtico",
+      "El pulso deficitario (FC auscultada > FC de pulso palpado) es característico de fibrilación auricular"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Paciente mujer de 85 años con antecedente de hipertensión arterial crónica de mal control. Acude por cansancio. Al examen: presencia de pulso deficitario, PA 130/70 mmHg, FC 90 lpm; se ausculta soplo mitral sistólico.",
+      "preguntaMC": {
+        "enunciado": "¿Cuál es la causa más probable del soplo en esta paciente y qué complicación debe vigilarse activamente?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Insuficiencia mitral, posiblemente asociada a fibrilación auricular (por el pulso deficitario) — vigilar riesgo embólico/ACV"
+          },
+          {
+            "id": "b",
+            "texto": "Estenosis aórtica pura, sin relación con el pulso deficitario"
+          },
+          {
+            "id": "c",
+            "texto": "Soplo inocente sin relevancia clínica en una paciente de 85 años"
+          },
+          {
+            "id": "d",
+            "texto": "Comunicación interventricular congénita de aparición tardía"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "Un soplo SISTÓLICO en el foco MITRAL sugiere insuficiencia mitral (el flujo regurgita desde el ventrículo hacia la aurícula izquierda durante la sístole, generando el soplo). El dato clave adicional es el PULSO DEFICITARIO — esto significa que la frecuencia cardiaca auscultada en el corazón es MAYOR que la frecuencia del pulso palpado en la periferia, porque algunos latidos son tan ineficaces (por llenado ventricular incompleto) que no generan una onda de pulso periférica palpable. Esto es característico de la FIBRILACIÓN AURICULAR, una arritmia muy frecuente en pacientes ancianos con HTA crónica mal controlada (que produce remodelado auricular). La combinación de FA + valvulopatía mitral aumenta significativamente el riesgo de formación de trombos auriculares y ACV embólico, por lo que ese es el riesgo que debe vigilarse activamente."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica el mecanismo exacto por el cual el pulso deficitario ocurre específicamente en la fibrilación auricular, y por qué es un signo de alarma.",
+        "respuestaModelo": "En la fibrilación auricular, los ventrículos se contraen de forma irregular y a intervalos variables e impredecibles (dado que reciben impulsos eléctricos caóticos desde las aurículas fibrilando). Cuando dos latidos ventriculares ocurren muy seguidos uno del otro, el segundo latido puede ocurrir ANTES de que el ventrículo haya tenido tiempo suficiente para llenarse adecuadamente durante la diástole — esto genera un volumen de eyección muy bajo en ese latido, insuficiente para generar una onda de pulso palpable en la periferia (por ejemplo, en la muñeca), aunque SÍ se ausculte como un latido cardiaco en el pecho. Por eso la frecuencia cardiaca contada por auscultación es mayor que la frecuencia de pulso contada por palpación — esa diferencia (el 'déficit') es precisamente el pulso deficitario. Es un signo de alarma porque indica que el paciente está en fibrilación auricular activa (o una arritmia similar), lo que conlleva riesgo de estasis sanguínea en la aurícula, formación de trombos, y embolización sistémica (más frecuentemente ACV)."
+      }
+    }
+  ]
+}
+];
 
 /* ============================================================
    BANCOS DE EXAMEN — preguntas y casos estilo examen real de la
