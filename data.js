@@ -6946,6 +6946,10 @@ const TEMAS = [
         "explicacion": "Fíjate en la posición exacta del estetoscopio en cada foto — el foco Mitral está en el ápice (donde el corazón realmente 'late' contra la pared torácica), mientras que el foco Aórtico y Pulmonar están arriba, cerca del esternón, porque ahí es donde el flujo turbulento de esas válvulas se proyecta con más fuerza hacia la pared torácica, aunque anatómicamente esas válvulas estén más centrales."
       }
     ]
+  },
+  {
+    "nombre": "Ruidos cardiacos",
+    "detalle": "Se producen por el cierre SÚBITO de las valvas unidireccionales que normalmente impiden el retorno del flujo sanguíneo durante las contracciones del corazón. Con un estetoscopio se oyen 2 tonos: PRIMER RUIDO (R1): corresponde al cierre de las válvulas auriculoventriculares (mitral y tricúspide) al inicio de la sístole — marca el paso de la sangre de la aurícula a los ventrículos. SEGUNDO RUIDO (R2): corresponde al cierre de las válvulas semilunares (aórtica y pulmonar) al final de la sístole — marca la expulsión de la sangre del corazón."
   }
 ],
     "fisiologiaNormal": "El potencial de acción es distinto entre el tejido muscular (respuesta rápida) y el tejido de conducción (respuesta lenta) — esta diferencia es la base de toda la actividad eléctrica organizada del corazón. El GASTO CARDIACO (GC) = Volumen de Eyección × Frecuencia Cardiaca. La función SISTÓLICA depende de: contractilidad ventricular (precarga + geometría ventricular) y postcarga (impedancia aórtica + resistencia periférica). La función DIASTÓLICA depende de: relajación ventricular y distensibilidad ventricular + sístole auricular. PRECARGA: grado de tensión del músculo al inicio de la contracción = presión al final de la diástole = presión durante el llenado ventricular; depende de geometría ventricular, impedancia aórtica y resistencia periférica. POSTCARGA: presión en la arteria transmitida por el ventrículo = presión arterial contra la cual el ventrículo se contrae; depende de retorno venoso, distensibilidad ventricular y sístole auricular. Ley de Frank-Starling: cuanto más se estira el músculo cardiaco, mayor su fuerza de contracción y mayor el volumen de eyección. Presión arterial media = PD + (PS-PD)/3, equivalente a (PS + 2PD)/3.",
@@ -7198,68 +7202,72 @@ const TEMAS = [
         "explicacion": "Este trazado muestra, en un solo latido, TODO lo que debes identificar: la onda P, el complejo QRS (con su Q, R y S individuales), la onda T, y los 3 intervalos clave marcados abajo — PR (desde el inicio de P hasta el inicio de QRS), QT completo, y ST (el segmento entre el final de QRS y el inicio de T, el que se eleva o deprime en isquemia/infarto). Practica ubicar cada uno de estos puntos en cualquier EKG que veas de ahora en adelante, antes de intentar interpretar nada más."
       }
     ]
+  },
+  {
+    "nombre": "Eje cardiaco",
+    "detalle": "Es la letra 'E' de la mnemotecnia FREH II. Eje NORMAL: 0° a 90° (algunas bibliografías consideran un rango más amplio, de -30° a 110°). Se calcula usando las derivaciones del plano frontal (DI, DII, DIII, aVR, aVL, aVF). Método práctico: ubicar la derivación cuyo QRS se vea más ISOBIFÁSICO posible (es decir, con la deflexión positiva y negativa de tamaño más parecido, cercano a 0 de suma neta) — el eje eléctrico del corazón es PERPENDICULAR a esa derivación. Luego se confirma la dirección (hacia dónde apunta exactamente) viendo en qué otra derivación el QRS es más POSITIVO — el eje apunta hacia esa derivación."
   }
 ],
     "fisiologiaNormal": "MEMOTECNIA para leer cualquier EKG en orden, sin saltarte nada: FREH II = Frecuencia, Ritmo, Eje, Hipertrofias, Isquemia, Infartos, Intervalos. FRECUENCIA: normal 60-99 lpm (bradicardia <59, taquicardia >100). Si el ritmo es REGULAR: buscar una onda R que coincida con una línea gruesa del papel, localizar el siguiente latido, y usar la secuencia 300-150-100-75-60-50 según cuántos cuadrados grandes hay entre ambos. Si el ritmo es IRREGULAR o la FC >150: método de 6 segundos (contar los QRS en 30 cuadrados grandes = 6 segundos, multiplicar por 10) o método de 5 segundos (multiplicar por 12); o dividir 1500 entre los mm que hay entre R-R (ej: 1500/6=250 lpm). RITMO: el ritmo de base normal lo da el nodo sinusal (FC 60-100) — el corazón tiene automatismo, así que si el nodo sinusal deja de predominar, el ritmo lo toma la siguiente estructura en la jerarquía. Para confirmar ritmo SINUSAL se necesitan 5 criterios: FC 60-100, intervalo R-R constante, onda P positiva en DII y negativa en aVR, cada onda P seguida de un QRS, e intervalo PR ≥0.12 segundos. Si no hay onda P y el R-R es variable → pensar en fibrilación auricular (con ondas f minúsculas asociadas). <span class=\"fuente-ampliada\">¿Por qué la onda P sinusal es positiva en cara inferior (DII, DIII, aVF) y negativa en aVR? El vector de despolarización auricular apunta hacia abajo y a la izquierda (desde el nodo sinusal hacia el nodo AV) — ese vector se ACERCA a DII/DIII/aVF (por eso da deflexión positiva) y se ALEJA de aVR (por eso da deflexión negativa). Es geometría pura: la dirección del vector eléctrico respecto a cada derivación determina si esa derivación registra una onda positiva o negativa.</span>",
     "tablasClinicas": [
-      {
-        "titulo": "❤️ Componentes de un EKG normal",
-        "columnas": [
-          "Onda/Intervalo",
-          "Qué representa",
-          "Valor normal"
-        ],
-        "filas": [
-          [
-            "Onda P",
-            "Despolarización auricular (1ª mitad = atrio derecho, 2ª mitad = atrio izquierdo)",
-            "<0.10-0.12 seg, <2.5mm de alto; positiva en todas las derivaciones excepto aVR (y V1 bifásica)"
-          ],
-          [
-            "Complejo QRS",
-            "Despolarización ventricular — Q: septo interventricular, R: paredes libres, S: bases ventriculares",
-            "Duración 0.06-0.12 seg (>0.12 = QRS ancho); onda R no >25mm en V5/V6"
-          ],
-          [
-            "Onda Q",
-            "Primera deflexión negativa del QRS",
-            "<0.04 seg, no mayor al 25% de la onda R que la sigue; NO se observa en V1 y V2"
-          ],
-          [
-            "Intervalo PR",
-            "Desde el inicio de P hasta el inicio del QRS",
-            "0.12 a 0.20 seg (3 a 5 cuadritos) — alargado = bloqueo AV 1er grado; acortado = taquicardias, WPW, ritmos nodales"
-          ],
-          [
-            "Intervalo QT",
-            "Desde el inicio de Q hasta el final de la T (se ajusta según FC)",
-            "Aproximadamente 0.30 a 0.40 seg; QTc normal 400-440ms; límite alto: 430-450ms (hombres), 451-470ms (mujeres)"
-          ]
-        ]
-      },
-      {
-        "titulo": "🔢 Frecuencia según la estructura marcapasos",
-        "columnas": [
-          "Estructura",
-          "Frecuencia normal"
-        ],
-        "filas": [
-          [
-            "Nodo sinusal",
-            "60 - 100 lpm"
-          ],
-          [
-            "Nodo auriculoventricular (unión AV)",
-            "40 - 60 lpm"
-          ],
-          [
-            "Ventricular (idioventricular)",
-            "20 - 40 lpm"
-          ]
-        ],
-        "nota": "Esta jerarquía explica por qué, si el nodo sinusal falla, el corazón no se detiene — otra estructura toma el relevo, aunque a una frecuencia más lenta."
-      }
+  {
+    "titulo": "❤️ Componentes de un EKG normal",
+    "columnas": [
+      "Onda/Intervalo",
+      "Qué representa",
+      "Valor normal"
     ],
+    "filas": [
+      [
+        "Onda P",
+        "Despolarización auricular (1ª mitad = atrio derecho, 2ª mitad = atrio izquierdo)",
+        "<0.10-0.12 seg, <2.5mm de alto; positiva en todas las derivaciones excepto aVR (y V1 bifásica)"
+      ],
+      [
+        "Complejo QRS",
+        "Despolarización ventricular — Q: septo interventricular, R: paredes libres, S: bases ventriculares",
+        "Duración 0.06-0.12 seg (>0.12 = QRS ancho); onda R no >25mm en V5/V6; la onda R no debe superar 25mm en V5/V6, 20mm en DI, o 15mm en aVL"
+      ],
+      [
+        "Onda Q",
+        "Primera deflexión negativa del QRS",
+        "<0.04 seg, no mayor al 25% de la onda R que la sigue; NO se observa en V1 y V2"
+      ],
+      [
+        "Intervalo PR",
+        "Desde el inicio de P hasta el inicio del QRS",
+        "0.12 a 0.20 seg (3 a 5 cuadritos) — alargado = bloqueo AV 1er grado; acortado = taquicardias, WPW, ritmos nodales"
+      ],
+      [
+        "Intervalo QT",
+        "Desde el inicio de Q hasta el final de la T (se ajusta según FC)",
+        "Aproximadamente 0.30 a 0.40 seg; QTc normal 400-440ms; límite alto: 430-450ms (hombres), 451-470ms (mujeres)"
+      ]
+    ]
+  },
+  {
+    "titulo": "🔢 Frecuencia según la estructura marcapasos",
+    "columnas": [
+      "Estructura",
+      "Frecuencia normal"
+    ],
+    "filas": [
+      [
+        "Nodo sinusal",
+        "60 - 100 lpm"
+      ],
+      [
+        "Nodo auriculoventricular (unión AV)",
+        "40 - 60 lpm"
+      ],
+      [
+        "Ventricular (idioventricular)",
+        "20 - 40 lpm"
+      ]
+    ],
+    "nota": "Esta jerarquía explica por qué, si el nodo sinusal falla, el corazón no se detiene — otra estructura toma el relevo, aunque a una frecuencia más lenta."
+  }
+],
     "correlacionClinica": "Dominar la mecánica de la toma y lectura del EKG (dónde va cada electrodo, cómo calcular la frecuencia, qué define un ritmo sinusal) es el fundamento indispensable antes de poder reconocer arritmias, hipertrofias, isquemia o infartos — que verás en las siguientes sesiones. Un error común de principiante es intentar 'reconocer patrones' sin primero confirmar la frecuencia y el ritmo de forma sistemática — la mnemotecnia FREH II existe justamente para evitar que te saltes pasos y termines diagnosticando mal por apresurarte a la parte 'interesante' del trazado.",
     "puntosClave": [
       "12 derivaciones: 6 del plano frontal (DI, DII, DIII, aVR, aVL, aVF) + 6 precordiales (V1-V6)",
