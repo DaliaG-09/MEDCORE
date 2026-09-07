@@ -208,7 +208,7 @@ const SEMANAS = [
         "dia": "Miércoles",
         "tipo": "teoria",
         "tema": "EKG normal I / EKG normal II / Cardiopatía Coronaria Isquémica: Infarto Agudo de Miocardio (IMA). Fisiopatología de la angina e IMA. Diagnóstico, tipos y manejo inicial.",
-        "vinculos": [ { "tipo": "tema", "id": "ekg-normal-1" }, { "tipo": "tema", "id": "ekg-normal-2" } ]
+        "vinculos": [ { "tipo": "tema", "id": "ekg-normal-1" }, { "tipo": "tema", "id": "ekg-normal-2" }, { "tipo": "enfermedad", "id": "cardiopatia-coronaria-isquemica" } ]
       },
       { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
@@ -226,7 +226,7 @@ const SEMANAS = [
     "lecturas": [
       "lectura-s4-12"
     ],
-    "enfermedades": []
+    "enfermedades": ["cardiopatia-coronaria-isquemica"]
   },
   {
     "id": "semana-05",
@@ -5618,7 +5618,300 @@ const ENFERMEDADES = [
       }
     }
   ]
-}];
+},
+  {
+  "id": "cardiopatia-coronaria-isquemica",
+  "nombre": "Cardiopatía Coronaria Isquémica",
+  "area": "Cardiología",
+  "semanas": [
+    "semana-04"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1LlZ6yOjprCDwRE-Zx2wyWO-JW_Uf5X81/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_4_SESIÓN-11-TEMA-3: Cardiopatía Coronaria Isquémica"
+  },
+  "relacionadas": [],
+  "profundo": {
+    "definicion": "Síndrome caracterizado por una disminución del aporte de sangre oxigenada al miocardio, que afecta el libre flujo de sangre en una o más arterias coronarias epicárdicas o en la microcirculación coronaria. Su principal sustrato fisiopatológico es la ATEROSCLEROSIS CORONARIA — un proceso inflamatorio y progresivo que involucra disfunción endotelial, peroxidación lipídica, y sobreexpresión de moléculas de adhesión celular.",
+    "epidemiologia": "Las enfermedades cardiovasculares son la principal causa de muerte en el mundo (excepto en África), con 17.9 millones de muertes anuales (32% de todas las defunciones). En 2021, la cardiopatía isquémica específicamente fue responsable de 9.44 millones de muertes y 185 millones de AVAD (años de vida ajustados por discapacidad). La hipertensión arterial sistólica es el principal factor de riesgo MODIFICABLE para muerte cardiovascular prematura, seguida del colesterol LDL elevado y los riesgos dietéticos. Tasa de mortalidad estandarizada por edad: 73.5 muertes por 100,000 habitantes. En Perú: más de 17 millones de hipertensos, 14 millones de dislipidémicos, 6 millones de diabéticos, y 35 millones con sobrepeso u obesidad — cifras que reflejan la enorme carga de factores de riesgo modificables en la población.",
+    "etiologiaFactoresRiesgo": [
+      "No modificables: edad (riesgo aumenta significativamente en hombres >40 años y mujeres >50 años), sexo masculino (mayor riesgo que mujeres, especialmente antes de la menopausia — después de la menopausia el riesgo femenino se aproxima al masculino), historia familiar de enfermedad cardiovascular prematura, alteraciones genéticas del metabolismo de lipoproteínas",
+      "Modificables: hipertensión arterial (factor clave), LDL elevado + HDL bajo + triglicéridos elevados, diabetes tipo 2 (especialmente en mujeres), tabaquismo (daña el endotelio vascular y promueve placas), sobrepeso y sedentarismo, dieta poco saludable (rica en grasas saturadas/sodio/azúcares, baja en frutas/verduras/fibra), estrés crónico"
+    ],
+    "fisiopatologia": {
+      "resumen": "La isquemia miocárdica ocurre cuando el suministro de sangre al miocardio es insuficiente para satisfacer sus demandas de oxígeno — principalmente por la obstrucción progresiva de las arterias coronarias debido a aterosclerosis.",
+      "cascada": [
+        {
+          "paso": "Obstrucción del flujo sanguíneo coronario",
+          "detalle": "Una arteria coronaria se estrecha o bloquea por acumulación de placa aterosclerótica. El corazón, al no recibir suficiente oxígeno, entra en estado de hipoxia."
+        },
+        {
+          "paso": "Desajuste entre oferta y demanda de oxígeno",
+          "detalle": "Si la demanda de oxígeno excede el suministro (por la obstrucción ya presente), se produce la isquemia. Este desajuste se hace evidente típicamente en situaciones de ejercicio o estrés, cuando la demanda aumenta."
+        },
+        {
+          "paso": "Disfunción endotelial",
+          "detalle": "La falta de oxígeno provoca disfunción del endotelio (capa interna de las arterias), lo que contribuye a la inflamación, facilita la agregación plaquetaria y la formación de coágulos."
+        },
+        {
+          "paso": "Acidosis y alteración del metabolismo",
+          "detalle": "La disminución de oxígeno en las células miocárdicas lleva a acidosis y a un cambio hacia metabolismo ANAERÓBICO, produciendo ácido láctico y otras sustancias metabólicas que causan el dolor (angina) y la disfunción miocárdica."
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/cardio/cci-lesion-subendo-subepicardica.jpg",
+          "caption": "Lesión subendocárdica vs. subepicárdica/transmural (de tu clase)",
+          "explicacion": "El subendocardio es la capa MÁS SENSIBLE a la isquemia (recibe el flujo sanguíneo de forma más precaria, ya que está más lejos de las arterias epicárdicas). Por eso una obstrucción INCOMPLETA o distal genera lesión subendocárdica (descenso del ST, implicaciones MENOS graves — el diagrama de la izquierda muestra las flechas de despolarización alteradas solo en la capa interna). Una obstrucción COMPLETA de una arteria principal compromete TODO el espesor de la pared (transmural/subepicárdica), generando ELEVACIÓN del ST — y si no se trata precozmente, evoluciona a un infarto con onda Q (necrosis). Esta es la diferencia fisiopatológica exacta entre lo que verás como 'descenso de ST' (SCA sin elevación) y 'elevación de ST' (STEMI) en la práctica clínica."
+        }
+      ],
+      "explicacionExtendida": "<span class=\"fuente-ampliada\">La progresión de la placa de ateroma sigue el llamado 'remodelado positivo' o efecto Glagov: al inicio, aunque la placa crece, tiende a expandirse HACIA AFUERA (permaneciendo externa a la luz, adherida a la pared arterial), permitiendo que el diámetro de la luz se mantenga relativamente normal por más tiempo del que uno esperaría. Solo cuando la placa ya es lo suficientemente grande, empieza a invadir la luz y recién ahí el diámetro arterial disminuye visiblemente. Esto explica por qué muchos pacientes con aterosclerosis coronaria significativa pueden tener angiografías aparentemente 'normales' en etapas tempranas — el vaso compensa expandiéndose hacia afuera antes de finalmente estrecharse hacia adentro. El riesgo de ROTURA de la placa (el evento que dispara un síndrome coronario agudo) depende de 3 factores: su composición (colágeno, lipoproteínas, linfocitos inflamatorios), su vulnerabilidad según el tipo de placa, y el grado de estenosis.</span>"
+    },
+    "clinica": [
+      {
+        "signo": "Angina de pecho",
+        "detallePPT": "Opresiva, retroesternal, irradiada a brazo izquierdo, cuello o mandíbula",
+        "mecanismo": "Dolor generado por la acumulación de ácido láctico y metabolitos del metabolismo anaeróbico miocárdico durante la isquemia — el dolor visceral cardiaco se refiere a estos dermatomas por convergencia de vías nerviosas aferentes"
+      },
+      {
+        "signo": "Disnea de esfuerzo o reposo",
+        "detallePPT": "Puede acompañar o incluso sustituir al dolor torácico",
+        "mecanismo": "Disfunción ventricular transitoria durante la isquemia, que eleva las presiones de llenado y genera congestión pulmonar leve"
+      },
+      {
+        "signo": "Fatiga, náuseas, diaforesis",
+        "detallePPT": "Diaforesis es más común específicamente en el infarto",
+        "mecanismo": "Activación simpática masiva como respuesta al dolor/estrés isquémico agudo"
+      },
+      {
+        "signo": "Equivalentes anginosos",
+        "detallePPT": "Epigastralgia, mareos, síncope — especialmente relevantes en diabéticos, ancianos y mujeres, donde el dolor típico puede estar ausente",
+        "mecanismo": "Variabilidad en la percepción del dolor visceral cardiaco, particularmente en pacientes con neuropatía autonómica (diabéticos) o presentaciones atípicas"
+      }
+    ],
+    "examenFisico": [
+      "Puede ser completamente normal si el paciente está estable — no descartar CCI solo por examen físico normal",
+      "Evaluar presión arterial, frecuencia cardiaca y ritmo",
+      "Soplos (especialmente mitral funcional) o signos de insuficiencia cardiaca (estertores, ingurgitación yugular, edemas)",
+      "Palidez, sudoración, ansiedad",
+      "Pulsos periféricos y signos de aterosclerosis sistémica en otros territorios"
+    ],
+    "criteriosDiagnosticos": "Clasificación Canadiense de Angina (CCS) — Clase I: angina solo con esfuerzo extenuante, prolongado o rápido. Clase II: ligera limitación de la actividad ordinaria (subir escaleras rápido, caminar cuesta arriba). Clase III: marcada limitación de la actividad física ordinaria (caminar 1-2 cuadras o subir 1 piso a paso normal). Clase IV: incapacidad de realizar cualquier actividad física sin angina — puede estar presente en reposo.",
+    "tablasClinicas": [
+      {
+        "titulo": "❤️‍🩹 Signos electrocardiográficos según la profundidad del compromiso",
+        "contexto": "El ECG cambia de forma predecible según qué tan severo y qué tan profundo (transmural vs. subendocárdico) es el compromiso isquémico.",
+        "columnas": [
+          "Patrón",
+          "Hallazgo ECG",
+          "Significado"
+        ],
+        "filas": [
+          [
+            "Onda de isquemia subendocárdica",
+            "Onda T picuda, más alta de lo normal + QTc prolongado",
+            "Retraso en la repolarización del subendocardio — la capa más sensible a la isquemia"
+          ],
+          [
+            "Onda de isquemia subepicárdica/transmural",
+            "Onda T aplanada o negativa",
+            "Retraso en la repolarización de todo el espesor del miocardio afectado"
+          ],
+          [
+            "Lesión subendocárdica",
+            "Descenso del segmento ST",
+            "Evento isquémico más severo pero potencialmente reversible — implicaciones MENOS graves que la transmural"
+          ],
+          [
+            "Lesión subepicárdica (transmural)",
+            "Elevación del segmento ST",
+            "Si no se trata precozmente, evolucionará a infarto con onda Q — ESTE es el patrón de un STEMI"
+          ],
+          [
+            "Necrosis",
+            "Ondas Q de necrosis (pérdida de voltajes positivos, disminución de amplitud de la onda R)",
+            "Muerte del tejido — cambio generalmente irreversible una vez establecido"
+          ]
+        ]
+      }
+    ],
+    "diagnostico": "Pruebas iniciales: ECG (buscar elevaciones del ST, ondas Q, T negativas), marcadores de necrosis miocárdica (troponina ultrasensible, CPK-MB), radiografía de tórax (descartar otras causas, evaluar cardiomegalia/edema pulmonar), laboratorio general (glucosa, perfil lipídico, hemograma, creatinina). Pruebas avanzadas: ecocardiograma transtorácico (función ventricular, zonas de hipocinesia), prueba de esfuerzo/ergometría (para angina ESTABLE), angioTC coronaria (riesgo intermedio), perfusión miocárdica con SPECT, resonancia magnética cardiaca. Angiografía coronaria (cateterismo/coronariografía): ESTÁNDAR DE ORO en angina refractaria o síndrome coronario agudo — indicada también en sospecha de enfermedad coronaria, trastornos valvulares, enfermedad congénita, miocardiopatías, y planificación preoperatoria.",
+    "diagnosticoDiferencial": [
+      "Pericarditis aguda (dolor que cambia con la posición/respiración, roce pericárdico)",
+      "Disección aórtica (dolor desgarrante, migratorio, asimetría de pulsos)",
+      "Embolia pulmonar (disnea súbita, factores de riesgo trombóticos)",
+      "Reflujo gastroesofágico/espasmo esofágico (relación con las comidas, responde a antiácidos)",
+      "Costocondritis (dolor reproducible a la palpación)"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Revascularización: angioplastia coronaria con stent",
+        "Cirugía de bypass coronario (CABG): indicada en enfermedad multivaso o disfunción severa del ventrículo izquierdo",
+        "Educación en estilos de vida saludables y adherencia al tratamiento",
+        "Control ambulatorio regular con ECG y perfil lipídico; reevaluar función ventricular con ecocardiografía periódica"
+      ],
+      "farmacologico": [
+        "Antianginosos: beta bloqueadores, calcioantagonistas, nitratos",
+        "Antiagregantes: AAS (aspirina), clopidogrel",
+        "Estatinas: para control de dislipidemia",
+        "IECA/ARA II: indicados en disfunción ventricular, hipertensión, o diabetes concomitante"
+      ]
+    },
+    "complicaciones": [
+      "Progresión a infarto agudo de miocardio (si la lesión transmural no se trata precozmente)",
+      "Arritmias ventriculares malignas",
+      "Insuficiencia cardiaca por disfunción ventricular isquémica",
+      "Muerte súbita cardiaca",
+      "Complicaciones mecánicas post-infarto (ruptura de pared libre, comunicación interventricular, insuficiencia mitral aguda)"
+    ],
+    "prevencion": "Control estricto de factores de riesgo modificables: presión arterial, glucosa, perfil lipídico. Cese de tabaquismo. Actividad física regular y control de peso. Dieta saludable (rica en frutas/verduras/fibra, baja en grasas saturadas/sodio/azúcares). Manejo del estrés crónico.",
+    "perlasProfundo": "El pronóstico depende de 4 factores concretos: el número de vasos coronarios afectados, la función ventricular izquierda, la presencia de diabetes, y el control efectivo de los factores de riesgo — el tratamiento óptimo (farmacológico + revascularización + control de factores de riesgo) puede reducir la mortalidad de forma significativa, por lo que el seguimiento ambulatorio riguroso no es opcional, es parte del tratamiento mismo.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: te dan un caso con dolor torácico + ECG real, y debes dar el planteamiento diagnóstico completo (localización + tipo de síndrome coronario) sustentando con las derivaciones exactas alteradas — exactamente el patrón del caso real de tu propia clase.",
+      "ejercicios": [
+        {
+          "tipo": "Interpretar ECG completo y sustentar (tal como en tu propio PPT)",
+          "planteamiento": "Varón de 52 años con dolor torácico subesternal persistente y opresivo, disnea, diaforesis, y antecedente de angina de esfuerzo (7 escalones) que cedía en 5 minutos con reposo. El ECG muestra elevación del ST en II, III y aVF, con cambios recíprocos leves en V1-V2 y en I-aVL. ¿Cuál es el planteamiento diagnóstico?",
+          "respuestaModelo": "Infarto de miocardio de la pared INFERIOR con elevación del segmento ST (STEMI de cara inferior). La elevación del ST en II, III y aVF localiza el compromiso a la cara inferior (territorio típicamente irrigado por la coronaria derecha), y los cambios recíprocos (descenso especular) en V1-V2 y en I-aVL son característicos de este mismo diagnóstico — cuando una pared se eleva, la pared opuesta anatómicamente muestra el cambio inverso. El antecedente de angina progresiva de esfuerzo que cedía con reposo, seguido ahora de dolor persistente en reposo con diaforesis, es la historia típica de progresión de angina estable a síndrome coronario agudo."
+        }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "CCI = disminución del aporte de O2 al miocardio por obstrucción coronaria, principalmente por aterosclerosis",
+      "Lesión subendocárdica (descenso ST) = menos grave, potencialmente reversible; lesión subepicárdica/transmural (elevación ST) = evoluciona a infarto con onda Q si no se trata a tiempo",
+      "Clasificación CCS: I (esfuerzo extenuante) a IV (angina en reposo)"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — patrones ECG según severidad",
+      "columnas": [
+        "Hallazgo ECG",
+        "Significado"
+      ],
+      "filas": [
+        [
+          "T picuda + QTc prolongado",
+          "Isquemia subendocárdica"
+        ],
+        [
+          "T aplanada/negativa",
+          "Isquemia transmural"
+        ],
+        [
+          "Descenso del ST",
+          "Lesión subendocárdica (menos grave)"
+        ],
+        [
+          "Elevación del ST",
+          "Lesión transmural — riesgo de evolucionar a infarto"
+        ],
+        [
+          "Onda Q patológica",
+          "Necrosis ya establecida"
+        ]
+      ]
+    },
+    "clinica": "Angina opresiva retroesternal irradiada a brazo izquierdo/cuello/mandíbula; equivalentes anginosos (epigastralgia, mareos, síncope) en diabéticos/ancianos/mujeres.",
+    "diagnostico": "ECG + troponina ultrasensible son las 2 pruebas iniciales clave. Angiografía coronaria es el estándar de oro en SCA o angina refractaria.",
+    "tratamientoResumen": "Antianginosos (BB, calcioantagonistas, nitratos) + antiagregantes + estatinas + IECA/ARA II según indicación; revascularización (stent o CABG) según extensión.",
+    "diferenciales": [
+      {
+        "entidad": "Pericarditis",
+        "clave": "Dolor que cambia con posición/respiración, roce pericárdico"
+      },
+      {
+        "entidad": "Disección aórtica",
+        "clave": "Dolor desgarrante migratorio, asimetría de pulsos"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Lesión subendocárdica vs. transmural",
+      "filas": [
+        [
+          "ECG",
+          "Descenso del ST",
+          "Elevación del ST"
+        ],
+        [
+          "Gravedad",
+          "Menos grave",
+          "Más grave — riesgo de infarto"
+        ],
+        [
+          "Capa afectada",
+          "Solo subendocardio",
+          "Todo el espesor de la pared"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cuál es el sustrato fisiopatológico principal de la CCI? → Aterosclerosis coronaria",
+      "¿Qué distingue la lesión subendocárdica de la subepicárdica en el ECG? → Descenso del ST (subendocárdica, menos grave) vs. elevación del ST (subepicárdica/transmural, evoluciona a infarto si no se trata)",
+      "¿Cuál es el estándar de oro diagnóstico en SCA o angina refractaria? → Angiografía coronaria (cateterismo)",
+      "¿Cuáles son las 2 pruebas iniciales clave? → ECG y marcadores de necrosis (troponina ultrasensible, CPK-MB)",
+      "¿Qué significan las ondas Q de necrosis? → Muerte del tejido miocárdico ya establecida, generalmente irreversible",
+      "¿Cuáles son los 4 factores que determinan el pronóstico? → Número de vasos afectados, función ventricular izquierda, presencia de diabetes, control de factores de riesgo",
+      "¿Cómo se localiza un infarto por las derivaciones alteradas? → II-III-aVF = inferior; I-aVL-V5-V6 = lateral; V1-V2-V3 = septal/anterior"
+    ],
+    "redFlags": [
+      "Dolor torácico en reposo tras angina de esfuerzo progresiva → sospechar síndrome coronario agudo activo",
+      "Elevación del ST en cualquier territorio → activar protocolo de reperfusión urgente (STEMI)",
+      "Equivalentes anginosos en diabéticos/ancianos sin dolor típico → no descartar isquemia solo porque 'no le duele el pecho'"
+    ],
+    "erroresFrecuentes": [
+      "Descartar CCI porque el examen físico es normal — puede serlo perfectamente en un paciente estable",
+      "Confundir lesión (potencialmente reversible) con necrosis (ya irreversible) — son etapas distintas del mismo proceso",
+      "No buscar equivalentes anginosos en poblaciones de presentación atípica (mujeres, diabéticos, ancianos)"
+    ],
+    "asociacionesClinicas": [
+      "Angina progresiva + dolor en reposo nuevo → progresión a síndrome coronario agudo, requiere evaluación urgente",
+      "Elevación del ST en II-III-aVF + descenso recíproco en I-aVL → confirma localización inferior, no solo sugiere"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Varón de 52 años, quien experimenta un dolor torácico subesternal persistente y opresivo, acompañado de disnea y diaforesis. Menciona que durante las últimas dos semanas ha tenido un dolor similar de menor intensidad al subir siete escalones, con episodios previos que se resolvieron en cinco minutos con reposo.",
+      "imagen": {
+        "src": "assets/cardio/cci-ecg-caso-real.jpg",
+        "caption": "ECG real de este paciente"
+      },
+      "preguntaMC": {
+        "enunciado": "El ECG muestra elevación del segmento ST en las derivaciones II, III y aVF, con cambios recíprocos leves en V1-V2 y en I-aVL. ¿Cuál es el planteamiento diagnóstico correcto?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Infarto agudo de miocardio de pared inferior con elevación del ST (STEMI inferior)"
+          },
+          {
+            "id": "b",
+            "texto": "Infarto agudo de miocardio de pared lateral, sin elevación del ST"
+          },
+          {
+            "id": "c",
+            "texto": "Angina estable sin cambios electrocardiográficos significativos"
+          },
+          {
+            "id": "d",
+            "texto": "Pericarditis aguda con elevación difusa del ST"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "La elevación del ST en II, III y aVF localiza el infarto en la pared INFERIOR (territorio de la coronaria derecha en la mayoría de personas). Los cambios recíprocos (descenso especular) en V1-V2 y en I-aVL son característicos y esperables en este mismo diagnóstico — cuando la pared inferior se 'eleva', las derivaciones que miran la pared opuesta muestran el cambio inverso. Sumado a la historia clínica (angina progresiva de esfuerzo que evoluciona a dolor persistente en reposo con diaforesis), el diagnóstico es STEMI de cara inferior — una urgencia que requiere reperfusión inmediata."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica por qué los antecedentes de las últimas 2 semanas (angina de esfuerzo progresiva) son clínicamente relevantes para interpretar el cuadro actual, y no solo un dato aislado.",
+        "respuestaModelo": "Los episodios de angina de esfuerzo de las últimas 2 semanas representan angina ESTABLE inicial — dolor predecible, desencadenado por un esfuerzo específico (7 escalones) y aliviado con reposo en un tiempo corto (5 minutos), consistente con isquemia transitoria por una placa aterosclerótica que aún permite flujo suficiente en reposo. El cambio hacia dolor PERSISTENTE EN REPOSO, acompañado de diaforesis, representa una progresión clínica crítica: sugiere que la placa se ha vuelto inestable (probable rotura o erosión de la placa con formación de trombo), pasando de una angina estable a un SÍNDROME CORONARIO AGUDO. Reconocer esta progresión temporal es clave para entender la urgencia del cuadro — no es un evento aislado, es la culminación de un proceso que ya venía avisando durante 2 semanas."
+      }
+    }
+  ]
+}
+];
 
 /* ============================================================
    TEMAS — contenido que NO es una enfermedad: anatomía,
