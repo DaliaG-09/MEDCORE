@@ -8129,7 +8129,128 @@ const MODULOS = {
     }
   }
 ]
-  }
+  },
+  "cardiologia": {
+  "id": "modulo-cardiologia",
+  "nombre": "Cardiología",
+  "emoji": "❤️",
+  "enfermedadesPorCategoria": [
+    {
+      "categoria": "Isquémica",
+      "ids": [
+        "cardiopatia-coronaria-isquemica"
+      ]
+    },
+    {
+      "categoria": "Presión arterial",
+      "ids": [
+        "hipertension-arterial"
+      ]
+    }
+  ],
+  "loQueSiOSiDebesSaberModulo": [
+    "La HTA es el principal factor de riesgo MODIFICABLE para desarrollar cardiopatía coronaria isquémica — controlarla es prevención cardiovascular directa",
+    "En el ECG, la elevación del ST señala lesión TRANSMURAL (más grave, evoluciona a infarto); el descenso señala lesión SUBENDOCÁRDICA (menos grave, potencialmente reversible)",
+    "El diagnóstico de HTA requiere AL MENOS 2 mediciones elevadas en 2+ consultas — nunca con una sola toma",
+    "Las troponinas son el marcador sérico preferido para lesión miocárdica — permanecen elevadas hasta 2 semanas",
+    "La localización de un infarto por ECG sigue la agrupación anatómica de derivaciones: inferior (II-III-aVF), lateral (I-aVL-V5-V6), septal/anterior (V1-V2-V3)"
+  ],
+  "casosComparativos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "Comparativo de módulo: paciente con antecedente de HTA de larga data que ahora presenta dolor torácico. Necesitas entender por qué su HTA no controlada aumenta específicamente su riesgo actual.",
+      "preguntaMC": {
+        "enunciado": "¿Por qué la HTA crónica mal controlada aumenta el riesgo de desarrollar cardiopatía coronaria isquémica?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "La HTA genera disfunción endotelial crónica y mayor estrés de cizallamiento vascular, acelerando la formación y progresión de placas ateroscleróticas coronarias"
+          },
+          {
+            "id": "b",
+            "texto": "La HTA y la CCI son enfermedades completamente independientes sin relación fisiopatológica"
+          },
+          {
+            "id": "c",
+            "texto": "La HTA solo afecta el riñón, no tiene relación con las arterias coronarias"
+          },
+          {
+            "id": "d",
+            "texto": "La relación es únicamente estadística, sin mecanismo fisiopatológico real"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "La HTA crónica genera disfunción endotelial sostenida (menos óxido nítrico, más vasoconstrictores como la endotelina) y aumenta el estrés mecánico sobre la pared arterial — ambos mecanismos son los mismos que inician y aceleran la aterosclerosis coronaria. Por eso la HTA no es solo un 'factor de riesgo estadístico' sino que comparte mecanismos fisiopatológicos DIRECTOS con el desarrollo de la CCI."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica la relación mecanicista específica entre el SRAA (elevado en HTA) y la progresión de la placa aterosclerótica coronaria.",
+        "respuestaModelo": "La Angiotensina II, además de generar vasoconstricción directa y retención de sodio, también tiene efectos PROINFLAMATORIOS y PROOXIDANTES sobre la pared vascular — promueve la producción de especies reactivas de oxígeno y estimula la proliferación de células musculares lisas vasculares. Ambos efectos contribuyen directamente a la disfunción endotelial y a la progresión de la placa aterosclerótica, conectando mecanísticamente el eje hormonal de la HTA con el proceso fisiopatológico central de la cardiopatía coronaria isquémica — no es una coincidencia epidemiológica, es el mismo sistema hormonal dañando el mismo tejido vascular por 2 vías simultáneas."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "Comparativo de módulo: necesitas diferenciar en el ECG cuándo un cambio del segmento ST representa isquemia reversible vs. daño ya establecido.",
+      "preguntaMC": {
+        "enunciado": "¿Qué distingue a la lesión subendocárdica de la necrosis en términos de reversibilidad y hallazgo ECG?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Lesión subendocárdica (descenso del ST) es potencialmente REVERSIBLE; necrosis (ondas Q patológicas) representa daño YA ESTABLECIDO e irreversible"
+          },
+          {
+            "id": "b",
+            "texto": "Ambas son igualmente reversibles con tratamiento oportuno"
+          },
+          {
+            "id": "c",
+            "texto": "La necrosis se revierte más fácilmente que la lesión subendocárdica"
+          },
+          {
+            "id": "d",
+            "texto": "Ninguna de las dos tiene relación con la reversibilidad del daño miocárdico"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "La lesión (sea subendocárdica con descenso del ST, o subepicárdica/transmural con elevación del ST) representa tejido en RIESGO pero aún VIABLE — si se restaura el flujo a tiempo, el miocardio puede recuperarse completamente. La necrosis (ondas Q patológicas) representa tejido ya MUERTO — un cambio irreversible que persistirá en el ECG de por vida, sin importar el tratamiento posterior. Esta distinción es la base de por qué la reperfusión URGENTE en un STEMI (antes de que la lesión progrese a necrosis) es tan crítica en la práctica clínica."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué las ondas Q de necrosis persisten en el ECG incluso años después del evento agudo, a diferencia del descenso/elevación del ST que sí se normaliza?",
+        "respuestaModelo": "El descenso o elevación del ST refleja una alteración FUNCIONAL y TRANSITORIA de la repolarización de tejido miocárdico que sigue vivo (aunque isquémico) — una vez que se restaura el flujo sanguíneo, ese tejido recupera su función eléctrica normal y el segmento ST vuelve a la línea de base. Las ondas Q de necrosis, en cambio, reflejan la pérdida DEFINITIVA de tejido miocárdico contráctil y eléctricamente activo en esa zona — el tejido muerto es reemplazado por tejido cicatricial fibroso, que no genera actividad eléctrica. Como ya no hay vector eléctrico despolarizándose en esa dirección, la 'ausencia' de esa señal se registra como la onda Q — un cambio estructural permanente que ningún tratamiento posterior puede revertir, a diferencia de la isquemia funcional reversible."
+      }
+    },
+    {
+      "nivel": "intermedio",
+      "vineta": "Comparativo de módulo: necesitas recordar las 2 clasificaciones de HTA usadas en distintas guías internacionales, dado que un examen puede pedirte cualquiera de las dos.",
+      "preguntaMC": {
+        "enunciado": "Un paciente tiene PA 135/85 mmHg. ¿Cómo se clasificaría según ACC/AHA 2017 vs. ESC/ESH 2018?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "ACC/AHA: HTA estadio 1 (130-139/80-89). ESC/ESH: Normal alta (130-139/85-89)"
+          },
+          {
+            "id": "b",
+            "texto": "Ambas guías lo clasifican exactamente igual, sin diferencias"
+          },
+          {
+            "id": "c",
+            "texto": "ACC/AHA: Normal. ESC/ESH: HTA grado 1"
+          },
+          {
+            "id": "d",
+            "texto": "Ninguna de las 2 guías clasificaría esta presión como anormal"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "Esta es exactamente la razón por la que hay que saber AMBAS clasificaciones: con 135/85, la guía americana (ACC/AHA 2017, más estricta) ya lo clasifica como HTA ESTADIO 1 (130-139/80-89), mientras que la guía europea (ESC/ESH 2018) todavía lo considera 'Normal alta' (130-139/85-89), sin llegar aún al umbral de HTA grado 1 (que requiere ≥140/90). El mismo paciente, con la misma presión, puede recibir 2 'etiquetas' distintas según qué guía se use — por eso los exámenes suelen especificar qué guía usar."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué existen 2 umbrales diagnósticos distintos para HTA entre las guías americana y europea, si ambas evalúan el mismo fenómeno fisiológico?",
+        "respuestaModelo": "La diferencia surge de cómo cada sociedad científica interpretó la evidencia sobre el beneficio de tratar la presión arterial en umbrales más bajos. La guía ACC/AHA 2017 se basó fuertemente en el estudio SPRINT, que mostró beneficio cardiovascular al tratar de forma más agresiva (metas más bajas), lo que los llevó a bajar el umbral diagnóstico a 130/80 para identificar e intervenir más tempranamente. Las guías europeas mantuvieron un umbral más conservador (140/90) considerando el balance entre beneficio y el riesgo de sobretratamiento (hipotensión, efectos adversos) en la población general. No es que midan cosas distintas — es una diferencia de juicio clínico sobre en qué punto el beneficio de tratar supera los riesgos."
+      }
+    }
+  ]
+}
 };
 
 /* ============================================================
