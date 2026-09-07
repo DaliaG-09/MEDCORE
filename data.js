@@ -214,7 +214,8 @@ const SEMANAS = [
       {
         "dia": "Viernes",
         "tipo": "teoria+hospital",
-        "tema": "Control de lectura: Achar, S. A., Kundu, S., & Norcross, W. A. (2005). Diagnosis of acute  / Hipertensión Arterial. Diagnóstico, clasificación y tratamiento / EXPOSICIÓN: ELECTROCARDIOGRAMA NORMAL: ORIGEN DE LAS ONDAS, MEDIDAS, EJE, RITMO, FRECUENCIA"
+        "tema": "Control de lectura: Achar, S. A., Kundu, S., & Norcross, W. A. (2005). Diagnosis of acute  / Hipertensión Arterial. Diagnóstico, clasificación y tratamiento / EXPOSICIÓN: ELECTROCARDIOGRAMA NORMAL: ORIGEN DE LAS ONDAS, MEDIDAS, EJE, RITMO, FRECUENCIA",
+        "vinculos": [ { "tipo": "enfermedad", "id": "hipertension-arterial" } ]
       },
       { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
@@ -226,7 +227,7 @@ const SEMANAS = [
     "lecturas": [
       "lectura-s4-12"
     ],
-    "enfermedades": ["cardiopatia-coronaria-isquemica"]
+    "enfermedades": ["cardiopatia-coronaria-isquemica", "hipertension-arterial"]
   },
   {
     "id": "semana-05",
@@ -5632,7 +5633,12 @@ const ENFERMEDADES = [
     "url": "https://drive.google.com/file/d/1LlZ6yOjprCDwRE-Zx2wyWO-JW_Uf5X81/view",
     "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_4_SESIÓN-11-TEMA-3: Cardiopatía Coronaria Isquémica"
   },
-  "relacionadas": [],
+  "relacionadas": [
+  {
+    "id": "hipertension-arterial",
+    "relacion": "La HTA mal controlada acelera el desarrollo de aterosclerosis coronaria, siendo su principal factor de riesgo modificable"
+  }
+],
   "profundo": {
     "definicion": "Síndrome caracterizado por una disminución del aporte de sangre oxigenada al miocardio, que afecta el libre flujo de sangre en una o más arterias coronarias epicárdicas o en la microcirculación coronaria. Su principal sustrato fisiopatológico es la ATEROSCLEROSIS CORONARIA — un proceso inflamatorio y progresivo que involucra disfunción endotelial, peroxidación lipídica, y sobreexpresión de moléculas de adhesión celular.",
     "epidemiologia": "Las enfermedades cardiovasculares son la principal causa de muerte en el mundo (excepto en África), con 17.9 millones de muertes anuales (32% de todas las defunciones). En 2021, la cardiopatía isquémica específicamente fue responsable de 9.44 millones de muertes y 185 millones de AVAD (años de vida ajustados por discapacidad). La hipertensión arterial sistólica es el principal factor de riesgo MODIFICABLE para muerte cardiovascular prematura, seguida del colesterol LDL elevado y los riesgos dietéticos. Tasa de mortalidad estandarizada por edad: 73.5 muertes por 100,000 habitantes. En Perú: más de 17 millones de hipertensos, 14 millones de dislipidémicos, 6 millones de diabéticos, y 35 millones con sobrepeso u obesidad — cifras que reflejan la enorme carga de factores de riesgo modificables en la población.",
@@ -5907,6 +5913,417 @@ const ENFERMEDADES = [
       "preguntaEscrita": {
         "enunciado": "Explica por qué los antecedentes de las últimas 2 semanas (angina de esfuerzo progresiva) son clínicamente relevantes para interpretar el cuadro actual, y no solo un dato aislado.",
         "respuestaModelo": "Los episodios de angina de esfuerzo de las últimas 2 semanas representan angina ESTABLE inicial — dolor predecible, desencadenado por un esfuerzo específico (7 escalones) y aliviado con reposo en un tiempo corto (5 minutos), consistente con isquemia transitoria por una placa aterosclerótica que aún permite flujo suficiente en reposo. El cambio hacia dolor PERSISTENTE EN REPOSO, acompañado de diaforesis, representa una progresión clínica crítica: sugiere que la placa se ha vuelto inestable (probable rotura o erosión de la placa con formación de trombo), pasando de una angina estable a un SÍNDROME CORONARIO AGUDO. Reconocer esta progresión temporal es clave para entender la urgencia del cuadro — no es un evento aislado, es la culminación de un proceso que ya venía avisando durante 2 semanas."
+      }
+    }
+  ]
+},
+  {
+  "id": "hipertension-arterial",
+  "nombre": "Hipertensión Arterial",
+  "area": "Cardiología",
+  "semanas": [
+    "semana-04"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1UcshV9nfNQBzVLvqiSgr4TOrzJkpi3MG/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_4_SESIÓN-12-TEMA-2: Hipertensión Arterial"
+  },
+  "relacionadas": [
+    {
+      "id": "cardiopatia-coronaria-isquemica",
+      "relacion": "La HTA es el principal factor de riesgo modificable para desarrollar cardiopatía coronaria isquémica"
+    }
+  ],
+  "profundo": {
+    "definicion": "Elevación sostenida de la presión arterial sistólica (PAS) ≥130 mmHg y/o diastólica (PAD) ≥80 mmHg, según la guía ACC/AHA 2017. La guía europea ESC/ESH 2018 usa un umbral distinto: PAS≥140 y/o PAD≥90 mmHg. Es el principal factor de riesgo MODIFICABLE para enfermedad cardiovascular, renal y cerebrovascular en todo el mundo.",
+    "epidemiologia": "A nivel mundial, la HTA afecta a más de 1,280 millones de personas entre 30-79 años (OMS 2021). En Latinoamérica la prevalencia ronda el 40%. En Perú, según ENDES 2022, la prevalencia en mayores de 15 años es 22.8%. Factores como urbanización, envejecimiento poblacional y estilo de vida contribuyen a un incremento sostenido — y sigue siendo una enfermedad infradiagnosticada y pobremente controlada en la mayoría de contextos latinoamericanos.",
+    "etiologiaFactoresRiesgo": [
+      "Factores de riesgo: edad avanzada (>55 años varones, >65 años mujeres), obesidad (especialmente visceral), historia familiar de hipertensión, ingesta elevada de sal y alcohol, sedentarismo y dieta pobre en frutas/verduras, estrés crónico, raza negra y bajo nivel socioeconómico",
+      "HTA PRIMARIA (90-95% de los casos): origen multifactorial, sin causa identificable única",
+      "HTA SECUNDARIA (5-10% de los casos): asociada a causas reversibles — enfermedad renal crónica, estenosis de la arteria renal, hiperaldosteronismo primario, feocromocitoma, síndrome de Cushing, apnea obstructiva del sueño, fármacos (AINEs, corticosteroides, anticonceptivos)"
+    ],
+    "fisiopatologia": {
+      "resumen": "La HTA resulta del desequilibrio entre mecanismos PRESORES (SRAA, sistema nervioso simpático, endotelina) y mecanismos DEPRESORES (óxido nítrico, prostaciclinas), con el resultado neto de un aumento de la resistencia vascular periférica.",
+      "cascada": [
+        {
+          "paso": "Activación del sistema nervioso simpático",
+          "detalle": "Incrementa el gasto cardíaco y la resistencia vascular periférica"
+        },
+        {
+          "paso": "Disfunción endotelial",
+          "detalle": "Reducción del óxido nítrico (vasodilatador natural) y aumento de vasoconstrictores como la endotelina"
+        },
+        {
+          "paso": "Hiperactividad del SRAA (sistema renina-angiotensina-aldosterona)",
+          "detalle": "Genera vasoconstricción directa, retención de sodio, y remodelado vascular a largo plazo"
+        },
+        {
+          "paso": "Alteraciones renales",
+          "detalle": "Disminución de la capacidad natriurética del riñón, con el consecuente aumento del volumen intravascular"
+        },
+        {
+          "paso": "Inflamación crónica y estrés oxidativo",
+          "detalle": "Contribuyen de forma sostenida al daño endotelial, perpetuando el ciclo"
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/cardio/hta-sraa-diagrama.jpg",
+          "caption": "Sistema Renina-Angiotensina-Aldosterona — SRAA (de tu clase)",
+          "explicacion": "Sigue la cascada completa: la presión arterial BAJA (o la disminución del filtrado glomerular, o el aumento de catecolaminas por estimulación simpática) estimula la liberación de RENINA desde el riñón. La renina escinde el angiotensinógeno (producido por el hígado) en Angiotensina I, que luego la ECA (enzima convertidora de angiotensina, principalmente pulmonar) convierte en Angiotensina II — la molécula CLAVE de todo el sistema, que hace 3 cosas simultáneamente: induce contracción vascular directa, estimula la secreción de aldosterona (que a su vez aumenta la reabsorción tubular de sodio y agua), y así sube la presión arterial de vuelta. Este es exactamente el sistema que bloquean los IECA (inhiben la ECA) y los ARA II (bloquean el receptor de Angiotensina II) — los fármacos de primera línea que verás en el tratamiento."
+        }
+      ]
+    },
+    "clinica": [
+      {
+        "signo": "Habitualmente asintomática",
+        "detallePPT": "La mayoría de pacientes hipertensos no tiene ningún síntoma — por eso se le llama 'el asesino silencioso'",
+        "mecanismo": "La elevación crónica de la presión, aunque dañina a largo plazo, no genera dolor ni malestar agudo perceptible en la mayoría de los casos"
+      },
+      {
+        "signo": "Cefalea, palpitaciones, epistaxis",
+        "detallePPT": "Cuando SÍ hay síntomas, estos son los más frecuentes, aunque inespecíficos",
+        "mecanismo": "Relacionados con picos hipertensivos agudos o presión intracraneal/vascular transitoriamente elevada"
+      },
+      {
+        "signo": "Síntomas sugestivos según etiología (en HTA secundaria)",
+        "detallePPT": "Ej: crisis paroxísticas con cefalea/sudoración/taquicardia en feocromocitoma; debilidad muscular/calambres en hiperaldosteronismo",
+        "mecanismo": "La causa subyacente específica (tumor productor de catecolaminas, exceso de aldosterona, etc.) genera su propio cuadro clínico añadido"
+      }
+    ],
+    "examenFisico": [
+      "Medir la PA en AMBOS brazos (una diferencia significativa sugiere patología vascular)",
+      "Buscar activamente signos de daño a órgano blanco",
+      "Pulsos periféricos, ruidos cardíacos, soplos, fondo de ojo"
+    ],
+    "criteriosDiagnosticos": "El diagnóstico se basa en medición precisa y repetida con tensiómetro validado: técnica adecuada (paciente sentado, en reposo, brazo a nivel del corazón, sin fumar/cafeína 30 min antes), diagnóstico clínico con AL MENOS 2 mediciones elevadas en 2 o más consultas distintas. MAPA (monitoreo ambulatorio) o AMPA (domiciliaria) son útiles para confirmar HTA enmascarada o de bata blanca — bata blanca: PA elevada en consultorio pero normal fuera; enmascarada: normal en consultorio pero elevada fuera (la más peligrosa de detectar, ya que el consultorio la esconde).",
+    "tablasClinicas": [
+      {
+        "titulo": "📊 Clasificación ACC/AHA 2017",
+        "columnas": [
+          "Categoría",
+          "PAS/PAD (mmHg)"
+        ],
+        "filas": [
+          [
+            "Normal",
+            "<120/80"
+          ],
+          [
+            "Elevada",
+            "120-129 / <80"
+          ],
+          [
+            "HTA estadio 1",
+            "130-139 / 80-89"
+          ],
+          [
+            "HTA estadio 2",
+            "≥140 / ≥90"
+          ]
+        ]
+      },
+      {
+        "titulo": "📊 Clasificación ESC/ESH 2018",
+        "columnas": [
+          "Categoría",
+          "PAS/PAD (mmHg)"
+        ],
+        "filas": [
+          [
+            "Óptima",
+            "<120/80"
+          ],
+          [
+            "Normal",
+            "120-129 / 80-84"
+          ],
+          [
+            "Normal alta",
+            "130-139 / 85-89"
+          ],
+          [
+            "HTA grado 1",
+            "140-159 / 90-99"
+          ],
+          [
+            "HTA grado 2",
+            "160-179 / 100-109"
+          ],
+          [
+            "HTA grado 3",
+            "≥180 / ≥110"
+          ]
+        ],
+        "nota": "Ambas clasificaciones (americana y europea) usan umbrales distintos para diagnosticar HTA — la ACC/AHA es más estricta (130/80) que la ESC/ESH (140/90). Es importante saber cuál te están pidiendo en el examen."
+      },
+      {
+        "titulo": "💊 Algoritmo terapéutico por tipo de paciente",
+        "contexto": "El tratamiento se INDIVIDUALIZA según el perfil del paciente — no existe un esquema único.",
+        "columnas": [
+          "Tipo de paciente",
+          "Meta de PA",
+          "Tratamiento inicial"
+        ],
+        "filas": [
+          [
+            "General (<65 años)",
+            "<130/80",
+            "Combinación de 2 fármacos (IECA/ARA II + calcioantagonista o tiazida) — evitar monoterapia inicial"
+          ],
+          [
+            "≥65 años (hasta 79)",
+            "PAS 130-139 si tolerado",
+            "Monoterapia o combinación a dosis bajas — vigilar hipotensión ortostática"
+          ],
+          [
+            "≥80 años o frágiles",
+            "PAS 130-139 si tolerado",
+            "Monoterapia preferente — individualizar"
+          ],
+          [
+            "Diabético",
+            "<130/80 si tolerado",
+            "IECA o ARA II + tiazida o calcioantagonista"
+          ],
+          [
+            "Con ERC",
+            "<130/80",
+            "IECA o ARA II — NUNCA combinar ambos simultáneamente (no son nefroprotectores juntos)"
+          ],
+          [
+            "Cardiopatía isquémica",
+            "<130/80",
+            "Betabloqueador + IECA/ARA II — añadir calcioantagonista si hay angina"
+          ],
+          [
+            "Post-ACV/ICTUS",
+            "<140/90",
+            "IECAs + tiazida — iniciar tras fase aguda (≥72h)"
+          ],
+          [
+            "Embarazo",
+            "<140/90",
+            "Metildopa, labetalol, nifedipino — EVITAR IECA/ARA II por teratogenicidad"
+          ],
+          [
+            "HTA resistente",
+            "<130/80",
+            "Añadir antagonista de aldosterona (espironolactona) — confirmar adherencia y descartar HTA secundaria"
+          ]
+        ]
+      }
+    ],
+    "diagnostico": "Estudios complementarios iniciales: hemograma, creatinina, glucosa, perfil lipídico, electrolitos, EGO, ECG. Según el caso clínico: ecocardiograma, microalbuminuria, fondo de ojo. Daño a órgano blanco a buscar activamente: cerebro (ACV, demencia vascular), corazón (hipertrofia ventricular izquierda, insuficiencia cardíaca), riñones (enfermedad renal crónica), retina (retinopatía hipertensiva).",
+    "diagnosticoDiferencial": [
+      "HTA de bata blanca (elevada solo en consultorio)",
+      "HTA enmascarada (normal en consultorio, elevada fuera)",
+      "Causas secundarias específicas: enfermedad renovascular, hiperaldosteronismo primario, feocromocitoma, síndrome de Cushing, apnea obstructiva del sueño"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Reducción de sodio: <2g/día de sodio (equivalente a <5g de sal)",
+        "Dieta tipo DASH: rica en frutas, vegetales, granos integrales",
+        "Pérdida de peso: objetivo IMC <25 kg/m²",
+        "Ejercicio aeróbico regular: 30 min/día, 5 días/semana",
+        "Reducción del consumo de alcohol y abandono del tabaquismo",
+        "Estos cambios de estilo de vida se recomiendan para TODOS los pacientes, sin excepción, independientemente de si además reciben fármacos"
+      ],
+      "farmacologico": [
+        "Indicado si PA≥140/90, o ≥130/80 en pacientes con comorbilidades",
+        "Primera línea: IECA/ARA II, calcioantagonistas, diuréticos tiazídicos",
+        "Preferible iniciar con COMBINACIÓN a dosis bajas en un solo comprimido, no monoterapia (excepto en HTA leve sin otros factores de riesgo, pacientes frágiles, o embarazo)",
+        "La inclusión de un diurético en las combinaciones produce mayor reducción de PA que las monoterapias",
+        "En HTA resistente: añadir antagonistas de aldosterona (espironolactona)",
+        "Individualizar según comorbilidades: ej. betabloqueadores específicamente en cardiopatía isquémica",
+        "IMPORTANTE: evitar combinar IECA + ARA II simultáneamente (no aporta nefroprotección extra, sí más riesgo)"
+      ]
+    },
+    "complicaciones": [
+      "ACV y demencia vascular (daño cerebral)",
+      "Hipertrofia ventricular izquierda e insuficiencia cardíaca (daño cardíaco)",
+      "Enfermedad renal crónica (daño renal)",
+      "Retinopatía hipertensiva (daño retiniano)",
+      "Cardiopatía coronaria isquémica (la HTA es su principal factor de riesgo modificable)"
+    ],
+    "prevencion": "Modificación de todos los factores de riesgo del estilo de vida: dieta DASH, reducción de sodio, actividad física regular, control de peso, cese de tabaquismo y moderación del alcohol — aplicable incluso antes de que se establezca el diagnóstico de HTA, en personas con PA 'elevada' o 'normal alta'.",
+    "perlasProfundo": "El seguimiento debe ser continuo, evaluando adherencia, efectos adversos, metas de PA, y daño a órganos blanco: meta general <130/80 en la mayoría de pacientes (ACC/AHA), pero en mayores de 65 años la meta es más flexible (PAS 130-139, ESC/ESH) — individualizar SIEMPRE según edad, comorbilidades, estado funcional y tolerancia, especialmente en adultos mayores y frágiles, donde una meta demasiado estricta puede causar más daño (caídas, hipotensión ortostática) que beneficio.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: casos con un perfil de paciente específico (edad, comorbilidades) donde debes elegir el tratamiento y la meta correctos, o identificar qué fármacos evitar — exactamente el patrón de los 2 casos reales de tu propia clase.",
+      "ejercicios": [
+        {
+          "tipo": "Elegir estudios y tratamiento según perfil (tal como en tu propio PPT)",
+          "planteamiento": "Varón de 58 años, fumador pesado y con sobrepeso, con cefalea persistente, PA 160/95 mmHg. ¿Qué estudios solicitarías y qué opciones terapéuticas propones?",
+          "respuestaModelo": "Estudios: hemograma, creatinina, glucosa, perfil lipídico, electrolitos, EGO, ECG como estudio inicial completo; considerar ecocardiograma y fondo de ojo para evaluar daño a órgano blanco dado que la PA (160/95, HTA grado 2/estadio 2) ya es significativamente elevada. Tratamiento: dado que es HTA grado 2, se debe iniciar tratamiento farmacológico de entrada (no solo cambios de estilo de vida) — combinación de 2 fármacos a dosis bajas en un solo comprimido (ej. IECA/ARA II + calcioantagonista o tiazida), junto con cambios de estilo de vida obligatorios: cese de tabaquismo, reducción de peso, dieta DASH, ejercicio regular — el tabaquismo y el sobrepeso son factores de riesgo modificables que deben abordarse en paralelo al fármaco."
+        },
+        {
+          "tipo": "Identificar fármacos a evitar según comorbilidad",
+          "planteamiento": "Varón de 55 años con HTA, antecedente de Gota y Enfermedad Renal Crónica, tomando losartán 100mg/día + amlodipino 10mg/día, sin cumplir la terapia no farmacológica. PA 150/95 mmHg. ¿Qué consejos darías y qué fármacos NO usarías?",
+          "respuestaModelo": "Consejos: reforzar la adherencia a la terapia NO farmacológica (reducción de sodio, dieta DASH, ejercicio, control de peso) ya que actualmente no la cumple — esto puede estar contribuyendo al control subóptimo pese a estar en 2 fármacos. Fármacos a EVITAR: diuréticos TIAZÍDICOS, ya que pueden elevar el ácido úrico y precipitar o empeorar crisis de GOTA (contraindicación relativa importante en este paciente). También se debe evitar agregar un IECA junto al losartán (ARA II) que ya toma — la combinación IECA+ARA II está contraindicada por mayor riesgo de hiperkalemia y deterioro renal SIN beneficio nefroprotector adicional, especialmente relevante dado que ya tiene Enfermedad Renal Crónica de base."
+        }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "HTA: PAS≥130 y/o PAD≥80 (ACC/AHA 2017) o PAS≥140 y/o PAD≥90 (ESC/ESH 2018) — dos umbrales distintos según la guía",
+      "90-95% es HTA primaria (multifactorial); 5-10% secundaria (causa reversible identificable)",
+      "SRAA es el eje fisiopatológico central: Renina→Angiotensina I→(ECA)→Angiotensina II→vasoconstricción+aldosterona"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — primera línea por comorbilidad",
+      "columnas": [
+        "Comorbilidad",
+        "Evitar",
+        "Preferir"
+      ],
+      "filas": [
+        [
+          "ERC",
+          "Combinar IECA+ARA II",
+          "IECA o ARA II solo"
+        ],
+        [
+          "Gota",
+          "Diuréticos tiazídicos",
+          "IECA/ARA II/calcioantagonista"
+        ],
+        [
+          "Embarazo",
+          "IECA/ARA II (teratogénico)",
+          "Metildopa, labetalol, nifedipino"
+        ],
+        [
+          "Cardiopatía isquémica",
+          "—",
+          "Betabloqueador + IECA/ARA II"
+        ]
+      ]
+    },
+    "clinica": "Habitualmente ASINTOMÁTICA (el 'asesino silencioso'); cuando hay síntomas: cefalea, palpitaciones, epistaxis.",
+    "diagnostico": "Al menos 2 mediciones elevadas en 2+ consultas distintas, con técnica correcta. MAPA/AMPA para bata blanca o enmascarada.",
+    "tratamientoResumen": "Estilo de vida SIEMPRE (dieta DASH, sal, ejercicio, peso) + fármacos si PA≥140/90 (o ≥130/80 con comorbilidades) — preferir combinación a dosis bajas desde el inicio, no monoterapia.",
+    "diferenciales": [
+      {
+        "entidad": "HTA de bata blanca",
+        "clave": "Elevada solo en consultorio, normal fuera — confirmar con MAPA/AMPA antes de tratar"
+      },
+      {
+        "entidad": "HTA enmascarada",
+        "clave": "Normal en consultorio, elevada fuera — la más peligrosa de pasar por alto"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "HTA primaria vs. secundaria",
+      "filas": [
+        [
+          "Frecuencia",
+          "90-95% de los casos",
+          "5-10% de los casos"
+        ],
+        [
+          "Causa",
+          "Multifactorial, no identificable",
+          "Identificable y potencialmente reversible"
+        ],
+        [
+          "Ejemplos",
+          "—",
+          "ERC, estenosis renal, hiperaldosteronismo, feocromocitoma, Cushing, SAOS, fármacos"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cuáles son los 2 umbrales diagnósticos según guía? → ACC/AHA: ≥130/80. ESC/ESH: ≥140/90",
+      "¿Qué porcentaje de HTA es primaria vs. secundaria? → 90-95% primaria, 5-10% secundaria",
+      "¿Cuál es la molécula clave del SRAA y sus 3 efectos? → Angiotensina II: vasoconstricción directa, estimula aldosterona, aumenta reabsorción tubular",
+      "¿Qué fármacos evitar en gota? → Diuréticos tiazídicos (elevan ácido úrico)",
+      "¿Qué fármacos evitar en embarazo? → IECA/ARA II (teratogénicos)",
+      "¿Se puede combinar IECA + ARA II? → NO, sin beneficio nefroprotector extra y con más riesgo de hiperkalemia/deterioro renal",
+      "¿Cuál es la meta de PA en adultos mayores frágiles? → Más flexible, individualizada (PAS 130-139 si se tolera), para evitar hipotensión ortostática y caídas"
+    ],
+    "redFlags": [
+      "PA muy elevada (crisis hipertensiva) + síntomas neurológicos/dolor torácico/disnea → urgencia/emergencia hipertensiva, no manejo ambulatorio",
+      "HTA de inicio antes de los 30 años o resistente a 3+ fármacos → sospechar activamente causa secundaria",
+      "Hipopotasemia + HTA → sospechar hiperaldosteronismo primario"
+    ],
+    "erroresFrecuentes": [
+      "Diagnosticar HTA con una sola medición en una sola consulta",
+      "Iniciar monoterapia de rutina en vez de combinación a dosis bajas (excepto casos específicos: leve, frágil, embarazo)",
+      "No individualizar la meta de PA en adultos mayores (aplicar <130/80 a un frágil de 85 años sin ajustar)",
+      "Combinar IECA + ARA II pensando que 'más bloqueo del SRAA es mejor'"
+    ],
+    "asociacionesClinicas": [
+      "HTA + Gota → evitar tiazidas",
+      "HTA + ERC → IECA o ARA II (no ambos), evitar nefrotóxicos",
+      "HTA + embarazo → metildopa/labetalol/nifedipino, nunca IECA/ARA II"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Evalúas a un paciente varón de 58 años, fumador pesado y con sobrepeso, con cefalea persistente. Presión arterial 160/95 mmHg.",
+      "preguntaMC": {
+        "enunciado": "Según la clasificación ESC/ESH 2018, ¿en qué categoría se encuentra este paciente y cuál es la conducta terapéutica inicial más apropiada?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "HTA grado 2 — iniciar tratamiento farmacológico combinado de entrada (2 fármacos a dosis bajas) junto con cambios de estilo de vida"
+          },
+          {
+            "id": "b",
+            "texto": "Normal alta — solo cambios de estilo de vida, sin fármacos"
+          },
+          {
+            "id": "c",
+            "texto": "HTA grado 1 — monoterapia únicamente"
+          },
+          {
+            "id": "d",
+            "texto": "HTA grado 3 — requiere hospitalización inmediata"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "Según ESC/ESH 2018, 160/95 mmHg corresponde a HTA GRADO 2 (160-179/100-109 — aunque la diastólica de 95 está algo por debajo del rango exacto de grado 2, la sistólica de 160 ya clasifica al paciente en ese grado, tomando el valor más alto de cualquiera de las 2 cifras). En HTA grado 2, la recomendación es iniciar tratamiento farmacológico COMBINADO desde el inicio (2 fármacos a dosis bajas en un solo comprimido), no monoterapia, junto con cambios de estilo de vida obligatorios — especialmente relevantes aquí dado el tabaquismo y sobrepeso del paciente, ambos factores de riesgo modificables adicionales."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué en este paciente es especialmente importante NO limitarse solo al fármaco antihipertensivo, sino abordar también el tabaquismo?",
+        "respuestaModelo": "El tabaquismo daña directamente el endotelio vascular y promueve la formación de placas ateroscleróticas — es un factor de riesgo cardiovascular INDEPENDIENTE de la hipertensión, que actúa de forma sinérgica (no solo aditiva) con la HTA para acelerar el desarrollo de enfermedad cardiovascular, incluyendo cardiopatía coronaria isquémica y ACV. Controlar solo la presión arterial farmacológicamente, sin abordar el tabaquismo, deja al paciente con un riesgo cardiovascular residual muy alto — el manejo integral de TODOS los factores de riesgo modificables (no solo la PA) es lo que realmente reduce los eventos cardiovasculares mayores a largo plazo."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "(Caso real de tu clase) Paciente varón de 55 años con antecedente de Hipertensión Arterial, acude por control. Tiene antecedente de Gota y Enfermedad Renal Crónica. Refiere estar tomando losartán 100mg/día y amlodipino 10mg/día. No cumple con la terapia no farmacológica. La presión arterial es de 150/95 mmHg.",
+      "preguntaMC": {
+        "enunciado": "Si fuera necesario agregar un tercer fármaco antihipertensivo a este paciente, ¿cuál de las siguientes opciones sería la MENOS apropiada?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Un diurético tiazídico"
+          },
+          {
+            "id": "b",
+            "texto": "Un antagonista de aldosterona (espironolactona) en dosis baja"
+          },
+          {
+            "id": "c",
+            "texto": "Un IECA (como enalapril) agregado al losartán ya existente"
+          },
+          {
+            "id": "d",
+            "texto": "Ambas b y c son inapropiadas, pero c es la más peligrosa"
+          }
+        ],
+        "correcta": "d",
+        "explicacion": "Un diurético tiazídico (a) es inapropiado porque puede elevar el ácido úrico y precipitar crisis de gota en un paciente que YA tiene antecedente de gota. Pero agregar un IECA al losartán (ARA II) que ya toma (c) es AÚN MÁS PELIGROSO: la combinación IECA+ARA II está contraindicada por mayor riesgo de hiperkalemia y deterioro de la función renal, sin beneficio nefroprotector adicional — un riesgo particularmente grave en este paciente que YA tiene Enfermedad Renal Crónica de base. La espironolactona (b) sería una opción razonable para HTA resistente, aunque requiere vigilar potasio dado que también tiene ERC."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Antes de agregar cualquier fármaco nuevo, ¿qué deberías investigar y abordar primero en este paciente, y por qué?",
+        "respuestaModelo": "Antes de escalar el tratamiento farmacológico, se debe investigar y reforzar la ADHERENCIA a la terapia no farmacológica, que el paciente explícitamente NO está cumpliendo (reducción de sodio, dieta DASH, ejercicio regular, control de peso). Es posible que el control subóptimo actual (150/95 pese a 2 fármacos) se deba en parte a esta falta de adherencia al estilo de vida, no necesariamente a que el esquema farmacológico sea insuficiente. Agregar un tercer fármaco sin antes confirmar y reforzar el cumplimiento no farmacológico podría ser prematuro — además de que aumentar el número de fármacos sin abordar la causa raíz (adherencia) rara vez resuelve el problema de fondo y solo añade más riesgo de efectos adversos e interacciones."
       }
     }
   ]
