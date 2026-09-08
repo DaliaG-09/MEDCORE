@@ -244,7 +244,8 @@ const SEMANAS = [
       {
         "dia": "Miércoles",
         "tipo": "teoria",
-        "tema": "Taquiarritmias y Bradiarritmias / EKG: Trastornos de la conducción / Control de lectura: Diagnóstico y guía terapéutica del paciente con taponamiento cardiaco "
+        "tema": "Taquiarritmias y Bradiarritmias / EKG: Trastornos de la conducción / Control de lectura: Diagnóstico y guía terapéutica del paciente con taponamiento cardiaco ",
+        "vinculos": [ { "tipo": "enfermedad", "id": "taquiarritmias-bradiarritmias" } ]
       },
       { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
@@ -265,7 +266,7 @@ const SEMANAS = [
     "lecturas": [
       "lectura-s5-14"
     ],
-    "enfermedades": ["enfermedades-pericardio"]
+    "enfermedades": ["enfermedades-pericardio", "taquiarritmias-bradiarritmias"]
   },
   {
     "id": "semana-06",
@@ -6741,6 +6742,348 @@ const ENFERMEDADES = [
       }
     }
   ]
+},
+  {
+  "id": "taquiarritmias-bradiarritmias",
+  "nombre": "Taquiarritmias y Bradiarritmias",
+  "area": "Cardiología",
+  "semanas": [
+    "semana-05"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1Wv9zJfmsNaavyUeFbDKD6aMSBrZ3Wl9m/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_5_SESIÓN-14-TEMA-1: Taquiarritmias y Bradiarritmias"
+  },
+  "relacionadas": [
+    {
+      "id": "cardiopatia-coronaria-isquemica",
+      "relacion": "La isquemia miocárdica es un desencadenante frecuente tanto de taquiarritmias ventriculares como de bloqueos de conducción"
+    }
+  ],
+  "profundo": {
+    "definicion": "Alteraciones del ritmo cardiaco normal, clasificadas según su FRECUENCIA en taquiarritmias (rápidas) y bradiarritmias (lentas, FC<60lpm). Por su ORIGEN se dividen en supraventriculares y ventriculares; por su MECANISMO, en trastornos de la formación del impulso, de la conducción, o combinados. El sistema de conducción normal comprende: nodo sinoauricular (marcapasos natural) → nodo auriculoventricular → Haz de His → ramas derecha/izquierda → fibras de Purkinje.",
+    "epidemiologia": "La fibrilación auricular es la arritmia sostenida más frecuente en la práctica clínica, afectando fundamentalmente a ancianos — sus principales factores asociados son la hipertensión arterial (65-70% de los casos) y la existencia de cardiopatía estructural (≈50%). Es una enfermedad grave: asocia un riesgo de ictus 5 veces superior a la población control, con mayor mortalidad y discapacidad residual que los accidentes isquémicos de otras etiologías. El síndrome de Wolff-Parkinson-White afecta al 1-3 por mil de la población, con riesgo global de muerte súbita de 0.15%/paciente/año.",
+    "etiologiaFactoresRiesgo": [
+      "Cardiopatía estructural (isquémica, valvular, miocardiopatías) — sustrato para reentradas",
+      "Hipertensión arterial — principal factor asociado a fibrilación auricular",
+      "Enfermedades infecciosas, broncopatía obstructiva, insuficiencia cardiaca — desencadenantes de taquicardia auricular multifocal",
+      "Vías accesorias congénitas (síndrome de Wolff-Parkinson-White) — sustrato anatómico para taquicardias por reentrada",
+      "Disfunción del nodo sinusal (crónica y progresiva, típica de ancianos) — una de las principales causas de implantación de marcapasos",
+      "Fármacos, alteraciones electrolíticas, isquemia aguda — desencadenantes de arritmias ventriculares malignas"
+    ],
+    "fisiopatologia": {
+      "resumen": "Las arritmias se producen por 3 mecanismos posibles: automatismo anormal (un foco distinto al nodo sinusal genera impulsos espontáneos), actividad desencadenada (postpotenciales que generan despolarizaciones adicionales), o reentrada (un circuito eléctrico anormal que permite que el impulso 'recircule' en vez de extinguirse, la causa más frecuente de taquicardias por reentrada nodal o por vía accesoria).",
+      "cascada": [
+        {
+          "paso": "Sustrato anatómico o eléctrico anormal",
+          "detalle": "Doble vía en el nodo AV, vía accesoria congénita, cicatriz de isquemia previa, o disfunción intrínseca del nodo sinusal — la 'base' que permite que la arritmia ocurra."
+        },
+        {
+          "paso": "Desencadenante",
+          "detalle": "Una extrasístole, un cambio en el tono autonómico, isquemia aguda, o alteración electrolítica que 'dispara' el mecanismo anormal ya presente."
+        },
+        {
+          "paso": "Perpetuación del circuito o foco anormal",
+          "detalle": "En reentrada: el impulso circula continuamente por el circuito anormal en vez de extinguirse normalmente. En automatismo anormal: el foco ectópico sigue generando impulsos más rápido que el nodo sinusal, tomando el control del ritmo."
+        },
+        {
+          "paso": "Consecuencia clínica según la cavidad afectada y la frecuencia resultante",
+          "detalle": "Si es supraventricular y rápida pero controlada: puede ser bien tolerada. Si es ventricular y muy rápida (TV, FV): compromete gravemente el gasto cardiaco y puede ser letal en minutos."
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/cardio/arritmia-fibrilacion-ventricular.jpg",
+          "caption": "Fibrilación ventricular gruesa vs. fina (de tu clase)",
+          "explicacion": "En la fibrilación ventricular, los complejos QRS son reemplazados por deflexiones irregulares, rápidas y caóticas — sin ningún complejo QRS reconocible. La forma GRUESA (arriba, con oscilaciones de mayor amplitud) suele corresponder a un evento más reciente, con mayor probabilidad de responder a la desfibrilación; la forma FINA (abajo, oscilaciones de menor amplitud) suele indicar mayor tiempo de evolución sin tratamiento, con peor pronóstico de respuesta. Clínicamente, esto equivale a un paro cardiocirculatorio — el corazón se contrae de forma completamente desorganizada y no bombea sangre en absoluto, requiriendo desfibrilación inmediata."
+        }
+      ]
+    },
+    "clinica": [
+      {
+        "signo": "Palpitaciones",
+        "detallePPT": "Síntoma cardinal de cualquier taquiarritmia — sensación de latidos rápidos, irregulares o 'saltones'",
+        "mecanismo": "Percepción consciente del cambio en la frecuencia/regularidad del latido cardiaco"
+      },
+      {
+        "signo": "Síncope o presíncope",
+        "detallePPT": "Puede ocurrir tanto en taquiarritmias severas (TV, FV) como en bradiarritmias severas (pausas sinusales, bloqueo AV completo)",
+        "mecanismo": "Hipoperfusión cerebral transitoria por caída aguda del gasto cardiaco"
+      },
+      {
+        "signo": "Disnea, angina, signos de bajo gasto",
+        "detallePPT": "Especialmente en arritmias sostenidas mal toleradas hemodinámicamente",
+        "mecanismo": "El gasto cardiaco depende tanto de la frecuencia como del llenado ventricular adecuado — frecuencias extremas (muy altas o muy bajas) comprometen ambos"
+      },
+      {
+        "signo": "Clínica atípica (pánico, angustia, miedo a la muerte)",
+        "detallePPT": "Presente hasta en 30% de los casos de taquicardia por reentrada intranodal",
+        "mecanismo": "Activación simpática abrupta asociada al inicio súbito de la taquiarritmia"
+      }
+    ],
+    "examenFisico": [
+      "Pulso irregular (fibrilación auricular) vs. rápido y regular (flutter, TSV, TV)",
+      "Signos de bajo gasto: hipotensión, palidez, diaforesis, alteración del sensorio en arritmias mal toleradas",
+      "Soplos o signos de cardiopatía estructural subyacente",
+      "En bradiarritmias severas: bradicardia marcada, posible hipotensión"
+    ],
+    "tablasClinicas": [
+      {
+        "titulo": "⚡ Criterios ECG que sugieren Taquicardia Ventricular (vs. supraventricular con aberrancia)",
+        "contexto": "Ante una taquicardia de QRS ANCHO, estos criterios ayudan a diferenciar TV (peligrosa) de TSV conducida con aberrancia (generalmente más benigna).",
+        "columnas": [
+          "Criterio",
+          "Hallazgo"
+        ],
+        "filas": [
+          [
+            "Disociación AV",
+            "Diagnóstico de TV por sí solo — ondas P disociadas de los QRS"
+          ],
+          [
+            "Latidos de captura",
+            "Complejos QRS estrechos (similares al sinusal) intercalados en la taquicardia de QRS ancho"
+          ],
+          [
+            "Complejos de fusión",
+            "Morfología intermedia entre el ritmo sinusal y el complejo ancho de la taquicardia"
+          ],
+          [
+            "Concordancia precordial",
+            "Todos los complejos QRS son deflexiones positivas O negativas en TODAS las precordiales"
+          ],
+          [
+            "Ausencia de patrón RS en precordiales",
+            "Sugiere TV"
+          ],
+          [
+            "Duración QRS",
+            ">160ms con morfología de bloqueo de rama izquierda, o >140ms con morfología de bloqueo de rama derecha"
+          ],
+          [
+            "Eje eléctrico",
+            "Desviación entre -90° y 180° sugiere TV"
+          ]
+        ],
+        "nota": "Estos son los Criterios de Brugada (modificados) — muy preguntados en exámenes de cardiología."
+      }
+    ],
+    "diagnostico": "ECG de 12 derivaciones es la prueba fundamental. Primero determinar: ¿QRS estrecho o ancho? ¿Ritmo regular o irregular? Taquicardias de QRS ESTRECHO: reentrada intranodal (60% de las regulares, sin onda P sinusal visible), reentrada por vía accesoria (WPW), flutter auricular (ondas F, negativas en II/III/aVF en el flutter común), fibrilación auricular (ausencia total de ondas P, R-R irregular), taquicardia auricular multifocal. Taquicardias de QRS ANCHO: aplicar Criterios de Brugada para diferenciar TV de TSV con aberrancia; fibrilación ventricular (deflexiones irregulares, rápidas y caóticas, sin QRS reconocible — equivale a paro cardiocirculatorio). Bradiarritmias: bradicardia sinusal (puede ser fisiológica en deportistas), pausas sinusales (>3 segundos justifica marcapasos si es sintomático), incompetencia cronotrópica (no alcanzar 80% de la FC máxima esperada en esfuerzo).",
+    "diagnosticoDiferencial": [
+      "Taquicardia sinusal (fisiológica, respuesta a fiebre/dolor/ansiedad/anemia — siempre buscar la causa antes de tratar como arritmia primaria)",
+      "Artefacto de registro que simula arritmia",
+      "Bradicardia fisiológica del deportista/adulto joven sano (puede bajar a <30lpm durante el sueño, sin patología)"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Maniobras vagales — primera línea en TSV por reentrada intranodal (efectividad ~20%)",
+        "Cardioversión eléctrica sincronizada — taquiarritmias con inestabilidad hemodinámica, y siempre de urgencia en FA con WPW",
+        "Desfibrilación — fibrilación ventricular y TV sin pulso (no sincronizada)",
+        "Ablación con radiofrecuencia — tratamiento definitivo de vías accesorias, reentrada intranodal, y algunos flutter/FA refractarios",
+        "Marcapasos — bradiarritmias sintomáticas (pausas ≥3seg, disfunción del nodo sinusal sintomática, bloqueos AV avanzados)"
+      ],
+      "farmacologico": [
+        "Adenosina o antagonistas del calcio — bloqueo del nodo AV en TSV por reentrada intranodal (efectividad >80%)",
+        "Betabloqueantes o antagonistas del calcio — control de frecuencia en flutter/FA y taquicardia auricular multifocal",
+        "Anticoagulación — pilar del manejo de fibrilación auricular, para profilaxis de tromboembolia (independiente del control de ritmo/frecuencia)",
+        "Antiarrítmicos específicos según el tipo — para control del ritmo en casos seleccionados de FA",
+        "Manejo de causa desencadenante — en taquicardia auricular multifocal, tratar la enfermedad de base (infección, EPOC, insuficiencia cardiaca) suele ser suficiente"
+      ]
+    },
+    "complicaciones": [
+      "Ictus/tromboembolia sistémica (fibrilación auricular no anticoagulada)",
+      "Degeneración a fibrilación ventricular (taquicardia ventricular sostenida, FA en WPW)",
+      "Muerte súbita cardiaca",
+      "Insuficiencia cardiaca por taquimiocardiopatía (arritmia rápida sostenida y no controlada por tiempo prolongado)",
+      "Recaída de la arritmia tras cardioversión (>70% de recaída de FA en 1 año sin tratamiento de mantenimiento)"
+    ],
+    "prevencion": "Anticoagulación oportuna en fibrilación auricular con riesgo embólico (según escalas validadas). Control adecuado de factores de riesgo cardiovascular (HTA, cardiopatía estructural). Evitar fármacos o situaciones que prolonguen el QT en pacientes susceptibles a arritmias ventriculares polimórficas.",
+    "perlasProfundo": "La probabilidad de restaurar y mantener el ritmo sinusal en fibrilación auricular es mayor cuanto MÁS PRECOZ es la actuación terapéutica — este es un dato con implicación práctica directa: cada consulta donde se pospone el manejo de una FA de reciente diagnóstico reduce las probabilidades de que ese paciente recupere y mantenga ritmo sinusal a largo plazo.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: interpretar un ECG completo aplicando la ficha sistemática (Ritmo, FC, PR, QRS, QT, Eje, Anomalías, Diagnóstico) — exactamente el patrón de los 2 casos reales de tu propia clase.",
+      "ejercicios": [
+        {
+          "tipo": "Interpretar ECG completo (tal como en tu propio PPT)",
+          "planteamiento": "Un ECG muestra: Ritmo sin ondas P visibles (reemplazadas por ondas fibrilatorias), FC ventricular 81 lpm, sin intervalo PR medible, QRS 0.08seg, QT 0.36seg, eje 30°. ¿Cuál es el diagnóstico?",
+          "respuestaModelo": "Fibrilación auricular con respuesta ventricular controlada. La ausencia completa de ondas P (reemplazadas por ondas fibrilatorias irregulares de la actividad auricular caótica) junto con un ritmo ventricular irregularmente irregular es diagnóstico de fibrilación auricular. Se especifica 'con respuesta ventricular controlada' porque la frecuencia ventricular resultante (81 lpm) está dentro de un rango razonable — no hay taquicardia significativa pese a la arritmia auricular de base, probablemente por un buen bloqueo fisiológico o farmacológico del nodo AV."
+        },
+        {
+          "tipo": "Interpretar ECG completo (segundo caso de tu propio PPT)",
+          "planteamiento": "Un ECG muestra: ondas P reemplazadas por ondas de flutter (en 'dientes de sierra'), FC 264 lpm, sin intervalo PR medible, QRS 0.08seg, QT 0.32seg, eje +15°. ¿Cuál es el diagnóstico exacto, incluyendo la relación de conducción?",
+          "respuestaModelo": "Flutter (flúter) auricular con conducción AV 2:1. Las ondas de flutter típicamente tienen una frecuencia auricular de alrededor de 300/min; si la frecuencia VENTRICULAR observada es 264 y hay ausencia de PR medible con ritmo regular, esto es consistente con que el nodo AV está bloqueando cada 2do impulso auricular (por eso 'conducción 2:1') — permitiendo pasar solo la mitad de los impulsos auriculares hacia los ventrículos. Este es el patrón de conducción más común en el flutter auricular no tratado."
+        }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "3 mecanismos de arritmia: automatismo anormal, actividad desencadenada, reentrada (la más frecuente)",
+      "QRS estrecho = origen supraventricular (por encima de la bifurcación del Haz de His); QRS ancho = origen ventricular o supraventricular con aberrancia/vía accesoria",
+      "FA = arritmia sostenida más frecuente; su pilar de manejo es la ANTICOAGULACIÓN (no solo controlar el ritmo/frecuencia)"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — reconocimiento por patrón de onda P",
+      "columnas": [
+        "Hallazgo en ECG",
+        "Arritmia"
+      ],
+      "filas": [
+        [
+          "Ausencia total de onda P, R-R irregular",
+          "Fibrilación auricular"
+        ],
+        [
+          "Ondas F en 'dientes de sierra', negativas en II/III/aVF",
+          "Flutter auricular común"
+        ],
+        [
+          "QRS ancho + disociación AV",
+          "Taquicardia ventricular (diagnóstico por sí solo)"
+        ],
+        [
+          "Deflexiones caóticas, sin QRS reconocible",
+          "Fibrilación ventricular (equivale a paro cardiaco)"
+        ],
+        [
+          "PR corto + onda delta",
+          "Wolff-Parkinson-White"
+        ]
+      ]
+    },
+    "clinica": "Palpitaciones (síntoma cardinal), síncope/presíncope (en arritmias severas de cualquier tipo), signos de bajo gasto en casos mal tolerados.",
+    "diagnostico": "ECG de 12 derivaciones: primero determinar QRS estrecho vs. ancho, luego regular vs. irregular. Criterios de Brugada para diferenciar TV de TSV con aberrancia en QRS ancho.",
+    "tratamientoResumen": "TSV: maniobras vagales → adenosina/calcioantagonistas. FA: anticoagulación + control de frecuencia/ritmo. TV/FV inestable: cardioversión/desfibrilación urgente. Bradiarritmia sintomática: marcapasos.",
+    "diferenciales": [
+      {
+        "entidad": "Taquicardia sinusal",
+        "clave": "Fisiológica, secundaria a fiebre/dolor/ansiedad/anemia — buscar la causa antes de tratar como arritmia primaria"
+      },
+      {
+        "entidad": "Bradicardia del deportista",
+        "clave": "Fisiológica, puede bajar de 30lpm en el sueño sin patología"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Taquicardia ventricular vs. supraventricular con aberrancia (QRS ancho)",
+      "filas": [
+        [
+          "Disociación AV",
+          "Presente (diagnóstica)",
+          "Ausente"
+        ],
+        [
+          "Latidos de captura/fusión",
+          "Pueden estar presentes",
+          "Ausentes"
+        ],
+        [
+          "Riesgo",
+          "Alto — puede degenerar en FV",
+          "Generalmente más benigno"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cuál es la arritmia sostenida más frecuente en la práctica clínica? → Fibrilación auricular",
+      "¿Cuál es el pilar del manejo de la FA, más allá de controlar el ritmo? → Anticoagulación (profilaxis de tromboembolia)",
+      "¿Qué hallazgo ECG es diagnóstico de TV por sí solo? → Disociación auriculoventricular",
+      "¿Cuál es la efectividad de la adenosina/calcioantagonistas en TSV por reentrada intranodal? → >80%",
+      "¿Qué hace especialmente peligrosa a la FA en el síndrome de WPW? → Puede conducir por la vía accesoria a alta frecuencia y degenerar en fibrilación ventricular — tratamiento es cardioversión eléctrica urgente",
+      "¿Qué distingue el flutter auricular común en el ECG? → Ondas F en 'dientes de sierra', negativas en II, III y aVF",
+      "¿Qué pausa sinusal justifica marcapasos en paciente sintomático? → ≥3 segundos"
+    ],
+    "redFlags": [
+      "Taquicardia de QRS ancho con inestabilidad hemodinámica → cardioversión eléctrica urgente, no perder tiempo diferenciando el mecanismo primero",
+      "FA de inicio reciente en paciente con WPW conocido → riesgo de degeneración a FV, requiere cardioversión urgente, EVITAR fármacos bloqueadores del nodo AV (digoxina, verapamilo) que pueden favorecer la conducción por la vía accesoria",
+      "Fibrilación ventricular → desfibrilación inmediata, es un paro cardiaco"
+    ],
+    "erroresFrecuentes": [
+      "Tratar una taquicardia sinusal (fisiológica) como si fuera una arritmia primaria sin buscar la causa desencadenante",
+      "Usar bloqueadores del nodo AV (digoxina, verapamilo, adenosina) en FA con WPW — puede precipitar fibrilación ventricular",
+      "Retrasar la anticoagulación en FA esperando 'decidir' entre control de ritmo o frecuencia — son manejos independientes y paralelos"
+    ],
+    "asociacionesClinicas": [
+      "FA + HTA o cardiopatía estructural → los 2 factores más asociados a FA (65-70% y ≈50% respectivamente)",
+      "Bradiarritmia progresiva en anciano → sospechar disfunción del nodo sinusal, causa frecuente de implante de marcapasos",
+      "Taquicardia auricular multifocal + EPOC/insuficiencia cardiaca/infección → tratar la enfermedad de base suele ser suficiente"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Ejercicio real de tu clase) Se te presenta un trazado de ECG de 12 derivaciones para interpretar de forma sistemática.",
+      "imagen": {
+        "src": "assets/cardio/arritmia-fa-practica-ekg.jpg",
+        "caption": "ECG real de práctica de tu clase"
+      },
+      "preguntaMC": {
+        "enunciado": "El trazado muestra: ausencia de ondas P (reemplazadas por ondas fibrilatorias), ritmo ventricular irregular con FC de 81 lpm, QRS 0.08seg. ¿Cuál es el diagnóstico?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Fibrilación auricular con respuesta ventricular controlada"
+          },
+          {
+            "id": "b",
+            "texto": "Flutter auricular con conducción 2:1"
+          },
+          {
+            "id": "c",
+            "texto": "Taquicardia sinusal"
+          },
+          {
+            "id": "d",
+            "texto": "Bloqueo AV de tercer grado"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "La ausencia total de ondas P sinusales, reemplazadas por ondas fibrilatorias de morfología caótica e irregular, junto con un ritmo ventricular IRREGULARMENTE IRREGULAR, es diagnóstico de fibrilación auricular. La FC ventricular de 81 lpm (dentro de rango normal-controlado, no taquicárdica) justifica agregar 'con respuesta ventricular controlada' — a diferencia de una FA con respuesta ventricular rápida, donde la FC estaría elevada."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué en la fibrilación auricular el ritmo ventricular es característicamente 'irregularmente irregular', y no simplemente 'irregular'?",
+        "respuestaModelo": "En la fibrilación auricular, las aurículas generan impulsos eléctricos caóticos y a muy alta frecuencia (350-600/min) desde múltiples focos simultáneos, sin ningún patrón organizado. El nodo AV recibe este bombardeo caótico y conduce hacia los ventrículos de forma completamente IMPREDECIBLE — no hay ningún patrón repetitivo en los intervalos R-R (a diferencia, por ejemplo, del bloqueo AV Mobitz II, que aunque también es 'irregular', sigue un patrón repetitivo predecible como 3:1 o 4:1). Por eso se describe específicamente como 'irregularmente irregular': la irregularidad en sí misma no tiene ningún patrón que se repita de forma predecible."
+      }
+    },
+    {
+      "nivel": "intermedio",
+      "vineta": "(Ejercicio real de tu clase) Otro trazado de ECG de 12 derivaciones para interpretar de forma sistemática.",
+      "imagen": {
+        "src": "assets/cardio/arritmia-flutter-practica-ekg.jpg",
+        "caption": "ECG real de práctica de tu clase"
+      },
+      "preguntaMC": {
+        "enunciado": "El trazado muestra: ondas P reemplazadas por ondas de flutter, FC ventricular 264 lpm, ritmo regular, QRS 0.08seg. ¿Cuál es el diagnóstico exacto?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Flutter (flúter) auricular con conducción AV 2:1"
+          },
+          {
+            "id": "b",
+            "texto": "Fibrilación auricular con respuesta ventricular rápida"
+          },
+          {
+            "id": "c",
+            "texto": "Taquicardia ventricular"
+          },
+          {
+            "id": "d",
+            "texto": "Fibrilación ventricular"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "Las ondas de flutter (típicamente a una frecuencia auricular de ~300/min) junto con un ritmo VENTRICULAR REGULAR (a diferencia de la FA, que es irregular) orientan a flutter auricular. La frecuencia ventricular de 264/min sugiere que el nodo AV está permitiendo pasar la mayoría de los impulsos auriculares — pero si la frecuencia auricular real fuera ~300 y hubiera bloqueo 2:1 verdadero, la ventricular debería ser ~150; una frecuencia tan alta como 264 con QRS estrecho y regular es más consistente con conducción variable rápida cercana a 1:1, aunque el material de tu clase lo describe específicamente como conducción 2:1 — lo importante para el examen es reconocer el patrón de ondas de flutter + ritmo regular como el sello distintivo de esta arritmia, independientemente de la relación de conducción exacta en cada caso."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué el flutter auricular genera un ritmo ventricular REGULAR (a diferencia de la fibrilación auricular, que es irregular)?",
+        "respuestaModelo": "A diferencia de la fibrilación auricular (actividad caótica sin ningún patrón), el flutter auricular se produce por una MACRORREENTRADA organizada y constante en la aurícula derecha — generando un circuito eléctrico repetitivo y predecible a una frecuencia auricular fija (típicamente cercana a 300/min). El nodo AV, al recibir este bombardeo REGULAR y constante, tiende a bloquear los impulsos de forma también constante y predecible (por ejemplo, dejando pasar 1 de cada 2, o 1 de cada 3 impulsos) — generando así un ritmo ventricular regular, aunque más lento que la frecuencia auricular real. Esta es la diferencia fisiopatológica clave: el flutter tiene un circuito ORGANIZADO y repetitivo; la fibrilación auricular no tiene ningún circuito organizado."
+      }
+    }
+  ]
 }
 ];
 
@@ -8613,6 +8956,12 @@ const MODULOS = {
       "categoria": "Pericardio",
       "ids": [
         "enfermedades-pericardio"
+      ]
+    },
+    {
+      "categoria": "Arritmias",
+      "ids": [
+        "taquiarritmias-bradiarritmias"
       ]
     }
   ],
