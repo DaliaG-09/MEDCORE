@@ -5649,30 +5649,40 @@ const ENFERMEDADES = [
     "fisiopatologia": {
       "resumen": "La isquemia miocárdica ocurre cuando el suministro de sangre al miocardio es insuficiente para satisfacer sus demandas de oxígeno — principalmente por la obstrucción progresiva de las arterias coronarias debido a aterosclerosis.",
       "cascada": [
-        {
-          "paso": "Obstrucción del flujo sanguíneo coronario",
-          "detalle": "Una arteria coronaria se estrecha o bloquea por acumulación de placa aterosclerótica. El corazón, al no recibir suficiente oxígeno, entra en estado de hipoxia."
-        },
-        {
-          "paso": "Desajuste entre oferta y demanda de oxígeno",
-          "detalle": "Si la demanda de oxígeno excede el suministro (por la obstrucción ya presente), se produce la isquemia. Este desajuste se hace evidente típicamente en situaciones de ejercicio o estrés, cuando la demanda aumenta."
-        },
-        {
-          "paso": "Disfunción endotelial",
-          "detalle": "La falta de oxígeno provoca disfunción del endotelio (capa interna de las arterias), lo que contribuye a la inflamación, facilita la agregación plaquetaria y la formación de coágulos."
-        },
-        {
-          "paso": "Acidosis y alteración del metabolismo",
-          "detalle": "La disminución de oxígeno en las células miocárdicas lleva a acidosis y a un cambio hacia metabolismo ANAERÓBICO, produciendo ácido láctico y otras sustancias metabólicas que causan el dolor (angina) y la disfunción miocárdica."
-        }
-      ],
+  {
+    "paso": "Obstrucción del flujo sanguíneo coronario",
+    "detalle": "Una arteria coronaria se estrecha o bloquea por acumulación de placa aterosclerótica. El corazón, al no recibir suficiente oxígeno, entra en estado de hipoxia."
+  },
+  {
+    "paso": "Desajuste entre oferta y demanda de oxígeno",
+    "detalle": "Si la demanda de oxígeno excede el suministro (por la obstrucción ya presente), se produce la isquemia. Este desajuste se hace evidente típicamente en situaciones de ejercicio o estrés, cuando la demanda aumenta."
+  },
+  {
+    "paso": "Disfunción endotelial",
+    "detalle": "La falta de oxígeno provoca disfunción del endotelio (capa interna de las arterias), lo que contribuye a la inflamación, facilita la agregación plaquetaria y la formación de coágulos."
+  },
+  {
+    "paso": "Acidosis y alteración del metabolismo",
+    "detalle": "La disminución de oxígeno en las células miocárdicas lleva a acidosis y a un cambio hacia metabolismo ANAERÓBICO, produciendo ácido láctico y otras sustancias metabólicas que causan el dolor (angina) y la disfunción miocárdica."
+  }
+],
       "imagenes": [
-        {
-          "src": "assets/cardio/cci-lesion-subendo-subepicardica.jpg",
-          "caption": "Lesión subendocárdica vs. subepicárdica/transmural (de tu clase)",
-          "explicacion": "El subendocardio es la capa MÁS SENSIBLE a la isquemia (recibe el flujo sanguíneo de forma más precaria, ya que está más lejos de las arterias epicárdicas). Por eso una obstrucción INCOMPLETA o distal genera lesión subendocárdica (descenso del ST, implicaciones MENOS graves — el diagrama de la izquierda muestra las flechas de despolarización alteradas solo en la capa interna). Una obstrucción COMPLETA de una arteria principal compromete TODO el espesor de la pared (transmural/subepicárdica), generando ELEVACIÓN del ST — y si no se trata precozmente, evoluciona a un infarto con onda Q (necrosis). Esta es la diferencia fisiopatológica exacta entre lo que verás como 'descenso de ST' (SCA sin elevación) y 'elevación de ST' (STEMI) en la práctica clínica."
-        }
-      ],
+  {
+    "src": "assets/cardio/cci-lesion-subendo-subepicardica.jpg",
+    "caption": "Lesión subendocárdica vs. subepicárdica/transmural (de tu clase)",
+    "explicacion": "El subendocardio es la capa MÁS SENSIBLE a la isquemia (recibe el flujo sanguíneo de forma más precaria, ya que está más lejos de las arterias epicárdicas). Por eso una obstrucción INCOMPLETA o distal genera lesión subendocárdica (descenso del ST, implicaciones MENOS graves — el diagrama de la izquierda muestra las flechas de despolarización alteradas solo en la capa interna). Una obstrucción COMPLETA de una arteria principal compromete TODO el espesor de la pared (transmural/subepicárdica), generando ELEVACIÓN del ST — y si no se trata precozmente, evoluciona a un infarto con onda Q (necrosis). Esta es la diferencia fisiopatológica exacta entre lo que verás como 'descenso de ST' (SCA sin elevación) y 'elevación de ST' (STEMI) en la práctica clínica."
+  },
+  {
+    "src": "assets/cardio/cci-mecanismo-2-vias.jpg",
+    "caption": "Las 2 vías del mecanismo de isquemia miocárdica (de tu clase)",
+    "explicacion": "La cascada que ya viste (obstrucción→desajuste O2→disfunción endotelial→acidosis) describe la vía IZQUIERDA de este diagrama: enfermedad ATEROESCLERÓTICA — placa estable (reduce el flujo gradualmente, causa angina) o placa vulnerable que se rompe (trombosis→síndrome agudo). Pero existe una SEGUNDA vía, distinta: enfermedad VASOESPÁSTICA (derecha) — un espasmo de la arteria coronaria (sin necesariamente tener una placa obstructiva grande) puede ser TRANSITORIO (causando el llamado 'Síndrome X' — angina con coronarias angiográficamente normales) o PERSISTENTE (causando un infarto de miocardio real, pese a que la arteria no esté obstruida por placa). Esta vía vasoespástica explica casos como la angina de Prinzmetal o el infarto asociado a cocaína, donde el problema no es una placa que se rompe, sino un espasmo arterial que cierra la luz por sí solo."
+  },
+  {
+    "src": "assets/cardio/cci-algoritmo-scacest-scasest.jpg",
+    "caption": "Clasificación clínica completa: Angina Estable vs. SCACEST/SCASEST (de tu clase)",
+    "explicacion": "Este árbol resume TODA la clasificación clínica de la CCI en un vistazo: primero se divide en Angina Estable vs. Síndrome Coronario Agudo (SCA); el SCA a su vez se subdivide según el ECG en SCACEST (oclusión TOTAL de la arteria, con elevación del ST — equivalente al 'STEMI' en inglés) o SCASEST (oclusión SUBTOTAL, sin elevación del ST — equivalente al 'NSTEMI'). Compara los 2 ECGs reales: el de SCACEST muestra elevación clara y amplia del ST en varias derivaciones, mientras que el de SCASEST muestra cambios más sutiles, sin esa elevación franca. Esta nomenclatura (SCACEST/SCASEST) es la que usarás en español — STEMI/NSTEMI es exactamente lo mismo, solo que en inglés."
+  }
+],
       "explicacionExtendida": "<span class=\"fuente-ampliada\">La progresión de la placa de ateroma sigue el llamado 'remodelado positivo' o efecto Glagov: al inicio, aunque la placa crece, tiende a expandirse HACIA AFUERA (permaneciendo externa a la luz, adherida a la pared arterial), permitiendo que el diámetro de la luz se mantenga relativamente normal por más tiempo del que uno esperaría. Solo cuando la placa ya es lo suficientemente grande, empieza a invadir la luz y recién ahí el diámetro arterial disminuye visiblemente. Esto explica por qué muchos pacientes con aterosclerosis coronaria significativa pueden tener angiografías aparentemente 'normales' en etapas tempranas — el vaso compensa expandiéndose hacia afuera antes de finalmente estrecharse hacia adentro. El riesgo de ROTURA de la placa (el evento que dispara un síndrome coronario agudo) depende de 3 factores: su composición (colágeno, lipoproteínas, linfocitos inflamatorios), su vulnerabilidad según el tipo de placa, y el grado de estenosis.</span>"
     },
     "clinica": [
@@ -5706,43 +5716,65 @@ const ENFERMEDADES = [
     ],
     "criteriosDiagnosticos": "Clasificación Canadiense de Angina (CCS) — Clase I: angina solo con esfuerzo extenuante, prolongado o rápido. Clase II: ligera limitación de la actividad ordinaria (subir escaleras rápido, caminar cuesta arriba). Clase III: marcada limitación de la actividad física ordinaria (caminar 1-2 cuadras o subir 1 piso a paso normal). Clase IV: incapacidad de realizar cualquier actividad física sin angina — puede estar presente en reposo.",
     "tablasClinicas": [
-      {
-        "titulo": "❤️‍🩹 Signos electrocardiográficos según la profundidad del compromiso",
-        "contexto": "El ECG cambia de forma predecible según qué tan severo y qué tan profundo (transmural vs. subendocárdico) es el compromiso isquémico.",
-        "columnas": [
-          "Patrón",
-          "Hallazgo ECG",
-          "Significado"
-        ],
-        "filas": [
-          [
-            "Onda de isquemia subendocárdica",
-            "Onda T picuda, más alta de lo normal + QTc prolongado",
-            "Retraso en la repolarización del subendocardio — la capa más sensible a la isquemia"
-          ],
-          [
-            "Onda de isquemia subepicárdica/transmural",
-            "Onda T aplanada o negativa",
-            "Retraso en la repolarización de todo el espesor del miocardio afectado"
-          ],
-          [
-            "Lesión subendocárdica",
-            "Descenso del segmento ST",
-            "Evento isquémico más severo pero potencialmente reversible — implicaciones MENOS graves que la transmural"
-          ],
-          [
-            "Lesión subepicárdica (transmural)",
-            "Elevación del segmento ST",
-            "Si no se trata precozmente, evolucionará a infarto con onda Q — ESTE es el patrón de un STEMI"
-          ],
-          [
-            "Necrosis",
-            "Ondas Q de necrosis (pérdida de voltajes positivos, disminución de amplitud de la onda R)",
-            "Muerte del tejido — cambio generalmente irreversible una vez establecido"
-          ]
-        ]
-      }
+  {
+    "titulo": "❤️‍🩹 Signos electrocardiográficos según la profundidad del compromiso",
+    "contexto": "El ECG cambia de forma predecible según qué tan severo y qué tan profundo (transmural vs. subendocárdico) es el compromiso isquémico.",
+    "columnas": [
+      "Patrón",
+      "Hallazgo ECG",
+      "Significado"
     ],
+    "filas": [
+      [
+        "Onda de isquemia subendocárdica",
+        "Onda T picuda, más alta de lo normal + QTc prolongado",
+        "Retraso en la repolarización del subendocardio — la capa más sensible a la isquemia"
+      ],
+      [
+        "Onda de isquemia subepicárdica/transmural",
+        "Onda T aplanada o negativa",
+        "Retraso en la repolarización de todo el espesor del miocardio afectado"
+      ],
+      [
+        "Lesión subendocárdica",
+        "Descenso del segmento ST",
+        "Evento isquémico más severo pero potencialmente reversible — implicaciones MENOS graves que la transmural"
+      ],
+      [
+        "Lesión subepicárdica (transmural)",
+        "Elevación del segmento ST",
+        "Si no se trata precozmente, evolucionará a infarto con onda Q — ESTE es el patrón de un STEMI"
+      ],
+      [
+        "Necrosis",
+        "Ondas Q de necrosis (pérdida de voltajes positivos, disminución de amplitud de la onda R)",
+        "Muerte del tejido — cambio generalmente irreversible una vez establecido"
+      ]
+    ]
+  },
+  {
+    "titulo": "🩺 Clasificación clínica del dolor torácico",
+    "contexto": "Se define según cuántas de estas 3 características cumple el dolor: (1) malestar retroesternal de duración y tipo característicos, (2) causado por ejercicio o estrés emocional, (3) cede con reposo y/o nitroglicerina.",
+    "columnas": [
+      "Clasificación",
+      "Criterio"
+    ],
+    "filas": [
+      [
+        "Angina típica (confirmada)",
+        "Cumple las 3 características"
+      ],
+      [
+        "Angina atípica (probable)",
+        "Cumple 2 de las 3 características"
+      ],
+      [
+        "Dolor torácico no cardiaco",
+        "Cumple 1 o ninguna de las características"
+      ]
+    ]
+  }
+],
     "diagnostico": "Pruebas iniciales: ECG (buscar elevaciones del ST, ondas Q, T negativas), marcadores de necrosis miocárdica (troponina ultrasensible, CPK-MB), radiografía de tórax (descartar otras causas, evaluar cardiomegalia/edema pulmonar), laboratorio general (glucosa, perfil lipídico, hemograma, creatinina). Pruebas avanzadas: ecocardiograma transtorácico (función ventricular, zonas de hipocinesia), prueba de esfuerzo/ergometría (para angina ESTABLE), angioTC coronaria (riesgo intermedio), perfusión miocárdica con SPECT, resonancia magnética cardiaca. Angiografía coronaria (cateterismo/coronariografía): ESTÁNDAR DE ORO en angina refractaria o síndrome coronario agudo — indicada también en sospecha de enfermedad coronaria, trastornos valvulares, enfermedad congénita, miocardiopatías, y planificación preoperatoria.",
     "diagnosticoDiferencial": [
       "Pericarditis aguda (dolor que cambia con la posición/respiración, roce pericárdico)",
@@ -6000,122 +6032,205 @@ const ENFERMEDADES = [
     ],
     "criteriosDiagnosticos": "El diagnóstico se basa en medición precisa y repetida con tensiómetro validado: técnica adecuada (paciente sentado, en reposo, brazo a nivel del corazón, sin fumar/cafeína 30 min antes), diagnóstico clínico con AL MENOS 2 mediciones elevadas en 2 o más consultas distintas. MAPA (monitoreo ambulatorio) o AMPA (domiciliaria) son útiles para confirmar HTA enmascarada o de bata blanca — bata blanca: PA elevada en consultorio pero normal fuera; enmascarada: normal en consultorio pero elevada fuera (la más peligrosa de detectar, ya que el consultorio la esconde).",
     "tablasClinicas": [
-      {
-        "titulo": "📊 Clasificación ACC/AHA 2017",
-        "columnas": [
-          "Categoría",
-          "PAS/PAD (mmHg)"
-        ],
-        "filas": [
-          [
-            "Normal",
-            "<120/80"
-          ],
-          [
-            "Elevada",
-            "120-129 / <80"
-          ],
-          [
-            "HTA estadio 1",
-            "130-139 / 80-89"
-          ],
-          [
-            "HTA estadio 2",
-            "≥140 / ≥90"
-          ]
-        ]
-      },
-      {
-        "titulo": "📊 Clasificación ESC/ESH 2018",
-        "columnas": [
-          "Categoría",
-          "PAS/PAD (mmHg)"
-        ],
-        "filas": [
-          [
-            "Óptima",
-            "<120/80"
-          ],
-          [
-            "Normal",
-            "120-129 / 80-84"
-          ],
-          [
-            "Normal alta",
-            "130-139 / 85-89"
-          ],
-          [
-            "HTA grado 1",
-            "140-159 / 90-99"
-          ],
-          [
-            "HTA grado 2",
-            "160-179 / 100-109"
-          ],
-          [
-            "HTA grado 3",
-            "≥180 / ≥110"
-          ]
-        ],
-        "nota": "Ambas clasificaciones (americana y europea) usan umbrales distintos para diagnosticar HTA — la ACC/AHA es más estricta (130/80) que la ESC/ESH (140/90). Es importante saber cuál te están pidiendo en el examen."
-      },
-      {
-        "titulo": "💊 Algoritmo terapéutico por tipo de paciente",
-        "contexto": "El tratamiento se INDIVIDUALIZA según el perfil del paciente — no existe un esquema único.",
-        "columnas": [
-          "Tipo de paciente",
-          "Meta de PA",
-          "Tratamiento inicial"
-        ],
-        "filas": [
-          [
-            "General (<65 años)",
-            "<130/80",
-            "Combinación de 2 fármacos (IECA/ARA II + calcioantagonista o tiazida) — evitar monoterapia inicial"
-          ],
-          [
-            "≥65 años (hasta 79)",
-            "PAS 130-139 si tolerado",
-            "Monoterapia o combinación a dosis bajas — vigilar hipotensión ortostática"
-          ],
-          [
-            "≥80 años o frágiles",
-            "PAS 130-139 si tolerado",
-            "Monoterapia preferente — individualizar"
-          ],
-          [
-            "Diabético",
-            "<130/80 si tolerado",
-            "IECA o ARA II + tiazida o calcioantagonista"
-          ],
-          [
-            "Con ERC",
-            "<130/80",
-            "IECA o ARA II — NUNCA combinar ambos simultáneamente (no son nefroprotectores juntos)"
-          ],
-          [
-            "Cardiopatía isquémica",
-            "<130/80",
-            "Betabloqueador + IECA/ARA II — añadir calcioantagonista si hay angina"
-          ],
-          [
-            "Post-ACV/ICTUS",
-            "<140/90",
-            "IECAs + tiazida — iniciar tras fase aguda (≥72h)"
-          ],
-          [
-            "Embarazo",
-            "<140/90",
-            "Metildopa, labetalol, nifedipino — EVITAR IECA/ARA II por teratogenicidad"
-          ],
-          [
-            "HTA resistente",
-            "<130/80",
-            "Añadir antagonista de aldosterona (espironolactona) — confirmar adherencia y descartar HTA secundaria"
-          ]
-        ]
-      }
+  {
+    "titulo": "📊 Clasificación ACC/AHA 2017",
+    "columnas": [
+      "Categoría",
+      "PAS/PAD (mmHg)"
     ],
+    "filas": [
+      [
+        "Normal",
+        "<120/80"
+      ],
+      [
+        "Elevada",
+        "120-129 / <80"
+      ],
+      [
+        "HTA estadio 1",
+        "130-139 / 80-89"
+      ],
+      [
+        "HTA estadio 2",
+        "≥140 / ≥90"
+      ]
+    ]
+  },
+  {
+    "titulo": "📊 Clasificación ESC/ESH 2018",
+    "columnas": [
+      "Categoría",
+      "PAS/PAD (mmHg)"
+    ],
+    "filas": [
+      [
+        "Óptima",
+        "<120/80"
+      ],
+      [
+        "Normal",
+        "120-129 / 80-84"
+      ],
+      [
+        "Normal alta",
+        "130-139 / 85-89"
+      ],
+      [
+        "HTA grado 1",
+        "140-159 / 90-99"
+      ],
+      [
+        "HTA grado 2",
+        "160-179 / 100-109"
+      ],
+      [
+        "HTA grado 3",
+        "≥180 / ≥110"
+      ]
+    ],
+    "nota": "Ambas clasificaciones (americana y europea) usan umbrales distintos para diagnosticar HTA — la ACC/AHA es más estricta (130/80) que la ESC/ESH (140/90). Es importante saber cuál te están pidiendo en el examen."
+  },
+  {
+    "titulo": "💊 Algoritmo terapéutico por tipo de paciente",
+    "contexto": "El tratamiento se INDIVIDUALIZA según el perfil del paciente — no existe un esquema único.",
+    "columnas": [
+      "Tipo de paciente",
+      "Meta de PA",
+      "Tratamiento inicial"
+    ],
+    "filas": [
+      [
+        "General (<65 años)",
+        "<130/80",
+        "Combinación de 2 fármacos (IECA/ARA II + calcioantagonista o tiazida) — evitar monoterapia inicial"
+      ],
+      [
+        "≥65 años (hasta 79)",
+        "PAS 130-139 si tolerado",
+        "Monoterapia o combinación a dosis bajas — vigilar hipotensión ortostática"
+      ],
+      [
+        "≥80 años o frágiles",
+        "PAS 130-139 si tolerado",
+        "Monoterapia preferente — individualizar"
+      ],
+      [
+        "Diabético",
+        "<130/80 si tolerado",
+        "IECA o ARA II + tiazida o calcioantagonista"
+      ],
+      [
+        "Con ERC",
+        "<130/80",
+        "IECA o ARA II — NUNCA combinar ambos simultáneamente (no son nefroprotectores juntos)"
+      ],
+      [
+        "Cardiopatía isquémica",
+        "<130/80",
+        "Betabloqueador + IECA/ARA II — añadir calcioantagonista si hay angina"
+      ],
+      [
+        "Post-ACV/ICTUS",
+        "<140/90",
+        "IECAs + tiazida — iniciar tras fase aguda (≥72h)"
+      ],
+      [
+        "Embarazo",
+        "<140/90",
+        "Metildopa, labetalol, nifedipino — EVITAR IECA/ARA II por teratogenicidad"
+      ],
+      [
+        "HTA resistente",
+        "<130/80",
+        "Añadir antagonista de aldosterona (espironolactona) — confirmar adherencia y descartar HTA secundaria"
+      ]
+    ]
+  },
+  {
+    "titulo": "💊 Fármaco preferido según condición específica (guía ESC)",
+    "contexto": "Tabla mucho más detallada que el algoritmo general — cubre condiciones puntuales que pueden aparecer en un caso clínico específico.",
+    "columnas": [
+      "Condición",
+      "Fármaco preferido"
+    ],
+    "filas": [
+      [
+        "Hipertrofia ventricular izquierda (HVI)",
+        "IECA, calcioantagonista, ARA II"
+      ],
+      [
+        "Aterosclerosis asintomática",
+        "Calcioantagonista, IECA"
+      ],
+      [
+        "Microalbuminuria",
+        "IECA, ARA II"
+      ],
+      [
+        "Disfunción renal",
+        "IECA, ARA II"
+      ],
+      [
+        "ACV previo",
+        "Cualquier fármaco que baje bien la PA"
+      ],
+      [
+        "IAM previo",
+        "Betabloqueador, IECA, ARA II"
+      ],
+      [
+        "Angina de pecho",
+        "Betabloqueador, calcioantagonista"
+      ],
+      [
+        "Insuficiencia cardiaca",
+        "Diurético, betabloqueador, IECA, ARA II, antagonista de receptor mineralocorticoide"
+      ],
+      [
+        "Aneurisma aórtico",
+        "Betabloqueador"
+      ],
+      [
+        "Fibrilación auricular (prevención)",
+        "Considerar ARA II, IECA, betabloqueador o antagonista mineralocorticoide"
+      ],
+      [
+        "Fibrilación auricular (control de frecuencia)",
+        "Betabloqueador, calcioantagonista no dihidropiridínico"
+      ],
+      [
+        "ERT/proteinuria",
+        "IECA, ARA II"
+      ],
+      [
+        "Enfermedad arterial periférica",
+        "IECA, calcioantagonista"
+      ],
+      [
+        "HTA sistólica aislada (adulto mayor)",
+        "Diurético, calcioantagonista"
+      ],
+      [
+        "Síndrome metabólico",
+        "IECA, ARA II, calcioantagonista"
+      ],
+      [
+        "Diabetes mellitus",
+        "IECA, ARA II"
+      ],
+      [
+        "Embarazo",
+        "Metildopa, betabloqueador, calcioantagonista"
+      ],
+      [
+        "Pacientes de raza negra",
+        "Diurético, calcioantagonista"
+      ]
+    ],
+    "nota": "IECA = inhibidor de la enzima convertidora de angiotensina; ARA II = antagonista del receptor de angiotensina II; ERT = enfermedad renal terminal."
+  }
+],
     "diagnostico": "Estudios complementarios iniciales: hemograma, creatinina, glucosa, perfil lipídico, electrolitos, EGO, ECG. Según el caso clínico: ecocardiograma, microalbuminuria, fondo de ojo. Daño a órgano blanco a buscar activamente: cerebro (ACV, demencia vascular), corazón (hipertrofia ventricular izquierda, insuficiencia cardíaca), riñones (enfermedad renal crónica), retina (retinopatía hipertensiva).",
     "diagnosticoDiferencial": [
       "HTA de bata blanca (elevada solo en consultorio)",
@@ -6911,15 +7026,36 @@ const TEMAS = [
     "estructuras": [
   {
     "nombre": "Localización y capas del corazón",
-    "detalle": "Ubicado en el mediastino medio, entre ambos pulmones, con forma de pirámide inclinada (punta hacia abajo y a la izquierda, base hacia arriba). Peso normal: 250-300 gramos. 3 capas: ENDOCARDIO (capa interna delgada, endotelio + tejido conectivo subendotelial, también recubre las valvas), MIOCARDIO (capa media gruesa y helicoidal, músculo cardiaco), EPICARDIO (capa externa delgada, mesotelio — es la lámina visceral del pericardio seroso). Nomenclatura: en inglés/latín 'auricula' es un falso amigo — no se traduce como 'aurícula' sino como 'orejuela'; el término anatómico preferido para lo que tradicionalmente llamamos 'aurícula' es ATRIO."
+    "detalle": "Ubicado en el mediastino medio, entre ambos pulmones, con forma de pirámide inclinada (punta hacia abajo y a la izquierda, base hacia arriba). Peso normal: 250-300 gramos. 3 capas: ENDOCARDIO (capa interna delgada, endotelio + tejido conectivo subendotelial, también recubre las valvas), MIOCARDIO (capa media gruesa y helicoidal, músculo cardiaco), EPICARDIO (capa externa delgada, mesotelio — es la lámina visceral del pericardio seroso). Nomenclatura: en inglés/latín 'auricula' es un falso amigo — no se traduce como 'aurícula' sino como 'orejuela'; el término anatómico preferido para lo que tradicionalmente llamamos 'aurícula' es ATRIO.",
+    "imagenes": [
+      {
+        "src": "assets/cardio/cardio-3capas-pared.jpg",
+        "caption": "Las 3 capas de la pared cardiaca, en corte transversal (de tu clase)",
+        "explicacion": "El corte ampliado a la derecha muestra, de afuera hacia adentro: epicardio (capa rosada externa, delgada), miocardio (la capa gruesa central, el músculo que realmente se contrae), y endocardio (la capa interna delgada, en contacto directo con la sangre). Compara el grosor de cada capa en la imagen — el miocardio es visiblemente el más grueso, coherente con su función de generar la fuerza de bombeo."
+      }
+    ]
   },
   {
     "nombre": "Morfología externa e interna",
-    "detalle": "Externa: 2 venas cavas, arteria pulmonar, 4 venas pulmonares, aorta ascendente, pericardio, arterias coronarias, grasa. Interna: 4 cavidades separadas en 2 lados (derecho e izquierdo) — arriba la AURÍCULA, abajo el VENTRÍCULO, separados por el TABIQUE; además fosa oval y músculos pectíneos."
+    "detalle": "Externa: 2 venas cavas, arteria pulmonar, 4 venas pulmonares, aorta ascendente, pericardio, arterias coronarias, grasa. Interna: 4 cavidades separadas en 2 lados (derecho e izquierdo) — arriba la AURÍCULA, abajo el VENTRÍCULO, separados por el TABIQUE; además fosa oval y músculos pectíneos.",
+    "imagenes": [
+      {
+        "src": "assets/cardio/cardio-morfologia-interna-completa.jpg",
+        "caption": "Corazón completo con sus 4 cavidades y válvulas (de tu clase)",
+        "explicacion": "Este diagrama muestra TODO el corazón de un vistazo: las 4 cavidades (aurículas arriba, ventrículos abajo), las 4 válvulas (tricúspide, pulmonar, mitral, aórtica), y los grandes vasos que entran y salen (venas cavas, arteria pulmonar, venas pulmonares, aorta). Úsalo como mapa de referencia mientras estudias cada estructura por separado en las siguientes diapositivas."
+      }
+    ]
   },
   {
     "nombre": "Corazón derecho",
-    "detalle": "Aurícula derecha: recibe sangre venosa de las venas cavas (seno venoso la recoge), tiene la orejuela derecha (cara anterior) y la fosa oval (cara lateral); se comunica con el ventrículo derecho a través de la VÁLVULA TRICÚSPIDE (3 valvas: anterior, septal, posterior — se cierra en sístole, se abre en diástole, sostenida por cuerdas tendíneas y músculos papilares). Ventrículo derecho: músculos papilares anterior/posterior, VÁLVULA PULMONAR (3 valvas semilunares: anterior, derecha, izquierda — se abre en sístole, se cierra en diástole), lleva la sangre hacia los pulmones a través de la arteria pulmonar."
+    "detalle": "Aurícula derecha: recibe sangre venosa de las venas cavas (seno venoso la recoge), tiene la orejuela derecha (cara anterior) y la fosa oval (cara lateral); se comunica con el ventrículo derecho a través de la VÁLVULA TRICÚSPIDE (3 valvas: anterior, septal, posterior — se cierra en sístole, se abre en diástole, sostenida por cuerdas tendíneas y músculos papilares). Ventrículo derecho: músculos papilares anterior/posterior, VÁLVULA PULMONAR (3 valvas semilunares: anterior, derecha, izquierda — se abre en sístole, se cierra en diástole), lleva la sangre hacia los pulmones a través de la arteria pulmonar.",
+    "imagenes": [
+      {
+        "src": "assets/cardio/cardio-valvula-tricuspide.jpg",
+        "caption": "Válvula tricúspide en detalle (de tu clase)",
+        "explicacion": "La imagen de la izquierda muestra el aparato subvalvular completo: la cúspide (la valva misma), las cuerdas tendinosas (los 'hilos' que la sostienen), y los músculos papilares (de donde nacen esas cuerdas, ubicados en la pared del ventrículo). La foto de disección real de la derecha te muestra cómo se ve esto en un corazón de verdad — nota lo delgadas y numerosas que son las cuerdas tendinosas, diseñadas para evitar que la válvula se abra hacia atrás (prolapso) durante la sístole."
+      }
+    ]
   },
   {
     "nombre": "Corazón izquierdo",
@@ -7200,12 +7336,29 @@ const TEMAS = [
         "src": "assets/cardio/ekg-ondas-intervalos-trazado.jpg",
         "caption": "Trazado real con todas las ondas e intervalos marcados (de tu clase)",
         "explicacion": "Este trazado muestra, en un solo latido, TODO lo que debes identificar: la onda P, el complejo QRS (con su Q, R y S individuales), la onda T, y los 3 intervalos clave marcados abajo — PR (desde el inicio de P hasta el inicio de QRS), QT completo, y ST (el segmento entre el final de QRS y el inicio de T, el que se eleva o deprime en isquemia/infarto). Practica ubicar cada uno de estos puntos en cualquier EKG que veas de ahora en adelante, antes de intentar interpretar nada más."
+      },
+      {
+        "src": "assets/cardio/ekg-tabla-valores-completa.jpg",
+        "caption": "Tabla completa de valores normales, con TODOS los segmentos marcados (de tu clase)",
+        "explicacion": "Esta tabla es más completa que el resumen anterior — incluye el Segmento PR y el Segmento ST por separado (no solo los intervalos), y la Onda Ta (la repolarización auricular, normalmente oculta dentro del QRS, pero visible aquí como referencia). Fíjate que el Segmento ST se mide 'a 80ms del punto J', un detalle técnico específico que a veces se pregunta directamente: el punto de referencia para medir el ST no es el final del QRS mismo, sino 80 milisegundos después de él."
       }
     ]
   },
   {
     "nombre": "Eje cardiaco",
-    "detalle": "Es la letra 'E' de la mnemotecnia FREH II. Eje NORMAL: 0° a 90° (algunas bibliografías consideran un rango más amplio, de -30° a 110°). Se calcula usando las derivaciones del plano frontal (DI, DII, DIII, aVR, aVL, aVF). Método práctico: ubicar la derivación cuyo QRS se vea más ISOBIFÁSICO posible (es decir, con la deflexión positiva y negativa de tamaño más parecido, cercano a 0 de suma neta) — el eje eléctrico del corazón es PERPENDICULAR a esa derivación. Luego se confirma la dirección (hacia dónde apunta exactamente) viendo en qué otra derivación el QRS es más POSITIVO — el eje apunta hacia esa derivación."
+    "detalle": "Es la letra 'E' de la mnemotecnia FREH II. Eje NORMAL: 0° a 90° (algunas bibliografías consideran un rango más amplio, de -30° a 110°). Se calcula usando las derivaciones del plano frontal (DI, DII, DIII, aVR, aVL, aVF). Método práctico: ubicar la derivación cuyo QRS se vea más ISOBIFÁSICO posible (es decir, con la deflexión positiva y negativa de tamaño más parecido, cercano a 0 de suma neta) — el eje eléctrico del corazón es PERPENDICULAR a esa derivación. Luego se confirma la dirección (hacia dónde apunta exactamente) viendo en qué otra derivación el QRS es más POSITIVO — el eje apunta hacia esa derivación.",
+    "imagenes": [
+      {
+        "src": "assets/cardio/ekg-eje-clasificacion.jpg",
+        "caption": "Clasificación de la desviación del eje (de tu clase)",
+        "explicacion": "4 rangos exactos: entre -30° y 90° el eje es NORMAL. Entre 90° y 180° está desviado a la DERECHA. Entre -30° y -90° está desviado a la IZQUIERDA. Entre -90° y -180° tiene desviación EXTREMA (la más rara y la que más debes sospechar patología seria)."
+      },
+      {
+        "src": "assets/cardio/ekg-eje-calculo-rapido.jpg",
+        "caption": "Método rápido del eje usando solo I y aVF (de tu clase)",
+        "explicacion": "Este es el método que de verdad se usa en la práctica, sin necesitar calcular grados: mira solo si el QRS de I y de aVF son POSITIVOS o NEGATIVOS. (1) Si ambos son positivos → eje normal. (2) Si ambos son negativos → desviación extrema. (3) Si I es negativo y aVF positivo → desviado a la derecha. (4) Si I es positivo y aVF es negativo, necesitas mirar además la derivación II: si II es positivo → eje normal; si II es negativo → desviado a la izquierda. Memoriza este árbol de decisión — es mucho más rápido que calcular el ángulo exacto."
+      }
+    ]
   }
 ],
     "fisiologiaNormal": "MEMOTECNIA para leer cualquier EKG en orden, sin saltarte nada: FREH II = Frecuencia, Ritmo, Eje, Hipertrofias, Isquemia, Infartos, Intervalos. FRECUENCIA: normal 60-99 lpm (bradicardia <59, taquicardia >100). Si el ritmo es REGULAR: buscar una onda R que coincida con una línea gruesa del papel, localizar el siguiente latido, y usar la secuencia 300-150-100-75-60-50 según cuántos cuadrados grandes hay entre ambos. Si el ritmo es IRREGULAR o la FC >150: método de 6 segundos (contar los QRS en 30 cuadrados grandes = 6 segundos, multiplicar por 10) o método de 5 segundos (multiplicar por 12); o dividir 1500 entre los mm que hay entre R-R (ej: 1500/6=250 lpm). RITMO: el ritmo de base normal lo da el nodo sinusal (FC 60-100) — el corazón tiene automatismo, así que si el nodo sinusal deja de predominar, el ritmo lo toma la siguiente estructura en la jerarquía. Para confirmar ritmo SINUSAL se necesitan 5 criterios: FC 60-100, intervalo R-R constante, onda P positiva en DII y negativa en aVR, cada onda P seguida de un QRS, e intervalo PR ≥0.12 segundos. Si no hay onda P y el R-R es variable → pensar en fibrilación auricular (con ondas f minúsculas asociadas). <span class=\"fuente-ampliada\">¿Por qué la onda P sinusal es positiva en cara inferior (DII, DIII, aVF) y negativa en aVR? El vector de despolarización auricular apunta hacia abajo y a la izquierda (desde el nodo sinusal hacia el nodo AV) — ese vector se ACERCA a DII/DIII/aVF (por eso da deflexión positiva) y se ALEJA de aVR (por eso da deflexión negativa). Es geometría pura: la dirección del vector eléctrico respecto a cada derivación determina si esa derivación registra una onda positiva o negativa.</span>",
@@ -7270,14 +7423,16 @@ const TEMAS = [
 ],
     "correlacionClinica": "Dominar la mecánica de la toma y lectura del EKG (dónde va cada electrodo, cómo calcular la frecuencia, qué define un ritmo sinusal) es el fundamento indispensable antes de poder reconocer arritmias, hipertrofias, isquemia o infartos — que verás en las siguientes sesiones. Un error común de principiante es intentar 'reconocer patrones' sin primero confirmar la frecuencia y el ritmo de forma sistemática — la mnemotecnia FREH II existe justamente para evitar que te saltes pasos y termines diagnosticando mal por apresurarte a la parte 'interesante' del trazado.",
     "puntosClave": [
-      "12 derivaciones: 6 del plano frontal (DI, DII, DIII, aVR, aVL, aVF) + 6 precordiales (V1-V6)",
-      "1mm horizontal = 0.04 segundos; 1mm vertical = 0.1 milivoltio",
-      "Mnemotecnia para leer en orden: FREH II = Frecuencia, Ritmo, Eje, Hipertrofias, Isquemia, Infartos, Intervalos",
-      "FC normal 60-99 lpm; método rápido si el ritmo es regular: secuencia 300-150-100-75-60-50",
-      "5 criterios de ritmo sinusal: FC 60-100, R-R constante, P positiva en DII/negativa en aVR, cada P seguida de QRS, PR≥0.12seg",
-      "Onda P = despolarización auricular; QRS = despolarización ventricular; onda T = repolarización ventricular",
-      "Intervalo PR alargado = bloqueo AV de primer grado; acortado = preexcitación (WPW) o ritmos nodales"
-    ]
+  "12 derivaciones: 6 del plano frontal (DI, DII, DIII, aVR, aVL, aVF) + 6 precordiales (V1-V6)",
+  "1mm horizontal = 0.04 segundos; 1mm vertical = 0.1 milivoltio",
+  "Mnemotecnia para leer en orden: FREH II = Frecuencia, Ritmo, Eje, Hipertrofias, Isquemia, Infartos, Intervalos",
+  "FC normal 60-99 lpm; método rápido si el ritmo es regular: secuencia 300-150-100-75-60-50",
+  "5 criterios de ritmo sinusal: FC 60-100, R-R constante, P positiva en DII/negativa en aVR, cada P seguida de QRS, PR≥0.12seg",
+  "Onda P = despolarización auricular; QRS = despolarización ventricular; onda T = repolarización ventricular",
+  "Intervalo PR alargado = bloqueo AV de primer grado; acortado = preexcitación (WPW) o ritmos nodales",
+  "Método rápido del eje: mira solo la polaridad (+/-) de I y aVF — ambos positivos=normal, ambos negativos=desviación extrema, I(-)+aVF(+)=derecha, I(+)+aVF(-)=revisar II para decidir izquierda vs normal",
+  "Rangos exactos de desviación: -30° a 90°=normal, 90° a 180°=derecha, -30° a -90°=izquierda, -90° a -180°=extrema"
+]
   }
 },
   {
