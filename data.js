@@ -238,7 +238,8 @@ const SEMANAS = [
       {
         "dia": "Lunes",
         "tipo": "teoria",
-        "tema": "TALLER APLICATIVO: EKG / Enfermedades del Pericardio: Pericarditis, Taponamiento Pericárdico y Pericarditis constrictiva crónica."
+        "tema": "TALLER APLICATIVO: EKG / Enfermedades del Pericardio: Pericarditis, Taponamiento Pericárdico y Pericarditis constrictiva crónica.",
+        "vinculos": [ { "tipo": "enfermedad", "id": "enfermedades-pericardio" } ]
       },
       {
         "dia": "Miércoles",
@@ -264,7 +265,7 @@ const SEMANAS = [
     "lecturas": [
       "lectura-s5-14"
     ],
-    "enfermedades": []
+    "enfermedades": ["enfermedades-pericardio"]
   },
   {
     "id": "semana-06",
@@ -6442,6 +6443,304 @@ const ENFERMEDADES = [
       }
     }
   ]
+},
+  {
+  "id": "enfermedades-pericardio",
+  "nombre": "Enfermedades del Pericardio: Pericarditis, Taponamiento Cardiaco y Pericarditis Constrictiva",
+  "area": "Cardiología",
+  "semanas": [
+    "semana-05"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1pUAHzHk3p-5ebVh-YNM9697LS6FsgO5b/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_5_SESIÓN-13-TEMA-2: Enfermedades del Pericardio"
+  },
+  "relacionadas": [
+    {
+      "id": "cardiopatia-coronaria-isquemica",
+      "relacion": "La pericarditis y el infarto agudo de miocardio son diagnósticos diferenciales importantes entre sí — ambos dan dolor torácico y elevación del ST, pero con patrones y características distintas"
+    }
+  ],
+  "profundo": {
+    "definicion": "El pericardio es el saco fibroso que envuelve al corazón y lo separa de las estructuras mediastínicas, formado por 2 capas (pericardio fibroso y pericardio seroso, este último con hoja parietal y hoja visceral/epicardio), con una cavidad pericárdica normal de 15-30 mL. Sus enfermedades forman un espectro de gravedad creciente: PERICARDITIS AGUDA (síndrome inflamatorio del pericardio, con o sin derrame), TAPONAMIENTO CARDÍACO (compresión del corazón por acumulación de líquido/pus/coágulo/gas en el espacio pericárdico, que compromete el retorno venoso) y PERICARDITIS CONSTRICTIVA CRÓNICA (engrosamiento y rigidez permanente del pericardio tras la resolución de un proceso inflamatorio previo).",
+    "epidemiologia": "La pericarditis aguda representa un 0.1% de los pacientes hospitalizados, y en países endémicos de tuberculosis esta es su principal causa. El riesgo de progresión a pericarditis constrictiva depende directamente de la etiología: bajo (<1%) en pericarditis viral e idiopática, intermedio (2-5%) en pericarditis inmunomediada y pericardiopatías neoplásicas, y alto (20-30%) en pericarditis bacteriana, sobre todo la purulenta.",
+    "etiologiaFactoresRiesgo": [
+      "Idiopática (la más frecuente en países no endémicos de TBC)",
+      "Infecciosa: viral (la causa más común identificable), bacteriana (incluyendo tuberculosis, principal causa en países endémicos), fúngica",
+      "Autoinmune/inflamatoria: lupus eritematoso sistémico, artritis reumatoide, síndrome de Dressler (post-infarto)",
+      "Neoplásica: metástasis pericárdicas (pulmón, mama, linfoma)",
+      "Urémica (en enfermedad renal crónica avanzada)",
+      "Traumática o iatrogénica: post-cirugía cardiaca, post-cateterismo, post-radioterapia"
+    ],
+    "fisiopatologia": {
+      "resumen": "La inflamación del pericardio (pericarditis) puede progresar de 2 formas distintas según el volumen y velocidad de acumulación de líquido: si se acumula rápido o en gran cantidad, comprime las cavidades cardiacas y compromete el retorno venoso (taponamiento); si el proceso inflamatorio se repite o cronifica, el pericardio se engrosa y calcifica, perdiendo su elasticidad normal (pericarditis constrictiva).",
+      "cascada": [
+        {
+          "paso": "Inflamación pericárdica",
+          "detalle": "Un agente infeccioso, autoinmune, neoplásico o urémico inflama las hojas del pericardio, generando dolor (por irritación de terminaciones nerviosas) y, frecuentemente, aumento de la producción de líquido pericárdico."
+        },
+        {
+          "paso": "Acumulación de líquido en el espacio pericárdico",
+          "detalle": "Si la producción de líquido supera la capacidad de reabsorción, se acumula derrame pericárdico — cuya gravedad depende MÁS de la velocidad de acumulación que del volumen total (un derrame de instauración lenta puede tolerar volúmenes grandes; uno agudo puede taponar con volúmenes pequeños)."
+        },
+        {
+          "paso": "Compromiso hemodinámico (si progresa a taponamiento)",
+          "detalle": "El aumento de la presión intrapericárdica iguala progresivamente las presiones de las 4 cavidades cardiacas, comprometiendo primero el llenado de las cavidades derechas (de menor presión basal) y luego el gasto cardiaco global."
+        },
+        {
+          "paso": "Cronificación y fibrosis (si progresa a constrictiva)",
+          "detalle": "Tras la resolución del proceso inflamatorio agudo, el pericardio puede quedar engrosado, fibrótico y a veces calcificado, perdiendo su distensibilidad normal — restringiendo permanentemente el llenado ventricular diastólico."
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/cardio/pericarditis-ecg-4-etapas.jpg",
+          "caption": "Las 4 etapas evolutivas del ECG en pericarditis (de tu clase)",
+          "explicacion": "El ECG de la pericarditis aguda evoluciona en 4 etapas predecibles: (1) depresión del PR y/o elevación DIFUSA del segmento ST (el signo clásico — 'difusa' significa que compromete múltiples territorios a la vez, a diferencia del patrón localizado de un infarto), (2) normalización del segmento ST, (3) inversión de la onda T (con o sin descenso del ST), y (4) normalización completa. Conocer esta secuencia te ayuda a estimar en qué momento evolutivo está el paciente, no solo a diagnosticar la pericarditis."
+        },
+        {
+          "src": "assets/cardio/pericarditis-rx-eco-derrame.jpg",
+          "caption": "Radiografía y ecocardiograma comparativo: corazón normal vs. derrame pericárdico (de tu clase)",
+          "explicacion": "Arriba: la radiografía muestra la silueta cardiaca en forma de 'cantimplora o botella de agua' — con pinzamiento del seno cardiofrénico, sugestiva de derrame pericárdico significativo (al menos 200mL). Abajo: comparación ecocardiográfica directa — a la izquierda un corazón normal (sin espacio libre de eco alrededor), a la derecha un derrame pericárdico real (las flechas señalan el espacio anecoico, es decir oscuro/sin eco, que corresponde al líquido acumulado entre las 2 hojas del pericardio)."
+        },
+        {
+          "src": "assets/cardio/taponamiento-rx-matraz.jpg",
+          "caption": "Radiografía de taponamiento cardiaco severo — silueta en 'matraz' (de tu clase)",
+          "explicacion": "Con derrames grandes que ya comprometen la hemodinamia, la silueta cardiaca en la proyección anteroposterior adopta esta apariencia redondeada, similar a un matraz de laboratorio — mucho más globular y simétrica que la silueta cardiaca normal (que tiene contornos más angulados, siguiendo la forma real de cada cavidad). Recuerda que la silueta cardiaca se mantiene NORMAL hasta que el derrame ya es al menos de tamaño moderado — un hallazgo normal en la Rx no descarta un derrame pequeño."
+        }
+      ]
+    },
+    "clinica": [
+      {
+        "signo": "Dolor torácico pleurítico (pericarditis)",
+        "detallePPT": "Presente en 90% de los casos — retroesternal, tipo pleurítico, que EMPEORA en decúbito y con la respiración, y MEJORA al sentarse e inclinarse hacia adelante",
+        "mecanismo": "La inflamación del pericardio parietal (que sí tiene inervación sensitiva, a diferencia del visceral) se irrita más con los movimientos respiratorios y con ciertas posiciones que aumentan el contacto entre las hojas inflamadas"
+      },
+      {
+        "signo": "Frote pericárdico",
+        "detallePPT": "Sonido característico áspero, como 'cuero rechinando', audible en el examen físico",
+        "mecanismo": "Roce directo entre las 2 hojas del pericardio inflamado durante el ciclo cardiaco"
+      },
+      {
+        "signo": "Tríada de Beck (taponamiento)",
+        "detallePPT": "Hipotensión, ruidos cardiacos amortiguados/apagados, e ingurgitación yugular — indica taponamiento GRAVE",
+        "mecanismo": "Hipotensión por bajo gasto cardiaco; ruidos apagados por el líquido interpuesto entre el corazón y el estetoscopio; ingurgitación yugular por elevación de la presión venosa central secundaria al compromiso del retorno venoso"
+      },
+      {
+        "signo": "Signo de Kussmaul (pericarditis constrictiva)",
+        "detallePPT": "Aumento paradójico de la presión venosa yugular durante la INSPIRACIÓN (lo opuesto a lo normal)",
+        "mecanismo": "El pericardio rígido no permite que el aumento del retorno venoso inspiratorio normal se acomode expandiendo las cavidades cardiacas, por lo que la presión se transmite retrógradamente hacia las venas yugulares"
+      }
+    ],
+    "examenFisico": [
+      "Frote pericárdico (pericarditis) — mejor auscultado con el paciente inclinado hacia adelante",
+      "Taquicardia sinusal",
+      "Febrícula",
+      "En taponamiento: pulso paradójico (caída >10mmHg de la PA sistólica con la inspiración), ruidos cardiacos apagados, ingurgitación yugular",
+      "En pericarditis constrictiva: golpe pericárdico (sonido diastólico agregado en borde esternal izquierdo/punta), desdoblamiento del segundo ruido, signo de Kussmaul"
+    ],
+    "tablasClinicas": [
+      {
+        "titulo": "🫀 Clasificación de los derrames pericárdicos por ecocardiograma",
+        "contexto": "Se mide el espacio libre de eco durante la diástole.",
+        "columnas": [
+          "Tamaño",
+          "Espacio libre de eco en diástole"
+        ],
+        "filas": [
+          [
+            "Banal",
+            "Solo se aprecia en sístole"
+          ],
+          [
+            "Pequeño",
+            "<10 mm"
+          ],
+          [
+            "Moderado",
+            "10-20 mm"
+          ],
+          [
+            "Grande",
+            ">20 mm"
+          ],
+          [
+            "Muy grande",
+            ">25 mm"
+          ]
+        ]
+      }
+    ],
+    "diagnostico": "ECG (patrón evolutivo de 4 etapas en pericarditis; bajo voltaje del QRS en taponamiento y en constrictiva). Radiografía de tórax: en pericarditis/taponamiento, la silueta cardiaca se mantiene NORMAL hasta que el derrame es al menos moderado — con derrames grandes, adopta forma de 'cantimplora o botella de agua' (pericarditis/derrame) o similar a un 'matraz' redondeado (taponamiento); en pericarditis constrictiva, buscar calcificación pericárdica anular (mejor vista en proyección lateral). Ecocardiograma: prueba clave — visualiza directamente el derrame (clasificado por tamaño), y en taponamiento muestra colapso de cavidades derechas; en constrictiva muestra engrosamiento/calcificación pericárdica, 'rebote septal' (desplazamiento brusco del septo interventricular en diástole temprana), y signos de congestión venosa sistémica (dilatación de venas hepáticas, distensión de vena cava inferior con poca variación respiratoria).",
+    "diagnosticoDiferencial": [
+      "Infarto agudo de miocardio (la elevación del ST en pericarditis es DIFUSA y cóncava hacia arriba, sin cambios recíprocos verdaderos; en IAM es LOCALIZADA por territorio, convexa, con cambios recíprocos reales)",
+      "Embolia pulmonar (dolor pleurítico pero con disnea/taquicardia desproporcionada, factores de riesgo trombóticos)",
+      "Disección aórtica (dolor desgarrante migratorio, asimetría de pulsos)",
+      "Costocondritis (dolor reproducible a la palpación, sin frote ni cambios ECG)"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Reposo hasta resolución de síntomas y normalización de marcadores inflamatorios (pericarditis)",
+        "Pericardiocentesis de urgencia o cirugía cardiaca — tratamiento definitivo del TAPONAMIENTO CARDÍACO, no debe demorarse",
+        "Pericardiectomía (resección quirúrgica del pericardio) — tratamiento definitivo de la pericarditis constrictiva sintomática",
+        "Tratamiento antituberculoso específico si esa es la etiología — reduce el riesgo de progresión a constricción de >80% a <10%"
+      ],
+      "farmacologico": [
+        "AINEs (ibuprofeno, aspirina en dosis altas) como primera línea en pericarditis aguda",
+        "Colchicina — se agrega de rutina junto a los AINEs, reduce significativamente el riesgo de recurrencia",
+        "Corticoides — reservados para casos refractarios, autoinmunes, o cuando los AINEs están contraindicados (su uso temprano de rutina se asocia a mayor riesgo de recurrencia)",
+        "Tratamiento médico de la causa específica en pericarditis constrictiva — puede resolver la constricción TRANSITORIA que ocurre en 10-20% de los casos en los primeros meses, pero NUNCA debe retrasar la cirugía si esta es necesaria, ya que el retraso empeora el pronóstico en casos avanzados"
+      ]
+    },
+    "complicaciones": [
+      "Progresión de pericarditis a taponamiento cardiaco",
+      "Progresión a pericarditis constrictiva crónica (según etiología)",
+      "Recurrencia de pericarditis (más frecuente si se usan corticoides tempranamente)",
+      "Shock obstructivo y muerte en taponamiento no tratado",
+      "Insuficiencia cardiaca congestiva crónica en pericarditis constrictiva avanzada"
+    ],
+    "prevencion": "Tratamiento oportuno y completo de la causa subyacente (especialmente tuberculosis, dado su alto riesgo de progresión a constricción). Uso de colchicina junto con AINEs en el episodio agudo para reducir el riesgo de recurrencia. Evitar el uso rutinario temprano de corticoides, que se asocia a mayor riesgo de recurrencia.",
+    "perlasProfundo": "La gravedad clínica del derrame pericárdico depende MÁS de la VELOCIDAD de acumulación que del volumen total: un derrame crónico de instauración lenta (semanas a meses) puede alcanzar volúmenes grandes sin taponar, porque el pericardio tiene tiempo de distenderse gradualmente; en cambio, un derrame AGUDO (por ejemplo, hemopericardio post-trauma o por ruptura de pared libre post-infarto) puede taponar con volúmenes pequeños, porque el pericardio no tuvo tiempo de adaptarse — este es el motivo por el que un mismo 'volumen de líquido' puede ser trivial en un paciente y mortal en otro.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: un caso con dolor torácico posicional/pleurítico + un ECG real, donde debes dar el planteamiento diagnóstico completo — exactamente el patrón del caso real de tu propia clase.",
+      "ejercicios": [
+        {
+          "tipo": "Interpretar ECG completo y sustentar (tal como en tu propio PPT)",
+          "planteamiento": "Mujer de 30 años con dolor torácico agudo irradiado a hombros, de 1 semana de evolución, que EMPEORA en decúbito y con la respiración, y MEJORA al sentarse; antecedente de infección de vías respiratorias altas reciente. El ECG muestra elevaciones difusas del segmento ST sin concavidad hacia arriba, y depresión del segmento PR (mejor vista en DII). ¿Cuál es el diagnóstico?",
+          "respuestaModelo": "Pericarditis aguda, probablemente de etiología infecciosa (viral, dado el antecedente reciente de infección de vías respiratorias altas). El patrón de dolor (posicional, pleurítico, que mejora al sentarse) es característico de irritación pericárdica. La depresión del segmento PR es un hallazgo relativamente ESPECÍFICO de pericarditis (representa afectación auricular por la inflamación) y ayuda a diferenciarla de un infarto agudo de miocardio, donde no se espera este hallazgo de la misma manera. La elevación difusa (no localizada a un territorio coronario específico) del ST, junto con la depresión del PR, completa el cuadro electrocardiográfico típico de esta etapa inicial de pericarditis."
+        }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "3 entidades en espectro de gravedad: Pericarditis aguda → Taponamiento cardiaco (si se acumula líquido rápido) → Pericarditis constrictiva crónica (si se cronifica/fibrosa)",
+      "ECG de pericarditis: elevación DIFUSA del ST (no localizada) + depresión del PR — 4 etapas evolutivas predecibles",
+      "La gravedad del derrame depende más de la VELOCIDAD de acumulación que del volumen total"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — signos clave por entidad",
+      "columnas": [
+        "Entidad",
+        "Signo clave"
+      ],
+      "filas": [
+        [
+          "Pericarditis",
+          "Dolor pleurítico posicional + frote pericárdico + ST difuso/PR deprimido"
+        ],
+        [
+          "Taponamiento",
+          "Tríada de Beck (hipotensión + ruidos apagados + ingurgitación yugular)"
+        ],
+        [
+          "Pericarditis constrictiva",
+          "Signo de Kussmaul + golpe pericárdico + calcificación en Rx"
+        ]
+      ]
+    },
+    "clinica": "Pericarditis: dolor pleurítico posicional (mejora sentado, empeora acostado/al respirar), frote pericárdico. Taponamiento: Tríada de Beck. Constrictiva: signo de Kussmaul, golpe pericárdico.",
+    "diagnostico": "ECG (4 etapas en pericarditis; bajo voltaje en taponamiento/constrictiva) + Ecocardiograma (prueba clave, clasifica derrame por tamaño) + Rx tórax (botella de agua / matraz en derrame grande; calcificación anular en constrictiva).",
+    "tratamientoResumen": "Pericarditis: AINEs + colchicina (evitar corticoides tempranos). Taponamiento: pericardiocentesis urgente. Constrictiva: pericardiectomía si sintomática — no retrasar cirugía.",
+    "diferenciales": [
+      {
+        "entidad": "Infarto agudo de miocardio",
+        "clave": "ST localizado por territorio y convexo (vs. difuso y cóncavo en pericarditis), con cambios recíprocos reales"
+      },
+      {
+        "entidad": "Embolia pulmonar",
+        "clave": "Disnea/taquicardia desproporcionada, factores de riesgo trombóticos"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Progresión de gravedad en enfermedad del pericardio",
+      "filas": [
+        [
+          "Mecanismo",
+          "Inflamación ± derrame leve",
+          "Compresión cardiaca aguda",
+          "Fibrosis/calcificación crónica"
+        ],
+        [
+          "Urgencia",
+          "Manejo ambulatorio usual",
+          "URGENCIA — pericardiocentesis",
+          "Programada, evaluar cirugía"
+        ],
+        [
+          "Reversibilidad",
+          "Reversible con tratamiento",
+          "Reversible si se trata a tiempo",
+          "Generalmente irreversible sin cirugía"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Qué distingue la elevación del ST en pericarditis vs. infarto? → Pericarditis: difusa y cóncava hacia arriba, sin cambios recíprocos reales. Infarto: localizada por territorio, convexa, con cambios recíprocos",
+      "¿Qué es la Tríada de Beck y qué indica? → Hipotensión + ruidos cardiacos apagados + ingurgitación yugular; indica taponamiento GRAVE",
+      "¿Cuál es el tratamiento de primera línea en pericarditis aguda? → AINEs + colchicina (evitar corticoides tempranos por mayor riesgo de recurrencia)",
+      "¿Cuál es el tratamiento definitivo del taponamiento cardiaco? → Pericardiocentesis urgente o cirugía cardiaca — no debe demorarse",
+      "¿Qué etiología tiene mayor riesgo de progresar a pericarditis constrictiva? → Bacteriana, sobre todo purulenta (20-30% de riesgo)",
+      "¿Qué es el signo de Kussmaul? → Aumento PARADÓJICO de la presión venosa yugular con la inspiración — característico de pericarditis constrictiva",
+      "¿De qué depende más la gravedad de un derrame pericárdico: el volumen o la velocidad? → La VELOCIDAD de acumulación, no solo el volumen total"
+    ],
+    "redFlags": [
+      "Dolor torácico pleurítico posicional + hipotensión + ingurgitación yugular → sospechar taponamiento, evaluar con ecocardiograma urgente",
+      "Pericarditis en paciente de zona endémica de TBC → alto riesgo de progresión a constrictiva si no se trata la causa",
+      "Signos de Kussmaul + calcificación pericárdica en Rx → pericarditis constrictiva, considerar pericardiectomía"
+    ],
+    "erroresFrecuentes": [
+      "Confundir la elevación difusa del ST de pericarditis con un infarto agudo de miocardio (localizado)",
+      "Usar corticoides como primera línea en pericarditis no complicada — aumenta el riesgo de recurrencia",
+      "Retrasar la cirugía en pericarditis constrictiva avanzada esperando respuesta al tratamiento médico — empeora el pronóstico"
+    ],
+    "asociacionesClinicas": [
+      "Dolor pleurítico posicional + antecedente de infección viral reciente → pericarditis viral/idiopática",
+      "Taponamiento + antecedente de cirugía cardiaca reciente → sospechar sangrado pericárdico postquirúrgico",
+      "Pericarditis constrictiva + antecedente de tuberculosis → alta probabilidad etiológica"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Caso real de tu clase) Mujer de 30 años, con dolor torácico agudo irradiado a hombros, de 1 semana de evolución. El dolor EMPEORA en decúbito y al respirar, y MEJORA cuando se sienta. Antecedente de infección de vías respiratorias altas.",
+      "imagen": {
+        "src": "assets/cardio/pericarditis-ecg-caso-real.jpg",
+        "caption": "ECG real de esta paciente"
+      },
+      "preguntaMC": {
+        "enunciado": "El ECG muestra elevaciones difusas del segmento ST sin concavidad hacia arriba, y depresión del segmento PR (mejor vista en DII). ¿Cuál es el diagnóstico y su etiología más probable?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Pericarditis aguda, probablemente de etiología infecciosa (viral), dado el antecedente reciente de infección de vías respiratorias altas"
+          },
+          {
+            "id": "b",
+            "texto": "Infarto agudo de miocardio de pared inferior"
+          },
+          {
+            "id": "c",
+            "texto": "Angina estable sin cambios electrocardiográficos"
+          },
+          {
+            "id": "d",
+            "texto": "Taponamiento cardiaco agudo"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "El patrón de dolor (posicional, pleurítico, que mejora al sentarse) junto con la elevación DIFUSA (no localizada a un territorio coronario) del ST y la depresión del PR (hallazgo relativamente específico de afectación auricular pericárdica) son característicos de pericarditis aguda. El antecedente de infección respiratoria alta reciente eleva la probabilidad de causa infecciosa, más frecuentemente viral."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica por qué la depresión del segmento PR es un hallazgo relativamente específico de pericarditis, y qué representa fisiológicamente.",
+        "respuestaModelo": "La depresión del segmento PR representa afectación de la repolarización AURICULAR (no ventricular). En la pericarditis, la inflamación del pericardio afecta directamente al epicardio auricular subyacente (dado que las aurículas tienen una pared más delgada y están más expuestas a la inflamación pericárdica que los ventrículos), generando una corriente de lesión auricular que se traduce en el ECG como depresión del segmento PR. Este hallazgo es relativamente específico de pericarditis porque la mayoría de las otras causas comunes de dolor torácico con cambios en el ST (como el infarto de miocardio) no afectan típicamente la repolarización auricular de esta manera — por eso buscar activamente la depresión del PR (especialmente en DII, donde se observa mejor) ayuda a diferenciar pericarditis de otros diagnósticos diferenciales."
+      }
+    }
+  ]
 }
 ];
 
@@ -8308,6 +8607,12 @@ const MODULOS = {
       "categoria": "Presión arterial",
       "ids": [
         "hipertension-arterial"
+      ]
+    },
+    {
+      "categoria": "Pericardio",
+      "ids": [
+        "enfermedades-pericardio"
       ]
     }
   ],
