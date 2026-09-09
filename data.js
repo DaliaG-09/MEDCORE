@@ -245,7 +245,7 @@ const SEMANAS = [
         "dia": "Miércoles",
         "tipo": "teoria",
         "tema": "Taquiarritmias y Bradiarritmias / EKG: Trastornos de la conducción / Control de lectura: Diagnóstico y guía terapéutica del paciente con taponamiento cardiaco ",
-        "vinculos": [ { "tipo": "enfermedad", "id": "taquiarritmias-bradiarritmias" } ]
+        "vinculos": [ { "tipo": "enfermedad", "id": "taquiarritmias-bradiarritmias" }, { "tipo": "tema", "id": "ekg-trastornos-conduccion" } ]
       },
       { "dia": "Jueves", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" },
       {
@@ -8147,6 +8147,173 @@ const TEMAS = [
       ]
     }
   }
+},
+  {
+  "id": "ekg-trastornos-conduccion",
+  "nombre": "EKG: Trastornos de la Conducción",
+  "area": "Cardiología",
+  "tipo": "metodo-diagnostico",
+  "semanas": [
+    "semana-05"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/13zcVEq720ChVjW3-eQvZ-QBR8iFsTbps/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_5_SESIÓN-14-TEMA-2: EKG trastornos de la conducción"
+  },
+  "contenido": {
+    "resumen": "Los trastornos de conducción son problemas del sistema eléctrico que controla la frecuencia y el ritmo del corazón. Se dividen en 2 grandes grupos según dónde ocurre el retraso: BLOQUEOS AURICULOVENTRICULARES (el retraso ocurre entre la aurícula y el ventrículo, en el nodo AV) y BLOQUEOS DE RAMA/FASCICULARES (el retraso ocurre DESPUÉS del nodo AV, en la rama derecha, izquierda, o en uno de los 2 fascículos de la rama izquierda).",
+    "estructuras": [
+      {
+        "nombre": "Bloqueo AV de primer grado",
+        "detalle": "Retarda la conducción del nodo AV. PR mayor de 1 cuadrado grande (>0.2 segundos), que permanece CONSTANTEMENTE alargado de ciclo a ciclo (a diferencia del Mobitz I, donde el PR va cambiando). Los pacientes son típicamente asintomáticos."
+      },
+      {
+        "nombre": "Bloqueo AV de segundo grado — Mobitz I (Wenckebach)",
+        "detalle": "Prolongación PROGRESIVA del PR antes de una onda P que finalmente no se conduce (se 'salta' un latido). La primera onda P conducida DESPUÉS de la onda P no conducida es la que tiene el intervalo PR MÁS CORTO de todo el ciclo — y luego el PR vuelve a alargarse progresivamente hasta el siguiente 'salto'. Genera un patrón de 'latido grupal' característico (por ejemplo, 3 QRS por cada 4 ondas P)."
+      },
+      {
+        "nombre": "Bloqueo AV de segundo grado — Mobitz II",
+        "detalle": "Serie de ciclos NORMALES (PR constante, sin alargamiento progresivo) interrumpida súbitamente por ondas P que fallan en conducirse — sin ningún aviso previo. Tiene una relación P:QRS constante (3:1, 4:1, 5:1). Es clínicamente MÁS GRAVE que el Mobitz I, porque el fallo es súbito e impredecible, y con frecuencia progresa a bloqueo completo — requiere marcapasos con más frecuencia que el Mobitz I."
+      },
+      {
+        "nombre": "Bloqueo AV de tercer grado (completo)",
+        "detalle": "Bloqueo TOTAL de la conducción entre aurículas y ventrículos — ninguna onda P se conduce a los ventrículos. Un foco de automaticidad INFERIOR al bloqueo escapa para estimular los ventrículos de forma independiente (ritmo de escape). No existe ninguna relación entre las ondas P y los QRS — a esto se le llama DISOCIACIÓN AURICULOVENTRICULAR, y es diagnóstica de este bloqueo."
+      },
+      {
+        "nombre": "Bloqueo de Rama Derecha (BRD)",
+        "detalle": "Se asocia a cambios estructurales del miocardio por estiramiento o isquemia; puede ocurrir iatrogénicamente por cateterismo cardiaco derecho. Es un predictor de mortalidad en infarto de miocardio e insuficiencia cardiaca. Criterios ECG: QRS≥120ms; en V1-V2 patrón rSR' (una 'M' característica); en I y V6, onda S de duración >40ms o mayor que la onda R; ondas T discordantes con el vector QRS terminal. Consejo práctico de tu clase: ayuda mucho ver que el QRS en V1 sea POSITIVO (de cualquier morfología) y que exista una onda S en DI y V6.",
+        "imagenes": [
+          {
+            "src": "assets/cardio/conduccion-brd-ekg.jpg",
+            "caption": "ECG real de Bloqueo de Rama Derecha (de tu clase)",
+            "explicacion": "Fíjate en V1: el complejo QRS tiene una morfología positiva característica (el patrón rSR' o 'M'), mientras que en I y V6 se aprecia una onda S ancha y prominente. Aplica el consejo práctico: QRS positivo en V1 + onda S en DI y V6 = fuerte sospecha de BRD, sin necesitar medir cada milisegundo."
+          }
+        ]
+      },
+      {
+        "nombre": "Bloqueo de Rama Izquierda (BRI)",
+        "detalle": "Se produce cuando la conducción a través de AMBOS fascículos (anterior y posterior) de la rama izquierda está comprometida. Se asocia a daño cardiaco significativo, miocárdico e hipertrofia — si aparece en un contexto AGUDO, siempre descartar infarto de miocardio. Criterios ECG: QRS≥120ms; en V1, patrón QS o rS; en V6, onda R 'mellada' (con muesca) y ausencia de onda Q; el segmento ST y la onda T son OPUESTOS a la dirección del QRS (descenso del ST y T negativa en V5-V6); tiempo de activación del ventrículo izquierdo (inicio del QRS al pico de la R) >0.06seg en V5-V6, con tiempo de activación del ventrículo derecho normal (<0.035seg) en V1.",
+        "imagenes": [
+          {
+            "src": "assets/cardio/conduccion-bri-ekg.jpg",
+            "caption": "ECG real de Bloqueo de Rama Izquierda (de tu clase)",
+            "explicacion": "Compara la morfología en V1 (predominantemente negativa, patrón QS) contra V5-V6 (onda R ancha y mellada, sin onda Q) — el opuesto exacto de lo que verías en BRD. Nota también cómo el segmento ST y la onda T se ven descendidos/invertidos en las derivaciones donde el QRS es predominantemente positivo (V5-V6), consistente con el patrón de discordancia esperado en BRI."
+          }
+        ]
+      },
+      {
+        "nombre": "Bloqueos fasciculares (hemibloqueos)",
+        "detalle": "Solo se compromete UNO de los 2 fascículos de la rama izquierda (anterior o posterior) — a diferencia del BRI completo. NO ensanchan el QRS (a diferencia de los bloqueos de rama completos). HEMIBLOQUEO ANTERIOR: desviación marcada del eje a la IZQUIERDA (-45° o más), morfología qR en derivaciones laterales (I, aVL) y rS en inferiores (II, III, aVF) — es el MÁS FRECUENTE de los 2. HEMIBLOQUEO POSTERIOR: desviación marcada del eje a la DERECHA (120° o más), morfología rS en I/aVL y qR en II/III/aVF — mucho menos frecuente, y su diagnóstico requiere descartar antes otras causas de desviación derecha del eje (como hipertrofia ventricular derecha)."
+      }
+    ],
+    "fisiologiaNormal": "El sistema de conducción normal transmite el impulso desde el nodo sinusal a través del nodo AV, Haz de His, sus 2 ramas, y finalmente las fibras de Purkinje, activando el miocardio ventricular de forma coordinada y casi simultánea. Cualquier retraso o bloqueo en ESTE CAMINO produce un patrón ECG específico y predecible según el punto exacto donde ocurre el problema — por eso la localización del bloqueo (AV vs. rama vs. fascicular) se puede inferir directamente de la morfología del ECG, sin necesitar estudios invasivos en la mayoría de los casos.",
+    "correlacionClinica": "Distinguir Mobitz I de Mobitz II es clínicamente crucial: el Mobitz I (Wenckebach) suele ser benigno, frecuentemente por aumento del tono vagal, y rara vez progresa a bloqueo completo — no siempre requiere marcapasos. El Mobitz II, en cambio, indica enfermedad estructural del sistema de conducción (frecuentemente infra-Hisiano), progresa con frecuencia a bloqueo completo de forma súbita e impredecible, y generalmente SÍ requiere marcapasos incluso si el paciente está asintomático. <span class=\"fuente-ampliada\">El BRI de aparición aguda en un paciente con dolor torácico es una situación de alta sospecha de síndrome coronario agudo — de hecho, históricamente se consideraba 'equivalente a STEMI' en ciertas guías, aunque las recomendaciones más recientes matizan esto y enfatizan evaluar el contexto clínico completo en vez de activar automáticamente el protocolo de reperfusión solo por un BRI nuevo aislado.</span>",
+    "tablasClinicas": [
+      {
+        "titulo": "🫀 Comparación rápida: Mobitz I vs. Mobitz II",
+        "columnas": [
+          "Característica",
+          "Mobitz I (Wenckebach)",
+          "Mobitz II"
+        ],
+        "filas": [
+          [
+            "Patrón del PR",
+            "Se alarga PROGRESIVAMENTE antes del latido no conducido",
+            "Se mantiene CONSTANTE, el fallo es súbito"
+          ],
+          [
+            "Localización habitual",
+            "Nodo AV (más proximal)",
+            "Infra-Hisiano (más distal, sistema His-Purkinje)"
+          ],
+          [
+            "Progresión a bloqueo completo",
+            "Rara",
+            "Frecuente y súbita"
+          ],
+          [
+            "Necesidad de marcapasos",
+            "Generalmente no, si asintomático",
+            "Generalmente SÍ, aunque esté asintomático"
+          ]
+        ]
+      },
+      {
+        "titulo": "🫀 Bloqueo de Rama Derecha vs. Izquierda — reconocimiento rápido",
+        "columnas": [
+          "Derivación",
+          "BRD",
+          "BRI"
+        ],
+        "filas": [
+          [
+            "V1",
+            "Positivo (rSR', patrón 'M')",
+            "Negativo (QS o rS)"
+          ],
+          [
+            "V6/I",
+            "Onda S ancha (>40ms)",
+            "Onda R ancha, mellada, sin onda Q"
+          ],
+          [
+            "Contexto agudo",
+            "Menos alarmante por sí solo",
+            "Descartar SIEMPRE infarto de miocardio"
+          ]
+        ]
+      }
+    ],
+    "puntosClave": [
+      "Bloqueo AV 1er grado: PR>0.2seg CONSTANTE, asintomático, no requiere marcapasos",
+      "Mobitz I (Wenckebach): PR se alarga PROGRESIVAMENTE antes de un latido no conducido — generalmente benigno",
+      "Mobitz II: PR CONSTANTE con fallo súbito e impredecible — más grave, frecuentemente requiere marcapasos",
+      "Bloqueo AV 3er grado: disociación auriculoventricular completa, ritmo de escape ventricular independiente",
+      "BRD: QRS≥120ms, patrón rSR' en V1 ('M'), onda S ancha en I/V6 — truco: QRS positivo en V1 + S en DI/V6",
+      "BRI: QRS≥120ms, QS/rS en V1, R mellada sin Q en V6, ST/T discordantes — SIEMPRE descartar IAM si es agudo",
+      "Hemibloqueos (fasciculares): NO ensanchan el QRS — solo desvían el eje (anterior=izquierda, posterior=derecha)"
+    ]
+  },
+  "casosClinicos": [
+    {
+      "nivel": "avanzado",
+      "vineta": "(Ejercicio real de tu clase) Se te presenta un ECG de 12 derivaciones para interpretar de forma sistemática.",
+      "imagen": {
+        "src": "assets/cardio/conduccion-caso-practica.jpg",
+        "caption": "ECG real de práctica de tu clase"
+      },
+      "preguntaMC": {
+        "enunciado": "El trazado muestra: ritmo sinusal, FC 79, PR 0.14seg, QRS 0.08seg, QT 0.38seg, eje -75°, con fuerza terminal P anormal en V1 y voltaje de onda R en V1-V3 <3mm. ¿Cuál es el diagnóstico completo?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Ritmo sinusal con desviación del eje a la izquierda, anomalía de aurícula izquierda, mala progresión de la onda R, y bloqueo fascicular anterior izquierdo"
+          },
+          {
+            "id": "b",
+            "texto": "Bloqueo AV completo (tercer grado)"
+          },
+          {
+            "id": "c",
+            "texto": "Bloqueo de rama derecha simple"
+          },
+          {
+            "id": "d",
+            "texto": "Ritmo normal sin ninguna anomalía significativa"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "El eje marcadamente desviado a la izquierda (-75°, dentro del rango de hemibloqueo anterior que es -45° o más) SIN ensanchamiento del QRS (0.08seg, normal) es característico de bloqueo fascicular anterior izquierdo — recuerda que los hemibloqueos NO ensanchan el QRS, a diferencia de los bloqueos de rama completos. La fuerza terminal P anormal en V1 sugiere anomalía/crecimiento de la aurícula izquierda. La mala progresión de la onda R en precordiales derechas (V1-V3) es un hallazgo adicional que se reporta junto con el resto."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Explica por qué el bloqueo fascicular anterior izquierdo NO ensancha el complejo QRS, a diferencia de un bloqueo de rama completo (derecha o izquierda).",
+        "respuestaModelo": "En el bloqueo fascicular, solo se compromete UNO de los 2 fascículos de la rama izquierda (en este caso, el anterior) — el OTRO fascículo (el posterior) sigue conduciendo con normalidad, y además la rama DERECHA está completamente intacta. Esto significa que la mayor parte del miocardio ventricular sigue siendo activado a través de rutas de conducción rápida (fascículo posterior + rama derecha), solo cambiando la SECUENCIA y DIRECCIÓN en que se activa el ventrículo izquierdo (de ahí la desviación del eje), pero sin retrasar significativamente el tiempo TOTAL de despolarización ventricular. En cambio, en un bloqueo de rama completo, TODA una rama completa deja de conducir, obligando al impulso a propagarse por vías más lentas (miocardio a miocardio, en vez de por el sistema de conducción especializado) para activar esa mitad del corazón — esto sí prolonga significativamente la duración total del QRS."
+      }
+    }
+  ]
 }
 ];
 
