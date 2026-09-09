@@ -251,7 +251,8 @@ const SEMANAS = [
       {
         "dia": "Viernes",
         "tipo": "teoria+hospital",
-        "tema": "ENDOCARDITIS INFECCIOSA / Tromboembolismo pulmonar / EXPOSICIÓN: ELECTROCARDIOGRAMA: ARRITMIAS"
+        "tema": "ENDOCARDITIS INFECCIOSA / Tromboembolismo pulmonar / EXPOSICIÓN: ELECTROCARDIOGRAMA: ARRITMIAS",
+        "vinculos": [ { "tipo": "enfermedad", "id": "endocarditis-infecciosa" } ]
       },
       { "dia": "Sábado", "tipo": "hospital", "tema": "Actividad hospitalaria — pendiente de agregar (falta el documento con la información real de tu sede)" }
     ],
@@ -266,7 +267,7 @@ const SEMANAS = [
     "lecturas": [
       "lectura-s5-14"
     ],
-    "enfermedades": ["enfermedades-pericardio", "taquiarritmias-bradiarritmias"]
+    "enfermedades": ["enfermedades-pericardio", "taquiarritmias-bradiarritmias", "endocarditis-infecciosa"]
   },
   {
     "id": "semana-06",
@@ -7084,6 +7085,258 @@ const ENFERMEDADES = [
       }
     }
   ]
+},
+  {
+  "id": "endocarditis-infecciosa",
+  "nombre": "Endocarditis Infecciosa",
+  "area": "Cardiología",
+  "semanas": [
+    "semana-05"
+  ],
+  "favorito": false,
+  "estudiado": false,
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1OhG-22Fwc0BDOtcEnPHfxpOq11rQ-Y2a/view",
+    "titulo": "PPT_MEDICINA INTERNA I_MH-701_SEM_5_SESIÓN-15-TEMA-1: Endocarditis Infecciosa"
+  },
+  "relacionadas": [],
+  "profundo": {
+    "definicion": "Infección de la superficie endocárdica, habitualmente del recubrimiento valvular. Su lesión característica es la VEGETACIÓN — una masa formada por plaquetas, fibrina, microorganismos y células inflamatorias, adherida a la superficie valvular o endocárdica dañada.",
+    "epidemiologia": "Incidencia global en 2019: 13.8 casos por 100,000 habitantes, aumentando con la edad. Mortalidad: 15-35%. La mayoría de casos ocurre en >50 años, con predominio en varones (relación varones:mujeres ≥2:1). Frecuencia por tipo de válvula afectada: válvulas nativas (72%), válvulas protésicas (21%), marcapasos o dispositivos de estimulación cardiaca (7%). Válvula específica más afectada: mitral (41%), seguida de aórtica (38%), tricúspide (12%) y pulmonar (1%, la menos frecuente).",
+    "etiologiaFactoresRiesgo": [
+      "Riesgo ALTO: antecedente de endocarditis infecciosa previa, portador de implante quirúrgico o válvulas protésicas, cardiopatía congénita, dispositivo de apoyo ventricular",
+      "Riesgo INTERMEDIO: cardiopatía reumática, valvulopatía degenerativa no reumática, anomalías valvulares congénitas, miocardiopatía hipertrófica",
+      "Factores desencadenantes: procedimientos dentales, intervenciones vasculares — que generan bacteriemia transitoria en un paciente con sustrato valvular predispuesto",
+      "Uso de drogas intravenosas (predispone especialmente a afectación de válvula tricúspide, del lado derecho del corazón)"
+    ],
+    "fisiopatologia": {
+      "resumen": "La endocarditis se desarrolla cuando bacterias circulantes (de un foco de bacteriemia transitoria o persistente) se adhieren a una superficie endocárdica ya dañada o anormal, formando la vegetación característica que perpetúa la infección y sirve de fuente continua de embolización.",
+      "cascada": [
+        {
+          "paso": "Daño endotelial/valvular previo",
+          "detalle": "Turbulencia de flujo por valvulopatía, cardiopatía congénita, o presencia de material protésico crea una superficie propicia para el depósito de plaquetas y fibrina (endocarditis trombótica no bacteriana, el sustrato inicial)."
+        },
+        {
+          "paso": "Bacteriemia transitoria",
+          "detalle": "Un procedimiento dental, una intervención vascular, o una infección a distancia introduce bacterias al torrente sanguíneo."
+        },
+        {
+          "paso": "Adhesión bacteriana y formación de la vegetación",
+          "detalle": "Las bacterias circulantes se adhieren al depósito de plaquetas/fibrina ya formado, proliferan, y quedan protegidas dentro de la vegetación — parcialmente aislada de las defensas del huésped y de los antibióticos."
+        },
+        {
+          "paso": "Diseminación por 3 mecanismos",
+          "detalle": "(1) Fenómenos VASCULARES: embolización directa de fragmentos de la vegetación a distintos órganos. (2) Fenómenos INMUNITARIOS: depósito de inmunocomplejos circulantes en distintos tejidos (glomerulonefritis, nódulos de Osler). (3) Destrucción LOCAL: de la válvula y estructuras perivalvulares por la infección persistente (perforación de valvas, abscesos, fístulas)."
+        }
+      ],
+      "imagenes": [
+        {
+          "src": "assets/cardio/endocarditis-eco-vegetacion.jpg",
+          "caption": "Ecocardiograma real con vegetación marcada (de tu clase)",
+          "explicacion": "En la imagen de la izquierda, la flecha marca 'Veg' (vegetación) — una masa irregular adherida a la válvula, visible junto a las estructuras normales marcadas (Ao=aorta, LV=ventrículo izquierdo/'left ventricle'). Este es el hallazgo ecocardiográfico central de la endocarditis: la ecocardiografía (transtorácica y transesofágica) es la prueba de PRIMERA LÍNEA para buscar exactamente esto — tamaño y localización de vegetaciones, complicaciones perivalvulares (abscesos, pseudoaneurismas), perforación de valvas, o fístulas intracardiacas. Si el estudio inicial es normal o no concluyente pero la sospecha clínica persiste, DEBE REPETIRSE en 5-7 días."
+        },
+        {
+          "src": "assets/cardio/endocarditis-lesiones-astilla-janeway.jpg",
+          "caption": "Hemorragia en astilla y Lesiones de Janeway (de tu clase)",
+          "explicacion": "Hemorragia en astilla (izquierda): lesiones lineales rojo-amarronadas en el lecho ungueal, típicamente asociadas a Streptococo del grupo B. Lesiones de Janeway (derecha): maculares, NO dolorosas, NO desaparecen con la vitropresión (a diferencia de un exantema por vasodilatación), localizadas en palmas y plantas, asociadas a Streptococcus bovis. Ambas son fenómenos VASCULARES (microembolización directa desde la vegetación), por eso ninguna de las 2 duele."
+        },
+        {
+          "src": "assets/cardio/endocarditis-lesiones-osler-petequias.jpg",
+          "caption": "Nódulos de Osler y Petequias en conjuntiva (de tu clase)",
+          "explicacion": "Nódulos de Osler (izquierda): pápulo-pústulas DOLOROSAS localizadas en el pulpejo de los dedos, asociadas a Staphylococcus aureus — son la ÚNICA lesión de este grupo que es dolorosa, porque su mecanismo es INMUNITARIO (depósito de inmunocomplejos), no vascular. Petequias en conjuntiva (derecha): fenómeno vascular, igual que las lesiones de Janeway y las hemorragias en astilla — pequeñas hemorragias puntiformes por microembolización."
+        }
+      ]
+    },
+    "clinica": [
+      {
+        "signo": "Fiebre",
+        "detallePPT": "Presente en 77% de los casos — buscarla activamente en todo cuadro de sepsis o fiebre de origen desconocido (FOD)",
+        "mecanismo": "Respuesta inflamatoria sistémica a la infección activa"
+      },
+      {
+        "signo": "Soplo cardiaco",
+        "detallePPT": "Presente en 64% de los casos",
+        "mecanismo": "Flujo turbulento generado por la vegetación y/o la disfunción valvular resultante"
+      },
+      {
+        "signo": "Insuficiencia cardiaca congestiva",
+        "detallePPT": "Presente en 27% de los casos",
+        "mecanismo": "Destrucción valvular progresiva por la infección, generando regurgitación aguda o subaguda"
+      },
+      {
+        "signo": "Lesiones cutáneo-mucosas por fenómeno VASCULAR",
+        "detallePPT": "Hemorragias en astilla (lesiones lineales rojo-amarronadas en el lecho ungueal), Lesiones de Janeway (maculares, indoloras, en palmas/plantas, NO desaparecen con vitropresión), petequias en conjuntiva, manchas de Roth (en retina)",
+        "mecanismo": "Microembolización séptica directa desde fragmentos de la vegetación"
+      },
+      {
+        "signo": "Nódulos de Osler por fenómeno INMUNITARIO",
+        "detallePPT": "Pápulo-pústulas DOLOROSAS en el pulpejo de los dedos",
+        "mecanismo": "Depósito de inmunocomplejos circulantes — a diferencia de las lesiones vasculares, estas SÍ son dolorosas"
+      },
+      {
+        "signo": "Glomerulonefritis",
+        "detallePPT": "Falla renal por fenómeno inmunitario",
+        "mecanismo": "Depósito de inmunocomplejos en el glomérulo"
+      }
+    ],
+    "examenFisico": [
+      "Fiebre",
+      "Soplo cardiaco (nuevo o cambiante)",
+      "Buscar activamente las lesiones cutáneo-mucosas descritas (hemorragias en astilla, Janeway, Osler, petequias)",
+      "Signos de insuficiencia cardiaca si hay destrucción valvular significativa",
+      "Signos neurológicos focales (si hay embolismo cerebral)",
+      "Esplenomegalia en casos subagudos/crónicos"
+    ],
+    "tablasClinicas": [
+      {
+        "titulo": "🩺 Lesiones cutáneo-mucosas: vascular vs. inmunitario",
+        "contexto": "Un detalle que se pregunta con frecuencia: si la lesión duele o no, y el mecanismo detrás.",
+        "columnas": [
+          "Lesión",
+          "Mecanismo",
+          "¿Duele?"
+        ],
+        "filas": [
+          [
+            "Hemorragias en astilla",
+            "Vascular (microembolia)",
+            "No"
+          ],
+          [
+            "Lesiones de Janeway",
+            "Vascular (microembolia)",
+            "No — maculares, no dolorosas"
+          ],
+          [
+            "Petequias (conjuntiva, etc.)",
+            "Vascular (microembolia)",
+            "No"
+          ],
+          [
+            "Nódulos de Osler",
+            "Inmunitario (inmunocomplejos)",
+            "SÍ — dolorosos"
+          ],
+          [
+            "Manchas de Roth (retina)",
+            "Vascular/inmunitario",
+            "No (asintomáticas, se ven en fondo de ojo)"
+          ]
+        ],
+        "nota": "Regla mnemotécnica: 'Osler duele' — es la única de este grupo que es dolorosa, y es de mecanismo inmunitario, no vascular."
+      }
+    ],
+    "diagnostico": "Laboratorio: hemograma, PCR, PCT, VSG — los biomarcadores inflamatorios NO son diagnósticos por sí solos, solo orientan. Microbiología: hemocultivos (tomar ANTES de iniciar antibióticos, muestra de 10mL) — S. aureus es el más frecuente (31%), seguido de estreptococos orales (17%) y estafilococo coagulasa-negativo (11%). Imágenes: ECOCARDIOGRAFÍA (transtorácica y transesofágica) es de PRIMERA LÍNEA — busca vegetaciones, complicaciones perivalvulares, perforación de valvas, fístulas; repetir en 5-7 días si es normal/no concluyente pero la sospecha persiste. Tomografía: complicaciones valvulares/perivalvulares, detecta lesiones distantes y fuentes de bacteriemia, útil en evaluación perioperatoria. Resonancia: utilidad limitada por baja resolución espacial, pero útil para complicaciones neurológicas (lesiones isquémicas) y lesiones en columna vertebral. Diagnóstico definitivo: CRITERIOS DE DUKE (1994, modificados por la Sociedad Europea de Cardiología en 2023) — combinan criterios clínicos con hallazgos ecocardiográficos, dado que la variabilidad en la presentación clínica requiere una estrategia diagnóstica sensible y específica.",
+    "diagnosticoDiferencial": [
+      "Fiebre de origen desconocido de otra causa",
+      "Sepsis de otro foco sin compromiso endocárdico",
+      "Fenómenos embólicos de otro origen (fibrilación auricular, ateroembolismo)",
+      "Enfermedades autoinmunes con manifestaciones cutáneas similares (vasculitis)"
+    ],
+    "tratamiento": {
+      "noFarmacologico": [
+        "Cirugía — indicada en: (1) insuficiencia cardiaca por regurgitación valvular aguda no controlada rápidamente, (2) insuficiencia cardiaca por disfunción protésica, (3) sepsis persistente (>7-10 días pese a antibioterapia correcta), (4) endocarditis por microorganismos difíciles (hongos, gramnegativos, S. aureus especialmente en prótesis sin respuesta inmediata), (5) absceso perivalvular/periprotésico o fístulas intracardiacas documentadas, (6) embolismos a repetición con vegetaciones grandes y móviles persistentes",
+        "Urgencia quirúrgica según contexto: emergencia (shock cardiogénico/edema pulmonar por insuficiencia cardiaca), urgente (mala tolerancia hemodinámica, infección incontrolada, alto riesgo embólico), o no urgente (según cada escenario específico)"
+      ],
+      "farmacologico": [
+        "Antibioticoterapia dirigida según el microorganismo identificado en hemocultivos — esquemas específicos para estreptococos orales, Staphylococcus spp., y Enterococcus",
+        "Duración prolongada de tratamiento (semanas), ajustada según válvula nativa vs. protésica y microorganismo"
+      ]
+    },
+    "complicaciones": [
+      "Intracardiacas: insuficiencia cardiaca rebelde, absceso miocárdico/septal, rotura de músculos papilares, absceso del anillo, destrucción de valvas, aneurisma micótico del seno de Valsalva, fístula aortocardíaca, pericarditis supurativa",
+      "Extracardíacas: embolia de arterias coronarias, apoplejía (ACV), embolia en médula espinal, absceso esplénico, absceso(s) cerebral(es), embolismo sistémico, glomerulonefritis mediada por inmunocomplejos, aneurisma micótico cerebral",
+      "Recurrencia de endocarditis"
+    ],
+    "prevencion": "Profilaxis antibiótica antes de procedimientos dentales/vasculares específicos en pacientes de alto riesgo (antecedente de EI previa, válvula protésica, cardiopatía congénita). Manejo adecuado de accesos vasculares en pacientes con catéteres de larga duración. Cuidado odontológico regular en pacientes con cardiopatía estructural conocida.",
+    "perlasProfundo": "La variabilidad en la presentación clínica de la endocarditis infecciosa (desde un cuadro agudo y séptico hasta uno subagudo/crónico con síntomas inespecíficos de semanas de evolución) es precisamente lo que exige una estrategia diagnóstica sensible Y específica — los Criterios de Duke existen justamente para estandarizar el diagnóstico frente a esta enorme variabilidad, combinando hallazgos clínicos que por sí solos serían insuficientes con la evidencia objetiva de la ecocardiografía y los hemocultivos.",
+    "asiLoPreguntanExamen": {
+      "intro": "Patrón real de tus exámenes: un caso complejo con múltiples sistemas comprometidos, donde debes reconocer el patrón de sepsis con posible foco cardiaco embólico — exactamente el patrón del caso real de tu propia clase (que en este caso queda abierto, sin respuesta única confirmada por tu material, como ejercicio de razonamiento clínico).",
+      "ejercicios": [
+        {
+          "tipo": "Razonamiento clínico abierto (tal como en tu propio PPT — sin respuesta única impresa)",
+          "planteamiento": "Varón de 34 años con 3 días de malestar general, rinorrea escasa, cefalea occipital, artralgias, mialgias, y disnea progresiva a pequeños esfuerzos. En las últimas 24h: taquipnea, obnubilación progresando a estupor, cianosis, piel fría y húmeda. Examen: Glasgow 10/15, FC 124, PA 90/54, FR 36, SpO2 80% con O2 suplementario, estertores crepitantes infraescapulares izquierdos + sibilancias diseminadas, T° 39°C. Laboratorio: leucocitos 17,000 con desviación izquierda, VSG 50, creatinina 2.4, bilirrubina total 1.6, TGO 308/TGP 120, PCR 9.6, gasometría con acidosis metabólica parcialmente compensada e hipoxemia severa (pO2 55, SaO2 80%). ¿Cuál sería tu planteamiento diagnóstico y tu plan de trabajo?",
+          "respuestaModelo": "Este es un cuadro de SEPSIS SEVERA/SHOCK SÉPTICO con disfunción multiorgánica (renal: creatinina elevada; hepática: transaminasas y bilirrubina elevadas; respiratoria: hipoxemia severa con acidosis metabólica) y alteración del sensorio (Glasgow 10/15). El hallazgo pulmonar LOCALIZADO (estertores infraescapulares izquierdos, no difusos) junto con la fiebre alta y el curso progresivo de varios días sugiere fuertemente EMBOLISMO SÉPTICO PULMONAR como parte de un cuadro de sepsis con foco no aún identificado — la combinación de fiebre + falla multiorgánica + posible fenómeno embólico obliga a descartar activamente ENDOCARDITIS INFECCIOSA como foco primario (aplicando los Criterios de Duke), sin dejar de investigar otros focos posibles de sepsis. Plan de trabajo: hemocultivos x2-3 (antes de iniciar antibióticos si la estabilidad del paciente lo permite, aunque en shock séptico esto no debe retrasar el inicio de antibioticoterapia empírica), ecocardiograma (transtorácico inicialmente, transesofágico si hay alta sospecha y el transtorácico no es concluyente), radiografía/TC de tórax (para caracterizar el hallazgo pulmonar localizado — descartar émbolos sépticos), soporte hemodinámico y respiratorio inmediato dado el shock y la hipoxemia severa, antibioticoterapia empírica de amplio espectro sin demora una vez tomados los cultivos."
+        }
+      ]
+    }
+  },
+  "repaso": {
+    "conceptosClave": [
+      "EI = infección de superficie endocárdica, lesión característica = vegetación",
+      "3 fenómenos de diseminación: VASCULAR (embolización), INMUNITARIO (inmunocomplejos), y destrucción LOCAL de estructuras cardiacas",
+      "Diagnóstico definitivo: Criterios de Duke (clínicos + ecocardiográficos + microbiológicos)"
+    ],
+    "chuletaRapida": {
+      "titulo": "📊 Chuleta rápida — lesiones cutáneas",
+      "columnas": [
+        "Lesión",
+        "¿Duele?",
+        "Mecanismo"
+      ],
+      "filas": [
+        [
+          "Janeway, hemorragias en astilla, petequias",
+          "No",
+          "Vascular"
+        ],
+        [
+          "Nódulos de Osler",
+          "SÍ",
+          "Inmunitario"
+        ]
+      ]
+    },
+    "clinica": "Fiebre (77%), soplo cardiaco (64%), insuficiencia cardiaca (27%) — más lesiones cutáneo-mucosas (vasculares: no duelen; Osler: SÍ duele).",
+    "diagnostico": "Hemocultivos (S. aureus el más frecuente) + Ecocardiografía (primera línea, repetir en 5-7 días si no concluyente) + Criterios de Duke para el diagnóstico definitivo.",
+    "tratamientoResumen": "Antibioticoterapia dirigida prolongada + cirugía si: IC refractaria, sepsis persistente >7-10 días, microorganismo difícil, absceso/fístula, o embolismos a repetición con vegetación grande.",
+    "diferenciales": [
+      {
+        "entidad": "Sepsis de otro foco",
+        "clave": "Sin evidencia ecocardiográfica de vegetación ni criterios de Duke cumplidos"
+      },
+      {
+        "entidad": "Vasculitis autoinmune",
+        "clave": "Lesiones cutáneas similares pero sin foco infeccioso ni hemocultivos positivos"
+      }
+    ],
+    "tablaComparativa": {
+      "titulo": "Riesgo alto vs. intermedio de EI",
+      "filas": [
+        [
+          "Ejemplos",
+          "EI previa, válvula protésica, cardiopatía congénita",
+          "Cardiopatía reumática, valvulopatía degenerativa, miocardiopatía hipertrófica"
+        ]
+      ]
+    }
+  },
+  "imprescindible": {
+    "loQueSiOSiDebesSaber": [
+      "¿Cuál es la lesión característica de la EI? → Vegetación",
+      "¿Cuál es la válvula más frecuentemente afectada? → Mitral (41%), seguida de aórtica (38%)",
+      "¿Cuál es el microorganismo más frecuente? → S. aureus (31%)",
+      "¿Cuál es la prueba de imagen de primera línea? → Ecocardiografía (transtorácica y transesofágica)",
+      "¿Qué lesión cutánea SÍ duele, a diferencia de las demás? → Nódulos de Osler (mecanismo inmunitario)",
+      "¿Cómo se llama el sistema de criterios para el diagnóstico definitivo? → Criterios de Duke (modificados por ESC 2023)",
+      "¿Cuándo repetir el ecocardiograma si el inicial es normal/no concluyente? → A los 5-7 días, si la sospecha clínica persiste"
+    ],
+    "redFlags": [
+      "Fiebre + soplo cardiaco nuevo + fenómenos embólicos → sospechar EI activamente, no descartar por examen físico incompleto",
+      "Sepsis persistente >7-10 días pese a antibioterapia correcta → indicación de cirugía",
+      "Vegetación grande y móvil (>10mm) con embolismos a repetición → indicación de cirugía urgente"
+    ],
+    "erroresFrecuentes": [
+      "Descartar EI por un solo ecocardiograma normal — debe repetirse en 5-7 días si la sospecha persiste",
+      "Confundir el mecanismo de las lesiones cutáneas — Osler es inmunitario y doloroso, el resto es vascular e indoloro",
+      "Retrasar el inicio de antibióticos esperando resultados de hemocultivos en un paciente séptico inestable"
+    ],
+    "asociacionesClinicas": [
+      "Fiebre + válvula protésica + soplo nuevo → alta sospecha de EI",
+      "Lesiones embólicas cutáneas + glomerulonefritis + fiebre → sospechar EI con fenómenos vasculares e inmunitarios combinados",
+      "Uso de drogas intravenosas + fiebre → sospechar EI de válvula tricúspide"
+    ]
+  }
 }
 ];
 
@@ -9129,6 +9382,12 @@ const MODULOS = {
       "categoria": "Arritmias",
       "ids": [
         "taquiarritmias-bradiarritmias"
+      ]
+    },
+    {
+      "categoria": "Infecciosa",
+      "ids": [
+        "endocarditis-infecciosa"
       ]
     }
   ],
