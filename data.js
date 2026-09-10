@@ -7067,6 +7067,37 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "Monomórfica = QRS idéntico en todos los latidos de una misma derivación. Polimórfica = varía la morfología latido a latido — la torsade de pointes es el ejemplo clásico de TV polimórfica, típicamente asociada a QT prolongado."
+  },
+  {
+    "titulo": "🫀 Causas de disfunción del nodo sinusal",
+    "contexto": "Espectro de trastornos: bradicardia sinusal persistente, pausas/paradas sinusales, bloqueo de salida senoauricular, incompetencia cronotrópica, y síndrome bradicardia-taquicardia (alternancia entre ambas). Es crónica y progresiva, típica de ancianos, y una de las principales causas de implantación de marcapasos.",
+    "columnas": [
+      "Causas EXTRÍNSECAS",
+      "Causas INTRÍNSECAS"
+    ],
+    "filas": [
+      [
+        "Agentes farmacológicos (betabloqueadores, calcioantagonistas, glucósidos cardiacos, antiarrítmicos clase I/III, antihipertensivos simpaticolíticos, litio, fenitoína)",
+        "Fibrosis degenerativa idiopática (la causa intrínseca más común)"
+      ],
+      [
+        "Alteraciones electrolíticas",
+        "Isquemia (incluido el infarto)"
+      ],
+      [
+        "Hipotiroidismo",
+        "Enfermedades infecciosas, incluida enfermedad de Chagas, endocarditis, difteria"
+      ],
+      [
+        "Apnea del sueño, hipoxia, hipotermia",
+        "Enfermedad inflamatoria, miocarditis"
+      ],
+      [
+        "Aumento del tono vagal, vómitos, tos, defecación/micción",
+        "Trastornos infiltrativos, enfermedades del colágeno, trastornos osteomusculares, cirugía cardiotorácica, sustitución valvular, cardiopatía congénita"
+      ]
+    ],
+    "nota": "La enfermedad de Chagas es una causa infecciosa intrínseca relevante en contexto latinoamericano — puede causar disfunción del nodo sinusal, bloqueos de conducción, y miocardiopatía dilatada."
   }
 ],
     "diagnostico": "ECG de 12 derivaciones es la prueba fundamental. Primero determinar: ¿QRS estrecho o ancho? ¿Ritmo regular o irregular? Taquicardias de QRS ESTRECHO: reentrada intranodal (60% de las regulares, sin onda P sinusal visible), reentrada por vía accesoria (WPW), flutter auricular (ondas F, negativas en II/III/aVF en el flutter común), fibrilación auricular (ausencia total de ondas P, R-R irregular), taquicardia auricular multifocal. Taquicardias de QRS ANCHO: aplicar Criterios de Brugada para diferenciar TV de TSV con aberrancia; fibrilación ventricular (deflexiones irregulares, rápidas y caóticas, sin QRS reconocible — equivale a paro cardiocirculatorio). Bradiarritmias: bradicardia sinusal (puede ser fisiológica en deportistas), pausas sinusales (>3 segundos justifica marcapasos si es sintomático), incompetencia cronotrópica (no alcanzar 80% de la FC máxima esperada en esfuerzo).",
@@ -7493,6 +7524,61 @@ const ENFERMEDADES = [
         "Limitar el uso de catéteres de infusión y procedimientos invasivos siempre que sea posible; adherencia estricta a las recomendaciones de uso de cánulas centrales/periféricas"
       ]
     ]
+  },
+  {
+    "titulo": "🎯 Tratamiento empírico según contexto clínico (antes de cultivos)",
+    "contexto": "La tabla más práctica de todas: según el ESCENARIO CLÍNICO exacto (tipo de válvula + tiempo desde la cirugía, o uso de drogas IV), se predice el microorganismo más probable y se elige el tratamiento empírico mientras se esperan los cultivos.",
+    "columnas": [
+      "Escenario",
+      "Etiología esperada",
+      "Tx. empírico",
+      "Tx. de elección"
+    ],
+    "filas": [
+      [
+        "Prótesis valvular PRECOZ (<2 meses)",
+        "S. epidermidis",
+        "Aminoglucósido + Rifampicina + Vancomicina",
+        "Aminoglucósido + Rifampicina + Vancomicina"
+      ],
+      [
+        "Prótesis valvular TEMPRANA (2-12 meses)",
+        "S. aureus resistente a meticilina",
+        "Aminoglucósido + Rifampicina + Vancomicina",
+        "Aminoglucósido + Rifampicina + Vancomicina"
+      ],
+      [
+        "Prótesis valvular TARDÍA (>12 meses)",
+        "E. viridans (Streptococcus viridans)",
+        "Aminoglucósido + Ampicilina",
+        "Penicilina G + Aminoglucósido"
+      ],
+      [
+        "Uso de drogas IV",
+        "S. aureus",
+        "Aminoglucósido + Ampicilina",
+        "Dicloxacilina + Aminoglucósido"
+      ],
+      [
+        "Válvula nativa AGUDA (<2 meses)",
+        "S. aureus",
+        "Aminoglucósido + Ampicilina",
+        "Dicloxacilina + Aminoglucósido"
+      ],
+      [
+        "Válvula nativa SUBAGUDA (2-12 meses)",
+        "E. viridans",
+        "Aminoglucósido + Ampicilina",
+        "Penicilina G + Aminoglucósido"
+      ],
+      [
+        "Válvula nativa CRÓNICA (>12 meses)",
+        "C. burnetii (Coxiella burnetii)",
+        "Aminoglucósido + Ampicilina",
+        "Dicloxacilina + Aminoglucósido"
+      ]
+    ],
+    "nota": "En alergia a penicilina o resistencia: Vancomicina + Aminoglucósido. Tratamiento para Enterococos: Ampicilina + Aminoglucósido. Tratamiento en hongos: Anfotericina B + Azoles."
   }
 ],
     "diagnostico": "Laboratorio: hemograma, PCR, PCT, VSG — los biomarcadores inflamatorios NO son diagnósticos por sí solos, solo orientan. Microbiología: hemocultivos (tomar ANTES de iniciar antibióticos, muestra de 10mL) — S. aureus es el más frecuente (31%), seguido de estreptococos orales (17%) y estafilococo coagulasa-negativo (11%). Imágenes: ECOCARDIOGRAFÍA (transtorácica y transesofágica) es de PRIMERA LÍNEA — busca vegetaciones, complicaciones perivalvulares, perforación de valvas, fístulas; repetir en 5-7 días si es normal/no concluyente pero la sospecha persiste. Tomografía: complicaciones valvulares/perivalvulares, detecta lesiones distantes y fuentes de bacteriemia, útil en evaluación perioperatoria. Resonancia: utilidad limitada por baja resolución espacial, pero útil para complicaciones neurológicas (lesiones isquémicas) y lesiones en columna vertebral. Diagnóstico definitivo: CRITERIOS DE DUKE (1994, modificados por la Sociedad Europea de Cardiología en 2023) — combinan criterios clínicos con hallazgos ecocardiográficos, dado que la variabilidad en la presentación clínica requiere una estrategia diagnóstica sensible y específica.",
