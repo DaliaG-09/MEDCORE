@@ -6708,6 +6708,33 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "Estos son los criterios FORMALES para decir 'esto es pericarditis aguda' — no basta con sospecha clínica aislada, se necesitan al menos 2 de los 4 criterios listados."
+  },
+  {
+    "titulo": "📉 Pauta de reducción progresiva de corticoides",
+    "contexto": "Cuando SÍ se usan corticoides (2ª línea), deben reducirse de forma gradual, nunca suspenderse bruscamente — el ritmo de reducción depende de la dosis en que se encuentre el paciente.",
+    "columnas": [
+      "Dosis actual (prednisona)",
+      "Pauta de reducción"
+    ],
+    "filas": [
+      [
+        ">50mg/día",
+        "10mg/día cada 1-2 semanas"
+      ],
+      [
+        "50-25mg/día",
+        "5-10mg/día cada 1-2 semanas"
+      ],
+      [
+        "25-15mg/día",
+        "2.5mg/día cada 2-4 semanas"
+      ],
+      [
+        "<15mg/día",
+        "1.25-2.5mg/día cada 2-6 semanas"
+      ]
+    ],
+    "nota": "Dosis inicial habitual: 0.25-0.50mg/kg/día. Mientras más baja la dosis, MÁS LENTA debe ser la reducción — es en las dosis bajas donde más frecuentemente ocurre la recurrencia si se retira demasiado rápido."
   }
 ],
     "diagnostico": "ECG (patrón evolutivo de 4 etapas en pericarditis; bajo voltaje del QRS en taponamiento y en constrictiva). Radiografía de tórax: en pericarditis/taponamiento, la silueta cardiaca se mantiene NORMAL hasta que el derrame es al menos moderado — con derrames grandes, adopta forma de 'cantimplora o botella de agua' (pericarditis/derrame) o similar a un 'matraz' redondeado (taponamiento); en pericarditis constrictiva, buscar calcificación pericárdica anular (mejor vista en proyección lateral). Ecocardiograma: prueba clave — visualiza directamente el derrame (clasificado por tamaño), y en taponamiento muestra colapso de cavidades derechas; en constrictiva muestra engrosamiento/calcificación pericárdica, 'rebote septal' (desplazamiento brusco del septo interventricular en diástole temprana), y signos de congestión venosa sistémica (dilatación de venas hepáticas, distensión de vena cava inferior con poca variación respiratoria).",
@@ -6719,11 +6746,12 @@ const ENFERMEDADES = [
     ],
     "tratamiento": {
       "noFarmacologico": [
-        "Reposo hasta resolución de síntomas y normalización de marcadores inflamatorios (pericarditis)",
-        "Pericardiocentesis de urgencia o cirugía cardiaca — tratamiento definitivo del TAPONAMIENTO CARDÍACO, no debe demorarse",
-        "Pericardiectomía (resección quirúrgica del pericardio) — tratamiento definitivo de la pericarditis constrictiva sintomática",
-        "Tratamiento antituberculoso específico si esa es la etiología — reduce el riesgo de progresión a constricción de >80% a <10%"
-      ],
+  "Reposo hasta resolución de síntomas y normalización de marcadores inflamatorios (pericarditis)",
+  "Pericardiocentesis de urgencia o cirugía cardiaca — tratamiento definitivo del TAPONAMIENTO CARDÍACO, no debe demorarse",
+  "Pericardiectomía (resección quirúrgica del pericardio) — tratamiento definitivo de la pericarditis constrictiva sintomática",
+  "Tratamiento antituberculoso específico si esa es la etiología — reduce el riesgo de progresión a constricción de >80% a <10%",
+  "Manejo ESCALONADO por líneas de tratamiento — Pericarditis AGUDA: 1ª línea = AAS/AINE + colchicina + restricción de actividad física; 2ª línea = corticoides en dosis bajas (si hay contraindicación a AAS/AINE/colchicina, y tras excluir causa infecciosa). Pericarditis RECURRENTE: mismo esquema de 1ª/2ª línea; 3ª línea = inmunoglobulina IV, anakinra o azatioprina; 4ª línea = pericardiectomía"
+],
       "farmacologico": [
         "AINEs (ibuprofeno, aspirina en dosis altas) como primera línea en pericarditis aguda",
         "Colchicina — se agrega de rutina junto a los AINEs, reduce significativamente el riesgo de recurrencia",
@@ -6939,6 +6967,11 @@ const ENFERMEDADES = [
     "src": "assets/cardio/arritmia-wpw-ecg-comparacion.jpg",
     "caption": "ECG normal vs. Wolff-Parkinson-White (de tu clase)",
     "explicacion": "Compara ambos trazados: en el WPW (derecha), el intervalo PR está ACORTADO (<120ms) porque el impulso llega a los ventrículos más rápido de lo normal, evitando el retraso fisiológico del nodo AV al pasar por la vía accesoria. Esa llegada anticipada genera la ONDA DELTA — el 'empastamiento' inicial y lento del QRS que ves marcado en rojo, que hace que el QRS se vea más ANCHO (100-200ms) de lo normal. El trazado real de abajo muestra ambos hallazgos juntos: PR acortado (marcado en azul) + QRS ancho por la onda delta (marcado en rojo) — reconocer este PAR de hallazgos juntos es lo que confirma preexcitación por WPW en un ECG basal."
+  },
+  {
+    "src": "assets/cardio/arritmia-extrasistoles-ventriculares.jpg",
+    "caption": "Patrones de extrasístoles ventriculares (de tu clase)",
+    "explicacion": "3 patrones distintos de extrasístoles ventriculares, todos peligrosos por su propensión a degenerar en fibrilación ventricular: (a) Unifocal y pareada — 2 extrasístoles seguidas con la MISMA morfología (originadas en el mismo foco ectópico); (b) Multifocal — extrasístoles con morfologías DIFERENTES entre sí (originadas en distintos focos, generalmente indica mayor irritabilidad ventricular); (c) Bigeminismo — un patrón repetitivo donde CADA latido normal es seguido por una extrasístole ventricular, alternando 1:1 de forma sostenida."
   }
 ]
     },
@@ -7148,6 +7181,48 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "Epidemiología: afecta al 1-3‰ de la población; las arritmias aparecen en 12-80% de los pacientes con el patrón ECG. Riesgo global de muerte súbita: 0.15%/paciente/año. CLAVE clínica: en FA con WPW, EVITAR fármacos que bloqueen el nodo AV (digoxina, verapamilo, adenosina) — al bloquear la vía normal, favorecen que TODO el impulso pase por la vía accesoria sin control, aumentando el riesgo de degeneración a fibrilación ventricular."
+  },
+  {
+    "titulo": "💊 Fármacos para CONTROL DE FRECUENCIA en FA (distinto de control de ritmo)",
+    "contexto": "Estos fármacos NO intentan restaurar el ritmo sinusal — solo frenan el nodo AV para bajar la frecuencia ventricular.",
+    "columnas": [
+      "Fármaco",
+      "Vía",
+      "Efectos adversos clave"
+    ],
+    "filas": [
+      [
+        "Diltiazem",
+        "IV (carga) + oral (mantenimiento)",
+        "Hipotensión, bloqueo AV, insuficiencia cardiaca"
+      ],
+      [
+        "Verapamilo",
+        "IV (carga) + oral (mantenimiento)",
+        "Igual que diltiazem + interacción con digoxina"
+      ],
+      [
+        "Esmolol",
+        "Solo IV (infusión)",
+        "Hipotensión, broncoespasmo, bradicardia, bloqueo AV, insuficiencia cardiaca"
+      ],
+      [
+        "Metoprolol",
+        "IV (carga) + oral (mantenimiento)",
+        "Similar a esmolol"
+      ],
+      [
+        "Propranolol",
+        "IV (carga) + oral (mantenimiento)",
+        "Similar a esmolol"
+      ],
+      [
+        "Digoxina",
+        "IV (carga, lenta) + oral (mantenimiento)",
+        "Bloqueo AV, bradicardia, intoxicación digitálica (ocular, digestiva, neurológica, proarritmia)"
+      ]
+    ],
+    "nota": "Los calcioantagonistas (diltiazem, verapamilo) y betabloqueadores (esmolol, metoprolol, propranolol) son de primera línea. La digoxina es más lenta en su efecto y menos eficaz con el ejercicio — se reserva para pacientes sedentarios o con insuficiencia cardiaca donde los otros están contraindicados."
   }
 ],
     "diagnostico": "ECG de 12 derivaciones es la prueba fundamental. Primero determinar: ¿QRS estrecho o ancho? ¿Ritmo regular o irregular? Taquicardias de QRS ESTRECHO: reentrada intranodal (60% de las regulares, sin onda P sinusal visible), reentrada por vía accesoria (WPW), flutter auricular (ondas F, negativas en II/III/aVF en el flutter común), fibrilación auricular (ausencia total de ondas P, R-R irregular), taquicardia auricular multifocal. Taquicardias de QRS ANCHO: aplicar Criterios de Brugada para diferenciar TV de TSV con aberrancia; fibrilación ventricular (deflexiones irregulares, rápidas y caóticas, sin QRS reconocible — equivale a paro cardiocirculatorio). Bradiarritmias: bradicardia sinusal (puede ser fisiológica en deportistas), pausas sinusales (>3 segundos justifica marcapasos si es sintomático), incompetencia cronotrópica (no alcanzar 80% de la FC máxima esperada en esfuerzo).",
