@@ -6544,37 +6544,66 @@ const ENFERMEDADES = [
       "En pericarditis constrictiva: golpe pericárdico (sonido diastólico agregado en borde esternal izquierdo/punta), desdoblamiento del segundo ruido, signo de Kussmaul"
     ],
     "tablasClinicas": [
-      {
-        "titulo": "🫀 Clasificación de los derrames pericárdicos por ecocardiograma",
-        "contexto": "Se mide el espacio libre de eco durante la diástole.",
-        "columnas": [
-          "Tamaño",
-          "Espacio libre de eco en diástole"
-        ],
-        "filas": [
-          [
-            "Banal",
-            "Solo se aprecia en sístole"
-          ],
-          [
-            "Pequeño",
-            "<10 mm"
-          ],
-          [
-            "Moderado",
-            "10-20 mm"
-          ],
-          [
-            "Grande",
-            ">20 mm"
-          ],
-          [
-            "Muy grande",
-            ">25 mm"
-          ]
-        ]
-      }
+  {
+    "titulo": "🫀 Clasificación de los derrames pericárdicos por ecocardiograma",
+    "contexto": "Se mide el espacio libre de eco durante la diástole.",
+    "columnas": [
+      "Tamaño",
+      "Espacio libre de eco en diástole"
     ],
+    "filas": [
+      [
+        "Banal",
+        "Solo se aprecia en sístole"
+      ],
+      [
+        "Pequeño",
+        "<10 mm"
+      ],
+      [
+        "Moderado",
+        "10-20 mm"
+      ],
+      [
+        "Grande",
+        ">20 mm"
+      ],
+      [
+        "Muy grande",
+        ">25 mm"
+      ]
+    ]
+  },
+  {
+    "titulo": "💊 Dosis exactas del tratamiento de pericarditis",
+    "columnas": [
+      "Fármaco",
+      "Dosis habitual",
+      "Duración inicial",
+      "Ajuste de dosis"
+    ],
+    "filas": [
+      [
+        "Ácido acetilsalicílico",
+        "750-1,000 mg cada 8h",
+        "1-2 semanas",
+        "Disminuir cada semana durante 2-3 semanas, luego suspender"
+      ],
+      [
+        "Ibuprofeno",
+        "600-800 mg cada 8h",
+        "1-2 semanas",
+        "Disminuir cada semana durante 2-3 semanas, luego suspender"
+      ],
+      [
+        "Colchicina",
+        "0.5-0.6mg 1 vez/día (<70kg) o 2 veces/día (≥70kg)",
+        "3 meses",
+        "Opcional, alrededor de 2-3 semanas"
+      ]
+    ]
+  }
+],
     "diagnostico": "ECG (patrón evolutivo de 4 etapas en pericarditis; bajo voltaje del QRS en taponamiento y en constrictiva). Radiografía de tórax: en pericarditis/taponamiento, la silueta cardiaca se mantiene NORMAL hasta que el derrame es al menos moderado — con derrames grandes, adopta forma de 'cantimplora o botella de agua' (pericarditis/derrame) o similar a un 'matraz' redondeado (taponamiento); en pericarditis constrictiva, buscar calcificación pericárdica anular (mejor vista en proyección lateral). Ecocardiograma: prueba clave — visualiza directamente el derrame (clasificado por tamaño), y en taponamiento muestra colapso de cavidades derechas; en constrictiva muestra engrosamiento/calcificación pericárdica, 'rebote septal' (desplazamiento brusco del septo interventricular en diástole temprana), y signos de congestión venosa sistémica (dilatación de venas hepáticas, distensión de vena cava inferior con poca variación respiratoria).",
     "diagnosticoDiferencial": [
       "Infarto agudo de miocardio (la elevación del ST en pericarditis es DIFUSA y cóncava hacia arriba, sin cambios recíprocos verdaderos; en IAM es LOCALIZADA por territorio, convexa, con cambios recíprocos reales)",
@@ -7188,44 +7217,83 @@ const ENFERMEDADES = [
       "Esplenomegalia en casos subagudos/crónicos"
     ],
     "tablasClinicas": [
-      {
-        "titulo": "🩺 Lesiones cutáneo-mucosas: vascular vs. inmunitario",
-        "contexto": "Un detalle que se pregunta con frecuencia: si la lesión duele o no, y el mecanismo detrás.",
-        "columnas": [
-          "Lesión",
-          "Mecanismo",
-          "¿Duele?"
-        ],
-        "filas": [
-          [
-            "Hemorragias en astilla",
-            "Vascular (microembolia)",
-            "No"
-          ],
-          [
-            "Lesiones de Janeway",
-            "Vascular (microembolia)",
-            "No — maculares, no dolorosas"
-          ],
-          [
-            "Petequias (conjuntiva, etc.)",
-            "Vascular (microembolia)",
-            "No"
-          ],
-          [
-            "Nódulos de Osler",
-            "Inmunitario (inmunocomplejos)",
-            "SÍ — dolorosos"
-          ],
-          [
-            "Manchas de Roth (retina)",
-            "Vascular/inmunitario",
-            "No (asintomáticas, se ven en fondo de ojo)"
-          ]
-        ],
-        "nota": "Regla mnemotécnica: 'Osler duele' — es la única de este grupo que es dolorosa, y es de mecanismo inmunitario, no vascular."
-      }
+  {
+    "titulo": "🩺 Lesiones cutáneo-mucosas: vascular vs. inmunitario",
+    "contexto": "Un detalle que se pregunta con frecuencia: si la lesión duele o no, y el mecanismo detrás.",
+    "columnas": [
+      "Lesión",
+      "Mecanismo",
+      "¿Duele?"
     ],
+    "filas": [
+      [
+        "Hemorragias en astilla",
+        "Vascular (microembolia)",
+        "No"
+      ],
+      [
+        "Lesiones de Janeway",
+        "Vascular (microembolia)",
+        "No — maculares, no dolorosas"
+      ],
+      [
+        "Petequias (conjuntiva, etc.)",
+        "Vascular (microembolia)",
+        "No"
+      ],
+      [
+        "Nódulos de Osler",
+        "Inmunitario (inmunocomplejos)",
+        "SÍ — dolorosos"
+      ],
+      [
+        "Manchas de Roth (retina)",
+        "Vascular/inmunitario",
+        "No (asintomáticas, se ven en fondo de ojo)"
+      ]
+    ],
+    "nota": "Regla mnemotécnica: 'Osler duele' — es la única de este grupo que es dolorosa, y es de mecanismo inmunitario, no vascular."
+  },
+  {
+    "titulo": "🔬 Criterios de Duke modificados (ESC 2023) — diagnóstico definitivo",
+    "contexto": "Los 2 criterios mayores + 5 menores que se combinan para clasificar la EI como definitiva, posible o descartada.",
+    "columnas": [
+      "Tipo",
+      "Criterio"
+    ],
+    "filas": [
+      [
+        "Mayor I — Hemocultivos",
+        "Positivos para EI: microorganismos típicos en 2 hemocultivos separados (estreptococos orales, S. gallolyticus, grupo HACEK, S. aureus, E. faecalis); o positivos persistentes (≥2 muestras con >12h de separación, o 3 de ≥4 con la 1ª y última separadas ≥1h); o único hemocultivo positivo para C. burnetii o IgG fase I >1:800"
+      ],
+      [
+        "Mayor II — Imagen",
+        "Lesiones valvulares/perivalvulares/periprotésicas características detectadas por ecocardiografía (ETT/ETE), TC cardiaca, PET/TC con 18F-FDG, o SPECT/TC con leucocitos marcados"
+      ],
+      [
+        "Menor I",
+        "Enfermedad predisponente (cardiopatía de riesgo alto/intermedio, o uso de drogas IV)"
+      ],
+      [
+        "Menor II",
+        "Fiebre (temperatura >38°C)"
+      ],
+      [
+        "Menor III — Fenómenos vasculares",
+        "Émbolos/infartos y abscesos sistémicos/pulmonares, complicaciones sépticas osteoarticulares, aneurismas micóticos, lesiones intracraneales isquémicas/hemorrágicas, hemorragias conjuntivales, lesiones de Janeway"
+      ],
+      [
+        "Menor IV — Fenómenos inmunitarios",
+        "Glomerulonefritis, nódulos de Osler y manchas de Roth, factor reumatoide"
+      ],
+      [
+        "Menor V — Evidencia microbiológica",
+        "Hemocultivo positivo que no cumple criterio mayor, o evidencia serológica de infección activa por microorganismo compatible con EI"
+      ]
+    ],
+    "nota": "Clasificación — EI DEFINITIVA: 2 criterios mayores, ó 1 mayor + 3 menores, ó 5 menores. EI POSIBLE: 1 mayor + 1-2 menores, ó 3-4 menores. EI DESCARTADA: no cumple criterios de definitiva ni posible, con o sin diagnóstico alternativo firme."
+  }
+],
     "diagnostico": "Laboratorio: hemograma, PCR, PCT, VSG — los biomarcadores inflamatorios NO son diagnósticos por sí solos, solo orientan. Microbiología: hemocultivos (tomar ANTES de iniciar antibióticos, muestra de 10mL) — S. aureus es el más frecuente (31%), seguido de estreptococos orales (17%) y estafilococo coagulasa-negativo (11%). Imágenes: ECOCARDIOGRAFÍA (transtorácica y transesofágica) es de PRIMERA LÍNEA — busca vegetaciones, complicaciones perivalvulares, perforación de valvas, fístulas; repetir en 5-7 días si es normal/no concluyente pero la sospecha persiste. Tomografía: complicaciones valvulares/perivalvulares, detecta lesiones distantes y fuentes de bacteriemia, útil en evaluación perioperatoria. Resonancia: utilidad limitada por baja resolución espacial, pero útil para complicaciones neurológicas (lesiones isquémicas) y lesiones en columna vertebral. Diagnóstico definitivo: CRITERIOS DE DUKE (1994, modificados por la Sociedad Europea de Cardiología en 2023) — combinan criterios clínicos con hallazgos ecocardiográficos, dado que la variabilidad en la presentación clínica requiere una estrategia diagnóstica sensible y específica.",
     "diagnosticoDiferencial": [
       "Fiebre de origen desconocido de otra causa",
