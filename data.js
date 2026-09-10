@@ -6602,6 +6602,49 @@ const ENFERMEDADES = [
         "Opcional, alrededor de 2-3 semanas"
       ]
     ]
+  },
+  {
+    "titulo": "🌍 Frecuencia de cada etiología según la región (variación geográfica real)",
+    "contexto": "Los mismos porcentajes cambian mucho según el contexto — muy relevante para entender por qué la sospecha diagnóstica varía según dónde practiques.",
+    "columnas": [
+      "Etiología",
+      "Frecuencia publicada"
+    ],
+    "filas": [
+      [
+        "Idiopática",
+        "Del 15% (África) al 80-90% (Europa)"
+      ],
+      [
+        "Vírica",
+        "Ampliamente desconocida"
+      ],
+      [
+        "Tuberculosis",
+        "1-4% en países desarrollados; hasta 70% en África"
+      ],
+      [
+        "Purulenta (bacteriana)",
+        "<1% en países desarrollados; 2-3% en África"
+      ],
+      [
+        "Otras causas infecciosas",
+        "Infrecuentes, ampliamente desconocidas"
+      ],
+      [
+        "Neoplásica",
+        "Del 5-9% al 35% (en centros de referencia terciarios)"
+      ],
+      [
+        "Autoinmunitaria",
+        "2-24%"
+      ],
+      [
+        "Otras causas no infecciosas",
+        "Infrecuentes (ampliamente desconocidas)"
+      ]
+    ],
+    "nota": "Esto explica por qué en países endémicos de tuberculosis (como buena parte de África) la TBC es la principal causa a descartar, mientras que en Europa la mayoría de casos son idiopáticos — el contexto epidemiológico local cambia la probabilidad pretest de cada etiología."
   }
 ],
     "diagnostico": "ECG (patrón evolutivo de 4 etapas en pericarditis; bajo voltaje del QRS en taponamiento y en constrictiva). Radiografía de tórax: en pericarditis/taponamiento, la silueta cardiaca se mantiene NORMAL hasta que el derrame es al menos moderado — con derrames grandes, adopta forma de 'cantimplora o botella de agua' (pericarditis/derrame) o similar a un 'matraz' redondeado (taponamiento); en pericarditis constrictiva, buscar calcificación pericárdica anular (mejor vista en proyección lateral). Ecocardiograma: prueba clave — visualiza directamente el derrame (clasificado por tamaño), y en taponamiento muestra colapso de cavidades derechas; en constrictiva muestra engrosamiento/calcificación pericárdica, 'rebote septal' (desplazamiento brusco del septo interventricular en diástole temprana), y signos de congestión venosa sistémica (dilatación de venas hepáticas, distensión de vena cava inferior con poca variación respiratoria).",
@@ -6860,46 +6903,76 @@ const ENFERMEDADES = [
       "En bradiarritmias severas: bradicardia marcada, posible hipotensión"
     ],
     "tablasClinicas": [
-      {
-        "titulo": "⚡ Criterios ECG que sugieren Taquicardia Ventricular (vs. supraventricular con aberrancia)",
-        "contexto": "Ante una taquicardia de QRS ANCHO, estos criterios ayudan a diferenciar TV (peligrosa) de TSV conducida con aberrancia (generalmente más benigna).",
-        "columnas": [
-          "Criterio",
-          "Hallazgo"
-        ],
-        "filas": [
-          [
-            "Disociación AV",
-            "Diagnóstico de TV por sí solo — ondas P disociadas de los QRS"
-          ],
-          [
-            "Latidos de captura",
-            "Complejos QRS estrechos (similares al sinusal) intercalados en la taquicardia de QRS ancho"
-          ],
-          [
-            "Complejos de fusión",
-            "Morfología intermedia entre el ritmo sinusal y el complejo ancho de la taquicardia"
-          ],
-          [
-            "Concordancia precordial",
-            "Todos los complejos QRS son deflexiones positivas O negativas en TODAS las precordiales"
-          ],
-          [
-            "Ausencia de patrón RS en precordiales",
-            "Sugiere TV"
-          ],
-          [
-            "Duración QRS",
-            ">160ms con morfología de bloqueo de rama izquierda, o >140ms con morfología de bloqueo de rama derecha"
-          ],
-          [
-            "Eje eléctrico",
-            "Desviación entre -90° y 180° sugiere TV"
-          ]
-        ],
-        "nota": "Estos son los Criterios de Brugada (modificados) — muy preguntados en exámenes de cardiología."
-      }
+  {
+    "titulo": "⚡ Criterios ECG que sugieren Taquicardia Ventricular (vs. supraventricular con aberrancia)",
+    "contexto": "Ante una taquicardia de QRS ANCHO, estos criterios ayudan a diferenciar TV (peligrosa) de TSV conducida con aberrancia (generalmente más benigna).",
+    "columnas": [
+      "Criterio",
+      "Hallazgo"
     ],
+    "filas": [
+      [
+        "Disociación AV",
+        "Diagnóstico de TV por sí solo — ondas P disociadas de los QRS"
+      ],
+      [
+        "Latidos de captura",
+        "Complejos QRS estrechos (similares al sinusal) intercalados en la taquicardia de QRS ancho"
+      ],
+      [
+        "Complejos de fusión",
+        "Morfología intermedia entre el ritmo sinusal y el complejo ancho de la taquicardia"
+      ],
+      [
+        "Concordancia precordial",
+        "Todos los complejos QRS son deflexiones positivas O negativas en TODAS las precordiales"
+      ],
+      [
+        "Ausencia de patrón RS en precordiales",
+        "Sugiere TV"
+      ],
+      [
+        "Duración QRS",
+        ">160ms con morfología de bloqueo de rama izquierda, o >140ms con morfología de bloqueo de rama derecha"
+      ],
+      [
+        "Eje eléctrico",
+        "Desviación entre -90° y 180° sugiere TV"
+      ]
+    ],
+    "nota": "Estos son los Criterios de Brugada (modificados) — muy preguntados en exámenes de cardiología."
+  },
+  {
+    "titulo": "🫀 Clasificación de los patrones de Fibrilación Auricular",
+    "columnas": [
+      "Patrón",
+      "Definición"
+    ],
+    "filas": [
+      [
+        "Primer diagnóstico",
+        "FA no diagnosticada antes, independientemente de su duración o la presencia/gravedad de síntomas relacionados"
+      ],
+      [
+        "Paroxística",
+        "FA que cesa espontáneamente o con intervención dentro de los 7 días posteriores al inicio"
+      ],
+      [
+        "Persistente",
+        "FA que se mantiene de forma continua más allá de 7 días, incluidos los episodios terminados con cardioversión (fármacos o eléctrica) después de ≥7 días"
+      ],
+      [
+        "Persistente de larga duración",
+        "FA continua de >12 meses de duración cuando se decide adoptar una estrategia de control del ritmo"
+      ],
+      [
+        "Permanente",
+        "FA aceptada por el paciente y el médico, sin más intentos de restaurar/mantener el ritmo sinusal — es una actitud terapéutica, no un atributo fisiopatológico de la FA en sí"
+      ]
+    ],
+    "nota": "El término 'permanente' NO debe usarse si se adopta una estrategia de control del ritmo (fármacos antiarrítmicos o ablación) — en ese caso, se reclasificaría como 'persistente de larga duración'."
+  }
+],
     "diagnostico": "ECG de 12 derivaciones es la prueba fundamental. Primero determinar: ¿QRS estrecho o ancho? ¿Ritmo regular o irregular? Taquicardias de QRS ESTRECHO: reentrada intranodal (60% de las regulares, sin onda P sinusal visible), reentrada por vía accesoria (WPW), flutter auricular (ondas F, negativas en II/III/aVF en el flutter común), fibrilación auricular (ausencia total de ondas P, R-R irregular), taquicardia auricular multifocal. Taquicardias de QRS ANCHO: aplicar Criterios de Brugada para diferenciar TV de TSV con aberrancia; fibrilación ventricular (deflexiones irregulares, rápidas y caóticas, sin QRS reconocible — equivale a paro cardiocirculatorio). Bradiarritmias: bradicardia sinusal (puede ser fisiológica en deportistas), pausas sinusales (>3 segundos justifica marcapasos si es sintomático), incompetencia cronotrópica (no alcanzar 80% de la FC máxima esperada en esfuerzo).",
     "diagnosticoDiferencial": [
       "Taquicardia sinusal (fisiológica, respuesta a fiebre/dolor/ansiedad/anemia — siempre buscar la causa antes de tratar como arritmia primaria)",
@@ -7292,6 +7365,38 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "Clasificación — EI DEFINITIVA: 2 criterios mayores, ó 1 mayor + 3 menores, ó 5 menores. EI POSIBLE: 1 mayor + 1-2 menores, ó 3-4 menores. EI DESCARTADA: no cumple criterios de definitiva ni posible, con o sin diagnóstico alternativo firme."
+  },
+  {
+    "titulo": "🛡️ Medidas de prevención para riesgo intermedio/alto de EI (Tabla 5)",
+    "columnas": [
+      "Medida"
+    ],
+    "filas": [
+      [
+        "Higiene dental 2 veces/día + revisión dental 2 veces/año (riesgo alto) o 1 vez/año (resto)"
+      ],
+      [
+        "Higiene cutánea estricta, incluyendo tratamiento óptimo de enfermedades cutáneas crónicas"
+      ],
+      [
+        "Desinfección de las heridas"
+      ],
+      [
+        "Antibióticos eficaces para cualquier foco de infección bacteriana"
+      ],
+      [
+        "NO automedicarse con antibióticos"
+      ],
+      [
+        "Medidas estrictas de control de infecciones para cualquier procedimiento de riesgo"
+      ],
+      [
+        "Desaconsejar piercings y tatuajes"
+      ],
+      [
+        "Limitar el uso de catéteres de infusión y procedimientos invasivos siempre que sea posible; adherencia estricta a las recomendaciones de uso de cánulas centrales/periféricas"
+      ]
+    ]
   }
 ],
     "diagnostico": "Laboratorio: hemograma, PCR, PCT, VSG — los biomarcadores inflamatorios NO son diagnósticos por sí solos, solo orientan. Microbiología: hemocultivos (tomar ANTES de iniciar antibióticos, muestra de 10mL) — S. aureus es el más frecuente (31%), seguido de estreptococos orales (17%) y estafilococo coagulasa-negativo (11%). Imágenes: ECOCARDIOGRAFÍA (transtorácica y transesofágica) es de PRIMERA LÍNEA — busca vegetaciones, complicaciones perivalvulares, perforación de valvas, fístulas; repetir en 5-7 días si es normal/no concluyente pero la sospecha persiste. Tomografía: complicaciones valvulares/perivalvulares, detecta lesiones distantes y fuentes de bacteriemia, útil en evaluación perioperatoria. Resonancia: utilidad limitada por baja resolución espacial, pero útil para complicaciones neurológicas (lesiones isquémicas) y lesiones en columna vertebral. Diagnóstico definitivo: CRITERIOS DE DUKE (1994, modificados por la Sociedad Europea de Cardiología en 2023) — combinan criterios clínicos con hallazgos ecocardiográficos, dado que la variabilidad en la presentación clínica requiere una estrategia diagnóstica sensible y específica.",
