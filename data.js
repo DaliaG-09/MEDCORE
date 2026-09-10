@@ -6645,6 +6645,47 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "Esto explica por qué en países endémicos de tuberculosis (como buena parte de África) la TBC es la principal causa a descartar, mientras que en Europa la mayoría de casos son idiopáticos — el contexto epidemiológico local cambia la probabilidad pretest de cada etiología."
+  },
+  {
+    "titulo": "🔍 Diagnóstico diferencial: Pericarditis constrictiva vs. Miocardiopatía restrictiva",
+    "columnas": [
+      "Evaluación",
+      "Pericarditis constrictiva",
+      "Miocardiopatía restrictiva"
+    ],
+    "filas": [
+      [
+        "Hallazgos físicos",
+        "Signo de Kussmaul, golpe pericárdico",
+        "Soplo regurgitante, puede haber signo de Kussmaul, S3 (fase avanzada)"
+      ],
+      [
+        "ECG",
+        "Cambios ST/T inespecíficos, bajo voltaje, fibrilación auricular",
+        "Bajos voltajes, seudoinfarto, posible ensanchamiento QRS, desviación del eje izquierdo, fibrilación auricular"
+      ],
+      [
+        "Radiografía de tórax",
+        "Calcificaciones pericárdicas (1/3 de los casos)",
+        "Ausencia de calcificaciones pericárdicas"
+      ],
+      [
+        "Ecocardiografía",
+        "Muesca septal; engrosamiento pericárdico; variación respiratoria de onda E mitral >25%; velocidad de propagación Vp >45cm/s; Doppler tisular e' >8.0cm/s",
+        "Ventrículo izquierdo pequeño con aurícula grande; cociente E/A>2; ausencia de variación respiratoria significativa; Vp <45cm/s; Doppler tisular e' <8.0cm/s"
+      ],
+      [
+        "Cateterismo cardiaco",
+        "Signo de raíz cuadrada (dip and plateau), presiones diastólicas VD/VI igualadas, interdependencia ventricular (razón de área sistólica >1.1)",
+        "Hipertensión sistólica VD significativa (>50mmHg), presión diastólica VI que excede la del VD en ≥5mmHg"
+      ],
+      [
+        "TC/RM",
+        "Grosor pericárdico >3-4mm, calcificaciones (TC), interdependencia ventricular (RM cine)",
+        "Grosor pericárdico normal (<3.0mm), afección miocárdica en estudio funcional/morfológico"
+      ]
+    ],
+    "nota": "El signo ecocardiográfico más práctico para diferenciar rápidamente: velocidad de propagación (Vp) y Doppler tisular (e') están DISMINUIDOS en constrictiva pero NORMALES/AUMENTADOS en restrictiva — mnemotecnia: en constrictiva 'todo está atrapado' (Vp y e' bajos), en restrictiva el miocardio en sí está enfermo pero el llenado inicial es rápido."
   }
 ],
     "diagnostico": "ECG (patrón evolutivo de 4 etapas en pericarditis; bajo voltaje del QRS en taponamiento y en constrictiva). Radiografía de tórax: en pericarditis/taponamiento, la silueta cardiaca se mantiene NORMAL hasta que el derrame es al menos moderado — con derrames grandes, adopta forma de 'cantimplora o botella de agua' (pericarditis/derrame) o similar a un 'matraz' redondeado (taponamiento); en pericarditis constrictiva, buscar calcificación pericárdica anular (mejor vista en proyección lateral). Ecocardiograma: prueba clave — visualiza directamente el derrame (clasificado por tamaño), y en taponamiento muestra colapso de cavidades derechas; en constrictiva muestra engrosamiento/calcificación pericárdica, 'rebote septal' (desplazamiento brusco del septo interventricular en diástole temprana), y signos de congestión venosa sistémica (dilatación de venas hepáticas, distensión de vena cava inferior con poca variación respiratoria).",
@@ -6971,6 +7012,61 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "El término 'permanente' NO debe usarse si se adopta una estrategia de control del ritmo (fármacos antiarrítmicos o ablación) — en ese caso, se reclasificaría como 'persistente de larga duración'."
+  },
+  {
+    "titulo": "💊 Antiarrítmicos para control del ritmo en FA — dosis y efectos adversos",
+    "columnas": [
+      "Fármaco",
+      "Dosis inicial",
+      "Mantenimiento",
+      "Efectos adversos clave"
+    ],
+    "filas": [
+      [
+        "Flecainida",
+        "300mg oral, o 1.5-3mg/kg IV en 20min",
+        "100-150mg/12h",
+        "Hipotensión, flutter 1:1 (conducción rápida)"
+      ],
+      [
+        "Propafenona",
+        "450-600mg oral, o 1.5-2mg/kg IV en 20min",
+        "150-300mg/8h",
+        "Hipotensión, flutter 1:1"
+      ],
+      [
+        "Amiodarona",
+        "5-7mg/kg IV en 30min, luego 1200mg/día infusión (o 400mg/8h oral)",
+        "200mg/día",
+        "Hipotensión, prolongación del QT, Torsades de Pointes, GI, hiper/hipotiroidismo"
+      ],
+      [
+        "Vernakalant",
+        "3mg/kg IV en 10min",
+        "2ª dosis: 2mg/kg en 10min (15min después)",
+        "Estornudos, disgeusia, parestesias, hipotensión (en ICC III-IV)"
+      ]
+    ],
+    "nota": "Flecainida y propafenona pueden causar 'flutter 1:1' (conducción del flutter auricular 1:1 hacia el ventrículo, generando taquicardia muy rápida) — por eso suelen combinarse con un frenador del nodo AV. Amiodarona es la única con riesgo relevante de Torsades de Pointes y disfunción tiroidea a largo plazo."
+  },
+  {
+    "titulo": "⚡ Clasificación completa de taquicardias de QRS ancho (>120ms)",
+    "contexto": "Se dividen primero en regulares/irregulares, y además según duración: SOSTENIDA (>30 segundos, o que precisa cardioversión eléctrica antes por su repercusión hemodinámica) vs. NO SOSTENIDA (<30 segundos).",
+    "columnas": [
+      "Tipo",
+      "Entidades"
+    ],
+    "filas": [
+      [
+        "Regulares",
+        "Taquicardia ventricular monomorfa sostenida; TSV conducida con aberrancia (bloqueo de rama preexistente u orgánico, o funcional desencadenado por la propia taquicardia); Taquicardia antidrómica en síndromes de preexcitación"
+      ],
+      [
+        "Irregulares",
+        "Fibrilación auricular conducida con aberrancia; Taquicardia ventricular polimorfa (torsade de pointes); Fibrilación auricular en síndromes de preexcitación"
+      ]
+    ],
+    "nota": "Monomórfica = QRS idéntico en todos los latidos de una misma derivación. Polimórfica = varía la morfología latido a latido — la torsade de pointes es el ejemplo clásico de TV polimórfica, típicamente asociada a QT prolongado."
   }
 ],
     "diagnostico": "ECG de 12 derivaciones es la prueba fundamental. Primero determinar: ¿QRS estrecho o ancho? ¿Ritmo regular o irregular? Taquicardias de QRS ESTRECHO: reentrada intranodal (60% de las regulares, sin onda P sinusal visible), reentrada por vía accesoria (WPW), flutter auricular (ondas F, negativas en II/III/aVF en el flutter común), fibrilación auricular (ausencia total de ondas P, R-R irregular), taquicardia auricular multifocal. Taquicardias de QRS ANCHO: aplicar Criterios de Brugada para diferenciar TV de TSV con aberrancia; fibrilación ventricular (deflexiones irregulares, rápidas y caóticas, sin QRS reconocible — equivale a paro cardiocirculatorio). Bradiarritmias: bradicardia sinusal (puede ser fisiológica en deportistas), pausas sinusales (>3 segundos justifica marcapasos si es sintomático), incompetencia cronotrópica (no alcanzar 80% de la FC máxima esperada en esfuerzo).",
@@ -7412,9 +7508,11 @@ const ENFERMEDADES = [
         "Urgencia quirúrgica según contexto: emergencia (shock cardiogénico/edema pulmonar por insuficiencia cardiaca), urgente (mala tolerancia hemodinámica, infección incontrolada, alto riesgo embólico), o no urgente (según cada escenario específico)"
       ],
       "farmacologico": [
-        "Antibioticoterapia dirigida según el microorganismo identificado en hemocultivos — esquemas específicos para estreptococos orales, Staphylococcus spp., y Enterococcus",
-        "Duración prolongada de tratamiento (semanas), ajustada según válvula nativa vs. protésica y microorganismo"
-      ]
+  "Antibioticoterapia dirigida según el microorganismo identificado en hemocultivos — esquemas específicos para estreptococos orales, Staphylococcus spp., y Enterococcus",
+  "Duración prolongada de tratamiento (semanas), ajustada según válvula nativa vs. protésica y microorganismo",
+  "Esquemas principales por microorganismo (válvula NATIVA, sin alergia): Estreptococos orales sensibles → Penicilina G, amoxicilina o ceftriaxona (4 semanas; 2 semanas si se combina con gentamicina en casos no complicados). Staphylococcus sensible a meticilina → (flu)cloxacilina o cefazolina (4-6 semanas). Staphylococcus RESISTENTE a meticilina → vancomicina (4-6 semanas). Enterococcus spp. → ampicilina o amoxicilina + ceftriaxona (6 semanas), o + gentamicina (2 semanas)",
+  "En alergia a betalactámicos: vancomicina reemplaza a penicilina/amoxicilina en estreptococos y estafilococos sensibles. En válvula PROTÉSICA (EVP) los esquemas se prolongan y suelen combinarse con rifampicina + gentamicina, especialmente en estafilococos"
+]
     },
     "complicaciones": [
       "Intracardiacas: insuficiencia cardiaca rebelde, absceso miocárdico/septal, rotura de músculos papilares, absceso del anillo, destrucción de valvas, aneurisma micótico del seno de Valsalva, fístula aortocardíaca, pericarditis supurativa",
