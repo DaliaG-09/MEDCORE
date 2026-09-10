@@ -6686,6 +6686,28 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "El signo ecocardiográfico más práctico para diferenciar rápidamente: velocidad de propagación (Vp) y Doppler tisular (e') están DISMINUIDOS en constrictiva pero NORMALES/AUMENTADOS en restrictiva — mnemotecnia: en constrictiva 'todo está atrapado' (Vp y e' bajos), en restrictiva el miocardio en sí está enfermo pero el llenado inicial es rápido."
+  },
+  {
+    "titulo": "📋 Definición y criterios diagnósticos formales de pericarditis",
+    "columnas": [
+      "Tipo",
+      "Definición y criterios"
+    ],
+    "filas": [
+      [
+        "Aguda",
+        "Diagnóstico con AL MENOS 2 de: (1) dolor torácico pericardítico, (2) roce pericárdico, (3) elevación difusa del ST de nueva aparición o depresión del PR en el ECG, (4) derrame pericárdico nuevo o que empeora. Apoyan el diagnóstico: elevación de PCR/VSG/leucocitos, o evidencia de inflamación pericárdica por imagen (TC, RMC)"
+      ],
+      [
+        "Incesante",
+        "Pericarditis que dura >4-6 semanas pero <3 meses, sin remisión"
+      ],
+      [
+        "Recurrente",
+        "Recurrencia después de un primer episodio documentado de pericarditis aguda, con un intervalo libre de síntomas de 4-6 semanas o más"
+      ]
+    ],
+    "nota": "Estos son los criterios FORMALES para decir 'esto es pericarditis aguda' — no basta con sospecha clínica aislada, se necesitan al menos 2 de los 4 criterios listados."
   }
 ],
     "diagnostico": "ECG (patrón evolutivo de 4 etapas en pericarditis; bajo voltaje del QRS en taponamiento y en constrictiva). Radiografía de tórax: en pericarditis/taponamiento, la silueta cardiaca se mantiene NORMAL hasta que el derrame es al menos moderado — con derrames grandes, adopta forma de 'cantimplora o botella de agua' (pericarditis/derrame) o similar a un 'matraz' redondeado (taponamiento); en pericarditis constrictiva, buscar calcificación pericárdica anular (mejor vista en proyección lateral). Ecocardiograma: prueba clave — visualiza directamente el derrame (clasificado por tamaño), y en taponamiento muestra colapso de cavidades derechas; en constrictiva muestra engrosamiento/calcificación pericárdica, 'rebote septal' (desplazamiento brusco del septo interventricular en diástole temprana), y signos de congestión venosa sistémica (dilatación de venas hepáticas, distensión de vena cava inferior con poca variación respiratoria).",
@@ -6908,12 +6930,17 @@ const ENFERMEDADES = [
         }
       ],
       "imagenes": [
-        {
-          "src": "assets/cardio/arritmia-fibrilacion-ventricular.jpg",
-          "caption": "Fibrilación ventricular gruesa vs. fina (de tu clase)",
-          "explicacion": "En la fibrilación ventricular, los complejos QRS son reemplazados por deflexiones irregulares, rápidas y caóticas — sin ningún complejo QRS reconocible. La forma GRUESA (arriba, con oscilaciones de mayor amplitud) suele corresponder a un evento más reciente, con mayor probabilidad de responder a la desfibrilación; la forma FINA (abajo, oscilaciones de menor amplitud) suele indicar mayor tiempo de evolución sin tratamiento, con peor pronóstico de respuesta. Clínicamente, esto equivale a un paro cardiocirculatorio — el corazón se contrae de forma completamente desorganizada y no bombea sangre en absoluto, requiriendo desfibrilación inmediata."
-        }
-      ]
+  {
+    "src": "assets/cardio/arritmia-fibrilacion-ventricular.jpg",
+    "caption": "Fibrilación ventricular gruesa vs. fina (de tu clase)",
+    "explicacion": "En la fibrilación ventricular, los complejos QRS son reemplazados por deflexiones irregulares, rápidas y caóticas — sin ningún complejo QRS reconocible. La forma GRUESA (arriba, con oscilaciones de mayor amplitud) suele corresponder a un evento más reciente, con mayor probabilidad de responder a la desfibrilación; la forma FINA (abajo, oscilaciones de menor amplitud) suele indicar mayor tiempo de evolución sin tratamiento, con peor pronóstico de respuesta. Clínicamente, esto equivale a un paro cardiocirculatorio — el corazón se contrae de forma completamente desorganizada y no bombea sangre en absoluto, requiriendo desfibrilación inmediata."
+  },
+  {
+    "src": "assets/cardio/arritmia-wpw-ecg-comparacion.jpg",
+    "caption": "ECG normal vs. Wolff-Parkinson-White (de tu clase)",
+    "explicacion": "Compara ambos trazados: en el WPW (derecha), el intervalo PR está ACORTADO (<120ms) porque el impulso llega a los ventrículos más rápido de lo normal, evitando el retraso fisiológico del nodo AV al pasar por la vía accesoria. Esa llegada anticipada genera la ONDA DELTA — el 'empastamiento' inicial y lento del QRS que ves marcado en rojo, que hace que el QRS se vea más ANCHO (100-200ms) de lo normal. El trazado real de abajo muestra ambos hallazgos juntos: PR acortado (marcado en azul) + QRS ancho por la onda delta (marcado en rojo) — reconocer este PAR de hallazgos juntos es lo que confirma preexcitación por WPW en un ECG basal."
+  }
+]
     },
     "clinica": [
       {
@@ -7098,6 +7125,29 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "La enfermedad de Chagas es una causa infecciosa intrínseca relevante en contexto latinoamericano — puede causar disfunción del nodo sinusal, bloqueos de conducción, y miocardiopatía dilatada."
+  },
+  {
+    "titulo": "⚡ Wolff-Parkinson-White (WPW) — mecanismos de taquicardia",
+    "contexto": "Vías accesorias con localizaciones anatómicas y propiedades electrofisiológicas distintas — algunas solo conducen de modo retrógrado (vías ocultas), otras también durante el ritmo sinusal (síndrome de preexcitación verdadero).",
+    "columnas": [
+      "Mecanismo",
+      "Descripción"
+    ],
+    "filas": [
+      [
+        "Taquicardia ortodrómica",
+        "La MÁS FRECUENTE. El impulso baja por el nodo AV (normal) y sube de vuelta por la vía accesoria — QRS ESTRECHO"
+      ],
+      [
+        "Taquicardia antidrómica",
+        "El impulso se despolariza a través de la vía accesoria y sube por el nodo AV — QRS ANCHO, poco frecuente"
+      ],
+      [
+        "FA en WPW",
+        "Produce taquicardia irregular de QRS ancho, habitualmente con complejos de amplitud y morfología muy variables — RIESGO DE MUERTE SÚBITA si conduce muy rápido por la vía accesoria hacia los ventrículos"
+      ]
+    ],
+    "nota": "Epidemiología: afecta al 1-3‰ de la población; las arritmias aparecen en 12-80% de los pacientes con el patrón ECG. Riesgo global de muerte súbita: 0.15%/paciente/año. CLAVE clínica: en FA con WPW, EVITAR fármacos que bloqueen el nodo AV (digoxina, verapamilo, adenosina) — al bloquear la vía normal, favorecen que TODO el impulso pase por la vía accesoria sin control, aumentando el riesgo de degeneración a fibrilación ventricular."
   }
 ],
     "diagnostico": "ECG de 12 derivaciones es la prueba fundamental. Primero determinar: ¿QRS estrecho o ancho? ¿Ritmo regular o irregular? Taquicardias de QRS ESTRECHO: reentrada intranodal (60% de las regulares, sin onda P sinusal visible), reentrada por vía accesoria (WPW), flutter auricular (ondas F, negativas en II/III/aVF en el flutter común), fibrilación auricular (ausencia total de ondas P, R-R irregular), taquicardia auricular multifocal. Taquicardias de QRS ANCHO: aplicar Criterios de Brugada para diferenciar TV de TSV con aberrancia; fibrilación ventricular (deflexiones irregulares, rápidas y caóticas, sin QRS reconocible — equivale a paro cardiocirculatorio). Bradiarritmias: bradicardia sinusal (puede ser fisiológica en deportistas), pausas sinusales (>3 segundos justifica marcapasos si es sintomático), incompetencia cronotrópica (no alcanzar 80% de la FC máxima esperada en esfuerzo).",
@@ -7579,6 +7629,61 @@ const ENFERMEDADES = [
       ]
     ],
     "nota": "En alergia a penicilina o resistencia: Vancomicina + Aminoglucósido. Tratamiento para Enterococos: Ampicilina + Aminoglucósido. Tratamiento en hongos: Anfotericina B + Azoles."
+  },
+  {
+    "titulo": "🦷 Régimen antibiótico profiláctico para procedimientos dentales (Tabla 6)",
+    "contexto": "Dosis ÚNICA, administrada 30-60 minutos antes del procedimiento dental, en pacientes de riesgo alto/intermedio.",
+    "columnas": [
+      "Situación",
+      "Antibiótico",
+      "Dosis adultos",
+      "Dosis niños"
+    ],
+    "filas": [
+      [
+        "Sin alergia a penicilina/ampicilina",
+        "Amoxicilina",
+        "2g oral",
+        "50mg/kg oral, máx 2g"
+      ],
+      [
+        "Sin alergia (alternativa)",
+        "Ampicilina",
+        "2g IM o IV",
+        "50mg/kg IM/IV, máx 2g"
+      ],
+      [
+        "Sin alergia (alternativa)",
+        "Cefazolina o ceftriaxona",
+        "1g IM o IV",
+        "50mg/kg IM/IV, máx 1g"
+      ],
+      [
+        "Alergia a penicilina/ampicilina",
+        "Cefalexina",
+        "2g oral",
+        "50mg/kg oral, máx 2g"
+      ],
+      [
+        "Alergia (alternativa)",
+        "Azitromicina o claritromicina",
+        "500mg oral",
+        "15mg/kg oral, máx 500mg"
+      ],
+      [
+        "Alergia (alternativa)",
+        "Doxiciclina",
+        "100mg oral",
+        "<45kg: 2.2mg/kg oral; >45kg: 100mg oral"
+      ],
+      [
+        "Alergia (alternativa)",
+        "Cefazolina o ceftriaxona",
+        "1g IM o IV",
+        "50mg/kg IM/IV, máx 1g"
+      ]
+    ],
+    "nota": "Solo se indica en pacientes de RIESGO ALTO o INTERMEDIO, antes de procedimientos dentales que involucren manipulación de tejido gingival/periapical o perforación de la mucosa oral."
   }
 ],
     "diagnostico": "Laboratorio: hemograma, PCR, PCT, VSG — los biomarcadores inflamatorios NO son diagnósticos por sí solos, solo orientan. Microbiología: hemocultivos (tomar ANTES de iniciar antibióticos, muestra de 10mL) — S. aureus es el más frecuente (31%), seguido de estreptococos orales (17%) y estafilococo coagulasa-negativo (11%). Imágenes: ECOCARDIOGRAFÍA (transtorácica y transesofágica) es de PRIMERA LÍNEA — busca vegetaciones, complicaciones perivalvulares, perforación de valvas, fístulas; repetir en 5-7 días si es normal/no concluyente pero la sospecha persiste. Tomografía: complicaciones valvulares/perivalvulares, detecta lesiones distantes y fuentes de bacteriemia, útil en evaluación perioperatoria. Resonancia: utilidad limitada por baja resolución espacial, pero útil para complicaciones neurológicas (lesiones isquémicas) y lesiones en columna vertebral. Diagnóstico definitivo: CRITERIOS DE DUKE (1994, modificados por la Sociedad Europea de Cardiología en 2023) — combinan criterios clínicos con hallazgos ecocardiográficos, dado que la variabilidad en la presentación clínica requiere una estrategia diagnóstica sensible y específica.",
