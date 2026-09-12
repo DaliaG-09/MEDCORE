@@ -239,7 +239,7 @@ const SEMANAS = [
         "dia": "Lunes",
         "tipo": "teoria",
         "tema": "TALLER APLICATIVO: EKG / Enfermedades del Pericardio: Pericarditis, Taponamiento Pericárdico y Pericarditis constrictiva crónica.",
-        "vinculos": [ { "tipo": "enfermedad", "id": "enfermedades-pericardio" } ]
+        "vinculos": [ { "tipo": "taller", "id": "taller-ekg-normal-s5" }, { "tipo": "enfermedad", "id": "enfermedades-pericardio" } ]
       },
       {
         "dia": "Miércoles",
@@ -10640,7 +10640,90 @@ const TALLERES = [
         }
       }
     ]
-  }
+  },
+  {
+  "id": "taller-ekg-normal-s5",
+  "nombre": "TALLER APLICATIVO: EKG NORMAL",
+  "semana": "semana-05",
+  "dia": "Lunes",
+  "pdfOrigen": {
+    "url": "https://drive.google.com/file/d/1niLfQNkTrdoo8ax1suSxbzFvXsYcqSaU/view",
+    "titulo": "SEMANA 05-PDF-TALLER APLICATIVO EKG NORMAL"
+  },
+  "resumen": "Repaso aplicado de todo lo visto en EKG Normal I y II, justo antes del examen práctico de la Semana 5 — el orden correcto de lectura (Frecuencia, Ritmo, Onda P, PR, QRS, Repolarización), el eje cardiaco, y la agrupación de derivaciones por CARA anatómica (con nomenclatura ligeramente más detallada que la vista antes), seguido de un trazado real para aplicar todo el método de una vez.",
+  "casos": [
+    {
+      "nivel": "intermedio",
+      "vineta": "(Taller Aplicativo de tu clase) Antes de resolver el caso, repasa la agrupación de derivaciones por cara anatómica del corazón — la misma idea que ya viste en EKG Normal II, con nombres un poco más específicos.",
+      "imagen": {
+        "src": "assets/cardio/taller-ekg-s5-agrupacion-cara.jpg",
+        "caption": "Agrupación de derivaciones por cara cardiaca (de tu clase)"
+      },
+      "preguntaMC": {
+        "enunciado": "Según esta clasificación de tu taller, ¿qué derivaciones corresponden a la 'cara anteroseptal' y cuáles a la 'cara lateral baja'?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Cara anteroseptal: V1-V4. Cara lateral baja: V5-V6"
+          },
+          {
+            "id": "b",
+            "texto": "Cara anteroseptal: DII-DIII-aVF. Cara lateral baja: DI-aVL"
+          },
+          {
+            "id": "c",
+            "texto": "Cara anteroseptal: V5-V6. Cara lateral baja: V1-V4"
+          },
+          {
+            "id": "d",
+            "texto": "Cara anteroseptal: DI-aVL. Cara lateral baja: DII-DIII-aVF"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "Esta clasificación de tu taller divide el corazón en 4 caras (más detallada que la de 3 territorios que viste en EKG Normal II): Cara INFERIOR = DII, DIII, aVF. Cara ANTEROSEPTAL = V1, V2, V3, V4 (nota que aquí SÍ incluye V4, a diferencia de la agrupación de 3 territorios donde el 'septal/anterior' solo llegaba hasta V3). Cara LATERAL ALTA = DI, aVL. Cara LATERAL BAJA = V5, V6. Es la misma idea de siempre (derivaciones que 'miran' la misma zona del corazón se alteran juntas en isquemia/infarto), solo que aquí separa la cara lateral en 'alta' (los miembros DI/aVL) y 'baja' (las precordiales V5/V6)."
+      },
+      "preguntaEscrita": {
+        "enunciado": "¿Por qué esta clasificación separa la cara lateral en 'alta' (DI, aVL) y 'baja' (V5, V6), en vez de agruparlas todas juntas como 'lateral' sin más?",
+        "respuestaModelo": "Aunque DI/aVL y V5/V6 anatómicamente exploran la misma pared LATERAL del ventrículo izquierdo, lo hacen desde ángulos distintos: DI y aVL son derivaciones del plano FRONTAL (miran la pared lateral desde 'arriba', por así decirlo, a través del hombro izquierdo), mientras que V5 y V6 son derivaciones PRECORDIALES/HORIZONTALES (miran la misma pared lateral pero desde el plano horizontal del tórax, a la altura del corazón). En la práctica, un infarto lateral puede afectar predominantemente una de las 2 sub-regiones sin comprometer tanto la otra — por eso algunos autores prefieren distinguir 'lateral alta' de 'lateral baja' en vez de tratarlas como una sola cara homogénea, ya que la extensión exacta del compromiso puede variar entre ambas."
+      }
+    },
+    {
+      "nivel": "avanzado",
+      "vineta": "(Ejercicio real de tu taller, para practicar el método completo) Se te presenta un trazado de ECG de 12 derivaciones para interpretar de forma sistemática, aplicando el orden completo: Ritmo, Frecuencia cardiaca, Intervalo PR, Duración QRS, Intervalo QT, y Eje.",
+      "imagen": {
+        "src": "assets/cardio/taller-ekg-s5-practica.jpg",
+        "caption": "Trazado real de práctica de tu taller"
+      },
+      "preguntaMC": {
+        "enunciado": "Este es un ejercicio de práctica abierta — tu propio material no trae la respuesta impresa (se resolvía en vivo con tu profesor). ¿Cuál es el PRIMER paso que debes dar frente a este trazado, según el método que ya conoces?",
+        "opciones": [
+          {
+            "id": "a",
+            "texto": "Determinar el RITMO: buscar si hay onda P antes de cada QRS, y si esa P es sinusal (positiva en DII, negativa en aVR)"
+          },
+          {
+            "id": "b",
+            "texto": "Calcular directamente el eje cardiaco usando el método rápido de I y aVF"
+          },
+          {
+            "id": "c",
+            "texto": "Medir el intervalo QT antes que cualquier otra cosa"
+          },
+          {
+            "id": "d",
+            "texto": "Buscar directamente signos de isquemia en las derivaciones precordiales"
+          }
+        ],
+        "correcta": "a",
+        "explicacion": "El orden correcto de lectura que tu propio taller resalta es: Frecuencia → Ritmo → Onda P → PR → QRS → Repolarización (ST/T). Aunque frecuencia técnicamente va primero en esta versión del método, el paso que define TODO lo demás es confirmar el ritmo (¿es sinusal o no?) — sin esto, cualquier medición de intervalos que hagas después podría interpretarse mal. Salvarte este paso y saltar directo a 'buscar isquemia' (opción d) es exactamente el error que la mnemotecnia FREH-II busca evitar: sin sistemática, es fácil pasar por alto una arritmia de base mientras te concentras en buscar 'lo interesante'."
+      },
+      "preguntaEscrita": {
+        "enunciado": "Describe, en tus propias palabras, los 6 pasos completos que debes seguir con este (o cualquier) trazado, en el orden correcto según tu taller.",
+        "respuestaModelo": "1) Frecuencia: calcular la FC (método de cuadros grandes si el ritmo es regular, o método de 6 segundos si es irregular). 2) Ritmo: confirmar si es sinusal (P positiva en DII, negativa en aVR, cada P seguida de un QRS, PR≥0.12seg) o no. 3) Onda P: evaluar su morfología y duración. 4) Intervalo PR: medir y confirmar que esté en rango normal (0.12-0.20seg). 5) QRS: medir su duración y morfología, buscando bloqueos de rama o hemibloqueos si está ensanchado. 6) Repolarización (segmento ST y onda T): buscar elevación/descenso del ST o inversión de la T, que orientarían a isquemia, lesión o necrosis. Solo después de completar estos 6 pasos en orden se debe calcular el eje cardiaco y dar un diagnóstico final — saltarse pasos es la forma más común de pasar por alto un hallazgo importante."
+      }
+    }
+  ]
+}
 ];
 
 const LECTURAS = [
