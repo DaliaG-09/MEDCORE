@@ -957,9 +957,12 @@ function calcularPromedioSimple(items){
    de Examen Práctico/Exposiciones — según tu plan de actividades real. Solo se considera
    "completa" (con nota final) cuando AMBOS grupos ya tienen al menos 1 nota — si falta
    uno entero, todavía no se puede saber la nota real de esa EC, aunque el otro grupo ya
-   esté lleno. */
+   esté lleno.
+   EXCEPCIÓN: si el usuario ya tiene la nota OFICIAL de esa EC (la que le dio su
+   universidad), esa nota manda siempre — no hace falta reconstruirla desde las partes. */
 function calcularPromedioEC(ecData){
   if(!ecData) return null;
+  if(typeof ecData.notaOficial === 'number' && !isNaN(ecData.notaOficial)) return ecData.notaOficial;
   const promA = calcularPromedioSimple(ecData.grupoA);
   const promB = calcularPromedioSimple(ecData.grupoB);
   if(promA === null || promB === null) return null;
@@ -1055,6 +1058,16 @@ function renderNotas(){
     <div class="notas-grid-examen">
       ${examenes.map(c => renderComponenteNotas(c, p.datos)).join('')}
     </div>
+
+    <div class="notas-backup-wrap">
+      <p class="notas-backup-titulo">💾 Respaldo de tus notas</p>
+      <p class="muted notas-backup-caption">Descarga un archivo con todas tus notas guardadas — si algún día se borran por accidente (navegador, modo incógnito, etc.), puedes restaurarlas desde aquí en segundos.</p>
+      <div class="notas-backup-btns">
+        <div class="btn-icon" onclick="exportarNotas()">⬇️ Descargar respaldo</div>
+        <div class="btn-icon" onclick="document.getElementById('notas-import-input').click()">⬆️ Restaurar respaldo</div>
+        <input type="file" id="notas-import-input" accept=".json" style="display:none" onchange="importarNotas(this.files[0])">
+      </div>
+    </div>
   `;
 }
 
@@ -1080,6 +1093,7 @@ function renderComponenteNotas(c, datos){
   }
   const ecData = datos.ec[c.id] || { grupoA: [], grupoB: [] };
   const promedioFinal = calcularPromedioEC(ecData);
+  const tieneOficial = typeof ecData.notaOficial === 'number' && !isNaN(ecData.notaOficial);
   return `
   <div class="notas-ec-card" style="--modulo-color:${c.color};">
     <div class="notas-ec-head">
@@ -1090,8 +1104,20 @@ function renderComponenteNotas(c, datos){
       </div>
       ${promedioFinal !== null ? `<span class="notas-ec-promedio">${promedioFinal.toFixed(2)}</span>` : ''}
     </div>
+    <div class="notas-ec-oficial">
+      ${tieneOficial ? `
+        <span class="notas-oficial-badge">✅ Nota oficial guardada: <strong>${ecData.notaOficial}</strong></span>
+        <i class="notas-oficial-quitar" onclick="quitarNotaOficialEC('${c.id}')" title="Quitar y volver a calcular desde talleres/exámenes">Quitar y recalcular desde las partes</i>
+      ` : `
+        <span class="muted">¿Ya te dieron la nota oficial de esta EC en tu universidad?</span>
+        <div class="notas-oficial-input-wrap">
+          <input type="text" inputmode="decimal" placeholder="Ej: 15" class="notas-oficial-input" id="notas-oficial-${c.id}">
+          <div class="btn-icon notas-oficial-btn" onclick="setNotaOficialEC('${c.id}')">Guardar como oficial</div>
+        </div>
+      `}
+    </div>
     ${GRUPOS_EC.map(g => renderGrupoEC(c.id, g, ecData[g.id] || [])).join('')}
-    ${promedioFinal === null && (ecData.grupoA.length || ecData.grupoB.length) ? `<p class="notas-ec-incompleta muted">Aún falta el otro 50% para tener la nota final de esta EC.</p>` : ''}
+    ${promedioFinal === null && !tieneOficial && (ecData.grupoA.length || ecData.grupoB.length) ? `<p class="notas-ec-incompleta muted">Aún falta el otro 50% para tener la nota final de esta EC.</p>` : ''}
   </div>`;
 }
 
@@ -1174,6 +1200,60 @@ function quitarNotaSuelta(ecId, grupoId, idx){
   datos.ec[ecId][grupoId].splice(idx, 1);
   notasAdapter.set(datos);
   renderNotas();
+}
+function setNotaOficialEC(ecId){
+  const input = document.getElementById('notas-oficial-' + ecId);
+  const num = parsearNumeroNotas(input.value);
+  if(isNaN(num) || num < 0 || num > 20){
+    alert('Escribe una nota válida entre 0 y 20 (puedes usar coma o punto para decimales, ej: 15 o 15,5).');
+    return;
+  }
+  const datos = notasAdapter.get();
+  if(!datos.ec[ecId]) datos.ec[ecId] = { grupoA: [], grupoB: [] };
+  datos.ec[ecId].notaOficial = num;
+  notasAdapter.set(datos);
+  renderNotas();
+}
+function quitarNotaOficialEC(ecId){
+  const datos = notasAdapter.get();
+  if(datos.ec[ecId]) delete datos.ec[ecId].notaOficial;
+  notasAdapter.set(datos);
+  renderNotas();
+}
+function exportarNotas(){
+  const datos = notasAdapter.get();
+  const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const fecha = new Date().toISOString().slice(0, 10);
+  a.href = url;
+  a.download = `medcore-mis-notas-${fecha}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function importarNotas(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    let datos;
+    try{
+      datos = JSON.parse(e.target.result);
+    }catch(err){
+      alert('No se pudo leer el archivo — asegúrate de que sea un respaldo válido exportado desde MEDCORE.');
+      return;
+    }
+    if(typeof datos !== 'object' || datos === null || !('ec' in datos) || !('examen' in datos)){
+      alert('Este archivo no parece ser un respaldo válido de Mis Notas.');
+      return;
+    }
+    if(!confirm('Esto va a REEMPLAZAR todas tus notas actuales con las del archivo. ¿Quieres continuar?')) return;
+    notasAdapter.set(datos);
+    renderNotas();
+    alert('Listo, tus notas fueron restauradas.');
+  };
+  reader.readAsText(file);
 }
 
 function saludoSegunHora(){
